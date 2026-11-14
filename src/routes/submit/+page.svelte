@@ -30,9 +30,11 @@
 		<span class="step-badge">STEP 1</span>
 		<h2>Add a YAML entry in <code>data/&lt;section&gt;/&lt;id&gt;/&lt;type&gt;.yaml</code></h2>
 		<p>
-			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. Only a
-			few fields are required; GitHub stars, latest release tags, and push dates are enriched
-			automatically.
+			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. Provide a
+			GitHub <code>repo</code> <em>or</em> a <code>website</code> link. Optional
+			<code>price</code> (<code>free</code> | <code>paid</code> | <code>pay-what-you-want</code>),
+			<code>price_note</code>, and <code>source</code> (<code>open</code> | <code>closed</code>).
+			GitHub stars, latest release tags, and push dates are enriched automatically when a repo is set.
 		</p>
 		<pre class="code-screen"><code>name: SampQOL OS
 description: 'Free SD-card mod for the Akai MPC Sample (firmware 1.3.0)'
@@ -43,7 +45,14 @@ install: sd-card
 status: beta
 tags:
   - os
-  - qol</code></pre>
+  - qol
+
+# Or, for a non-GitHub / paid release:
+# website: https://example.com/project
+# author_url: https://example.com
+# price: pay-what-you-want
+# price_note: Suggested €9.99
+# source: closed</code></pre>
 	</article>
 
 	<article class="info-card">

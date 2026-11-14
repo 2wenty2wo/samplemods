@@ -146,6 +146,68 @@ export function audienceLabel(aud) {
 }
 
 /**
+ * Hostname for CTA / credit copy (strips www.).
+ * @param {string | null | undefined} url
+ * @returns {string | null}
+ */
+export function hostnameOf(url) {
+	if (!url) return null;
+	try {
+		return new URL(url).hostname.replace(/^www\./, '');
+	} catch {
+		return null;
+	}
+}
+
+/**
+ * Badge label for non-default price only (free → null).
+ * @param {string | null | undefined} price
+ * @returns {string | null}
+ */
+export function priceBadge(price) {
+	if (!price || price === 'free') return null;
+	if (price === 'paid') return 'Paid';
+	if (price === 'pay-what-you-want') return 'Pay what you want';
+	return price;
+}
+
+/**
+ * Quick-facts price line, e.g. "Pay what you want · Suggested €9.99" or "Free".
+ * @param {string | null | undefined} price
+ * @param {string | null | undefined} note
+ */
+export function priceFact(price, note) {
+	const base =
+		!price || price === 'free'
+			? 'Free'
+			: price === 'paid'
+				? 'Paid'
+				: price === 'pay-what-you-want'
+					? 'Pay what you want'
+					: price;
+	return note ? `${base} · ${note}` : base;
+}
+
+/**
+ * Badge label for closed source only (open → null).
+ * @param {string | null | undefined} source
+ * @returns {string | null}
+ */
+export function sourceBadge(source) {
+	if (!source || source === 'open') return null;
+	if (source === 'closed') return 'Closed source';
+	return source;
+}
+
+/**
+ * Quick-facts source line.
+ * @param {string | null | undefined} source
+ */
+export function sourceFact(source) {
+	return source === 'closed' ? 'Closed source' : 'Open source';
+}
+
+/**
  * Initials after stripping leading MPC/Sample prefixes so
  * "MPC Sample DOOM" → "DO", not "MS".
  * @param {string} name

@@ -10,7 +10,12 @@
 		installLabel,
 		runsOnLabel,
 		audienceLabel,
-		initials
+		initials,
+		hostnameOf,
+		priceBadge,
+		priceFact,
+		sourceBadge,
+		sourceFact
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
 
@@ -21,6 +26,10 @@
 	const shots = $derived((mod.screenshots ?? []).map((p) => assetUrl(p)).filter(Boolean));
 	const install = $derived(installLabel(mod.install));
 	const glow = $derived(sectionGlow(mod.section));
+	const priceChip = $derived(priceBadge(mod.price));
+	const sourceChip = $derived(sourceBadge(mod.source));
+	const siteHost = $derived(hostnameOf(mod.website));
+	const imageCreditHost = $derived(siteHost ?? hostnameOf(mod.author_url));
 
 	const runsOnText = $derived(
 		(mod.runs_on ?? []).map((r) => runsOnLabel(r)).filter(Boolean).join(', ')
@@ -32,7 +41,7 @@
 	const latestRelease = $derived(releases[0] ?? mod.latest_release ?? null);
 	const latestReleaseUrl = $derived(
 		releases[0]?.html_url ??
-			(mod.latest_release?.tag
+			(mod.repo && mod.latest_release?.tag
 				? `https://github.com/${mod.repo}/releases/tag/${mod.latest_release.tag}`
 				: null)
 	);
@@ -194,6 +203,12 @@
 							{#if install}
 								<span class="chip chip-install">{install}</span>
 							{/if}
+							{#if priceChip}
+								<span class="chip chip-price">{priceChip}</span>
+							{/if}
+							{#if sourceChip}
+								<span class="chip chip-source">{sourceChip}</span>
+							{/if}
 							{#if mod.status}
 								<span class="badge-status {mod.status}">{mod.status}</span>
 							{/if}
@@ -208,33 +223,54 @@
 						<h1 class="detail-title">{mod.name}</h1>
 						<p class="detail-byline">
 							by
-							<a
-								href="https://github.com/{mod.author}"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
+							{#if mod.author_url}
+								<a href={mod.author_url} target="_blank" rel="noopener noreferrer">
+									{mod.author}
+								</a>
+							{:else if mod.repo}
+								<a
+									href="https://github.com/{mod.author}"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{mod.author}
+								</a>
+							{:else}
 								{mod.author}
-							</a>
-							<span class="byline-sep">·</span>
-							<a
-								href="https://github.com/{mod.repo}"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{mod.repo}
-							</a>
+							{/if}
+							{#if mod.repo}
+								<span class="byline-sep">·</span>
+								<a
+									href="https://github.com/{mod.repo}"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{mod.repo}
+								</a>
+							{/if}
 						</p>
 						<p class="detail-lead">{mod.description}</p>
 
 						<div class="hero-actions">
-							<a
-								class="hw-action-btn blue"
-								href="https://github.com/{mod.repo}"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								View on GitHub ↗
-							</a>
+							{#if mod.repo}
+								<a
+									class="hw-action-btn blue"
+									href="https://github.com/{mod.repo}"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									View on GitHub ↗
+								</a>
+							{:else if mod.website && siteHost}
+								<a
+									class="hw-action-btn blue"
+									href={mod.website}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Get it on {siteHost} ↗
+								</a>
+							{/if}
 
 							{#if latestReleaseUrl}
 								<a
@@ -247,7 +283,7 @@
 								</a>
 							{/if}
 
-							{#if mod.website}
+							{#if mod.website && mod.repo}
 								<a
 									class="hw-action-btn grey"
 									href={mod.website}
@@ -283,6 +319,12 @@
 							<dt>For</dt>
 							<dd>{audienceText}</dd>
 						{/if}
+
+						<dt>Price</dt>
+						<dd>{priceFact(mod.price, mod.price_note)}</dd>
+
+						<dt>Source</dt>
+						<dd>{sourceFact(mod.source)}</dd>
 
 						{#if mod.requires?.length}
 							<dt>Needs</dt>
@@ -330,7 +372,7 @@
 							<dd>{mod.contributors}</dd>
 						{/if}
 
-						{#if mod.open_issues != null}
+						{#if mod.open_issues != null && mod.repo}
 							<dt>Open issues &amp; PRs</dt>
 							<dd>
 								<a
@@ -441,10 +483,14 @@
 								<h2 class="silk-heading">Screenshots ({galleryShots.length})</h2>
 							{/if}
 							<p class="image-credit">
-								Images: from
-								<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
-									{mod.repo}
-								</a>
+								{#if mod.repo}
+									Images: from
+									<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
+										{mod.repo}
+									</a>
+								{:else if imageCreditHost}
+									Images: from {imageCreditHost}
+								{/if}
 							</p>
 						</div>
 
@@ -470,10 +516,14 @@
 					</section>
 				{:else if logoSrc}
 					<p class="image-credit standalone-credit">
-						Images: from
-						<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
-							{mod.repo}
-						</a>
+						{#if mod.repo}
+							Images: from
+							<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
+								{mod.repo}
+							</a>
+						{:else if imageCreditHost}
+							Images: from {imageCreditHost}
+						{/if}
 					</p>
 				{/if}
 
@@ -509,24 +559,37 @@
 								</div>
 							{/if}
 
-							<div class="readme-footer">
-								<a
-									href="https://github.com/{mod.repo}#readme"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									From the project README on GitHub ↗
-								</a>
-							</div>
+							{#if mod.repo}
+								<div class="readme-footer">
+									<a
+										href="https://github.com/{mod.repo}#readme"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										From the project README on GitHub ↗
+									</a>
+								</div>
+							{/if}
 						</div>
 					{:else}
 						<div class="readme-card readme-empty">
-							<p>
-								No README yet. See the repository on
-								<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
-									GitHub ↗
-								</a>.
-							</p>
+							{#if mod.repo}
+								<p>
+									No README yet. See the repository on
+									<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
+										GitHub ↗
+									</a>.
+								</p>
+							{:else if mod.website && siteHost}
+								<p>
+									More details on
+									<a href={mod.website} target="_blank" rel="noopener noreferrer">
+										{siteHost} ↗
+									</a>
+								</p>
+							{:else}
+								<p>No README yet.</p>
+							{/if}
 						</div>
 					{/if}
 				</section>
