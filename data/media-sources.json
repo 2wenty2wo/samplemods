@@ -52,6 +52,32 @@
       "repo": "jacob-sabella/mpc-addin-sample-draw-handler"
     }
   ],
+  "gridzilla": [
+    {
+      "file": "screenshots/01-splash.webp",
+      "source": "supplied by the catalog owner",
+      "repo": "ZootedandRebooted/GRIDZILLA",
+      "note": "Resized from 1200x900 PNG to 800x600 WebP (quality 92), preserving the 4:3 aspect ratio."
+    },
+    {
+      "file": "screenshots/02-instruments.png",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
+      "repo": "ZootedandRebooted/GRIDZILLA",
+      "note": "Original 320x240 UI image extracted without resizing from page 6 of the official user guide; also shown on the project website."
+    },
+    {
+      "file": "screenshots/03-arranger.png",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
+      "repo": "ZootedandRebooted/GRIDZILLA",
+      "note": "Original 320x240 UI image extracted without resizing from page 12 of the official user guide; also shown on the project website."
+    },
+    {
+      "file": "screenshots/04-mixer.png",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
+      "repo": "ZootedandRebooted/GRIDZILLA",
+      "note": "Original 320x240 UI image extracted without resizing from page 14 of the official user guide; also shown on the project website."
+    }
+  ],
   "henryskillz-mod-kit": [
     {
       "file": "screenshots/01-henryskillz-splash.png",
