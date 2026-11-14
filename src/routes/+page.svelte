@@ -13,8 +13,7 @@
 		sectionFromParam,
 		entryPath,
 		installLabel,
-		priceBadge,
-		sourceBadge
+		priceBadge
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
 
@@ -285,9 +284,6 @@
 							{/if}
 							{#if priceBadge(mod.price)}
 								<span class="chip chip-price">{priceBadge(mod.price)}</span>
-							{/if}
-							{#if sourceBadge(mod.source)}
-								<span class="chip chip-source">{sourceBadge(mod.source)}</span>
 							{/if}
 							{#if mod.status}
 								<span class="badge-status {mod.status}">{mod.status}</span>

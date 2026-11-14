@@ -14,7 +14,6 @@
 		hostnameOf,
 		priceBadge,
 		priceFact,
-		sourceBadge,
 		sourceFact
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
@@ -27,7 +26,6 @@
 	const install = $derived(installLabel(mod.install));
 	const glow = $derived(sectionGlow(mod.section));
 	const priceChip = $derived(priceBadge(mod.price));
-	const sourceChip = $derived(sourceBadge(mod.source));
 	const siteHost = $derived(hostnameOf(mod.website));
 	const imageCreditHost = $derived(siteHost ?? hostnameOf(mod.author_url));
 
@@ -205,9 +203,6 @@
 							{/if}
 							{#if priceChip}
 								<span class="chip chip-price">{priceChip}</span>
-							{/if}
-							{#if sourceChip}
-								<span class="chip chip-source">{sourceChip}</span>
 							{/if}
 							{#if mod.status}
 								<span class="badge-status {mod.status}">{mod.status}</span>
