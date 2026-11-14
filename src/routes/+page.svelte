@@ -1,4 +1,5 @@
 <script>
+	import { afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
 	import { SITE_NAME } from '$lib/site.js';
@@ -6,6 +7,10 @@
 		SECTIONS,
 		sectionGlow,
 		sectionLabel,
+		sectionSingular,
+		sectionExplainer,
+		sectionFromParam,
+		entryPath,
 		installLabel
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
@@ -18,11 +23,34 @@
 	let pixelatedUrls = $state(/** @type {Record<string, boolean>} */ ({}));
 
 	const totalMods = mods.length;
+	const sectionCounts = Object.fromEntries(
+		SECTIONS.map((s) => [s, mods.filter((m) => m.section === s).length])
+	);
 	const totalAuthors = new Set(mods.map((m) => m.author)).size;
 	const latestUpdateTimestamp = mods.reduce((max, m) => {
 		const t = m.pushed_at ? Date.parse(m.pushed_at) : 0;
 		return t > max ? t : max;
 	}, 0);
+
+	afterNavigate(() => {
+		if (typeof window === 'undefined') return;
+		const params = new URLSearchParams(window.location.search);
+		section = sectionFromParam(params.get('section'));
+	});
+
+	/** @param {string} next */
+	function selectSection(next) {
+		section = next;
+		if (typeof window !== 'undefined') {
+			const url = new URL(window.location.href);
+			if (next) {
+				url.searchParams.set('section', sectionSingular(next));
+			} else {
+				url.searchParams.delete('section');
+			}
+			window.history.replaceState(window.history.state, '', url);
+		}
+	}
 
 	const filtered = $derived.by(() => {
 		const q = query.trim().toLowerCase();
@@ -148,9 +176,9 @@
 					class="hw-btn"
 					style="--btn-lit: #FF8A1E"
 					aria-pressed={section === ''}
-					onclick={() => (section = '')}
+					onclick={() => selectSection('')}
 				>
-					All
+					All <span class="btn-count">{totalMods}</span>
 				</button>
 				{#each SECTIONS as cat}
 					<button
@@ -158,12 +186,17 @@
 						class="hw-btn"
 						style="--btn-lit: {sectionGlow(cat)}"
 						aria-pressed={section === cat}
-						onclick={() => (section = cat)}
+						onclick={() => selectSection(cat)}
 					>
-						{sectionLabel(cat)}
+						{sectionLabel(cat)} <span class="btn-count">{sectionCounts[cat]}</span>
 					</button>
 				{/each}
 			</div>
+			{#if section && sectionExplainer(section)}
+				<p class="section-explainer" style="--explainer-accent: {sectionGlow(section)}">
+					{sectionExplainer(section)}
+				</p>
+			{/if}
 		</div>
 
 		<div class="sort-group">
@@ -178,7 +211,7 @@
 
 	<div class="results-bar" aria-live="polite">
 		<span class="results-count">
-			Showing <strong>{filtered.length}</strong> of {totalMods} mods
+			Showing <strong>{filtered.length}</strong> of {totalMods} entries
 			{#if section}
 				in <strong>{sectionLabel(section)}</strong>
 			{/if}
@@ -188,7 +221,7 @@
 				type="button"
 				class="reset-link"
 				onclick={() => {
-					section = '';
+					selectSection('');
 					query = '';
 				}}
 			>
@@ -199,8 +232,8 @@
 
 	{#if filtered.length === 0}
 		<div class="empty-state">
-			<p class="empty-title">No mods match those filters.</p>
-			<p class="empty-sub">Try clearing your search query or switching back to All categories.</p>
+			<p class="empty-title">No entries match those filters.</p>
+			<p class="empty-sub">Try clearing your search query or switching back to All sections.</p>
 		</div>
 	{:else}
 		<ul class="card-grid">
@@ -210,7 +243,7 @@
 				<li class="card-item">
 					<a
 						class="pad-card"
-						href="{base}/mod/{mod.id}/"
+						href="{base}{entryPath(mod)}"
 						style="--pad-glow: {sectionGlow(mod.section)}"
 					>
 						<!-- 4:3 Glossy Black Bezel Screen Display -->
@@ -480,6 +513,31 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.45rem;
+	}
+
+	.btn-count {
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		opacity: 0.82;
+		padding: 0.05rem 0.32rem;
+		border-radius: 3px;
+		background: rgb(0 0 0 / 0.22);
+	}
+
+	.hw-btn[aria-pressed='true'] .btn-count {
+		background: rgb(0 0 0 / 0.16);
+		opacity: 0.95;
+	}
+
+	.section-explainer {
+		margin: 0.2rem 0 0;
+		padding: 0.45rem 0.75rem;
+		background: var(--mpc-body-light);
+		border-left: 3px solid var(--explainer-accent, var(--mpc-btn-orange));
+		border-radius: 4px;
+		font-size: 0.86rem;
+		font-weight: 600;
+		color: var(--mpc-silkscreen);
 	}
 
 	.results-bar {

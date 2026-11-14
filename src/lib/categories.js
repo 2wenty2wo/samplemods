@@ -3,6 +3,26 @@ export const SECTION_LABELS = {
 	mods: 'Mods', apps: 'Apps', games: 'Games', tools: 'Tools', guides: 'Guides', dev: 'Developers'
 };
 
+/** @type {Record<string, string>} */
+export const SECTION_SINGULAR = {
+	mods: 'mod',
+	apps: 'app',
+	games: 'game',
+	tools: 'tool',
+	guides: 'guide',
+	dev: 'dev'
+};
+
+/** @type {Record<string, string>} */
+export const SECTION_EXPLAINERS = {
+	mods: 'Mods add features to the stock MPC Sample firmware, keeping its familiar workflow.',
+	apps: 'Apps run their own workflow and interface on the MPC Sample.',
+	games: 'Games and game runtimes playable directly on the MPC Sample.',
+	tools: 'Launchers, emulators and computer or browser companions for the MPC Sample.',
+	guides: 'Handbooks, hardware references and step-by-step modding instructions.',
+	dev: 'SDKs, libraries and platform source code for building your own MPC Sample projects.'
+};
+
 export const SECTION_GLOW = {
 	mods: '#FF4D7D', apps: '#2EE65A', games: '#C8F526',
 	tools: '#B07CFF', guides: '#E8C811', dev: '#1DA1DB'
@@ -26,6 +46,40 @@ export const SECTIONS = Object.keys(SECTION_LABELS);
 /** @param {string} section */
 export function sectionLabel(section) {
 	return SECTION_LABELS[section] ?? section;
+}
+
+/** @param {string} section */
+export function sectionSingular(section) {
+	return SECTION_SINGULAR[section] ?? section;
+}
+
+/** @param {string} section */
+export function sectionExplainer(section) {
+	return SECTION_EXPLAINERS[section] ?? '';
+}
+
+/**
+ * Resolve a ?section= query parameter (singular or plural) to the canonical section key.
+ * @param {string | null | undefined} param
+ * @returns {string}
+ */
+export function sectionFromParam(param) {
+	if (!param) return '';
+	const clean = String(param).trim().toLowerCase();
+	if (SECTION_LABELS[clean]) return clean;
+	for (const [sec, sing] of Object.entries(SECTION_SINGULAR)) {
+		if (sing === clean) return sec;
+	}
+	if (clean === 'developers' || clean === 'developer') return 'dev';
+	return '';
+}
+
+/**
+ * Canonical detail path with trailing slash, e.g. "/game/mp-doom/".
+ * @param {{ id: string, section: string }} entry
+ */
+export function entryPath(entry) {
+	return `/${sectionSingular(entry.section)}/${entry.id}/`;
 }
 
 /** @param {string} section */

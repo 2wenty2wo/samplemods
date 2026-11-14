@@ -49,7 +49,32 @@
 		</p>
 		<div class="info-actions">
 			<a class="hw-action-btn blue" href="{base}/catalog.json">View /catalog.json</a>
-			<a class="hw-action-btn orange" href="{base}/submit/">Submit a Mod</a>
+			<a class="hw-action-btn orange" href="{base}/submit/">Submit a Project</a>
+		</div>
+	</article>
+
+	<article class="info-card">
+		<h2>Project Authors &amp; Takedown / Edit Requests</h2>
+		<p>
+			Made one of these projects? Want your listing, description or images changed or removed?
+			<a
+				href="https://github.com/2wenty2wo/samplemods/issues/new?title=Listing%20change%3A%20"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Open an issue
+			</a>
+			and it'll be sorted within a day.
+		</p>
+		<div class="info-actions">
+			<a
+				class="hw-action-btn orange"
+				href="https://github.com/2wenty2wo/samplemods/issues/new?title=Listing%20change%3A%20"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Request a Listing Change ↗
+			</a>
 		</div>
 	</article>
 </div>

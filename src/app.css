@@ -481,6 +481,12 @@ a:hover {
 .badge-status.experimental {
 	--chip-strip: var(--mpc-screen-magenta);
 }
+.badge-status.concept {
+	--chip-strip: var(--mpc-screen-cyan);
+	background: #141822;
+	color: var(--mpc-screen-cyan);
+	border-color: #283044;
+}
 .badge-status.archived {
 	--chip-strip: #7a7d87;
 }
@@ -551,6 +557,27 @@ a:hover {
 	line-height: 1.55;
 }
 
+.footer-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+	margin: 0.75rem 0;
+}
+
+.footer-author-note {
+	margin-top: 1.35rem;
+	padding: 0.85rem 1.05rem;
+	background: var(--mpc-body-light);
+	border: 1.5px solid #282b34;
+	border-left: 4px solid var(--mpc-btn-orange);
+	border-radius: var(--radius);
+	font-size: 0.84rem;
+	line-height: 1.5;
+	color: var(--mpc-silkscreen);
+	width: min(1200px, 100% - 2rem);
+	margin-inline: auto;
+}
+
 .error-page {
 	padding: 2.5rem 0 3rem;
 	text-align: center;
@@ -567,15 +594,16 @@ a:hover {
 @media (max-width: 640px) {
 	.wrap,
 	.site-topbar-inner,
-	.site-footer-inner {
+	.site-footer-inner,
+	.footer-author-note {
 		width: calc(100% - 1.25rem);
 	}
 
 	.site-topbar-inner {
-		min-height: auto;
-		padding: 0.45rem 0;
-		gap: 0.35rem 0.75rem;
-		flex-wrap: wrap;
+		min-height: 48px;
+		padding: 0.4rem 0;
+		gap: 0.4rem;
+		flex-wrap: nowrap;
 	}
 
 	.wordmark {
@@ -585,7 +613,8 @@ a:hover {
 	}
 
 	.site-nav {
-		gap: 0.25rem 0.5rem;
+		gap: 0.2rem;
+		flex-wrap: nowrap;
 	}
 
 	.nav-link {

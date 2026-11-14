@@ -64,7 +64,11 @@ tags:
 				<code>data/&lt;section&gt;/&lt;id&gt;/logo.svg</code> (or <code>.png</code> / <code>.webp</code>) —
 				optional logo displayed when no screenshots are present.
 			</li>
-			<li>Keep individual files under <strong>500 KB</strong> and run <code>npm test</code>.</li>
+			<li>
+				Record the upstream source URL and license for any images in
+				<code>data/media-sources.json</code>, keep individual files under <strong>500 KB</strong>,
+				and run <code>npm test</code>.
+			</li>
 		</ul>
 	</article>
 
@@ -74,16 +78,24 @@ tags:
 		<p>
 			<code>npm test</code> validates your YAML against the JSON schema, checks dependency links
 			(<code>requires</code> / <code>required_by</code>), and verifies every media folder matches a
-			valid mod ID.
+			valid entry ID.
 		</p>
 		<div class="info-actions">
 			<a
 				class="hw-action-btn blue"
-				href="https://github.com/"
+				href="https://github.com/2wenty2wo/samplemods"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
 				Open GitHub Repository ↗
+			</a>
+			<a
+				class="hw-action-btn orange"
+				href="https://github.com/2wenty2wo/samplemods/blob/main/CONTRIBUTING.md"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Read CONTRIBUTING.md ↗
 			</a>
 			<a class="hw-action-btn grey" href="{base}/">Back to Catalog</a>
 		</div>
