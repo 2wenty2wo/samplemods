@@ -8,7 +8,9 @@ tags:
   - scales
   - pitch
   - pads
-install: sd-card
+install: ssh
 firmware: 1.3.0.12
 requires:
   - draw-handler
+runs_on: [device]
+audience: [musician]

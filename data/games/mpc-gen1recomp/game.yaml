@@ -8,3 +8,5 @@ tags:
   - pokemon
   - game-boy
 install: sd-card
+runs_on: [device]
+audience: [player]

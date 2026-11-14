@@ -8,4 +8,6 @@ tags:
   - usb-midi
   - web-midi
   - patterns
-install: usb-midi
+install: desktop
+runs_on: [desktop, browser]
+audience: [musician, developer]

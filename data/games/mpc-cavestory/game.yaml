@@ -8,3 +8,5 @@ tags:
   - platformer
   - cave-story
 install: sd-card
+runs_on: [device]
+audience: [player]

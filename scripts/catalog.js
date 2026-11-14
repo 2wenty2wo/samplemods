@@ -15,6 +15,7 @@ export function readEntries(dataDir = path.join(root, 'data')) {
 	const ids = new Set();
 	for (const sectionDir of fs.readdirSync(dataDir, { withFileTypes: true })) {
 		if (sectionDir.isFile() && sectionDir.name.endsWith('.json')) continue;
+		if (sectionDir.isDirectory() && sectionDir.name === 'readme') continue;
 		const section = sectionDir.name;
 		if (!sectionDir.isDirectory() || !Object.hasOwn(SECTION_FILES, section)) {
 			throw new Error(`Unknown data section or misplaced file: ${section}`);

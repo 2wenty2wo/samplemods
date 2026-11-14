@@ -10,3 +10,5 @@ tags:
   - development
 install: none
 firmware: 1.3.0.12
+runs_on: [desktop, device]
+audience: [developer]

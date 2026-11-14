@@ -8,6 +8,8 @@ tags:
   - looper
   - live
   - mixing
-install: sd-card
+install: boot-thingy
 requires:
   - mpc-boot-thingy
+runs_on: [device]
+audience: [musician, developer]

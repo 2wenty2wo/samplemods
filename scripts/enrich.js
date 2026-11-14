@@ -5,37 +5,83 @@ import { readEntries } from './catalog.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'data', 'github.json');
+const readmeDir = path.join(root, 'data', 'readme');
 const headers = { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
 async function request(endpoint, optional = false) {
 	const response = await fetch(`https://api.github.com/repos/${endpoint}`, { headers });
-	if (optional && response.status === 404) return null;
-	if (!response.ok) throw new Error(`GitHub ${endpoint}: HTTP ${response.status}`);
-	return response.json();
+	if (optional && [404, 409].includes(response.status)) return null;
+	if (!response.ok) {
+		const reset = response.headers.get('x-ratelimit-reset');
+		const retry = response.headers.get('retry-after');
+		const limit = response.status === 429 || response.headers.get('x-ratelimit-remaining') === '0' || retry;
+		throw new Error(`GitHub ${endpoint}: HTTP ${response.status}${limit ? `; rate limited, retry ${retry ? `after ${retry} seconds` : reset ? `after ${new Date(Number(reset) * 1000).toISOString()}` : 'later'}. Use GITHUB_TOKEN for authenticated limits.` : ''}`);
+	}
+	return { data: response.status === 204 ? [] : await response.json(), headers: response.headers };
 }
 
-const repos = [...new Set(readEntries().map(({ record }) => record.repo))].sort();
+function writeIfChanged(file, text) {
+	if (fs.existsSync(file) && fs.readFileSync(file, 'utf8') === text) return;
+	const temporary = `${file}.tmp`;
+	fs.writeFileSync(temporary, text);
+	fs.renameSync(temporary, file);
+}
+
+const entries = readEntries();
+const repos = [...new Set(entries.map(({ record }) => record.repo))].sort();
 const github = {};
+const readmes = new Map();
 for (const repo of repos) {
 	if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error(`Invalid GitHub repository: ${repo}`);
-	const metadata = await request(repo);
-	const release = await request(`${repo}/releases/latest`, true);
+	const { data: metadata } = await request(repo);
+	const latest = await request(`${repo}/releases/latest`, true);
+	const releases = await request(`${repo}/releases?per_page=3`, true);
+	const readme = await request(`${repo}/readme`, true);
+	const contributors = await request(`${repo}/contributors?anon=true&per_page=1`, true);
+	const commits = await request(`${repo}/commits?per_page=1`, true);
+	const lastPage = contributors?.headers.get('link')?.match(/[?&]page=(\d+)[^>]*>; rel="last"/);
+	const release = latest?.data;
+	if (readme) {
+		if (readme.data.encoding !== 'base64') throw new Error(`GitHub ${repo}/readme: expected base64 content`);
+		readmes.set(repo, Buffer.from(readme.data.content, 'base64').toString('utf8').replace(/\r\n/g, '\n'));
+	}
 	github[repo] = {
 		stars: metadata.stargazers_count,
 		forks: metadata.forks_count,
 		pushed_at: metadata.pushed_at,
+		last_commit_at: commits?.data[0]?.commit.committer?.date ?? commits?.data[0]?.commit.author?.date ?? null,
+		contributors: contributors ? lastPage ? Number(lastPage[1]) : contributors.data.length : 0,
+		// GitHub's repository counter includes open pull requests.
+		open_issues: metadata.open_issues_count,
 		license: metadata.license?.spdx_id === 'NOASSERTION' ? null : metadata.license?.spdx_id ?? null,
 		description: metadata.description,
+		default_branch: metadata.default_branch,
+		readme_path: readme?.data.path ?? null,
 		latest_release: release ? { tag: release.tag_name, published_at: release.published_at } : null,
+		releases: (releases?.data ?? []).filter((item) => !item.draft).slice(0, 3).map((item) => {
+			const body = item.body ?? '';
+			const limit = 12000;
+			const end = body.length > limit ? body.lastIndexOf('\n\n', limit) : body.length;
+			return { tag: item.tag_name, name: item.name, published_at: item.published_at, html_url: item.html_url,
+				body: body.slice(0, end > limit / 2 ? end : limit), truncated: body.length > limit };
+		}),
 		archived: metadata.archived
 	};
+	console.log(`Fetched ${repo}.`);
 }
 
-const json = JSON.stringify(github, null, 2) + '\n';
-if (!fs.existsSync(output) || fs.readFileSync(output, 'utf8') !== json) {
-	const temporary = `${output}.tmp`;
-	fs.writeFileSync(temporary, json);
-	fs.renameSync(temporary, output);
+// Fetch everything before changing either cache, so API failures preserve the previous snapshot.
+fs.mkdirSync(readmeDir, { recursive: true });
+const keep = new Set();
+for (const { id, record } of entries) {
+	if (!readmes.has(record.repo)) continue;
+	const file = `${id}.md`;
+	keep.add(file);
+	writeIfChanged(path.join(readmeDir, file), readmes.get(record.repo));
 }
-console.log(`Enriched ${repos.length} GitHub repositories.`);
+for (const file of fs.readdirSync(readmeDir)) {
+	if (file.endsWith('.md') && !keep.has(file)) fs.unlinkSync(path.join(readmeDir, file));
+}
+writeIfChanged(output, JSON.stringify(github, null, 2) + '\n');
+console.log(`Enriched ${repos.length} GitHub repositories and ${keep.size} READMEs.`);

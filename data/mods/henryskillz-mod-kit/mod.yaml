@@ -8,8 +8,10 @@ tags:
   - effects
   - stems
   - sampqol
-install: sd-card
+install: web-installer
 firmware: 1.3.0
 requires:
   - sampqol-os
 website: https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/
+runs_on: [device]
+audience: [musician]

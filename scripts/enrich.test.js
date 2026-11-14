@@ -7,22 +7,28 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fixture = fs.mkdtempSync(path.join(root, '.enrich-test-'));
 const output = path.join(fixture, 'data', 'github.json');
+const readme = path.join(fixture, 'data', 'readme', 'a.md');
 const mock = `
 import assert from 'node:assert/strict';
 globalThis.fetch = async (url, { headers }) => {
   assert.equal(headers.Authorization, process.env.GITHUB_TOKEN ? 'Bearer test-token' : undefined);
-  const release = url.endsWith('/releases/latest');
-  if (process.env.FAIL_API) return { ok: false, status: 503 };
-  if (release && url.includes('/z/')) return { ok: false, status: 404 };
-  return { ok: true, status: 200, json: async () => release
-    ? { tag_name: 'v1', published_at: '2026-01-01T00:00:00Z' }
-    : { stargazers_count: 7, forks_count: 2, pushed_at: '2026-01-01T00:00:00Z',
-        license: url.endsWith('/z') ? null : { spdx_id: 'MIT' }, description: null, archived: false } };
+  const reply = (data, status = 200, extra = {}) => ({ ok: status < 400, status, headers: new Headers(extra), json: async () => data });
+  if (process.env.FAIL_API && url.includes('/z/readme')) return reply({}, 503);
+  if (process.env.RATE_LIMIT) return reply({}, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1800000000' });
+  const absent = url.includes('/z/');
+  const release = { tag_name: 'v1', name: 'First release', published_at: '2026-01-01T00:00:00Z', html_url: 'https://github.com/owner/a/releases/tag/v1', body: '**Changes**' + 'x'.repeat(13000) };
+  if (url.endsWith('/releases/latest')) return reply(release, absent ? 404 : 200);
+  if (url.includes('/releases?')) return reply(absent ? [] : [release, { ...release, tag_name: 'v0.9', body: null }]);
+  if (url.endsWith('/readme')) return reply({ encoding: 'base64', path: 'docs/README.md', content: Buffer.from('# A\\r\\nREADME').toString('base64') }, absent || process.env.NO_README ? 404 : 200);
+  if (url.includes('/contributors?')) return reply(absent ? [] : [{ login: 'one' }], absent ? 204 : 200, absent ? {} : { link: '<https://api.github.com/repos/owner/a/contributors?anon=true&per_page=1&page=7>; rel="last"' });
+  if (url.includes('/commits?')) return reply(absent ? {} : [{ commit: { committer: { date: '2026-01-02T00:00:00Z' } } }], absent ? 409 : 200);
+  return reply({ stargazers_count: 7, forks_count: 2, pushed_at: '2026-01-01T00:00:00Z', open_issues_count: 3, default_branch: 'develop',
+    license: url.endsWith('/z') ? null : { spdx_id: 'MIT' }, description: null, archived: false });
 };`;
 function run(extra = {}) {
 	return spawnSync(process.execPath, ['--import', `data:text/javascript,${encodeURIComponent(mock)}`,
 		path.join(fixture, 'scripts', 'enrich.js')], {
-		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', ...extra }
+		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', RATE_LIMIT: '', NO_README: '', ...extra }
 	});
 }
 
@@ -38,21 +44,42 @@ try {
 	const original = fs.readFileSync(output, 'utf8');
 	const data = JSON.parse(original);
 	assert.deepEqual(Object.keys(data), ['owner/a', 'owner/z']);
-	assert.deepEqual(data['owner/a'], { stars: 7, forks: 2, pushed_at: '2026-01-01T00:00:00Z',
-		license: 'MIT', description: null,
-		latest_release: { tag: 'v1', published_at: '2026-01-01T00:00:00Z' }, archived: false });
+	assert.equal(data['owner/a'].contributors, 7);
+	assert.equal(data['owner/a'].open_issues, 3);
+	assert.equal(data['owner/a'].last_commit_at, '2026-01-02T00:00:00Z');
+	assert.equal(data['owner/a'].readme_path, 'docs/README.md');
+	assert.equal(data['owner/a'].default_branch, 'develop');
+	assert.equal(data['owner/a'].releases.length, 2);
+	assert.equal(data['owner/a'].releases[0].body.length, 12000);
+	assert.equal(data['owner/a'].releases[0].truncated, true);
+	assert.equal(data['owner/a'].releases[1].body, '');
+	assert.deepEqual(data['owner/a'].latest_release, { tag: 'v1', published_at: '2026-01-01T00:00:00Z' });
+	assert.equal(data['owner/a'].license, 'MIT');
+	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME');
 	assert.equal(data['owner/z'].latest_release, null);
+	assert.deepEqual(data['owner/z'].releases, []);
+	assert.equal(data['owner/z'].last_commit_at, null);
+	assert.equal(data['owner/z'].contributors, 0);
 	assert.equal(data['owner/z'].license, null);
+	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/z.md')));
 	fs.utimesSync(output, 1000000, 1000000);
-	const mtime = fs.statSync(output).mtimeMs;
+	fs.utimesSync(readme, 1000000, 1000000);
 	const second = run({ GITHUB_TOKEN: '' });
 	assert.equal(second.status, 0, second.stderr);
-	assert.equal(fs.statSync(output).mtimeMs, mtime, 'unchanged data must not be rewritten');
+	assert.equal(fs.statSync(output).mtimeMs, 1000000000, 'unchanged metadata must not be rewritten');
+	assert.equal(fs.statSync(readme).mtimeMs, 1000000000, 'unchanged README must not be rewritten');
 	const failed = run({ FAIL_API: '1' });
 	assert.notEqual(failed.status, 0);
 	assert.match(failed.stderr, /HTTP 503/);
-	assert.equal(fs.readFileSync(output, 'utf8'), original, 'API failures must preserve the cache');
-	console.log('Enrichment checks passed: metadata, releases, auth, stable output, failure preservation.');
+	assert.equal(fs.readFileSync(output, 'utf8'), original, 'API failures must preserve metadata');
+	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME', 'API failures must preserve READMEs');
+	const limited = run({ RATE_LIMIT: '1' });
+	assert.notEqual(limited.status, 0);
+	assert.match(limited.stderr, /rate limited.*retry.*GITHUB_TOKEN/);
+	const removed = run({ NO_README: '1' });
+	assert.equal(removed.status, 0, removed.stderr);
+	assert.ok(!fs.existsSync(readme), 'removed upstream README must not remain stale');
+	console.log('Enrichment checks passed: README/release caches, stats, auth, no-op writes, rate limits and failure preservation.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
 }

@@ -9,3 +9,5 @@ tags:
   - handbook
 install: none
 firmware: 1.3.0
+runs_on: [docs]
+audience: [musician, curious]

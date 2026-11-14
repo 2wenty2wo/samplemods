@@ -9,3 +9,5 @@ tags:
   - drums
 install: sd-card
 firmware: 1.3.0.x
+runs_on: [device]
+audience: [player, musician]

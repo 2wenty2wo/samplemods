@@ -11,3 +11,5 @@ tags:
   - swing
 install: sd-card
 website: https://www.youtube.com/@DoctorbNetwork
+runs_on: [device]
+audience: [musician]

@@ -47,9 +47,26 @@ properties:
     type: string
     enum:
       - sd-card
+      - boot-thingy
       - web-installer
+      - ssh
+      - desktop
       - usb-midi
       - none
+  runs_on:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      enum: [device, desktop, browser, docs]
+  audience:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      enum: [musician, player, developer, curious]
   website:
     type: string
     pattern: ^https?://

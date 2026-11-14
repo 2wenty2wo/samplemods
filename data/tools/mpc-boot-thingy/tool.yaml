@@ -8,3 +8,5 @@ tags:
   - boot-menu
   - launcher
 install: sd-card
+runs_on: [device, browser]
+audience: [musician, player, developer]
