@@ -1,0 +1,6 @@
+name: MPC Sample Toolkit
+description: >-
+  An open-source toolkit for editing, generating and managing Akai MPC Sample (.xpj) projects,
+  including chromatic instruments, batch editing and project utilities.
+repo: tarikcampos/MPC-Sample-Toolkit
+author: tarikcampos
