@@ -14,7 +14,7 @@
 
 <section class="page-hero-band">
 	<div class="page-hero-inner">
-		<a class="back-link" href="{base}/">← All mods</a>
+		<a class="back-link" href="{base}/">← All entries</a>
 		<div class="page-screen-box">
 			<p class="page-kicker">ABOUT THIS PROJECT</p>
 			<h1 class="page-title">{SITE_NAME}</h1>
@@ -39,7 +39,7 @@
 	<article class="info-card">
 		<h2>GitHub-Backed Data &amp; Public JSON API</h2>
 		<p>
-			The catalog currently indexes <strong>{mods.length} projects</strong> maintained in YAML files
+			The catalog currently indexes <strong>{mods.length} entries</strong> maintained in YAML files
 			under <code>data/&lt;section&gt;/&lt;id&gt;/</code> and automatically enriched with GitHub repository metadata
 			(stars, licenses, latest releases, and push timestamps).
 		</p>
@@ -49,7 +49,7 @@
 		</p>
 		<div class="info-actions">
 			<a class="hw-action-btn blue" href="{base}/catalog.json">View /catalog.json</a>
-			<a class="hw-action-btn orange" href="{base}/submit/">Submit a Project</a>
+			<a class="hw-action-btn orange" href="{base}/submit/">Submit an Entry</a>
 		</div>
 	</article>
 

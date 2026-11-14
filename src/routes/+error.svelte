@@ -22,5 +22,5 @@
 			Something went wrong loading this page.
 		{/if}
 	</p>
-	<p><a class="back" href="{base}/">← All mods</a></p>
+	<p><a class="back" href="{base}/">← All entries</a></p>
 </section>

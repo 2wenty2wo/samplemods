@@ -4,19 +4,19 @@
 </script>
 
 <svelte:head>
-	<title>Submit a Mod · {SITE_NAME}</title>
+	<title>Submit an Entry · {SITE_NAME}</title>
 	<meta
 		name="description"
-		content="How to submit or update a mod in the {SITE_NAME} community catalog via pull request."
+		content="How to submit or update an entry in the {SITE_NAME} community catalog via pull request."
 	/>
 </svelte:head>
 
 <section class="page-hero-band">
 	<div class="page-hero-inner">
-		<a class="back-link" href="{base}/">← All mods</a>
+		<a class="back-link" href="{base}/">← All entries</a>
 		<div class="page-screen-box">
 			<p class="page-kicker">CONTRIBUTING GUIDE</p>
-			<h1 class="page-title">How to Add or Update a Mod</h1>
+			<h1 class="page-title">How to Add or Update an Entry</h1>
 			<p class="page-lead">
 				Every entry in {SITE_NAME} is a tiny YAML file and an optional media folder in Git. Open a
 				pull request and CI validates everything automatically.

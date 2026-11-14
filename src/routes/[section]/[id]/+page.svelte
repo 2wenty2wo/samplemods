@@ -5,6 +5,7 @@
 		sectionGlow,
 		sectionLabel,
 		sectionSingular,
+		sectionSingularLabel,
 		entryPath,
 		installLabel
 	} from '$lib/categories.js';
@@ -130,7 +131,7 @@
 							{:else}
 								<div class="splash-fallback" aria-hidden="true">
 									<div class="splash-topbar">
-										<span class="splash-cat">{sectionLabel(mod.section)}</span>
+										<span class="splash-cat">{sectionSingularLabel(mod.section)}</span>
 										{#if mod.firmware}
 											<span class="splash-fw">FW {mod.firmware}</span>
 										{/if}
@@ -148,7 +149,7 @@
 					<!-- Mod Info & Hardware Action Buttons -->
 					<div class="hero-info-col">
 						<div class="hero-badges">
-							<span class="chip chip-category">{sectionLabel(mod.section)}</span>
+							<span class="chip chip-category">{sectionSingularLabel(mod.section)}</span>
 							{#if install}
 								<span class="chip chip-install">{install}</span>
 							{/if}
@@ -335,7 +336,7 @@
 												style="--pad-glow: {sectionGlow(rel.section)}"
 											>
 												<div class="mini-card-top">
-													<span class="chip chip-category">{sectionLabel(rel.section)}</span>
+													<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
 													{#if rel.stars != null}
 														<span class="screen-badge stars">★ {rel.stars}</span>
 													{/if}
@@ -368,7 +369,7 @@
 												style="--pad-glow: {sectionGlow(rel.section)}"
 											>
 												<div class="mini-card-top">
-													<span class="chip chip-category">{sectionLabel(rel.section)}</span>
+													<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
 													{#if rel.stars != null}
 														<span class="screen-badge stars">★ {rel.stars}</span>
 													{/if}

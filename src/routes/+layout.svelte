@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
 	import '@fontsource/inter/400.css';
@@ -9,6 +10,51 @@
 	import '../app.css';
 
 	let { children } = $props();
+	let repoStars = $state(/** @type {string | null} */ (null));
+
+	const STAR_CACHE_KEY = 'samplemods_gh_stars';
+
+	/** @param {number} n */
+	function formatCompactStars(n) {
+		if (n >= 1000) {
+			return `${(n / 1000).toFixed(1).replace(/\.0$/, '')}k`;
+		}
+		return String(n);
+	}
+
+	onMount(async () => {
+		try {
+			const cached = sessionStorage.getItem(STAR_CACHE_KEY);
+			if (cached !== null) {
+				const parsed = Number(cached);
+				if (Number.isFinite(parsed) && parsed > 0) {
+					repoStars = formatCompactStars(parsed);
+					return;
+				}
+			}
+		} catch {
+			// Ignore sessionStorage errors
+		}
+
+		try {
+			const res = await fetch('https://api.github.com/repos/2wenty2wo/samplemods', {
+				headers: { Accept: 'application/vnd.github+json' }
+			});
+			if (!res.ok) return;
+			const data = await res.json();
+			const count = data?.stargazers_count;
+			if (typeof count === 'number' && Number.isFinite(count) && count > 0) {
+				repoStars = formatCompactStars(count);
+				try {
+					sessionStorage.setItem(STAR_CACHE_KEY, String(count));
+				} catch {
+					// Ignore sessionStorage errors
+				}
+			}
+		} catch {
+			// Leave repoStars as null on network or rate-limit failure
+		}
+	});
 </script>
 
 <svelte:head>
@@ -64,7 +110,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					★ Star on GitHub
+					<span>★ Star on GitHub{repoStars ? ` · ${repoStars}` : ''}</span>
 				</a>
 				<a
 					class="hw-action-btn blue"
@@ -76,7 +122,7 @@
 				</a>
 			</div>
 			<p class="footer-copy">
-				<a href="{base}/submit/">How to submit a project</a> ·
+				<a href="{base}/submit/">How to submit an entry</a> ·
 				<a href="{base}/about/">About this catalog</a> ·
 				<a href="{base}/catalog.json">Public JSON feed (/catalog.json)</a>
 			</p>

@@ -8,6 +8,7 @@
 		sectionGlow,
 		sectionLabel,
 		sectionSingular,
+		sectionSingularLabel,
 		sectionExplainer,
 		sectionFromParam,
 		entryPath,
@@ -111,10 +112,10 @@
 </script>
 
 <svelte:head>
-	<title>{SITE_NAME}: mods for the Akai MPC Sample</title>
+	<title>{SITE_NAME}: mods, apps, games &amp; tools for the Akai MPC Sample</title>
 	<meta
 		name="description"
-		content="{SITE_NAME}: community catalog of custom firmware mods, add-ons, apps, games, tools, and guides for the Akai MPC Sample."
+		content="{SITE_NAME}: community catalog of custom firmware mods, apps, games, tools, guides, and developer libraries for the Akai MPC Sample."
 	/>
 </svelte:head>
 
@@ -123,7 +124,7 @@
 		<div class="hero-screen">
 			<div class="hero-top-row">
 				<div class="hero-title-group">
-					<p class="hero-kicker">MODS FOR THE AKAI MPC SAMPLE</p>
+					<p class="hero-kicker">COMMUNITY CATALOG FOR THE AKAI MPC SAMPLE</p>
 					<h1 class="hero-headline">
 						Custom firmware, synths, games &amp; tools for the Akai MPC Sample.
 					</h1>
@@ -131,7 +132,7 @@
 
 				<dl class="hero-stats" aria-label="Catalog statistics">
 					<div class="stat-box">
-						<dt>MODS</dt>
+						<dt>ENTRIES</dt>
 						<dd class="stat-val yellow">{totalMods}</dd>
 					</div>
 					<div class="stat-box">
@@ -152,7 +153,7 @@
 						id="mod-search"
 						type="search"
 						bind:value={query}
-						placeholder="Filter by mod name, description, tag, or author…"
+						placeholder="Filter by name, description, tag, or author…"
 						autocomplete="off"
 					/>
 					{#if query}
@@ -167,7 +168,7 @@
 </section>
 
 <div class="wrap" id="catalog">
-	<section class="filter-bar" aria-label="Filter and sort mods">
+	<section class="filter-bar" aria-label="Filter and sort entries">
 		<div class="filter-group">
 			<span class="silk-label">SECTION</span>
 			<div class="hw-buttons" role="group" aria-label="Section">
@@ -261,7 +262,7 @@
 							{:else}
 								<div class="splash-fallback" aria-hidden="true">
 									<div class="splash-topbar">
-										<span class="splash-cat">{sectionLabel(mod.section)}</span>
+										<span class="splash-cat">{sectionSingularLabel(mod.section)}</span>
 										{#if mod.firmware}
 											<span class="splash-fw">FW {mod.firmware}</span>
 										{/if}
@@ -276,7 +277,7 @@
 						</div>
 
 						<div class="card-badges">
-							<span class="chip chip-category">{sectionLabel(mod.section)}</span>
+							<span class="chip chip-category">{sectionSingularLabel(mod.section)}</span>
 							{#if install}
 								<span class="chip chip-install">{install}</span>
 							{/if}
@@ -516,10 +517,15 @@
 	}
 
 	.btn-count {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		font-family: var(--font-mono);
 		font-size: 0.68rem;
+		font-weight: 700;
+		line-height: 1;
 		opacity: 0.82;
-		padding: 0.05rem 0.32rem;
+		padding: 0.14rem 0.34rem;
 		border-radius: 3px;
 		background: rgb(0 0 0 / 0.22);
 	}

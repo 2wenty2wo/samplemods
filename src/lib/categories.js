@@ -14,6 +14,16 @@ export const SECTION_SINGULAR = {
 };
 
 /** @type {Record<string, string>} */
+export const SECTION_SINGULAR_LABELS = {
+	mods: 'MOD',
+	apps: 'APP',
+	games: 'GAME',
+	tools: 'TOOL',
+	guides: 'GUIDE',
+	dev: 'DEV'
+};
+
+/** @type {Record<string, string>} */
 export const SECTION_EXPLAINERS = {
 	mods: 'Mods add features to the stock MPC Sample firmware, keeping its familiar workflow.',
 	apps: 'Apps run their own workflow and interface on the MPC Sample.',
@@ -51,6 +61,11 @@ export function sectionLabel(section) {
 /** @param {string} section */
 export function sectionSingular(section) {
 	return SECTION_SINGULAR[section] ?? section;
+}
+
+/** @param {string} section */
+export function sectionSingularLabel(section) {
+	return SECTION_SINGULAR_LABELS[section] ?? String(section).toUpperCase();
 }
 
 /** @param {string} section */
