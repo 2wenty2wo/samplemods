@@ -46,12 +46,28 @@ export const SECTION_TINTS = {
 /** @type {Record<string, string>} */
 export const INSTALL_LABELS = {
 	'sd-card': 'SD card',
-	'boot-thingy': 'MPC Boot Thingy',
+	'boot-thingy': 'Boot Thingy',
 	'web-installer': 'Web installer',
 	ssh: 'SSH',
 	desktop: 'Desktop',
 	'usb-midi': 'USB-MIDI',
 	none: ''
+};
+
+/** @type {Record<string, string>} */
+export const RUNS_ON_LABELS = {
+	device: 'MPC Sample',
+	desktop: 'Desktop',
+	browser: 'Browser',
+	docs: 'Docs'
+};
+
+/** @type {Record<string, string>} */
+export const AUDIENCE_LABELS = {
+	musician: 'Musicians',
+	player: 'Players',
+	developer: 'Developers',
+	curious: 'Curious'
 };
 
 export const SECTIONS = Object.keys(SECTION_LABELS);
@@ -117,6 +133,16 @@ export function sectionTint(section) {
 export function installLabel(install) {
 	if (!install || install === 'none') return null;
 	return INSTALL_LABELS[install] ?? install;
+}
+
+/** @param {string} target */
+export function runsOnLabel(target) {
+	return RUNS_ON_LABELS[target] ?? target;
+}
+
+/** @param {string} aud */
+export function audienceLabel(aud) {
+	return AUDIENCE_LABELS[aud] ?? aud;
 }
 
 /**
