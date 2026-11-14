@@ -10,3 +10,7 @@ tags:
   - python
   - desktop
 install: desktop
+runs_on:
+  - desktop
+audience:
+  - musician

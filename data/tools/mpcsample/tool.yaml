@@ -9,5 +9,10 @@ tags:
   - xpj
   - browser
   - desktop
-install: none
+install: desktop
 website: https://mpcsample.app
+runs_on:
+  - browser
+  - desktop
+audience:
+  - musician
