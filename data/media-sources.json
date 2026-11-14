@@ -74,7 +74,14 @@
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     }
   ],
-  "kaosample": [],
+  "kaosample": [
+    {
+      "file": "screenshots/01-splash.png",
+      "source": "kaosplash binary from the KAOSAMPLE release (supplied by the catalog owner)",
+      "repo": "omarhuertasllc-ops/kaosample-beta",
+      "note": "Embedded 320x240 BGRX framebuffer extracted at byte offset 372528; not executed"
+    }
+  ],
   "koala-mpc-os": [],
   "lightfoot": [
     {
