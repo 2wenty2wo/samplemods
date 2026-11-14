@@ -165,6 +165,33 @@
     "releases": [],
     "archived": false
   },
+  "WorldLinkStudio/mpcsample": {
+    "stars": 21,
+    "forks": 2,
+    "pushed_at": "2026-06-01T21:26:53Z",
+    "last_commit_at": "2026-06-01T16:08:35Z",
+    "contributors": 1,
+    "open_issues": 1,
+    "license": "GPL-3.0",
+    "description": "MPC Sample Kit Maker — web and desktop Akai MPC sample pad player. Load kits, trigger   samples in the browser or on desktop, and export .xpj project files back to  your MPC Sample hardware.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.0.1",
+      "published_at": "2026-05-31T22:46:57Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.0.1",
+        "name": "MPC Sample v0.0.1",
+        "published_at": "2026-05-31T22:46:57Z",
+        "html_url": "https://github.com/WorldLinkStudio/mpcsample/releases/tag/v0.0.1",
+        "body": "## What's Changed\n* feat: init project by @edgar-montano in https://github.com/WorldLinkStudio/mpcsample/pull/1\n\n## New Contributors\n* @edgar-montano made their first contribution in https://github.com/WorldLinkStudio/mpcsample/pull/1\n\n**Full Changelog**: https://github.com/WorldLinkStudio/mpcsample/commits/v0.0.1",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "ZootedandRebooted/GRIDZILLA": {
     "stars": 1,
     "forks": 0,
@@ -1035,6 +1062,21 @@
         "truncated": false
       }
     ],
+    "archived": false
+  },
+  "tarikcampos/MPC-Sample-Toolkit": {
+    "stars": 20,
+    "forks": 4,
+    "pushed_at": "2026-09-17T09:34:14Z",
+    "last_commit_at": "2026-09-17T09:34:14Z",
+    "contributors": 2,
+    "open_issues": 1,
+    "license": "MIT",
+    "description": "An open-source toolkit for editing, generating and managing Akai MPC Sample (.xpj) projects, including chromatic instruments, batch editing and project utilities.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
     "archived": false
   }
 }
