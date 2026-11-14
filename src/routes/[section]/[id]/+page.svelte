@@ -561,10 +561,13 @@
 										</a>
 									</div>
 
-									{#if rel.body_html}
+									{#if rel.body_html?.trim()}
 										<details class="release-details" open={i === 0}>
 											<summary class="release-summary">
-												<span>Release notes</span>
+												<span class="release-summary-label">
+													<span class="release-caret" aria-hidden="true"></span>
+													<span>Release notes</span>
+												</span>
 												{#if rel.truncated}
 													<span class="trunc-badge">Truncated</span>
 												{/if}
@@ -1220,6 +1223,7 @@
 	}
 
 	.release-summary {
+		list-style: none;
 		padding: 0.5rem 0.85rem;
 		background: #e8e5e0;
 		font-family: var(--font-sans);
@@ -1229,10 +1233,43 @@
 		letter-spacing: 0.07em;
 		color: var(--mpc-silkscreen);
 		cursor: pointer;
+		user-select: none;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.5rem;
+		transition: background 120ms ease, color 120ms ease;
+	}
+
+	.release-summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.release-summary:hover {
+		background: #dedad3;
+		color: var(--mpc-pad-text);
+	}
+
+	.release-summary-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.release-caret::before {
+		content: '▸';
+		display: inline-block;
+		font-size: 0.85rem;
+		line-height: 1;
+		color: var(--mpc-accent-red);
+	}
+
+	.release-details[open] .release-caret::before {
+		content: '▾';
+	}
+
+	.release-details[open] .release-summary {
+		border-bottom: 1px solid #c9c5be;
 	}
 
 	.trunc-badge {
