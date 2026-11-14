@@ -10,7 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "validate": "node scripts/validate.js",
-    "test": "node scripts/validate.js && node scripts/enrich.test.js",
+    "test": "node scripts/validate.js && node scripts/enrich.test.js && node scripts/check-star-list.test.js",
     "enrich": "node scripts/enrich.js"
   },
   "devDependencies": {
