@@ -1,0 +1,11 @@
+name: MPC Sample Tracker
+description: A MOD/XM/IT Tracker for the Akai MPC Sample, run from an SD card
+repo: jeffwebb-to/mpc-sample-tracker
+category: app
+author: jeffwebb-to
+tags:
+  - tracker
+  - mod
+  - xm
+install: sd-card
+firmware: 1.3.0.12

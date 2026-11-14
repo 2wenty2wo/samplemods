@@ -1,0 +1,13 @@
+name: MPC Sample Modding Kit
+description: >-
+  A modding kit for the MPC Sample with device setup, safety notes, firmware findings, and guidance
+  for working with AI coding assistants.
+repo: Daniel-Hillman/mpc-sample-agent-mod-guide
+category: dev-tool
+author: Daniel-Hillman
+tags:
+  - ai
+  - modding
+  - reference
+install: none
+firmware: 1.3.0.12

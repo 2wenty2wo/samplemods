@@ -1,0 +1,365 @@
+{
+  "AlekseyMalykh/am-mod": {
+    "stars": 18,
+    "forks": 1,
+    "pushed_at": "2026-11-13T00:44:06Z",
+    "license": "MIT",
+    "description": "Unofficial SD-card mod for the Akai MPC Sample: step sequencer, chords, scale layouts, search, pad EQ, resampling, rear recording. Nothing is flashed.",
+    "latest_release": {
+      "tag": "r29a",
+      "published_at": "2026-11-13T00:35:16Z"
+    },
+    "archived": false
+  },
+  "Daniel-Hillman/mpc-sample-agent-mod-guide": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-03T15:34:07Z",
+    "license": "MIT",
+    "description": null,
+    "latest_release": null,
+    "archived": false
+  },
+  "Dyldog/Lightfoot": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-14T04:21:49Z",
+    "license": "MIT",
+    "description": "MIDI Guitar Hero for the MPC Sample",
+    "latest_release": null,
+    "archived": false
+  },
+  "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-14T06:45:20Z",
+    "license": "MIT",
+    "description": "Nine free studio effects, track chains, key and BPM tags, LUFS meters and on-device stems for the Akai MPC Sample, installed from a web page. Add-ons for SampQOL OS (by Snare Bes, downloaded from him). No coding needed.",
+    "latest_release": {
+      "tag": "v0.6.1",
+      "published_at": "2026-11-14T06:45:21Z"
+    },
+    "archived": false
+  },
+  "ThomasTestaud/mpc-fm": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-08T10:34:15Z",
+    "license": null,
+    "description": "FM synth add-on for the Akai MPC Sample, loaded next to SampQOL OS",
+    "latest_release": null,
+    "archived": false
+  },
+  "c1t1zen1/MPC-Sample-Secrets": {
+    "stars": 7,
+    "forks": 0,
+    "pushed_at": "2026-10-31T10:33:22Z",
+    "license": null,
+    "description": "The MPC Sample Secret Guidebook Bible: interactive cheat sheet, full shortcut codex, settings, FX encyclopedia, hacks and community sources for the Akai MPC Sample.",
+    "latest_release": null,
+    "archived": false
+  },
+  "drose030/beat-train-mpc-sample": {
+    "stars": 3,
+    "forks": 0,
+    "pushed_at": "2026-11-07T23:18:08Z",
+    "license": "MIT",
+    "description": "A drum game for the Akai MPC Sample, started from the SD card",
+    "latest_release": {
+      "tag": "v1.6",
+      "published_at": "2026-11-07T23:18:08Z"
+    },
+    "archived": false
+  },
+  "fomoPhil/mp-doom": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-08T23:16:22Z",
+    "license": "GPL-2.0",
+    "description": "Play classic DOOM on the Akai MPC Sample. Boots from an SD card.",
+    "latest_release": {
+      "tag": "v1.0.4",
+      "published_at": "2026-11-08T23:16:22Z"
+    },
+    "archived": false
+  },
+  "garrettjwilke/mpc-boot-thingy": {
+    "stars": 17,
+    "forks": 2,
+    "pushed_at": "2026-11-14T03:17:37Z",
+    "license": null,
+    "description": "boot menu for mpc sample",
+    "latest_release": {
+      "tag": "v1.1.5",
+      "published_at": "2026-11-14T03:17:37Z"
+    },
+    "archived": false
+  },
+  "garrettjwilke/mpc-cavestory": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-02T02:44:34Z",
+    "license": null,
+    "description": "cave story for the mpc sample",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-10-31T17:25:50Z"
+    },
+    "archived": false
+  },
+  "garrettjwilke/mpc-furnace": {
+    "stars": 6,
+    "forks": 0,
+    "pushed_at": "2026-11-01T15:12:22Z",
+    "license": null,
+    "description": "furnace tracker for the MPC Sample",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-10-31T17:36:08Z"
+    },
+    "archived": false
+  },
+  "garrettjwilke/mpc-gen1recomp": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-11T01:44:11Z",
+    "license": null,
+    "description": "gen1recomp on the MPC Sample",
+    "latest_release": {
+      "tag": "v1.0.1",
+      "published_at": "2026-11-11T01:44:12Z"
+    },
+    "archived": false
+  },
+  "garrettjwilke/mpc-tic80": {
+    "stars": 3,
+    "forks": 0,
+    "pushed_at": "2026-11-01T15:13:21Z",
+    "license": null,
+    "description": "play tic80 games on your MPC Sample",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-10-31T17:57:37Z"
+    },
+    "archived": false
+  },
+  "garrettjwilke/mpc-ui-toolkit": {
+    "stars": 6,
+    "forks": 0,
+    "pushed_at": "2026-11-10T23:30:59Z",
+    "license": "CC0-1.0",
+    "description": "ui toolkit for mpc sample",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-10-24T19:15:37Z"
+    },
+    "archived": false
+  },
+  "inmusic-software/az0x-open-source": {
+    "stars": 229,
+    "forks": 27,
+    "pushed_at": "2026-11-09T10:47:02Z",
+    "license": null,
+    "description": "Open source components used in inMusic software. Published in compliance with the terms of their various software licenses.",
+    "latest_release": null,
+    "archived": false
+  },
+  "ioma8/mpc-minimod": {
+    "stars": 6,
+    "forks": 0,
+    "pushed_at": "2026-11-13T12:53:15Z",
+    "license": null,
+    "description": "Minimal mod for the Akai MPC Sample (firmware 1.3.0.12): autotrim, octave shift in 16 Levels.",
+    "latest_release": {
+      "tag": "v0.9.0",
+      "published_at": "2026-11-12T10:02:54Z"
+    },
+    "archived": false
+  },
+  "ioma8/mpc-sample-sdk": {
+    "stars": 6,
+    "forks": 3,
+    "pushed_at": "2026-11-12T09:08:44Z",
+    "license": "MIT",
+    "description": "Memory-safe Rust mod SDK for the Akai MPC Sample 1.3.0.12",
+    "latest_release": null,
+    "archived": false
+  },
+  "jacob-sabella/mpc-addin-sample-draw-handler": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-06T19:37:32Z",
+    "license": "MIT",
+    "description": "MPC Sample addin: shares the Sample's screen with the plugins and addins that draw on it",
+    "latest_release": {
+      "tag": "sample-draw-handler-addin-v1.0.1",
+      "published_at": "2026-11-06T19:13:58Z"
+    },
+    "archived": false
+  },
+  "jacob-sabella/mpc-addin-sample-scalemode": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-10T00:49:08Z",
+    "license": "MIT",
+    "description": "MPC Sample addin: hold 16 Levels to play the 16 slots in a scale, set on a SCALE page",
+    "latest_release": {
+      "tag": "v1.2.0",
+      "published_at": "2026-11-10T00:49:10Z"
+    },
+    "archived": false
+  },
+  "jeffwebb-to/mpc-sample-doom": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-08T17:53:06Z",
+    "license": "GPL-2.0",
+    "description": "DOOM on the Akai MPC Sample, from an SD card.",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-11-08T17:49:52Z"
+    },
+    "archived": false
+  },
+  "jeffwebb-to/mpc-sample-tracker": {
+    "stars": 7,
+    "forks": 1,
+    "pushed_at": "2026-11-10T07:56:41Z",
+    "license": "MIT",
+    "description": "A MOD/XM/IT Tracker for the Akai MPC Sample, run from an SD card",
+    "latest_release": {
+      "tag": "v0.1.0",
+      "published_at": "2026-11-10T07:56:41Z"
+    },
+    "archived": false
+  },
+  "keremimo/melodee-sample": {
+    "stars": 27,
+    "forks": 1,
+    "pushed_at": "2026-11-12T14:20:10Z",
+    "license": "AGPL-3.0",
+    "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
+    "latest_release": {
+      "tag": "v0.1.0",
+      "published_at": "2026-11-12T14:20:24Z"
+    },
+    "archived": false
+  },
+  "keremimo/sample-base": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-12T14:17:44Z",
+    "license": "AGPL-3.0",
+    "description": "Standalone JUCE 9 application starter for MPC Sample, with a built-in beep/boop synth",
+    "latest_release": {
+      "tag": "v0.1.0",
+      "published_at": "2026-11-11T16:54:51Z"
+    },
+    "archived": false
+  },
+  "larsoholm/LoopPad": {
+    "stars": 4,
+    "forks": 0,
+    "pushed_at": "2026-11-05T00:55:12Z",
+    "license": "MIT",
+    "description": "Open-source live looper for the Akai MPC Sample with synchronized loops, waveforms, per-loop mixing and 4/8-loop modes.",
+    "latest_release": null,
+    "archived": false
+  },
+  "micknoise/mpc-sample-kit": {
+    "stars": 4,
+    "forks": 0,
+    "pushed_at": "2026-08-28T01:39:40Z",
+    "license": "MIT",
+    "description": "Algorithmic drum pattern control for the Akai MPC Sample over USB-MIDI, with a client-side Web MIDI app",
+    "latest_release": null,
+    "archived": false
+  },
+  "omarhuertasllc-ops/kaosample-beta": {
+    "stars": 3,
+    "forks": 0,
+    "pushed_at": "2026-11-07T14:36:51Z",
+    "license": null,
+    "description": "KAOSAMPLE public beta — free add-on tools for the MPC Sample (not affiliated with Akai)",
+    "latest_release": null,
+    "archived": false
+  },
+  "orrpunk-art/virtual-mpc-sample": {
+    "stars": 25,
+    "forks": 2,
+    "pushed_at": "2026-11-01T12:48:52Z",
+    "license": "MIT",
+    "description": "Akai MPC Sample stock firmware running in QEMU, with the whole device in your browser. Unofficial; no firmware included.",
+    "latest_release": null,
+    "archived": false
+  },
+  "pzuzarte/mpc-stemloop": {
+    "stars": 3,
+    "forks": 0,
+    "pushed_at": "2026-11-11T23:53:17Z",
+    "license": null,
+    "description": "Offline AI stem separation (drums/bass/other/vocals) for short loops on the Akai MPC Sample, as an on-device SD-card mod",
+    "latest_release": {
+      "tag": "v0.1.1",
+      "published_at": "2026-11-11T23:53:17Z"
+    },
+    "archived": false
+  },
+  "rmw5287/koala-mpc-os": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-09T02:26:20Z",
+    "license": null,
+    "description": "Building a Koala Sampler-style firmware on MPC-SAMPLE",
+    "latest_release": null,
+    "archived": false
+  },
+  "rosen-wav/MaiaOS---Mpc-Sample-CFW": {
+    "stars": 3,
+    "forks": 0,
+    "pushed_at": "2026-11-13T21:50:59Z",
+    "license": null,
+    "description": "A Mod turning the Mpc Sample into a full DAW with a lot of feature",
+    "latest_release": {
+      "tag": "beta",
+      "published_at": "2026-11-13T21:39:00Z"
+    },
+    "archived": false
+  },
+  "savicreations/mpc-sample-export-downloads": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-10-31T19:27:17Z",
+    "license": "MIT",
+    "description": null,
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-10-31T19:27:18Z"
+    },
+    "archived": false
+  },
+  "slowphase/mpc-gently": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-11T05:50:33Z",
+    "license": null,
+    "description": "A free, illustrated beginner’s handbook for the Akai MPC Sample. Eight relaxed lessons, from first pad to first track",
+    "latest_release": {
+      "tag": "v1.0.1",
+      "published_at": "2026-11-11T05:50:33Z"
+    },
+    "archived": false
+  },
+  "snarebes/SampQOL-OS": {
+    "stars": 105,
+    "forks": 5,
+    "pushed_at": "2026-11-09T16:52:42Z",
+    "license": null,
+    "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
+    "latest_release": {
+      "tag": "v0.2.0",
+      "published_at": "2026-11-08T22:37:52Z"
+    },
+    "archived": false
+  }
+}

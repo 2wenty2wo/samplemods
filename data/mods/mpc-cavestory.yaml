@@ -1,0 +1,9 @@
+name: MPC Cave Story
+description: cave story for the mpc sample
+repo: garrettjwilke/mpc-cavestory
+category: game
+author: garrettjwilke
+tags:
+  - platformer
+  - cave-story
+install: sd-card

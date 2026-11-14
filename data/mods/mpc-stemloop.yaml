@@ -1,0 +1,13 @@
+name: MPC Stemloop
+description: >-
+  Offline AI stem separation (drums/bass/other/vocals) for short loops on the Akai MPC Sample, as an
+  on-device SD-card mod
+repo: pzuzarte/mpc-stemloop
+category: addon
+author: pzuzarte
+tags:
+  - stems
+  - ai
+  - offline
+install: sd-card
+firmware: 1.3.0.12

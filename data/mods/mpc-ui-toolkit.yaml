@@ -1,0 +1,10 @@
+name: MPC Sample UI Toolkit
+description: ui toolkit for mpc sample
+repo: garrettjwilke/mpc-ui-toolkit
+category: dev-tool
+author: garrettjwilke
+tags:
+  - ui
+  - c
+  - development
+install: none

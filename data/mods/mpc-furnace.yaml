@@ -1,0 +1,9 @@
+name: MPC Furnace
+description: furnace tracker for the MPC Sample
+repo: garrettjwilke/mpc-furnace
+category: app
+author: garrettjwilke
+tags:
+  - tracker
+  - chiptune
+install: sd-card

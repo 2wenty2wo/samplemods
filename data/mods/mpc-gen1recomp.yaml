@@ -1,0 +1,9 @@
+name: MPC Gen1Recomp
+description: gen1recomp on the MPC Sample
+repo: garrettjwilke/mpc-gen1recomp
+category: game
+author: garrettjwilke
+tags:
+  - pokemon
+  - game-boy
+install: sd-card

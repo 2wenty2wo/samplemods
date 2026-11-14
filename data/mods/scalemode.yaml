@@ -1,0 +1,13 @@
+name: MPC Sample Scale Mode
+description: 'MPC Sample addin: hold 16 Levels to play the 16 slots in a scale, set on a SCALE page'
+repo: jacob-sabella/mpc-addin-sample-scalemode
+category: addon
+author: jacob-sabella
+tags:
+  - scales
+  - pitch
+  - pads
+install: sd-card
+firmware: 1.3.0.12
+requires:
+  - draw-handler

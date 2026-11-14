@@ -1,0 +1,12 @@
+name: MPC Sample Kit
+description: >-
+  Algorithmic drum pattern control for the Akai MPC Sample over USB-MIDI, with a client-side Web
+  MIDI app
+repo: micknoise/mpc-sample-kit
+category: external-tool
+author: micknoise
+tags:
+  - usb-midi
+  - web-midi
+  - patterns
+install: usb-midi

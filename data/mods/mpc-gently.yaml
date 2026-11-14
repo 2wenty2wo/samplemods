@@ -1,0 +1,12 @@
+name: MPC Gently
+description: >-
+  A free, illustrated beginner’s handbook for the Akai MPC Sample. Eight relaxed lessons, from first
+  pad to first track
+repo: slowphase/mpc-gently
+category: guide
+author: slowphase
+tags:
+  - beginner
+  - handbook
+install: none
+firmware: 1.3.0

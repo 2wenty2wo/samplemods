@@ -1,0 +1,9 @@
+name: Koala MPC OS
+description: Building a Koala Sampler-style firmware on MPC-SAMPLE
+repo: rmw5287/koala-mpc-os
+category: os-mod
+author: rmw5287
+tags:
+  - koala
+  - sampler
+install: sd-card

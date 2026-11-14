@@ -1,0 +1,10 @@
+name: MPC Sample Draw Handler
+description: 'MPC Sample addin: shares the Sample''s screen with the plugins and addins that draw on it'
+repo: jacob-sabella/mpc-addin-sample-draw-handler
+category: addon
+author: jacob-sabella
+tags:
+  - display
+  - plugins
+  - ui
+install: sd-card

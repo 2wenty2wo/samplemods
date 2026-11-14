@@ -1,0 +1,11 @@
+name: MaiaOS
+description: A Mod turning the Mpc Sample into a full DAW with a lot of feature
+repo: rosen-wav/MaiaOS---Mpc-Sample-CFW
+category: os-mod
+author: rosen-wav
+tags:
+  - daw
+  - groovebox
+  - effects
+install: sd-card
+firmware: 1.3.0.12

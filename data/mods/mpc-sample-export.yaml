@@ -1,0 +1,12 @@
+name: MPC Sample Export
+description: >-
+  Local Windows desktop exporter for MPC Sample XPJ projects: synchronized stem WAVs, Sequence or
+  Song WAVs, and MIDI notes.
+repo: savicreations/mpc-sample-export-downloads
+category: external-tool
+author: savicreations
+tags:
+  - export
+  - stems
+  - windows
+install: none

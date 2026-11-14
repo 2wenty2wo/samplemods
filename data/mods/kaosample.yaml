@@ -1,0 +1,11 @@
+name: KAOSAMPLE
+description: KAOSAMPLE public beta — free add-on tools for the MPC Sample (not affiliated with Akai)
+repo: omarhuertasllc-ops/kaosample-beta
+category: addon
+author: omarhuertasllc-ops
+tags:
+  - stems
+  - looper
+  - effects
+install: sd-card
+firmware: 1.3.0.12

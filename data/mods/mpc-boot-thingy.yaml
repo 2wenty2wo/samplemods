@@ -1,0 +1,9 @@
+name: MPC Boot Thingy
+description: boot menu for mpc sample
+repo: garrettjwilke/mpc-boot-thingy
+category: dev-tool
+author: garrettjwilke
+tags:
+  - boot-menu
+  - launcher
+install: sd-card

@@ -1,0 +1,9 @@
+name: MPC TIC-80
+description: play tic80 games on your MPC Sample
+repo: garrettjwilke/mpc-tic80
+category: app
+author: garrettjwilke
+tags:
+  - fantasy-console
+  - games
+install: sd-card

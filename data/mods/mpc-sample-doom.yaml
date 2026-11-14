@@ -1,0 +1,11 @@
+name: MPC Sample DOOM
+description: DOOM on the Akai MPC Sample, from an SD card.
+repo: jeffwebb-to/mpc-sample-doom
+category: game
+author: jeffwebb-to
+tags:
+  - doom
+  - fps
+  - freedoom
+install: sd-card
+firmware: 1.3.0.12

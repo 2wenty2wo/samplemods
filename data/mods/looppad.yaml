@@ -1,0 +1,14 @@
+name: LoopPad
+description: >-
+  Open-source live looper for the Akai MPC Sample with synchronized loops, waveforms, per-loop
+  mixing and 4/8-loop modes.
+repo: larsoholm/LoopPad
+category: app
+author: larsoholm
+tags:
+  - looper
+  - live
+  - mixing
+install: sd-card
+requires:
+  - mpc-boot-thingy

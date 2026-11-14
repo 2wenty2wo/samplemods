@@ -1,0 +1,11 @@
+name: Lightfoot
+description: MIDI Guitar Hero for the MPC Sample
+repo: Dyldog/Lightfoot
+category: game
+author: Dyldog
+tags:
+  - rhythm
+  - midi
+  - pads
+install: sd-card
+firmware: 1.3.0.12

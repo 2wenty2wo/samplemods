@@ -1,0 +1,17 @@
+name: HenrySkillz MPC Sample Mod Kit
+description: >-
+  Nine free studio effects, track chains, key and BPM tags, LUFS meters and on-device stems for the
+  Akai MPC Sample, installed from a web page. Add-ons for SampQOL OS (by Snare Bes, downloaded from
+  him). No coding needed.
+repo: Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit
+category: addon
+author: Holla-Back-Entertainment
+tags:
+  - effects
+  - stems
+  - sampqol
+install: sd-card
+firmware: 1.3.0
+requires:
+  - sampqol-os
+website: https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/

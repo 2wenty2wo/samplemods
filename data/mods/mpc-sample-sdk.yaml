@@ -1,0 +1,11 @@
+name: MPC Sample SDK
+description: Memory-safe Rust mod SDK for the Akai MPC Sample 1.3.0.12
+repo: ioma8/mpc-sample-sdk
+category: dev-tool
+author: ioma8
+tags:
+  - rust
+  - sdk
+  - development
+install: none
+firmware: 1.3.0.12

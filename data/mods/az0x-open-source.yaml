@@ -1,0 +1,13 @@
+name: AZ0x Open Source
+description: >-
+  Open source components used in inMusic software. Published in compliance with the terms of their
+  various software licenses.
+repo: inmusic-software/az0x-open-source
+category: dev-tool
+author: inmusic-software
+tags:
+  - linux
+  - source
+  - development
+install: none
+firmware: 1.3.0
