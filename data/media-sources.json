@@ -248,32 +248,7 @@
   "mpc-tic80": [],
   "mpc-ui-toolkit": [],
   "sample-base": [],
-  "sampqol-os": [
-    {
-      "file": "screenshots/01-splash.png",
-      "source": "https://github.com/snarebes/SampQOL-OS/releases/download/v0.2.0/SampQOL-OS-v0.2.0.zip",
-      "repo": "snarebes/SampQOL-OS",
-      "note": "qol-splash.raw converted BGRX 320x240"
-    },
-    {
-      "file": "screenshots/02-eq.png",
-      "source": "https://github.com/snarebes/SampQOL-OS/blob/main/index.html#L1004",
-      "repo": "snarebes/SampQOL-OS",
-      "note": "Unchanged PNG decoded from embedded image data in the official repository manual."
-    },
-    {
-      "file": "screenshots/03-step-editor.png",
-      "source": "https://github.com/snarebes/SampQOL-OS/blob/main/index.html#L1771",
-      "repo": "snarebes/SampQOL-OS",
-      "note": "Unchanged PNG decoded from embedded image data in the official repository manual."
-    },
-    {
-      "file": "screenshots/04-mixer.png",
-      "source": "https://github.com/snarebes/SampQOL-OS/blob/main/index.html#L2283",
-      "repo": "snarebes/SampQOL-OS",
-      "note": "Unchanged PNG decoded from embedded image data in the official repository manual."
-    }
-  ],
+  "sampqol-os": [],
   "scalemode": [
     {
       "file": "screenshots/01-scale-page.png",
