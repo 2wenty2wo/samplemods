@@ -8,12 +8,21 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fixture = fs.mkdtempSync(path.join(root, '.enrich-test-'));
 const output = path.join(fixture, 'data', 'github.json');
 const readme = path.join(fixture, 'data', 'readme', 'a.md');
+const contributorsFile = path.join(fixture, 'data', 'contributors.json');
 const mock = `
 import assert from 'node:assert/strict';
 globalThis.fetch = async (url, { headers }) => {
-  assert.ok(['a', 'z'].includes(new URL(url).pathname.split('/')[3]), 'only GitHub-backed entries may trigger API requests');
+  const repo = new URL(url).pathname.split('/')[3];
+  assert.ok(['a', 'z', 'samplemods'].includes(repo), 'only GitHub-backed entries or the catalog repo may trigger API requests');
   assert.equal(headers.Authorization, process.env.GITHUB_TOKEN ? 'Bearer test-token' : undefined);
   const reply = (data, status = 200, extra = {}) => ({ ok: status < 400, status, headers: new Headers(extra), json: async () => data });
+  if (url.includes('/2wenty2wo/samplemods/contributors')) {
+    return reply([
+      { login: '2wenty2wo', type: 'User', avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4', html_url: 'https://github.com/2wenty2wo', contributions: 4 },
+      { login: 'dependabot[bot]', type: 'Bot', avatar_url: 'https://avatars.githubusercontent.com/u/2?v=4', html_url: 'https://github.com/apps/dependabot', contributions: 2 },
+      { login: 'claude', type: 'User', avatar_url: 'https://avatars.githubusercontent.com/u/3?v=4', html_url: 'https://github.com/claude', contributions: 9 }
+    ]);
+  }
   if (process.env.FAIL_API && url.includes('/z/readme')) return reply({}, 503);
   if (process.env.RATE_LIMIT) return reply({}, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1800000000' });
   const absent = url.includes('/z/');
@@ -38,7 +47,9 @@ try {
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'a'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'apps', 'z'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'external'), { recursive: true });
-	for (const file of ['enrich.js', 'catalog.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	for (const file of ['enrich.js', 'catalog.js', 'catalog-contributors.js']) {
+		fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	}
 	fs.writeFileSync(path.join(fixture, 'data', 'apps', 'z', 'app.yaml'), 'repo: owner/z\n');
 	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'a', 'mod.yaml'), 'repo: owner/a\n');
 	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'external', 'mod.yaml'), 'name: External\nwebsite: https://example.com\n');
@@ -66,12 +77,22 @@ try {
 	assert.equal(data['owner/z'].contributors, 0);
 	assert.equal(data['owner/z'].license, null);
 	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/z.md')));
+	assert.deepEqual(JSON.parse(fs.readFileSync(contributorsFile, 'utf8')), [
+		{
+			login: '2wenty2wo',
+			avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
+			html_url: 'https://github.com/2wenty2wo',
+			contributions: 4
+		}
+	]);
 	fs.utimesSync(output, 1000000, 1000000);
 	fs.utimesSync(readme, 1000000, 1000000);
+	fs.utimesSync(contributorsFile, 1000000, 1000000);
 	const second = run({ GITHUB_TOKEN: '' });
 	assert.equal(second.status, 0, second.stderr);
 	assert.equal(fs.statSync(output).mtimeMs, 1000000000, 'unchanged metadata must not be rewritten');
 	assert.equal(fs.statSync(readme).mtimeMs, 1000000000, 'unchanged README must not be rewritten');
+	assert.equal(fs.statSync(contributorsFile).mtimeMs, 1000000000, 'unchanged contributors must not be rewritten');
 	const failed = run({ FAIL_API: '1' });
 	assert.notEqual(failed.status, 0);
 	assert.match(failed.stderr, /HTTP 503/);

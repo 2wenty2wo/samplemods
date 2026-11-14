@@ -2,9 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readEntries } from './catalog.js';
+import {
+	CATALOG_REPO,
+	normalizeCatalogContributors
+} from './catalog-contributors.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'data', 'github.json');
+const contributorsOutput = path.join(root, 'data', 'contributors.json');
 const readmeDir = path.join(root, 'data', 'readme');
 const headers = { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -26,6 +31,19 @@ function writeIfChanged(file, text) {
 	const temporary = `${file}.tmp`;
 	fs.writeFileSync(temporary, text);
 	fs.renameSync(temporary, file);
+}
+
+/** Paginate GitHub contributors for the catalog repository itself. */
+async function fetchCatalogContributors() {
+	const users = [];
+	for (let page = 1; ; page += 1) {
+		const result = await request(`${CATALOG_REPO}/contributors?per_page=100&page=${page}`);
+		const batch = Array.isArray(result.data) ? result.data : [];
+		users.push(...batch);
+		const link = result.headers.get('link') ?? '';
+		if (!link.includes('rel="next"') || batch.length === 0) break;
+	}
+	return normalizeCatalogContributors(users);
 }
 
 const entries = readEntries();
@@ -71,6 +89,9 @@ for (const repo of repos) {
 	console.log(`Fetched ${repo}.`);
 }
 
+const catalogContributors = await fetchCatalogContributors();
+console.log(`Fetched ${catalogContributors.length} catalog contributor(s).`);
+
 // Fetch everything before changing either cache, so API failures preserve the previous snapshot.
 fs.mkdirSync(readmeDir, { recursive: true });
 const keep = new Set();
@@ -84,4 +105,5 @@ for (const file of fs.readdirSync(readmeDir)) {
 	if (file.endsWith('.md') && !keep.has(file)) fs.unlinkSync(path.join(readmeDir, file));
 }
 writeIfChanged(output, JSON.stringify(github, null, 2) + '\n');
+writeIfChanged(contributorsOutput, JSON.stringify(catalogContributors, null, 2) + '\n');
 console.log(`Enriched ${repos.length} GitHub repositories and ${keep.size} READMEs.`);

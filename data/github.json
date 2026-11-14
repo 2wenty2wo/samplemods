@@ -63,7 +63,7 @@
     "pushed_at": "2026-11-14T04:21:49Z",
     "last_commit_at": "2026-11-14T04:21:46Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": "MIT",
     "description": "MIDI Guitar Hero for the MPC Sample",
     "default_branch": "main",
@@ -321,21 +321,29 @@
     "archived": false
   },
   "garrettjwilke/mpc-boot-thingy": {
-    "stars": 17,
+    "stars": 18,
     "forks": 2,
-    "pushed_at": "2026-11-14T03:17:37Z",
-    "last_commit_at": "2026-11-14T03:16:43Z",
-    "contributors": 2,
-    "open_issues": 1,
-    "license": null,
+    "pushed_at": "2026-11-14T23:12:02Z",
+    "last_commit_at": "2026-11-14T23:12:00Z",
+    "contributors": 4,
+    "open_issues": 0,
+    "license": "MIT",
     "description": "boot menu for mpc sample",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.1.5",
-      "published_at": "2026-11-14T03:17:37Z"
+      "tag": "v1.1.6",
+      "published_at": "2026-11-14T22:55:56Z"
     },
     "releases": [
+      {
+        "tag": "v1.1.6",
+        "name": "v1.1.6",
+        "published_at": "2026-11-14T22:55:56Z",
+        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.6",
+        "body": "added grid mode from [Dyldog](https://github.com/Dyldog)\n",
+        "truncated": false
+      },
       {
         "tag": "v1.1.5",
         "name": "v1.1.5",
@@ -350,14 +358,6 @@
         "published_at": "2026-11-14T03:12:14Z",
         "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.4",
         "body": "fixed refresh for screen mirror\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1.3",
-        "name": "v1.1.3",
-        "published_at": "2026-11-14T02:03:24Z",
-        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.3",
-        "body": "screen mirroring\n",
         "truncated": false
       }
     ],
@@ -524,8 +524,8 @@
   "ioma8/mpc-minimod": {
     "stars": 6,
     "forks": 0,
-    "pushed_at": "2026-11-13T12:53:15Z",
-    "last_commit_at": "2026-11-13T12:53:13Z",
+    "pushed_at": "2026-11-14T21:59:51Z",
+    "last_commit_at": "2026-11-14T21:59:26Z",
     "contributors": 2,
     "open_issues": 1,
     "license": null,
@@ -533,10 +533,18 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.9.0",
-      "published_at": "2026-11-12T10:02:54Z"
+      "tag": "v0.10.0",
+      "published_at": "2026-11-14T21:59:51Z"
     },
     "releases": [
+      {
+        "tag": "v0.10.0",
+        "name": "v0.10.0 — SDK 0.6.0 migration and the reported fixes",
+        "published_at": "2026-11-14T21:59:51Z",
+        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.0",
+        "body": "## SDK 0.6.0\n\nMINIMOD is built on the tagged [`mpc-sample-sdk`\nv0.6.0](https://github.com/ioma8/mpc-sample-sdk/tree/v0.6.0): independent input\nhooks that run without the UI lock, one `Extract` contract for both the selected\nand the generated paths, a checked late button replay, and a WAV reader that\naccepts the sampler's own working copies.\n\n## Fixes\n\n- **Effects no longer leave the page in Chop mode.** An extraction that switches\n  the Sample page is restored immediately, or on the first safe button when the\n  app switches later.\n- **\"No exact WAV file\" is gone.** The app's writer leaves the RIFF size short by\n  the `atem`/`slic`/`meta` chunks it appends; the reader now bounds the chunk\n  walk by the file, so every action works on streamed (`DiskSample`) pads and on\n  pads created by an earlier action, not only on loaded ones.\n- **A render cannot stick on \"PLEASE WAIT\" any more.** The repaint pump keeps\n  asking for a frame while a job is pending, instead of relying on the one\n  request the app can drop while it is loading a sample.\n- **Pads no longer go silent after a few presses.** The firmware reports a pad\n  press and its release with different source ids (`0` then `1`); the release\n  ledger pairs them by pad and input, so the app receives its note-off again.\n- **AutoTrim is armed on the real trim page.** It is available right after start\n  and across `SAMPLE`, hidden on Tune and Filter, and `SHIFT`+`B3` no longer\n  depends on having cycled the page keys first.\n\n## Verification\n\n- `rust/check.sh`: formatting, strict clippy, rustdoc, the feature safety guard,\n  76 minimod tests, 63 DSP tests and the aarch64 cross build.\n- SDK v0.6.0: 120 + 1 tests, clippy and rustdoc clean.\n- Emulator suites: AutoTrim cycle and clear, menu, synth shift, pad octave, live\n  looper and its lighting.\n\n## Compatibility\n\nBuilt for MPC Sample firmware **1.3.0.12** only. Copy the `autorun` folder from\nthe zip to the top level of the SD card; delete it to return to stock.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.9.0",
         "name": "v0.9.0 — synth page, lighting and precise loop timing",
@@ -552,14 +560,6 @@
         "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.8.0",
         "body": "## Features\n\n- **Rust implementation:** the preload library is a Rust `cdylib` built on the\n  public memory-safe [`mpc-sample-sdk`](https://github.com/ioma8/mpc-sample-sdk);\n  no C or C++ is compiled, and the feature crate contains no `unsafe`.\n- **16 Levels:** shift the pad row by ±8 semitones with PLUS/MINUS; external\n  MIDI plays the selected sample chromatically over the whole keyboard from the\n  sample's own root note (C3 when it has none), with exact semitones and no\n  wrapping (enable Pad MIDI In in MIDI Config).\n- **AutoTrim:** trim the selected sample's silent edges with SHIFT+B3; the\n  shifted Sample page shows the AutoTrim caption.\n- **SAMPLE OPTIONS:** open with SHIFT+DATA, select with DATA, then press DATA\n  to confirm.\n  - **HPSS** splits a sample into harmonic and percussive layers on two free\n    pads.\n  - **Spectral Chop** detects musical changes and places slice boundaries on\n    the selected sample.\n  - **Add Reverb** creates a reverberated copy with an appended tail.\n  - **Vinyl** and **Lo-Fi** apply the firmware's built-in H3 effects to a new\n    copy.\n  - **Synth** has eight selectable characters — bass, piano, pads, lead, bells,\n    strings, voice and organ. Turn `DATA` to switch; each character has its own\n    three knobs, and `DATA` saves a C2 note to a new pad.\n  - **Live Looper** opens a fullscreen 16-pad looper: each pad records from the\n    selected input source, plays, overdubs, clears with `ERASE`, and can be\n    synced to a pulse built from the last loop's length.\n\n## Install\n\n1. Download `minimod.zip` from the release assets.\n2. Unzip it and copy the `autorun` folder to the top level of an SD card.\n3. Insert the card and power on the MPC Sample. Remove `autorun` and reboot to\n   unload the mod.\n\nThe release supports MPC Sample firmware **1.3.0.12** only.\n\n## Changes in v0.8.0\n\n### Rust port\n\n- Replace the C preload library with a Rust `cdylib` built on the public\n  [`mpc-sample-sdk`](https://github.com/ioma8/mpc-sample-sdk). The workspace\n  keeps feature code in `rust/crates/minimod` and host-testable DSP in\n  `rust/crates/dsp`; the SDK owns firmware discovery, hooks, events, audio,\n  drawing and typed platform objects.\n- No C or C++ is compiled. `minimod` contains no `unsafe` and no C ABI; the SDK\n  isolates the firmware boundary behind its safe API.\n- One SDK build script (`build-mod.sh`) now performs the cross-build, symbol and\n  glibc checks, stripping and the SD `autorun` package. minimod only vendors a\n  thin wrapper.\n- The strict gate covers formatting, clippy (all + pedantic + cargo), rustdoc,\n  the no-`unsafe` guard, host tests and the aarch64 release build.\n\n### Synth characters\n\n- Add eight selectable synth characters on the Synth page: bass, piano, pads,\n  lead, bells, strings, voice and organ.\n- The DATA encoder switches character; the page title shows the selection and\n  the three knob labels/defaults change with it.\n- Give each character its own synthesis path and controls: BASS\n  BRIGHT/DECAY/FILTER, PIANO BRIGHT/DECAY/TONE, PADS ATTACK/BRIGHT/WIDTH, LEAD\n  BRIGHT/BITE/FILTER, BELLS BRIGHT/DECAY/RATIO, STRINGS ATTACK/BRIGHT/WIDTH,\n  VOICE VOWEL/BRIGHT/FILTER, ORGAN DRAWBAR/BRIGHT/FILTER.\n- Shorten the bass from 1.5 s to 0.75 s with a 150 ms body and fast tail, and\n  replace the subtle EXCITE knob with DECAY.\n- Name rendered pads after the selected character (`Piano C2`, `Organ C2`, …).\n\n### Fixes\n\n- Route non-bass preview notes to the selected synth engine; previously every\n  character except the bass was silent when auditioned from the pads.\n- Let 16 Levels reach the stock app again; the mod had consumed the key and the\n  app never toggled its own state.\n- Clear the held PLUS flag on release so MINUS shifts the 16 Levels pitch down\n  instead of being mistaken for a two-key reset.\n- Accept a single spectral boundary, so pad A16's one-change sample chops into\n  two regions instead of failing with “no onsets”.\n- Close the SAMPLE OPTIONS menu when a Spectral run fails, making the status\n  and toast visible.\n- Keep a reverb copy's tail: native Extract starts with the source range, so the\n  new pad's trim end is moved to 99% of the rendered frames (1% end trim).\n- Repaint after a toast expires, so AutoTrim and other messages disappear\n  instead of remaining on screen.\n- Draw the looper grid like the hardware: pad 1 bottom-left, pad 16 top-right.\n\n### Live Looper\n\n- Add a fullscreen 16-pad looper with one loop per pad: press to record from\n  the selected input source, press again to play, press a playing loop to stop.\n- `ERASE` + pad clears one loop, `STOP` stops every loop, and the sync click is\n  off by default (`SHIFT` + `LOOP` toggles it).\n- The loops follow `MAIN VOLUME`: the knob's CC is tracked and applied as a gain\n  on the loop mix, and the level is remembered in `/data/minimod-looper.cfg`.\n- Record the latency tail after the closing press, flush the input ring at the\n  start of every take, and finish a pad atomically so a take can never be closed\n  twice and starve the recording counter.\n- Keep the audio device untouched from the repaint thread: the ring sizes and the\n  channel count now come from `snd_pcm_hw_params_current` on the stream's own\n  audio thread, and the loop mix uses the device's real channel count. This\n  removes the cross-thread ALSA calls and the stride guess that could corrupt the\n  output buffer and take the app down after closing the view. The MIDI dispatcher\n  is hooked once at load instead of being re-patched while it may be executing,\n  and the loader refuses to install anything unless every hooked site's first\n  instruction matches the firmware it was built for.\n- `SHIFT` + pad overdubs into the loop and the next press returns to playback;\n  `SHIFT` + `LOOP` toggles the click, `ERASE` + `LOOP` clears everything;\n  `SHIFT` + `DATA` closes the view.\n- `LOOP` starts an audible sync pulse whose period is the most recent loop's\n  length, and every new loop is quantized to a whole multiple of it (padded with\n  silence, never truncated silently).\n- Record input by interposing the app's own `snd_pcm_readi`/`snd_pcm_readn`\n  (RW_INTERLEAVED S32, 4 channels, 44.1 kHz) and mix loop playback into the S32\n  block just before the app's device write, so no second audio device is opened\n  and the app's own rendering path is untouched.\n- Take the record latency from the firmware's own ALSA ring geometry (one\n  buffer per direction, read from the device with\n  `snd_pcm_hw_params_get_buffer_size`), apply it to every take so overdubs and\n  synced loops line up, and keep a `K1` trim in `/data/minimod-looper.cfg`. This\n  works with headphones, USB audio and a silent instrument input, unlike a\n  probe that needs to hear the output.\n- Draw the loop state, length, playhead and input level as a fullscreen view,\n  and block pad notes from the app while it is open.\n- Add `mod/tests/emulator_looper.py` and an in-process output tap for audio\n  acceptance.\n\n## Verification and compatibility\n\n- Supported firmware: **MPC Sample 1.3.0.12 only**.\n- Package: `minimod.zip`, built from the Rust tree, with a valid\n  `autorun.check`; the loader checks the 36-word firmware fingerprint.\n- SDK: **59 tests**, clippy and rustdoc clean.\n- minimod: **39 tests**; DSP: **42 tests**, including all eight synth\n  characters, every knob, the golden fixtures and the non-bass preview.\n- `rust/check.sh`: formatting, strict clippy, rustdoc, no-`unsafe` guard, host\n  tests and the aarch64 cross build all pass.\n- Emulator checks cover the menu, AutoTrim, HPSS, Spectral Chop, Reverb, Vinyl,\n  Lo-Fi, the eight-character Synth page and render path, Live Looper and\n  16 Levels.\n- Real-hardware verification remains device-specific; the emulator validates\n  logic, UI, native object access and the rendered audio, not hardware latency\n  or analog audio behaviour.\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.7.0",
-        "name": "v0.7.0 — Full-keyboard chromatic MIDI in 16 Levels",
-        "published_at": "2026-11-07T22:11:45Z",
-        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.7.0",
-        "body": "## Features\n\n- **16 Levels:** shift the pad row by ±8 semitones with PLUS/MINUS; external MIDI plays the selected sample chromatically over the whole keyboard from a C3 root, with exact semitones and no wrapping (enable **Pad MIDI In** in MIDI Config).\n- **AutoTrim:** trim the selected sample's silent edges with SHIFT+B3; the shifted Sample page shows the AutoTrim caption.\n- **SAMPLE OPTIONS** (SHIFT+DATA, select with DATA):\n  - **HPSS** splits a sample into harmonic and percussive layers on two free pads.\n  - **Spectral Chop** detects musical changes and places slice boundaries on the selected sample.\n  - **Add Reverb** creates a reverberated copy with an appended tail.\n  - **Vinyl** / **Lo-Fi** apply the firmware's built-in H3 effects to a new copy.\n  - **Bass Synth** previews chromatic C2–D#3 from pads 1–16, shapes it with K1/K2/K3, and saves a C2 pluck to a new pad.\n\n## Install\n\n1. Download `minimod.zip` from the release assets.\n2. Unzip it and copy the `autorun` folder to the top level of an SD card.\n3. Insert the card and power on the MPC Sample. Remove `autorun` and reboot to unload the mod.\n\nSupported firmware: **MPC Sample 1.3.0.12 only**.\n\n## Changes in v0.7.0\n\n- External MIDI in 16 Levels now plays the selected pad across the **entire keyboard**: exact semitones, no wrapping, no fallback to other pads outside the 16-pad row.\n- Rebuild the note event for the selected pad and call the app's own pitch setter (`w3 = note - 60`) before dispatching with the physical-pad source, keeping routing, note-offs and sustain in the firmware's native path.\n- **Pad MIDI In resets to Off on every app start** — enable it before playing.\n- New docs: `docs/RE-MIDI-16LEVELS-FINDINGS.md` (decompiled contract) and `docs/MIDI-16LEVELS-METHOD.md` (what solved it and the reusable method).\n\n## Verification and compatibility\n\n- Verified on a real MPC Sample (firmware 1.3.0.12) and in the emulator.\n- Controlled 220 Hz sample: MIDI 48 → 110.4 Hz, 60 → 220.7 Hz, 65 → 293.4 Hz (exact semitones, positive and negative offsets).\n- Every note 36–96 played the selected sample; with 16 Levels off the dispatcher is byte-identical to stock.",
-        "truncated": false
       }
     ],
     "archived": false
@@ -567,8 +567,8 @@
   "ioma8/mpc-sample-sdk": {
     "stars": 6,
     "forks": 3,
-    "pushed_at": "2026-11-12T09:08:44Z",
-    "last_commit_at": "2026-11-12T09:08:42Z",
+    "pushed_at": "2026-11-14T21:58:29Z",
+    "last_commit_at": "2026-11-14T21:58:16Z",
     "contributors": 2,
     "open_issues": 0,
     "license": "MIT",
@@ -720,12 +720,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 35,
+    "stars": 36,
     "forks": 2,
     "pushed_at": "2026-11-14T19:17:42Z",
     "last_commit_at": "2026-11-14T19:12:16Z",
     "contributors": 1,
-    "open_issues": 8,
+    "open_issues": 9,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1022,7 +1022,7 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 107,
+    "stars": 108,
     "forks": 5,
     "pushed_at": "2026-11-14T17:49:27Z",
     "last_commit_at": "2026-11-14T17:49:23Z",

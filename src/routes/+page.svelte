@@ -2,6 +2,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
+	import contributors from '../../data/contributors.json';
 	import { SITE_NAME } from '$lib/site.js';
 	import {
 		SECTIONS,
@@ -16,6 +17,21 @@
 		priceBadge
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
+
+	/** @param {string} url */
+	function avatarSrc(url) {
+		try {
+			const parsed = new URL(url);
+			parsed.searchParams.set('s', '64');
+			return parsed.toString();
+		} catch {
+			return url;
+		}
+	}
+
+	const contributorCount = contributors.length;
+	const contributorPeopleLabel =
+		contributorCount === 1 ? '1 person who built this catalog' : `${contributorCount} people who built this catalog`;
 
 	let query = $state('');
 	let section = $state('');
@@ -168,6 +184,27 @@
 	</div>
 </section>
 
+<aside class="wip-band" role="note" aria-label="Work in progress">
+	<div class="wip-inner">
+		<span class="wip-led" aria-hidden="true">⚠</span>
+		<div class="wip-copy">
+			<p class="wip-heading">Work in progress</p>
+			<p class="wip-text">
+				This site is still growing, so some entries may be incomplete or out of date. We'd appreciate
+				any corrections. Please open an
+				<a href="https://github.com/2wenty2wo/samplemods/issues/new" target="_blank" rel="noopener noreferrer"
+					>issue</a
+				>
+				or
+				<a href="https://github.com/2wenty2wo/samplemods/pulls" target="_blank" rel="noopener noreferrer"
+					>pull request</a
+				>
+				on GitHub.
+			</p>
+		</div>
+	</div>
+</aside>
+
 <div class="wrap" id="catalog">
 	<section class="filter-bar" aria-label="Filter and sort entries">
 		<div class="filter-group">
@@ -314,6 +351,51 @@
 		</ul>
 	{/if}
 </div>
+
+{#if contributorCount > 0}
+	<section class="contributors-band" aria-label="Contributors">
+		<div class="contributors-inner">
+			<div class="contributors-head">
+				<h2 class="silk-heading contributors-title">Contributors</h2>
+				<p class="contributors-sub">
+					{contributorPeopleLabel} ·
+					<a
+						href="https://github.com/2wenty2wo/samplemods/graphs/contributors"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						on GitHub ↗
+					</a>
+				</p>
+			</div>
+			<ul class="contributor-list">
+				{#each contributors as person (person.login)}
+					<li>
+						<a
+							class="contributor-chip"
+							href={person.html_url}
+							target="_blank"
+							rel="noopener noreferrer"
+							title="{person.login} — {person.contributions} commit{person.contributions === 1
+								? ''
+								: 's'}"
+						>
+							<img
+								class="contributor-avatar"
+								src={avatarSrc(person.avatar_url)}
+								alt=""
+								width="32"
+								height="32"
+								loading="lazy"
+							/>
+							<span class="contributor-login">{person.login}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</section>
+{/if}
 
 <style>
 	.hero-band {
@@ -678,8 +760,178 @@
 		color: var(--mpc-silkscreen-muted);
 	}
 
+	.wip-band {
+		width: min(1200px, 100% - 2rem);
+		margin: -0.65rem auto 1.25rem;
+	}
+
+	.wip-inner {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 0.7rem 0.9rem;
+		background:
+			linear-gradient(180deg, rgb(255 138 30 / 0.12) 0%, rgb(255 138 30 / 0.05) 100%),
+			var(--mpc-body-mid);
+		border: 2px solid #b86a12;
+		border-left: 5px solid var(--mpc-btn-orange);
+		border-radius: var(--radius);
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.35),
+			0 2px 0 #8a4f0c;
+	}
+
+	.wip-led {
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.7rem;
+		height: 1.7rem;
+		margin-top: 0.05rem;
+		border-radius: 4px;
+		background: #1a1208;
+		color: var(--mpc-btn-orange);
+		font-size: 0.95rem;
+		line-height: 1;
+		box-shadow:
+			inset 0 0 0 1px #3a2810,
+			0 0 10px rgb(255 138 30 / 0.55);
+	}
+
+	.wip-copy {
+		min-width: 0;
+		display: grid;
+		gap: 0.15rem;
+	}
+
+	.wip-heading {
+		margin: 0;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 0.92rem;
+		letter-spacing: 0.02em;
+		color: #7a3f08;
+		text-transform: uppercase;
+	}
+
+	.wip-text {
+		margin: 0;
+		font-size: 0.86rem;
+		line-height: 1.45;
+		color: var(--mpc-silkscreen-muted);
+	}
+
+	.wip-text a {
+		font-weight: 700;
+	}
+
+	.contributors-band {
+		border-top: 2px solid var(--mpc-body-recess);
+		background: var(--mpc-body-mid);
+		padding: 1.5rem 0 1.75rem;
+		margin-top: 2rem;
+	}
+
+	.contributors-inner {
+		width: min(1200px, 100% - 2rem);
+		margin-inline: auto;
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.contributors-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.35rem 1rem;
+	}
+
+	.contributors-title {
+		margin: 0;
+	}
+
+	.contributors-sub {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		color: var(--mpc-silkscreen-muted);
+	}
+
+	.contributors-sub a {
+		font-weight: 700;
+	}
+
+	.contributor-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+	}
+
+	.contributor-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.28rem 0.7rem 0.28rem 0.3rem;
+		background: var(--mpc-body-light);
+		color: var(--mpc-silkscreen);
+		border: 1px solid rgb(0 0 0 / 0.16);
+		border-bottom: 3px solid var(--mpc-btn-blue-light);
+		border-radius: 999px;
+		text-decoration: none;
+		font-size: 0.82rem;
+		font-weight: 700;
+		transition: border-color 120ms ease, background 120ms ease;
+	}
+
+	.contributor-chip:hover {
+		background: #f0eeea;
+		border-bottom-color: var(--mpc-btn-orange);
+		text-decoration: none;
+	}
+
+	.contributor-avatar {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background: #1a1d24;
+		border: 1px solid #2a2e38;
+		display: block;
+	}
+
+	.contributor-login {
+		font-family: var(--font-mono);
+		letter-spacing: 0.02em;
+	}
+
 	@media (max-width: 640px) {
 		.hero-inner {
+			width: calc(100% - 1.25rem);
+		}
+
+		.wip-band {
+			width: calc(100% - 1.25rem);
+			margin: -0.35rem auto 0.95rem;
+		}
+
+		.wip-inner {
+			gap: 0.55rem;
+			padding: 0.55rem 0.7rem;
+		}
+
+		.wip-heading {
+			font-size: 0.8rem;
+		}
+
+		.wip-text {
+			font-size: 0.78rem;
+		}
+
+		.contributors-inner {
 			width: calc(100% - 1.25rem);
 		}
 
