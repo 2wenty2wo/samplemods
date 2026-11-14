@@ -1,5 +1,7 @@
 name: MaiaOS
-description: A Mod turning the Mpc Sample into a full DAW with a lot of feature
+description: >-
+  Custom firmware extending the MPC Sample with DJ Mode, groove and chord tools, multisamples, pitch
+  correction and effects.
 repo: rosen-wav/MaiaOS---Mpc-Sample-CFW
 category: os-mod
 author: rosen-wav

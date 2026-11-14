@@ -1,7 +1,7 @@
 name: Am MOD
 description: >-
-  Unofficial SD-card mod for the Akai MPC Sample: step sequencer, chords, scale layouts, search, pad
-  EQ, resampling, rear recording. Nothing is flashed.
+  An SD-card mod extending the MPC Sample with pad sequencing, chord modes, scale layouts, folder
+  search, per-pad EQ and resampling.
 repo: AlekseyMalykh/am-mod
 category: os-mod
 author: AlekseyMalykh

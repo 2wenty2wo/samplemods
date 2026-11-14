@@ -1,5 +1,7 @@
 name: MPC Sample Scale Mode
-description: 'MPC Sample addin: hold 16 Levels to play the 16 slots in a scale, set on a SCALE page'
+description: >-
+  A scale-playing add-on for the MPC Sample. Hold 16 Levels to play notes across the pads, with a
+  screen for choosing the scale, root and octave.
 repo: jacob-sabella/mpc-addin-sample-scalemode
 category: addon
 author: jacob-sabella

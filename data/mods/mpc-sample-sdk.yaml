@@ -1,5 +1,7 @@
 name: MPC Sample SDK
-description: Memory-safe Rust mod SDK for the Akai MPC Sample 1.3.0.12
+description: >-
+  A Rust SDK for building MPC Sample mods, with typed events, audio and MIDI access, drawing tools,
+  firmware checks and SD-card packaging.
 repo: ioma8/mpc-sample-sdk
 category: dev-tool
 author: ioma8

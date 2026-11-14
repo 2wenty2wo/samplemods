@@ -1,5 +1,7 @@
-name: Melodee Sample
-description: Melodee groovebox for the Akai MPC Sample, on sample-base
+name: Melodee
+description: >-
+  A 16-track MPC Sample groovebox with drum kits, sampled instruments, VST instruments and effects,
+  MIDI tracks, patterns, scenes and song arrangement.
 repo: keremimo/melodee-sample
 category: app
 author: keremimo

@@ -1,5 +1,7 @@
 name: KAOSAMPLE
-description: KAOSAMPLE public beta — free add-on tools for the MPC Sample (not affiliated with Akai)
+description: >-
+  An SD-card add-on for the MPC Sample with stem export, a looper, scale and chord tools, master EQ,
+  groove controls and project snapshots.
 repo: omarhuertasllc-ops/kaosample-beta
 category: addon
 author: omarhuertasllc-ops

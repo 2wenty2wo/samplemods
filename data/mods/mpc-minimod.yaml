@@ -1,5 +1,7 @@
 name: MPC Sample MINIMOD
-description: 'Minimal mod for the Akai MPC Sample (firmware 1.3.0.12): autotrim, octave shift in 16 Levels.'
+description: >-
+  An SD-card mod that keeps the stock MPC Sample workflow while adding AutoTrim, octave shifting, a
+  bass synth and a live looper.
 repo: ioma8/mpc-minimod
 category: os-mod
 author: ioma8

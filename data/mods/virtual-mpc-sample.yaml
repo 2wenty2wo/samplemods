@@ -1,7 +1,7 @@
 name: Virtual MPC Sample
 description: >-
-  Akai MPC Sample stock firmware running in QEMU, with the whole device in your browser. Unofficial;
-  no firmware included.
+  A QEMU-based MPC Sample emulator with a browser control panel for exploring stock firmware and
+  testing mods. Requires your own firmware files.
 repo: orrpunk-art/virtual-mpc-sample
 category: dev-tool
 author: orrpunk-art

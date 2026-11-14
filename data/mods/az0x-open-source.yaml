@@ -1,7 +1,7 @@
-name: AZ0x Open Source
+name: AZ0x Open Source Releases
 description: >-
-  Open source components used in inMusic software. Published in compliance with the terms of their
-  various software licenses.
+  Source archives for the Linux components used in inMusic products, including the MPC Sample,
+  published with their open-source license notices.
 repo: inmusic-software/az0x-open-source
 category: dev-tool
 author: inmusic-software

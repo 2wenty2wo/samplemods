@@ -1,7 +1,7 @@
 name: LoopPad
 description: >-
-  Open-source live looper for the Akai MPC Sample with synchronized loops, waveforms, per-loop
-  mixing and 4/8-loop modes.
+  A live looping app for the MPC Sample with synchronized four- or eight-loop layouts, waveform
+  displays, input recording and per-loop mixing.
 repo: larsoholm/LoopPad
 category: app
 author: larsoholm

@@ -1,5 +1,5 @@
 name: MPC Furnace
-description: furnace tracker for the MPC Sample
+description: The Furnace music tracker adapted for the MPC Sample, distributed as an SD-card application.
 repo: garrettjwilke/mpc-furnace
 category: app
 author: garrettjwilke

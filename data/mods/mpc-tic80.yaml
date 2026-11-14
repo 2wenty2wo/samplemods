@@ -1,5 +1,7 @@
 name: MPC TIC-80
-description: play tic80 games on your MPC Sample
+description: >-
+  A TIC-80 game player for the MPC Sample, packaged as an SD-card application for running
+  fantasy-console games on the device.
 repo: garrettjwilke/mpc-tic80
 category: app
 author: garrettjwilke

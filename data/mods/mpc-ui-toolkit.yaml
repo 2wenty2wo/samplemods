@@ -1,5 +1,7 @@
 name: MPC Sample UI Toolkit
-description: ui toolkit for mpc sample
+description: >-
+  A C library for drawing MPC Sample interfaces, with text, shapes, buttons and layout helpers for
+  the device's 320×240 display.
 repo: garrettjwilke/mpc-ui-toolkit
 category: dev-tool
 author: garrettjwilke

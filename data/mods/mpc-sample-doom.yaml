@@ -1,5 +1,7 @@
-name: MPC Sample DOOM
-description: DOOM on the Akai MPC Sample, from an SD card.
+name: MPC DOOM
+description: >-
+  An SD-card DOOM port for the MPC Sample with pad controls, DATA-knob turning and a pad-LED health
+  bar. Returns to the sampler when you quit.
 repo: jeffwebb-to/mpc-sample-doom
 category: game
 author: jeffwebb-to

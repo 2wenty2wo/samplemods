@@ -1,5 +1,7 @@
 name: MPC FM
-description: FM synth add-on for the Akai MPC Sample, loaded next to SampQOL OS
+description: >-
+  An FM synthesis add-on that runs alongside SampQOL OS on the MPC Sample, letting pads play live FM
+  patches through the existing filter, mixer and effects.
 repo: ThomasTestaud/mpc-fm
 category: addon
 author: ThomasTestaud

@@ -1,5 +1,7 @@
 name: Lightfoot
-description: MIDI Guitar Hero for the MPC Sample
+description: >-
+  A Guitar Hero-style rhythm game for the MPC Sample pads. MIDI songs become four-lane note charts
+  with timing scores, difficulty levels and saved high scores.
 repo: Dyldog/Lightfoot
 category: game
 author: Dyldog

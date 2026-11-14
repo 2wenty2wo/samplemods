@@ -1,5 +1,7 @@
 name: Beat-Train
-description: A drum game for the Akai MPC Sample, started from the SD card
+description: >-
+  A pad-based drum rhythm game for the MPC Sample. Follow a scrolling note highway, play along with
+  songs and track timing accuracy and streaks.
 repo: drose030/beat-train-mpc-sample
 category: game
 author: drose030

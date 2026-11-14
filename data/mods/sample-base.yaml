@@ -1,5 +1,7 @@
 name: Sample Base
-description: Standalone JUCE 9 application starter for MPC Sample, with a built-in beep/boop synth
+description: >-
+  A standalone JUCE application starter for the MPC Sample, providing hardware access, audio and
+  MIDI handling, a demo synth and a return to the stock app.
 repo: keremimo/sample-base
 category: dev-tool
 author: keremimo
