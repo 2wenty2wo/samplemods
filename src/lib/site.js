@@ -1,5 +1,5 @@
-/** Site identity — only place the display name lives (final name TBD). */
-export const SITE_NAME = 'MPC Sample Mods';
+/** Site identity — only place the display name lives. */
+export const SITE_NAME = 'Sample Mods';
 
-/** Canonical origin once the custom domain / Pages URL is known. */
-export const SITE_ORIGIN = '';
+/** Canonical origin (custom domain on GitHub Pages). */
+export const SITE_ORIGIN = 'https://samplemods.com';
