@@ -1,0 +1,27 @@
+name: Check pull request
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Catalog PR checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check bot-owned and generated files
+        run: node scripts/check-pr-files.js
+      - name: Validate catalog and scripts
+        run: npm test

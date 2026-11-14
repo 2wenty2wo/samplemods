@@ -1,5 +1,9 @@
 # Contributing
 
+## Files you shouldn't edit
+
+Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, and `data/contributors.json` untouched. The refresh job updates these every 6 hours. Generated outputs (`src/lib/data.json`, `src/lib/server/details.json`, `static/catalog.json`, and `static/media/**`) are also blocked; edit the source YAML and entry media instead. The **Catalog PR checks** status checks these paths and runs `npm test`. To undo an accidental change, use `git checkout origin/main -- <file>`; remove newly added generated files from the PR as well.
+
 ## Add an entry
 
 1. Pick the section matching what the project does. Create a unique kebab-case entry directory; IDs must be unique across all sections.
