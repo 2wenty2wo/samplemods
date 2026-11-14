@@ -32,7 +32,7 @@ jobs:
       - name: Commit refreshed metadata
         id: commit
         run: |
-          git add data/github.json data/readme/
+          git add data/github.json data/readme/ data/contributors.json
           if git diff --cached --quiet; then
             exit 0
           fi
