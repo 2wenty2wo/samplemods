@@ -75,8 +75,8 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-14T09:53:05Z",
-    "last_commit_at": "2026-11-14T06:45:05Z",
+    "pushed_at": "2026-11-14T15:25:46Z",
+    "last_commit_at": "2026-11-14T15:25:13Z",
     "contributors": 2,
     "open_issues": 1,
     "license": "MIT",
@@ -84,10 +84,18 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.6.1",
-      "published_at": "2026-11-14T06:45:21Z"
+      "tag": "v0.7.0",
+      "published_at": "2026-11-14T15:25:46Z"
     },
     "releases": [
+      {
+        "tag": "v0.7.0",
+        "name": "v0.7.0",
+        "published_at": "2026-11-14T15:25:46Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.0",
+        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** Every item on the v0.7 checklist passed on a real MPC Sample on 15 Nov 2026, including a power-off cold boot.\n\n**Fixed in v0.7.0**\n- **No more flicker:** HS effect editors and the graphic Ch. Mixer / Pad Mixer stay steady while a pad or sequence plays.\n- **HS Heat** loads near unity instead of about +6 dB hot.\n- **HS Bus Compressor** plays the ratio its label shows.\n- **MOD:** the target knob turns with the modulated value.\n- **EQ grid** shows on the pad EQ page.\n- **Crush presets** saved before the rename are moved across.\n- **Browser tag:** short one-shots now show their note.\n\n**New in v0.7.0**\n- **KICK** and **BASSLINE** track chains (HS Tube Strip).\n\nProjects saved on v0.6.x open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.",
+        "truncated": false
+      },
       {
         "tag": "v0.6.1",
         "name": "v0.6.1",
@@ -103,14 +111,6 @@
         "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.0",
         "body": "**Install:** open the [installer page](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**New in v0.6**\n- **Stems split to pad:** choose Separate and the stems land on the next empty pads in that pad's bank.\n- **Track chains:** a toast confirms every load. Name a track NAME# to save its chain, and it renames itself back to NAME.\n- **HS styling for SampQOL's list screens:** red bar, cyan selected row, dark blue palette. Only on SampQOL 0.2.0.\n- **Graphic channel mixer** for Ch. Mixer and Pad Mixer.\n- **User guide** for every effect and add-on: `docs/USER-GUIDE.md`.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.5.0",
-        "name": "v0.5.0: track chains, browser key tag, LUFS, MOD + de-esser, optional Stems",
-        "published_at": "2026-11-11T15:50:25Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.5.0",
-        "body": "Five new features for SampQOL OS 0.2.0 on the MPC Sample (firmware 1.3.0). Hardware boot-tested.\n\n**Track chains.** Rename a track VOX, DRUMS or BASS and its effects load (one UNDO takes it back). Rename a dialled-in track NAME# to save your own chain.\n\n**Key and BPM in the browser.** Preview a WAV or MP3 and its row shows the key and tempo, like C# MIN 75 BPM.\n\n**LUFS meters.** SEQ page, B2: Momentary, Short-term, Integrated and a peak hold.\n\n**MOD and de-esser.** A DESS page on HS Channel Strip. A key bus (A to D) on HS Pump and HS Crush, and a MOD page on seven HS effects so any knob can follow a bus. Off by default: old projects sound the same. One Bypass for every HS effect.\n\n**Stems (optional).** Tick Add Stems on the installer and the MPC splits a sample into Vocals, Drums, Bass and Other by itself. Hold SHIFT and hold B1 for 1.5 s in the browser, or SHIFT and B3 on the Sample screen. Uses the Spleeter model by Deezer (MIT). Adds a 92 MB download.\n\n## Install or update\n- New install, or adding Stems: use the [online installer](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/) with a fresh SampQOL 0.2.0 download.\n- Already on v0.4 and no Stems: download `hs-effects-update.zip` below and copy everything in its `hs` folder into `autorun/hs` ([guide](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/UPDATE-EFFECTS.md)).\n\nSampQOL OS is by Snare Bes and is not included. Unofficial, not affiliated with Akai Professional or inMusic.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -118,19 +118,27 @@
   "LA-2500/MPC-600-S": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-13T23:25:46Z",
-    "last_commit_at": "2026-11-13T23:25:44Z",
+    "pushed_at": "2026-11-14T16:14:31Z",
+    "last_commit_at": "2026-11-14T16:14:30Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
-    "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling, S-series programs, 99 sequences x 99 tracks. C, aarch64 Linux, zig cc; runs from SD card autorun.",
+    "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling, S-series programs, 99 sequences x 99 tracks. C, aarch64 Linux, zig cc; runs from SD card autorun.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.1",
-      "published_at": "2026-11-13T20:11:54Z"
+      "tag": "v1.2",
+      "published_at": "2026-11-14T15:24:34Z"
     },
     "releases": [
+      {
+        "tag": "v1.2",
+        "name": "MPC 600 S, LA Version 1.2",
+        "published_at": "2026-11-14T15:24:34Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.2",
+        "body": "**New: Live Looper.** On Audiotrack Record, B2 <Live Loop>: one-pass takes drop onto pads while the sequence keeps looping. Layer take after take without stopping; <Del Take> removes the last one. Live Loop Conversion (Additional Settings 2): IMMEDIATE converts during the pass, so the take drops in a few ms after it; AFTER 1ST LOOP drops in the raw take and converts while it plays, suited to longer takes.\n\n**Footswitch AUDIO REC** (MIDI Settings, Sustain: FOOTSWITCH): the pedal is <Rec>/<Stop> on Audiotrack Record and Live Looper, and on any page once Live Looper takes have started.\n\n**Footswitch setup** (MIDI Settings): Foot Chn (ANY to start, so any keyboard's pedal works), Foot CC (64 to start) and Polarity (AUTO works out a pedal that rests \"down\"; or NORMAL, INVERTED). <Learn> sets all three from one press of the pedal, and the bottom line shows what the pedal last sent.\n\n**Additional Settings on two pages.** Page 2 holds Loop Conv and the start values for every recording page: Sample Rate (29.76 kHz; the slider's rates, or SET to any rate), Bit Rate (12), Anti-Aliasing and Normalize (on), Input Thru (always on, or off) and Rec Mode (stereo; Convert Sample stays mono).\n\n**Metronome:** Audio Rec (click during audio track and Live Looper takes, default NO) and After Loop (click after a Live Looper take, default STOP).\n\n**SAMPLE + pad** selects a pad without playing it in every mode (Note Repeat, Local Mode off, MIDI tracks): set a loop's volume without retriggering it.\n\n**Fixed:** Master Effects are no longer kept in the settings file: they start off at power-on unless the Autoload project has them.\n\nInstall: extract **MPC-600-S-OS-v1.2.zip** and copy the `autorun` folder to the SD card root, replacing the old one. Your `MPC600S` folder is kept.\n",
+        "truncated": false
+      },
       {
         "tag": "v1.1",
         "name": "MPC 600 S, LA Version 1.1",
@@ -472,7 +480,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 229,
+    "stars": 230,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -685,43 +693,43 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 31,
-    "forks": 1,
-    "pushed_at": "2026-11-14T11:39:52Z",
-    "last_commit_at": "2026-11-14T11:30:15Z",
+    "stars": 35,
+    "forks": 2,
+    "pushed_at": "2026-11-14T19:17:42Z",
+    "last_commit_at": "2026-11-14T19:12:16Z",
     "contributors": 1,
-    "open_issues": 5,
+    "open_issues": 8,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.2.0",
-      "published_at": "2026-11-14T11:41:32Z"
+      "tag": "v0.2.2",
+      "published_at": "2026-11-14T19:17:54Z"
     },
     "releases": [
+      {
+        "tag": "v0.2.2",
+        "name": "Melodee 0.2.2",
+        "published_at": "2026-11-14T19:17:54Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.2.2",
+        "body": "Melodee 0.2.2 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0 or 0.2.1:** copy `Melodee-MPC-Sample-v0.2.2.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.2.2?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in the [0.2.0 notes](https://github.com/keremimo/melodee-sample/releases/tag/v0.2.0): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\n## New\n\n- **Layer play: Cycle hold and Random hold** (Stage LAYERS, **SHIFT** + **K1**). They pick a layer like Cycle and Random, but while Note Repeat repeats the pad, every repeat plays the layer the first one picked until you let go.\n- **Stage ARP: SHIFT + K2** turns the arpeggiator on or off.\n\n## Changed\n\n- **Note Repeat is no longer the arpeggiator.** It plays every pad held together on each step, as on the MPC. Before, two pads held took turns: a kick pressed over rolling hats played only every other step and halved the hats. The arpeggiator keeps its modes, rate, octaves, gate and hold on Stage ARP, and Note Repeat no longer turns it on.\n\n## Fixed\n\n- Note Repeat and the arpeggiator play each note on its exact frame. Before, a note landed at the start of the audio block it fell in, so repeats were uneven by up to 3 ms. Swung repeats and MIDI out are exact too.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.2.1",
+        "name": "Melodee 0.2.1",
+        "published_at": "2026-11-14T18:24:19Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.2.1",
+        "body": "Melodee 0.2.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0:** copy `Melodee-MPC-Sample-v0.2.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.2.1?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in the [0.2.0 notes](https://github.com/keremimo/melodee-sample/releases/tag/v0.2.0): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\n## New\n\n- **Settings > LIGHTS:** Pad lights, Pad fade (100 ms by default, faster than before) and the Tap Tempo light on or off.\n- **Settings > PADS > Repeat velocity:** Note Repeat plays at the strike velocity or follows pad pressure.\n- **Web page:** installed plug-ins are listed with a delete button on each.\n\n## Faster\n\n- Idle plug-ins sleep: an instrument with no key held while stopped, or an effect with no signal, stops running after half a second of silence.\n- Plug-in rate conversion at 48 and 96 kHz takes a tenth of the time.\n- Kit voices, instrument zones, built-in effects and Room/Reverb/Plate run lighter loops; output is sample for sample the same. A busy kit bench runs 14% faster.\n\n## Fixed\n\n- **Warp by Time (Tones)** sounds cleaner: windows line up in phase, pitched-up reads are band-limited, and each hit plays once and on time, also around a kit pad's loop and in instrument zones.\n- Note Repeat plays on the press when the sequencer is stopped.\n- Step Edit lights pads under 16 Levels and as they play, names a level's pitch or velocity, marks sounding notes and records the keys a pad played.\n- Pad lights fade out when the sound stops, instead of going dark at a one-shot's end; same for 16 Levels pads.\n- Cloud is set per pad, not per kit. Older kits' Cloud setting is copied onto every pad.\n- A plug-in's chosen preset is saved with the project, so PRESETS shows it again after a restart.\n- Choosing the mic as input turns Monitor off only while the speaker plays; with headphones or line out plugged in, Monitor stays on.\n- Project page: SD card access is the first row of every folder and reads mounted / eject; entering a folder selects its first entry; dot files and folders are hidden.\n- Sample cache cleans up partial files and files not played for 30 days.\n- Web Files tab hides the `autorun` and `sample-base` folders.\n\n## Files\n\n- `Melodee-MPC-Sample-v0.2.1.zip`: the `autorun` folder for the card, and the update file. Its README and licences are inside, in `autorun/melodee/`.\n- `Melodee-MPC-Sample-v0.2.1.zip.sha256`: its checksum.\n\nMelodee is made by Kerem Kiliç (Ellic Studio). Free software under the AGPL-3.0. Not affiliated with or endorsed by inMusic or Akai Professional.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.2.0",
         "name": "Melodee 0.2.0",
         "published_at": "2026-11-14T11:41:32Z",
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.2.0",
         "body": "Melodee 0.2.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n![Melodee screens on the MPC Sample](https://raw.githubusercontent.com/keremimo/melodee-sample/main/docs/images/melodee-promo.png)\n\n## Before you install\n\n- **Coming from 0.1.0?** 0.1.0 cannot update itself. Install 0.2.0 by hand once, as below. From 0.2.0 on, Melodee installs new releases for you.\n- **Plug-ins have moved.** Melodee now reads plug-ins from `Melodee/Plugins` on the card. Move the contents of the old top-level `Plugins` folder there; saved projects find them in either place.\n\n## Install\n\n1. Download `Melodee-MPC-Sample-v0.2.0.zip` below.\n2. Back up the card. If the card already has an `autorun` folder at its top level, move it somewhere safe.\n3. Unzip the release. It holds one folder, `autorun`. Copy that folder to the top level of the card. Do not edit or rename anything inside it.\n4. Put the card in the MPC and switch it on. The stock app starts first. A few seconds later Melodee starts.\n\nRequires an MPC Sample on firmware **1.3.0.12**. On any other firmware Melodee does not start and the stock app keeps running. Melodee changes nothing on the MPC itself: delete the `autorun` folder and the stock app runs as before.\n\nNew to Melodee? Read the [quickstart](https://github.com/keremimo/melodee-sample/blob/main/docs/QUICKSTART.md), then the [user guide](https://github.com/keremimo/melodee-sample/blob/main/docs/GUIDE.md). Both are also on the MPC's own web page (below).\n\n## New\n\n- **Updates from the card.** Copy a release zip to the card; Melodee asks *Update to <version>?*, saves, installs and restarts. The previous version stays in `autorun/melodee.prev`.\n- **Web page at http://melodee.local.** Connect the MPC to a computer by USB-C while Melodee runs: send updates and plug-in zips, read the quickstart and manual, and use **Files** to browse the card, play, download, upload and delete.\n- **Screen Mirror** (Settings > SCREEN): the MPC shows up as a USB webcam with Melodee's screen, at 30 or 60 fps and up to 1280 x 960.\n- **LV2 and CLAP plug-ins**, as instruments and effects, beside VST3 and VST2, with their presets. The plug-in picker browses the whole card.\n- **Plug-ins hear Melodee's transport** (play, position, tempo, time signature). **TRANSPORT** keeps Play and Stop from a plug-in with its own sequencer.\n- **Freeze and deep freeze.** Print a track to audio and play it from the card; deep freeze also unloads its plug-ins.\n- **Pad sends.** Kit pads send into buses A–D on their own, after Pad FX; MPC drum programs' Send 1–4 come in with them.\n- **128 patterns a track** in eight banks (A–H). **Patterns** is SEQ's home, drawn as the pads sit: launch patterns from the pads and scenes from the wheel and Push. Shift + Pad 12 opens Song.\n- **MIDI in everywhere.** Each track listens on its own channel and port; Remote CCs select tracks and launch patterns and scenes. A keyboard's pitch wheel bends plug-in tracks.\n- **Roll** marks notes for velocity ramps, grid pull, octave moves, copy, split, legato, reverse and arp.\n- **16 Levels** turns on in place, with Zones for drum and percussion instruments.\n- **Chop** finds hits from the spectrum, cuts before the attack, and Beats cuts at the sample's own tempo.\n- **Samples:** MP3, FLAC, Ogg Vorbis and AIFF load and preview; stereo waveforms show both sides.\n- **Neural Amp Modeler** as an optional plug-in beside the built-in amp sim.\n- **Pad colours** from MPC kits and from Stage's COLOUR. **Light show** on Sample + Mute.\n- **Crash reports** go to `Melodee/Crashes` on the card. Please attach one when you report a crash.\n\n## Fixed\n\n- Soft pad hits play quieter (velocity scales the level linearly).\n- Monitoring joins the mix before the master chain, as loud as the take plays back; Rec Input FX are heard while monitoring.\n- A pad hit in the count-in's last sixteenth records on the take's first tick, as long as it was held.\n- All notes off no longer crashes CLAP plug-ins such as Surge XT.\n- Factory kits and demos on the internal drive load.\n- DecentSampler presets open with their controls' starting values.\n- Loading a file from the browser no longer plays it twice.\n- Tempo changes are one undo step each.\n\n## Removed\n\n- Pad Punch. Pad FX pressed again stays on the punches; older projects' per-pad punches are skipped on load.\n\n## Files\n\n- `Melodee-MPC-Sample-v0.2.0.zip`: the `autorun` folder for the card. Its README and licences are inside, in `autorun/melodee/`.\n- `Melodee-MPC-Sample-v0.2.0.zip.sha256`: its checksum.\n\nMelodee is made by Kerem Kiliç (Ellic Studio). Free software under the AGPL-3.0. Not affiliated with or endorsed by inMusic or Akai Professional.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.1.0",
-        "name": "Melodee 0.1.0",
-        "published_at": "2026-11-12T14:20:24Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.1.0",
-        "body": "Melodee 0.1.0 is the first full release of Melodee for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n![Melodee screens on the MPC Sample](https://raw.githubusercontent.com/keremimo/melodee-sample/main/docs/images/melodee-promo.png)\n\n## Install\n\n1. Download `Melodee-MPC-Sample-v0.1.0.zip` below.\n2. Back up the card. If the card already has an `autorun` folder at its top level, move it somewhere safe.\n3. Unzip the release. It holds one folder, `autorun`. Copy that folder to the top level of the card. Do not edit or rename anything inside it.\n4. Put the card in the MPC and switch it on. The stock app starts first. A few seconds later Melodee starts.\n\nRequires an MPC Sample on firmware **1.3.0.12**. On any other firmware Melodee does not start and the stock app keeps running. Melodee changes nothing on the MPC itself: delete the `autorun` folder and the stock app runs as before.\n\nNew to Melodee? Read the [quickstart](https://github.com/keremimo/melodee-sample/blob/main/docs/QUICKSTART.md), then the [user guide](https://github.com/keremimo/melodee-sample/blob/main/docs/GUIDE.md). The guide has a chapter for users of the stock app.\n\n## What it does\n\n- **16 tracks**, one per pad: a kit, a sampled instrument, a VST instrument or a MIDI track.\n- **VST3 and VST2 plug-in host**: instruments and effects from a `Plugins` folder on the card. 64-bit ARM Linux builds, Open MPC plug-ins, and 32-bit ARM plug-ins through a bridge.\n- **Kits** of 128 pads with the stock Sample mode pages, plus Layers, Follow, Cloud and a kit filter. Chop, Sample Record, Audio Recall, Resample and 16 Levels.\n- **Sampled instruments**: SFZ, MPC keygroup and drum programs, MPC expansions, EXS24, SoundFont and DecentSampler. Stock MPC Sample projects open too.\n- **Sequencing**: 16 patterns per track, step sequencer, piano roll, parameter locks, ratchets, trig conditions, scenes and pattern chains.\n- **Song** arrangement with WAV mixdown, stems and MIDI export.\n- **Looper** with four tempo-synced loops.\n- **41 effects**, a six-slot chain on every track, four send buses, Knob FX and Pad FX.\n- **Sync**: MIDI clock and MTC in and out, CV clock out.\n\n## Melodee synths\n\nMelodee's own synths are free Open MPC plug-ins, released alongside this version: [Melodee Poly](https://github.com/keremimo/mpc-vst-melodee-poly/releases/latest), [Melodee PD](https://github.com/keremimo/mpc-vst-melodee-pd/releases/latest) and [Melodee Chip](https://github.com/keremimo/mpc-vst-melodee-chip/releases/latest). Download each one's `-mpc-sample.zip`, unzip it and copy the plug-in folder inside into `Plugins` on the card.\n\nProjects saved with 0.1.0-alpha.6 or earlier that used the built-in synths open with those tracks on the matching plug-in, as they sounded, once the plug-ins are in `Plugins`. FM6 and 909 tracks are gone: they open as empty tracks, with their notes kept.\n\n## Files\n\n- `Melodee-MPC-Sample-v0.1.0.zip`: the `autorun` folder for the card. Its README and licences are inside, in `autorun/melodee/`.\n- `Melodee-MPC-Sample-v0.1.0.zip.sha256`: its checksum.\n\nMelodee is free software under the AGPL-3.0. Not affiliated with or endorsed by inMusic or Akai Professional.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.1.0-alpha.6",
-        "name": "Melodee v0.1.0-alpha.6",
-        "published_at": "2026-11-11T17:37:32Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.1.0-alpha.6",
-        "body": "Melodee for the MPC Sample (firmware 1.3.0.12 only). Alpha: a crash or failed start puts the stock app back; only files on the card change.\n\n**Install:** back up the microSD card, move any `autorun` folder at its top somewhere safe, then copy this zip's `autorun` folder to the top of the card and switch the MPC on. New to Melodee? The [quickstart](https://github.com/keremimo/melodee-sample/blob/main/docs/QUICKSTART.md) walks through it with screenshots.\n\n**New**\n- Boot animation: the Melodee logo fades in from left to right, then a night city fades in behind it before the app appears. Press any button or pad to skip it.\n\nThe logo and the backdrop (by Yasmine Elsen, smallcutekitty.net) are not covered by the AGPL; forks may keep them but may not put them in a public release (see `licenses/THIRD_PARTY.md`).\n\n`Melodee-MPC-Sample-v0.1.0-alpha.6.zip` SHA-256: `4a999f05adf573d17fb87d3d9f869880d81f5939a1f060f3ee249da0edd9f1da`\n",
         "truncated": false
       }
     ],
@@ -840,7 +848,7 @@
     "archived": false
   },
   "pzuzarte/mpc-stemloop": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-11-11T23:53:17Z",
     "last_commit_at": "2026-11-11T23:38:55Z",
@@ -987,10 +995,10 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 105,
+    "stars": 107,
     "forks": 5,
-    "pushed_at": "2026-11-09T16:52:42Z",
-    "last_commit_at": "2026-11-09T16:52:41Z",
+    "pushed_at": "2026-11-14T17:49:27Z",
+    "last_commit_at": "2026-11-14T17:49:23Z",
     "contributors": 1,
     "open_issues": 23,
     "license": null,
@@ -998,10 +1006,18 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.2.0",
-      "published_at": "2026-11-08T22:37:52Z"
+      "tag": "v0.3.0",
+      "published_at": "2026-11-14T17:49:27Z"
     },
     "releases": [
+      {
+        "tag": "v0.3.0",
+        "name": "SampQOL OS 0.3.0 (beta)",
+        "published_at": "2026-11-14T17:49:27Z",
+        "html_url": "https://github.com/snarebes/SampQOL-OS/releases/tag/v0.3.0",
+        "body": "SampQOL OS is a free mod for the MPC Sample firmware 1.3.0 (1.3.0.12). It starts from the SD card and does not change the stock firmware. With the SD card in, it starts by itself. Without the SD card, the MPC starts as stock 1.3.0.\n\nTested only with MPC Sample 1.3.0. MPC One, Live and X are not tested yet. This is beta software: back up your projects first. A failed project load can delete samples (see the manual, \"Project safety net\").\n\n## New in 0.3.0\n\n- Key detection in the Tuner: B2 Key shows the key of the sample on the selected pad, for example \"A min\". B3 Apply saves it as the key of the sample. The key goes into the project and the WAV file.\n- Auto Key: a new sample from Sample Select, Sample Record or Resample gets its key at once. On or off in Settings.\n- Sample key by hand: SAMPLE, Tune page, SHIFT + K2 (Key).\n- Tuner K2 / K3: set the tune (Semi / Fine) of the selected pad while you read its note.\n- Delete Folder: delete a folder on the SD card, with all files in it, from the MPC. SAMPLE SELECT, External, select a folder, SHIFT + B3. The MPC asks first. A folder with the loaded project cannot be deleted.\n- Screen Mirror: see the MPC screen live in a browser on your computer, for tutorials and videos. Connect the USB cable and open http://mpc-sample.local:7410. Nothing to set up.\n- Effects on the input: put up to 3 insert effects on what you record, for example a compressor or a filter on a synth at the rear input. What you hear on the input is what you record. SAMPLE RECORD, SHIFT + B2 opens the new Input FX page. Before, only the Knob FX could go on the input.\n- Sleep (Settings): after 5 to 30 minutes with no input, the screen and all pad and button lights go off, to save the battery. Any button, pad or knob wakes the MPC, and that first touch does nothing else. The MPC does not sleep while it plays or records.\n- Input strip in the Ch. Mixer: the far left strip sets the input volume (K1 or the FADER) and shows the input level. The volume is in the monitor and in the recording. SHIFT + B1 (Inserts) opens the Input FX page, and B1 (Back) brings you back to the Ch. Mixer.\n- Mixer: hold ERASE and move a control to erase its recorded automation in this sequence: volume, pan or mute in the Ch. Mixer and Pad Mixer, effect on/off and effect knobs on the insert and effect pages. All erases all automation of that track, submix or pad.\n- Load Kit loads the samples of a drum program (.xpm) from the MPC software or an MPC Live, One or X into the current track. Only the samples: not the insert effects, not the effect settings and not the pad settings.\n- Two more insert effects. AIR Lo-Fi (group Harmonic) makes a sound lo-fi: bit depth, sample rate and clip. AIR Pitch Shifter (group Modulation) changes the pitch of a pad, track, submix or the master and keeps the length (Tune changes both).\n- 16 USB Outputs (Settings): the MPC sends tracks and submixes to a computer on 16 more USB audio channels (USB 3-18), as separate outputs in your DAW. Select USB 3 to USB 18 (mono) or a pair with K3 (Out) in the Mixer. A + after the output (USB 5+) shows that another track or submix also plays on it. The setting applies after a restart.\n- Step Edit: SHIFT + PLAY with no selection and no loop can start at the cursor, not at the playhead (Settings \"Shift+Play Starts\").\n- Settings: Tap Tempo Light. Blink makes the TAP TEMPO light flash with the tempo, as stock. Dimmed (default) keeps it on, a little dimmed.\n- Settings: Pad View Order and Track View Order put pad 1 or track 1 at the top (default) or at the bottom, as on the pads.\n\n## Changed in 0.3.0\n\n- B3 works differently while the KNOB FX bar shows: B3 now turns the Knob FX on or off (Bypass), on every screen (also PAD FX and the Tuner). Orange frame = on, orange box = off. Before, B3 did the function of the screen under the bar (for example Looper on SAMPLE RECORD). SHIFT + B3 still does that function. This is on by default. To get the old B3 back: Settings > Knob FX B3 Bypass > Off.\n- STOP two times ends the SHIFT + PLAY loop, as PLAY does.\n- Pad effects record automation: with SEQ RECORD + PLAY, the knobs on the effect page of a pad effect record their moves, as on a track or a submix. ERASE + knob on that page erases them. Before, a pad effect recorded nothing.\n- Root note for KEYS moved to the Tune page of SAMPLE: SHIFT + K1 (Root), next to the new Key (SHIFT + K2). SHIFT + K1 on the Play page is stock Mono/Poly again.\n- Stock key guess off: stock guessed a key for every sample on each load, mostly wrong and also on drum hits. A loaded sample keeps the key of its file. A new sample gets its key from Auto Key; set or detect a key with the Tuner or on the Tune page.\n- 16 LEVELS: SAMPLE sets 16 Levels off and gives back the normal pads. Before, SAMPLE did nothing in 16 Levels (stock).\n- Pad View: a small + on a note shows two or more notes of that pad in one cell, for example a double note at the loop end after a recording. ERASE at the cursor then clears them one by one, and the note that is most on time stays.\n- SHIFT + PAD BANK: the track grid shows after 0.3 seconds, as the sequence grid. A quick tap (one pad bank back) shows no grid.\n- Rec Quantize strength: the Rec Quantize popup (SHIFT + PAD 10) sets the strength on K2 (Q Str, 0-100). Below 100, a recorded note moves only part of the way to the grid. The project keeps the value. Time Correct always uses 100.\n- 16 Levels Scale: while a Chord plays, the pad stays in Poly, so you hear all tones. Before, a Mono pad played only one tone of the chord.\n- Looper: while you record, you hear the passes that you already recorded. Before, you heard only the input and recorded \"blind\".\n- Looper: record again on the same pad, and the new take goes on top of the old loop as a new layer. Before, the new take replaced the old loop. One Undo removes only the last layer. With Looper off, a new take replaces the old loop, as before.\n- Looper: the loop starts on the start of the sequence loop, also when you started to record in the middle. Thus a play from the start has the full loop in the first pass.\n- Looper: a tap on another pad stops the take, as a tap on its own pad. Before, it chopped the take, and the passes were not merged.\n- Projects go to the SD card by default: Settings PROJECT Start Drive is External. A project on the SD card keeps the internal storage free. If you changed Settings before, your Start Drive stays.\n- SAMPLE RECORD: SHIFT + B2 now opens the Input FX page. Before, it set Rec Input Effects on or off. The Knob FX no longer plays on the input: you hear and record only the effects that you put on the Input FX page. Rec Input Effects in the stock Input Config menu does nothing. B2 on the page turns all input effects on or off (Input FX On or Off). Off = you hear and record the input dry.\n- COPY (SHIFT + ERASE) to one pad that has a sample, on the same track or on another track: you can also swap the two pads (B2 Swap). The notes stay on their pads.\n- The erase windows (ERASE + knob, fader or pad) show \"No automation to erase.\" when there is nothing to erase. Stock showed nothing.\n- The erase window tells what it erases: ERASE PAD AUTOMATION, ERASE TRACK AUTOMATION or ERASE SUBMIX AUTOMATION.\n- The Ch. Mixer sets the MIDI channel of a track too (SHIFT + K3 on a track strip), as the Track page.\n- A muted track or pad also sends no MIDI notes. With Mute Type Audio, a MIDI note that sounds stops when you mute.\n- A track with its own MIDI channel follows Pad MIDI Out in MIDI Config (Always, When Empty, Never). Before, all its pads always sent MIDI, so the pads with a sample also played the external synth.\n- Chop Mode opens at once on a sample without chops, also on a long sample: the Chop Type is Manual, with one slice. Stock starts a Threshold chop there, and that takes long. For an auto chop, turn K3 to Threshold or Regions.\n- Settings: Shift+SEQ is a Shortcuts line. It opens the Track View (default), the Pad View or another screen.\n- Settings: Shift+PAD FX has a third choice, Last Used. SHIFT + PAD FX then opens the screen that you used last: Flex Beat or Pad FX.\n- Settings: SHIFT + ENCODER goes from group to group, so you find a setting faster in the long list.\n- Pad Mixer: a pad strip shows the pad colour that you give it with Rename. A pad without its own colour stays white.\n- Pad View and Track View show 1 to 16 rows (Settings: Pad View Rows, Track View Rows). The FADER zooms the view: up = fewer, bigger rows (Fader Overrides: Pad / Track View = Zoom, the default for a new install).\n- Fader Overrides: one page sets what the FADER does in Sample Select and Load Project (Scroll), in Pad View and Track View (Nudge or Zoom) and in Pad FX with Fixed on (Effect Mix). Fader Menu: the FADER does what you set in the FADER menu. Open it with B2 in the FADER menu, or in Settings (SYSTEM). It replaces the setting Fader Scrolls List. Your saved choices stay.\n- Automate: a filter fade on many tracks can use one filter on a submix in place of one filter per track. The filter comes only at Do It!.\n- The USB audio output to a computer is about 5 ms later than before (all USB channels). This prevents short gaps of silence. Your DAW does not know this delay: if a recording from the MPC is late, set a recording offset in the DAW.\n\n## Fixed in 0.3.0",
+        "truncated": true
+      },
       {
         "tag": "v0.2.0",
         "name": "SampQOL OS 0.2.0 (beta)",
@@ -1016,14 +1032,6 @@
         "published_at": "2026-11-01T15:03:56Z",
         "html_url": "https://github.com/snarebes/SampQOL-OS/releases/tag/v0.1.5",
         "body": "SampQOL OS is a free mod for the MPC Sample firmware 1.3.0 (1.3.0.12). It starts from the SD card and does not change the stock firmware. With the SD card in, it starts by itself. Without the SD card, the MPC starts as stock 1.3.0.\n\nTested only with MPC Sample 1.3.0. MPC One, Live and X are not tested yet. This is beta software: back up your projects first. A failed project load can delete samples (see the manual, \"Project safety net\").\n\n## New in 0.1.5\n\n- Track mutes per sequence, as on the MPC Live: each sequence keeps its own track mutes. A song that you export to a sequence keeps the track mutes of each part.\n- Hold PAD BANK and push - or +: the current track moves one place up or down. One UNDO moves it back.\n- Note Repeat works in Step Edit: in the Pad View (also with Steps on) and in the Track View.\n- Step Edit: cut notes and paste them in another place. Pad View: Cut (SHIFT + B1). Track View: Copy the notes, then ERASE them.\n- Sample Select: SHIFT + K2 \"Own Sample\": pads with a sample play their own sound next to the preview, so you can compare files with your kit.\n- Sample Select: New Folder also works in an empty folder.\n- Browsers: the FADER scrolls the list, as a scrollbar.\n- Resample Pad can also print the Pad FX that are on (Fixed or Latch). You set the Pad FX print and the Knob FX print On or Off. SHIFT + K1 sets the tail (0 to 10 seconds).\n- Pad FX: Fixed effects stay on when you leave the Pad FX screen, as Latch.\n- SHIFT + PAD FX can open the stock Pad FX screen at once (Settings > Shortcuts).\n- Ch. Mixer: Mute on a track strip and Track Mute are one mute.\n- FX Select and the Insert FX list show an icon for each effect group.\n- Sample Tail and 16 Levels Scale: the encoder changes the value of the last knob that you turned.\n\n## Fixed in 0.1.5\n\n- Load Kit and Load Project: two drum tracks with the same name lost notes when you saved. Each track gets its own name (for example \"Drum 001-2\") and keeps its notes.\n- Load Kit, then UNDO: the next save could crash when two tracks had the name of the kit.\n- Half Seq and Double Seq (SHIFT + PAD 2 / 3) change all drum tracks. They changed only track 1.\n- Track Mute: the pad of a muted track is light red. It was off, as a pad without a track.\n- Pad EQ: a kill also stops the attack of a new note. The first part of a snare or a clap went through the kill.\n- MAIN VOLUME works in the Pad View and the Track View. It did nothing there, or it changed the steps.\n- Step Edit keeps the cursor, the selection and the copied notes when you open a stock screen (for example Resample or the FADER menu) and go back. The Pad View opened again at step 1.\n- Track View: Paste after Copy and ERASE puts the notes back in the same place. Paste did nothing there.\n- Track View: Copy and Duplicate take up to 8192 notes. With more than 512 notes, they copied only a part. With more than 8192 notes, the MPC shows \"Too many notes\".\n- The folder pages (Home Folder, Save Sample, Save Project, Export) go up to the root of the SD card, as Sample Select. They stopped in the folder MPC-Sample.\n- Sample Select: a push on the selected pad on a folder does not open New Folder.\n- Sample Select: Prev. Vol. does not cover a long folder name, and does not show on a folder.\n- Sample Select: New Folder (B3) shows as a stock button, not as the Preview box.\n\n## Known issues\n\n- A stock MPC Sample does not play the track mutes in a sequence that you made with Song Export. All tracks sound there.\n- Battery Monitor: the charge is an estimate from a voltage. It can stay at one value (for example 45%). The stock battery light shows the correct state.\n- \"Insufficient space on drive\" is about the internal storage, not the SD card. The internal storage always keeps about 400 MB free. Save your projects and samples on the SD card. Keep the internal storage as stock as possible.\n- Time signature (SHIFT + K2 on the SEQ screen): each change takes about 3 seconds. When you turn K2 fast, the changes add up and the MPC stops for some minutes. Do not turn off the MPC: it comes back by itself. Turn K2 one step and wait. We are working on a fix.\n- When the MPC plays and you change the sequence (also in Song mode), you can hear a short gap or click. This occurs more with many tracks or effects. We are working on a fix.\n\nAll features and the buttons that work differently: see the [README](https://github.com/snarebes/SampQOL-OS#readme). CHANGELOG.md has all changes from stock 1.3.0. Manual.html in the zip shows how to use each function.\n\n## Install\n\nSee the README for the newest version. Manual.html in this zip has the install steps for this version.\n\nDownload the zip only from this page or from beatops.io. Do not upload or share the zip (LICENSE.txt, section 3).\n\nSHA256: 164e3560e2bfe77b6b8ad036bad5d5d445cf5b6ba8ee96f4dbec75c0fc946f6b\n\n## License\n\nSampQOL OS (c) 2026 Snare Bes. All rights reserved. See LICENSE.txt.\nAkai Professional, MPC and MPC Sample are trademarks of inMusic Brands, Inc.\n\n\n\n\n\n\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.1.4.9",
-        "name": "SampQOL OS 0.1.4.9 (beta)",
-        "published_at": "2026-10-31T09:50:48Z",
-        "html_url": "https://github.com/snarebes/SampQOL-OS/releases/tag/v0.1.4.9",
-        "body": "SampQOL OS is a free mod for the MPC Sample firmware 1.3.0. It starts from the SD card and does not flash the MPC. With the SD card in, it starts by itself. Without the SD card, the MPC starts as stock 1.3.0.\n\nTested only with MPC Sample 1.3.0. MPC One, Live and X are not tested yet. This is beta software: back up your projects first. A failed project load can delete samples (see the manual, \"Project safety net\").\n\n## New in 0.1.4.9\n\n- SampQOL OS starts by itself at start-up, without a question. This fixes the start-up screen that stopped at 0.0% on some MPCs. Without the SD card, the MPC starts as stock 1.3.0.\n- Stock with the SD card in: rename the folder **autorun** (for example to **autorun-off**), or move it into a different folder on the card. See the manual, Troubleshooting.\n\n## Fixed in 0.1.4.9\n\n- FULL LEVEL (SHIFT + PAD 1) works in the Pad View and the Track View: each new note from a pad has full velocity.\n\nAll features and the buttons that work differently: see the [README](https://github.com/snarebes/SampQOL-OS#readme). CHANGELOG.md has all changes from stock 1.3.0. Manual.html in the zip shows how to use each function.\n\n## Install\n\nSee the [README](https://github.com/snarebes/SampQOL-OS#readme) for the newest version. Manual.html in this zip has the install steps for this version.\n\nDownload the zip only from this page or from beatops.io. Do not upload or share the zip (LICENSE.txt, section 3).\n\nSHA256: 67108644938c2daf125fde1010d8987df2ee54d4b65d12aecfc378749747d8dc\n\n## License\n\nSampQOL OS (c) 2026 Snare Bes. All rights reserved. See LICENSE.txt.\nAkai Professional, MPC and MPC Sample are trademarks of inMusic Brands, Inc.\n",
         "truncated": false
       }
     ],
