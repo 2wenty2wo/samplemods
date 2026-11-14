@@ -4,7 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 const badge = /(?:shields\.io|badgen\.net|badge\.fury\.io|codecov\.io|coveralls\.io|travis-ci\.|\/badge(?:s)?[/.]|\/workflows\/[^?]*badge)/i;
 const titleKey = (text) => text.replace(/\s+v?\d+(?:\.\d+)+(?:[-\w.]*)?\s*$/i, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 
-export function renderMarkdown(markdown, { repo, branch = 'main', readmePath = 'README.md', name = '' }) {
+export function renderMarkdown(markdown, { repo, website, branch = 'main', readmePath = 'README.md', name = '' }) {
 	const ref = encodeURIComponent(branch);
 	const linkBase = `https://github.com/${repo}/blob/${ref}/`;
 	const imageBase = `https://raw.githubusercontent.com/${repo}/${ref}/`;
@@ -13,6 +13,7 @@ export function renderMarkdown(markdown, { repo, branch = 'main', readmePath = '
 		const base = image ? imageBase : linkBase;
 		if (value.startsWith('//')) return `https:${value}`;
 		try {
+			if (!repo) return new URL(value, website).href;
 			return value.startsWith('/') ? new URL(value.slice(1), base).href : new URL(value, new URL(readmePath, base)).href;
 		} catch { return ''; }
 	}

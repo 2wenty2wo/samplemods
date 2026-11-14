@@ -25,10 +25,10 @@ if (fs.existsSync(githubPath)) {
 /** @type {Array<Record<string, unknown>>} */
 const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const gh = raw.repo ? github[raw.repo] ?? {} : {};
-	const markdownOptions = { repo: raw.repo, branch: gh.default_branch ?? 'main', readmePath: gh.readme_path ?? 'README.md', name: raw.name };
-	const readmePath = path.join(root, 'data', 'readme', `${id}.md`);
+	const markdownOptions = { repo: raw.repo, website: raw.website, branch: gh.default_branch ?? 'main', readmePath: gh.readme_path ?? 'README.md', name: raw.name };
+	const readmePath = raw.repo ? path.join(root, 'data', 'readme', `${id}.md`) : path.join(dir, 'about.md');
 	details[id] = {
-		readme_html: raw.repo && fs.existsSync(readmePath) ? renderMarkdown(fs.readFileSync(readmePath, 'utf8'), markdownOptions) : '',
+		readme_html: fs.existsSync(readmePath) ? renderMarkdown(fs.readFileSync(readmePath, 'utf8'), markdownOptions) : '',
 		releases: (gh.releases ?? []).map(({ body, ...release }) => ({
 			...release, body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
 		}))
@@ -52,7 +52,9 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		contributors: gh.contributors ?? null,
 		open_issues: gh.open_issues ?? null,
 		license: gh.license ?? null,
-		latest_release: gh.latest_release ?? null,
+		latest_release: raw.repo ? gh.latest_release ?? null : raw.version ? {
+			tag: raw.version, published_at: raw.released ?? null, html_url: raw.website
+		} : null,
 		archived: gh.archived ?? null,
 		github_description: gh.description ?? null,
 		logo: logo ? `media/${id}/${logo}` : null,

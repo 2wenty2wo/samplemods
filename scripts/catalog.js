@@ -37,7 +37,7 @@ export function readEntries(dataDir = path.join(root, 'data')) {
 			if (Object.hasOwn(record, 'id')) throw new Error(`${file}: id comes from the folder; omit it from YAML`);
 			const media = [];
 			for (const asset of fs.readdirSync(dir, { withFileTypes: true })) {
-				if (asset.name === SECTION_FILES[section] && asset.isFile()) continue;
+				if ((asset.name === SECTION_FILES[section] || asset.name === 'about.md') && asset.isFile()) continue;
 				if (asset.isFile() && /^logo\./.test(asset.name) && IMAGE_EXTS.has(path.extname(asset.name))) {
 					media.push(asset.name);
 				} else if (asset.isDirectory() && asset.name === 'screenshots') {

@@ -52,6 +52,23 @@
       "repo": "jacob-sabella/mpc-addin-sample-draw-handler"
     }
   ],
+  "ember-8": [
+    {
+      "file": "screenshots/01-hybrid-engine.png",
+      "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image-1.png",
+      "note": "From the official EMBER-8 product page (mpctoolkit.com)"
+    },
+    {
+      "file": "screenshots/02-sequencer.png",
+      "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image.png",
+      "note": "From the official EMBER-8 product page (mpctoolkit.com)"
+    },
+    {
+      "file": "screenshots/03-sample-picker.png",
+      "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image-2.png",
+      "note": "From the official EMBER-8 product page (mpctoolkit.com)"
+    }
+  ],
   "gridzilla": [
     {
       "file": "screenshots/01-splash.webp",

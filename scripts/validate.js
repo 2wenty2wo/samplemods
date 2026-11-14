@@ -28,6 +28,13 @@ for (const { id, section, file, dir, record, media } of entries) {
 		console.error(`${file}: website is required when repo is absent`);
 		failed = true;
 	}
+	if (record.released) {
+		const date = Date.parse(`${record.released}T00:00:00Z`);
+		if (!Number.isFinite(date) || new Date(date).toISOString().slice(0, 10) !== record.released) {
+			console.error(`${file}: released must be a valid calendar date (YYYY-MM-DD)`);
+			failed = true;
+		}
+	}
 	for (const requirement of record.requires ?? []) {
 		if (!ids.has(requirement) || requirement === id) {
 			console.error(`${file}: ${requirement === id ? 'cannot require itself' : `requires unknown entry id "${requirement}"`}`);

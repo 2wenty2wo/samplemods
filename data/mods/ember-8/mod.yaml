@@ -8,6 +8,8 @@ website: https://mpctoolkit.com/downloads/ember-8-hybrid-synthesizer-mod-for-aka
 install: sd-card
 firmware: "1.3.0"
 status: beta
+version: "0.15.2"
+released: "2026-11-07" # Product page's updated date; no separate release timestamp is published.
 runs_on: [device]
 audience: [musician]
 tags: [synth, fm, granular, sequencer]
