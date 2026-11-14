@@ -8,4 +8,6 @@ tags:
   - display
   - plugins
   - ui
-install: sd-card
+install: ssh
+runs_on: [device]
+audience: [musician, developer]

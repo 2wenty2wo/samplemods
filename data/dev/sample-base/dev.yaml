@@ -8,5 +8,7 @@ tags:
   - juce
   - development
   - synth
-install: none
+install: sd-card
 firmware: 1.3.0.12
+runs_on: [device]
+audience: [developer]

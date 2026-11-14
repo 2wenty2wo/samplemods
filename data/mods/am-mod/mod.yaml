@@ -11,3 +11,5 @@ tags:
 install: sd-card
 firmware: 1.3.0.12
 website: https://github.com/AlekseyMalykh/am-mod/releases/latest
+runs_on: [device]
+audience: [musician]

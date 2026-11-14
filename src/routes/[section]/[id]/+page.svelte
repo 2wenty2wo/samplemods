@@ -12,8 +12,8 @@
 	import { assetUrl } from '$lib/media.js';
 
 	let { data } = $props();
-	const mod = $derived(data.mod);
-	const byId = $derived(Object.fromEntries(data.mods.map((m) => [m.id, m])));
+	const mod = $derived(data.mod ?? {});
+	const byId = $derived(Object.fromEntries((data.mods ?? []).map((m) => [m.id, m])));
 	const logoSrc = $derived(assetUrl(mod.logo));
 	const shots = $derived((mod.screenshots ?? []).map((p) => assetUrl(p)).filter(Boolean));
 	const install = $derived(installLabel(mod.install));
@@ -71,8 +71,8 @@
 
 <svelte:head>
 	{#if data.redirectTo}
-		<title>Redirecting to {mod.name} · {SITE_NAME}</title>
-		<link rel="canonical" href="{SITE_ORIGIN}{base}{data.canonicalPath}" />
+		<title>Redirecting · {SITE_NAME}</title>
+		<link rel="canonical" href="{SITE_ORIGIN}{base}{data.redirectTo}" />
 		<meta http-equiv="refresh" content="0; url={base}{data.redirectTo}" />
 		<meta name="robots" content="noindex" />
 	{:else}
@@ -85,8 +85,8 @@
 {#if data.redirectTo}
 	<div class="wrap redirect-stub">
 		<div class="pad-card redirect-card" style="--pad-glow: {glow}">
-			<p class="silk-label">MOVED TO {sectionLabel(mod.section)}</p>
-			<h1 class="redirect-title">Redirecting to {mod.name}…</h1>
+			<p class="silk-label">ENTRY MOVED</p>
+			<h1 class="redirect-title">Redirecting {data.id}…</h1>
 			<p class="redirect-copy">
 				This entry now lives at
 				<a href="{base}{data.redirectTo}"><code>{base}{data.redirectTo}</code></a>.

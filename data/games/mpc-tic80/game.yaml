@@ -8,3 +8,5 @@ tags:
   - fantasy-console
   - games
 install: sd-card
+runs_on: [device]
+audience: [player]

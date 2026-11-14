@@ -8,5 +8,7 @@ tags:
   - emulator
   - qemu
   - firmware
-install: none
+install: desktop
 firmware: 1.3.0.12
+runs_on: [desktop, browser]
+audience: [developer, curious]

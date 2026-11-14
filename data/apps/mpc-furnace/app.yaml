@@ -6,3 +6,5 @@ tags:
   - tracker
   - chiptune
 install: sd-card
+runs_on: [device]
+audience: [musician]

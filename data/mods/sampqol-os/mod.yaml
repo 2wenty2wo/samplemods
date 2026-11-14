@@ -10,3 +10,5 @@ status: stable
 tags:
   - os
   - qol
+runs_on: [device]
+audience: [musician]

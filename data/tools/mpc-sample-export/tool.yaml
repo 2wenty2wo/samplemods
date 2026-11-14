@@ -8,4 +8,6 @@ tags:
   - export
   - stems
   - windows
-install: none
+install: desktop
+runs_on: [desktop]
+audience: [musician]

@@ -46,7 +46,10 @@ export const SECTION_TINTS = {
 /** @type {Record<string, string>} */
 export const INSTALL_LABELS = {
 	'sd-card': 'SD card',
+	'boot-thingy': 'MPC Boot Thingy',
 	'web-installer': 'Web installer',
+	ssh: 'SSH',
+	desktop: 'Desktop',
 	'usb-midi': 'USB-MIDI',
 	none: ''
 };
