@@ -33,6 +33,7 @@
 	/* Fonts */
 	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 	--font-display: 'Archivo Variable', 'Inter', system-ui, sans-serif;
+	--font-wordmark: 'Michroma', var(--font-display);
 	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 
 	--radius: 7px;
@@ -128,16 +129,17 @@ a:hover {
 }
 
 .wordmark {
-	font-family: var(--font-display);
-	font-style: italic;
-	font-weight: 850;
-	font-stretch: 125%;
-	font-variation-settings: 'wdth' 125, 'wght' 850;
-	font-size: clamp(1.05rem, 2.2vw, 1.32rem);
-	letter-spacing: 0.08em;
+	font-family: var(--font-wordmark);
+	font-style: normal;
+	font-weight: 400;
+	font-size: clamp(0.95rem, 1.85vw, 1.16rem);
+	letter-spacing: 0.05em;
+	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--mpc-wordmark-red);
+	-webkit-text-stroke: 0.45px currentColor;
 	text-shadow: 0 1px 8px rgb(230 36 60 / 0.3);
+	white-space: nowrap;
 }
 
 .site-nav {
@@ -534,17 +536,11 @@ a:hover {
 	gap: 1.5rem 2.5rem;
 }
 
-.footer-brand {
-	margin: 0 0 0.4rem;
-	font-family: var(--font-display);
-	font-style: italic;
-	font-weight: 850;
-	font-stretch: 120%;
-	font-variation-settings: 'wdth' 120, 'wght' 850;
-	font-size: 0.95rem;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: var(--mpc-silkscreen);
+.footer-wordmark {
+	margin: 0 0 0.45rem;
+	font-size: 0.92rem;
+	letter-spacing: 0.05em;
+	text-shadow: 0 1px 0 rgb(0 0 0 / 0.14);
 }
 
 .footer-heading {
@@ -611,25 +607,38 @@ a:hover {
 		flex-wrap: nowrap;
 	}
 
+	.brand-lockup {
+		gap: 0.42rem;
+	}
+
+	.status-led {
+		width: 11px;
+		height: 6px;
+	}
+
 	.wordmark {
-		font-size: 0.92rem;
-		letter-spacing: 0.05em;
-		white-space: nowrap;
+		font-size: 0.74rem;
+		letter-spacing: 0.03em;
+	}
+
+	.footer-wordmark {
+		font-size: 0.84rem;
+		letter-spacing: 0.04em;
 	}
 
 	.site-nav {
-		gap: 0.2rem;
+		gap: 0.15rem;
 		flex-wrap: nowrap;
 	}
 
 	.nav-link {
-		font-size: 0.7rem;
-		padding: 0.25rem 0.35rem;
+		font-size: 0.66rem;
+		padding: 0.22rem 0.28rem;
 	}
 
 	.nav-btn-blue {
-		font-size: 0.68rem;
-		padding: 0.28rem 0.55rem;
+		font-size: 0.65rem;
+		padding: 0.25rem 0.48rem;
 	}
 
 	.hw-btn {

@@ -5,6 +5,7 @@
 	import '@fontsource/inter/400.css';
 	import '@fontsource/inter/600.css';
 	import '@fontsource/inter/700.css';
+	import '@fontsource/michroma/latin-400.css';
 	import '@fontsource-variable/archivo/wdth.css';
 	import '@fontsource-variable/archivo/wdth-italic.css';
 	import '../app.css';
@@ -93,7 +94,7 @@
 <footer class="site-footer">
 	<div class="site-footer-inner">
 		<div class="footer-col">
-			<p class="footer-brand">{SITE_NAME}</p>
+			<p class="wordmark footer-wordmark">{SITE_NAME}</p>
 			<p class="footer-copy">
 				An independent, community-maintained index of open-source firmware mods, standalone apps,
 				games, tools, guides, and developer libraries for the Akai MPC Sample. Not affiliated with
