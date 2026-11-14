@@ -137,7 +137,8 @@ a:hover {
 	line-height: 1.1;
 	text-transform: uppercase;
 	color: var(--mpc-wordmark-red);
-	-webkit-text-stroke: 0.45px currentColor;
+	-webkit-text-stroke: 1.1px currentColor;
+	paint-order: stroke fill;
 	text-shadow: 0 1px 8px rgb(230 36 60 / 0.3);
 	white-space: nowrap;
 }
@@ -618,12 +619,14 @@ a:hover {
 
 	.wordmark {
 		font-size: 0.74rem;
-		letter-spacing: 0.03em;
+		letter-spacing: 0.04em;
+		-webkit-text-stroke: 0.75px currentColor;
 	}
 
 	.footer-wordmark {
 		font-size: 0.84rem;
 		letter-spacing: 0.04em;
+		-webkit-text-stroke: 0.95px currentColor;
 	}
 
 	.site-nav {
