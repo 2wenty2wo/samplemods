@@ -1,0 +1,13 @@
+name: MPC Sample Kit Maker
+description: >-
+  A web and desktop pad player for building drum kits: load and trigger samples in the browser,
+  then export .xpj project files to the MPC Sample.
+repo: WorldLinkStudio/mpcsample
+author: WorldLinkStudio
+tags:
+  - drum-kits
+  - xpj
+  - browser
+  - desktop
+install: none
+website: https://mpcsample.app
