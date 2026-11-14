@@ -52,6 +52,8 @@
 		if (logoSrc) return { kind: 'logo', src: logoSrc };
 		return { kind: 'splash', src: null };
 	});
+	// The hero already shows the first screenshot; don't repeat it in the gallery.
+	const galleryShots = $derived(heroMedia.kind === 'shot' ? shots.slice(1) : shots);
 
 	/** Track image URLs whose naturalWidth <= 400 so 320×240 captures render pixelated */
 	let pixelatedUrls = $state(/** @type {Record<string, boolean>} */ ({}));
@@ -435,7 +437,9 @@
 				{#if shots.length}
 					<section class="detail-section" aria-label="Screenshots">
 						<div class="section-header">
-							<h2 class="silk-heading">Screenshots ({shots.length})</h2>
+							{#if galleryShots.length}
+								<h2 class="silk-heading">Screenshots ({galleryShots.length})</h2>
+							{/if}
 							<p class="image-credit">
 								Images: from
 								<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
@@ -444,8 +448,8 @@
 							</p>
 						</div>
 
-						<ul class="shot-grid">
-							{#each shots as src, i}
+						<ul class="shot-grid" hidden={!galleryShots.length}>
+							{#each galleryShots as src, i}
 								<li>
 									<button
 										type="button"
