@@ -41,6 +41,18 @@
     },
     "archived": false
   },
+  "LA-2500/MPC-600-S": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-13T23:25:46Z",
+    "license": "MIT",
+    "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling, S-series programs, 99 sequences x 99 tracks. C, aarch64 Linux, zig cc; runs from SD card autorun.",
+    "latest_release": {
+      "tag": "v1.1",
+      "published_at": "2026-11-13T20:11:54Z"
+    },
+    "archived": false
+  },
   "ThomasTestaud/mpc-fm": {
     "stars": 2,
     "forks": 0,

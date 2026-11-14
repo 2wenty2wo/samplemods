@@ -168,6 +168,26 @@
     }
   ],
   "mp-doom": [],
+  "mpc-600-s": [
+    {
+      "file": "screenshots/01-main-sequence.png",
+      "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
+      "repo": "LA-2500/MPC-600-S",
+      "note": "Original 640x480 UI image extracted without resizing from page 9 of the official operator manual."
+    },
+    {
+      "file": "screenshots/02-title.png",
+      "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
+      "repo": "LA-2500/MPC-600-S",
+      "note": "Original 640x480 UI image extracted without resizing from page 4 of the official operator manual."
+    },
+    {
+      "file": "screenshots/03-timing-correct.png",
+      "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
+      "repo": "LA-2500/MPC-600-S",
+      "note": "Original 640x480 UI image extracted without resizing from page 15 of the official operator manual."
+    }
+  ],
   "mpc-boot-thingy": [
     {
       "file": "screenshots/01-splash-screen.png",

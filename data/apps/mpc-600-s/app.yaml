@@ -1,0 +1,13 @@
+name: MPC 600 S
+description: >-
+  An MPC 3000-style sampler and sequencer for the MPC Sample, with 96 PPQN timing, swing,
+  S-series programs and effects. Runs from SD with its own interface and leaves internal firmware unchanged.
+repo: LA-2500/MPC-600-S
+author: LA-2500
+tags:
+  - sampler
+  - sequencer
+  - mpc-3000
+  - swing
+install: sd-card
+website: https://www.youtube.com/@DoctorbNetwork
