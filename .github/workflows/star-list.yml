@@ -1,4 +1,4 @@
-name: Check star list for missing mods
+name: Draft entries from the star list
 
 on:
   schedule:
@@ -7,7 +7,8 @@ on:
 
 permissions:
   issues: write
-  contents: read
+  contents: write
+  pull-requests: write
 
 concurrency:
   group: star-list
@@ -18,13 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm test
-      - run: node scripts/check-star-list.js
+      - name: Validate draft entries and open pull requests
+        # The script runs npm test per candidate; failures still get a draft PR.
+        run: node scripts/check-star-list.js
         env:
           STAR_LIST_TOKEN: ${{ secrets.STAR_LIST_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

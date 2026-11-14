@@ -52,3 +52,11 @@ Run `npm run enrich` with `GITHUB_TOKEN` set to refresh `data/github.json` and t
 The cache records the default branch and README path, the latest three release descriptions (up to 12,000 characters each), contributors, open issues and last default-branch commit date. The GitHub open-issue counter includes pull requests. Contributors include anonymous contributors where GitHub reports them; GitHub may cache the count.
 
 Builds sanitize README/release Markdown, resolve relative links and images against the source repository, remove badges and matching duplicate titles, and keep full content in server-only detail data. Only canonical detail pages receive rich content; redirect pages return just an ID and canonical URL. The public catalog and homepage import contain summaries and quick facts only. Dependency cards receive only referenced entries' IDs, sections, names and thumbnail paths. A release's `truncated` flag links readers back to its full GitHub page; empty or absent READMEs produce empty HTML.
+
+## Entries from the star list
+
+The daily star-list workflow opens one `star-list` pull request per missing repository on `auto/add-<id>`. It guesses a section from repository metadata, then README keywords, and adds a draft YAML record for review. It skips IDs already used in any section and existing open PRs. Each candidate runs `npm test`; a failure produces a draft PR with the error log. Existing remote files are preserved on retries. The tracking issue links to the PRs and closes once every starred repository is in the catalog.
+
+Review the guessed section and description, and add a screenshot when available, before merging. Automation writes only `auto/add-*` branches and never updates `main` directly. In **Settings > Actions > General > Workflow permissions**, enable **Allow GitHub Actions to create and approve pull requests**. The workflow needs contents, pull-requests and issues write permissions; `STAR_LIST_TOKEN` remains an optional separate token for reading the list.
+
+Preview locally with `node scripts/check-star-list.js --dry-run` (uses the local `gh` login when no token is set). Dry run prints proposed YAML and PR bodies without changing files, branches, PRs or issues. Section guesses and descriptions are starting points, not verified project research.
