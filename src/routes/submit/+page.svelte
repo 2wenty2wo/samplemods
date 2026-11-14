@@ -30,9 +30,10 @@
 		<span class="step-badge">STEP 1</span>
 		<h2>Add a YAML entry in <code>data/&lt;section&gt;/&lt;id&gt;/&lt;type&gt;.yaml</code></h2>
 		<p>
-			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. Provide a
-			GitHub <code>repo</code> <em>or</em> a <code>website</code> link. Optional
-			<code>price</code> (<code>free</code> | <code>paid</code> | <code>pay-what-you-want</code>),
+			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. A public
+			GitHub <code>repo</code> is preferred — it powers stars, README, and releases on the page. A
+			<code>website</code> link is accepted for paid or closed releases that are not on GitHub.
+			Optional <code>price</code> (<code>free</code> | <code>paid</code> | <code>pay-what-you-want</code>),
 			<code>price_note</code>, and <code>source</code> (<code>open</code> | <code>closed</code>).
 			GitHub stars, latest release tags, and push dates are enriched automatically when a repo is set.
 		</p>
@@ -47,7 +48,7 @@ tags:
   - os
   - qol
 
-# Or, for a non-GitHub / paid release:
+# Paid / closed (no GitHub): omit repo, set website instead
 # website: https://example.com/project
 # author_url: https://example.com
 # price: pay-what-you-want

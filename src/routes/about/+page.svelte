@@ -40,10 +40,10 @@
 		<h2>Catalog Data &amp; Public JSON API</h2>
 		<p>
 			The catalog currently indexes <strong>{mods.length} entries</strong> maintained in YAML files
-			under <code>data/&lt;section&gt;/&lt;id&gt;/</code>. Most are open source on GitHub; some are
-			independent or paid releases linked to the maker’s site. GitHub-backed entries are enriched
-			with repository metadata (stars, licenses, latest releases, and push timestamps), refreshed
-			every 6 hours.
+			under <code>data/&lt;section&gt;/&lt;id&gt;/</code>. Most are open source on GitHub (preferred —
+			stars, README, and releases power the detail page); a few paid or closed releases are linked
+			to the maker’s site instead. GitHub-backed entries are enriched with repository metadata
+			(stars, licenses, latest releases, and push timestamps), refreshed every 6 hours.
 		</p>
 		<p>
 			Need machine-readable data for an installer or companion tool? Fetch the static JSON feed at

@@ -96,7 +96,7 @@
 		<div class="footer-col">
 			<p class="wordmark footer-wordmark">{SITE_NAME}</p>
 			<p class="footer-copy">
-				An independent, community-maintained index of independent mods, apps, games, tools and
+				An independent, community-maintained index of mods, apps, games, tools and
 				guides for the Akai MPC Sample. Not affiliated with or endorsed by Akai Professional /
 				inMusic Brands.
 			</p>
