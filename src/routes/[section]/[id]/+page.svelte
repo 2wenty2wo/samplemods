@@ -39,6 +39,7 @@
 	const latestRelease = $derived(releases[0] ?? mod.latest_release ?? null);
 	const latestReleaseUrl = $derived(
 		releases[0]?.html_url ??
+			mod.latest_release?.html_url ??
 			(mod.repo && mod.latest_release?.tag
 				? `https://github.com/${mod.repo}/releases/tag/${mod.latest_release.tag}`
 				: null)
@@ -79,6 +80,16 @@
 	/** @param {string | number | null | undefined} value */
 	function formatUpdated(value) {
 		if (!value) return null;
+		const raw = String(value);
+		// Date-only YYYY-MM-DD: keep the calendar day (avoid UTC midnight shift).
+		if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+			const [y, m, d] = raw.split('-').map(Number);
+			return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric'
+			});
+		}
 		const d = new Date(value);
 		if (Number.isNaN(d.getTime())) return null;
 		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -267,7 +278,7 @@
 								</a>
 							{/if}
 
-							{#if latestReleaseUrl}
+							{#if mod.repo && latestReleaseUrl}
 								<a
 									class="hw-action-btn orange"
 									href={latestReleaseUrl}
