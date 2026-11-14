@@ -20,7 +20,7 @@
 			<h1 class="page-title">{SITE_NAME}</h1>
 			<p class="page-lead">
 				A fast, static, community-curated directory of custom firmware mods, synths, games,
-				developer tools, and guides for the portable standalone sampler ecosystem.
+				developer tools, and guides for the Akai MPC Sample standalone sampler.
 			</p>
 		</div>
 	</div>

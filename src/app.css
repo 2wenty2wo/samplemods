@@ -206,8 +206,7 @@ a:hover {
 	place-items: center;
 	box-shadow:
 		inset 0 2px 8px rgb(0 0 0 / 0.88),
-		inset 0 0 0 1px #242834,
-		0 1px 0 rgb(255 255 255 / 0.45);
+		inset 0 0 0 1px #242834;
 }
 
 .screen-img {

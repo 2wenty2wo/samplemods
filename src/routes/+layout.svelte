@@ -12,10 +12,9 @@
 </script>
 
 <svelte:head>
-	<title>{SITE_NAME}</title>
 	<meta
 		name="description"
-		content="Community catalog of Akai MPC Sample mods, add-ons, apps, games, tools, and guides."
+		content="{SITE_NAME}: community catalog of custom firmware mods, add-ons, apps, games, tools, and guides for the Akai MPC Sample."
 	/>
 </svelte:head>
 

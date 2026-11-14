@@ -83,7 +83,11 @@
 </script>
 
 <svelte:head>
-	<title>{SITE_NAME}</title>
+	<title>{SITE_NAME}: mods for the Akai MPC Sample</title>
+	<meta
+		name="description"
+		content="{SITE_NAME}: community catalog of custom firmware mods, add-ons, apps, games, tools, and guides for the Akai MPC Sample."
+	/>
 </svelte:head>
 
 <section class="hero-band" aria-label="Search and catalog overview">
@@ -91,9 +95,9 @@
 		<div class="hero-screen">
 			<div class="hero-top-row">
 				<div class="hero-title-group">
-					<p class="hero-kicker">STANDALONE COMMUNITY INDEX</p>
+					<p class="hero-kicker">MODS FOR THE AKAI MPC SAMPLE</p>
 					<h1 class="hero-headline">
-						Custom firmware, synths, games &amp; tools for your portable sampler.
+						Custom firmware, synths, games &amp; tools for the Akai MPC Sample.
 					</h1>
 				</div>
 
