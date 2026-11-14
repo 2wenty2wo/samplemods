@@ -376,5 +376,13 @@
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-shutdown.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
     }
+  ],
+  "mpcsample": [
+    {
+      "file": "screenshots/01-demo.jpg",
+      "source": "https://raw.githubusercontent.com/WorldLinkStudio/mpcsample/main/demo.jpg",
+      "repo": "WorldLinkStudio/mpcsample",
+      "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
+    }
   ]
 }
