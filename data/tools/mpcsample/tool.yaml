@@ -1,0 +1,7 @@
+name: Mpcsample
+description: >-
+  MPC Sample Kit Maker — web and desktop Akai MPC sample pad player. Load kits, trigger samples in
+  the browser or on desktop, and export .xpj project files back to your MPC Sample hardware.
+repo: WorldLinkStudio/mpcsample
+author: WorldLinkStudio
+website: https://mpcsample.app
