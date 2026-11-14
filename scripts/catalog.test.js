@@ -46,6 +46,17 @@ try {
 	fs.copyFileSync(path.join(root, 'schema/mod.yaml'), path.join(fixture, 'schema/mod.yaml'));
 	const validate = () => spawnSync(process.execPath, [path.join(fixture, 'scripts/validate.js')], { encoding: 'utf8' });
 	assert.equal(validate().status, 0, 'requires must resolve across sections');
+	const externalRecord = 'name: External\ndescription: Independent project\nauthor: Maker\nwebsite: https://example.com/project\n';
+	write('mods/external/mod.yaml', externalRecord.replace('website: https://example.com/project\n', ''));
+	assert.match(validate().stderr, /website is required when repo is absent/);
+	write('mods/external/mod.yaml', externalRecord);
+	assert.equal(validate().status, 0, 'repo-less entry with a website must validate');
+	assert.ok(readEntries(dataDir).some((entry) => entry.id === 'external' && !entry.record.repo));
+	write('mods/external/mod.yaml', externalRecord + 'price: subscription\n');
+	assert.match(validate().stderr, /schema validation failed/);
+	write('mods/external/mod.yaml', externalRecord + 'source: proprietary\n');
+	assert.match(validate().stderr, /schema validation failed/);
+	write('mods/external/mod.yaml', externalRecord);
 	write('apps/player/app.yaml', playerRecord.replace('[host]', '[missing]'));
 	assert.match(validate().stderr, /requires unknown entry/);
 	write('apps/player/app.yaml', playerRecord.replace('[host]', '[player]'));
@@ -64,7 +75,9 @@ try {
 	assert.match(validate().stderr, /orphan media/);
 	fs.unlinkSync(path.join(dataDir, 'media-sources.json'));
 	write('readme/player.md', '# Player\n\n[Guide](guide.md)\n\n<script>unsafe()</script>');
-	write('github.json', JSON.stringify({ 'owner/player': { default_branch: 'develop', readme_path: 'docs/README.md',
+	write('readme/external.md', '# Stale GitHub README must not appear');
+	write('apps/player/app.yaml', playerRecord + 'price: paid\nsource: closed\nauthor_url: https://example.com/author\n');
+	write('github.json', JSON.stringify({ undefined: { stars: 999, contributors: 999, releases: [{ body: 'Stale release' }] }, 'owner/player': { default_branch: 'develop', readme_path: 'docs/README.md',
 		contributors: 4, open_issues: 2, last_commit_at: '2026-01-01', releases: [{ tag: 'v1', body: '**New**<iframe>unsafe</iframe>', html_url: 'https://github.com/owner/player/releases/tag/v1' }] } }));
 	let result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
 	assert.equal(result.status, 0, result.stderr);
@@ -76,7 +89,16 @@ try {
 	assert.equal(player.contributors, 4);
 	assert.equal(player.open_issues, 2);
 	assert.equal(player.last_commit_at, '2026-01-01');
+	assert.equal(player.price, 'paid');
+	assert.equal(player.source, 'closed', 'explicit source overrides the repository default');
+	assert.equal(output.find((entry) => entry.id === 'host').source, 'open');
+	const external = output.find((entry) => entry.id === 'external');
+	assert.equal(external.price, 'free');
+	assert.equal(external.source, 'closed');
+	assert.equal(external.stars, null);
+	assert.equal(external.contributors, null);
 	const details = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json')));
+	assert.deepEqual(details.external, { readme_html: '', releases: [] });
 	assert.match(details.player.readme_html, /blob\/develop\/docs\/guide.md/);
 	assert.doesNotMatch(details.player.readme_html, /<script|<h1/);
 	assert.match(details.player.releases[0].body_html, /<strong>New<\/strong>/);
@@ -92,6 +114,12 @@ try {
 		.replace("'$lib/categories.js'", "'../src/lib/categories.js'");
 	fs.writeFileSync(path.join(fixture, 'scripts/detail-route.js'), route);
 	const { load } = await import(pathToFileURL(path.join(fixture, 'scripts/detail-route.js')).href);
+	const externalPage = load({ params: { section: 'mod', id: 'external' } });
+	assert.equal(externalPage.mod.source, 'closed');
+	assert.equal(externalPage.mod.stars, null);
+	assert.equal(externalPage.mod.contributors, null);
+	assert.equal(externalPage.mod.readme_html, '');
+	assert.deepEqual(externalPage.mod.releases, []);
 	const page = load({ params: { section: 'app', id: 'player' } });
 	assert.equal(page.mod.readme_html, details.player.readme_html);
 	assert.deepEqual(page.mods.map((entry) => entry.id), ['host']);

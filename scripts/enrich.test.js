@@ -11,6 +11,7 @@ const readme = path.join(fixture, 'data', 'readme', 'a.md');
 const mock = `
 import assert from 'node:assert/strict';
 globalThis.fetch = async (url, { headers }) => {
+  assert.ok(['a', 'z'].includes(new URL(url).pathname.split('/')[3]), 'only GitHub-backed entries may trigger API requests');
   assert.equal(headers.Authorization, process.env.GITHUB_TOKEN ? 'Bearer test-token' : undefined);
   const reply = (data, status = 200, extra = {}) => ({ ok: status < 400, status, headers: new Headers(extra), json: async () => data });
   if (process.env.FAIL_API && url.includes('/z/readme')) return reply({}, 503);
@@ -36,14 +37,17 @@ try {
 	fs.mkdirSync(path.join(fixture, 'scripts'));
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'a'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'apps', 'z'), { recursive: true });
+	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'external'), { recursive: true });
 	for (const file of ['enrich.js', 'catalog.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	fs.writeFileSync(path.join(fixture, 'data', 'apps', 'z', 'app.yaml'), 'repo: owner/z\n');
 	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'a', 'mod.yaml'), 'repo: owner/a\n');
+	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'external', 'mod.yaml'), 'name: External\nwebsite: https://example.com\n');
 	const first = run();
 	assert.equal(first.status, 0, first.stderr);
 	const original = fs.readFileSync(output, 'utf8');
 	const data = JSON.parse(original);
 	assert.deepEqual(Object.keys(data), ['owner/a', 'owner/z']);
+	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/external.md')));
 	assert.equal(data['owner/a'].contributors, 7);
 	assert.equal(data['owner/a'].open_issues, 3);
 	assert.equal(data['owner/a'].last_commit_at, '2026-01-02T00:00:00Z');

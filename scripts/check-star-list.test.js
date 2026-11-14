@@ -18,6 +18,8 @@ const catalog = [{ repo: 'owner/present' }, { repo: 'Owner/Removed' }];
 const result = compareRepositories(starred, catalog);
 assert.deepEqual(result.missing, [starred[1]]);
 assert.deepEqual(result.extra, [catalog[1]]);
+assert.deepEqual(compareRepositories(starred, [...catalog, { name: 'External', website: 'https://example.com' }]), result);
+assert.deepEqual(compareRepositories([], [{ website: 'https://example.com' }]), { missing: [], extra: [] });
 assert.deepEqual(compareRepositories([], []), { missing: [], extra: [] });
 assert.deepEqual(compareRepositories([{ nameWithOwner: '2wenty2wo/SampleMods' }], []), { missing: [], extra: [] });
 assert.deepEqual(compareRepositories([{ nameWithOwner: 'Owner/Catalog' }], [], 'owner/catalog'), { missing: [], extra: [] });

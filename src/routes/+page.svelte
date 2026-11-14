@@ -12,7 +12,9 @@
 		sectionExplainer,
 		sectionFromParam,
 		entryPath,
-		installLabel
+		installLabel,
+		priceBadge,
+		sourceBadge
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
 
@@ -280,6 +282,12 @@
 							<span class="chip chip-category">{sectionSingularLabel(mod.section)}</span>
 							{#if install}
 								<span class="chip chip-install">{install}</span>
+							{/if}
+							{#if priceBadge(mod.price)}
+								<span class="chip chip-price">{priceBadge(mod.price)}</span>
+							{/if}
+							{#if sourceBadge(mod.source)}
+								<span class="chip chip-source">{sourceBadge(mod.source)}</span>
 							{/if}
 							{#if mod.status}
 								<span class="badge-status {mod.status}">{mod.status}</span>

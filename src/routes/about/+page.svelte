@@ -8,7 +8,7 @@
 	<title>About · {SITE_NAME}</title>
 	<meta
 		name="description"
-		content="About {SITE_NAME}: an unofficial community index of open-source mods, apps, games, and tools."
+		content="About {SITE_NAME}: an unofficial community index of mods, apps, games, and tools — mostly open source on GitHub, with some independent or paid releases."
 	/>
 </svelte:head>
 
@@ -37,11 +37,13 @@
 	</article>
 
 	<article class="info-card">
-		<h2>GitHub-Backed Data &amp; Public JSON API</h2>
+		<h2>Catalog Data &amp; Public JSON API</h2>
 		<p>
 			The catalog currently indexes <strong>{mods.length} entries</strong> maintained in YAML files
-			under <code>data/&lt;section&gt;/&lt;id&gt;/</code> and automatically enriched with GitHub repository metadata
-			(stars, licenses, latest releases, and push timestamps).
+			under <code>data/&lt;section&gt;/&lt;id&gt;/</code>. Most are open source on GitHub (preferred —
+			stars, README, and releases power the detail page); a few paid or closed releases are linked
+			to the maker’s site instead. GitHub-backed entries are enriched with repository metadata
+			(stars, licenses, latest releases, and push timestamps), refreshed every 6 hours.
 		</p>
 		<p>
 			Need machine-readable data for an installer or companion tool? Fetch the static JSON feed at

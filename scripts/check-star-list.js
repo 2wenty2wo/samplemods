@@ -186,8 +186,8 @@ export async function syncPullRequest(token, repository, draft, listUrl, { gh = 
 }
 
 export function compareRepositories(starred, catalog, catalogRepo = '2wenty2wo/samplemods') {
-	const list = new Map(starred.map((repo) => [repo.nameWithOwner.toLowerCase(), repo]));
-	const entries = new Map(catalog.map((mod) => [mod.repo.toLowerCase(), mod]));
+	const list = new Map(starred.filter((repo) => repo.nameWithOwner).map((repo) => [repo.nameWithOwner.toLowerCase(), repo]));
+	const entries = new Map(catalog.filter((mod) => mod.repo).map((mod) => [mod.repo.toLowerCase(), mod]));
 	list.delete(catalogRepo.toLowerCase());
 	entries.delete(catalogRepo.toLowerCase());
 	return {

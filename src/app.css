@@ -480,6 +480,14 @@ a:hover {
 	--chip-strip: var(--mpc-btn-blue-light);
 }
 
+.chip-price {
+	--chip-strip: var(--mpc-btn-orange);
+}
+
+.chip-source {
+	--chip-strip: #7a7d87;
+}
+
 .badge-status.stable {
 	--chip-strip: var(--mpc-btn-green);
 }

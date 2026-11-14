@@ -24,6 +24,10 @@ for (const { id, section, file, dir, record, media } of entries) {
 		failed = true;
 		continue;
 	}
+	if (!record.repo && !record.website) {
+		console.error(`${file}: website is required when repo is absent`);
+		failed = true;
+	}
 	for (const requirement of record.requires ?? []) {
 		if (!ids.has(requirement) || requirement === id) {
 			console.error(`${file}: ${requirement === id ? 'cannot require itself' : `requires unknown entry id "${requirement}"`}`);
