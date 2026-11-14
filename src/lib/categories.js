@@ -160,15 +160,13 @@ export function hostnameOf(url) {
 }
 
 /**
- * Badge label for non-default price only (free → null).
+ * Card/hero chip for any non-free price (paid or pay-what-you-want).
  * @param {string | null | undefined} price
  * @returns {string | null}
  */
 export function priceBadge(price) {
 	if (!price || price === 'free') return null;
-	if (price === 'paid') return 'Paid';
-	if (price === 'pay-what-you-want') return 'Pay what you want';
-	return price;
+	return '$ Paid';
 }
 
 /**
@@ -186,17 +184,6 @@ export function priceFact(price, note) {
 					? 'Pay what you want'
 					: price;
 	return note ? `${base} · ${note}` : base;
-}
-
-/**
- * Badge label for closed source only (open → null).
- * @param {string | null | undefined} source
- * @returns {string | null}
- */
-export function sourceBadge(source) {
-	if (!source || source === 'open') return null;
-	if (source === 'closed') return 'Closed source';
-	return source;
 }
 
 /**

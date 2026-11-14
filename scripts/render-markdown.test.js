@@ -24,4 +24,8 @@ assert.match(html, /href="https:\/\/example.com\/" target="_blank" rel="noopener
 assert.match(html, /<details><summary>More<\/summary><b>Details<\/b><\/details>/);
 assert.equal(renderMarkdown('', options), '');
 assert.match(renderMarkdown('# Different title', options), /<h1>Different title<\/h1>/);
+const local = renderMarkdown('[Guide](guide.pdf) ![Screen](/images/screen.png)<script>unsafe()</script><img src="javascript:unsafe()" onerror="unsafe()">', { website: 'https://maker.example/products/synth/' });
+assert.match(local, /href="https:\/\/maker.example\/products\/synth\/guide.pdf" target="_blank" rel="noopener nofollow"/);
+assert.match(local, /src="https:\/\/maker.example\/images\/screen.png"/);
+assert.doesNotMatch(local, /script|javascript:|onerror|github.com/);
 console.log('Markdown checks passed: safe HTML, relative URLs, external links, badges and duplicate titles.');

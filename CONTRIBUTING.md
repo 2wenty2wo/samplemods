@@ -28,6 +28,10 @@
 
    For paid or closed releases that are not on GitHub, omit `repo` and set `website` instead (required without a repo). Set `author_url` for a maker's website or profile. GitHub enrichment and star-list matching skip entries without `repo`.
 
+   Repo-less entries may include a hand-written `about.md` beside their YAML. It fills the detail page's About section through the same Markdown sanitizer as GitHub READMEs; relative links and images resolve against `website`. GitHub entries always use their cached README and ignore local `about.md` files.
+
+   For repo-less entries, optional `version: "1.2.3"` and `released: "2026-11-07"` provide a hand-maintained latest release linked to `website`. Quote the date and use a real YYYY-MM-DD calendar date. Record a source note when using a product-page update date. GitHub release metadata remains authoritative for entries with `repo`.
+
    Use `price: free`, `paid`, or `pay-what-you-want`; omitted prices default to `free`. Optional `price_note` adds a short clarification such as `Suggested €9.99` (up to 160 characters). Use `source: open` or `closed`; the default is `open` with a repository and `closed` without one. Set it explicitly when the repository hosts only downloads or documentation for closed-source software. These labels describe access to the project; its licence may have additional conditions.
 
    Add documented quick facts: `runs_on: [device]` (`device`, `desktop`, `browser`, `docs`) and `audience: [musician]` (`musician`, `player`, `developer`, `curious`). Installation choices are `sd-card`, `boot-thingy`, `web-installer`, `ssh`, `desktop`, `usb-midi`, and `none`. Describe the primary installation route; a browser installer does not mean the installed project runs in a browser. Leave uncertain facts out.

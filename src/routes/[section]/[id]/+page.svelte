@@ -14,7 +14,6 @@
 		hostnameOf,
 		priceBadge,
 		priceFact,
-		sourceBadge,
 		sourceFact
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
@@ -27,7 +26,6 @@
 	const install = $derived(installLabel(mod.install));
 	const glow = $derived(sectionGlow(mod.section));
 	const priceChip = $derived(priceBadge(mod.price));
-	const sourceChip = $derived(sourceBadge(mod.source));
 	const siteHost = $derived(hostnameOf(mod.website));
 	const imageCreditHost = $derived(siteHost ?? hostnameOf(mod.author_url));
 
@@ -41,6 +39,7 @@
 	const latestRelease = $derived(releases[0] ?? mod.latest_release ?? null);
 	const latestReleaseUrl = $derived(
 		releases[0]?.html_url ??
+			mod.latest_release?.html_url ??
 			(mod.repo && mod.latest_release?.tag
 				? `https://github.com/${mod.repo}/releases/tag/${mod.latest_release.tag}`
 				: null)
@@ -81,6 +80,16 @@
 	/** @param {string | number | null | undefined} value */
 	function formatUpdated(value) {
 		if (!value) return null;
+		const raw = String(value);
+		// Date-only YYYY-MM-DD: keep the calendar day (avoid UTC midnight shift).
+		if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+			const [y, m, d] = raw.split('-').map(Number);
+			return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric'
+			});
+		}
 		const d = new Date(value);
 		if (Number.isNaN(d.getTime())) return null;
 		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -206,9 +215,6 @@
 							{#if priceChip}
 								<span class="chip chip-price">{priceChip}</span>
 							{/if}
-							{#if sourceChip}
-								<span class="chip chip-source">{sourceChip}</span>
-							{/if}
 							{#if mod.status}
 								<span class="badge-status {mod.status}">{mod.status}</span>
 							{/if}
@@ -272,7 +278,7 @@
 								</a>
 							{/if}
 
-							{#if latestReleaseUrl}
+							{#if mod.repo && latestReleaseUrl}
 								<a
 									class="hw-action-btn orange"
 									href={latestReleaseUrl}
@@ -567,6 +573,12 @@
 										rel="noopener noreferrer"
 									>
 										From the project README on GitHub ↗
+									</a>
+								</div>
+							{:else if mod.website}
+								<div class="readme-footer">
+									<a href={mod.website} target="_blank" rel="noopener noreferrer">
+										From the maker's page ↗
 									</a>
 								</div>
 							{/if}
