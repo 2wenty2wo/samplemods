@@ -15,6 +15,8 @@ const result = compareRepositories(starred, catalog);
 assert.deepEqual(result.missing, [starred[1]]);
 assert.deepEqual(result.extra, [catalog[1]]);
 assert.deepEqual(compareRepositories([], []), { missing: [], extra: [] });
+assert.deepEqual(compareRepositories([{ nameWithOwner: '2wenty2wo/SampleMods' }], []), { missing: [], extra: [] });
+assert.deepEqual(compareRepositories([{ nameWithOwner: 'Owner/Catalog' }], [], 'owner/catalog'), { missing: [], extra: [] });
 assert.deepEqual(compareRepositories([starred[0], starred[0]], [catalog[0]]), { missing: [], extra: [] });
 const body = formatIssueBody(result, 'https://github.com/stars/owner/lists/mods');
 assert.match(body, /- \[ \] \[Owner\/New\]\(https:\/\/github.com\/Owner\/New\): New \\\*\\\*tool\\\*\\\* · ★12/);

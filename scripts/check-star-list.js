@@ -7,9 +7,11 @@ const TITLE = 'Star list: repos missing from the catalog';
 const LABEL = 'star-list';
 const TOKEN_HELP = 'Add a STAR_LIST_TOKEN repository secret containing a classic or fine-grained PAT with public read access to the user star list.';
 
-export function compareRepositories(starred, catalog) {
+export function compareRepositories(starred, catalog, catalogRepo = '2wenty2wo/samplemods') {
 	const list = new Map(starred.map((repo) => [repo.nameWithOwner.toLowerCase(), repo]));
 	const entries = new Map(catalog.map((mod) => [mod.repo.toLowerCase(), mod]));
+	list.delete(catalogRepo.toLowerCase());
+	entries.delete(catalogRepo.toLowerCase());
 	return {
 		missing: [...list].filter(([key]) => !entries.has(key)).sort(([a], [b]) => a.localeCompare(b)).map(([, repo]) => repo),
 		extra: [...entries].filter(([key]) => !list.has(key)).sort(([a], [b]) => a.localeCompare(b)).map(([, mod]) => mod)
@@ -137,7 +139,7 @@ async function main() {
 		throw new Error('Issue updates require GITHUB_TOKEN and GITHUB_REPOSITORY; use --dry-run for local previews.');
 	}
 	const catalog = readEntries().map(({ record }) => record);
-	const result = compareRepositories(await readStarList(token, user, slug), catalog);
+	const result = compareRepositories(await readStarList(token, user, slug), catalog, process.env.GITHUB_REPOSITORY || '2wenty2wo/samplemods');
 	console.log(`missing: ${result.missing.length}\nextra: ${result.extra.length}`);
 	for (const mod of result.extra) console.log(`Extra (info only): ${mod.repo}`);
 	const body = formatIssueBody(result, `https://github.com/stars/${encodeURIComponent(user)}/lists/${encodeURIComponent(slug)}`);
