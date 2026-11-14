@@ -24,9 +24,9 @@
    install: sd-card
    ```
 
-   Optional fields include `requires` (entry IDs from any section), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `concept`). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically.
+   A public GitHub `repo` is preferred — it powers stars, README, and releases on the detail page. Optional fields include `requires` (entry IDs from any section), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `concept`). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically when `repo` is set.
 
-   Independent projects may be paid or closed source and do not need a GitHub repository. Omit `repo` when there is no GitHub repository; `website` is then required. Set `author_url` for a maker's website or profile. GitHub enrichment and star-list matching skip entries without `repo`.
+   For paid or closed releases that are not on GitHub, omit `repo` and set `website` instead (required without a repo). Set `author_url` for a maker's website or profile. GitHub enrichment and star-list matching skip entries without `repo`.
 
    Use `price: free`, `paid`, or `pay-what-you-want`; omitted prices default to `free`. Optional `price_note` adds a short clarification such as `Suggested €9.99` (up to 160 characters). Use `source: open` or `closed`; the default is `open` with a repository and `closed` without one. Set it explicitly when the repository hosts only downloads or documentation for closed-source software. These labels describe access to the project; its licence may have additional conditions.
 
