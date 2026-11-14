@@ -167,7 +167,14 @@
       "repo": "keremimo/melodee-sample"
     }
   ],
-  "mp-doom": [],
+  "mp-doom": [
+    {
+      "file": "screenshots/01-opening-credit.png",
+      "source": "https://philwoolley.com/mpdoom/opening-credit.png",
+      "repo": "fomoPhil/mp-doom",
+      "note": "Opening credit screen from the author's MP DOOM page (640x480, unchanged)"
+    }
+  ],
   "mpc-600-s": [
     {
       "file": "screenshots/01-main-sequence.png",
