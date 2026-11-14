@@ -1,0 +1,12 @@
+name: MP DOOM
+description: >-
+  A classic DOOM port for the MPC Sample that starts from an SD card, runs in memory and returns to
+  the stock sampler when you quit.
+repo: fomoPhil/mp-doom
+author: fomoPhil
+tags:
+  - doom
+  - fps
+install: sd-card
+firmware: 1.3.0.12
+website: https://philwoolley.com/mpdoom/

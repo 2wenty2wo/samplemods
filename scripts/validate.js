@@ -3,124 +3,51 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import Ajv2020 from 'ajv/dist/2020.js';
+import { readEntries } from './catalog.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, '..');
-const modsDir = path.join(root, 'data', 'mods');
-const staticModsDir = path.join(root, 'static', 'mods');
-const schemaPath = path.join(root, 'schema', 'mod.yaml');
-
-const KEBAB = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const IMAGE_EXTS = new Set(['.svg', '.png', '.webp', '.jpg', '.jpeg', '.gif']);
-const MAX_IMAGE_BYTES = 500 * 1024;
-
-const schema = yaml.load(fs.readFileSync(schemaPath, 'utf8'));
-const ajv = new Ajv2020({ allErrors: true, strict: false });
-const validate = ajv.compile(schema);
-
-if (!fs.existsSync(modsDir)) {
-	console.error(`Missing mods directory: ${modsDir}`);
-	process.exit(1);
-}
-
-const files = fs.readdirSync(modsDir).filter((f) => f.endsWith('.yaml'));
-if (files.length === 0) {
-	console.error('No mod YAML files found in data/mods/');
-	process.exit(1);
-}
-
-const ids = new Set();
-const records = [];
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const schema = yaml.load(fs.readFileSync(path.join(root, 'schema', 'mod.yaml'), 'utf8'));
+const validate = new Ajv2020({ allErrors: true, strict: false }).compile(schema);
+let entries;
+try { entries = readEntries(); }
+catch (error) { console.error(error.message); process.exit(1); }
+const ids = new Set(entries.map((entry) => entry.id));
 let failed = false;
-
-for (const file of files) {
-	const id = path.basename(file, '.yaml');
-	const full = path.join(modsDir, file);
-
-	if (!KEBAB.test(id)) {
-		console.error(`${file}: id "${id}" must be kebab-case (a-z0-9 with hyphens)`);
-		failed = true;
-		continue;
-	}
-
-	if (ids.has(id)) {
-		console.error(`${file}: duplicate id "${id}"`);
-		failed = true;
-		continue;
-	}
-	ids.add(id);
-
-	let data;
-	try {
-		data = yaml.load(fs.readFileSync(full, 'utf8'));
-	} catch (err) {
-		console.error(`${file}: YAML parse error: ${err.message}`);
-		failed = true;
-		continue;
-	}
-
-	if (!validate(data)) {
+if (fs.existsSync(path.join(root, 'static', 'mods'))) {
+	console.error('Legacy static/mods media must live beside the entry YAML in data/<section>/<id>/.');
+	failed = true;
+}
+for (const { id, section, file, dir, record, media } of entries) {
+	if (!validate({ ...record, section })) {
 		console.error(`${file}: schema validation failed`);
-		for (const err of validate.errors ?? []) {
-			console.error(`  ${err.instancePath || '/'} ${err.message}`);
-		}
+		for (const error of validate.errors ?? []) console.error(`  ${error.instancePath || '/'} ${error.message}`);
 		failed = true;
 		continue;
 	}
-
-	records.push({ id, file, data });
-}
-
-for (const { id, file, data } of records) {
-	for (const req of data.requires ?? []) {
-		if (!ids.has(req)) {
-			console.error(`${file}: requires unknown mod id "${req}"`);
-			failed = true;
-		}
-		if (req === id) {
-			console.error(`${file}: cannot require itself`);
+	for (const requirement of record.requires ?? []) {
+		if (!ids.has(requirement) || requirement === id) {
+			console.error(`${file}: ${requirement === id ? 'cannot require itself' : `requires unknown entry id "${requirement}"`}`);
 			failed = true;
 		}
 	}
-}
-
-if (fs.existsSync(staticModsDir)) {
-	for (const entry of fs.readdirSync(staticModsDir, { withFileTypes: true })) {
-		if (!entry.isDirectory()) continue;
-		const id = entry.name;
-		if (!ids.has(id)) {
-			console.error(
-				`static/mods/${id}/: no matching data/mods/${id}.yaml (typo or orphaned media folder)`
-			);
-			failed = true;
-		}
+	for (const asset of media) {
+		const bytes = fs.statSync(path.join(dir, asset)).size;
+		if (bytes > 500 * 1024) console.warn(`warn: ${id}/${asset} is ${(bytes / 1024).toFixed(1)} KB (guideline: <= 500 KB)`);
 	}
-
-	/** @param {string} dir */
-	function walkImages(dir) {
-		for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-			const full = path.join(dir, entry.name);
-			if (entry.isDirectory()) {
-				walkImages(full);
-				continue;
-			}
-			const ext = path.extname(entry.name).toLowerCase();
-			if (!IMAGE_EXTS.has(ext)) continue;
-			const size = fs.statSync(full).size;
-			if (size > MAX_IMAGE_BYTES) {
-				const rel = path.relative(root, full).replaceAll('\\', '/');
-				const kb = (size / 1024).toFixed(1);
-				console.warn(`warn: ${rel} is ${kb} KB (guideline: ≤ 500 KB)`);
+}
+const sourcesPath = path.join(root, 'data', 'media-sources.json');
+if (fs.existsSync(sourcesPath)) {
+	const byId = new Map(entries.map((entry) => [entry.id, entry]));
+	for (const [id, sources] of Object.entries(JSON.parse(fs.readFileSync(sourcesPath, 'utf8')))) {
+		const entry = byId.get(id);
+		if (!entry) { console.error(`media-sources.json: unknown entry "${id}"`); failed = true; continue; }
+		for (const source of sources) {
+			if (!entry.media.includes(source.file)) {
+				console.error(`media-sources.json: orphan media ${id}/${source.file}`);
+				failed = true;
 			}
 		}
 	}
-
-	walkImages(staticModsDir);
 }
-
-if (failed) {
-	console.error(`Validation failed (${files.length} file(s) checked).`);
-	process.exit(1);
-}
-
-console.log(`Validated ${records.length} mod(s).`);
+if (failed) { console.error(`Validation failed (${entries.length} entries checked).`); process.exit(1); }
+console.log(`Validated ${entries.length} catalog entries.`);

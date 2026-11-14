@@ -10,3 +10,6 @@ static/catalog.json
 
 # copyrighted product photos, design reference only
 docs/reference/
+
+# Media is generated from data/<section>/<id>/ at build time.
+/static/media/

@@ -1,7 +1,7 @@
 <script>
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
-	import { categoryGlow, categoryLabel, installLabel } from '$lib/categories.js';
+	import { sectionGlow, sectionLabel, installLabel } from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
 
 	let { data } = $props();
@@ -10,7 +10,7 @@
 	const logoSrc = $derived(assetUrl(mod.logo));
 	const shots = $derived((mod.screenshots ?? []).map((p) => assetUrl(p)).filter(Boolean));
 	const install = $derived(installLabel(mod.install));
-	const glow = $derived(categoryGlow(mod.category));
+	const glow = $derived(sectionGlow(mod.section));
 
 	const heroMedia = $derived.by(() => {
 		if (shots.length) return { kind: 'shot', src: shots[0] };
@@ -90,7 +90,7 @@
 						{:else}
 							<div class="splash-fallback" aria-hidden="true">
 								<div class="splash-topbar">
-									<span class="splash-cat">{categoryLabel(mod.category)}</span>
+									<span class="splash-cat">{sectionLabel(mod.section)}</span>
 									{#if mod.firmware}
 										<span class="splash-fw">FW {mod.firmware}</span>
 									{/if}
@@ -108,7 +108,7 @@
 				<!-- Mod Info & Hardware Action Buttons -->
 				<div class="hero-info-col">
 					<div class="hero-badges">
-						<span class="chip chip-category">{categoryLabel(mod.category)}</span>
+						<span class="chip chip-category">{sectionLabel(mod.section)}</span>
 						{#if install}
 							<span class="chip chip-install">{install}</span>
 						{/if}
@@ -276,10 +276,10 @@
 										<a
 											class="pad-card mini-pad-card"
 											href="{base}/mod/{id}/"
-											style="--pad-glow: {categoryGlow(rel.category)}"
+											style="--pad-glow: {sectionGlow(rel.section)}"
 										>
 											<div class="mini-card-top">
-												<span class="chip chip-category">{categoryLabel(rel.category)}</span>
+												<span class="chip chip-category">{sectionLabel(rel.section)}</span>
 												{#if rel.stars != null}
 													<span class="screen-badge stars">★ {rel.stars}</span>
 												{/if}
@@ -309,10 +309,10 @@
 										<a
 											class="pad-card mini-pad-card"
 											href="{base}/mod/{id}/"
-											style="--pad-glow: {categoryGlow(rel.category)}"
+											style="--pad-glow: {sectionGlow(rel.section)}"
 										>
 											<div class="mini-card-top">
-												<span class="chip chip-category">{categoryLabel(rel.category)}</span>
+												<span class="chip chip-category">{sectionLabel(rel.section)}</span>
 												{#if rel.stars != null}
 													<span class="screen-badge stars">★ {rel.stars}</span>
 												{/if}

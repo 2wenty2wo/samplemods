@@ -28,20 +28,19 @@
 <div class="wrap info-grid">
 	<article class="info-card">
 		<span class="step-badge">STEP 1</span>
-		<h2>Add a YAML entry in <code>data/mods/&lt;id&gt;.yaml</code></h2>
+		<h2>Add a YAML entry in <code>data/&lt;section&gt;/&lt;id&gt;/&lt;type&gt;.yaml</code></h2>
 		<p>
-			Create a single file named after the mod slug (lowercase letters, digits, and hyphens). Only a
+			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. Only a
 			few fields are required; GitHub stars, latest release tags, and push dates are enriched
 			automatically.
 		</p>
 		<pre class="code-screen"><code>name: SampQOL OS
 description: 'Free SD-card mod for the Akai MPC Sample (firmware 1.3.0)'
 repo: snarebes/SampQOL-OS
-category: os-mod
 author: snarebes
 firmware: 1.3.0
 install: sd-card
-status: stable
+status: beta
 tags:
   - os
   - qol</code></pre>
@@ -49,20 +48,20 @@ tags:
 
 	<article class="info-card">
 		<span class="step-badge">STEP 2</span>
-		<h2>Drop screenshots or a logo in <code>static/mods/&lt;id&gt;/</code></h2>
+		<h2>Drop screenshots or a logo in <code>data/&lt;section&gt;/&lt;id&gt;/</code></h2>
 		<p>
 			No YAML changes are needed for images—<code>scripts/build-data.js</code> discovers them
 			automatically on build:
 		</p>
 		<ul class="info-list">
 			<li>
-				<code>static/mods/&lt;id&gt;/screenshots/01-splash.png</code> — 4:3 device screen captures
+				<code>data/&lt;section&gt;/&lt;id&gt;/screenshots/01-splash.png</code> — 4:3 device screen captures
 				(<code>320×240</code> renders crisp with <code>image-rendering: pixelated</code>) or
 				hardware photos (<code>.png</code>, <code>.webp</code>, <code>.jpg</code>,
 				<code>.gif</code>).
 			</li>
 			<li>
-				<code>static/mods/&lt;id&gt;/logo.svg</code> (or <code>.png</code> / <code>.webp</code>) —
+				<code>data/&lt;section&gt;/&lt;id&gt;/logo.svg</code> (or <code>.png</code> / <code>.webp</code>) —
 				optional logo displayed when no screenshots are present.
 			</li>
 			<li>Keep individual files under <strong>500 KB</strong> and run <code>npm test</code>.</li>

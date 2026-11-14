@@ -1,0 +1,10 @@
+name: MPC Cave Story
+description: >-
+  A Cave Story port for the MPC Sample, built on doukutsu-rs. Runs from an SD card and provides
+  on-device menus for changing control bindings.
+repo: garrettjwilke/mpc-cavestory
+author: garrettjwilke
+tags:
+  - platformer
+  - cave-story
+install: sd-card

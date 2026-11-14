@@ -40,7 +40,7 @@
 		<h2>GitHub-Backed Data &amp; Public JSON API</h2>
 		<p>
 			The catalog currently indexes <strong>{mods.length} projects</strong> maintained in YAML files
-			under <code>data/mods/</code> and automatically enriched with GitHub repository metadata
+			under <code>data/&lt;section&gt;/&lt;id&gt;/</code> and automatically enriched with GitHub repository metadata
 			(stars, licenses, latest releases, and push timestamps).
 		</p>
 		<p>

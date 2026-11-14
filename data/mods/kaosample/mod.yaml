@@ -1,0 +1,12 @@
+name: KAOSAMPLE
+description: >-
+  An SD-card add-on for the MPC Sample with stem export, a looper, scale and chord tools, master EQ,
+  groove controls and project snapshots.
+repo: omarhuertasllc-ops/kaosample-beta
+author: omarhuertasllc-ops
+tags:
+  - stems
+  - looper
+  - effects
+install: sd-card
+firmware: 1.3.0.12

@@ -1,0 +1,12 @@
+name: MaiaOS
+description: >-
+  Custom firmware extending the MPC Sample with DJ Mode, groove and chord tools, multisamples, pitch
+  correction and effects.
+repo: rosen-wav/MaiaOS---Mpc-Sample-CFW
+author: rosen-wav
+tags:
+  - daw
+  - groovebox
+  - effects
+install: sd-card
+firmware: 1.3.0.12

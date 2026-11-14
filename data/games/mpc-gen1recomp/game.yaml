@@ -1,0 +1,10 @@
+name: MPC Gen1Recomp
+description: >-
+  A native runtime for playing Pokémon Red, Blue and Yellow on the MPC Sample, with configurable pad
+  controls, display settings and USB SD-card access.
+repo: garrettjwilke/mpc-gen1recomp
+author: garrettjwilke
+tags:
+  - pokemon
+  - game-boy
+install: sd-card

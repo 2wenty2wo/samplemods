@@ -1,10 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
+import { readEntries } from './catalog.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const modsDir = path.join(root, 'data', 'mods');
 const output = path.join(root, 'data', 'github.json');
 const headers = { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -16,9 +15,7 @@ async function request(endpoint, optional = false) {
 	return response.json();
 }
 
-const repos = [...new Set(fs.readdirSync(modsDir)
-	.filter((file) => file.endsWith('.yaml'))
-	.map((file) => yaml.load(fs.readFileSync(path.join(modsDir, file), 'utf8')).repo))].sort();
+const repos = [...new Set(readEntries().map(({ record }) => record.repo))].sort();
 const github = {};
 for (const repo of repos) {
 	if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error(`Invalid GitHub repository: ${repo}`);

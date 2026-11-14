@@ -1,0 +1,14 @@
+name: MPC Sample Scale Mode
+description: >-
+  A scale-playing add-on for the MPC Sample. Hold 16 Levels to play notes across the pads, with a
+  screen for choosing the scale, root and octave.
+repo: jacob-sabella/mpc-addin-sample-scalemode
+author: jacob-sabella
+tags:
+  - scales
+  - pitch
+  - pads
+install: sd-card
+firmware: 1.3.0.12
+requires:
+  - draw-handler

@@ -1,5 +1,10 @@
 import assert from 'node:assert/strict';
+import { readEntries } from './catalog.js';
 import { compareRepositories, formatIssueBody, readStarList, syncIssue } from './check-star-list.js';
+
+const liveEntries = readEntries();
+assert.equal(new Set(liveEntries.map((entry) => entry.id)).size, liveEntries.length);
+assert.deepEqual(compareRepositories(liveEntries.map(({ record }) => ({ nameWithOwner: record.repo })), liveEntries.map(({ record }) => record)), { missing: [], extra: [] });
 
 const starred = [
 	{ nameWithOwner: 'Owner/Present', description: 'Present', stargazerCount: 1 },

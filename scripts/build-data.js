@@ -1,60 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
+import { readEntries } from './catalog.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const modsDir = path.join(root, 'data', 'mods');
-const staticModsDir = path.join(root, 'static', 'mods');
+const mediaDir = path.join(root, 'static', 'media');
 const githubPath = path.join(root, 'data', 'github.json');
 const outPath = path.join(root, 'src', 'lib', 'data.json');
 const publicCatalogPath = path.join(root, 'static', 'catalog.json');
 
-const LOGO_EXTS = ['.svg', '.png', '.webp', '.jpg', '.jpeg'];
-const SHOT_EXTS = ['.png', '.webp', '.jpg', '.jpeg', '.gif'];
-
-/**
- * @param {string} id
- * @returns {{ logo: string | null, screenshots: string[] }}
- */
-function scanModMedia(id) {
-	const dir = path.join(staticModsDir, id);
-	/** @type {string | null} */
-	let logo = null;
-	/** @type {string[]} */
-	const screenshots = [];
-
-	if (!fs.existsSync(dir)) {
-		return { logo, screenshots };
-	}
-
-	for (const ext of LOGO_EXTS) {
-		const candidate = path.join(dir, `logo${ext}`);
-		if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
-			logo = `mods/${id}/logo${ext}`;
-			break;
-		}
-	}
-
-	const shotsDir = path.join(dir, 'screenshots');
-	if (fs.existsSync(shotsDir) && fs.statSync(shotsDir).isDirectory()) {
-		const files = fs
-			.readdirSync(shotsDir)
-			.filter((f) => SHOT_EXTS.includes(path.extname(f).toLowerCase()))
-			.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-		for (const file of files) {
-			screenshots.push(`mods/${id}/screenshots/${file}`);
-		}
-	}
-
-	return { logo, screenshots };
-}
-
-const files = fs
-	.readdirSync(modsDir)
-	.filter((f) => f.endsWith('.yaml'))
-	.sort();
+const entries = readEntries();
+// Only this generated directory is cleared; original media stays with each entry.
+fs.rmSync(mediaDir, { recursive: true, force: true });
 
 let github = {};
 if (fs.existsSync(githubPath)) {
@@ -62,13 +20,17 @@ if (fs.existsSync(githubPath)) {
 }
 
 /** @type {Array<Record<string, unknown>>} */
-const mods = files.map((file) => {
-	const id = path.basename(file, '.yaml');
-	const raw = yaml.load(fs.readFileSync(path.join(modsDir, file), 'utf8'));
+const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const gh = github[raw.repo] ?? {};
-	const media = scanModMedia(id);
+	for (const file of media) {
+		const destination = path.join(mediaDir, id, file);
+		fs.mkdirSync(path.dirname(destination), { recursive: true });
+		fs.copyFileSync(path.join(dir, file), destination);
+	}
+	const logo = media.find((file) => file.startsWith('logo.'));
 	return {
 		id,
+		section,
 		...raw,
 		stars: gh.stars ?? null,
 		forks: gh.forks ?? null,
@@ -77,8 +39,8 @@ const mods = files.map((file) => {
 		latest_release: gh.latest_release ?? null,
 		archived: gh.archived ?? null,
 		github_description: gh.description ?? null,
-		logo: media.logo,
-		screenshots: media.screenshots
+		logo: logo ? `media/${id}/${logo}` : null,
+		screenshots: media.filter((file) => file.startsWith('screenshots/')).map((file) => `media/${id}/${file}`)
 	};
 });
 
@@ -96,5 +58,5 @@ fs.writeFileSync(outPath, json);
 fs.mkdirSync(path.dirname(publicCatalogPath), { recursive: true });
 fs.writeFileSync(publicCatalogPath, json);
 console.log(
-	`Wrote ${mods.length} mod(s) to ${path.relative(root, outPath)} and ${path.relative(root, publicCatalogPath)}`
+	`Wrote ${mods.length} catalog entries to ${path.relative(root, outPath)} and ${path.relative(root, publicCatalogPath)}`
 );

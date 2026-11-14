@@ -1,0 +1,10 @@
+name: MPC Boot Thingy
+description: >-
+  A boot menu and application launcher for the MPC Sample. Install apps from SD-card ZIP files or a
+  USB-connected web tool, then choose which one to run.
+repo: garrettjwilke/mpc-boot-thingy
+author: garrettjwilke
+tags:
+  - boot-menu
+  - launcher
+install: sd-card

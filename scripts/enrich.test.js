@@ -28,10 +28,11 @@ function run(extra = {}) {
 
 try {
 	fs.mkdirSync(path.join(fixture, 'scripts'));
-	fs.mkdirSync(path.join(fixture, 'data', 'mods'), { recursive: true });
-	fs.copyFileSync(path.join(root, 'scripts', 'enrich.js'), path.join(fixture, 'scripts', 'enrich.js'));
-	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'z.yaml'), 'repo: owner/z\n');
-	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'a.yaml'), 'repo: owner/a\n');
+	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'a'), { recursive: true });
+	fs.mkdirSync(path.join(fixture, 'data', 'apps', 'z'), { recursive: true });
+	for (const file of ['enrich.js', 'catalog.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	fs.writeFileSync(path.join(fixture, 'data', 'apps', 'z', 'app.yaml'), 'repo: owner/z\n');
+	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'a', 'mod.yaml'), 'repo: owner/a\n');
 	const first = run();
 	assert.equal(first.status, 0, first.stderr);
 	const original = fs.readFileSync(output, 'utf8');

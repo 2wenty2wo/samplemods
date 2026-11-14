@@ -1,0 +1,12 @@
+name: Melodee
+description: >-
+  A 16-track MPC Sample groovebox with drum kits, sampled instruments, VST instruments and effects,
+  MIDI tracks, patterns, scenes and song arrangement.
+repo: keremimo/melodee-sample
+author: keremimo
+tags:
+  - groovebox
+  - sequencer
+  - vst
+install: sd-card
+firmware: 1.3.0.12

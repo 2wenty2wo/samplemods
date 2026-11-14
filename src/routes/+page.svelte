@@ -3,15 +3,15 @@
 	import mods from '$lib/data.json';
 	import { SITE_NAME } from '$lib/site.js';
 	import {
-		CATEGORIES,
-		categoryGlow,
-		categoryLabel,
+		SECTIONS,
+		sectionGlow,
+		sectionLabel,
 		installLabel
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
 
 	let query = $state('');
-	let category = $state('');
+	let section = $state('');
 	let sort = $state('name');
 
 	/** Track image URLs whose naturalWidth <= 400 so 320×240 captures render pixelated */
@@ -27,7 +27,7 @@
 	const filtered = $derived.by(() => {
 		const q = query.trim().toLowerCase();
 		let list = mods.filter((mod) => {
-			if (category && mod.category !== category) return false;
+			if (section && mod.section !== section) return false;
 			if (!q) return true;
 			const hay = [mod.name, mod.description, mod.author, ...(mod.tags ?? [])]
 				.join(' ')
@@ -141,26 +141,26 @@
 <div class="wrap" id="catalog">
 	<section class="filter-bar" aria-label="Filter and sort mods">
 		<div class="filter-group">
-			<span class="silk-label">MODE / CATEGORY</span>
-			<div class="hw-buttons" role="group" aria-label="Category">
+			<span class="silk-label">SECTION</span>
+			<div class="hw-buttons" role="group" aria-label="Section">
 				<button
 					type="button"
 					class="hw-btn"
 					style="--btn-lit: #FF8A1E"
-					aria-pressed={category === ''}
-					onclick={() => (category = '')}
+					aria-pressed={section === ''}
+					onclick={() => (section = '')}
 				>
 					All
 				</button>
-				{#each CATEGORIES as cat}
+				{#each SECTIONS as cat}
 					<button
 						type="button"
 						class="hw-btn"
-						style="--btn-lit: {categoryGlow(cat)}"
-						aria-pressed={category === cat}
-						onclick={() => (category = cat)}
+						style="--btn-lit: {sectionGlow(cat)}"
+						aria-pressed={section === cat}
+						onclick={() => (section = cat)}
 					>
-						{categoryLabel(cat)}
+						{sectionLabel(cat)}
 					</button>
 				{/each}
 			</div>
@@ -179,16 +179,16 @@
 	<div class="results-bar" aria-live="polite">
 		<span class="results-count">
 			Showing <strong>{filtered.length}</strong> of {totalMods} mods
-			{#if category}
-				in <strong>{categoryLabel(category)}</strong>
+			{#if section}
+				in <strong>{sectionLabel(section)}</strong>
 			{/if}
 		</span>
-		{#if category || query}
+		{#if section || query}
 			<button
 				type="button"
 				class="reset-link"
 				onclick={() => {
-					category = '';
+					section = '';
 					query = '';
 				}}
 			>
@@ -211,7 +211,7 @@
 					<a
 						class="pad-card"
 						href="{base}/mod/{mod.id}/"
-						style="--pad-glow: {categoryGlow(mod.category)}"
+						style="--pad-glow: {sectionGlow(mod.section)}"
 					>
 						<!-- 4:3 Glossy Black Bezel Screen Display -->
 						<div class="bezel-screen card-screen">
@@ -228,7 +228,7 @@
 							{:else}
 								<div class="splash-fallback" aria-hidden="true">
 									<div class="splash-topbar">
-										<span class="splash-cat">{categoryLabel(mod.category)}</span>
+										<span class="splash-cat">{sectionLabel(mod.section)}</span>
 										{#if mod.firmware}
 											<span class="splash-fw">FW {mod.firmware}</span>
 										{/if}
@@ -243,7 +243,7 @@
 						</div>
 
 						<div class="card-badges">
-							<span class="chip chip-category">{categoryLabel(mod.category)}</span>
+							<span class="chip chip-category">{sectionLabel(mod.section)}</span>
 							{#if install}
 								<span class="chip chip-install">{install}</span>
 							{/if}

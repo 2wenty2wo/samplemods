@@ -1,0 +1,11 @@
+name: Beat-Train
+description: >-
+  A pad-based drum rhythm game for the MPC Sample. Follow a scrolling note highway, play along with
+  songs and track timing accuracy and streaks.
+repo: drose030/beat-train-mpc-sample
+author: drose030
+tags:
+  - rhythm
+  - drums
+install: sd-card
+firmware: 1.3.0.x

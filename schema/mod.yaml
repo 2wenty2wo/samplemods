@@ -1,12 +1,12 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$title: MPC Sample mod
+$title: MPC Sample catalog entry
 type: object
 additionalProperties: false
 required:
   - name
   - description
   - repo
-  - category
+  - section
   - author
 properties:
   name:
@@ -19,16 +19,15 @@ properties:
     type: string
     pattern: ^[^/\s]+/[^/\s]+$
     description: GitHub repository as owner/name
-  category:
+  section:
     type: string
     enum:
-      - os-mod
-      - addon
-      - app
-      - game
-      - dev-tool
-      - guide
-      - external-tool
+      - mods
+      - apps
+      - games
+      - tools
+      - guides
+      - dev
   author:
     type: string
     minLength: 1
@@ -40,7 +39,7 @@ properties:
     type: array
     items:
       type: string
-      description: Mod ids (kebab-case filenames without .yaml)
+      description: Entry ids (kebab-case directory names, across all sections)
   firmware:
     type: string
     description: Tested MPC Sample firmware version
@@ -61,3 +60,4 @@ properties:
       - beta
       - experimental
       - archived
+      - concept

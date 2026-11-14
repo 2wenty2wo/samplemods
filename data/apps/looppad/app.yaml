@@ -1,0 +1,13 @@
+name: LoopPad
+description: >-
+  A live looping app for the MPC Sample with synchronized four- or eight-loop layouts, waveform
+  displays, input recording and per-loop mixing.
+repo: larsoholm/LoopPad
+author: larsoholm
+tags:
+  - looper
+  - live
+  - mixing
+install: sd-card
+requires:
+  - mpc-boot-thingy

@@ -1,0 +1,12 @@
+name: Virtual MPC Sample
+description: >-
+  A QEMU-based MPC Sample emulator with a browser control panel for exploring stock firmware and
+  testing mods. Requires your own firmware files.
+repo: orrpunk-art/virtual-mpc-sample
+author: orrpunk-art
+tags:
+  - emulator
+  - qemu
+  - firmware
+install: none
+firmware: 1.3.0.12

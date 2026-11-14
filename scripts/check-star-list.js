@@ -1,8 +1,7 @@
-import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import yaml from 'js-yaml';
+import { readEntries } from './catalog.js';
 
 const TITLE = 'Star list: repos missing from the catalog';
 const LABEL = 'star-list';
@@ -137,9 +136,7 @@ async function main() {
 	if (!dryRun && (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPOSITORY)) {
 		throw new Error('Issue updates require GITHUB_TOKEN and GITHUB_REPOSITORY; use --dry-run for local previews.');
 	}
-	const dir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'data', 'mods');
-	const catalog = fs.readdirSync(dir).filter((file) => file.endsWith('.yaml'))
-		.map((file) => yaml.load(fs.readFileSync(path.join(dir, file), 'utf8')));
+	const catalog = readEntries().map(({ record }) => record);
 	const result = compareRepositories(await readStarList(token, user, slug), catalog);
 	console.log(`missing: ${result.missing.length}\nextra: ${result.extra.length}`);
 	for (const mod of result.extra) console.log(`Extra (info only): ${mod.repo}`);

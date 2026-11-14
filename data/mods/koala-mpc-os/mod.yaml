@@ -1,0 +1,9 @@
+name: Koala MPC OS
+description: A firmware project aiming to bring a Koala Sampler-style experience to the MPC Sample.
+repo: rmw5287/koala-mpc-os
+author: rmw5287
+tags:
+  - koala
+  - sampler
+install: sd-card
+status: concept
