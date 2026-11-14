@@ -564,6 +564,12 @@
 										From the project README on GitHub ↗
 									</a>
 								</div>
+							{:else if mod.website}
+								<div class="readme-footer">
+									<a href={mod.website} target="_blank" rel="noopener noreferrer">
+										From the maker's page ↗
+									</a>
+								</div>
 							{/if}
 						</div>
 					{:else}
