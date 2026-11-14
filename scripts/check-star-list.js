@@ -16,7 +16,33 @@ export function repoId(name) {
 	return name.split('/').at(-1).normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-export function guessSection(description = '', topics = [], readme = '') {
+const matches = (text, pattern) => [...new Set((text.match(pattern) ?? []).map((word) => word.toLowerCase()))];
+
+function runtimeSignals(description, topics, readme, homepage) {
+	const text = `${description ?? ''} ${topics.join(' ')}\n${readme}`;
+	const browser = /^https?:\/\//.test(homepage ?? '') ? matches(text, /\b(?:web(?:[- ]midi)?|browser|react|vite)\b/gi) : [];
+	const desktop = matches(text, /\b(?:electron|desktop|windows|macos|pyside\d*|qt\d*|tauri)\b/gi);
+	const device = matches(text, /\b(?:autorun|aarch64|on[- ]device|boot[- ]thingy)\b/gi);
+	const sd = matches(text, /\bsd[- ]cards?\b/gi);
+	// Exporting files to an SD card does not make a desktop/browser companion a device app.
+	if (sd.length && (device.length || (!browser.length && !desktop.length) || /\b(?:runs?|boots?)\b[^.\n]{0,60}\bsd[- ]card\b/i.test(text))) device.push(...sd);
+	return { browser, desktop, device };
+}
+
+export function guessSection(description = '', topics = [], readme = '', homepage = '') {
+	const primary = `${description ?? ''} ${topics.join(' ')}`;
+	const signals = runtimeSignals(description, topics, readme, homepage);
+	const library = matches(primary, /\b(?:sdk|library|framework)\b/gi);
+	if (library.length) return { section: 'dev', reason: `description/topics: ${library.join(', ')}` };
+	const game = matches(primary, /\b(?:games?|doom|emulator)\b/gi);
+	if (game.length) return { section: 'games', reason: `description/topics: ${game.join(', ')}` };
+	const guide = matches(primary, /\b(?:guide|handbook|manual[- ]only)\b/gi);
+	if (guide.length && (!signals.device.length || /\b(?:guide (?:to|for)|handbook|manual[- ]only)\b/i.test(primary))) return { section: 'guides', reason: `description/topics: ${guide.join(', ')}` };
+	if (signals.device.length) {
+		const app = matches(primary, /\b(?:replaces|own interface|groovebox|tracker|daw)\b/gi);
+		return { section: app.length ? 'apps' : 'mods', reason: `device keywords: ${[...signals.device, ...app].join(', ')}` };
+	}
+	if (signals.desktop.length || signals.browser.length) return { section: 'tools', reason: `desktop/browser keywords: ${[...signals.desktop, ...signals.browser].join(', ')}` };
 	const rules = [
 		['games', /\b(?:games?|doom|emulator)\b/gi],
 		['guides', /\b(?:guide|manual|handbook)\b/gi],
@@ -26,32 +52,76 @@ export function guessSection(description = '', topics = [], readme = '') {
 	];
 	for (const [source, text] of [['description/topics', `${description ?? ''} ${topics.join(' ')}`], ['README', readme]]) {
 		for (const [section, pattern] of rules) {
-			const matches = text.match(pattern);
-			if (matches) return { section, reason: `${source}: ${[...new Set(matches.map((word) => word.toLowerCase()))].join(', ')}` };
+			const found = matches(text, pattern);
+			if (found.length) return { section, reason: `${source}: ${found.join(', ')}` };
 		}
 	}
 	return { section: 'mods', reason: 'No matching keywords; default to mods.' };
+}
+
+export function guessName(metadata, readme = '') {
+	const prefix = metadata.description?.replace(/\s+/g, ' ').match(/^(.{1,80}?)(?:\s[—–-]\s|:\s)/)?.[1];
+	if (prefix && !/^(?:a|an|the|this)\b/i.test(prefix)) return { name: prefix.trim(), reason: 'product prefix in repository description' };
+	const heading = readme.match(/^#\s+(.+?)(?:\s+#+)?\s*$/m)?.[1]
+		.replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/<[^>]+>|[*`]/g, '').trim();
+	if (heading) return { name: heading, reason: 'first README H1' };
+	return { name: metadata.full_name.split('/').at(-1).replace(/[._-]+/g, ' ').replace(/\b[a-z]/g, (letter) => letter.toUpperCase()), reason: 'repository name fallback' };
+}
+
+export function guessFields(metadata, readme, section) {
+	const topics = metadata.topics ?? [];
+	const text = `${metadata.description ?? ''} ${topics.join(' ')}\n${readme}`;
+	const signals = runtimeSignals(metadata.description, topics, readme, metadata.homepage);
+	const fields = {};
+	const evidence = {};
+	const runs = section === 'guides' ? ['docs'] : Object.entries(signals).filter(([, words]) => words.length).map(([platform]) => platform);
+	if (section === 'guides') signals.docs = ['guide/manual/handbook section'];
+	if (runs.length) fields.runs_on = runs;
+	evidence.runs_on = runs.length ? runs.map((platform) => `${platform}: ${signals[platform].join(', ')}`).join('; ') : 'no runtime keywords found';
+	const webInstaller = matches(text, /\bweb[- ]installer\b/gi);
+	const boot = matches(text, /\bboot[- ]thingy\b/gi);
+	const sd = matches(text, /\b(?:sd[- ]cards?|autorun)\b/gi);
+	if (section === 'guides') { fields.install = 'none'; evidence.install = 'docs-only runtime'; }
+	else if (webInstaller.length) { fields.install = 'web-installer'; evidence.install = webInstaller.join(', '); }
+	else if (boot.length) { fields.install = 'boot-thingy'; evidence.install = boot.join(', '); }
+	else if (runs.includes('device') && sd.length) { fields.install = 'sd-card'; evidence.install = sd.join(', '); }
+	else if (runs.includes('desktop') && section !== 'dev') { fields.install = 'desktop'; evidence.install = signals.desktop.join(', '); }
+	else if (runs.length === 1 && runs[0] === 'browser') { fields.install = 'none'; evidence.install = 'browser-only runtime'; }
+	else evidence.install = 'installation route unclear; omitted';
+	fields.audience = section === 'dev' ? ['developer'] : section === 'games' ? ['player', 'musician'] : section === 'guides' ? ['curious'] : ['musician'];
+	evidence.audience = `${section} section default`;
+	const generic = new Set(['akai', 'akai-mpc', 'mpc', 'mpc-sample', 'music', 'audio', 'opensource', 'open-source', 'music-production']);
+	const tags = [...new Set(topics.map((topic) => topic.toLowerCase()))].filter((topic) => !generic.has(topic)).slice(0, 4);
+	if (tags.length) fields.tags = tags;
+	evidence.tags = tags.length ? `repository topics: ${tags.join(', ')}` : 'no non-generic repository topics; omitted';
+	return { fields, evidence };
 }
 
 export function draftEntry(metadata, readme = '', existingIds = new Set()) {
 	const [author, repositoryName] = metadata.full_name.split('/');
 	const id = repoId(repositoryName);
 	if (!id || existingIds.has(id)) return null;
-	const guess = guessSection(metadata.description, metadata.topics, readme);
-	const name = repositoryName.replace(/[._-]+/g, ' ').replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
+	const guess = guessSection(metadata.description, metadata.topics, readme, metadata.homepage);
+	const { name, reason: nameReason } = guessName(metadata, readme);
 	const text = metadata.description?.replace(/\s+/g, ' ').trim();
 	const record = { name, description: text ? text[0].toUpperCase() + text.slice(1).replace(/[.!?]+$/, '') + '.' : 'TODO: describe',
 		repo: metadata.full_name, author };
 	if (metadata.homepage) record.website = metadata.homepage;
-	if (['mods', 'apps', 'games'].includes(guess.section) && /\b(?:runs?|boots?|copy|install)\b[^.\n]{0,80}\bSD[- ]card\b/i.test(`${metadata.description ?? ''}\n${readme}`)) record.install = 'sd-card';
-	return { id, ...guess, record, branch: `auto/add-${id}`, path: `data/${guess.section}/${id}/${SECTION_FILES[guess.section]}`,
+	const facts = guessFields(metadata, readme, guess.section);
+	Object.assign(record, facts.fields);
+	const evidence = { section: guess.reason, name: nameReason, description: text ? 'repository description, normalized punctuation' : 'description absent; TODO fallback', ...facts.evidence };
+	return { id, ...guess, record, evidence, branch: `auto/add-${id}`, path: `data/${guess.section}/${id}/${SECTION_FILES[guess.section]}`,
 		yaml: yaml.dump(record, { lineWidth: 100, noRefs: true }) };
 }
 
 export function formatPullRequestBody(draft, listUrl, validation = null) {
 	const lines = [`Draft catalog entry for [${draft.record.repo}](https://github.com/${draft.record.repo}), found in the [star list](${listUrl}).`, '',
-		`Section **${draft.section}** is a **GUESS** to check. Matched keywords: ${markdownText(draft.reason)}`, '',
-		'- [ ] Section correct', '- [ ] Description reads well', '- [ ] Add a splash image to `screenshots/01-*.png` if available', '',
+		'Each inferred field below is a **GUESS** to check.', '',
+		...['section', 'name', 'description', 'install', 'runs_on', 'audience', 'tags'].map((field) => {
+			const value = field === 'section' ? draft.section : draft.record[field];
+			return `- **${field}**: ${markdownText(Array.isArray(value) ? value.join(', ') : value ?? 'omitted')} — ${markdownText(draft.evidence[field])}`;
+		}), '',
+		'- [ ] Section correct', '- [ ] Name correct', '- [ ] Description reads well', '- [ ] Install & runs on correct', '- [ ] Audience correct', '- [ ] Add a splash image to `screenshots/01-*.png` if available', '',
 		validation ? `Validation: npm test ${validation.passed ? 'passed.' : 'failed; this PR is a draft.'}` : 'Validation: npm test will run before PR creation.'];
 	if (validation && !validation.passed) {
 		const error = validation.output.slice(-6000).replace(/[&<>]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[char]);

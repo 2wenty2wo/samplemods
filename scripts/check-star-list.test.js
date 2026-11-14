@@ -4,7 +4,7 @@ import path from 'node:path';
 import os from 'node:os';
 import yaml from 'js-yaml';
 import { readEntries } from './catalog.js';
-import { compareRepositories, formatIssueBody, readStarList, syncIssue, repoId, guessSection, draftEntry, formatPullRequestBody, syncPullRequest, validateDraft } from './check-star-list.js';
+import { compareRepositories, formatIssueBody, readStarList, syncIssue, repoId, guessSection, guessName, guessFields, draftEntry, formatPullRequestBody, syncPullRequest, validateDraft } from './check-star-list.js';
 
 const liveEntries = readEntries();
 assert.equal(new Set(liveEntries.map((entry) => entry.id)).size, liveEntries.length);
@@ -42,7 +42,7 @@ const draft = draftEntry(metadata, 'Runs from an SD card.');
 assert.equal(draft.section, 'games');
 assert.equal(draft.branch, 'auto/add-space-game');
 assert.equal(draft.path, 'data/games/space-game/game.yaml');
-assert.deepEqual(yaml.load(draft.yaml), { name: 'Space Game', description: 'A rhythm game for the MPC Sample.', repo: 'Owner/space-game', author: 'Owner', website: 'https://example.com', install: 'sd-card' });
+assert.deepEqual(yaml.load(draft.yaml), { name: 'Space Game', description: 'A rhythm game for the MPC Sample.', repo: 'Owner/space-game', author: 'Owner', website: 'https://example.com', runs_on: ['device'], install: 'sd-card', audience: ['player', 'musician'] });
 assert.equal(draftEntry(metadata, '', new Set(['space-game'])), null, 'IDs collide across all sections');
 const fallback = draftEntry({ full_name: 'owner/unknown', description: null });
 assert.equal(yaml.load(fallback.yaml).description, 'TODO: describe');
@@ -54,6 +54,55 @@ assert.match(pullBody, /- \[ \] Section correct/);
 assert.match(pullBody, /screenshots\/01-\*\.png/);
 assert.match(pullBody, /failed; this PR is a draft/);
 assert.match(pullBody, /schema &lt;bad&gt; &amp; invalid/);
+for (const field of ['section', 'name', 'description', 'install', 'runs_on', 'audience', 'tags']) assert.ok(pullBody.includes(`**${field}**:`), field);
+for (const item of ['Name correct', 'Install & runs on correct', 'Audience correct']) assert.ok(pullBody.includes(`- [ ] ${item}`), item);
+
+const toolkit = draftEntry({ full_name: 'tarikcampos/MPC-Sample-Toolkit',
+	description: 'An open-source toolkit for editing, generating and managing Akai MPC Sample (.xpj) projects.',
+	topics: ['akai', 'akai-mpc', 'audio', 'midi', 'mpc', 'mpc-sample', 'music-production', 'opensource', 'python', 'reverse-engineering', 'sample-editor', 'sampler']
+}, '# MPC Sample Toolkit (MPCTK)\nPySide6 desktop application for macOS.');
+assert.equal(toolkit.section, 'tools');
+assert.deepEqual(toolkit.record.runs_on, ['desktop']);
+assert.equal(toolkit.record.install, 'desktop');
+assert.deepEqual(toolkit.record.audience, ['musician']);
+assert.deepEqual(toolkit.record.tags, ['midi', 'python', 'reverse-engineering', 'sample-editor']);
+assert.match(toolkit.evidence.runs_on, /pyside6/);
+
+const kitMaker = draftEntry({ full_name: 'WorldLinkStudio/mpcsample', homepage: 'https://mpcsample.app',
+	description: 'MPC Sample Kit Maker — web and desktop Akai MPC sample pad player.',
+	topics: ['akai', 'drum-kit', 'drum-machine', 'drums', 'electron', 'mpc', 'mpc-sample', 'react', 'vite', 'web-audio']
+}, '# MPC Sample\nElectron React Vite. Direct SD card workflow support.');
+assert.equal(kitMaker.record.name, 'MPC Sample Kit Maker');
+assert.equal(kitMaker.section, 'tools');
+assert.deepEqual(kitMaker.record.runs_on, ['browser', 'desktop']);
+assert.equal(kitMaker.record.install, 'desktop');
+assert.deepEqual(kitMaker.record.audience, ['musician']);
+assert.match(kitMaker.evidence.name, /description/);
+
+const gridzilla = draftEntry({ full_name: 'ZootedandRebooted/GRIDZILLA',
+	description: 'GRIDZILLA 1.2 for MPC Sample — installation package, user guide and video.', topics: []
+}, 'Runs from an SD card. Copy autorun.');
+assert.equal(gridzilla.section, 'mods', 'a bundled user guide does not make a device mod a guide');
+assert.equal(gridzilla.record.install, 'sd-card');
+assert.deepEqual(gridzilla.record.runs_on, ['device']);
+
+assert.equal(guessSection('A Rust SDK library', [], 'Build using Windows and Qt').section, 'dev');
+assert.equal(guessName({ full_name: 'owner/slug' }, '# **Friendly Name**').name, 'Friendly Name');
+assert.equal(guessName({ full_name: 'owner/slug', description: 'Beat Lab: MIDI controls' }, '# Different').name, 'Beat Lab');
+assert.equal(guessName({ full_name: 'owner/slug', description: 'Beat Lab - MIDI controls' }).name, 'Beat Lab');
+assert.equal(guessName({ full_name: 'owner/slug', description: 'A tool for MIDI: controls' }, '# Better Name').name, 'Better Name');
+assert.ok(!guessFields({ topics: ['react', 'vite'] }, '', 'tools').fields.runs_on, 'browser build dependencies need a live homepage');
+const browser = guessFields({ homepage: 'https://example.com', description: 'Browser web MIDI app', topics: ['akai', 'akai-mpc', 'music', 'open-source', 'midi', 'midi'] }, '', 'tools');
+assert.deepEqual(browser.fields.runs_on, ['browser']);
+assert.equal(browser.fields.install, 'none');
+assert.deepEqual(browser.fields.tags, ['midi']);
+assert.equal(guessFields({}, 'Requires Boot Thingy', 'apps').fields.install, 'boot-thingy');
+assert.equal(guessFields({}, 'SD card autorun with a web installer', 'mods').fields.install, 'web-installer');
+const handbook = draftEntry({ full_name: 'owner/handbook', description: 'A handbook for the MPC Sample' }, 'SD card autorun documentation for Windows.');
+assert.equal(handbook.section, 'guides');
+assert.deepEqual(handbook.record.runs_on, ['docs']);
+assert.equal(handbook.record.install, 'none');
+assert.deepEqual(handbook.record.audience, ['curious']);
 
 const originalFetch = globalThis.fetch;
 const reply = (data, status = 200) => ({ ok: status < 400, status, json: async () => data });
