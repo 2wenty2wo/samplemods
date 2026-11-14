@@ -1,0 +1,16 @@
+name: EMBER-8
+description: >-
+  An eight-voice hybrid synth mod for the MPC Sample with analog, FM, wavetable and granular
+  sources, a 64-step live sequencer and WAV export. Runs alongside the normal MPC workflow.
+author: Beatsofthings
+author_url: https://mpctoolkit.com
+website: https://mpctoolkit.com/downloads/ember-8-hybrid-synthesizer-mod-for-akai-mpc-sample/
+install: sd-card
+firmware: "1.3.0"
+status: beta
+runs_on: [device]
+audience: [musician]
+tags: [synth, fm, granular, sequencer]
+price: pay-what-you-want
+price_note: "Suggested €9.99"
+source: closed

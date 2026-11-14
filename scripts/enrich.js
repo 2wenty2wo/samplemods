@@ -29,7 +29,7 @@ function writeIfChanged(file, text) {
 }
 
 const entries = readEntries();
-const repos = [...new Set(entries.map(({ record }) => record.repo))].sort();
+const repos = [...new Set(entries.map(({ record }) => record.repo).filter(Boolean))].sort();
 const github = {};
 const readmes = new Map();
 for (const repo of repos) {

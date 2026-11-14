@@ -26,6 +26,10 @@
 
    Optional fields include `requires` (entry IDs from any section), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `concept`). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically.
 
+   Independent projects may be paid or closed source and do not need a GitHub repository. Omit `repo` when there is no GitHub repository; `website` is then required. Set `author_url` for a maker's website or profile. GitHub enrichment and star-list matching skip entries without `repo`.
+
+   Use `price: free`, `paid`, or `pay-what-you-want`; omitted prices default to `free`. Optional `price_note` adds a short clarification such as `Suggested €9.99` (up to 160 characters). Use `source: open` or `closed`; the default is `open` with a repository and `closed` without one. Set it explicitly when the repository hosts only downloads or documentation for closed-source software. These labels describe access to the project; its licence may have additional conditions.
+
    Add documented quick facts: `runs_on: [device]` (`device`, `desktop`, `browser`, `docs`) and `audience: [musician]` (`musician`, `player`, `developer`, `curious`). Installation choices are `sd-card`, `boot-thingy`, `web-installer`, `ssh`, `desktop`, `usb-midi`, and `none`. Describe the primary installation route; a browser installer does not mean the installed project runs in a browser. Leave uncertain facts out.
 
 3. Put optional media beside the YAML, credit its upstream source in `data/media-sources.json`, then run `npm test` and `npm run build` before opening a pull request.

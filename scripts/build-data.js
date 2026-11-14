@@ -24,11 +24,11 @@ if (fs.existsSync(githubPath)) {
 
 /** @type {Array<Record<string, unknown>>} */
 const mods = entries.map(({ id, section, dir, record: raw, media }) => {
-	const gh = github[raw.repo] ?? {};
+	const gh = raw.repo ? github[raw.repo] ?? {} : {};
 	const markdownOptions = { repo: raw.repo, branch: gh.default_branch ?? 'main', readmePath: gh.readme_path ?? 'README.md', name: raw.name };
 	const readmePath = path.join(root, 'data', 'readme', `${id}.md`);
 	details[id] = {
-		readme_html: fs.existsSync(readmePath) ? renderMarkdown(fs.readFileSync(readmePath, 'utf8'), markdownOptions) : '',
+		readme_html: raw.repo && fs.existsSync(readmePath) ? renderMarkdown(fs.readFileSync(readmePath, 'utf8'), markdownOptions) : '',
 		releases: (gh.releases ?? []).map(({ body, ...release }) => ({
 			...release, body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
 		}))
@@ -43,6 +43,8 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		id,
 		section,
 		...raw,
+		price: raw.price ?? 'free',
+		source: raw.source ?? (raw.repo ? 'open' : 'closed'),
 		stars: gh.stars ?? null,
 		forks: gh.forks ?? null,
 		pushed_at: gh.pushed_at ?? null,
