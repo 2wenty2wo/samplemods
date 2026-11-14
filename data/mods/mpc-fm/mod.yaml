@@ -6,7 +6,6 @@ repo: ThomasTestaud/mpc-fm
 author: ThomasTestaud
 requires:
   - sampqol-os
-status: beta
 tags:
   - fm
   - synth
