@@ -1,0 +1,12 @@
+name: MPC Sample Toolkit
+description: >-
+  A desktop app and Python toolkit that turns WAV files into playable MPC Sample projects, with
+  chromatic pad banks, scale layouts and project editing. Tested on real hardware.
+repo: tarikcampos/MPC-Sample-Toolkit
+author: tarikcampos
+tags:
+  - xpj
+  - instruments
+  - python
+  - desktop
+install: desktop
