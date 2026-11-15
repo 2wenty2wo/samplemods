@@ -2,22 +2,22 @@
   "agent-mod-guide": [],
   "am-mod": [
     {
-      "file": "screenshots/01-am-mod-splash.png",
+      "file": "screenshots/01-am-mod-splash.webp",
       "source": "https://raw.githubusercontent.com/AlekseyMalykh/am-mod/HEAD/sd-mod-session/src/am_mod_splash.png",
       "repo": "AlekseyMalykh/am-mod"
     },
     {
-      "file": "screenshots/02-overview.png",
+      "file": "screenshots/02-overview.webp",
       "source": "https://raw.githubusercontent.com/AlekseyMalykh/am-mod/HEAD/docs/media/mixer/overview.png",
       "repo": "AlekseyMalykh/am-mod"
     },
     {
-      "file": "screenshots/03-chords.gif",
+      "file": "screenshots/03-chords.webp",
       "source": "https://raw.githubusercontent.com/AlekseyMalykh/am-mod/HEAD/docs/media/chords.gif",
       "repo": "AlekseyMalykh/am-mod"
     },
     {
-      "file": "screenshots/04-steps.gif",
+      "file": "screenshots/04-steps.webp",
       "source": "https://raw.githubusercontent.com/AlekseyMalykh/am-mod/HEAD/docs/media/steps.gif",
       "repo": "AlekseyMalykh/am-mod"
     }
@@ -25,7 +25,7 @@
   "az0x-open-source": [],
   "beat-train": [
     {
-      "file": "screenshots/01-library.png",
+      "file": "screenshots/01-library.webp",
       "source": "https://raw.githubusercontent.com/drose030/beat-train-mpc-sample/HEAD/docs/images/library.png",
       "repo": "drose030/beat-train-mpc-sample"
     },
@@ -42,29 +42,29 @@
       "repo": "jacob-sabella/mpc-addin-sample-draw-handler"
     },
     {
-      "file": "screenshots/02-keyscope-page.png",
+      "file": "screenshots/02-keyscope-page.webp",
       "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-draw-handler/HEAD/docs/screenshots/keyscope-page.png",
       "repo": "jacob-sabella/mpc-addin-sample-draw-handler"
     },
     {
-      "file": "screenshots/03-tuner-page.png",
+      "file": "screenshots/03-tuner-page.webp",
       "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-draw-handler/HEAD/docs/screenshots/tuner-page.png",
       "repo": "jacob-sabella/mpc-addin-sample-draw-handler"
     }
   ],
   "ember-8": [
     {
-      "file": "screenshots/01-hybrid-engine.png",
+      "file": "screenshots/01-hybrid-engine.webp",
       "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image-1.png",
       "note": "From the official EMBER-8 product page (mpctoolkit.com)"
     },
     {
-      "file": "screenshots/02-sequencer.png",
+      "file": "screenshots/02-sequencer.webp",
       "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image.png",
       "note": "From the official EMBER-8 product page (mpctoolkit.com)"
     },
     {
-      "file": "screenshots/03-sample-picker.png",
+      "file": "screenshots/03-sample-picker.webp",
       "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image-2.png",
       "note": "From the official EMBER-8 product page (mpctoolkit.com)"
     }
@@ -77,19 +77,19 @@
       "note": "Resized from 1200x900 PNG to 800x600 WebP (quality 92), preserving the 4:3 aspect ratio."
     },
     {
-      "file": "screenshots/02-instruments.png",
+      "file": "screenshots/02-instruments.webp",
       "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
       "repo": "ZootedandRebooted/GRIDZILLA",
       "note": "Original 320x240 UI image extracted without resizing from page 6 of the official user guide; also shown on the project website."
     },
     {
-      "file": "screenshots/03-arranger.png",
+      "file": "screenshots/03-arranger.webp",
       "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
       "repo": "ZootedandRebooted/GRIDZILLA",
       "note": "Original 320x240 UI image extracted without resizing from page 12 of the official user guide; also shown on the project website."
     },
     {
-      "file": "screenshots/04-mixer.png",
+      "file": "screenshots/04-mixer.webp",
       "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
       "repo": "ZootedandRebooted/GRIDZILLA",
       "note": "Original 320x240 UI image extracted without resizing from page 14 of the official user guide; also shown on the project website."
@@ -97,29 +97,29 @@
   ],
   "henryskillz-mod-kit": [
     {
-      "file": "screenshots/01-henryskillz-splash.png",
+      "file": "screenshots/01-henryskillz-splash.webp",
       "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/HEAD/assets/screens/henryskillz-splash.png",
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     },
     {
-      "file": "screenshots/02-graphic-mixer.png",
+      "file": "screenshots/02-graphic-mixer.webp",
       "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/HEAD/assets/screens/graphic-mixer.png",
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     },
     {
-      "file": "screenshots/03-hs-effects-list.png",
+      "file": "screenshots/03-hs-effects-list.webp",
       "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/HEAD/assets/screens/hs-effects-list.png",
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     },
     {
-      "file": "screenshots/04-stems-chooser.png",
+      "file": "screenshots/04-stems-chooser.webp",
       "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/HEAD/assets/screens/stems-chooser.png",
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     }
   ],
   "kaosample": [
     {
-      "file": "screenshots/01-splash.png",
+      "file": "screenshots/01-splash.webp",
       "source": "kaosplash binary from the KAOSAMPLE release (supplied by the catalog owner)",
       "repo": "omarhuertasllc-ops/kaosample-beta",
       "note": "Embedded 320x240 BGRX framebuffer extracted at byte offset 372528; not executed"
@@ -127,22 +127,22 @@
   ],
   "lightfoot": [
     {
-      "file": "screenshots/01-title.png",
+      "file": "screenshots/01-title.webp",
       "source": "https://raw.githubusercontent.com/Dyldog/Lightfoot/HEAD/docs/screens/00-title.png",
       "repo": "Dyldog/Lightfoot"
     },
     {
-      "file": "screenshots/02-song-run.png",
+      "file": "screenshots/02-song-run.webp",
       "source": "https://raw.githubusercontent.com/Dyldog/Lightfoot/HEAD/docs/screens/09-song-run.png",
       "repo": "Dyldog/Lightfoot"
     },
     {
-      "file": "screenshots/03-songs.png",
+      "file": "screenshots/03-songs.webp",
       "source": "https://raw.githubusercontent.com/Dyldog/Lightfoot/HEAD/docs/screens/08-songs.png",
       "repo": "Dyldog/Lightfoot"
     },
     {
-      "file": "screenshots/04-scores.png",
+      "file": "screenshots/04-scores.webp",
       "source": "https://raw.githubusercontent.com/Dyldog/Lightfoot/HEAD/docs/screens/07-scores.png",
       "repo": "Dyldog/Lightfoot"
     }
@@ -150,7 +150,7 @@
   "looppad": [],
   "maiaos": [
     {
-      "file": "screenshots/01-splash.png",
+      "file": "screenshots/01-splash.webp",
       "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW/releases/download/beta/MaiaOS-V1.zip",
       "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "note": "Original PNG from release archive: MaiaOS-V1 DON'T SHARE/autorun/runtime/maia-320x240.png"
@@ -158,34 +158,34 @@
   ],
   "melodee-sample": [
     {
-      "file": "screenshots/01-stage.png",
+      "file": "screenshots/01-stage.webp",
       "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/stage.png",
       "repo": "keremimo/melodee-sample"
     },
     {
-      "file": "screenshots/02-patterns.png",
+      "file": "screenshots/02-patterns.webp",
       "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/patterns.png",
       "repo": "keremimo/melodee-sample"
     },
     {
-      "file": "screenshots/03-looper.png",
+      "file": "screenshots/03-looper.webp",
       "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/looper.png",
       "repo": "keremimo/melodee-sample"
     },
     {
-      "file": "screenshots/04-song.png",
+      "file": "screenshots/04-song.webp",
       "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/song.png",
       "repo": "keremimo/melodee-sample"
     },
     {
-      "file": "logo.png",
+      "file": "logo.webp",
       "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/melodee-wordmark.png",
       "repo": "keremimo/melodee-sample"
     }
   ],
   "mp-doom": [
     {
-      "file": "screenshots/01-opening-credit.png",
+      "file": "screenshots/01-opening-credit.webp",
       "source": "https://philwoolley.com/mpdoom/opening-credit.png",
       "repo": "fomoPhil/mp-doom",
       "note": "Opening credit screen from the author's MP DOOM page (640x480, unchanged)"
@@ -193,19 +193,19 @@
   ],
   "mpc-600-s": [
     {
-      "file": "screenshots/01-main-sequence.png",
+      "file": "screenshots/01-main-sequence.webp",
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 9 of the official operator manual."
     },
     {
-      "file": "screenshots/02-title.png",
+      "file": "screenshots/02-title.webp",
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 4 of the official operator manual."
     },
     {
-      "file": "screenshots/03-timing-correct.png",
+      "file": "screenshots/03-timing-correct.webp",
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 15 of the official operator manual."
@@ -213,7 +213,7 @@
   ],
   "mpc-boot-thingy": [
     {
-      "file": "screenshots/01-splash-screen.png",
+      "file": "screenshots/01-splash-screen.webp",
       "source": "https://raw.githubusercontent.com/garrettjwilke/mpc-boot-thingy/HEAD/splash-screen.png",
       "repo": "garrettjwilke/mpc-boot-thingy"
     }
@@ -224,24 +224,24 @@
   "mpc-gen1recomp": [],
   "mpc-gently": [
     {
-      "file": "screenshots/01-look-inside.jpg",
+      "file": "screenshots/01-look-inside.webp",
       "source": "https://raw.githubusercontent.com/slowphase/mpc-gently/HEAD/previews/look-inside.jpg",
       "repo": "slowphase/mpc-gently"
     },
     {
-      "file": "screenshots/02-controls-diagram.jpg",
+      "file": "screenshots/02-controls-diagram.webp",
       "source": "https://raw.githubusercontent.com/slowphase/mpc-gently/HEAD/previews/controls-diagram.jpg",
       "repo": "slowphase/mpc-gently"
     },
     {
-      "file": "screenshots/03-shaping-sound.jpg",
+      "file": "screenshots/03-shaping-sound.webp",
       "source": "https://raw.githubusercontent.com/slowphase/mpc-gently/HEAD/previews/shaping-sound.jpg",
       "repo": "slowphase/mpc-gently"
     }
   ],
   "mpc-grid": [
     {
-      "file": "screenshots/01-step-grid.png",
+      "file": "screenshots/01-step-grid.webp",
       "source": "https://pzuzarte.github.io/mpc-grid/",
       "repo": "pzuzarte/mpc-grid",
       "note": "Screenshot of the official web app (1200×900)"
@@ -249,44 +249,44 @@
   ],
   "mpc-minimod": [
     {
-      "file": "screenshots/01-autotrim.png",
+      "file": "screenshots/01-autotrim.webp",
       "source": "https://raw.githubusercontent.com/ioma8/mpc-minimod/HEAD/docs/images/autotrim.png",
       "repo": "ioma8/mpc-minimod"
     },
     {
-      "file": "screenshots/02-menu.png",
+      "file": "screenshots/02-menu.webp",
       "source": "https://raw.githubusercontent.com/ioma8/mpc-minimod/HEAD/docs/images/menu.png",
       "repo": "ioma8/mpc-minimod"
     },
     {
-      "file": "screenshots/03-synth.png",
+      "file": "screenshots/03-synth.webp",
       "source": "https://raw.githubusercontent.com/ioma8/mpc-minimod/HEAD/docs/images/synth.png",
       "repo": "ioma8/mpc-minimod"
     },
     {
-      "file": "screenshots/04-looper.png",
+      "file": "screenshots/04-looper.webp",
       "source": "https://raw.githubusercontent.com/ioma8/mpc-minimod/HEAD/docs/images/looper.png",
       "repo": "ioma8/mpc-minimod"
     }
   ],
   "mpc-sample-doom": [
     {
-      "file": "screenshots/01-splash.png",
+      "file": "screenshots/01-splash.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-doom/HEAD/docs/screenshots/00-splash.png",
       "repo": "jeffwebb-to/mpc-sample-doom"
     },
     {
-      "file": "screenshots/02-e1m1.png",
+      "file": "screenshots/02-e1m1.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-doom/HEAD/docs/screenshots/02-e1m1.png",
       "repo": "jeffwebb-to/mpc-sample-doom"
     },
     {
-      "file": "screenshots/03-turned-with-data-knob.png",
+      "file": "screenshots/03-turned-with-data-knob.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-doom/HEAD/docs/screenshots/03-turned-with-data-knob.png",
       "repo": "jeffwebb-to/mpc-sample-doom"
     },
     {
-      "file": "screenshots/04-automap.png",
+      "file": "screenshots/04-automap.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-doom/HEAD/docs/screenshots/04-automap.png",
       "repo": "jeffwebb-to/mpc-sample-doom"
     },
@@ -298,7 +298,7 @@
   ],
   "mpc-sample-export": [
     {
-      "file": "logo.png",
+      "file": "logo.webp",
       "source": "https://raw.githubusercontent.com/savicreations/mpc-sample-export-downloads/HEAD/assets/icon-256.png",
       "repo": "savicreations/mpc-sample-export-downloads"
     }
@@ -308,22 +308,22 @@
   "mpc-sample-secrets": [],
   "mpc-sample-tracker": [
     {
-      "file": "screenshots/01-pattern.png",
+      "file": "screenshots/01-pattern.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-tracker/HEAD/docs/screenshots/pattern.png",
       "repo": "jeffwebb-to/mpc-sample-tracker"
     },
     {
-      "file": "screenshots/02-intro-title.png",
+      "file": "screenshots/02-intro-title.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-tracker/HEAD/docs/screenshots/intro-title.png",
       "repo": "jeffwebb-to/mpc-sample-tracker"
     },
     {
-      "file": "screenshots/03-samples.png",
+      "file": "screenshots/03-samples.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-tracker/HEAD/docs/screenshots/samples.png",
       "repo": "jeffwebb-to/mpc-sample-tracker"
     },
     {
-      "file": "screenshots/04-song.png",
+      "file": "screenshots/04-song.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-tracker/HEAD/docs/screenshots/song.png",
       "repo": "jeffwebb-to/mpc-sample-tracker"
     }
@@ -333,7 +333,7 @@
   "mpc-ui-toolkit": [],
   "mpcsample": [
     {
-      "file": "screenshots/01-demo.jpg",
+      "file": "screenshots/01-demo.webp",
       "source": "https://raw.githubusercontent.com/WorldLinkStudio/mpcsample/main/demo.jpg",
       "repo": "WorldLinkStudio/mpcsample",
       "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
@@ -342,28 +342,28 @@
   "sample-base": [],
   "sampqol-os": [
     {
-      "file": "screenshots/01-splash.png",
+      "file": "screenshots/01-splash.webp",
       "source": "https://github.com/snarebes/SampQOL-OS/releases/download/v0.2.0/SampQOL-OS-v0.2.0.zip",
       "repo": "snarebes/SampQOL-OS",
       "note": "qol-splash.raw converted BGRX 320x240",
       "permission": "Granted by the SampQOL OS author (Milkpowder44) on Discord, 2026-11-14: \"Feel free to use any images\""
     },
     {
-      "file": "screenshots/02-eq.png",
+      "file": "screenshots/02-eq.webp",
       "source": "https://github.com/snarebes/SampQOL-OS/blob/main/index.html#L1004",
       "repo": "snarebes/SampQOL-OS",
       "note": "Unchanged PNG decoded from embedded image data in the official repository manual.",
       "permission": "Granted by the SampQOL OS author (Milkpowder44) on Discord, 2026-11-14: \"Feel free to use any images\""
     },
     {
-      "file": "screenshots/03-step-editor.png",
+      "file": "screenshots/03-step-editor.webp",
       "source": "https://github.com/snarebes/SampQOL-OS/blob/main/index.html#L1771",
       "repo": "snarebes/SampQOL-OS",
       "note": "Unchanged PNG decoded from embedded image data in the official repository manual.",
       "permission": "Granted by the SampQOL OS author (Milkpowder44) on Discord, 2026-11-14: \"Feel free to use any images\""
     },
     {
-      "file": "screenshots/04-mixer.png",
+      "file": "screenshots/04-mixer.webp",
       "source": "https://github.com/snarebes/SampQOL-OS/blob/main/index.html#L2283",
       "repo": "snarebes/SampQOL-OS",
       "note": "Unchanged PNG decoded from embedded image data in the official repository manual.",
@@ -372,7 +372,7 @@
   ],
   "scalemode": [
     {
-      "file": "screenshots/01-scale-page.png",
+      "file": "screenshots/01-scale-page.webp",
       "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-scalemode/HEAD/docs/screenshots/scale-page.png",
       "repo": "jacob-sabella/mpc-addin-sample-scalemode"
     },
@@ -382,29 +382,29 @@
       "repo": "jacob-sabella/mpc-addin-sample-scalemode"
     },
     {
-      "file": "screenshots/03-scale-page-by-ear.png",
+      "file": "screenshots/03-scale-page-by-ear.webp",
       "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-scalemode/HEAD/docs/screenshots/scale-page-by-ear.png",
       "repo": "jacob-sabella/mpc-addin-sample-scalemode"
     }
   ],
   "virtual-mpc-sample": [
     {
-      "file": "screenshots/01-screen-trim.png",
+      "file": "screenshots/01-screen-trim.webp",
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-trim.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
     },
     {
-      "file": "screenshots/02-screen-factory-library.png",
+      "file": "screenshots/02-screen-factory-library.webp",
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-factory-library.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
     },
     {
-      "file": "screenshots/03-panel.jpg",
+      "file": "screenshots/03-panel.webp",
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/panel.jpg",
       "repo": "orrpunk-art/virtual-mpc-sample"
     },
     {
-      "file": "screenshots/04-screen-shutdown.png",
+      "file": "screenshots/04-screen-shutdown.webp",
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-shutdown.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
     }
