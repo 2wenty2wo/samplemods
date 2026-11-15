@@ -37,6 +37,9 @@
 	const detailUrl = $derived(
 		absoluteUrl(data.redirectTo ? data.redirectTo : data.canonicalPath, base)
 	);
+	const suggestEditUrl = $derived(
+		`https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml&title=${encodeURIComponent(`Listing change: ${mod.name ?? ''}`)}&entry=${encodeURIComponent(detailUrl)}`
+	);
 
 	const runsOnText = $derived(
 		(mod.runs_on ?? []).map((r) => runsOnLabel(r)).filter(Boolean).join(', ')
@@ -503,6 +506,10 @@
 								{:else if imageCreditHost}
 									Images: from {imageCreditHost}
 								{/if}
+								{#if mod.repo || imageCreditHost}
+									<span aria-hidden="true"> · </span>
+								{/if}
+								<a href={suggestEditUrl} target="_blank" rel="noopener noreferrer">Suggest an edit</a>
 							</p>
 						</div>
 
@@ -536,6 +543,10 @@
 						{:else if imageCreditHost}
 							Images: from {imageCreditHost}
 						{/if}
+						{#if mod.repo || imageCreditHost}
+							<span aria-hidden="true"> · </span>
+						{/if}
+						<a href={suggestEditUrl} target="_blank" rel="noopener noreferrer">Suggest an edit</a>
 					</p>
 				{/if}
 

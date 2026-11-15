@@ -1,0 +1,100 @@
+name: Suggest a project
+description: Propose a new catalog entry without writing YAML. Maintainers will turn this into a pull request.
+title: "New entry: "
+labels: ["new-entry"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Project name
+      description: The display name as it should appear in the catalog.
+      placeholder: SampQOL OS
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: GitHub repository URL, or a website if there is no public repo.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      description: Pick the closest match for what the project does.
+      options:
+        - Mods
+        - Apps
+        - Games
+        - Tools
+        - Guides
+        - Developers
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Short description
+      description: One or two sentences on what it does and who it is for.
+      placeholder: Free SD-card mod that adds QoL features for the Akai MPC Sample.
+    validations:
+      required: true
+  - type: checkboxes
+    id: runs_on
+    attributes:
+      label: Where it runs
+      options:
+        - label: On the MPC
+        - label: Desktop app
+        - label: Browser
+        - label: Docs only
+  - type: dropdown
+    id: install
+    attributes:
+      label: Primary install route
+      options:
+        - SD card
+        - Boot Thingy
+        - Web installer
+        - SSH
+        - Desktop
+        - USB-MIDI
+        - None
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: price
+    attributes:
+      label: Price
+      options:
+        - Free
+        - Paid
+        - Pay what you want
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source availability
+      options:
+        - Open source
+        - Closed source
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: images
+    attributes:
+      label: Screenshots
+      description: Drag screenshots here — 4:3 or 320×240 screen captures look best. Keep files under 500 KB when you can.
+  - type: checkboxes
+    id: relationship
+    attributes:
+      label: Relationship to the project
+      options:
+        - label: I made this
+        - label: I have permission to share these images

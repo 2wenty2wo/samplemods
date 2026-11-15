@@ -1,0 +1,42 @@
+name: Fix or update a listing
+description: Ask for a correction, image update, or removal of an existing catalog entry.
+title: "Listing change: "
+labels: ["listing-change"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      description: Page URL or entry ID from the catalog.
+      placeholder: https://samplemods.com/mod/gridzilla/
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What should change
+      description: Describe the fix or update in plain language.
+      placeholder: Description is outdated — the project now supports firmware 1.3.0.
+    validations:
+      required: true
+  - type: textarea
+    id: images
+    attributes:
+      label: Replacement or additional images
+      description: Optional. Drag screenshots here if you are adding or replacing media.
+  - type: dropdown
+    id: request
+    attributes:
+      label: Request type
+      options:
+        - Fix details
+        - Add or replace images
+        - Remove the listing
+    validations:
+      required: true
+  - type: checkboxes
+    id: relationship
+    attributes:
+      label: Relationship to the project
+      options:
+        - label: I'm the author

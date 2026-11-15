@@ -59,7 +59,7 @@
 		<p>
 			Made one of these projects? Want your listing, description or images changed or removed?
 			<a
-				href="https://github.com/2wenty2wo/samplemods/issues/new?title=Listing%20change%3A%20"
+				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -70,7 +70,7 @@
 		<div class="info-actions">
 			<a
 				class="hw-action-btn orange"
-				href="https://github.com/2wenty2wo/samplemods/issues/new?title=Listing%20change%3A%20"
+				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
 				target="_blank"
 				rel="noopener noreferrer"
 			>

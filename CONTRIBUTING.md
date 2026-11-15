@@ -1,5 +1,14 @@
 # Contributing
 
+## No-code route
+
+Prefer a form over editing YAML? Open one of these GitHub issue forms (free GitHub account required):
+
+- [Suggest a project](https://github.com/2wenty2wo/samplemods/issues/new?template=new-entry.yml)
+- [Fix or update a listing](https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml)
+
+Maintainers turn those into catalog updates. The rest of this guide is the manual pull-request route.
+
 ## Files you shouldn't edit
 
 Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, and `data/contributors.json` untouched. The refresh job updates these every 6 hours. Generated outputs (`src/lib/data.json`, `src/lib/server/details.json`, `static/catalog.json`, and `static/media/**`) are also blocked; edit the source YAML and entry media instead. The **Catalog PR checks** status checks these paths and runs `npm test`. To undo an accidental change, use `git checkout origin/main -- <file>`; remove newly added generated files from the PR as well.

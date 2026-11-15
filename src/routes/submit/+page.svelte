@@ -5,7 +5,7 @@
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 
 	const title = `Submit an Entry · ${SITE_NAME}`;
-	const description = `How to submit or update an entry in the ${SITE_NAME} community catalog via pull request.`;
+	const description = `Suggest a new project or listing change via a short GitHub form, or open a pull request if you prefer editing YAML yourself.`;
 </script>
 
 <SeoHead title={title} description={description} url={absoluteUrl('/submit/', base)} image={defaultShareImage(base)} />
@@ -17,14 +17,43 @@
 			<p class="page-kicker">CONTRIBUTING GUIDE</p>
 			<h1 class="page-title">How to Add or Update an Entry</h1>
 			<p class="page-lead">
-				Every entry in {SITE_NAME} is a tiny YAML file and an optional media folder in Git. Open a
-				pull request and CI validates everything automatically.
+				Two ways in: fill a short GitHub form (no YAML), or open a pull request that edits the
+				catalog files yourself. Maintainers turn form suggestions into catalog updates; CI
+				validates every PR automatically.
 			</p>
 		</div>
 	</div>
 </section>
 
 <div class="wrap info-grid">
+	<article class="info-card">
+		<h2>No GitHub skills? Use a form</h2>
+		<p>
+			Suggest a new project or ask for a listing fix without touching YAML. You need a free GitHub
+			account; maintainers handle the rest.
+		</p>
+		<div class="info-actions">
+			<a
+				class="hw-action-btn orange"
+				href="https://github.com/2wenty2wo/samplemods/issues/new?template=new-entry.yml"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Suggest a project ↗
+			</a>
+			<a
+				class="hw-action-btn blue"
+				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Fix or update a listing ↗
+			</a>
+		</div>
+	</article>
+
+	<h2 class="manual-route-heading">Manual route (pull request)</h2>
+
 	<article class="info-card">
 		<span class="step-badge">STEP 1</span>
 		<h2>Add a YAML entry in <code>data/&lt;section&gt;/&lt;id&gt;/&lt;type&gt;.yaml</code></h2>
@@ -174,6 +203,15 @@ tags:
 		width: min(920px, 100% - 2rem);
 		display: grid;
 		gap: 1.15rem;
+	}
+
+	.manual-route-heading {
+		margin: 0.5rem 0 0;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.05rem;
+		letter-spacing: 0.02em;
+		color: var(--mpc-silkscreen);
 	}
 
 	.info-card {

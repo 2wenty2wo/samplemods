@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Prefer editing YAML yourself?
+    url: https://github.com/2wenty2wo/samplemods/blob/main/CONTRIBUTING.md
+    about: Manual pull-request route for contributors comfortable with Git and YAML.
