@@ -319,6 +319,12 @@
       "file": "logo.webp",
       "source": "https://raw.githubusercontent.com/savicreations/mpc-sample-export-downloads/HEAD/assets/icon-256.png",
       "repo": "savicreations/mpc-sample-export-downloads"
+    },
+    {
+      "file": "screenshots/01-home.webp",
+      "source": "supplied by the catalog owner",
+      "repo": "savicreations/mpc-sample-export-downloads",
+      "note": "Windows app capture cropped to 4:3 and resized to 1200x900 WebP (quality 85)"
     }
   ],
   "mpc-sample-kit": [],

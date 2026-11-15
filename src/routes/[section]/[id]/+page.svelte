@@ -794,6 +794,12 @@
 		cursor: default;
 	}
 
+	/* A <button> doesn't resolve height: 100% for its child, so pin the image to the 4:3 frame. */
+	.hero-bezel .screen-img {
+		position: absolute;
+		inset: 0;
+	}
+
 	.hero-bezel.is-clickable {
 		cursor: zoom-in;
 	}
