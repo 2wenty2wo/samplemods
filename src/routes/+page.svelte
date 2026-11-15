@@ -190,7 +190,10 @@
 
 <aside class="wip-band" role="note" aria-label="Work in progress">
 	<div class="wip-inner">
-		<span class="wip-led" aria-hidden="true">⚠</span>
+		<span class="wip-badge" aria-hidden="true">
+			<span class="wip-dot"></span>
+			STATUS · WIP
+		</span>
 		<div class="wip-copy">
 			<p class="wip-heading">Work in progress</p>
 			<p class="wip-text">
@@ -766,105 +769,156 @@
 
 	.wip-band {
 		width: min(1200px, 100% - 2rem);
-		margin: -0.65rem auto 1.25rem;
+		margin: -0.5rem auto 1.25rem;
 	}
 
 	.wip-inner {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 		gap: 0.75rem;
-		padding: 0.7rem 0.9rem;
+		padding: 0.55rem 0.85rem;
 		background:
-			linear-gradient(180deg, rgb(255 138 30 / 0.12) 0%, rgb(255 138 30 / 0.05) 100%),
-			var(--mpc-body-mid);
-		border: 2px solid #b86a12;
-		border-left: 5px solid var(--mpc-btn-orange);
-		border-radius: var(--radius);
+			linear-gradient(90deg, rgb(255 138 30 / 0.07) 0%, transparent 45%),
+			var(--mpc-screen-bg);
+		border: 2px solid #252934;
+		border-left: 4px solid var(--mpc-btn-orange);
+		border-radius: 6px;
 		box-shadow:
-			inset 0 1px 0 rgb(255 255 255 / 0.35),
-			0 2px 0 #8a4f0c;
+			inset 0 2px 6px rgb(0 0 0 / 0.75),
+			0 2px 0 var(--mpc-bezel-black);
 	}
 
-	.wip-led {
+	.wip-badge {
 		flex-shrink: 0;
 		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		width: 1.7rem;
-		height: 1.7rem;
-		margin-top: 0.05rem;
+		gap: 0.4rem;
+		padding: 0.22rem 0.5rem;
 		border-radius: 4px;
-		background: #1a1208;
-		color: var(--mpc-btn-orange);
-		font-size: 0.95rem;
+		background: #141821;
+		border: 1px solid #2c3242;
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--mpc-screen-yellow);
 		line-height: 1;
-		box-shadow:
-			inset 0 0 0 1px #3a2810,
-			0 0 10px rgb(255 138 30 / 0.55);
+	}
+
+	.wip-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--mpc-btn-orange);
+		box-shadow: 0 0 6px var(--mpc-btn-orange);
 	}
 
 	.wip-copy {
 		min-width: 0;
-		display: grid;
-		gap: 0.15rem;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.15rem 0.55rem;
 	}
 
 	.wip-heading {
 		margin: 0;
-		font-family: var(--font-display);
-		font-weight: 800;
-		font-size: 0.92rem;
-		letter-spacing: 0.02em;
-		color: #7a3f08;
+		font-family: var(--font-mono);
+		font-weight: 700;
+		font-size: 0.78rem;
+		letter-spacing: 0.08em;
+		color: var(--mpc-screen-yellow);
 		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.wip-heading::after {
+		content: '·';
+		margin-left: 0.55rem;
+		color: #6b7284;
+		font-weight: 700;
 	}
 
 	.wip-text {
 		margin: 0;
-		font-size: 0.86rem;
+		font-size: 0.85rem;
 		line-height: 1.45;
-		color: var(--mpc-silkscreen-muted);
+		color: var(--mpc-screen-text);
 	}
 
 	.wip-text a {
+		color: var(--mpc-screen-cyan);
 		font-weight: 700;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.16em;
+	}
+
+	.wip-text a:hover {
+		color: var(--mpc-screen-yellow);
 	}
 
 	.contributors-band {
-		border-top: 2px solid var(--mpc-body-recess);
-		background: var(--mpc-body-mid);
-		padding: 1.5rem 0 1.75rem;
-		margin-top: 2rem;
+		width: min(1200px, 100% - 2rem);
+		margin: -1.25rem auto 2.75rem;
 	}
 
 	.contributors-inner {
-		width: min(1200px, 100% - 2rem);
-		margin-inline: auto;
 		display: grid;
-		gap: 0.85rem;
+		gap: 0.9rem;
+		padding: 1.05rem 1.25rem;
+		background: linear-gradient(180deg, #cac7c2 0%, var(--mpc-pad-card) 100%);
+		border: 2px solid #282b34;
+		border-radius: var(--radius);
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.55),
+			inset 0 -2px 0 rgb(0 0 0 / 0.1),
+			0 4px 0 #1b1d24,
+			0 6px 12px rgb(0 0 0 / 0.06);
 	}
 
 	.contributors-head {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: baseline;
+		align-items: center;
 		justify-content: space-between;
-		gap: 0.35rem 1rem;
+		gap: 0.4rem 1rem;
+		padding-bottom: 0.65rem;
+		border-bottom: 1px solid rgb(0 0 0 / 0.12);
 	}
 
 	.contributors-title {
 		margin: 0;
+		font-family: var(--font-sans);
+		font-size: 0.74rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--mpc-pad-text);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+	}
+
+	.contributors-title::before {
+		content: '';
+		width: 10px;
+		height: 4px;
+		border-radius: 2px;
+		background: var(--mpc-btn-blue-light);
+		box-shadow: 0 0 6px rgb(29 161 219 / 0.55);
 	}
 
 	.contributors-sub {
 		margin: 0;
 		font-family: var(--font-mono);
-		font-size: 0.78rem;
+		font-size: 0.76rem;
 		color: var(--mpc-silkscreen-muted);
 	}
 
 	.contributors-sub a {
 		font-weight: 700;
+		color: var(--mpc-accent-red);
 	}
 
 	.contributor-list {
@@ -880,28 +934,32 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		padding: 0.28rem 0.7rem 0.28rem 0.3rem;
+		padding: 0.25rem 0.65rem 0.25rem 0.28rem;
 		background: var(--mpc-body-light);
-		color: var(--mpc-silkscreen);
-		border: 1px solid rgb(0 0 0 / 0.16);
+		color: var(--mpc-pad-text);
+		border: 1.5px solid #282b34;
 		border-bottom: 3px solid var(--mpc-btn-blue-light);
-		border-radius: 999px;
+		border-radius: 5px;
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.65),
+			0 2px 0 #1b1d24;
 		text-decoration: none;
-		font-size: 0.82rem;
+		font-size: 0.8rem;
 		font-weight: 700;
-		transition: border-color 120ms ease, background 120ms ease;
+		transition: border-color 120ms ease, background 120ms ease, transform 120ms ease;
 	}
 
 	.contributor-chip:hover {
-		background: #f0eeea;
+		background: #f2f0ec;
 		border-bottom-color: var(--mpc-btn-orange);
+		transform: translateY(1px);
 		text-decoration: none;
 	}
 
 	.contributor-avatar {
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
+		width: 28px;
+		height: 28px;
+		border-radius: 4px;
 		background: #1a1d24;
 		border: 1px solid #2a2e38;
 		display: block;
@@ -923,20 +981,32 @@
 		}
 
 		.wip-inner {
-			gap: 0.55rem;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.4rem;
 			padding: 0.55rem 0.7rem;
 		}
 
 		.wip-heading {
-			font-size: 0.8rem;
+			font-size: 0.74rem;
+		}
+
+		.wip-heading::after {
+			content: none;
 		}
 
 		.wip-text {
 			font-size: 0.78rem;
 		}
 
-		.contributors-inner {
+		.contributors-band {
 			width: calc(100% - 1.25rem);
+			margin: -1.25rem auto 2rem;
+		}
+
+		.contributors-inner {
+			padding: 0.85rem 0.95rem;
+			gap: 0.7rem;
 		}
 
 		.hero-band {
