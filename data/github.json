@@ -58,7 +58,7 @@
     "archived": false
   },
   "Dyldog/Lightfoot": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-14T04:21:49Z",
     "last_commit_at": "2026-11-14T04:21:46Z",
@@ -118,8 +118,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-15T05:13:03Z",
-    "last_commit_at": "2026-11-15T05:13:02Z",
+    "pushed_at": "2026-11-15T05:46:18Z",
+    "last_commit_at": "2026-11-15T05:46:17Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -136,7 +136,7 @@
         "name": "MPC 600 S, LA Version 1.2",
         "published_at": "2026-11-14T15:24:34Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.2",
-        "body": "**New: S600 MULTI, multisample instruments.** A third program Type (MPC, S600, S600 MULTI). One pad, the Instrument (Inst in Program Config), plays samples from the program's pads across the keyboard: up to 32 keygroups, each with two velocity zones, its root, tuning, level and pan; shared S600 envelopes, filter and LFO; key tracking (KEY>PAN, KEY>FILTER, KEY>LEVEL, KEY>ENV) with instrument templates. A keyboard view on the Keygroup page, K1 through the keygroups, keys and pads to set roots, ranges and zones.\n\n**Auto Sampler:** play each note asked for (\"Ready for Sample 1, Velocity 1\"); <End>, <Re-Do>, <Skip>; at the end each sample's pitch is detected and everything is mapped by pitch and velocity, onto pads in pitch order. 12-bit mono at 29.76 kHz to start.\n\n**Auto Map** builds the keygroups from the pads, the roots from file names and pitch detection; **Root Auto-Detect** gives S600 sounds their root note when loaded, so MIDI keys play them at true pitch. **S600** programs get an Instrument too (A01, or LAST PAD).\n\n**S600 Mod page** (B2: Filter, LFO, Mod): the mod wheel on pitch (vibrato), filter (LFO movement, or OPEN: the cutoff opened) and level (tremolo), and the pitch bend range. The Main page: Poly, Legato, Portamento, Note On, Root Note (Auto-Detect).\n\n**Loading a program** asks first, naming the program it goes into (the wheel picks another; <To Empty> loads into the first empty program).\n\n**New: Live Looper.** On Audiotrack Record, B2 <Live Loop>: one-pass takes drop onto pads while the sequence keeps looping. Layer take after take without stopping; <Del Take> removes the last one. Live Loop Conversion (Additional Settings 2): IMMEDIATE converts during the pass, so the take drops in a few ms after it; AFTER 1ST LOOP drops in the raw take and converts while it plays, suited to longer takes.\n\n**Footswitch AUDIO REC** (MIDI Settings, Sustain: FOOTSWITCH): the pedal is <Rec>/<Stop> on Audiotrack Record and Live Looper, and on any page once Live Looper takes have started.\n\n**Footswitch setup** (MIDI Settings): Foot Chn (ANY to start, so any keyboard's pedal works), Foot CC (64 to start) and Polarity (AUTO works out a pedal that rests \"down\"; or NORMAL, INVERTED). <Learn> sets all three from one press of the pedal, and the bottom line shows what the pedal last sent.\n\n**Additional Settings on two pages.** Page 2 holds Loop Conv and the start values for every recording page: Sample Rate (29.76 kHz; the slider's rates, or SET to any rate), Bit Rate (12), Anti-Aliasing and Normalize (on), Input Thru (always on, or off) and Rec Mode (stereo; Convert Sample stays mono).\n\n**Metronome:** Audio Rec (click during audio track and Live Looper takes, default NO) and After Loop (click after a Live Looper take, default STOP).\n\n**SAMPLE + pad** selects a pad without playing it in every mode (Note Repeat, Local Mode off, MIDI tracks): set a loop's volume without retriggering it.\n\n**Fixed:** Master Effects are no longer kept in the settings file: they start off at power-on unless the Autoload project has them.\n\nInstall: extract **MPC-600-S-OS-v1.2.zip** and copy the `autorun` folder to the SD card root, replacing the old one. Your `MPC600S` folder is kept.\n\n\n",
+        "body": "**New: S600 MULTI, multisample instruments.** A third program Type (MPC, S600, S600 MULTI). One pad, the Instrument (Inst in Program Config), plays samples from the program's pads across the keyboard: up to 32 keygroups, each with two velocity zones, its root, tuning, level and pan; shared S600 envelopes, filter and LFO; key tracking (KEY>PAN, KEY>FILTER, KEY>LEVEL, KEY>ENV) with instrument templates. A keyboard view on the Keygroup page, K1 through the keygroups, keys and pads to set roots, ranges and zones.\n\n**Auto Sampler:** play each note asked for (\"Ready for Sample 1, Velocity 1\"); <End>, <Re-Do>, <Skip>; at the end each sample's pitch is detected and everything is mapped by pitch and velocity, onto pads in pitch order. 12-bit mono at 29.76 kHz to start.\n\n**Auto Map** builds the keygroups from the pads, the roots from file names and pitch detection; **Root Auto-Detect** gives S600 sounds their root note when loaded, so MIDI keys play them at true pitch. **S600** programs get an Instrument too (A01, or LAST PAD).\n\n**S600 Mod page** (B2: Filter, LFO, Mod): the mod wheel on pitch (vibrato), filter (LFO movement, or OPEN: the cutoff opened) and level (tremolo), and the pitch bend range. The Main page: Poly, Legato, Portamento, Note On, Root Note (Auto-Detect).\n\n**Zone Assign TRANSIENT** (CHOP): a zone at every drum hit of a break, found at once: kicks, snares, hats and ghost notes, each zone starting just before its hit. Sensitivity 1-10, starts movable a millisecond at a time, <Delete> for a false hit.\n\n**Loading a program** asks first, naming the program it goes into (the wheel picks another; <To Empty> loads into the first empty program).\n\n**New: Live Looper.** On Audiotrack Record, B2 <Live Loop>: one-pass takes drop onto pads while the sequence keeps looping. Layer take after take without stopping; <Del Take> removes the last one. Live Loop Conversion (Additional Settings 2): IMMEDIATE converts during the pass, so the take drops in a few ms after it; AFTER 1ST LOOP drops in the raw take and converts while it plays, suited to longer takes.\n\n**Footswitch AUDIO REC** (MIDI Settings, Sustain: FOOTSWITCH): the pedal is <Rec>/<Stop> on Audiotrack Record and Live Looper, and on any page once Live Looper takes have started.\n\n**Footswitch setup** (MIDI Settings): Foot Chn (ANY to start, so any keyboard's pedal works), Foot CC (64 to start) and Polarity (AUTO works out a pedal that rests \"down\"; or NORMAL, INVERTED). <Learn> sets all three from one press of the pedal, and the bottom line shows what the pedal last sent.\n\n**Additional Settings on two pages.** Page 2 holds Loop Conv and the start values for every recording page: Sample Rate (29.76 kHz; the slider's rates, or SET to any rate), Bit Rate (12), Anti-Aliasing and Normalize (on), Input Thru (always on, or off) and Rec Mode (stereo; Convert Sample stays mono).\n\n**Metronome:** Audio Rec (click during audio track and Live Looper takes, default NO) and After Loop (click after a Live Looper take, default STOP).\n\n**SAMPLE + pad** selects a pad without playing it in every mode (Note Repeat, Local Mode off, MIDI tracks): set a loop's volume without retriggering it.\n\n**Fixed:** Master Effects are no longer kept in the settings file: they start off at power-on unless the Autoload project has them.\n\nInstall: extract **MPC-600-S-OS-v1.2.zip** and copy the `autorun` folder to the SD card root, replacing the old one. Your `MPC600S` folder is kept.\n\n\n\n",
         "truncated": false
       },
       {
@@ -364,7 +364,7 @@
     "archived": false
   },
   "garrettjwilke/mpc-boot-thingy": {
-    "stars": 18,
+    "stars": 19,
     "forks": 3,
     "pushed_at": "2026-11-15T02:49:51Z",
     "last_commit_at": "2026-11-15T02:49:51Z",
@@ -821,8 +821,8 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 38,
-    "forks": 2,
+    "stars": 40,
+    "forks": 3,
     "pushed_at": "2026-11-14T19:17:42Z",
     "last_commit_at": "2026-11-14T19:12:16Z",
     "contributors": 1,
@@ -906,7 +906,7 @@
     "archived": false
   },
   "micknoise/mpc-sample-kit": {
-    "stars": 4,
+    "stars": 6,
     "forks": 0,
     "pushed_at": "2026-08-28T01:39:40Z",
     "last_commit_at": "2026-08-08T19:11:51Z",
@@ -1061,7 +1061,7 @@
     "archived": false
   },
   "rosen-wav/MaiaOS---Mpc-Sample-CFW": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-11-13T21:50:59Z",
     "last_commit_at": "2026-11-13T21:50:59Z",
