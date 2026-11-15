@@ -1,0 +1,17 @@
+name: RHYTHMER OS
+description: >-
+  A free groovebox for the MPC Sample built on Melodee, with synth engines, 36 drum kits, an
+  acid bassline generator and a playable break-chopping engine.
+repo: jazzyrhythmer/mpc-sample-rhythmer-os
+author: jazzyrhythmer
+website: https://jazzyrhythmer.github.io/mpc-sample/
+tags:
+  - groovebox
+  - synth
+  - drums
+  - acid
+install: sd-card
+firmware: 1.3.0.12
+status: beta
+runs_on: [device]
+audience: [musician]

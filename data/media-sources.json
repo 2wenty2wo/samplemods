@@ -370,6 +370,38 @@
       "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
     }
   ],
+  "rhythmer-os": [
+    {
+      "file": "screenshots/01-splash.webp",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-rhythmer-os/HEAD/assets/manual/boot.png",
+      "repo": "jazzyrhythmer/mpc-sample-rhythmer-os",
+      "note": "Development render from the project repo (not a hardware photo)"
+    },
+    {
+      "file": "screenshots/02-rhythmer-kit.webp",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-rhythmer-os/HEAD/assets/engines/rhythmer-kit-still.png",
+      "repo": "jazzyrhythmer/mpc-sample-rhythmer-os",
+      "note": "Development render from the project repo (not a hardware photo)"
+    },
+    {
+      "file": "screenshots/03-acid-engine.webp",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-rhythmer-os/HEAD/assets/engines/acid-engine-still.png",
+      "repo": "jazzyrhythmer/mpc-sample-rhythmer-os",
+      "note": "Development render from the project repo (not a hardware photo)"
+    },
+    {
+      "file": "screenshots/04-break-engine.webp",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-rhythmer-os/HEAD/assets/engines/break-engine-still.png",
+      "repo": "jazzyrhythmer/mpc-sample-rhythmer-os",
+      "note": "Development render from the project repo (not a hardware photo)"
+    },
+    {
+      "file": "screenshots/05-fm-106.webp",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-rhythmer-os/HEAD/assets/engines/fm-106-still.png",
+      "repo": "jazzyrhythmer/mpc-sample-rhythmer-os",
+      "note": "Development render from the project repo (not a hardware photo)"
+    }
+  ],
   "sample-base": [],
   "sampqol-os": [
     {
