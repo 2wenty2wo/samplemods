@@ -833,12 +833,6 @@
 		white-space: nowrap;
 	}
 
-	.wip-heading::after {
-		content: '·';
-		margin-left: 0.55rem;
-		color: #6b7284;
-		font-weight: 700;
-	}
 
 	.wip-text {
 		margin: 0;
@@ -989,10 +983,6 @@
 
 		.wip-heading {
 			font-size: 0.74rem;
-		}
-
-		.wip-heading::after {
-			content: none;
 		}
 
 		.wip-text {
