@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
+	import LogoMark from '$lib/LogoMark.svelte';
 	import '@fontsource/inter/400.css';
 	import '@fontsource/inter/600.css';
 	import '@fontsource/inter/700.css';
@@ -61,7 +62,7 @@
 <header class="site-topbar">
 	<div class="site-topbar-inner">
 		<a class="brand-lockup" href="{base}/">
-			<span class="status-led" aria-hidden="true"></span>
+			<LogoMark class="brand-mark" />
 			<span class="wordmark">{SITE_NAME}</span>
 		</a>
 
@@ -87,7 +88,10 @@
 <footer class="site-footer">
 	<div class="site-footer-inner">
 		<div class="footer-col">
-			<p class="wordmark footer-wordmark">{SITE_NAME}</p>
+			<div class="footer-brand">
+				<LogoMark class="footer-mark" />
+				<p class="wordmark footer-wordmark">{SITE_NAME}</p>
+			</div>
 			<p class="footer-copy">
 				An independent, community-maintained index of mods, apps, games, tools and
 				guides for the Akai MPC Sample. Not affiliated with or endorsed by Akai Professional /

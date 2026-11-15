@@ -116,15 +116,10 @@ a:hover {
 	text-decoration: none;
 }
 
-.status-led {
-	width: 14px;
-	height: 7px;
-	border-radius: 3px;
-	background: var(--mpc-btn-green);
-	border: 1px solid #0a3516;
-	box-shadow:
-		0 0 8px var(--mpc-btn-green),
-		inset 0 1px 1px rgb(255 255 255 / 0.65);
+.brand-mark {
+	width: 18px;
+	height: 18px;
+	color: #fff;
 	flex-shrink: 0;
 }
 
@@ -541,8 +536,22 @@ a:hover {
 	gap: 1.5rem 2.5rem;
 }
 
-.footer-wordmark {
+.footer-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.65rem;
 	margin: 0 0 0.45rem;
+}
+
+.footer-mark {
+	width: 18px;
+	height: 18px;
+	color: var(--mpc-bezel-black); /* switch footer mark colour here */
+	flex-shrink: 0;
+}
+
+.footer-wordmark {
+	margin: 0;
 	font-size: 0.92rem;
 	letter-spacing: 0.05em;
 	text-shadow: 0 1px 0 rgb(0 0 0 / 0.14);
@@ -616,9 +625,14 @@ a:hover {
 		gap: 0.42rem;
 	}
 
-	.status-led {
-		width: 11px;
-		height: 6px;
+	.brand-mark,
+	.footer-mark {
+		width: 14px;
+		height: 14px;
+	}
+
+	.footer-brand {
+		gap: 0.42rem;
 	}
 
 	.wordmark {

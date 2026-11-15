@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><title>SampleMods 4x4 grid logo white no margin</title><g fill="#FFFFFF">
+    <rect x="0" y="0" width="29" height="29" rx="7"></rect>
+    <rect x="33" y="0" width="29" height="29" rx="7"></rect>
+    <rect x="66" y="0" width="29" height="29" rx="7"></rect>
+    <rect x="99" y="0" width="29" height="29" rx="7"></rect>
+
+    <rect x="0" y="33" width="29" height="29" rx="7"></rect>
+    <rect x="33" y="33" width="29" height="29" rx="7"></rect>
+    <rect x="66" y="33" width="29" height="29" rx="7"></rect>
+    <rect x="99" y="33" width="29" height="29" rx="7"></rect>
+
+    <rect x="0" y="66" width="29" height="29" rx="7"></rect>
+    <rect x="33" y="66" width="29" height="29" rx="7"></rect>
+    <rect x="66" y="66" width="29" height="29" rx="7"></rect>
+    <rect x="99" y="66" width="29" height="29" rx="7"></rect>
+
+    <rect x="0" y="99" width="29" height="29" rx="7"></rect>
+    <rect x="33" y="99" width="29" height="29" rx="7"></rect>
+    <rect x="66" y="99" width="29" height="29" rx="7"></rect>
+    <rect x="99" y="99" width="29" height="29" rx="7"></rect>
+  </g><style>@media (prefers-color-scheme: light) { :root { filter: contrast(1) brightness(0.1); } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
