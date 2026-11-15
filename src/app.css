@@ -26,6 +26,10 @@
 	--mpc-btn-green: #2ee65a;
 	--mpc-pad-led-lime: #c8f526;
 	--mpc-screen-yellow: #e8c811;
+	/* Sampled from stock MPC Sample firmware captures */
+	--mpc-screen-amber: #f8b800;
+	--mpc-screen-white: #f8f8f8;
+	--mpc-screen-grey: #a0a0a0;
 	--mpc-screen-cyan: #38b6e8;
 	--mpc-screen-magenta: #ff4d7d;
 	--mpc-focus-ring: #ff8a1e;
@@ -35,6 +39,7 @@
 	--font-display: 'Archivo Variable', 'Inter', system-ui, sans-serif;
 	--font-wordmark: 'Michroma', var(--font-display);
 	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+	--font-screen: 'JetBrains Mono Variable', var(--font-mono);
 
 	--radius: 7px;
 }

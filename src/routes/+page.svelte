@@ -6,6 +6,7 @@
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
 	import StarIcon from '$lib/StarIcon.svelte';
+	import '@fontsource-variable/jetbrains-mono/wght.css';
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import {
 		SECTIONS,
@@ -148,18 +149,18 @@
 				<div class="hero-title-group">
 					<p class="hero-kicker">COMMUNITY CATALOG FOR THE AKAI MPC SAMPLE</p>
 					<h1 class="hero-headline">
-						Custom firmware, synths, games &amp; tools for the Akai MPC Sample.
+						Custom firmware, synths, games &amp; tools for the <span class="hero-accent">Akai MPC Sample</span>.
 					</h1>
 				</div>
 
 				<dl class="hero-stats" aria-label="Catalog statistics">
 					<div class="stat-box">
 						<dt>ENTRIES</dt>
-						<dd class="stat-val yellow">{totalMods}</dd>
+						<dd class="stat-val amber">{totalMods}</dd>
 					</div>
 					<div class="stat-box">
 						<dt>AUTHORS</dt>
-						<dd class="stat-val magenta">{totalAuthors}</dd>
+						<dd class="stat-val white">{totalAuthors}</dd>
 					</div>
 					<div class="stat-box">
 						<dt>LATEST PUSH</dt>
@@ -419,16 +420,14 @@
 		margin-inline: auto;
 	}
 
+	/* Hero styled after the stock MPC Sample firmware screen: pure black,
+	   off-white text, amber accent, inverted tab, thin grey outlines. */
 	.hero-screen {
-		background:
-			linear-gradient(180deg, rgb(232 200 17 / 0.04) 0%, transparent 65%),
-			var(--mpc-screen-bg);
-		border: 2px solid #252934;
+		background: #000;
+		border: 1px solid #404048;
 		border-radius: 8px;
 		padding: 1.25rem 1.35rem;
-		box-shadow:
-			inset 0 2px 10px rgb(0 0 0 / 0.85),
-			0 1px 0 rgb(255 255 255 / 0.07);
+		box-shadow: 0 1px 0 rgb(255 255 255 / 0.06);
 		display: grid;
 		gap: 1.15rem;
 	}
@@ -445,26 +444,33 @@
 		max-width: 640px;
 	}
 
+	/* Inverted like the selected soft-key tab (Trim | Tune | Filter). */
 	.hero-kicker {
-		margin: 0 0 0.3rem;
+		display: inline-block;
+		margin: 0 0 0.7rem;
+		padding: 0.2rem 0.6rem;
+		border-radius: 1px;
+		background: var(--mpc-screen-white);
+		color: #000;
+		font-family: var(--font-screen);
 		font-size: 0.72rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.12em;
-		color: var(--mpc-screen-cyan);
+		font-weight: 600;
+		letter-spacing: 0.04em;
 	}
 
 	.hero-headline {
 		margin: 0;
 		font-family: var(--font-display);
-		font-style: italic;
-		font-weight: 800;
-		font-stretch: 115%;
-		font-variation-settings: 'wdth' 115, 'wght' 800;
-		font-size: clamp(1.3rem, 2.6vw, 1.85rem);
-		line-height: 1.18;
-		color: var(--mpc-screen-yellow);
-		letter-spacing: 0.01em;
+		font-weight: 600;
+		font-variation-settings: 'wdth' 100, 'wght' 600;
+		font-size: clamp(1.4rem, 2.8vw, 2rem);
+		line-height: 1.15;
+		color: var(--mpc-screen-white);
+		letter-spacing: -0.01em;
+	}
+
+	.hero-accent {
+		color: var(--mpc-screen-amber);
 	}
 
 	.hero-stats {
@@ -475,36 +481,36 @@
 	}
 
 	.stat-box {
-		background: #10131a;
-		border: 1px solid #252a36;
-		border-radius: 5px;
+		background: #181818;
+		border: 1px solid #404048;
+		border-radius: 2px;
 		padding: 0.45rem 0.75rem;
 		min-width: 92px;
 	}
 
 	.stat-box dt {
-		font-size: 0.65rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.09em;
-		color: #9ba3b4;
+		font-family: var(--font-screen);
+		font-size: 0.72rem;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: var(--mpc-screen-grey);
 		margin-bottom: 0.1rem;
 	}
 
 	.stat-box dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-screen);
 		font-size: 1.05rem;
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
 	}
 
-	.stat-val.yellow {
-		color: var(--mpc-screen-yellow);
+	.stat-val.amber {
+		color: var(--mpc-screen-amber);
 	}
 
-	.stat-val.magenta {
-		color: var(--mpc-screen-magenta);
+	.stat-val.white {
+		color: var(--mpc-screen-white);
 	}
 
 	.stat-val.cyan {
@@ -518,15 +524,15 @@
 		align-items: center;
 		gap: 0.5rem 0.85rem;
 		padding-top: 0.85rem;
-		border-top: 1px solid #1d212b;
+		border-top: 1px solid #282830;
 	}
 
 	.search-label {
+		font-family: var(--font-screen);
 		font-size: 0.72rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--mpc-screen-cyan);
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		color: var(--mpc-screen-grey);
 		white-space: nowrap;
 	}
 
@@ -542,9 +548,9 @@
 		font-family: var(--font-sans);
 		font-size: 0.95rem;
 		color: var(--mpc-screen-text);
-		background: #050608;
-		border: 2px solid #2c3242;
-		border-radius: 5px;
+		background: #000;
+		border: 1px solid #585860;
+		border-radius: 2px;
 		padding: 0.6rem 0.85rem;
 		box-shadow: inset 0 2px 5px rgb(0 0 0 / 0.75);
 		transition: border-color 120ms ease;
@@ -1011,7 +1017,7 @@
 		}
 
 		.hero-headline {
-			font-size: 1.15rem;
+			font-size: 1.4rem;
 		}
 
 		.hero-stats {
