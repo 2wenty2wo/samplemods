@@ -359,6 +359,13 @@
       "repo": "jeffwebb-to/mpc-sample-tracker"
     }
   ],
+  "mpc-simple": [
+    {
+      "file": "screenshots/01-pad-select.webp",
+      "source": "https://mpcsimple.com/screen-grid.png",
+      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+    }
+  ],
   "mpc-stemloop": [],
   "mpc-tic80": [],
   "mpc-ui-toolkit": [],
