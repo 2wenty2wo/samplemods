@@ -323,7 +323,14 @@
   ],
   "mpc-sample-kit": [],
   "mpc-sample-sdk": [],
-  "mpc-sample-secrets": [],
+  "mpc-sample-secrets": [
+    {
+      "file": "screenshots/01-cheat-sheet.webp",
+      "source": "https://c1t1zen1.github.io/MPC-Sample-Secrets/",
+      "repo": "c1t1zen1/MPC-Sample-Secrets",
+      "note": "Screenshot of the guide's cheat sheet page (1200×900)"
+    }
+  ],
   "mpc-sample-tracker": [
     {
       "file": "screenshots/01-pattern.webp",
