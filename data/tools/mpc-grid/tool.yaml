@@ -1,0 +1,13 @@
+name: MPC Grid
+description: >-
+  A browser step sequencer that plays the MPC Sample over USB-MIDI and saves patterns into a copy
+  of a project as MPC sequences. Needs Chrome or Edge; tested on firmware 1.3.0.12.
+repo: pzuzarte/mpc-grid
+author: pzuzarte
+website: https://pzuzarte.github.io/mpc-grid/
+firmware: '1.3.0.12'
+runs_on:
+  - browser
+install: none
+audience:
+  - musician
