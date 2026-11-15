@@ -3,6 +3,7 @@
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
 	import LogoMark from '$lib/LogoMark.svelte';
+	import StarIcon from '$lib/StarIcon.svelte';
 	import '@fontsource/inter/400.css';
 	import '@fontsource/inter/600.css';
 	import '@fontsource/inter/700.css';
@@ -108,7 +109,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<span>★ Star on GitHub{repoStars ? ` · ${repoStars}` : ''}</span>
+					<span><StarIcon />Star on GitHub{repoStars ? ` · ${repoStars}` : ''}</span>
 				</a>
 				<a
 					class="hw-action-btn blue"

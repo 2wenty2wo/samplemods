@@ -5,6 +5,7 @@
 	import contributors from '../../data/contributors.json';
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
+	import StarIcon from '$lib/StarIcon.svelte';
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import {
 		SECTIONS,
@@ -344,7 +345,7 @@
 							<div class="card-readout">
 								{#if mod.stars != null}
 									<span class="screen-badge stars" title="{mod.stars} GitHub stars">
-										★ {mod.stars}
+										<StarIcon />{mod.stars}
 									</span>
 								{/if}
 								{#if formatUpdated(mod.pushed_at)}

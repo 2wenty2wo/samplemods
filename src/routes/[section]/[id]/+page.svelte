@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
+	import StarIcon from '$lib/StarIcon.svelte';
 	import { absoluteUrl, defaultShareImage, entryShareImage } from '$lib/seo.js';
 	import {
 		sectionGlow,
@@ -228,7 +229,7 @@
 								<span class="badge-status {mod.status}">{mod.status}</span>
 							{/if}
 							{#if mod.stars != null}
-								<span class="screen-badge stars">★ {mod.stars}</span>
+								<span class="screen-badge stars" title="{mod.stars} GitHub stars"><StarIcon />{mod.stars}</span>
 							{/if}
 							{#if latestRelease?.tag}
 								<span class="screen-badge date">{latestRelease.tag}</span>
