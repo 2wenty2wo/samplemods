@@ -25,7 +25,17 @@ PAD_LIT = (255, 138, 30)
 LED = (46, 230, 90)
 
 
-def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+def font(size: int, *, wordmark: bool = False, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+    # Prefer the same Michroma face the site ships (@fontsource/michroma).
+    if wordmark:
+        michroma = [
+            ROOT / "node_modules/@fontsource/michroma/files/michroma-latin-400-normal.woff2",
+            ROOT / "node_modules/@fontsource/michroma/files/michroma-latin-400-normal.woff",
+        ]
+        for path in michroma:
+            if path.exists():
+                return ImageFont.truetype(str(path), size)
+
     candidates = [
         r"C:\Windows\Fonts\segoeuib.ttf" if bold else r"C:\Windows\Fonts\segoeui.ttf",
         r"C:\Windows\Fonts\arialbd.ttf" if bold else r"C:\Windows\Fonts\arial.ttf",
@@ -72,11 +82,19 @@ def main() -> None:
     draw.ellipse((118, 118, 138, 138), fill=LED)
     draw.ellipse((122, 122, 134, 134), fill=(180, 255, 200))
 
-    word_font = font(64, bold=True)
+    # Match .wordmark: Michroma, red fill, ~1.1px stroke (paint-order stroke fill).
+    word_font = font(54, wordmark=True)
     tag_font = font(28, bold=False)
     kick_font = font(18, bold=True)
 
-    draw.text((160, 112), "SAMPLE MODS", font=word_font, fill=WORDMARK)
+    draw.text(
+        (160, 118),
+        "SAMPLE MODS",
+        font=word_font,
+        fill=WORDMARK,
+        stroke_width=2,
+        stroke_fill=WORDMARK,
+    )
     draw.text((160, 200), "Mods, apps, games & tools for the Akai MPC Sample", font=tag_font, fill=YELLOW)
     draw.text((160, 250), "COMMUNITY CATALOG", font=kick_font, fill=CYAN)
 
