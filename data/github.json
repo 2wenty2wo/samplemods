@@ -277,6 +277,49 @@
     ],
     "archived": false
   },
+  "drose030/trackyard": {
+    "stars": 3,
+    "forks": 0,
+    "pushed_at": "2026-11-07T22:56:03Z",
+    "last_commit_at": "2026-11-07T22:56:01Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "MIT",
+    "description": "Turns songs into playable drum charts for Beat-Train on the MPC Sample and Clone Hero",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.2.0",
+      "published_at": "2026-11-07T22:56:05Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "name": "Trackyard v1.2.0",
+        "published_at": "2026-11-07T22:56:05Z",
+        "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.2.0",
+        "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.2.0-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.2.0.exe`\n\nInstall over the old version; your songs, settings and downloaded models stay. The app isn't signed by a registered developer: see the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows) for the first start.\n\n## New: pad sounds for Beat-Train\n\nBeat-Train can mute the drum stem and play a real drum sound on each pad strike instead. In the editor, the ♪ button right of each row picks that row's sound from the song's own drum stem:\n\n- It steps through the row's hits (‹ › or ←/→), best first: as few other drums at the same time as possible, ringing out freely, no ghost notes. Each one plays, and the cut is marked in its row.\n- **Use this** picks it, **No sound** removes it; undo works as for notes.\n- Save writes the picks to `sounds/` in the song folder: `kick.wav`, `red.wav`, `yellow.wav`, `blue.wav`, `orange.wav`, `green.wav`, named after the row colours.\n\nA sound starts 1 ms before the hit's attack in the drum stem, found to the sample, and lasts as long as the hit rings, up to the next hit. With pad sounds on, Beat-Train mutes the whole drum stem, so a pad without a sound stays silent. Songs without a drum stem can't get pad sounds.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.1.1",
+        "name": "Trackyard v1.1.1",
+        "published_at": "2026-11-05T09:57:38Z",
+        "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.1.1",
+        "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.1.1-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.1.1.exe`\n\n## Fixed\n\n- **macOS: \"damaged\" app.** The Mac app is now signed ad hoc, so macOS no longer calls it damaged and only offers the bin. It is still not signed by a registered developer: start it once, click **Done**, then **System Settings → Privacy & Security → Open Anyway**, and start it again. See the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows).\n\nNothing else changed since [1.1.0](https://github.com/drose030/trackyard/releases/tag/v1.1.0); the Windows app is the same.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.1.0",
+        "name": "Trackyard v1.1.0",
+        "published_at": "2026-11-05T09:30:38Z",
+        "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.1.0",
+        "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.1.0-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.1.0.exe`\n\nInstall over 1.0; your songs, settings and downloaded models stay. The app is still unsigned: see the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows) for the first start.\n\n## Fixed\n\n- **Regenerate after a tempo change:** Regenerate… and the level controls now use the tempo map you are editing. Before, after an unsaved tempo or offset change, the shortest-gap rules of Hard, Medium and Easy worked with the old timing.\n- **Beat grid to the end of the song:** the grid and the metronome now run to the end of the audio, not just a few beats past the last note.\n\n## Changed\n\n- Saving refuses notes a chart file can't hold, like a cymbal on one difficulty where another has a tom at the same spot, instead of quietly turning one of them into the other.\n- Under the hood: chart reading and writing, the song folder, and the editor's document, tempo map and playback each live in one module now, with tests for the editor's JavaScript.\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "fomoPhil/mp-doom": {
     "stars": 1,
     "forks": 0,
@@ -506,6 +549,21 @@
     ],
     "archived": false
   },
+  "gospodindilly-ops/mpc-sample-lab": {
+    "stars": 18,
+    "forks": 6,
+    "pushed_at": "2026-10-24T19:32:11Z",
+    "last_commit_at": "2026-10-23T09:43:37Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "Akai MPC Sample research: control-surface protocol, audio and display notes, own Sample Mode firmware that runs from RAM",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
+    "archived": false
+  },
   "inmusic-software/az0x-open-source": {
     "stars": 230,
     "forks": 28,
@@ -617,6 +675,49 @@
         "published_at": "2026-11-06T03:45:07Z",
         "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v0.6.0",
         "body": "Owns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-0.6.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-0.6.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@3db0a76 with mpc-vst-plugins@9aab04f (tools/release-aarch64.sh). Tested on an MPC Sample on 2026-11-05.\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "jacob-sabella/mpc-addin-sample-rack": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-06T13:23:42Z",
+    "last_commit_at": "2026-11-06T13:23:16Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "MIT",
+    "description": "MPC Sample addin: add, remove and turn off the plugins in a project's inserts (the RACK page)",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "sample-rack-addin-v1.0.0",
+      "published_at": "2026-11-06T13:23:42Z"
+    },
+    "releases": [
+      {
+        "tag": "sample-rack-addin-v1.0.0",
+        "name": "MPC Sample rack addin v1.0.0",
+        "published_at": "2026-11-06T13:23:42Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v1.0.0",
+        "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n**New since 0.2.0 (in 0.3.0):** ON/OFF on a plugin MPC is running acts at once, with no restart (its input passes straight through, with a short crossfade). It lasts until MPC restarts; APPLY writes it into the project. Works alongside mpc-addin-commander 1.2.0, whose rack panel gets the same live toggle (interface 2, `mpc_sample_rack_live`).\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-1.0.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-1.0.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@494041a with mpc-vst-plugins (tools/release-aarch64.sh). The same code as 0.3.0. Live ON/OFF is tested offline (a stand-in host); not yet on an MPC Sample.\n",
+        "truncated": false
+      },
+      {
+        "tag": "sample-rack-addin-v0.3.0",
+        "name": "MPC Sample rack addin v0.3.0",
+        "published_at": "2026-11-06T12:48:56Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v0.3.0",
+        "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n**New in 0.3.0:** ON/OFF on a plugin MPC is running acts at once, with no restart (its input passes straight through, with a short crossfade). It lasts until MPC restarts; APPLY writes it into the project. Works alongside mpc-addin-commander 1.2.0, whose rack panel gets the same live toggle (interface 2, `mpc_sample_rack_live`).\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-0.3.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-0.3.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@18757db with mpc-vst-plugins (tools/release-aarch64.sh). Live ON/OFF is tested offline (a stand-in host); not yet on an MPC Sample.\n",
+        "truncated": false
+      },
+      {
+        "tag": "sample-rack-addin-v0.2.0",
+        "name": "MPC Sample rack addin v0.2.0",
+        "published_at": "2026-11-06T03:45:09Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v0.2.0",
+        "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-0.2.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-0.2.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@c2a988d with mpc-vst-plugins@9aab04f (tools/release-aarch64.sh). Tested on an MPC Sample on 2026-11-05.\n",
         "truncated": false
       }
     ],
@@ -859,6 +960,41 @@
     ],
     "archived": false
   },
+  "orrpunk-art/mpc-sample-root-ssh": {
+    "stars": 17,
+    "forks": 2,
+    "pushed_at": "2026-10-19T14:20:09Z",
+    "last_commit_at": "2026-10-19T14:19:53Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "Temporary USB root SSH for Akai MPC Sample 1.3.0.12 with personal key setup and step-by-step instructions",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.2.0",
+      "published_at": "2026-10-19T14:20:09Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.2.0",
+        "name": "MPC Sample USB root SSH v1.2.0 — cold-boot fix",
+        "published_at": "2026-10-19T14:20:09Z",
+        "html_url": "https://github.com/orrpunk-art/mpc-sample-root-ssh/releases/tag/v1.2.0",
+        "body": "## Cold-boot startup fix\n\nThe prepared SD can now remain inserted while powering on the MPC Sample.\n\n- Autorun returns after queuing an independent temporary SSH service; it does not wait for USB.\n- USB waiting, SSH, configuration and logs run under `/run`.\n- Removed startup dialog, SD log writes and global sync. **SSH now starts automatically with the personal keys generated during setup.**\n- Existing sessions are preserved on repeated mount events.\n\nValidated on the author’s MPC Sample AC50/AZ07 firmware **1.3.0.12**: two full cold boots with the prepared SD inserted, successful root SSH on both boots, and normal interface/audio confirmed by the owner. Stock application hash and service launch settings remained unchanged. Nine offline integration tests pass.\n\nOther devices/firmware and Windows key setup remain unverified. No personal keys, hardware session logs or vendor binary are included.\n\nDownload the ZIP and follow README.md. USB endpoint remains `root@192.168.155.1:2222`.\n\nInstructions: https://github.com/orrpunk-art/mpc-sample-root-ssh#readme\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.1.0",
+        "name": "MPC Sample USB root SSH v1.1.0",
+        "published_at": "2026-10-19T13:52:09Z",
+        "html_url": "https://github.com/orrpunk-art/mpc-sample-root-ssh/releases/tag/v1.1.0",
+        "body": "**Superseded by [v1.2.0](https://github.com/orrpunk-art/mpc-sample-root-ssh/releases/tag/v1.2.0), which fixes the reported startup hang with the autorun SD inserted. Use the latest release for cold-boot support.**\n\nTemporary root SSH over USB for **MPC Sample AC50/AZ07 firmware 1.3.0.12**.\n\n- Device-side autorun matches the version used for the author’s successful SSH login on 19 October 2026.\n- Waits up to 45 seconds for USB networking before binding sshd.\n- Includes macOS/Linux personal-key setup and an English step-by-step README.\n- Includes Windows PowerShell setup (not yet tested on Windows by the author).\n- No personal keys, session logs or Akai binaries are included.\n\nDownload the ZIP, extract it, and follow README.md. On macOS/Linux start with `sh setup_unix.sh`. Each recipient generates their own credentials locally.\n\nUSB endpoint: `root@192.168.155.1`, port `2222`.\n\nFull instructions: https://github.com/orrpunk-art/mpc-sample-root-ssh#readme\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "orrpunk-art/virtual-mpc-sample": {
     "stars": 25,
     "forks": 2,
@@ -868,6 +1004,21 @@
     "open_issues": 1,
     "license": "MIT",
     "description": "Akai MPC Sample stock firmware running in QEMU, with the whole device in your browser. Unofficial; no firmware included.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
+    "archived": false
+  },
+  "pzuzarte/mpc-grid": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-07T21:00:23Z",
+    "last_commit_at": "2026-11-07T21:00:22Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "A step grid for the Akai MPC Sample that runs in your browser. Unofficial.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": null,
@@ -1022,7 +1173,7 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 109,
+    "stars": 110,
     "forks": 5,
     "pushed_at": "2026-11-14T17:49:27Z",
     "last_commit_at": "2026-11-14T17:49:23Z",
