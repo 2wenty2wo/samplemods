@@ -506,10 +506,6 @@
 								{:else if imageCreditHost}
 									Images: from {imageCreditHost}
 								{/if}
-								{#if mod.repo || imageCreditHost}
-									<span aria-hidden="true"> · </span>
-								{/if}
-								<a href={suggestEditUrl} target="_blank" rel="noopener noreferrer">Suggest an edit</a>
 							</p>
 						</div>
 
@@ -543,10 +539,6 @@
 						{:else if imageCreditHost}
 							Images: from {imageCreditHost}
 						{/if}
-						{#if mod.repo || imageCreditHost}
-							<span aria-hidden="true"> · </span>
-						{/if}
-						<a href={suggestEditUrl} target="_blank" rel="noopener noreferrer">Suggest an edit</a>
 					</p>
 				{/if}
 
@@ -688,6 +680,13 @@
 						</ul>
 					</section>
 				{/if}
+
+				<div class="suggest-edit-bar">
+					<p>Something wrong or missing on this page?</p>
+					<a class="hw-action-btn grey" href={suggestEditUrl} target="_blank" rel="noopener noreferrer">
+						Suggest an edit ↗
+					</a>
+				</div>
 			</div>
 		</div>
 	</article>
@@ -1115,6 +1114,22 @@
 	.readme-footer a {
 		color: var(--mpc-silkscreen);
 		font-weight: 600;
+	}
+
+	.suggest-edit-bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem 1rem;
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--mpc-body-recess);
+	}
+
+	.suggest-edit-bar p {
+		margin: 0;
+		color: var(--mpc-silkscreen-muted);
 	}
 
 	/* Shared Prose Formatting (README & Release Notes) */
