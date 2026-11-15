@@ -240,6 +240,14 @@
       "repo": "slowphase/mpc-gently"
     }
   ],
+  "mpc-grid": [
+    {
+      "file": "screenshots/01-step-grid.png",
+      "source": "https://pzuzarte.github.io/mpc-grid/",
+      "repo": "pzuzarte/mpc-grid",
+      "note": "Screenshot of the official web app (1200×900)"
+    }
+  ],
   "mpc-minimod": [
     {
       "file": "screenshots/01-autotrim.png",
@@ -324,6 +332,14 @@
   "mpc-stemloop": [],
   "mpc-tic80": [],
   "mpc-ui-toolkit": [],
+  "mpcsample": [
+    {
+      "file": "screenshots/01-demo.jpg",
+      "source": "https://raw.githubusercontent.com/WorldLinkStudio/mpcsample/main/demo.jpg",
+      "repo": "WorldLinkStudio/mpcsample",
+      "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
+    }
+  ],
   "sample-base": [],
   "sampqol-os": [
     {
@@ -392,14 +408,6 @@
       "file": "screenshots/04-screen-shutdown.png",
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-shutdown.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
-    }
-  ],
-  "mpcsample": [
-    {
-      "file": "screenshots/01-demo.jpg",
-      "source": "https://raw.githubusercontent.com/WorldLinkStudio/mpcsample/main/demo.jpg",
-      "repo": "WorldLinkStudio/mpcsample",
-      "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
     }
   ]
 }
