@@ -1,0 +1,9 @@
+name: Trackyard
+description: Turns songs into playable drum charts for Beat-Train on the MPC Sample and Clone Hero.
+repo: drose030/trackyard
+author: drose030
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
