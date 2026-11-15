@@ -1060,21 +1060,6 @@
     ],
     "archived": false
   },
-  "rmw5287/koala-mpc-os": {
-    "stars": 1,
-    "forks": 0,
-    "pushed_at": "2026-11-09T02:26:20Z",
-    "last_commit_at": "2026-11-09T02:26:20Z",
-    "contributors": 1,
-    "open_issues": 0,
-    "license": null,
-    "description": "Building a Koala Sampler-style firmware on MPC-SAMPLE",
-    "default_branch": "main",
-    "readme_path": "README.md",
-    "latest_release": null,
-    "releases": [],
-    "archived": false
-  },
   "rosen-wav/MaiaOS---Mpc-Sample-CFW": {
     "stars": 3,
     "forks": 0,

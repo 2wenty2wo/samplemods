@@ -125,7 +125,6 @@
       "note": "Embedded 320x240 BGRX framebuffer extracted at byte offset 372528; not executed"
     }
   ],
-  "koala-mpc-os": [],
   "lightfoot": [
     {
       "file": "screenshots/01-title.png",
