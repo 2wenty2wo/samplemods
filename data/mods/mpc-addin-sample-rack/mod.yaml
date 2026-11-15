@@ -1,0 +1,13 @@
+name: MPC Sample Rack
+description: >-
+  An add-in that adds a RACK page for adding, removing and switching off the insert plugins in a
+  project. Open it with a long hold of PAD FX.
+repo: jacob-sabella/mpc-addin-sample-rack
+author: jacob-sabella
+requires:
+  - draw-handler
+runs_on:
+  - device
+install: ssh
+audience:
+  - musician
