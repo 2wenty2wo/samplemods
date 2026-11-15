@@ -13,3 +13,4 @@ install: sd-card
 website: https://zootedandrebooted.github.io/GRIDZILLA/
 runs_on: [device]
 audience: [musician]
+source: closed
