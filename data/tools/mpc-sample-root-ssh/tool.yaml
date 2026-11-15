@@ -1,0 +1,14 @@
+name: MPC Sample Root SSH
+description: >-
+  Temporarily starts the MPC Sample's built-in SSH server over USB from an SD card, so you can log
+  in as root to install add-ins. Tested on firmware 1.3.0.12; nothing is permanently changed.
+repo: orrpunk-art/mpc-sample-root-ssh
+author: orrpunk-art
+firmware: '1.3.0.12'
+runs_on:
+  - device
+  - desktop
+install: sd-card
+audience:
+  - developer
+  - musician
