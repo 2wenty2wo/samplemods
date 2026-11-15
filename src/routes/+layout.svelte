@@ -58,13 +58,6 @@
 	});
 </script>
 
-<svelte:head>
-	<meta
-		name="description"
-		content="{SITE_NAME}: community catalog of custom firmware mods, add-ons, apps, games, tools, and guides for the Akai MPC Sample."
-	/>
-</svelte:head>
-
 <header class="site-topbar">
 	<div class="site-topbar-inner">
 		<a class="brand-lockup" href="{base}/">

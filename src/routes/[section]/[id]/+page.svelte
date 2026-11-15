@@ -1,6 +1,8 @@
 <script>
 	import { base } from '$app/paths';
-	import { SITE_NAME, SITE_ORIGIN } from '$lib/site.js';
+	import { SITE_NAME } from '$lib/site.js';
+	import SeoHead from '$lib/SeoHead.svelte';
+	import { absoluteUrl, defaultShareImage, entryShareImage } from '$lib/seo.js';
 	import {
 		sectionGlow,
 		sectionLabel,
@@ -28,6 +30,13 @@
 	const priceChip = $derived(priceBadge(mod.price));
 	const siteHost = $derived(hostnameOf(mod.website));
 	const imageCreditHost = $derived(siteHost ?? hostnameOf(mod.author_url));
+	const shareImage = $derived(
+		data.redirectTo ? defaultShareImage(base) : entryShareImage(mod, base)
+	);
+	const detailTitle = $derived(`${mod.name} · ${SITE_NAME}`);
+	const detailUrl = $derived(
+		absoluteUrl(data.redirectTo ? data.redirectTo : data.canonicalPath, base)
+	);
 
 	const runsOnText = $derived(
 		(mod.runs_on ?? []).map((r) => runsOnLabel(r)).filter(Boolean).join(', ')
@@ -128,18 +137,15 @@
 	}
 </script>
 
-<svelte:head>
-	{#if data.redirectTo}
-		<title>Redirecting · {SITE_NAME}</title>
-		<link rel="canonical" href="{SITE_ORIGIN}{base}{data.redirectTo}" />
-		<meta http-equiv="refresh" content="0; url={base}{data.redirectTo}" />
-		<meta name="robots" content="noindex" />
-	{:else}
-		<title>{mod.name} · {SITE_NAME}</title>
-		<meta name="description" content={mod.description} />
-		<link rel="canonical" href="{SITE_ORIGIN}{base}{data.canonicalPath}" />
-	{/if}
-</svelte:head>
+<SeoHead
+	title={data.redirectTo ? `Redirecting · ${SITE_NAME}` : detailTitle}
+	description={data.redirectTo ? `This entry moved to ${data.redirectTo}.` : mod.description}
+	url={detailUrl}
+	image={shareImage}
+	type={data.redirectTo ? 'website' : 'article'}
+	noindex={!!data.redirectTo}
+	refreshTo={data.redirectTo ? `${base}${data.redirectTo}` : null}
+/>
 
 {#if data.redirectTo}
 	<div class="wrap redirect-stub">

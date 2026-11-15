@@ -2,15 +2,14 @@
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
 	import { SITE_NAME } from '$lib/site.js';
+	import SeoHead from '$lib/SeoHead.svelte';
+	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
+
+	const title = `About · ${SITE_NAME}`;
+	const description = `About ${SITE_NAME}: an unofficial community index of mods, apps, games, and tools — mostly open source on GitHub, with some independent or paid releases.`;
 </script>
 
-<svelte:head>
-	<title>About · {SITE_NAME}</title>
-	<meta
-		name="description"
-		content="About {SITE_NAME}: an unofficial community index of mods, apps, games, and tools — mostly open source on GitHub, with some independent or paid releases."
-	/>
-</svelte:head>
+<SeoHead title={title} description={description} url={absoluteUrl('/about/', base)} image={defaultShareImage(base)} />
 
 <section class="page-hero-band">
 	<div class="page-hero-inner">

@@ -10,8 +10,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "validate": "node scripts/validate.js",
-    "test": "node scripts/validate.js && node scripts/render-markdown.test.js && node scripts/catalog.test.js && node scripts/catalog-contributors.test.js && node scripts/enrich.test.js && node scripts/check-star-list.test.js && node scripts/check-pr-files.test.js",
-    "enrich": "node scripts/enrich.js"
+    "test": "node scripts/validate.js && node scripts/render-markdown.test.js && node scripts/catalog.test.js && node scripts/catalog-contributors.test.js && node scripts/enrich.test.js && node scripts/check-star-list.test.js && node scripts/check-pr-files.test.js && node scripts/seo.test.js",
+    "enrich": "node scripts/enrich.js",
+    "og:default": "python -P scripts/generate-og-default.py",
+    "postbuild": "node scripts/seo.test.js --require-build"
   },
   "devDependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

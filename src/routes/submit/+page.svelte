@@ -1,15 +1,14 @@
 <script>
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
+	import SeoHead from '$lib/SeoHead.svelte';
+	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
+
+	const title = `Submit an Entry · ${SITE_NAME}`;
+	const description = `How to submit or update an entry in the ${SITE_NAME} community catalog via pull request.`;
 </script>
 
-<svelte:head>
-	<title>Submit an Entry · {SITE_NAME}</title>
-	<meta
-		name="description"
-		content="How to submit or update an entry in the {SITE_NAME} community catalog via pull request."
-	/>
-</svelte:head>
+<SeoHead title={title} description={description} url={absoluteUrl('/submit/', base)} image={defaultShareImage(base)} />
 
 <section class="page-hero-band">
 	<div class="page-hero-inner">

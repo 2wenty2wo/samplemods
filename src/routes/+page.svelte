@@ -4,6 +4,8 @@
 	import mods from '$lib/data.json';
 	import contributors from '../../data/contributors.json';
 	import { SITE_NAME } from '$lib/site.js';
+	import SeoHead from '$lib/SeoHead.svelte';
+	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import {
 		SECTIONS,
 		sectionGlow,
@@ -17,6 +19,9 @@
 		priceBadge
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
+
+	const homeTitle = `${SITE_NAME}: mods, apps, games & tools for the Akai MPC Sample`;
+	const homeDescription = `${SITE_NAME}: community catalog of custom firmware mods, apps, games, tools, guides, and developer libraries for the Akai MPC Sample.`;
 
 	/** @param {string} url */
 	function avatarSrc(url) {
@@ -128,13 +133,12 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{SITE_NAME}: mods, apps, games &amp; tools for the Akai MPC Sample</title>
-	<meta
-		name="description"
-		content="{SITE_NAME}: community catalog of custom firmware mods, apps, games, tools, guides, and developer libraries for the Akai MPC Sample."
-	/>
-</svelte:head>
+<SeoHead
+	title={homeTitle}
+	description={homeDescription}
+	url={absoluteUrl('/', base)}
+	image={defaultShareImage(base)}
+/>
 
 <section class="hero-band" aria-label="Search and catalog overview">
 	<div class="hero-inner">
