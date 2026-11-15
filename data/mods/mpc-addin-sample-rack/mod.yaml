@@ -1,0 +1,8 @@
+name: MPC Sample addin
+description: 'MPC Sample addin: add, remove and turn off the plugins in a project''s inserts (the RACK page).'
+repo: jacob-sabella/mpc-addin-sample-rack
+author: jacob-sabella
+runs_on:
+  - device
+audience:
+  - musician
