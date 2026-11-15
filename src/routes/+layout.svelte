@@ -122,21 +122,8 @@
 			<p class="footer-copy">
 				<a href="{base}/submit/">How to submit an entry</a> ·
 				<a href="{base}/about/">About this catalog</a> ·
-				<a href="{base}/catalog.json">Public JSON feed (/catalog.json)</a>
+				<a href="{base}/catalog.json">Public JSON feed</a>
 			</p>
 		</div>
-	</div>
-
-	<div class="footer-author-note">
-		<strong>Made one of these projects?</strong> Want your listing, description or images changed or
-		removed?
-		<a
-			href="https://github.com/2wenty2wo/samplemods/issues/new?title=Listing%20change%3A%20"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			Open an issue
-		</a>
-		and it'll be sorted within a day.
 	</div>
 </footer>

@@ -65,7 +65,7 @@
 			>
 				Open an issue
 			</a>
-			and it'll be sorted within a day.
+			and we'll sort it out.
 		</p>
 		<div class="info-actions">
 			<a

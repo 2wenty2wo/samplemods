@@ -579,20 +579,6 @@ a:hover {
 	margin: 0.75rem 0;
 }
 
-.footer-author-note {
-	margin-top: 1.35rem;
-	padding: 0.85rem 1.05rem;
-	background: var(--mpc-body-light);
-	border: 1.5px solid #282b34;
-	border-left: 4px solid var(--mpc-btn-orange);
-	border-radius: var(--radius);
-	font-size: 0.84rem;
-	line-height: 1.5;
-	color: var(--mpc-silkscreen);
-	width: min(1200px, 100% - 2rem);
-	margin-inline: auto;
-}
-
 .error-page {
 	padding: 2.5rem 0 3rem;
 	text-align: center;
@@ -609,8 +595,7 @@ a:hover {
 @media (max-width: 640px) {
 	.wrap,
 	.site-topbar-inner,
-	.site-footer-inner,
-	.footer-author-note {
+	.site-footer-inner {
 		width: calc(100% - 1.25rem);
 	}
 
