@@ -62,7 +62,7 @@ body:
         - SSH
         - Desktop
         - USB-MIDI
-        - None
+        - No install needed
         - Not sure
     validations:
       required: true
