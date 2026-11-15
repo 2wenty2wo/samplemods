@@ -82,19 +82,30 @@ def main() -> None:
     draw.ellipse((118, 118, 138, 138), fill=LED)
     draw.ellipse((122, 122, 134, 134), fill=(180, 255, 200))
 
-    # Match .wordmark: Michroma, red fill, ~1.1px stroke (paint-order stroke fill).
-    word_font = font(54, wordmark=True)
+    # Match .wordmark: Michroma, uppercase, letter-spacing 0.05em, red stroke+fill.
+    word_font = font(56, wordmark=True)
     tag_font = font(28, bold=False)
     kick_font = font(18, bold=True)
 
-    draw.text(
-        (160, 118),
-        "SAMPLE MODS",
-        font=word_font,
-        fill=WORDMARK,
-        stroke_width=2,
-        stroke_fill=WORDMARK,
-    )
+    def draw_wordmark(text: str, xy: tuple[int, int], size: int) -> None:
+        face = font(size, wordmark=True)
+        x, y = xy
+        # Approximate CSS letter-spacing: 0.05em
+        tracking = max(2, int(size * 0.05))
+        for ch in text:
+            draw.text(
+                (x, y),
+                ch,
+                font=face,
+                fill=WORDMARK,
+                stroke_width=2,
+                stroke_fill=WORDMARK,
+            )
+            box = face.getbbox(ch)
+            width = (box[2] - box[0]) if box else size // 2
+            x += width + tracking
+
+    draw_wordmark("SAMPLE MODS", (160, 118), 56)
     draw.text((160, 200), "Mods, apps, games & tools for the Akai MPC Sample", font=tag_font, fill=YELLOW)
     draw.text((160, 250), "COMMUNITY CATALOG", font=kick_font, fill=CYAN)
 
