@@ -1,4 +1,4 @@
-# HenrySkillz MPC Sample Mod Kit
+# HenrySkillz D.S.B (Drums. Sample. Bass.) for the MPC Sample
 
 **Nine studio effects for the Akai MPC Sample, installed from a web page in about 15 minutes.**
 No coding, no terminal, no apps to install, no AI tools. Free.
@@ -12,7 +12,7 @@ Made by [Henry Skillz](https://www.henryskillz.com) in Melbourne. Built on top o
 > **Unofficial.** Not made, endorsed or supported by Akai Professional, inMusic or the SampQOL author.
 > Everything runs from the SD card. Switch off and take the card out, and the MPC is stock again.
 
-> **Tested:** the installer on a pristine official SampQOL 0.2.0 package (Chrome and Safari), including a virtual-MPC boot of the generated output. The v0.5 build passed a hardware boot test on Henry's own MPC Sample. Changes since then—including Stems onto pads, chain boxes, screen styling, the graphic mixer and effect presets—remain emulator-tested until the current [hardware checklist](docs/BOOT-TEST.md) passes. Every unit and card is different, so **back up your card first**, and [report anything odd](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/issues).
+> **Tested:** the installer on a pristine official SampQOL 0.2.0 package (Chrome and Safari), including a virtual-MPC boot of the generated output. v0.7.0 (commit 93fa9da) passed the full [hardware checklist](docs/BOOT-TEST.md) on Henry's own MPC Sample on 15 Nov 2026, including a power-off cold boot. Warp on import and HS Crush Auto Gain (merged after v0.7.0) were tested on the same unit from RAM on 15 Nov 2026. They and this rename shipped in v0.7.1, whose card passed a cold boot on the same unit. The HS Tools card for stock firmware booted on the same unit on 15 Nov 2026 with all its tools working. Every unit and card is different, so **back up your card first**, and [report anything odd](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/issues).
 
 ---
 
@@ -32,7 +32,7 @@ For how to use every feature, button by button, see the [user guide](docs/USER-G
 | **HS Bass Focus** | EQ / Filter | Splits at a crossover (30 to 500 Hz), makes the lows mono and sets their level. The highs pass untouched |
 | **HS Tube Strip** | Harmonic | Tube channel strip: tube drive, a 6 dB/oct high-pass, an opto compressor with a gain-reduction meter and a 4-band EQ, with the EQ before or after the compressor and a side-chain EQ for de-essing |
 
-**Where did HS Air Exciter, HS Drive Sat and the stock Bus Compressor go?** SampQOL's insert menu has 40 rows. To fit nine HS effects, the stock Bus Compressor leaves the Dynamics list (HS Bus Compressor and HS Crush cover it), and HS Air Exciter and HS Drive Sat leave the menu. All three are still installed: a project that already uses them opens with them, as before.
+**Where did HS HF Exciter, HS Drive Sat and the stock Bus Compressor go?** SampQOL's insert menu has 40 rows. To fit nine HS effects, the stock Bus Compressor leaves the Dynamics list (HS Bus Compressor and HS Crush cover it), and HS HF Exciter and HS Drive Sat leave the menu. All three are still installed: a project that already uses them opens with them, as before.
 
 Plus live displays for the stock effects while you turn the knobs, a dB/Hz grid on the EQ page, and the HenrySkillz start screen (after SampQOL's own).
 
@@ -46,13 +46,13 @@ Plus live displays for the stock effects while you turn the knobs, a dB/Hz grid 
 
 **One Bypass.** Every HS effect uses the Bypass button above the screen. The old Bypass knobs on Drive Sat, Bus Compressor and Para EQ are gone (projects that used them still open).
 
-**Track chains.** Rename a track **VOX**, **DRUMS** or **BASS** (or any name that starts with one, like "Vox Lead") and, if the track has no inserts yet, its chain loads: Channel Strip, Bus Compressor and Air Exciter on VOX, Saturator and Bus Compressor on DRUMS, Drive Sat and Para EQ on BASS. One UNDO takes back the rename and the chain together. To save your own, dial in a track's inserts and rename it with a **#** on the end, like **KEYS#**: the chain is saved to `MPC-Sample/Chains/KEYS.xfx` on the card, the track is named KEYS again, and any track you name KEYS gets it. A short box on the screen says what happened: **Chain loaded**, **Chain saved**, or why not (the track already has effects, no effects to save).
+**Track chains.** Rename a track **VOX**, **DRUMS** or **BASS** (or any name that starts with one, like "Vox Lead") and, if the track has no inserts yet, its chain loads: Channel Strip, Bus Compressor and HF Exciter on VOX, Saturator and Bus Compressor on DRUMS, Drive Sat and Para EQ on BASS. One UNDO takes back the rename and the chain together. To save your own, dial in a track's inserts and rename it with a **#** on the end, like **KEYS#**: the chain is saved to `MPC-Sample/Chains/KEYS.xfx` on the card, the track is named KEYS again, and any track you name KEYS gets it. A short box on the screen says what happened: **Chain loaded**, **Chain saved**, or why not (the track already has effects, no effects to save).
 
 **Key and BPM in the browser.** Preview a sample and its row shows the key and the tempo the preview plays at, like **C# MIN 75 BPM**. WAV and MP3.
 
 **Stems (optional).** Tick **Add Stems** on the installer and the MPC can split a sample into Vocals, Drums, Bass and Other by itself, no computer. In the browser, preview a WAV or MP3, hold **SHIFT** and hold **B1** for 1.5 seconds. On the Sample screen, hold **SHIFT** and hold **B3** for 1.5 seconds to split the selected pad's sample. Tick the stems you want, choose **Separate** (one file each) or **Sum** (one mixed file), then **Go**. A pad split also loads the stems onto the next empty pads of that pad's bank, on the same track, and the box says where ("On pads A02-A05"). If the bank is full, the files stay in `MPC-Sample/Samples/Stems` and the box says so. Each stem on a pad is one UNDO. A split takes about as long as the sample plays; nothing above 11 kHz comes through. It adds a 92 MB download and uses the Spleeter model by Deezer (MIT).
 
-**SampQOL screens in HS colours.** SampQOL's own list screens (the insert pages, the effect list) get a red bar along the top, a cyan edge on the selected row and a dark blue palette, to match the rest of the kit.
+**SampQOL screens in HS colours (optional, off by default).** Tick **SampQOL list styling** in the installer to turn it on. SampQOL's own list screens (the insert pages, the effect list) get a red bar along the top, a cyan edge on the selected row and a dark blue palette, to match the rest of the kit.
 
 **Graphic mixer.** **PAD FX** then **B2** shows SampQOL's Ch. Mixer, and **B2** again the Pad Mixer, as a console: eight strips per page with pan, mute and solo, a fader, a stereo meter with peak hold and the output. The selected strip has a cyan frame, yellow while you edit it.
 
@@ -105,7 +105,11 @@ Every picture in this section is an emulator capture.
 - A **Mac or Windows** computer with a web browser
 - **SampQOL OS 0.2.0**, downloaded free from [Snare Bes's official page](https://github.com/snarebes/SampQOL-OS/releases)
 
-**Not on SampQOL?** HS Tools runs on stock firmware 1.3.0: on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Download `henryskillz-mpc-sample-hs-tools.zip` from the [latest release](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/latest), copy its `autorun` folder to an exFAT SD card and power on. The effects and track chains need SampQOL.
+**Not on SampQOL?** HS Tools runs on stock firmware 1.3.0: on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Download `henryskillz-mpc-sample-hs-tools.zip` from the [v0.6.1 release](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1), copy its `autorun` folder to an exFAT SD card and power on. The effects and track chains need SampQOL.
+
+**Using [Boot Thingy](https://github.com/garrettjwilke/mpc-boot-thingy)?** Copy `henryskillz-mpc-sample-hs-tools-boot-thingy.zip` (on the release page once it is attached) into `autorun/apps/` on your Boot Thingy card and power on; Boot Thingy installs it and it shows as **HS Tools Boot Thingy** in its menu. It has the SEQ desk, LUFS meters and browser key/BPM tags, but **no Stems**: Boot Thingy's app installer takes at most 32 MB per file and the stems model is 79 MB. For Stems, use the HS Tools card above. Tested with Boot Thingy v1.1.6 on firmware 1.3.0.12.
+- To open the menu, wait for the splash with the SHIFT light on, then press SHIFT. Holding it from power-on is missed and the MPC boots Stock. From Stock, SHIFT + Pad 16 opens the menu.
+- Nothing is written to the MPC itself: pick Stock in the menu, or power off and take the card out.
 
 ## Install in 5 steps
 

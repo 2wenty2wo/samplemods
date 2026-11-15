@@ -75,19 +75,27 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-14T15:25:46Z",
-    "last_commit_at": "2026-11-14T15:25:13Z",
+    "pushed_at": "2026-11-15T02:33:29Z",
+    "last_commit_at": "2026-11-15T02:33:29Z",
     "contributors": 2,
-    "open_issues": 1,
+    "open_issues": 0,
     "license": "MIT",
     "description": "Nine free studio effects, track chains, key and BPM tags, LUFS meters and on-device stems for the Akai MPC Sample, installed from a web page. Add-ons for SampQOL OS (by Snare Bes, downloaded from him). No coding needed.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.7.0",
-      "published_at": "2026-11-14T15:25:46Z"
+      "tag": "v0.7.1",
+      "published_at": "2026-11-15T00:47:46Z"
     },
     "releases": [
+      {
+        "tag": "v0.7.1",
+        "name": "v0.7.1",
+        "published_at": "2026-11-15T00:47:46Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.1",
+        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** A v0.7.1 card cold-booted on a real MPC Sample on 15 Nov 2026 and the D.S.B effects loaded. Warp on import and HS Crush Auto Gain were tested on the same unit from RAM the same day.\n\n**New in v0.7.1**\n- **HenrySkillz D.S.B (Drums. Sample. Bass.):** the kit's new name across the docs.\n- **HS HF Exciter:** its new name, now with its HS faceplate in the editor.\n- **Warp on import:** a loop loaded onto a pad plays at the project tempo straight away. One-shots are left alone. Turning off \"Audio Tracks Auto Warp\" in Preferences turns this off too.\n- **HS Crush Auto Gain:** level-matched make-up.\n\nProjects and presets saved on v0.6.x and v0.7.0 open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.7.0",
         "name": "v0.7.0",
@@ -101,15 +109,7 @@
         "name": "v0.6.1",
         "published_at": "2026-11-14T06:45:21Z",
         "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1",
-        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Fixed in v0.6.1**\n- **Effect names in the insert list:** HS effects now show as HS Heat, HS Bus Compressor and so on, not `hs_heat`, `hs_bus_comp`.\n- **HS Bass Focus page title:** shows HS Bass Focus, with knobs labelled Crossover, Bass and Mono Bass.\n\nProjects saved on v0.6.0 open as before. Emulator tested; not yet boot-tested on hardware.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.6.0",
-        "name": "v0.6.0",
-        "published_at": "2026-11-11T23:08:20Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.0",
-        "body": "**Install:** open the [installer page](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**New in v0.6**\n- **Stems split to pad:** choose Separate and the stems land on the next empty pads in that pad's bank.\n- **Track chains:** a toast confirms every load. Name a track NAME# to save its chain, and it renames itself back to NAME.\n- **HS styling for SampQOL's list screens:** red bar, cyan selected row, dark blue palette. Only on SampQOL 0.2.0.\n- **Graphic channel mixer** for Ch. Mixer and Pad Mixer.\n- **User guide** for every effect and add-on: `docs/USER-GUIDE.md`.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n",
+        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Fixed in v0.6.1**\n- **Effect names in the insert list:** HS effects now show as HS Heat, HS Bus Compressor and so on, not `hs_heat`, `hs_bus_comp`.\n- **HS Bass Focus page title:** shows HS Bass Focus, with knobs labelled Crossover, Bass and Mono Bass.\n\nProjects saved on v0.6.0 open as before. Hardware tested: the HS Tools card booted on a real MPC Sample (firmware 1.3.0.12) on 15 Nov 2026, with the SEQ desk, meters, browser tags and Stems all working.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n\n",
         "truncated": false
       }
     ],
@@ -322,11 +322,11 @@
   },
   "garrettjwilke/mpc-boot-thingy": {
     "stars": 18,
-    "forks": 2,
-    "pushed_at": "2026-11-14T23:12:02Z",
-    "last_commit_at": "2026-11-14T23:12:00Z",
-    "contributors": 4,
-    "open_issues": 0,
+    "forks": 3,
+    "pushed_at": "2026-11-15T02:49:51Z",
+    "last_commit_at": "2026-11-15T02:49:51Z",
+    "contributors": 5,
+    "open_issues": 1,
     "license": "MIT",
     "description": "boot menu for mpc sample",
     "default_branch": "main",
@@ -482,8 +482,8 @@
   "garrettjwilke/mpc-ui-toolkit": {
     "stars": 6,
     "forks": 0,
-    "pushed_at": "2026-11-10T23:30:59Z",
-    "last_commit_at": "2026-11-10T23:30:57Z",
+    "pushed_at": "2026-11-15T01:34:40Z",
+    "last_commit_at": "2026-11-15T01:34:37Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "CC0-1.0",
@@ -720,12 +720,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 36,
+    "stars": 38,
     "forks": 2,
     "pushed_at": "2026-11-14T19:17:42Z",
     "last_commit_at": "2026-11-14T19:12:16Z",
     "contributors": 1,
-    "open_issues": 9,
+    "open_issues": 11,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1022,7 +1022,7 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 108,
+    "stars": 109,
     "forks": 5,
     "pushed_at": "2026-11-14T17:49:27Z",
     "last_commit_at": "2026-11-14T17:49:23Z",
