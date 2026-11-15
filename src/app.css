@@ -136,6 +136,9 @@ a:hover {
 	paint-order: stroke fill;
 	text-shadow: 0 1px 8px rgb(230 36 60 / 0.3);
 	white-space: nowrap;
+	/* Caps sit low in the line box; lift them so they centre on the grid mark. */
+	position: relative;
+	top: -0.06em;
 }
 
 .site-nav {
@@ -624,6 +627,10 @@ a:hover {
 		font-size: 0.74rem;
 		letter-spacing: 0.04em;
 		-webkit-text-stroke: 0.75px currentColor;
+	}
+
+	.brand-lockup .wordmark {
+		top: -0.09em;
 	}
 
 	.footer-wordmark {
