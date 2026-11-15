@@ -1,0 +1,11 @@
+name: MPC Sample Lab
+description: >-
+  Research notes on the MPC Sample's hardware, covering the control-surface protocol, audio and
+  display, plus an experimental Sample Mode firmware that runs from RAM.
+repo: gospodindilly-ops/mpc-sample-lab
+author: gospodindilly-ops
+runs_on:
+  - device
+  - docs
+audience:
+  - developer
