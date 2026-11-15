@@ -401,5 +401,13 @@
       "repo": "WorldLinkStudio/mpcsample",
       "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
     }
+  ],
+  "trackyard": [
+    {
+      "file": "screenshots/01-editor.png",
+      "source": "https://github.com/drose030/trackyard/blob/HEAD/docs/images/editor.png",
+      "repo": "drose030/trackyard",
+      "note": "Editor screenshot from the repo README, cropped to 4:3 and resized to 1200x900"
+    }
   ]
 }
