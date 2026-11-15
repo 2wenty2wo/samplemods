@@ -364,43 +364,43 @@
     "archived": false
   },
   "garrettjwilke/mpc-boot-thingy": {
-    "stars": 20,
+    "stars": 21,
     "forks": 3,
-    "pushed_at": "2026-11-15T02:49:51Z",
-    "last_commit_at": "2026-11-15T02:49:51Z",
+    "pushed_at": "2026-11-15T21:13:57Z",
+    "last_commit_at": "2026-11-15T21:13:03Z",
     "contributors": 5,
-    "open_issues": 2,
+    "open_issues": 1,
     "license": "MIT",
     "description": "boot menu for mpc sample",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.1.6",
-      "published_at": "2026-11-14T22:55:56Z"
+      "tag": "v1.1.8",
+      "published_at": "2026-11-15T21:13:58Z"
     },
     "releases": [
+      {
+        "tag": "v1.1.8",
+        "name": "v1.1.8",
+        "published_at": "2026-11-15T21:13:58Z",
+        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.8",
+        "body": "improved installer reliability\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.1.7",
+        "name": "v1.1.7",
+        "published_at": "2026-11-15T20:40:55Z",
+        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.7",
+        "body": "added RHYTHMER support\n",
+        "truncated": false
+      },
       {
         "tag": "v1.1.6",
         "name": "v1.1.6",
         "published_at": "2026-11-14T22:55:56Z",
         "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.6",
         "body": "added grid mode from [Dyldog](https://github.com/Dyldog)\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1.5",
-        "name": "v1.1.5",
-        "published_at": "2026-11-14T03:17:37Z",
-        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.5",
-        "body": "added 4x screen mirror size\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1.4",
-        "name": "v1.1.4",
-        "published_at": "2026-11-14T03:12:14Z",
-        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.4",
-        "body": "fixed refresh for screen mirror\n",
         "truncated": false
       }
     ],
@@ -565,7 +565,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 230,
+    "stars": 231,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -580,7 +580,7 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 6,
+    "stars": 7,
     "forks": 0,
     "pushed_at": "2026-11-14T21:59:51Z",
     "last_commit_at": "2026-11-14T21:59:26Z",
@@ -623,7 +623,7 @@
     "archived": false
   },
   "ioma8/mpc-sample-sdk": {
-    "stars": 6,
+    "stars": 7,
     "forks": 3,
     "pushed_at": "2026-11-14T21:58:29Z",
     "last_commit_at": "2026-11-14T21:58:16Z",
@@ -726,8 +726,8 @@
   "jacob-sabella/mpc-addin-sample-scalemode": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-10T00:49:08Z",
-    "last_commit_at": "2026-11-10T00:47:17Z",
+    "pushed_at": "2026-11-15T21:42:15Z",
+    "last_commit_at": "2026-11-15T13:26:55Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -767,10 +767,10 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 4,
+    "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-15T16:53:11Z",
-    "last_commit_at": "2026-11-15T16:53:08Z",
+    "pushed_at": "2026-11-15T21:53:10Z",
+    "last_commit_at": "2026-11-15T21:53:07Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -861,7 +861,7 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 45,
+    "stars": 46,
     "forks": 4,
     "pushed_at": "2026-11-14T19:17:42Z",
     "last_commit_at": "2026-11-14T19:12:16Z",
@@ -1198,12 +1198,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 111,
+    "stars": 112,
     "forks": 5,
     "pushed_at": "2026-11-14T17:49:27Z",
     "last_commit_at": "2026-11-14T17:49:23Z",
     "contributors": 1,
-    "open_issues": 24,
+    "open_issues": 26,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",

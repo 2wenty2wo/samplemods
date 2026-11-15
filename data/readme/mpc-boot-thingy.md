@@ -35,6 +35,10 @@ there are other enhancements this provides, but ehh...they're there... :)
    - step sequencer on pads, chords, typing names, per-pad EQ, Opto compressor, and more.
    - lots of custom workflows and updated UI.
    - chord mode, key scale of sample, step sequencer update, search, resample fixes.
+* [RHYTHMER OS](https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases)
+   - VST3 synths
+   - built in kits
+   - acid GEN and Break performance
 * [GRIDZILLA](https://www.thesoundfactorynj.com/gridzilla)
    - modern daw-like sequencing UI/UX...super custom workflow.
 * [mpc-minimod](https://github.com/ioma8/mpc-minimod)
@@ -58,6 +62,10 @@ there are other enhancements this provides, but ehh...they're there... :)
    - guitar hero clone on your MPC Sample!
    - intuitive controls and great gameplay
    - crisp and smooth graphics
+* [RHYTHMER-OS](https://github.com/jazzyrhythmer/rhythmer-os)
+   - Melodee-derived full OS for MPC Sample
+   - native synth engines, Rhythmer Kit, generator, break tools
+   - ships external Rhythmer/ and Samples/ directories
 * [beat train](https://github.com/drose030/beat-train-mpc-sample)
    - drum/rhythm game for the mpc sample.
    - import your own music to play!
