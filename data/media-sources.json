@@ -216,6 +216,24 @@
       "file": "screenshots/01-splash-screen.webp",
       "source": "https://raw.githubusercontent.com/garrettjwilke/mpc-boot-thingy/HEAD/splash-screen.png",
       "repo": "garrettjwilke/mpc-boot-thingy"
+    },
+    {
+      "file": "screenshots/02-app-grid.webp",
+      "source": "supplied by the catalog owner",
+      "repo": "garrettjwilke/mpc-boot-thingy",
+      "note": "320x240 device capture, converted from PNG to lossless WebP"
+    },
+    {
+      "file": "screenshots/03-app-list.webp",
+      "source": "supplied by the catalog owner",
+      "repo": "garrettjwilke/mpc-boot-thingy",
+      "note": "320x240 device capture, converted from PNG to lossless WebP"
+    },
+    {
+      "file": "screenshots/04-settings.webp",
+      "source": "supplied by the catalog owner",
+      "repo": "garrettjwilke/mpc-boot-thingy",
+      "note": "320x240 device capture, converted from PNG to lossless WebP"
     }
   ],
   "mpc-cavestory": [],
