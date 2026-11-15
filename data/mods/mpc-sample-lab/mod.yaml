@@ -1,0 +1,11 @@
+name: Akai MPC Sample research
+description: >-
+  Akai MPC Sample research: control-surface protocol, audio and display notes, own Sample Mode
+  firmware that runs from RAM.
+repo: gospodindilly-ops/mpc-sample-lab
+author: gospodindilly-ops
+runs_on:
+  - device
+install: sd-card
+audience:
+  - musician
