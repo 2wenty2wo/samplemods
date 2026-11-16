@@ -1,0 +1,14 @@
+name: MPC Remote
+description: >-
+  An addin that shows the MPC screen in a web browser and lets you control it, with an MCP server
+  for AI clients. May conflict with addins that hook the same functions (Draw Handler, Scale Mode).
+repo: jacob-sabella/mpc-addin-remote
+author: jacob-sabella
+tags:
+  - remote
+  - screen
+  - mcp
+install: ssh
+firmware: 1.3.0.12
+runs_on: [device, browser]
+audience: [musician, developer, curious]
