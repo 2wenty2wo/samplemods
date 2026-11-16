@@ -1,0 +1,14 @@
+name: RunMPC
+description: >-
+  A catalogue of community-made software for Akai MPC models, with filters for device, category and
+  install method, including the MPC Sample.
+author: runmpc.com
+tags:
+  - directory
+  - community
+  - reference
+install: none
+website: https://runmpc.com/
+source: closed
+runs_on: [browser, docs]
+audience: [musician, curious, developer]
