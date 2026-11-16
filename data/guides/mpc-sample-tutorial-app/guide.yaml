@@ -1,0 +1,16 @@
+name: MPC Sample Tutorial App
+description: >-
+  A phone app of MPC Sample video lessons, with the full manual and an AI assistant.
+author: KillaVic Cheat Codes
+author_url: https://killaviccheatcodes.app
+website: https://killaviccheatcodes.app/android
+tags:
+  - lessons
+  - video
+  - beginner
+install: none
+runs_on: [docs]
+audience: [musician, curious]
+price: paid
+price_note: "$14.99 one-time"
+source: closed

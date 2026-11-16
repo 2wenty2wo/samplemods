@@ -1,0 +1,16 @@
+name: SMPLUTILITY
+description: >-
+  A free Mac and Windows companion for the MPC Sample that moves sounds over USB-C, chops and
+  splits stems, and resamples with built-in FX. Needs firmware 1.2.0 or later with SD Card Access on.
+author: Gazillion Industries
+author_url: https://gazillionindustries.com
+website: https://gazillionindustries.com/smplutility/
+tags:
+  - companion
+  - stems
+  - usb
+install: desktop
+runs_on: [desktop]
+audience: [musician, curious]
+price: free
+source: closed

@@ -1,0 +1,16 @@
+name: MPC Extractor
+description: >-
+  A free browser and desktop tool that loads an MPC Sample project and exports every track as stems
+  or DAW sessions. Nothing is uploaded; all processing stays on your machine.
+author: KillaVic Cheat Codes
+author_url: https://killaviccheatcodes.app
+website: https://killaviccheatcodes.app/stems
+tags:
+  - stems
+  - export
+  - companion
+install: desktop
+runs_on: [browser, desktop]
+audience: [musician, curious]
+price: free
+source: closed
