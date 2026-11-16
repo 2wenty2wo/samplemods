@@ -10,4 +10,4 @@ tags:
 install: sd-card
 firmware: 1.3.0.12
 runs_on: [device]
-audience: [musician]
+audience: [musician, player, developer]
