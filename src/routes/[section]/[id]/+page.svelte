@@ -831,14 +831,12 @@
 	.detail-title {
 		margin: 0;
 		font-family: var(--font-display);
-		font-style: italic;
-		font-weight: 850;
-		font-stretch: 118%;
-		font-variation-settings: 'wdth' 118, 'wght' 850;
+		font-weight: 600;
+		font-variation-settings: 'wdth' 100, 'wght' 600;
 		font-size: clamp(1.5rem, 3.2vw, 2.2rem);
 		line-height: 1.12;
-		color: var(--mpc-screen-yellow);
-		letter-spacing: 0.01em;
+		color: var(--mpc-screen-white);
+		letter-spacing: -0.01em;
 		overflow-wrap: anywhere;
 	}
 

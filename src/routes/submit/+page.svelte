@@ -174,23 +174,26 @@ tags:
 	}
 
 	.page-kicker {
-		margin: 0 0 0.25rem;
+		display: inline-block;
+		margin: 0 0 0.7rem;
+		padding: 0.2rem 0.6rem;
+		border-radius: 1px;
+		background: var(--mpc-screen-white);
+		color: #000;
+		font-family: var(--font-screen);
 		font-size: 0.72rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--mpc-screen-cyan);
+		font-weight: 600;
+		letter-spacing: 0.04em;
 	}
 
 	.page-title {
 		margin: 0 0 0.45rem;
 		font-family: var(--font-display);
-		font-style: italic;
-		font-weight: 850;
-		font-stretch: 118%;
-		font-variation-settings: 'wdth' 118, 'wght' 850;
+		font-weight: 600;
+		font-variation-settings: 'wdth' 100, 'wght' 600;
 		font-size: clamp(1.4rem, 3vw, 2rem);
-		color: var(--mpc-screen-yellow);
+		color: var(--mpc-screen-white);
+		letter-spacing: -0.01em;
 	}
 
 	.page-lead {
