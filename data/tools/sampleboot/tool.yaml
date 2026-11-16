@@ -1,0 +1,13 @@
+name: SampleBoot
+description: >-
+  A boot selector for the MPC Sample. Keep the stock firmware and any number of custom OSes on one
+  SD card, then pick which one starts with the encoder at power-on.
+repo: pxcm/SampleBoot
+author: pxcm
+tags:
+  - boot-menu
+  - launcher
+install: sd-card
+firmware: 1.3.0.12
+runs_on: [device]
+audience: [musician]
