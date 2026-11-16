@@ -116,7 +116,7 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 1,
+    "stars": 3,
     "forks": 0,
     "pushed_at": "2026-11-16T03:23:17Z",
     "last_commit_at": "2026-11-16T03:23:15Z",
@@ -159,7 +159,7 @@
     "archived": false
   },
   "ThomasTestaud/mpc-fm": {
-    "stars": 2,
+    "stars": 3,
     "forks": 0,
     "pushed_at": "2026-11-08T10:34:15Z",
     "last_commit_at": "2026-11-08T10:34:14Z",
@@ -590,8 +590,8 @@
   "ioma8/mpc-minimod": {
     "stars": 7,
     "forks": 0,
-    "pushed_at": "2026-11-16T08:38:40Z",
-    "last_commit_at": "2026-11-16T08:38:35Z",
+    "pushed_at": "2026-11-16T13:44:56Z",
+    "last_commit_at": "2026-11-16T13:44:54Z",
     "contributors": 2,
     "open_issues": 1,
     "license": null,
@@ -854,7 +854,7 @@
     "archived": false
   },
   "jeffwebb-to/mpc-sample-tracker": {
-    "stars": 7,
+    "stars": 8,
     "forks": 1,
     "pushed_at": "2026-11-10T07:56:41Z",
     "last_commit_at": "2026-11-10T07:56:20Z",
@@ -1071,7 +1071,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-16T11:50:09Z",
     "last_commit_at": "2026-11-16T11:27:20Z",
