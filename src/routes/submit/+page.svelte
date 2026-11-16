@@ -59,7 +59,7 @@
 		<h2>Add a YAML entry in <code>data/&lt;section&gt;/&lt;id&gt;/&lt;type&gt;.yaml</code></h2>
 		<p>
 			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. A public
-			GitHub <code>repo</code> is preferred — it powers stars, README, and releases on the page. A
+			GitHub <code>repo</code> is preferred - it powers stars, README, and releases on the page. A
 			<code>website</code> link is accepted for paid or closed releases that are not on GitHub.
 			Optional <code>price</code> (<code>free</code> | <code>paid</code> | <code>pay-what-you-want</code>),
 			<code>price_note</code>, and <code>source</code> (<code>open</code> | <code>closed</code>).
@@ -88,18 +88,18 @@ tags:
 		<span class="step-badge">STEP 2</span>
 		<h2>Drop screenshots or a logo in <code>data/&lt;section&gt;/&lt;id&gt;/</code></h2>
 		<p>
-			No YAML changes are needed for images—<code>scripts/build-data.js</code> discovers them
+			No YAML changes are needed for images, <code>scripts/build-data.js</code> discovers them
 			automatically on build:
 		</p>
 		<ul class="info-list">
 			<li>
-				<code>data/&lt;section&gt;/&lt;id&gt;/screenshots/01-splash.png</code> — 4:3 device screen captures
+				<code>data/&lt;section&gt;/&lt;id&gt;/screenshots/01-splash.png</code> - 4:3 device screen captures
 				(<code>320×240</code> renders crisp with <code>image-rendering: pixelated</code>) or
 				hardware photos (<code>.png</code>, <code>.webp</code>, <code>.jpg</code>,
 				<code>.gif</code>).
 			</li>
 			<li>
-				<code>data/&lt;section&gt;/&lt;id&gt;/logo.svg</code> (or <code>.png</code> / <code>.webp</code>) —
+				<code>data/&lt;section&gt;/&lt;id&gt;/logo.svg</code> (or <code>.png</code> / <code>.webp</code>) -
 				optional logo displayed when no screenshots are present.
 			</li>
 			<li>
