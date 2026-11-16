@@ -1,0 +1,13 @@
+name: MPC Sample Kit Converter
+description: >-
+  A Python command-line tool that converts Akai MPC expansion packs into ready-to-play .xpj
+  projects for the MPC Sample, with optional demo grooves and multi-layer pads.
+repo: ab1428x/mpcsample-kit-converter
+author: ab1428x
+tags:
+  - converter
+  - kits
+  - projects
+install: desktop
+runs_on: [desktop]
+audience: [musician, developer]

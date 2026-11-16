@@ -287,6 +287,13 @@
       "repo": "ioma8/mpc-minimod"
     }
   ],
+  "mpc-remote": [
+    {
+      "file": "screenshots/01-tile.png",
+      "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-remote/HEAD/docs/tile.png",
+      "repo": "jacob-sabella/mpc-addin-remote"
+    }
+  ],
   "mpc-sample-doom": [
     {
       "file": "screenshots/01-splash.webp",
