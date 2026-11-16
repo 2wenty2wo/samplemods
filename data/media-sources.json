@@ -369,12 +369,27 @@
   "mpc-stemloop": [],
   "mpc-tic80": [],
   "mpc-ui-toolkit": [],
+  "mpcfirmware": [
+    {
+      "file": "screenshots/01-sample-view.png",
+      "source": "https://mpcfirmware.com/?model=mpc-sample",
+      "note": "Screenshot of the site filtered to the MPC Sample (1280×960)"
+    }
+  ],
   "mpcsample": [
     {
       "file": "screenshots/01-demo.webp",
       "source": "https://raw.githubusercontent.com/WorldLinkStudio/mpcsample/main/demo.jpg",
       "repo": "WorldLinkStudio/mpcsample",
       "note": "Project demo image (599x599, unchanged); repo licence GPL-3.0"
+    }
+  ],
+  "open-mpc": [
+    {
+      "file": "screenshots/01-sample-view.png",
+      "source": "https://open-mpc.github.io/#plat=sample",
+      "repo": "open-mpc/open-mpc.github.io",
+      "note": "Screenshot of the catalog filtered to the MPC Sample (1280×960)"
     }
   ],
   "rhythmer-os": [

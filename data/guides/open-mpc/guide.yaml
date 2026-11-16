@@ -1,0 +1,14 @@
+name: OpenMPC
+description: >-
+  A community directory of standalone plugins and addins for Akai MPC and Force, with an MPC Sample
+  filter plus installation and development docs.
+repo: open-mpc/open-mpc.github.io
+author: open-mpc
+tags:
+  - directory
+  - plugins
+  - reference
+install: none
+website: https://open-mpc.github.io/#plat=sample
+runs_on: [browser, docs]
+audience: [musician, curious, developer]

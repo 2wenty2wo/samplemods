@@ -1,0 +1,14 @@
+name: MPCfirmware
+description: >-
+  An independent index of official firmware, alternative operating systems and mods for Akai MPC
+  models, with a filter for the MPC Sample.
+author: mpcfirmware.com
+tags:
+  - directory
+  - firmware
+  - reference
+install: none
+website: https://mpcfirmware.com/?model=mpc-sample
+source: closed
+runs_on: [browser, docs]
+audience: [musician, curious, developer]
