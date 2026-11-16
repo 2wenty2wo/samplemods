@@ -40,11 +40,11 @@ Each pad exposes its source’s sound controls. A separate whole-kit LP/BP/HP fi
 
 ### Acid Engine
 
-**Hortator ACID synthesis, with a dedicated bassline generator.**
+**Hortator ACID and Aphex voices, with a dedicated bassline generator.**
 
 <img src="assets/engines/acid-engine-still.png" width="400" alt="Acid Engine — RHYTHMER OS engine screen">
 
-A resonant, squelching voice for basslines and repeating figures. Shape the instrument’s pitch, decay, sweep, punch, noise and clipping, then use its filter to move between a rounded low end and sharper, more driven phrases.
+Choose from 12 original presets: four Hortator ACID sounds and eight Aphex sounds — Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse. Each selection uses its original DSP and matching filter, envelope, modulation and sound-design controls. Shape a rounded bassline, a resonant lead or a sharper, more driven phrase.
 
 The dedicated Acid Generator creates notes, accents, slides and sustained ties; mutation varies the line. Its density, accent, slide, octave and auto-mutation settings are separate from the sound itself. The random state is internal; there is no Acid SEED knob.
 
@@ -285,7 +285,7 @@ Use the **complete SD ZIP** from the [installation page](https://jazzyrhythmer.g
 
 Target: **MPC Sample AC50 with stock firmware 1.3.0.12**. Back up the entire card first. **UPDATE.zip is app-only**, not a first-install package. SOURCE, MOVE-SOURCE and SUPPORT-SOURCE contain corresponding source, not installers.
 
-[Installation / stock-app recovery](docs/SD_CARD_GUIDE.md) · [Release files and notes](https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.2)
+[Installation / stock-app recovery](docs/SD_CARD_GUIDE.md) · [Release files and notes](https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.3)
 
 ## Validation and limits
 
