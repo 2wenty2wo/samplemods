@@ -1,0 +1,16 @@
+name: One card, every OS
+description: >-
+  One card, every OS: a boot selector for the Akai MPC Sample. Pick the stock firmware, Melodee,
+  SampQOL OS or any custom OS with the encoder at power-on.
+repo: pxcm/SampleBoot
+author: pxcm
+runs_on:
+  - device
+install: sd-card
+audience:
+  - musician
+tags:
+  - boot-loader
+  - boot-manager
+  - boot-menu
+  - boot-selector
