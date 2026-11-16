@@ -1,0 +1,12 @@
+{
+  "ember-8": {
+    "url": "https://mpctoolkit.com/wp-json/wp/v2/edd-downloads?slug=ember-8-hybrid-synthesizer-mod-for-akai-mpc-sample&_fields=modified_gmt",
+    "fingerprint": "[{\"modified_gmt\":\"2026-11-07T20:08:26\"}]",
+    "checked_at": "2026-11-16T01:23:53.841Z"
+  },
+  "mpc-simple": {
+    "url": "https://sourceforge.net/projects/mpcsimple/rss?path=/",
+    "fingerprint": "/MPC-Simple-1.0-Beta-1.zip | Sun, 15 Nov 2026 21:30:16 UT",
+    "checked_at": "2026-11-16T01:23:54.080Z"
+  }
+}

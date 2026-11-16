@@ -5,6 +5,7 @@ description: >-
 author: Beatsofthings
 author_url: https://mpctoolkit.com
 website: https://mpctoolkit.com/downloads/ember-8-hybrid-synthesizer-mod-for-akai-mpc-sample/
+watch: https://mpctoolkit.com/wp-json/wp/v2/edd-downloads?slug=ember-8-hybrid-synthesizer-mod-for-akai-mpc-sample&_fields=modified_gmt
 install: sd-card
 firmware: "1.3.0"
 status: beta

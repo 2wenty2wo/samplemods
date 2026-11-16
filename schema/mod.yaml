@@ -84,6 +84,10 @@ properties:
   website:
     type: string
     pattern: ^https?://
+  watch:
+    type: string
+    pattern: ^https?://
+    description: Upstream URL polled for release changes (RSS/Atom/JSON preferred)
   version:
     type: string
     minLength: 1

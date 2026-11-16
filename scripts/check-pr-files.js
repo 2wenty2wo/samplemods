@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const generatedFiles = new Set([
 	'data/github.json',
 	'data/contributors.json',
+	'data/watch.json',
 	'src/lib/data.json',
 	'src/lib/server/details.json',
 	'static/catalog.json'

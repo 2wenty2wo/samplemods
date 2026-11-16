@@ -11,7 +11,7 @@ Maintainers turn those into catalog updates. The rest of this guide is the manua
 
 ## Files you shouldn't edit
 
-Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, and `data/contributors.json` untouched. The refresh job updates these every 6 hours. Generated outputs (`src/lib/data.json`, `src/lib/server/details.json`, `static/catalog.json`, and `static/media/**`) are also blocked; edit the source YAML and entry media instead. The **Catalog PR checks** status checks these paths and runs `npm test`. To undo an accidental change, use `git checkout origin/main -- <file>`; remove newly added generated files from the PR as well.
+Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, `data/contributors.json`, and `data/watch.json` untouched. The refresh job updates these every 6 hours. Generated outputs (`src/lib/data.json`, `src/lib/server/details.json`, `static/catalog.json`, and `static/media/**`) are also blocked; edit the source YAML and entry media instead. The **Catalog PR checks** status checks these paths and runs `npm test`. To undo an accidental change, use `git checkout origin/main -- <file>`; remove newly added generated files from the PR as well.
 
 ## Add an entry
 
@@ -43,7 +43,8 @@ Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, and `da
 
    Repo-less entries may include a hand-written `about.md` beside their YAML. It fills the detail page's About section through the same Markdown sanitizer as GitHub READMEs; relative links and images resolve against `website`. GitHub entries always use their cached README and ignore local `about.md` files.
 
-   For repo-less entries, optional `version: "1.2.3"` and `released: "2026-11-07"` provide a hand-maintained latest release linked to `website`. Quote the date and use a real YYYY-MM-DD calendar date. Record a source note when using a product-page update date. GitHub release metadata remains authoritative for entries with `repo`.
+   For repo-less entries, optional `version: "1.2.3"` and `released: "2026-11-07"` provide a hand-maintained latest release linked to `website`. Quote the date and use a real YYYY-MM-DD calendar date. Record a source note when using a product-page update date. GitHub release metadata remains authoritative for entries with `repo`. Optional `watch: https://…` points at an upstream URL the refresh job polls every 6 hours; when it changes, a `release-watch` issue is opened so a maintainer can update the entry by hand. Prefer an RSS/Atom feed or a stable JSON endpoint over a plain HTML page.
+
 
    Use `price: free`, `paid`, or `pay-what-you-want`; omitted prices default to `free`. Optional `price_note` adds a short clarification such as `Suggested €9.99` (up to 160 characters). Use `source: open` or `closed`; the default is `open` with a repository and `closed` without one. Set it explicitly when the repository hosts only downloads or documentation for closed-source software. These labels describe access to the project; its licence may have additional conditions.
 

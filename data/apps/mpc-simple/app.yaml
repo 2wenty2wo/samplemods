@@ -6,6 +6,7 @@ description: >-
 author: Mike Feedback
 author_url: https://mikefeedback.com
 website: https://mpcsimple.com/
+watch: https://sourceforge.net/projects/mpcsimple/rss?path=/
 install: sd-card
 firmware: 1.3.0.12
 status: beta
