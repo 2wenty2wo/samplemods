@@ -431,6 +431,13 @@
       "note": "Development render from the project repo (not a hardware photo)"
     }
   ],
+  "runmpc": [
+    {
+      "file": "screenshots/01-sample-view.png",
+      "note": "Screenshot of the site with MPC Sample device filter checked (1280×960); filter is client-only so source is the homepage",
+      "source": "https://runmpc.com/"
+    }
+  ],
   "sample-base": [],
   "sampqol-os": [
     {
