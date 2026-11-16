@@ -1,5 +1,5 @@
 name: Suggest a project
-description: Propose a new catalog entry without writing YAML. Maintainers will turn this into a pull request.
+description: Suggest a project for the catalog, and we'll add it for you.
 title: "New entry: "
 labels: ["new-entry"]
 body:

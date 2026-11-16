@@ -8,7 +8,7 @@ Not affiliated with or endorsed by Akai Professional / inMusic Brands.
 
 ## Contribute
 
-You don't need to know Git or YAML to help.
+There are two ways to contribute: a quick form, or a pull request.
 
 | I want to… | Do this |
 |---|---|
@@ -16,7 +16,7 @@ You don't need to know Git or YAML to help.
 | Fix, update or remove a listing | [Fill in the "Fix or update a listing" form](https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml), or use **Suggest an edit** on any entry page |
 | Edit the catalog files myself | Follow [CONTRIBUTING.md](CONTRIBUTING.md) and open a pull request |
 
-The forms need a free GitHub account. Maintainers turn submissions into catalog updates.
+The forms need a free GitHub account, and submissions are added to the catalog for you.
 
 ## How it works
 

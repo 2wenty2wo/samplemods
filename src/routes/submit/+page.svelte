@@ -17,9 +17,9 @@
 			<p class="page-kicker">CONTRIBUTING GUIDE</p>
 			<h1 class="page-title">How to Add or Update an Entry</h1>
 			<p class="page-lead">
-				Two ways in: fill a short GitHub form (no YAML), or open a pull request that edits the
-				catalog files yourself. Maintainers turn form suggestions into catalog updates; CI
-				validates every PR automatically.
+				Two ways to contribute: a short form, or a pull request that edits the catalog files
+				directly. Form suggestions are added to the catalog for you, and every pull request is
+				checked automatically.
 			</p>
 		</div>
 	</div>
@@ -27,10 +27,10 @@
 
 <div class="wrap info-grid">
 	<article class="info-card">
-		<h2>No GitHub skills? Use a form</h2>
+		<h2>Quickest way: use a form</h2>
 		<p>
-			Suggest a new project or ask for a listing fix without touching YAML. You need a free GitHub
-			account; maintainers handle the rest.
+			Suggest a new project or request a change to a listing in a couple of minutes. You'll need a
+			free GitHub account, and we'll take it from there.
 		</p>
 		<div class="info-actions">
 			<a

@@ -1,13 +1,13 @@
 # Contributing
 
-## No-code route
+## Quickest way: use a form
 
-Prefer a form over editing YAML? Open one of these GitHub issue forms (free GitHub account required):
+The fastest way to suggest a project or a change is one of these GitHub issue forms (free GitHub account required):
 
 - [Suggest a project](https://github.com/2wenty2wo/samplemods/issues/new?template=new-entry.yml)
 - [Fix or update a listing](https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml)
 
-Maintainers turn those into catalog updates. The rest of this guide is the manual pull-request route.
+Submissions are added to the catalog for you. The rest of this guide covers editing the catalog files directly with a pull request.
 
 ## Files you shouldn't edit
 
