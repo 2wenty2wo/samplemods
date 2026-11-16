@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
-import { decideWatchUpdate, fingerprint } from './watch.js';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { decideWatchUpdate, fingerprint, runWatch } from './watch.js';
 
 const rssA = `<?xml version="1.0"?>
 <rss version="2.0"><channel>
@@ -78,4 +81,33 @@ assert.equal(
 const htmlFp = fingerprint('<html><script>x</script><style>y</style><p>Hello   world</p></html>', 'text/html');
 assert.match(htmlFp, /^[a-f0-9]{64}$/);
 
-console.log('Watch checks passed: RSS channel dates ignored, first-item change, JSON, decideWatchUpdate, HTML hash.');
+// runWatch state handling (no network: stubbed upstream fetch and GitHub API).
+const entry = { id: 'demo', section: 'apps', record: { name: 'Demo', watch: 'https://a.example/feed' } };
+const upstream = (body) => async () => new Response(body, { headers: { 'content-type': 'application/rss+xml' } });
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'watch-test-'));
+const statePath = path.join(tmp, 'watch.json');
+const quiet = { log: console.log, warn: console.warn };
+console.log = console.warn = () => {};
+try {
+	await runWatch({ entries: [entry], statePath, fetchImpl: upstream(rssA), token: null, repository: null, now: () => 'T1' });
+	const baseline = fs.readFileSync(statePath, 'utf8');
+
+	// Unchanged upstream must leave the file byte-identical (no commit / redeploy every 6 h).
+	await runWatch({ entries: [entry], statePath, fetchImpl: upstream(rssSameItemNewChannelDate), token: null, repository: null, now: () => 'T2' });
+	assert.equal(fs.readFileSync(statePath, 'utf8'), baseline, 'unchanged run must not rewrite state');
+
+	// A change whose issue can't be opened must keep the old fingerprint so the next run retries.
+	const realFetch = globalThis.fetch;
+	globalThis.fetch = async () => new Response('{"message":"forbidden"}', { status: 403 });
+	try {
+		await runWatch({ entries: [entry], statePath, fetchImpl: upstream(rssNewFirstItem), token: 't', repository: 'o/r', now: () => 'T3' });
+	} finally {
+		globalThis.fetch = realFetch;
+	}
+	assert.equal(JSON.parse(fs.readFileSync(statePath, 'utf8')).demo.fingerprint, fpA, 'failed issue must not advance state');
+} finally {
+	Object.assign(console, quiet);
+	fs.rmSync(tmp, { recursive: true, force: true });
+}
+
+console.log('Watch checks passed: RSS channel dates ignored, first-item change, JSON, decideWatchUpdate, HTML hash, no-op runs, alert retry.');

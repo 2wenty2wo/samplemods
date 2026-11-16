@@ -192,24 +192,25 @@ export async function runWatch(options = {}) {
 			const contentType = response.headers.get('content-type') ?? '';
 			const fp = fingerprint(body, contentType);
 			const decision = decideWatchUpdate({ previous, url, fingerprint: fp });
-			const checked_at = now();
-			nextState[entry.id] = { url, fingerprint: fp, checked_at };
 			results.push({ id: entry.id, name: entry.record.name, url, decision, fingerprint: fp });
 
-			if (decision.action === 'baseline') {
-				console.log(`${entry.id}: baseline recorded`);
-			} else if (decision.action === 'rebaseline') {
-				console.log(`${entry.id}: watch URL changed; re-baselined`);
-			} else if (decision.action === 'unchanged') {
+			if (decision.action === 'unchanged') {
+				// Leave state untouched so an unchanged run produces no commit or redeploy.
 				console.log(`${entry.id}: unchanged`);
-			} else if (decision.action === 'changed') {
+				continue;
+			}
+			if (decision.action === 'changed') {
 				console.log(`${entry.id}: CHANGED`);
 				if (canOpenIssues) {
+					// Throws on failure, so the old fingerprint is kept and the next run retries.
 					await openChangeIssue(token, repository, entry, url, decision.oldFingerprint, fp);
 				} else {
 					console.log(`Would open issue: Release watch: ${entry.record.name} changed upstream`);
 				}
+			} else {
+				console.log(`${entry.id}: ${decision.action === 'baseline' ? 'baseline recorded' : 'watch URL changed; re-baselined'}`);
 			}
+			nextState[entry.id] = { url, fingerprint: fp, checked_at: now() };
 		} catch (error) {
 			console.warn(`${entry.id}: watch failed (${error.message}); keeping previous state`);
 			results.push({ id: entry.id, name: entry.record.name, url, error: error.message });
