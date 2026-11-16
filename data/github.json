@@ -1,6 +1,6 @@
 {
   "AlekseyMalykh/am-mod": {
-    "stars": 18,
+    "stars": 19,
     "forks": 1,
     "pushed_at": "2026-11-15T16:07:23Z",
     "last_commit_at": "2026-11-15T16:07:23Z",
@@ -366,8 +366,8 @@
   "garrettjwilke/mpc-boot-thingy": {
     "stars": 21,
     "forks": 3,
-    "pushed_at": "2026-11-15T21:13:57Z",
-    "last_commit_at": "2026-11-15T21:13:03Z",
+    "pushed_at": "2026-11-16T00:20:33Z",
+    "last_commit_at": "2026-11-16T00:19:29Z",
     "contributors": 5,
     "open_issues": 1,
     "license": "MIT",
@@ -375,10 +375,18 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.1.8",
-      "published_at": "2026-11-15T21:13:58Z"
+      "tag": "v1.1.9",
+      "published_at": "2026-11-16T00:20:33Z"
     },
     "releases": [
+      {
+        "tag": "v1.1.9",
+        "name": "v1.1.9",
+        "published_at": "2026-11-16T00:20:33Z",
+        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.9",
+        "body": "added MPC-Simple to supported apps\n",
+        "truncated": false
+      },
       {
         "tag": "v1.1.8",
         "name": "v1.1.8",
@@ -393,14 +401,6 @@
         "published_at": "2026-11-15T20:40:55Z",
         "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.7",
         "body": "added RHYTHMER support\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1.6",
-        "name": "v1.1.6",
-        "published_at": "2026-11-14T22:55:56Z",
-        "html_url": "https://github.com/garrettjwilke/mpc-boot-thingy/releases/tag/v1.1.6",
-        "body": "added grid mode from [Dyldog](https://github.com/Dyldog)\n",
         "truncated": false
       }
     ],
@@ -769,8 +769,8 @@
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-15T21:53:10Z",
-    "last_commit_at": "2026-11-15T21:53:07Z",
+    "pushed_at": "2026-11-16T00:51:53Z",
+    "last_commit_at": "2026-11-16T00:51:51Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -779,6 +779,14 @@
     "readme_path": "README.md",
     "latest_release": null,
     "releases": [
+      {
+        "tag": "v0.4.0-beta.3-hotfix.2",
+        "name": "RHYTHMER OS 0.4.0-beta.3 — Break workflow hotfix.2",
+        "published_at": "2026-11-16T00:30:55Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.2",
+        "body": "RHYTHMER OS for MPC Sample — 0.4.0-beta.3 / Break workflow hotfix.2.\n\nThe app version remains **0.4.0-beta.3**. This separate release record identifies the matching installation files and corresponding source. The Sound / Kit save hotfix is included.\n\n## Break: load, find the controls, play\n\n- Loading or reloading source A makes a straight sixteen-chop pattern and stays in **BREAK GEN**, with **BRK PERF** selected. Push / B3 OPEN enters the performance pages.\n- While decoding, **B1 CANCEL** or **SHIFT + encoder Push** cancels track assignment. Other generator actions and knob cards wait until loading finishes. A cached decoded file may remain; a cancelled request cannot replace the track.\n- Source A/B completion does not reopen a dismissed menu or pull you away from another track. Replacing/deleting the target track continues to invalidate pending loads.\n- Reopen controls from the Break track: **SEQ / PATTERNS → SHIFT + B3 GEN → BREAK GEN → BRK PERF**. In BRK PERF, B1 GEN returns to BREAK GEN. BACK / Shift + Push returns to main GEN, then closes it.\n- **Pattern Hold** replaces the misleading LOOP HOLD label. It holds the internal generated pattern in LOOP mode, not audio sustain or track Freeze. The stored parameter and DSP behavior are unchanged. CHOP mode and zero variation can make the difference inaudible.\n- Grain / Splice / Slow explicitly describe stretched hits. With playback running, hold Pad 3 STRETCH on ROLLS, keep it held while paging to GRAIN, adjust the controls and release; recorded STRETCH works too. Pattern Hold is not required.\n- Rejected/undecodable files return to the owned browser for retry without replacing the previous instrument. A track frozen during decoding cancels assignment without a late Unfreeze dialog.\n- All six pages have clearer operating hints. SOURCE B requires a loaded B file; TRACK MIX changes the track mix rather than generating a pattern. RETURN clears Variation/Drift while keeping the selected A/B source.\n- General GEN also saves the Acid RNG stream with its Undo/Redo operation, keeping the generated notes and random state together. The generation algorithm and seed policy are unchanged.\n\n## Install and learn\n\nUse the **full SD ZIP**, verify its SHA-256 and back up the entire card first. The signed UPDATE ZIP is app-only and is not a first-install package; the native updater may not offer a same-version hotfix. Target: MPC Sample AC50 / stock firmware 1.3.0.12. No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Break navigation and six-page guide](https://jazzyrhythmer.github.io/mpc-sample/manual/#break-performance) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html#break-load)\n\nThe written manual and first-groove guide now match this hotfix. The existing tutorial film predates the load/menu change; its music and edited arrangement remain examples. Follow the current written navigation when screens differ. Random generation does not reproduce the edited example exactly.\n\n## Validation scope\n\nSoftware checks cover cancellation, A/B async ownership, current-track navigation, Undo/Redo, project save/reload, held STRETCH release after paging, CHOP/LOOP pattern hold, grain processing, existing track workflows, runtime tests, audio self-test, random surface inputs and native UI text/layout. Exact results and source identity are recorded in the validation receipt. Current software results: 19 runtime tests, 161 track-workflow assertions, three final fresh-process GEN/Acid/Break passes, 430 standard UI states with zero reported text issues, 12 × 3,000 random surface inputs, 16 original roll commands and 2,400 Acid reference cases. All 41 plug-in binaries and eight sample files are unchanged. Engine DSP, preset banks and serialized control IDs remain unchanged from the prior reviewed hotfix. Signatures, archive checksums and corresponding-source files are checked before publication.\n\n**Physical MPC installation/recovery, controls, listening, latency and long sessions remain beta validation. Software checks do not certify hardware behavior.**\n\nBuilt on **Melodee by Kerem Kiliç (Ellic Studio)** and the work of the credited engine authors. Porting, integration and additions by jazzy rhythmer. Original licences and credits are retained in the repositories and corresponding SOURCE / MOVE-SOURCE / SUPPORT-SOURCE archives.\n\nPublished source commit: `fe3c15879686fea7ee0ce59515b2edbfc9a70b31`.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.4.0-beta.3-r2",
         "name": "RHYTHMER OS 0.4.0-beta.3 — Revision 2",
@@ -793,14 +801,6 @@
         "published_at": "2026-11-15T08:03:23Z",
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-r1",
         "body": "> **A newer firmware revision is available: [beta.3 Revision 2](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-r2).** Use its full SD ZIP and [current installation guide](https://jazzyrhythmer.github.io/mpc-sample/installer/). The launch films below remain available.\n\n<!-- FILMS -->\n## Launch film\n\n[Watch on the website](https://jazzyrhythmer.github.io/mpc-sample/#launch-film) · [YouTube / 16:9 MP4](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/download/v0.4.0-beta.3-r1/RHYTHMER-OS-Launch-YouTube-60s-Acid-Flow.mp4) · [Instagram / Reels 9:16 MP4](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/download/v0.4.0-beta.3-r1/RHYTHMER-OS-Launch-Reels-60s-Acid-Flow.mp4)\n\n<!-- /FILMS -->\n\nRHYTHMER OS for MPC Sample — early beta workflow and Kit update.\n\nThis revision adds the current TRACK SETUP flow, instrument/type changes that preserve patterns, scoped browser navigation and Undo/Redo, the two-page Acid GEN settings, and the approved hit-responsive Rhythmer Kit geometry. The synthesis engines and original preset data are unchanged.\n\nUse the complete SD ZIP for this update. UPDATE replaces the app only. Back up your entire card, projects, presets and samples first. Target: MPC Sample AC50 on stock firmware 1.3.0.12. No break recordings are bundled.\n\nCurrent checks: 19 runtime tests, self-test, GEN/Acid/Break fixtures, 12 input-monkey seeds, 426 UI screens with zero measured text issues, 68 track-workflow assertions, source/licence inventory and signed-update identity/tamper tests. The engine/plugin/model code matches the previously accepted sound-host snapshot; broader usability QA continues. Physical-device installation, controls, listening and long sessions remain pending owner tests.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Engine ports](https://github.com/JazzyRhythmer/mpc-sample-engine-ports)\n\nBuilt on Melodee by Kerem Kiliç (Ellic Studio) and contributors. Original engine developers retain credit for their instruments and DSP. RHYTHMER porting, integration and additions by Jazzy Rhythmer. See THIRD_PARTY_NOTICES.md and the per-component licences.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.4.0-beta.3-hotfix.1",
-        "name": "RHYTHMER OS 0.4.0-beta.3 — Sound / Kit Save Hotfix",
-        "published_at": "2026-11-15T14:41:41Z",
-        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.1",
-        "body": "RHYTHMER OS for MPC Sample — 0.4.0-beta.3 / Sound & Kit Save Hotfix.\n\nThe **app version remains 0.4.0-beta.3**. This separate hotfix release record binds the matching source and installation files.\n\n## Sound and kit workflow\n\n- On supported engines: SAMPLE → B1 EDIT → encoder Push opens SAVE SOUND, or PAD SOURCE for Rhythmer Kit. A visible hint shows entry.\n- In PAD SOURCE, select the pad and change its engine/sound. B3 cycles PAD SOURCE → SAVE → EDIT; individual instruments cycle SAVE ↔ EDIT.\n- K1 chooses slot 1–64, K2 saves, and K3 shows status. PRESETS / KIT PRESETS reloads User Sound / User Kit slots, including on a new track/project. Using a slot again overwrites it.\n- SHIFT + Push restores the Stage EDIT position. Track changes clear the previous track’s tool context. Save a project separately for patterns and arrangement.\n- Supported Stage EDIT Push replaces stock three-card focus cycling. Turn K1–K3 first, then SHIFT + encoder turn for fine editing. External plug-in Push remains unchanged.\n- In the tools, SHIFT + B3 TRANSPORT toggles plug-in host playback-state delivery, not mute or global playback. Repeat/ARP rate-key priority remains intact.\n\n## Manual and first session\n\nTwo visual pages now lead the manual: essential controls and the project/track/pattern OS map. Current save/load instructions, fine editing, transport behavior and track selection are clarified. Offline reference images and updated guides are included in the SD package.\n\n## Install\n\nUse the **full SD ZIP** and verify its SHA-256. UPDATE is signed app-only material, not a first-install package; the native updater may not offer this same-version hotfix. Target: MPC Sample AC50 with stock firmware 1.3.0.12. Back up the entire card first. No break recordings are bundled.\n\n## Verification\n\n19 runtime tests; 161 track-workflow assertions; audio self-test; GEN/Acid/Break; 12 × 3,000 random surface inputs; 426 standard and 535 tool UI states with zero reported text issues. Fresh-instance disk reload passes for 26 source configurations; mixed-kit state and unwritable-save handling are verified. All 41 plug-in binaries and 8 sample files match the reviewed baseline. Release signature and corresponding-source references are verified.\n\nPhysical-device installation/recovery, controls, audible listening, latency and long sessions remain pending owner beta testing. Software tests do not certify hardware behavior.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Essential controls](https://jazzyrhythmer.github.io/mpc-sample/manual/essentials.html) · [OS map](https://jazzyrhythmer.github.io/mpc-sample/manual/structure.html)\n\nBuilt on **Melodee by Kerem Kiliç (Ellic Studio)** and contributors. Original engine authors retain their credits and licences. RHYTHMER porting/integration and additions by jazzy rhythmer. See THIRD_PARTY_NOTICES.md, component licences and the corresponding SOURCE / MOVE-SOURCE / SUPPORT-SOURCE archives.\n\nPublished source commit: `b1d7118c318aa3964be996ea996e78a817d9c010`.\n",
         "truncated": false
       }
     ],
@@ -862,7 +862,7 @@
   },
   "keremimo/melodee-sample": {
     "stars": 46,
-    "forks": 4,
+    "forks": 5,
     "pushed_at": "2026-11-14T19:17:42Z",
     "last_commit_at": "2026-11-14T19:12:16Z",
     "contributors": 1,
