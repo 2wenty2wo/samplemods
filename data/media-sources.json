@@ -237,6 +237,13 @@
     }
   ],
   "mpc-cavestory": [],
+  "mpc-extractor": [
+    {
+      "file": "screenshots/01-extractor.png",
+      "note": "1280×960 screenshot of the free MPC Extractor web app at killaviccheatcodes.app/stems",
+      "source": "https://killaviccheatcodes.app/stems"
+    }
+  ],
   "mpc-fm": [],
   "mpc-furnace": [],
   "mpc-gen1recomp": [],
@@ -335,6 +342,13 @@
     }
   ],
   "mpc-sample-kit": [],
+  "mpc-sample-screen-bridge": [
+    {
+      "file": "screenshots/01-sample-view.png",
+      "note": "Official product image from the Screen Bridge page (Trim screen in the companion app)",
+      "source": "https://killaviccheatcodes.app/mpc-sample/show-trim-glow.jpg"
+    }
+  ],
   "mpc-sample-sdk": [],
   "mpc-sample-secrets": [
     {
@@ -364,6 +378,13 @@
       "file": "screenshots/04-song.webp",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-tracker/HEAD/docs/screenshots/song.png",
       "repo": "jeffwebb-to/mpc-sample-tracker"
+    }
+  ],
+  "mpc-sample-tutorial-app": [
+    {
+      "file": "screenshots/01-og.png",
+      "note": "Site OG image; the Android product page publishes no product screenshots",
+      "source": "https://killaviccheatcodes.app/og-image.png"
     }
   ],
   "mpc-simple": [
@@ -484,6 +505,13 @@
       "file": "screenshots/03-scale-page-by-ear.webp",
       "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-scalemode/HEAD/docs/screenshots/scale-page-by-ear.png",
       "repo": "jacob-sabella/mpc-addin-sample-scalemode"
+    }
+  ],
+  "smplutility": [
+    {
+      "file": "screenshots/01-panel.png",
+      "note": "Official CHOP controls image from the SMPLUTILITY product page",
+      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/chop.png"
     }
   ],
   "virtual-mpc-sample": [

@@ -1,0 +1,17 @@
+name: MPC Sample Screen Bridge
+description: >-
+  Shows the MPC Sample screen on an iPad or phone so you can play it by touch, with 92 lessons
+  from Killavic. It runs from the SD card, set up with a Mac or Windows installer.
+author: KillaVic Cheat Codes
+author_url: https://killaviccheatcodes.app
+website: https://killaviccheatcodes.app/screenbridge
+tags:
+  - remote
+  - screen
+  - lessons
+install: sd-card
+runs_on: [device, browser]
+audience: [musician, curious]
+price: paid
+price_note: "$9.99 one-time unlock per MPC; free demo"
+source: closed
