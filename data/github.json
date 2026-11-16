@@ -118,8 +118,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-15T14:42:34Z",
-    "last_commit_at": "2026-11-15T14:42:33Z",
+    "pushed_at": "2026-11-16T03:23:17Z",
+    "last_commit_at": "2026-11-16T03:23:15Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -127,10 +127,18 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.2",
-      "published_at": "2026-11-14T15:24:34Z"
+      "tag": "v1.3",
+      "published_at": "2026-11-16T03:09:08Z"
     },
     "releases": [
+      {
+        "tag": "v1.3",
+        "name": "MPC 600 S, LA Version 1.3",
+        "published_at": "2026-11-16T03:09:08Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.3",
+        "body": "**New: other MPCs' files, both ways.** Save/Load reads what an MPC 1000, MPC 2500 or MPC 500 saves, and writes projects an MPC 2500 loads.\n\n- **MPC 2500 SEQUENCE** loads a sequence from an **.ALL** file (all of an MPC's sequences together) or a **.SEQ** (one on its own). Choose the sequence, then its tracks: they go onto the first empty tracks of the sequence on Into, nothing already there touched. Drum notes go back onto the pads they were played on, by the program file beside the .ALL; each track plays its own MPC program if it is loaded. An empty sequence takes the file's tempo (to the tenth of a BPM), time signature and length, and loops to bar 1. The MPC runs at 96 PPQN, as the MPC 600 S does, so notes land on exactly the same ticks.\n- **MPC 2500 PROGRAM** loads a **.PGM** with its samples (the WAVs beside it, or a folder down or up): each pad's sample with its start, end and loop points, level, pan, tuning, play mode, mute group, envelope and filter. The message says how many WAVs were not found.\n- **MPC 2500 PROJECT** loads a **.PRJ** whole, into what is empty: every program, then every sequence, each track on its own program. MPC 1000 and MPC 500 projects load too.\n- **MPC 2500 PROJECT on SAVE** writes the project as a folder an MPC 2500 loads: the .PRJ, ALL_SEQS&SONGS.ALL (every sequence in its own number, up to 64 tracks), a .PGM for each program (pads A01-D16 and their settings), and every sample as a 16-bit 44.1 kHz WAV with its start and end. Pads in banks E-H and tracks past 64 are left out, and the message says how much.\n- **MIDI FILE** loads a Standard MIDI File the same way: tracks chosen, onto the first empty tracks; SHIFT + push makes a track DRUM or KEYS.\n- **SEQUENCE** saves and loads one sequence on its own, with all its tracks.\n- Each MPC has its own types, named for it: these are for the MPC 2500, and read the MPC 1000's and MPC 500's files too, which are the same.\n- The MPC types open at the top of the card, where an MPC's folders go. Each type remembers its folder and last item until power-off, so loading one after another stays put. B1 is <Up> out of a folder.\n\n**Knob Mode** (Additional Settings 2): how K1-K3 and the slider take over a value. CATCH (as before: nothing moves until the knob reaches the value), JUMP (straight to the knob), SCALE (from where it is, meeting the knob at the ends).\n\n**Timing Correct knobs:** K1 Swing (the SP12's six settings in SP12 mode), K2 Shift amount, K3 the Move Existing track.\n\n**Also:** SHIFT + MUTE unmutes every track. SHIFT + ERASE opens Program Config with Copy started on the last pad pressed. Resample Start defaults to THRESHOLD; FORCE is now MANUAL. 16 Levels Tune's root starts on A08, so the pads play seven semitones down to eight up on bank A.\n\nInstall: extract MPC-600-S-OS-v1.3.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "truncated": false
+      },
       {
         "tag": "v1.2",
         "name": "MPC 600 S, LA Version 1.2",
@@ -366,8 +374,8 @@
   "garrettjwilke/mpc-boot-thingy": {
     "stars": 21,
     "forks": 3,
-    "pushed_at": "2026-11-16T00:20:33Z",
-    "last_commit_at": "2026-11-16T00:19:29Z",
+    "pushed_at": "2026-11-16T03:08:56Z",
+    "last_commit_at": "2026-11-16T03:08:55Z",
     "contributors": 5,
     "open_issues": 1,
     "license": "MIT",
@@ -1203,7 +1211,7 @@
     "pushed_at": "2026-11-14T17:49:27Z",
     "last_commit_at": "2026-11-14T17:49:23Z",
     "contributors": 1,
-    "open_issues": 26,
+    "open_issues": 27,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
