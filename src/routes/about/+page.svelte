@@ -27,11 +27,29 @@
 
 <div class="wrap info-grid">
 	<article class="info-card">
-		<h2>Unofficial &amp; Independent</h2>
+		<h2>Unofficial, Independent &amp; At Your Own Risk</h2>
 		<p>
 			<strong>{SITE_NAME}</strong> is an independent community archive. It is not affiliated with,
-			sponsored by, or endorsed by Akai Professional or inMusic Brands. All product names are used
-			solely to describe compatibility.
+			sponsored by, or endorsed by Akai Professional, inMusic Brands, or any maker listed here.
+		</p>
+		<p>
+			<strong>A listing is not a recommendation.</strong> We don't make, test, host or support the
+			mods, apps, games and tools in the catalog. Links go to sites run by others, and we're not
+			responsible for their content.
+		</p>
+		<p>
+			<strong>Install at your own risk.</strong> Installing mods or custom firmware can void your
+			warranty, erase your projects or stop your MPC Sample working. {SITE_NAME} accepts no liability
+			for any loss or damage.
+		</p>
+		<p>
+			Versions, dates and links are refreshed automatically but may be out of date. Check the original
+			source before installing anything. READMEs, screenshots and logos shown here belong to their
+			authors.
+		</p>
+		<p>
+			Akai, Akai Professional and MPC are trademarks of inMusic Brands, Inc. Other names belong to
+			their owners and are used only to describe compatibility.
 		</p>
 	</article>
 

@@ -96,7 +96,8 @@
 			<p class="footer-copy">
 				An independent, community-maintained index of mods, apps, games, tools and
 				guides for the Akai MPC Sample. Not affiliated with or endorsed by Akai Professional /
-				inMusic Brands.
+				inMusic Brands. Installing mods or firmware is at your
+				<a href="{base}/about/">own risk</a>.
 			</p>
 		</div>
 
