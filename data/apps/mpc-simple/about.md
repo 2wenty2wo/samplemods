@@ -12,7 +12,7 @@ modern MPCs.
 - **Keygroup, MIDI and instrument programs** alongside drum programs.
   Instruments and effects are CLAP plugins, and you can add your own.
 
-## In the first beta
+## In the beta
 
 - A classic MAIN screen, MPC2000XL-style sequence edits, Step Edit as an event
   list and Grid Edit with nudge, ratchet and probability.
