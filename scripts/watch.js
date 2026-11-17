@@ -20,6 +20,54 @@ export function entryPageUrl(section, id) {
 	return `${SITE_ORIGIN}/${singular}/${id}/`;
 }
 
+/** @param {string} body @param {string} [contentType=''] */
+function isXmlFeed(body, contentType = '') {
+	const type = String(contentType).toLowerCase();
+	const trimmed = String(body ?? '');
+	return /xml|rss|atom/.test(type)
+		|| /^\s*<\?xml/i.test(trimmed)
+		|| /^\s*<(?:rss|feed|rdf:RDF)\b/i.test(trimmed);
+}
+
+/**
+ * Parse up to `limit` feed items from an RSS/Atom XML body.
+ * Returns `null` when the body is not an XML feed.
+ * @param {string} body
+ * @param {string} [contentType='']
+ * @param {number} [limit=10]
+ * @returns {Array<{ title: string, published_at: string | null, html_url: string | null }> | null}
+ */
+export function parseFeedItems(body, contentType = '', limit = 10) {
+	const trimmed = String(body ?? '');
+	if (!isXmlFeed(trimmed, contentType)) return null;
+	const blocks = trimmed.match(/<item\b[\s\S]*?<\/item>/gi)
+		?? trimmed.match(/<entry\b[\s\S]*?<\/entry>/gi)
+		?? [];
+	return blocks.slice(0, limit).map((item) => {
+		const title = textOf(item, 'title') || '';
+		const rawDate = textOf(item, 'pubDate') || textOf(item, 'updated') || textOf(item, 'published') || '';
+		const parsed = rawDate ? new Date(rawDate) : null;
+		const published_at = parsed && !Number.isNaN(parsed.getTime()) ? parsed.toISOString() : (rawDate || null);
+		const html_url = linkOf(item) || null;
+		return { title, published_at, html_url };
+	}).filter((item) => item.title || item.html_url);
+}
+
+/**
+ * Derive a human version tag from a file name or path:
+ * strip path + extension, take from the first digit onward, '-' → ' ';
+ * if no digit, use the stripped file name.
+ * @param {string} title
+ */
+export function deriveVersionFromTitle(title) {
+	const raw = String(title ?? '').trim().replace(/\/+$/, '');
+	const base = raw.split('/').pop() || raw;
+	const stem = base.replace(/\.(?:tar\.(?:gz|xz|bz2|zst)|[a-z0-9]{1,6})$/i, '') || base;
+	const digitIdx = stem.search(/\d/);
+	if (digitIdx === -1) return stem;
+	return stem.slice(digitIdx).replace(/-+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 /**
  * @param {string} body
  * @param {string} [contentType='']
@@ -27,10 +75,7 @@ export function entryPageUrl(section, id) {
 export function fingerprint(body, contentType = '') {
 	const type = String(contentType).toLowerCase();
 	const trimmed = String(body ?? '');
-	const looksXml = /xml|rss|atom/.test(type)
-		|| /^\s*<\?xml/i.test(trimmed)
-		|| /^\s*<(?:rss|feed|rdf:RDF)\b/i.test(trimmed);
-	if (looksXml) {
+	if (isXmlFeed(trimmed, contentType)) {
 		const item = trimmed.match(/<item\b[\s\S]*?<\/item>/i)?.[0]
 			?? trimmed.match(/<entry\b[\s\S]*?<\/entry>/i)?.[0];
 		if (!item) throw new Error('XML feed has no <item> or <entry>');
@@ -62,6 +107,16 @@ function textOf(xml, tag) {
 	const match = xml.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)</${tag}>`, 'i'));
 	if (!match) return '';
 	return match[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/gi, '$1').replace(/<[^>]+>/g, '').trim();
+}
+
+/** @param {string} xml */
+function linkOf(xml) {
+	const text = textOf(xml, 'link');
+	if (text) return text;
+	const href = xml.match(/<link\b[^>]*\bhref\s*=\s*["']([^"']+)["']/i);
+	if (href) return href[1].trim();
+	const guid = textOf(xml, 'guid');
+	return /^https?:\/\//i.test(guid) ? guid : '';
 }
 
 /**
@@ -191,10 +246,14 @@ export async function runWatch(options = {}) {
 			const body = await response.text();
 			const contentType = response.headers.get('content-type') ?? '';
 			const fp = fingerprint(body, contentType);
+			const items = parseFeedItems(body, contentType);
 			const decision = decideWatchUpdate({ previous, url, fingerprint: fp });
 			results.push({ id: entry.id, name: entry.record.name, url, decision, fingerprint: fp });
 
 			if (decision.action === 'unchanged') {
+				if (items && !Array.isArray(previous?.items)) {
+					nextState[entry.id] = { ...previous, items };
+				}
 				// Leave state untouched so an unchanged run produces no commit or redeploy.
 				console.log(`${entry.id}: unchanged`);
 				continue;
@@ -210,7 +269,7 @@ export async function runWatch(options = {}) {
 			} else {
 				console.log(`${entry.id}: ${decision.action === 'baseline' ? 'baseline recorded' : 'watch URL changed; re-baselined'}`);
 			}
-			nextState[entry.id] = { url, fingerprint: fp, checked_at: now() };
+			nextState[entry.id] = { url, fingerprint: fp, checked_at: now(), ...(items ? { items } : {}) };
 		} catch (error) {
 			console.warn(`${entry.id}: watch failed (${error.message}); keeping previous state`);
 			results.push({ id: entry.id, name: entry.record.name, url, error: error.message });

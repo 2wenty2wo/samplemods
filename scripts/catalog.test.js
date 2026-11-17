@@ -4,6 +4,11 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { readEntries } from './catalog.js';
+import { deriveVersionFromTitle } from './watch.js';
+
+assert.equal(deriveVersionFromTitle('/MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
+assert.equal(deriveVersionFromTitle('MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
+assert.equal(deriveVersionFromTitle('/releases/CustomBuild.zip'), 'CustomBuild');
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fixture = fs.mkdtempSync(path.join(root, '.catalog-test-'));
@@ -41,7 +46,7 @@ try {
 	assert.throws(() => readEntries(dataDir), /missing mod.yaml/);
 	fs.renameSync(path.join(dataDir, 'mods/host/app.yaml'), path.join(dataDir, 'mods/host/mod.yaml'));
 	fs.mkdirSync(path.join(fixture, 'scripts'));
-	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	fs.mkdirSync(path.join(fixture, 'schema'));
 	fs.copyFileSync(path.join(root, 'schema/mod.yaml'), path.join(fixture, 'schema/mod.yaml'));
 	const validate = () => spawnSync(process.execPath, [path.join(fixture, 'scripts/validate.js')], { encoding: 'utf8' });
@@ -141,8 +146,43 @@ try {
 	assert.equal(externalPage.mod.source, 'closed');
 	assert.equal(externalPage.mod.stars, null);
 	assert.equal(externalPage.mod.contributors, null);
-	assert.equal(externalPage.mod.readme_html, details.external.readme_html);
+	assert.equal(details.external.readme_html, externalPage.mod.readme_html);
 	assert.deepEqual(externalPage.mod.releases, []);
+	write('watch.json', JSON.stringify({
+		external: {
+			url: 'https://sourceforge.net/projects/mpcsimple/rss?path=/',
+			fingerprint: '/MPC-Simple-1.0-Beta-3.zip | Tue, 17 Nov 2026 02:52:46 UT',
+			checked_at: '2026-11-17T03:00:00Z',
+			items: [
+				{
+					title: '/MPC-Simple-1.0-Beta-3.zip',
+					published_at: '2026-11-17T02:52:46.000Z',
+					html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-3.zip/download'
+				},
+				{
+					title: '/MPC-Simple-1.0-Beta-2.zip',
+					published_at: '2026-11-16T03:53:42.000Z',
+					html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-2.zip/download'
+				}
+			]
+		}
+	}));
+	result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
+	assert.equal(result.status, 0, result.stderr);
+	output = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/data.json'), 'utf8'));
+	assert.deepEqual(
+		output.find((entry) => entry.id === 'external').latest_release,
+		{
+			tag: '1.0 Beta 3',
+			published_at: '2026-11-17T02:52:46.000Z',
+			html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-3.zip/download'
+		},
+		'watch items must auto-derive latest_release and override fallback YAML version/released'
+	);
+	const watchedDetails = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json'), 'utf8'));
+	assert.equal(watchedDetails.external.releases.length, 2);
+	assert.equal(watchedDetails.external.releases[0].tag, '1.0 Beta 3');
+	assert.equal(watchedDetails.external.releases[0].name, 'MPC-Simple-1.0-Beta-3.zip');
 	const page = load({ params: { section: 'app', id: 'player' } });
 	assert.equal(page.mod.readme_html, details.player.readme_html);
 	assert.deepEqual(page.mods.map((entry) => entry.id), ['host']);

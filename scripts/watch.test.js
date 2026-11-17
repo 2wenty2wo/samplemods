@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { decideWatchUpdate, fingerprint, runWatch } from './watch.js';
+import { decideWatchUpdate, fingerprint, parseFeedItems, runWatch } from './watch.js';
 
 const rssA = `<?xml version="1.0"?>
 <rss version="2.0"><channel>
@@ -10,7 +10,8 @@ const rssA = `<?xml version="1.0"?>
 <pubDate>Mon, 01 Jan 2026 00:00:00 GMT</pubDate>
 <lastBuildDate>Mon, 01 Jan 2026 00:00:00 GMT</lastBuildDate>
 <item>
-<title>MPC-Simple-1.0-Beta-1.zip</title>
+<title><![CDATA[/MPC-Simple-1.0-Beta-1.zip]]></title>
+<link>https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download</link>
 <pubDate>Sat, 15 Nov 2026 12:00:00 GMT</pubDate>
 </item>
 </channel></rss>`;
@@ -21,7 +22,8 @@ const rssSameItemNewChannelDate = `<?xml version="1.0"?>
 <pubDate>Tue, 02 Jan 2026 00:00:00 GMT</pubDate>
 <lastBuildDate>Wed, 03 Jan 2026 12:34:56 GMT</lastBuildDate>
 <item>
-<title>MPC-Simple-1.0-Beta-1.zip</title>
+<title><![CDATA[/MPC-Simple-1.0-Beta-1.zip]]></title>
+<link>https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download</link>
 <pubDate>Sat, 15 Nov 2026 12:00:00 GMT</pubDate>
 </item>
 </channel></rss>`;
@@ -30,11 +32,13 @@ const rssNewFirstItem = `<?xml version="1.0"?>
 <rss version="2.0"><channel>
 <title>Files</title>
 <item>
-<title>MPC-Simple-1.0-Beta-2.zip</title>
-<pubDate>Sun, 16 Nov 2026 09:00:00 GMT</pubDate>
+<title><![CDATA[/MPC-Simple-1.0-Beta-2.zip]]></title>
+<link>https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-2.zip/download</link>
+<pubDate>Sun, 16 Nov 2026 09:00:00 UT</pubDate>
 </item>
 <item>
-<title>MPC-Simple-1.0-Beta-1.zip</title>
+<title><![CDATA[/MPC-Simple-1.0-Beta-1.zip]]></title>
+<link>https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download</link>
 <pubDate>Sat, 15 Nov 2026 12:00:00 GMT</pubDate>
 </item>
 </channel></rss>`;
@@ -42,9 +46,23 @@ const rssNewFirstItem = `<?xml version="1.0"?>
 const fpA = fingerprint(rssA, 'application/rss+xml');
 const fpB = fingerprint(rssSameItemNewChannelDate, 'application/rss+xml');
 const fpC = fingerprint(rssNewFirstItem, 'application/rss+xml');
-assert.equal(fpA, 'MPC-Simple-1.0-Beta-1.zip | Sat, 15 Nov 2026 12:00:00 GMT');
+assert.equal(fpA, '/MPC-Simple-1.0-Beta-1.zip | Sat, 15 Nov 2026 12:00:00 GMT');
 assert.equal(fpA, fpB, 'channel pubDate must not affect fingerprint');
 assert.notEqual(fpA, fpC, 'new first item must change fingerprint');
+
+assert.deepEqual(parseFeedItems(rssNewFirstItem, 'application/rss+xml'), [
+	{
+		title: '/MPC-Simple-1.0-Beta-2.zip',
+		published_at: '2026-11-16T09:00:00.000Z',
+		html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-2.zip/download'
+	},
+	{
+		title: '/MPC-Simple-1.0-Beta-1.zip',
+		published_at: '2026-11-15T12:00:00.000Z',
+		html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download'
+	}
+]);
+assert.equal(parseFeedItems('[{"modified_gmt":"2026-11-07T20:08:26"}]', 'application/json'), null);
 
 const jsonBody = '[{"modified_gmt":"2026-11-07T20:08:26"}]';
 assert.equal(
@@ -91,6 +109,13 @@ console.log = console.warn = () => {};
 try {
 	await runWatch({ entries: [entry], statePath, fetchImpl: upstream(rssA), token: null, repository: null, now: () => 'T1' });
 	const baseline = fs.readFileSync(statePath, 'utf8');
+	assert.deepEqual(JSON.parse(baseline).demo.items, [
+		{
+			title: '/MPC-Simple-1.0-Beta-1.zip',
+			published_at: '2026-11-15T12:00:00.000Z',
+			html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download'
+		}
+	]);
 
 	// Unchanged upstream must leave the file byte-identical (no commit / redeploy every 6 h).
 	await runWatch({ entries: [entry], statePath, fetchImpl: upstream(rssSameItemNewChannelDate), token: null, repository: null, now: () => 'T2' });

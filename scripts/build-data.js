@@ -3,11 +3,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readEntries } from './catalog.js';
 import { renderMarkdown } from './render-markdown.js';
+import { deriveVersionFromTitle } from './watch.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const mediaDir = path.join(root, 'static', 'media');
 const githubPath = path.join(root, 'data', 'github.json');
+const watchPath = path.join(root, 'data', 'watch.json');
 const outPath = path.join(root, 'src', 'lib', 'data.json');
 const publicCatalogPath = path.join(root, 'static', 'catalog.json');
 const detailsPath = path.join(root, 'src', 'lib', 'server', 'details.json');
@@ -21,17 +23,36 @@ let github = {};
 if (fs.existsSync(githubPath)) {
 	github = JSON.parse(fs.readFileSync(githubPath, 'utf8'));
 }
+let watchState = {};
+if (fs.existsSync(watchPath)) {
+	try { watchState = JSON.parse(fs.readFileSync(watchPath, 'utf8')) ?? {}; }
+	catch { watchState = {}; }
+}
 
 /** @type {Array<Record<string, unknown>>} */
 const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const gh = raw.repo ? github[raw.repo] ?? {} : {};
+	const watchItems = !raw.repo && Array.isArray(watchState[id]?.items) ? watchState[id].items : [];
+	const watchReleases = watchItems.map((item) => {
+		const rawName = String(item.title ?? '').trim().replace(/^\/+/, '');
+		const tag = deriveVersionFromTitle(item.title ?? '');
+		return {
+			tag,
+			name: rawName || tag,
+			published_at: item.published_at ?? null,
+			html_url: item.html_url ?? raw.website ?? null,
+			body_html: ''
+		};
+	}).filter((item) => item.tag);
 	const markdownOptions = { repo: raw.repo, website: raw.website, branch: gh.default_branch ?? 'main', readmePath: gh.readme_path ?? 'README.md', name: raw.name };
 	const readmePath = raw.repo ? path.join(root, 'data', 'readme', `${id}.md`) : path.join(dir, 'about.md');
 	details[id] = {
 		readme_html: fs.existsSync(readmePath) ? renderMarkdown(fs.readFileSync(readmePath, 'utf8'), markdownOptions) : '',
-		releases: (gh.releases ?? []).map(({ body, ...release }) => ({
-			...release, body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
-		}))
+		releases: raw.repo
+			? (gh.releases ?? []).map(({ body, ...release }) => ({
+				...release, body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
+			}))
+			: watchReleases
 	};
 	for (const file of media) {
 		const destination = path.join(mediaDir, id, file);
@@ -39,6 +60,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		fs.copyFileSync(path.join(dir, file), destination);
 	}
 	const logo = media.find((file) => file.startsWith('logo.'));
+	const newestWatch = watchReleases[0] ?? null;
 	return {
 		id,
 		section,
@@ -52,7 +74,9 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		contributors: gh.contributors ?? null,
 		open_issues: gh.open_issues ?? null,
 		license: gh.license ?? null,
-		latest_release: raw.repo ? gh.latest_release ?? null : raw.version ? {
+		latest_release: raw.repo ? gh.latest_release ?? null : newestWatch ? {
+			tag: newestWatch.tag, published_at: newestWatch.published_at, html_url: newestWatch.html_url
+		} : raw.version ? {
 			tag: raw.version, published_at: raw.released ?? null, html_url: raw.website
 		} : null,
 		archived: gh.archived ?? null,

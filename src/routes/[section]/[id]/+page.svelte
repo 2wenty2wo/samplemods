@@ -295,7 +295,7 @@
 								</a>
 							{/if}
 
-							{#if mod.repo && latestReleaseUrl}
+							{#if (mod.repo || releases.length) && latestReleaseUrl}
 								<a
 									class="hw-action-btn orange"
 									href={latestReleaseUrl}
@@ -635,7 +635,7 @@
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											Release on GitHub ↗
+											{mod.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
 										</a>
 									</div>
 
