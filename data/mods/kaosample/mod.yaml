@@ -4,6 +4,7 @@ description: >-
   groove controls and project snapshots.
 repo: omarhuertasllc-ops/kaosample-beta
 author: omarhuertasllc-ops
+status: beta
 tags:
   - stems
   - looper
