@@ -12,3 +12,4 @@ tags:
   - qol
 runs_on: [device]
 audience: [musician]
+source: closed # No source code published yet; releases and docs only.
