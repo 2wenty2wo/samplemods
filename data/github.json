@@ -116,10 +116,10 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 5,
+    "stars": 7,
     "forks": 0,
-    "pushed_at": "2026-11-16T03:23:17Z",
-    "last_commit_at": "2026-11-16T03:23:15Z",
+    "pushed_at": "2026-11-17T14:22:07Z",
+    "last_commit_at": "2026-11-17T14:22:04Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -174,7 +174,7 @@
     "archived": false
   },
   "WorldLinkStudio/mpcsample": {
-    "stars": 21,
+    "stars": 22,
     "forks": 2,
     "pushed_at": "2026-06-01T21:26:53Z",
     "last_commit_at": "2026-06-01T16:08:35Z",
@@ -242,6 +242,33 @@
     "releases": [],
     "archived": false
   },
+  "bajdev/MPCkit": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-17T15:31:38Z",
+    "last_commit_at": "2026-11-17T15:31:34Z",
+    "contributors": 1,
+    "open_issues": 3,
+    "license": "MIT",
+    "description": "Application to create basic MPC Sample starter projects and kits from your desktop",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.5.5",
+      "published_at": "2026-11-16T02:13:15Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.5.5",
+        "name": "MPCkit v0.5.5 (beta)",
+        "published_at": "2026-11-16T02:13:15Z",
+        "html_url": "https://github.com/bajdev/MPCkit/releases/tag/v0.5.5",
+        "body": "Initial v0.5.5 (beta) release of MPCkit\r\n\r\n## What's Changed\r\n* Import mpckit beta from private repo by @bajdev in https://github.com/bajdev/MPCkit/pull/1\r\n\r\n**Full Changelog**: https://github.com/bajdev/MPCkit/commits/v0.5.5",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "c1t1zen1/MPC-Sample-Secrets": {
     "stars": 7,
     "forks": 0,
@@ -255,6 +282,49 @@
     "readme_path": "README.md",
     "latest_release": null,
     "releases": [],
+    "archived": false
+  },
+  "cursednik/mpc-xpj-builder": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-17T10:57:26Z",
+    "last_commit_at": "2026-11-17T10:56:04Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "Akai MPC Sample .xpj project builder from WAV + MIDI (Python, no external deps)",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.11.0",
+      "published_at": "2026-11-17T10:57:27Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.11.0",
+        "name": "v1.11.0 - Drop Splice samples onto pads",
+        "published_at": "2026-11-17T10:57:27Z",
+        "html_url": "https://github.com/cursednik/mpc-xpj-builder/releases/tag/v1.11.0",
+        "body": "# mpc-xpj-builder v1.11.0\n\nSamples из Splice теперь можно класть **прямо на пад** в редакторе падов.\n\n## Новое\n\n- Pad grid в редакторе падов зарегистрирован как OLE drop target.\n- Перетащи WAV из Splice (или проводника) прямо на конкретный пад.\n- Для обычного редактора карты:\n  - WAV копируется в выбранную папку семплов;\n  - назначается на пад, на который его бросили.\n- Для существующего `.xpj`:\n  - WAV копируется в `_[ProjectData]`;\n  - добавляется sample entry в `data.samples` и samples drum-трека;\n  - назначается на пад;\n  - остаётся сохранить проект в `.xpj`.\n- Имя при конфликте автоматически меняется (`kick_2.wav`).\n- Drop на список WAV просто импортирует файлы без назначения.\n- Работает через `tkinterdnd2` OLE (Splice Desktop/Electron).\n- Добавлен hint в редакторе: «WAV можно перетащить прямо на пад».\n\n## Проверено\n\n- 124 автотеста — OK.\n- CI: Windows, Python 3.11 / 3.12 / 3.13 — success.\n- Drop на пад в обычном редакторе:\n  - WAV скопирован в папку samples;\n  - назначен на A2.\n- Drop на пад в существующем `.xpj`:\n  - WAV скопирован в `_[ProjectData]`;\n  - sample entry добавлен;\n  - назначен на A1;\n  - assignements обновлены.\n- Installer: silent install / uninstall — OK; GUI запускается как\n  `MPC XPJ Builder 1.11.0`.\n- Portable ZIP содержит оба EXE, README и `docs/`.\n\nРеальный drag из окна Splice на пад нужно проверить вручную; приложение\nпринимает OLE-файлы и импортирует их.\n\n## Windows assets\n\n- `mpc-xpj-builder-v1.11.0-setup.exe`\n- `mpc-xpj-builder-v1.11.0-win64.zip`\n- `mpc-xpj-builder.exe`\n- `mpc-xpj-builder-gui.exe`\n\nSHA-256:\n\n```text\n80e9283a61ac2ef9143d22cf47dada468b535ba1db710037175e6b5aed84ea7d  mpc-xpj-builder.exe\n530fc62ef72b52e22197b8a203fa038837ba4e14b2fab55ca1f4ac8edf1db39a  mpc-xpj-builder-gui.exe\n4c74ef02738fbccce3a7c3761c15bd038a6c68ba9640ed4e1890454abd3b0db8  mpc-xpj-builder-v1.11.0-setup.exe\n```\n\n## Установка\n\n1. Скачайте `mpc-xpj-builder-v1.11.0-setup.exe`.\n2. SmartScreen может предупредить, потому что установщик не подписан:\n   **«Подробнее» → «Выполнить в любом случае»**.\n3. Либо распакуйте `mpc-xpj-builder-v1.11.0-win64.zip` и запустите\n   `mpc-xpj-builder-gui.exe` без установки.\n\nТребования: Windows 10/11 x64. Python не нужен.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.10.0",
+        "name": "v1.10.0 - OLE drag-and-drop from Splice",
+        "published_at": "2026-11-17T09:37:17Z",
+        "html_url": "https://github.com/cursednik/mpc-xpj-builder/releases/tag/v1.10.0",
+        "body": "# mpc-xpj-builder v1.10.0\n\nНовый DnD-слой: поддержка **OLE drag-and-drop** из Splice Desktop и других\nElectron-приложений.\n\n## Что добавлено\n\n- В дополнение к обычному `WM_DROPFILES` из проводника приложение теперь\n  регистрирует OLE drop target через `tkinterdnd2` (TkDND).\n- Splice Desktop может отдать sample как файл через OLE — приложение принимает\n  его так же, как `.wav` из проводника.\n- Работает маршрутизация:\n  - папка WAV → «Папка с WAV»;\n  - `.wav` → его папка;\n  - MIDI, `.xpj`, `map.json` → соответствующие поля.\n- Дубли событий от OLE и `WM_DROPFILES` подавляются.\n- `tkinterdnd2` включён в installer и portable ZIP.\n- Добавлен fallback: если `tkinterdnd2` недоступен, остаётся старый\n  `WM_DROPFILES`.\n\n## Зависимости\n\nДля запуска из исходников:\n\n```powershell\npython -m pip install -e \".[dnd]\"\n```\n\n## Проверено\n\n- 121 автотест — OK.\n- CI: Windows, Python 3.11 / 3.12 / 3.13 — success.\n- Отдельный frozen EXE с `tkinterdnd2`:\n  - `TkinterDnD.Tk()` создаётся;\n  - OLE drop target зарегистрирован (`TKDND True`).\n- Installer: silent install / uninstall — OK; GUI запускается как\n  `MPC XPJ Builder 1.10.0`.\n- Portable ZIP содержит оба EXE, README и `docs/`.\n\nСам drag из окна Splice нужно проверить вручную: приложение теперь принимает\nOLE-файлы, но конкретное поведение Splice зависит от его версии.\n\n## Windows assets\n\n- `mpc-xpj-builder-v1.10.0-setup.exe`\n- `mpc-xpj-builder-v1.10.0-win64.zip`\n- `mpc-xpj-builder.exe`\n- `mpc-xpj-builder-gui.exe`\n\nSHA-256:\n\n```text\n66a292b697fc69136a7d5af223b6df6d8568f9d5e7b2e0cd715e8a339d592959  mpc-xpj-builder.exe\n6152a20d61521ced1c2ba722d2ac8fff1cbf6800877ab6989c3df47ee566acd4  mpc-xpj-builder-gui.exe\n197c0b8e45028e88f4c6d1aa7d75808fe3a84a1ce3af1154e63e9370b965c432  mpc-xpj-builder-v1.10.0-setup.exe\n```\n\n## Установка\n\n1. Скачайте `mpc-xpj-builder-v1.10.0-setup.exe`.\n2. SmartScreen может предупредить, потому что установщик не подписан:\n   **«Подробнее» → «Выполнить в любом случае»**.\n3. Либо распакуйте `mpc-xpj-builder-v1.10.0-win64.zip` и запустите\n   `mpc-xpj-builder-gui.exe` без установки.\n\nТребования: Windows 10/11 x64. Python не нужен.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.9.0",
+        "name": "v1.9.0 - Pad audition and MIDI Learn",
+        "published_at": "2026-11-17T09:19:59Z",
+        "html_url": "https://github.com/cursednik/mpc-xpj-builder/releases/tag/v1.9.0",
+        "body": "# mpc-xpj-builder v1.9.0\n\nПады стали интерактивнее: **Audition на MPC** и **MIDI Learn**.\n\n## Новое\n\n### Audition\n\n- В редакторе падов появился MIDI-выход.\n- При клике по паду в приложении отправляется MIDI-нота на `MPC Sample`.\n- MPC озвучивает пад.\n- Для этого на MPC нужно:\n  - `MIDI Port = USB`;\n  - `Pad MIDI In = On`.\n- Audition можно выключить галочкой.\n- Note Off отправляется автоматически.\n\n### MIDI Learn\n\n- В редакторе падов появилась галочка **MIDI Learn**.\n- Выберите WAV в списке.\n- Включите MIDI Learn.\n- Нажмите пад на MPC.\n- WAV назначится на этот пад с текущими `gain`/`pan`/`tune`/`loop`.\n- После этого сохраните проект в `.xpj`.\n\n### Напоминание про USB Audio\n\nВ v1.8.0/v1.9.0 устройства **WDM-KS** исключены из списка, потому что PortAudio\nblocking API их не поддерживает. Для записи используйте вход с пометкой\n**Windows WASAPI**.\n\n## Проверено\n\n- 121 автотест — OK.\n- CI: Windows, Python 3.11 / 3.12 / 3.13 — success.\n- Audition:\n  - MIDI-выход `MPC Sample` открыт;\n  - отправлена note-on/note-off;\n  - ошибок нет.\n- MIDI Learn:\n  - выбран WAV;\n  - нажатие note 38 назначило WAV на A3;\n  - изменение отражено в assignments.\n- GUI-бинарник v1.9.0 запускается как `MPC XPJ Builder 1.9.0`.\n- Installer и portable ZIP собраны.\n\nSilent install не удалось повторно прогнать в текущей заблокированной\nWindows-сессии; установщик собран, GUI-бинарник проверен.\n\n## Ограничения\n\n- MIDI Learn меняет назначение только в памяти; сохраните `.xpj`.\n- Изменения падов не отправляются на MPC в реальном времени.\n- Для Audition нужен `Pad MIDI In = On`.\n- WAV должен уже входить в `samples` проекта.\n\n## Windows assets\n\n- `mpc-xpj-builder-v1.9.0-setup.exe`\n- `mpc-xpj-builder-v1.9.0-win64.zip`\n- `mpc-xpj-builder.exe`\n- `mpc-xpj-builder-gui.exe`\n\nSHA-256:\n\n```text\nff0e3e37e9db35866bea1fdc9471132e70d410718a1b2f62043bd819cad51083  mpc-xpj-builder.exe\ne80e46bcc452e599cdc3560c96bfc7aebae23832c23ade03572e0c7496d8b66f  mpc-xpj-builder-gui.exe\n98f8881ce2ea1e175cc8d1e653a5deedeb6e32da4f7bebcea1dd4df5689f896e  mpc-xpj-builder-v1.9.0-setup.exe\n```\n\n## Установка\n\n1. Скачайте `mpc-xpj-builder-v1.9.0-setup.exe`.\n2. SmartScreen может предупредить, потому что установщик не подписан:\n   **«Подробнее» → «Выполнить в любом случае»**.\n3. Либо распакуйте `mpc-xpj-builder-v1.9.0-win64.zip` и запустите\n   `mpc-xpj-builder-gui.exe` без установки.\n\nТребования: Windows 10/11 x64. Python не нужен.\n",
+        "truncated": false
+      }
+    ],
     "archived": false
   },
   "drose030/beat-train-mpc-sample": {
@@ -338,6 +408,49 @@
         "published_at": "2026-11-05T09:30:38Z",
         "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.1.0",
         "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.1.0-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.1.0.exe`\n\nInstall over 1.0; your songs, settings and downloaded models stay. The app is still unsigned: see the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows) for the first start.\n\n## Fixed\n\n- **Regenerate after a tempo change:** Regenerate… and the level controls now use the tempo map you are editing. Before, after an unsaved tempo or offset change, the shortest-gap rules of Hard, Medium and Easy worked with the old timing.\n- **Beat grid to the end of the song:** the grid and the metronome now run to the end of the audio, not just a few beats past the last note.\n\n## Changed\n\n- Saving refuses notes a chart file can't hold, like a cymbal on one difficulty where another has a tom at the same spot, instead of quietly turning one of them into the other.\n- Under the hood: chart reading and writing, the song folder, and the editor's document, tempo map and playback each live in one module now, with tests for the editor's JavaScript.\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "flug/Le-Resampler": {
+    "stars": 6,
+    "forks": 0,
+    "pushed_at": "2026-11-17T11:23:12Z",
+    "last_commit_at": "2026-11-17T11:08:17Z",
+    "contributors": 3,
+    "open_issues": 2,
+    "license": "MIT",
+    "description": "Manage your sample library and export it to the Akai MPC Sample — organised by category into folders, straight to your SD card.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.1.22",
+      "published_at": "2026-11-16T18:23:11Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.1.22",
+        "name": "Le Resampler v0.1.22",
+        "published_at": "2026-11-16T18:23:11Z",
+        "html_url": "https://github.com/flug/Le-Resampler/releases/tag/v0.1.22",
+        "body": "## Le Resampler v0.1.22\n\nAutomatic weekly release.\nSee the [commit history](https://github.com/flug/Le-Resampler/commits/main) for details.\n\n## Downloads\n\n| Platform | File |\n|----------|------|\n| macOS (Universal — Apple Silicon + Intel) | `Le Resampler_*_universal.dmg` |\n| Windows | `Le Resampler_*_x64-setup.exe` |\n| Linux | `le-resampler_*_amd64.AppImage` |\n\n## macOS — Homebrew\n\n```bash\nbrew tap flugv1/Le-Resampler https://github.com/flugv1/Le-Resampler\nbrew install --cask le-resampler\n```\n\n[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/flugv1t)",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1.21",
+        "name": "Le Resampler v0.1.21",
+        "published_at": "2026-11-09T18:41:20Z",
+        "html_url": "https://github.com/flug/Le-Resampler/releases/tag/v0.1.21",
+        "body": "## Le Resampler v0.1.21\n\nAutomatic weekly release.\nSee the [commit history](https://github.com/flug/Le-Resampler/commits/main) for details.\n\n## Downloads\n\n| Platform | File |\n|----------|------|\n| macOS (Universal — Apple Silicon + Intel) | `Le Resampler_*_universal.dmg` |\n| Windows | `Le Resampler_*_x64-setup.exe` |\n| Linux | `le-resampler_*_amd64.AppImage` |\n\n## macOS — Homebrew\n\n```bash\nbrew tap flugv1/Le-Resampler https://github.com/flugv1/Le-Resampler\nbrew install --cask le-resampler\n```\n\n[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/flugv1t)",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1.20",
+        "name": "Le Resampler v0.1.20",
+        "published_at": "2026-11-02T18:14:31Z",
+        "html_url": "https://github.com/flug/Le-Resampler/releases/tag/v0.1.20",
+        "body": "## Le Resampler v0.1.20\n\nAutomatic weekly release.\nSee the [commit history](https://github.com/flug/Le-Resampler/commits/main) for details.\n\n## Downloads\n\n| Platform | File |\n|----------|------|\n| macOS (Universal — Apple Silicon + Intel) | `Le Resampler_*_universal.dmg` |\n| Windows | `Le Resampler_*_x64-setup.exe` |\n| Linux | `le-resampler_*_amd64.AppImage` |\n\n## macOS — Homebrew\n\n```bash\nbrew tap flugv1/Le-Resampler https://github.com/flugv1/Le-Resampler\nbrew install --cask le-resampler\n```\n\n[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/flugv1t)",
         "truncated": false
       }
     ],
@@ -588,7 +701,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 231,
+    "stars": 235,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -604,9 +717,9 @@
   },
   "ioma8/mpc-minimod": {
     "stars": 8,
-    "forks": 0,
-    "pushed_at": "2026-11-16T13:44:56Z",
-    "last_commit_at": "2026-11-16T13:44:54Z",
+    "forks": 1,
+    "pushed_at": "2026-11-17T15:22:27Z",
+    "last_commit_at": "2026-11-17T15:20:30Z",
     "contributors": 2,
     "open_issues": 1,
     "license": null,
@@ -614,32 +727,32 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.10.1",
-      "published_at": "2026-11-16T08:39:02Z"
+      "tag": "v0.10.3",
+      "published_at": "2026-11-17T07:35:38Z"
     },
     "releases": [
+      {
+        "tag": "v0.10.3",
+        "name": "v0.10.3 — repeated Chop playback fix",
+        "published_at": "2026-11-17T07:35:38Z",
+        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.3",
+        "body": "## Features\n\n- **16 Levels:** shift the pad row by eight semitones; external MIDI plays the selected sample across the keyboard.\n- **AutoTrim:** trim silence from the selected sample in three steps, then clear.\n- **Sample Options:** HPSS, Spectral Chop, Add Reverb, Vinyl, Lo-Fi and an eight-character Synth.\n- **Live Looper:** record, play, overdub, clear and sync loops across 16 pads.\n- **Recent Samples:** find up to 20 recently loaded sounds in the native Load Sample browser at the SD-card root. Entries open their original paths; no sample files are copied.\n\n## Install\n\nDownload `minimod.zip` from this release, unzip it, and copy the `autorun` folder to the top level of an SD card. Insert the card and power on the MPC Sample.\n\n## Changes in v0.10.3\n\n- Fix repeated Chop playback: physical chop-pad releases now match their presses, so ledger slots do not fill and later regions do not become silent.\n- Keep button releases with the recipient of their press when the SDK callback is temporarily unavailable.\n- Update to `mpc-sample-sdk` v0.7.3 for scoped surface-event context and press/release ownership across callback gaps.\n\n## Verification and compatibility\n\n- `rust/check.sh`: formatting, strict Clippy, rustdoc, 89 minimod tests, 63 DSP tests, and AArch64 cross-build.\n- Emulator: menu, AutoTrim, pad octave, synth shift, 21 rounds of four-region Chop playback, and Recent Samples; all six cases passed.\n- Supports MPC Sample firmware **1.3.0.12**.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.10.2",
+        "name": "v0.10.2 — Recent Samples",
+        "published_at": "2026-11-17T06:52:51Z",
+        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.2",
+        "body": "## Features\n\n- **16 Levels:** shift the pad row by eight semitones; external MIDI plays the selected sample across the keyboard.\n- **AutoTrim:** trim silence from the selected sample in three steps, then clear.\n- **Sample Options:** HPSS, Spectral Chop, Add Reverb, Vinyl, Lo-Fi and an eight-character Synth.\n- **Live Looper:** record, play, overdub, clear and sync loops across 16 pads.\n- **Recent Samples:** find up to 20 recently loaded sounds in the native Load Sample browser at the SD-card root. Entries open their original paths; no sample files are copied.\n\n## Install\n\nDownload `minimod.zip` from this release, unzip it, and copy the `autorun` folder to the top level of an SD card. Insert the card and power on the MPC Sample.\n\n## Changes in v0.10.2\n\n- Add Recent Samples to the native Load Sample browser. Only samples loaded onto pads appear; audition previews do not.\n- Update to `mpc-sample-sdk` v0.7.2 for virtual browser directories and successful file-open observation.\n- Correct emulator test navigation through the SD-card root.\n\n## Verification and compatibility\n\n- Complete emulator suite: 17/17 passed, including loading from Recent Samples and confirming no files were copied.\n- Strict Rust checks: 87 minimod tests, 63 DSP tests, formatting, Clippy, rustdoc, and AArch64 cross-build.\n- Release package checks passed; highest GLIBC requirement is 2.30.\n- Supports MPC Sample firmware **1.3.0.12**.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.10.1",
         "name": "v0.10.1 — SDK 0.7, Spectral Chop and MIDI fixes",
         "published_at": "2026-11-16T08:39:02Z",
         "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.1",
         "body": "## Features\n\nMINIMOD is a Rust firmware mod built on the public `mpc-sample-sdk`. It includes 16 Levels chromatic MIDI, AutoTrim, the SAMPLE OPTIONS menu, HPSS, Spectral Chop, Reverb/Vinyl/Lo-Fi effects, eight synth characters, and a 16-pad Live Looper with recording, playback, overdub, and sync.\n\n## Install\n\n1. Download `minimod.zip` from this release.\n2. Unzip it and copy the `autorun` folder to the top level of an SD card.\n3. Insert the card and power on the MPC Sample. Remove `autorun` and reboot to unload the mod.\n\n## Changes in v0.10.1\n\n- Pin `mpc-sample-sdk` v0.7.0 with exact slice snapshots, custom-end restoration, and native chop-mode restoration.\n- Preserve existing slices and chop mode if Spectral Chop cannot write or verify markers; retain cancelled detection workers until they finish.\n- Preserve native MIDI note-on/note-off pairs at chromatic replay capacity and across 16 Levels mode changes.\n- Repaint directly only from live UI callbacks; background work requests frames through the UI repaint pump.\n\n## Verification and compatibility\n\n- `rust/check.sh`: formatting, strict Clippy, rustdoc, feature safety, 81 minimod tests, 63 DSP tests, and the AArch64 cross-build.\n- `mod/build.sh`: release package, required symbols, unresolved imports, and MPC Sample glibc limit.\n- Emulator: three menu navigation/close cycles, AutoTrim 3%/6%/9%/clear, Spectral Chop, and SDK Extract success/overwrite/full-program checks. The app did not restart during the interactive checks.\n- Built for MPC Sample firmware **1.3.0.12** only.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.10.0",
-        "name": "v0.10.0 — SDK 0.6.0 migration and the reported fixes",
-        "published_at": "2026-11-14T21:59:51Z",
-        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.0",
-        "body": "## SDK 0.6.0\n\nMINIMOD is built on the tagged [`mpc-sample-sdk`\nv0.6.0](https://github.com/ioma8/mpc-sample-sdk/tree/v0.6.0): independent input\nhooks that run without the UI lock, one `Extract` contract for both the selected\nand the generated paths, a checked late button replay, and a WAV reader that\naccepts the sampler's own working copies.\n\n## Fixes\n\n- **Effects no longer leave the page in Chop mode.** An extraction that switches\n  the Sample page is restored immediately, or on the first safe button when the\n  app switches later.\n- **\"No exact WAV file\" is gone.** The app's writer leaves the RIFF size short by\n  the `atem`/`slic`/`meta` chunks it appends; the reader now bounds the chunk\n  walk by the file, so every action works on streamed (`DiskSample`) pads and on\n  pads created by an earlier action, not only on loaded ones.\n- **A render cannot stick on \"PLEASE WAIT\" any more.** The repaint pump keeps\n  asking for a frame while a job is pending, instead of relying on the one\n  request the app can drop while it is loading a sample.\n- **Pads no longer go silent after a few presses.** The firmware reports a pad\n  press and its release with different source ids (`0` then `1`); the release\n  ledger pairs them by pad and input, so the app receives its note-off again.\n- **AutoTrim is armed on the real trim page.** It is available right after start\n  and across `SAMPLE`, hidden on Tune and Filter, and `SHIFT`+`B3` no longer\n  depends on having cycled the page keys first.\n\n## Verification\n\n- `rust/check.sh`: formatting, strict clippy, rustdoc, the feature safety guard,\n  76 minimod tests, 63 DSP tests and the aarch64 cross build.\n- SDK v0.6.0: 120 + 1 tests, clippy and rustdoc clean.\n- Emulator suites: AutoTrim cycle and clear, menu, synth shift, pad octave, live\n  looper and its lighting.\n\n## Compatibility\n\nBuilt for MPC Sample firmware **1.3.0.12** only. Copy the `autorun` folder from\nthe zip to the top level of the SD card; delete it to return to stock.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.9.0",
-        "name": "v0.9.0 — synth page, lighting and precise loop timing",
-        "published_at": "2026-11-12T10:02:54Z",
-        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.9.0",
-        "body": "## Features\n\n- **Rust implementation:** the preload library is a Rust `cdylib` built on the\n  public memory-safe [`mpc-sample-sdk`](https://github.com/ioma8/mpc-sample-sdk);\n  no C or C++ is compiled. The feature code uses only small, documented `unsafe`\n  blocks at explicit SDK firmware boundaries.\n- **16 Levels:** shift the pad row by ±8 semitones with PLUS/MINUS; external\n  MIDI plays the selected sample chromatically over the whole keyboard from the\n  sample's own root note (C3 when it has none), with exact semitones and no\n  wrapping (enable Pad MIDI In in MIDI Config).\n- **AutoTrim:** on the trim screen, SHIFT+B3 trims the page-selected sample's\n  silent edges (3 %, 6 %, 9 %, then clear); the shifted Sample page shows the\n  AutoTrim caption. Off the trim screen B3 reaches the app.\n- **SAMPLE OPTIONS:** open with SHIFT+DATA, select with DATA, then press DATA\n  to confirm.\n  - **HPSS** splits a sample into harmonic and percussive layers on two free\n    pads.\n  - **Spectral Chop** detects musical changes and places slice boundaries on\n    the selected sample.\n  - **Add Reverb** creates a reverberated copy with an appended tail.\n  - **Vinyl** and **Lo-Fi** apply the firmware's built-in H3 effects to a new\n    copy.\n  - **Synth** has eight selectable characters — bass, piano, pads, lead, bells,\n    strings, voice and organ. Turn `DATA` to switch; each character has its own\n    three knobs. The pads light in a purple 1→16 brightness gradient while the\n    page is open, PLUS/MINUS shift by 8 semitones, the page shows the played\n    note, and `DATA` renders the last previewed pad's note to a new pad (C2 by\n    default).\n  - **Live Looper** opens a fullscreen 16-pad looper: each pad records from the\n    selected input source, plays, overdubs, clears with `ERASE`, and can be\n    synced to a pulse built from the last loop's length. Device latency comes\n    from the firmware's own period geometry; recordings use the input latency\n    and overdubs use input + output. There is no manual trim.\n\n## Install\n\n1. Download `minimod.zip` from the release assets.\n2. Unzip it and copy the `autorun` folder to the top level of an SD card.\n3. Insert the card and power on the MPC Sample. Remove `autorun` and reboot to\n   unload the mod.\n\nThe release supports MPC Sample firmware **1.3.0.12** only.\n\n## Changes in v0.9.0\n\n### Synth page\n\n- Light all sixteen pads in one purple hue while the synth page is open: pad 1\n  is off, pad 16 is full brightness, and the steps between are linear. Every\n  close path restores the app's native pad colours, including cancellation and\n  the completion of a render.\n- PLUS/MINUS shift the chromatic pad row by 8 semitones per press (four steps\n  each way; both keys reset). The shift is reset when the page opens.\n- Show the current note on the page. DATA renders the last previewed pad's note\n  plus the current shift to a new pad; C2 is the default when no pad was played.\n  Rendered sample names include the note, for example `Bass D2`.\n\n### Live Looper\n\n- Read the device latency from the firmware's own period geometry\n  (`buffer - period`, 896 frames per direction) instead of adding the two ring\n  capacities. Recordings compensate the input latency; overdubs compensate\n  input + output; synced loops keep their phase across restarts.\n- Remove the K1 manual latency trim. The settings file stores only MAIN VOLUME;\n  an old `<trim> <master>` file keeps its master value.\n- Keep the signed restart-phase fix.\n\n### AutoTrim\n\n- Arm the shortcut only on the trim screen; on the other Sample screens B3\n  reaches the app unchanged.\n- Resolve the target from the page's native selected pad (matched through the\n  surface pad table, with sample identity as fallback), not from the last\n  physical pad press.\n- Restore the synth page's purple lights when a render closes the page.\n\n### SDK\n\n- Pin `mpc-sample-sdk` v0.5.3: directional device latency, per-pad AC50 RGB\n  overrides with brightness and native restore, and a dedicated\n  [pad lighting page](https://github.com/ioma8/mpc-sample-sdk/blob/main/docs/25-lighting.md).\n\n## Verification and compatibility\n\n- `rust/check.sh` passes formatting, strict clippy, rustdoc, feature safety,\n  43 minimod tests, 49 DSP tests and the aarch64 cross build.\n- SDK v0.5.3 passes 97 tests, including the lighting and directional-latency\n  units.\n- Emulator checks cover the synth gradient, cancel/render restoration,\n  PLUS/MINUS semitone steps, the full synth sample render, AutoTrim's trim-screen\n  and selected-pad paths, and the live looper suite.\n- Built for MPC Sample firmware **1.3.0.12** only. Physical input/output\n  latency still depends on the converters and is not calibrated by the\n  emulator.\n",
         "truncated": false
       }
     ],
@@ -648,8 +761,8 @@
   "ioma8/mpc-sample-sdk": {
     "stars": 7,
     "forks": 3,
-    "pushed_at": "2026-11-16T12:05:24Z",
-    "last_commit_at": "2026-11-16T12:05:22Z",
+    "pushed_at": "2026-11-17T15:15:40Z",
+    "last_commit_at": "2026-11-17T15:14:07Z",
     "contributors": 2,
     "open_issues": 0,
     "license": "MIT",
@@ -657,16 +770,32 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.7.0",
-      "published_at": "2026-11-16T08:36:31Z"
+      "tag": "v0.7.4",
+      "published_at": "2026-11-17T15:15:40Z"
     },
     "releases": [
       {
-        "tag": "v0.7.0",
-        "name": "v0.7.0 — slice snapshots and API fixes",
-        "published_at": "2026-11-16T08:36:31Z",
-        "html_url": "https://github.com/ioma8/mpc-sample-sdk/releases/tag/v0.7.0",
-        "body": "## Changes\n\n- Add exact slice snapshots, including custom slice ends and empty slice lists, with verified restoration and native chop-mode restoration.\n- Correct the pad API: `first_free_pad` returns the first available index, while `free_count` returns the actual number of free pads.\n- Report a full program as `ExtractError::NoFreePad`; the native Extract handler needs one free pad even when writing to an explicit destination.\n- Make repainting the last-painted component explicitly unsafe and correct the drawing guidance around component lifetime.\n- Use LLVM's ELF-aware `llvm-nm` when available so the mod build script can validate AArch64 symbols on macOS.\n\n## Compatibility\n\nThis release contains API changes. See the v0.7.0 section in the [migration guide](https://github.com/ioma8/mpc-sample-sdk/blob/v0.7.0/docs/24-safety-migration.md). Built for MPC Sample firmware 1.3.0.12.\n\n## Verification\n\n- 122 SDK tests, strict Clippy, formatting, package verification, and publish dry-run.\n- The minimod consumer passes its host, rustdoc, lint, safety, and AArch64 build checks against this tag.\n- Emulator validation covers generated Extract success, overwrite with another free pad, and the full-program error path.\n",
+        "tag": "v0.7.4",
+        "name": "v0.7.4 — Dictation integration",
+        "published_at": "2026-11-17T15:15:40Z",
+        "html_url": "https://github.com/ioma8/mpc-sample-sdk/releases/tag/v0.7.4",
+        "body": "Adds native Save Project paint and text editor integration, Sample Record button support, and Cargo feature selection in the build helper.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.7.3",
+        "name": "v0.7.3 — input event ownership",
+        "published_at": "2026-11-17T07:34:03Z",
+        "html_url": "https://github.com/ioma8/mpc-sample-sdk/releases/tag/v0.7.3",
+        "body": "Preserves control-button press/release ownership when a mod callback is temporarily unavailable, so one edge cannot be forwarded independently of its matching edge. Exposes the currently forwarded control-surface event to synchronous native callbacks, allowing mods to pair native pad releases with their originating physical surface event. Verified with SDK tests and the minimod AArch64 build.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.7.2",
+        "name": "v0.7.2 — native browser virtual directories",
+        "published_at": "2026-11-17T06:50:40Z",
+        "html_url": "https://github.com/ioma8/mpc-sample-sdk/releases/tag/v0.7.2",
+        "body": "Adds a public native-browser API for registering virtual directories and files, resolving entries to original paths, and observing successful file opens. Intended for SD-card browser extensions without copying audio files. Verified with 124 SDK unit tests, formatting, Clippy, rustdoc, and a minimod AArch64 emulator integration build.",
         "truncated": false
       }
     ],
@@ -844,41 +973,81 @@
     ],
     "archived": false
   },
-  "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 9,
+  "jazzyrhythmer/mpc-sample-engine-ports": {
+    "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-16T17:34:08Z",
-    "last_commit_at": "2026-11-16T17:34:07Z",
+    "pushed_at": "2026-11-17T12:29:13Z",
+    "last_commit_at": "2026-11-17T12:29:10Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
-    "description": "Free and open-source groovebox firmware for MPC Sample. Synths, 36 drum kits, Acid GEN and Break performance. Built on Melodee.",
+    "description": "Engine source adaptations for RHYTHMER OS on MPC Sample, including Frodhes, Tenebrae and FMini-1. Original authors, names and licences retained.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": null,
     "releases": [
       {
+        "tag": "v0.4.0-beta.3-r1",
+        "name": "0.2.0-beta.3 r1 - workflow and Kit update",
+        "published_at": "2026-11-15T08:03:23Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-engine-ports/releases/tag/v0.4.0-beta.3-r1",
+        "body": "<!-- FILMS -->\n## All 20 engine previews\n\n[Watch on the website](https://jazzyrhythmer.github.io/mpc-sample/#engine-ports-film) · [YouTube / 16:9 MP4](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/releases/download/v0.4.0-beta.3-r1/RHYTHMER-20-Engine-Previews-YouTube-Kit-v6-Continuous-Opening.mp4) · [Instagram / Reels 9:16 MP4](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/releases/download/v0.4.0-beta.3-r1/RHYTHMER-20-Engine-Previews-Reels-Kit-v6-Continuous-Opening.mp4)\n\n<!-- /FILMS -->\n\nOpen-source engine port adapters, build helpers, source references and integration documentation matching RHYTHMER OS 0.2.0-beta.3 workflow/Kit update.\n\nOriginal instruments and DSP remain the work of their respective creators. MPC Sample porting, optimization and RHYTHMER integration by Jazzy Rhythmer. Built on the Melodee and Open MPC foundations. Check each component's licence before reuse.\n\nThe source archive contains corresponding source, not an SD installer. Rhythmer Kit, Acid and Break host/UI features are implemented in the [OS repository](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os). The updated native Kit preview is included in the README.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.4.0-beta.3",
+        "name": "MPC Sample engine ports 0.2.0-beta.3",
+        "published_at": "2026-11-15T05:02:26Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-engine-ports/releases/tag/v0.4.0-beta.3",
+        "body": "# MPC Sample engine ports — 0.2.0-beta.3\n\nSharing the engine porting and integration work developed for RHYTHMER OS for MPC Sample. The original authors created the instruments and DSP; my contribution is adapting and optimizing the code for the hardware, connecting parameters and controls, and fitting the ports into the RHYTHMER workflow.\n\nThis source release includes current adapters, parameter contracts, original pinned sources, build guidance and retained credits/licences. Native control order/units, preset persistence, Plaits FM programs and selected-pad behavior have been updated alongside the matching OS.\n\n[Install the matching OS beta](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3) · [Explore the engines](https://jazzyrhythmer.github.io/mpc-sample/#engines) · [Build](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/BUILD.md) · [Original projects, credits and licences](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/THIRD_PARTY_NOTICES.md)\n\nThe OS has 20 track entries; Rhythmer Kit and Break are host features, not claims of new original synth DSP. Use the OS full SD package for installation; this SOURCE ZIP is for developers. SOURCE, MOVE-SOURCE and SUPPORT-SOURCE companions are also provided with the matching OS release.\n\nThanks to the original engine developers, the Melodee team and everyone sharing their work. Check each component’s licence before reuse. The restricted external Prophet/Elixir banks remain excluded. \n\nFree and open source. RHYTHMER OS — by Jazzy Rhythmer.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.4.0-beta.1",
+        "name": "MPC Sample engine ports for Rhythmer OS 0.2.0-beta.1",
+        "published_at": "2026-11-14T16:57:49Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-engine-ports/releases/tag/v0.4.0-beta.1",
+        "body": "MPC Sample engine ports for **Rhythmer OS 0.2.0-beta.1**. Original names, pinned DSP sources, transitive dependencies and original credits are retained.\n\n[Install Rhythmer OS and the curated plugins](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.1) · [Build guidance](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/BUILD.md) · [Credits](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/THIRD_PARTY_NOTICES.md).\n\nThe source archive includes port adapters and original FM-1/Move DSP trees. The OS repository owns the UI, Rhythmer Kit catalogue, authored Prophet/Elixir presets, GEN and Break host integration. A generic standalone wrapper does not expose those host-side features by itself. External Sequential and Erica/Hrtl banks are excluded; original GPL Init states remain.\n\nThis is unofficial software with per-component licenses and no warranty. Offline host checks passed;  Download the complete OS SD package for installation, not this source archive.\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "jazzyrhythmer/mpc-sample-rhythmer-os": {
+    "stars": 11,
+    "forks": 0,
+    "pushed_at": "2026-11-17T12:29:10Z",
+    "last_commit_at": "2026-11-17T12:29:06Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "AGPL-3.0",
+    "description": "Free and open-source firmware for MPC Sample. 22 instrument entries, 36 Rhythmer Kits, sound design, GEN, Acid and Break. Built on Melodee.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [
+      {
+        "tag": "v0.2.0",
+        "name": "RHYTHMER OS 0.2.0 — New sounds. Better flow.",
+        "published_at": "2026-11-17T04:12:34Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.2.0",
+        "body": "# RHYTHMER OS 0.2.0\n## New sounds. Better flow.\n\nMore sounds to explore, more direct editing, and a smoother path from your first note to a finished groove.\n\nRHYTHMER OS 0.2.0 brings two new instruments, an updated FMini-1, refined Rhythmer Kit editing, and improvements throughout the track, Acid and Break workflows. Built for exploring Jungle, Techno, House and IDM on your MPC Sample.\n\n### Meet your new instruments\n\n- **Frodhes:** expressive electric pianos, vibraphone and marimba, with 57 original factory programs.\n- **Tenebrae:** eight oscillator models spanning basses, leads, pads, keys and more, with 164 programs including Init.\n- **FMini-1:** updated to the original 2.6.0 engine, with revised filter response, contour shaping and optimizations, retaining its 200 original factory presets.\n\n### Start a track. Change direction.\n\nTRACK SETUP brings instrument replacement, track types, MPC kit loading and track deletion into one visible menu. Change an instrument or track type while keeping your patterns; delete a track through its separate confirmation.\n\nPress the encoder on an engine-less track to choose its type. On a Sample Kit, pressing it on an empty pad opens sample loading for that pad, including when the whole kit is empty. On-screen hints show the next step.\n\nChange instruments directly from the preset list. Switch tracks while browsing and the screen follows the selected track. Preset browsing wraps from the last sound back to the first, in both directions.\n\n### Find a break. Keep the groove.\n\nBrowse loops with ORIGINAL or tempo-synchronised SYNC audition before loading them. Replacing a source preserves your existing patterns and performance settings, with clear confirmation when changing the source's bar count.\n\nBREAK GEN and BRK PERF have clearer entry, return and loading controls. Pattern Hold, CHOP, LOOP and STRETCH have more explicit operating hints, while Variation and Stretch feedback show when the performance actions are active.\n\nLoop audition remains separate from the track's musical state, so you can explore another source while keeping your current groove intact.\n\n### Your pad. Your sound.\n\nRhythmer Kit's EDIT list starts with the selected pad's native **Volume**, followed by its supported Pan, Tune or Decay controls. Related parameters stay together in rows of three, with the whole-kit filter on the next row.\n\nP01–P16 labels identify the pad you are editing; ALL PADS identifies the kit-wide filter. The 36 complete sixteen-pad factory kits retain their mixed-engine flexibility, pad-source replacement and User Kit saving.\n\n### Shape it. Save it. Come back to it.\n\nParameter names and ordering are refined across oscillator, filter, envelope, LFO, modulation and effects controls. Source, Destination and Amount stay together, and named choices make settings such as Key Tracking and Polarity easier to read.\n\nOpen SAVE SOUND or PAD SOURCE from EDIT, save to one of 64 User Sound or User Kit slots, and reload your sounds from the preset list—even in another project. Save the project separately to keep its patterns and arrangement.\n\n### Build a chord progression\n\nCHORD GEN is a separate instrument-track generator alongside the existing GENERATE Tn / MUTATE Tn workflow. Choose a genre, progression family, 1–8 chord changes and 1–16 bars; adjust rhythmic density, chord complexity, energy, voicing and register, then play the result as Block chords, an arpeggio or a strum.\n\nIt follows the project's key and scale by default. Local overrides affect only the generated part. Jazz and neo-soul profiles add extended harmony and voice leading. NEW CHORDS chooses another progression; MUTATE CHORDS keeps the progression while varying articulation. Generation keeps the instrument and other tracks, with Undo/Redo.\n\nRhythmer Kit retains genre-based drum generation; Acid and Break keep their dedicated generators. The illustrated manual and First Groove guide explain which command to use and how to return from each page.\n\n### Acid, ready to play\n\nAcid GEN keeps its NEW/MUTATE generation behavior while presenting its musical settings across two pages, without exposed seed controls.\n\nEight original Aphex choices join the Hortator Acid palette: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. Their native sound controls remain available for editing.\n\n### Refinements\n\nA steadier external MIDI BPM display keeps whole-number tempos clean while retaining meaningful fractional readings. The actual sync algorithm is unchanged. Rhythmer Kit animation flows across pad changes, and contextual Note Repeat and ARP controls remain available.\n\n### Fixes\n\n- Preset loading, parameter mapping, pad labels and state restoration.\n- Track navigation, Back, confirmation, loading cancellation and Undo/Redo.\n- Break playback, performance controls and held-command handling.\n- User Sound/User Kit saving and error feedback.\n\n### Make your first groove\n\nThe manual and **Your first groove with RHYTHMER OS.** guide cover the current navigation, track types, sound saving, independent Chord GEN and the Break workflow, with visual controls and step-by-step instructions.\n\n[Download & Installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nRHYTHMER OS remains early beta software. Back up your SD card before installing, follow the installation guide, and keep sharing what feels good and what could work better.\n\nBuilt on Melodee by Kerem Kiliç / Ellic Studio, with thanks to the original engine developers and open-source contributors. Original authorship, licenses and credits are retained.\n\n**RHYTHMER OS — by Jazzy Rhythmer**\n\n*In search of feel-good rhythms.*\n",
+        "truncated": false
+      },
+      {
         "tag": "v0.4.0-beta.3-hotfix.3",
-        "name": "RHYTHMER OS 0.4.0-beta.3",
+        "name": "RHYTHMER OS 0.2.0-beta.3",
         "published_at": "2026-11-16T09:37:22Z",
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.3",
-        "body": "RHYTHMER OS for MPC Sample — 0.4.0-beta.3.\n\nThe app version remains **0.4.0-beta.3**. Use the **full SD ZIP** for installation; it includes the app and matching preset catalogue. Back up your card and preserve your own projects, presets and recordings. A same-version UPDATE is not automatically offered by the native updater.\n\n## Workflow\n\n- On native Sample Kit SOUND/TRIM, encoder Push opens TRACK TYPE if all 128 pads and layers are empty. SAMPLE KIT starts first-sample loading. If other pads contain samples, Push opens SAMPLES for the selected empty pad. Screen hints show both routes.\n- Loaded/layered pads, other editors, recording/Freeze guards, Break loop entry and contextual Note Repeat controls keep their existing jobs. Shift + Push cancels the browser; B1 goes up folders or exits at the root. Sample load Undo preserves other pads.\n- Preset lists and main PRESETS browsing wrap in both directions using the encoder or Minus/Plus. Folder lists wrap within the current folder. User Sound/User Kit remain included; absolute pot selection and existing load timing are unchanged.\n\n## Acid Engine\n\nThe four original Hortator Acid sounds are retained. Eight unmodified Aphex factory choices are also available: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. They use the original Aphex DSP, native filters and source edit parameters. Source identity and edits persist in projects and User Sound; Rhythmer Kit pad source/restore is also covered.\n\n## Validation\n\nARM64 build; 19 runtime unit tests; 290 track/input/navigation assertions; GEN/Acid/Break integration; audio self-test; 36,000 random surface moves; 430 UI previews with no text issues. Host regressions cover single instruments, 36 kits, engine/kit filters and 4,587 control round trips. All eight aliases match original Aphex control values and pass five-note output, project/User Sound and pad-source restore checks under ASan/UBSan for the host code. Original native DSP libraries are unchanged and not all are sanitizer-instrumented. Signed-update identity and tamper checks pass.\n\nThis is early beta software. Physical-device installation, listening, latency and recovery validation remain pending. No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nBased on Melodee by Kerem Kiliç (Ellic Studio) and the credited open-source engine projects. SOURCE, MOVE-SOURCE and SUPPORT-SOURCE provide corresponding source and notices.\n",
+        "body": "RHYTHMER OS for MPC Sample — 0.2.0-beta.3.\n\nThe release version is **0.2.0-beta.3**. Use the **full SD ZIP** for installation; it includes the app and matching preset catalogue. Back up your card and preserve your own projects, presets and recordings. A same-version UPDATE is not automatically offered by the native updater.\n\n## Workflow\n\n- On native Sample Kit SOUND/TRIM, encoder Push opens TRACK TYPE if all 128 pads and layers are empty. SAMPLE KIT starts first-sample loading. If other pads contain samples, Push opens SAMPLES for the selected empty pad. Screen hints show both routes.\n- Loaded/layered pads, other editors, recording/Freeze guards, Break loop entry and contextual Note Repeat controls keep their existing jobs. Shift + Push cancels the browser; B1 goes up folders or exits at the root. Sample load Undo preserves other pads.\n- Preset lists and main PRESETS browsing wrap in both directions using the encoder or Minus/Plus. Folder lists wrap within the current folder. User Sound/User Kit remain included; absolute pot selection and existing load timing are unchanged.\n\n## Acid Engine\n\nThe four original Hortator Acid sounds are retained. Eight unmodified Aphex factory choices are also available: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. They use the original Aphex DSP, native filters and source edit parameters. Source identity and edits persist in projects and User Sound; Rhythmer Kit pad source/restore is also covered.\n\n## Validation\n\nARM64 build; 19 runtime unit tests; 290 track/input/navigation assertions; GEN/Acid/Break integration; audio self-test; 36,000 random surface moves; 430 UI previews with no text issues. Host regressions cover single instruments, 36 kits, engine/kit filters and 4,587 control round trips. All eight aliases match original Aphex control values and pass five-note output, project/User Sound and pad-source restore checks under ASan/UBSan for the host code. Original native DSP libraries are unchanged and not all are sanitizer-instrumented. Signed-update identity and tamper checks pass.\n\nThis is early beta software.  No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nBased on Melodee by Kerem Kiliç (Ellic Studio) and the credited open-source engine projects. SOURCE, MOVE-SOURCE and SUPPORT-SOURCE provide corresponding source and notices.\n",
         "truncated": false
       },
       {
         "tag": "v0.4.0-beta.3-hotfix.2",
-        "name": "RHYTHMER OS 0.4.0-beta.3 — Break workflow hotfix.2",
+        "name": "RHYTHMER OS 0.2.0-beta.3 — Break workflow hotfix.2",
         "published_at": "2026-11-16T00:30:55Z",
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.2",
-        "body": "RHYTHMER OS for MPC Sample — 0.4.0-beta.3 / Break workflow hotfix.2.\n\nThe app version remains **0.4.0-beta.3**. This separate release record identifies the matching installation files and corresponding source. The Sound / Kit save hotfix is included.\n\n## Break: load, find the controls, play\n\n- Loading or reloading source A makes a straight sixteen-chop pattern and stays in **BREAK GEN**, with **BRK PERF** selected. Push / B3 OPEN enters the performance pages.\n- While decoding, **B1 CANCEL** or **SHIFT + encoder Push** cancels track assignment. Other generator actions and knob cards wait until loading finishes. A cached decoded file may remain; a cancelled request cannot replace the track.\n- Source A/B completion does not reopen a dismissed menu or pull you away from another track. Replacing/deleting the target track continues to invalidate pending loads.\n- Reopen controls from the Break track: **SEQ / PATTERNS → SHIFT + B3 GEN → BREAK GEN → BRK PERF**. In BRK PERF, B1 GEN returns to BREAK GEN. BACK / Shift + Push returns to main GEN, then closes it.\n- **Pattern Hold** replaces the misleading LOOP HOLD label. It holds the internal generated pattern in LOOP mode, not audio sustain or track Freeze. The stored parameter and DSP behavior are unchanged. CHOP mode and zero variation can make the difference inaudible.\n- Grain / Splice / Slow explicitly describe stretched hits. With playback running, hold Pad 3 STRETCH on ROLLS, keep it held while paging to GRAIN, adjust the controls and release; recorded STRETCH works too. Pattern Hold is not required.\n- Rejected/undecodable files return to the owned browser for retry without replacing the previous instrument. A track frozen during decoding cancels assignment without a late Unfreeze dialog.\n- All six pages have clearer operating hints. SOURCE B requires a loaded B file; TRACK MIX changes the track mix rather than generating a pattern. RETURN clears Variation/Drift while keeping the selected A/B source.\n- General GEN also saves the Acid RNG stream with its Undo/Redo operation, keeping the generated notes and random state together. The generation algorithm and seed policy are unchanged.\n\n## Install and learn\n\nUse the **full SD ZIP**, verify its SHA-256 and back up the entire card first. The signed UPDATE ZIP is app-only and is not a first-install package; the native updater may not offer a same-version hotfix. Target: MPC Sample AC50 / stock firmware 1.3.0.12. No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Break navigation and six-page guide](https://jazzyrhythmer.github.io/mpc-sample/manual/#break-performance) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html#break-load)\n\nThe written manual and first-groove guide now match this hotfix. The existing tutorial film predates the load/menu change; its music and edited arrangement remain examples. Follow the current written navigation when screens differ. Random generation does not reproduce the edited example exactly.\n\n## Validation scope\n\nSoftware checks cover cancellation, A/B async ownership, current-track navigation, Undo/Redo, project save/reload, held STRETCH release after paging, CHOP/LOOP pattern hold, grain processing, existing track workflows, runtime tests, audio self-test, random surface inputs and native UI text/layout. Exact results and source identity are recorded in the validation receipt. Current software results: 19 runtime tests, 161 track-workflow assertions, three final fresh-process GEN/Acid/Break passes, 430 standard UI states with zero reported text issues, 12 × 3,000 random surface inputs, 16 original roll commands and 2,400 Acid reference cases. All 41 plug-in binaries and eight sample files are unchanged. Engine DSP, preset banks and serialized control IDs remain unchanged from the prior reviewed hotfix. Signatures, archive checksums and corresponding-source files are checked before publication.\n\n**Physical MPC installation/recovery, controls, listening, latency and long sessions remain beta validation. Software checks do not certify hardware behavior.**\n\nBuilt on **Melodee by Kerem Kiliç (Ellic Studio)** and the work of the credited engine authors. Porting, integration and additions by jazzy rhythmer. Original licences and credits are retained in the repositories and corresponding SOURCE / MOVE-SOURCE / SUPPORT-SOURCE archives.\n\nPublished source commit: `fe3c15879686fea7ee0ce59515b2edbfc9a70b31`.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.4.0-beta.3-r2",
-        "name": "RHYTHMER OS 0.4.0-beta.3 — Revision 2",
-        "published_at": "2026-11-15T09:27:40Z",
-        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-r2",
-        "body": "RHYTHMER OS for MPC Sample — 0.4.0-beta.3 / Revision 2.\n\n## Workflow fixes\n\n- SHIFT + encoder safely cancels confirmation dialogs, including DELETE TRACK when its affirmative answer is selected. Plain encoder confirmation, B3 confirmation, B1 cancellation and Undo are retained.\n- Screen BACK and SHIFT + encoder now follow the same GEN hierarchy: Acid, Break, Vary or Setup → GEN main → Patterns. Going back does not change the seed or pattern.\n- PAD FX + KNOB FX opens TRACKS even when every track is EMPTY, in either key order. Neither an instrument nor an unwanted solo FX action is created.\n- Active NOTE REPEAT / ARP intentionally retains its rate keys. Turn it off to restore TRACK SETUP / SENDS / FX.\n\nThe original SAMPLE SELECT instrument browser and the added PRESETS-list PLUG-INS / TRACK SETUP entries remain available. Type changes preserve all 128 patterns; deletion remains a separate confirmed operation.\n\n## Software validation\n\n19 runtime tests, 151 track/cancellation assertions, GEN/Acid/Break integration, audio self-test, 12,000 random surface actions and 426 page previews pass. The retained exact-source sound review covers 2,659 presets, 37,226 note probes and 576 kit pads. Signed-update identity and tamper checks pass. This is not physical-device certification.\n\n## Installation\n\nTarget: MPC Sample AC50 running stock firmware 1.3.0.12. Back up the entire card, projects, samples, presets and autorun first. Use the full SD ZIP to install the app, plug-ins, kits and preset catalogue together. UPDATE.zip is an app-only archive, not a first-install package. No break recordings are bundled.\n\nThe engine DSP and preset catalogue are unchanged from the reviewed sound snapshot: 20 picker entries, 36 complete kits and original source credits preserved. Software checks do not establish physical-device behavior. Installation/recovery, physical controls, listening, latency, USB/UVC and long sessions remain owner beta tests.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Engine ports](https://github.com/JazzyRhythmer/mpc-sample-engine-ports)\n\nBased on Melodee by Kerem Kiliç (Ellic Studio) and contributors. Original engine authors retain their credits and licences. RHYTHMER porting, integration and additions by Jazzy Rhythmer. See THIRD_PARTY_NOTICES.md, per-component licences and the corresponding SOURCE / MOVE-SOURCE / SUPPORT-SOURCE archives.\n",
+        "body": "RHYTHMER OS for MPC Sample — 0.2.0-beta.3 / Break workflow hotfix.2.\n\nThe release version is **0.2.0-beta.3**. This separate release record identifies the matching installation files and corresponding source. The Sound / Kit save hotfix is included.\n\n## Break: load, find the controls, play\n\n- Loading or reloading source A makes a straight sixteen-chop pattern and stays in **BREAK GEN**, with **BRK PERF** selected. Push / B3 OPEN enters the performance pages.\n- While decoding, **B1 CANCEL** or **SHIFT + encoder Push** cancels track assignment. Other generator actions and knob cards wait until loading finishes. A cached decoded file may remain; a cancelled request cannot replace the track.\n- Source A/B completion does not reopen a dismissed menu or pull you away from another track. Replacing/deleting the target track continues to invalidate pending loads.\n- Reopen controls from the Break track: **SEQ / PATTERNS → SHIFT + B3 GEN → BREAK GEN → BRK PERF**. In BRK PERF, B1 GEN returns to BREAK GEN. BACK / Shift + Push returns to main GEN, then closes it.\n- **Pattern Hold** replaces the misleading LOOP HOLD label. It holds the internal generated pattern in LOOP mode, not audio sustain or track Freeze. The stored parameter and DSP behavior are unchanged. CHOP mode and zero variation can make the difference inaudible.\n- Grain / Splice / Slow explicitly describe stretched hits. With playback running, hold Pad 3 STRETCH on ROLLS, keep it held while paging to GRAIN, adjust the controls and release; recorded STRETCH works too. Pattern Hold is not required.\n- Rejected/undecodable files return to the owned browser for retry without replacing the previous instrument. A track frozen during decoding cancels assignment without a late Unfreeze dialog.\n- All six pages have clearer operating hints. SOURCE B requires a loaded B file; TRACK MIX changes the track mix rather than generating a pattern. RETURN clears Variation/Drift while keeping the selected A/B source.\n- General GEN also saves the Acid RNG stream with its Undo/Redo operation, keeping the generated notes and random state together. The generation algorithm and seed policy are unchanged.\n\n## Install and learn\n\nUse the **full SD ZIP**, verify its SHA-256 and back up the entire card first. The signed UPDATE ZIP is app-only and is not a first-install package; the native updater may not offer a same-version hotfix. Target: MPC Sample AC50 / stock firmware 1.3.0.12. No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Break navigation and six-page guide](https://jazzyrhythmer.github.io/mpc-sample/manual/#break-performance) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html#break-load)\n\nThe written manual and first-groove guide now match this hotfix. The existing tutorial film predates the load/menu change; its music and edited arrangement remain examples. Follow the current written navigation when screens differ. Random generation does not reproduce the edited example exactly.\n\n## Validation scope\n\nSoftware checks cover cancellation, A/B async ownership, current-track navigation, Undo/Redo, project save/reload, held STRETCH release after paging, CHOP/LOOP pattern hold, grain processing, existing track workflows, runtime tests, audio self-test, random surface inputs and native UI text/layout. Exact results and source identity are recorded in the validation receipt. Current software results: 19 runtime tests, 161 track-workflow assertions, three final fresh-process GEN/Acid/Break passes, 430 standard UI states with zero reported text issues, 12 × 3,000 random surface inputs, 16 original roll commands and 2,400 Acid reference cases. All 41 plug-in binaries and eight sample files are unchanged. Engine DSP, preset banks and serialized control IDs remain unchanged from the prior reviewed hotfix. Signatures, archive checksums and corresponding-source files are checked before publication.\n\n **\n\nBuilt on **Melodee by Kerem Kiliç (Ellic Studio)** and the work of the credited engine authors. Porting, integration and additions by jazzy rhythmer. Original licences and credits are retained in the repositories and corresponding SOURCE / MOVE-SOURCE / SUPPORT-SOURCE archives.\n\nPublished source commit: `fe3c15879686fea7ee0ce59515b2edbfc9a70b31`.\n",
         "truncated": false
       }
     ],
@@ -939,12 +1108,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 51,
+    "stars": 55,
     "forks": 6,
     "pushed_at": "2026-11-16T20:40:41Z",
     "last_commit_at": "2026-11-16T19:36:13Z",
     "contributors": 1,
-    "open_issues": 12,
+    "open_issues": 11,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1024,7 +1193,7 @@
     "archived": false
   },
   "micknoise/mpc-sample-kit": {
-    "stars": 6,
+    "stars": 7,
     "forks": 0,
     "pushed_at": "2026-08-28T01:39:40Z",
     "last_commit_at": "2026-08-08T19:11:51Z",
@@ -1081,8 +1250,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 4,
     "forks": 1,
-    "pushed_at": "2026-11-17T00:40:45Z",
-    "last_commit_at": "2026-11-17T00:40:43Z",
+    "pushed_at": "2026-11-17T13:08:24Z",
+    "last_commit_at": "2026-11-17T13:08:14Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1144,10 +1313,10 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 3,
+    "stars": 8,
     "forks": 0,
-    "pushed_at": "2026-11-16T22:10:02Z",
-    "last_commit_at": "2026-11-16T22:10:00Z",
+    "pushed_at": "2026-11-17T08:35:34Z",
+    "last_commit_at": "2026-11-17T08:35:32Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1326,8 +1495,8 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 115,
-    "forks": 6,
+    "stars": 120,
+    "forks": 7,
     "pushed_at": "2026-11-16T17:07:39Z",
     "last_commit_at": "2026-11-16T17:07:37Z",
     "contributors": 1,
@@ -1369,7 +1538,7 @@
     "archived": false
   },
   "tarikcampos/MPC-Sample-Toolkit": {
-    "stars": 20,
+    "stars": 21,
     "forks": 4,
     "pushed_at": "2026-09-17T09:34:14Z",
     "last_commit_at": "2026-09-17T09:34:14Z",
