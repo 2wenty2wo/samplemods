@@ -66,6 +66,9 @@ for (const mod of mods) {
 	mod.required_by = mods
 		.filter((m) => (m.requires ?? []).includes(mod.id))
 		.map((m) => m.id);
+	mod.launchers = mods
+		.filter((m) => (m.compatible ?? []).includes(mod.id))
+		.map((m) => m.id);
 }
 
 mods.sort((a, b) => String(a.name).localeCompare(String(b.name)));
