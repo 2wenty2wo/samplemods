@@ -1,0 +1,14 @@
+name: MPCkit
+description: >-
+  A desktop app for building and editing Akai MPC Sample projects: drop WAVs onto pads, set
+  mute groups and sequences, then export a project the Sample opens as-is.
+repo: bajdev/MPCkit
+author: bajdev
+website: https://mpckit.monoexp.com/
+tags:
+  - kits
+  - projects
+  - companion
+install: desktop
+runs_on: [desktop]
+audience: [musician, curious]
