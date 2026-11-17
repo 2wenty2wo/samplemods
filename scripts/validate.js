@@ -41,6 +41,12 @@ for (const { id, section, file, dir, record, media } of entries) {
 			failed = true;
 		}
 	}
+	for (const compatibleId of record.compatible ?? []) {
+		if (!ids.has(compatibleId) || compatibleId === id) {
+			console.error(`${file}: ${compatibleId === id ? 'cannot list itself as compatible' : `compatible unknown entry id "${compatibleId}"`}`);
+			failed = true;
+		}
+	}
 	for (const asset of media) {
 		const bytes = fs.statSync(path.join(dir, asset)).size;
 		if (bytes > 500 * 1024) console.warn(`warn: ${id}/${asset} is ${(bytes / 1024).toFixed(1)} KB (guideline: <= 500 KB)`);

@@ -114,8 +114,8 @@ tags:
 		<span class="step-badge">STEP 3</span>
 		<h2>Run <code>npm test</code> and open a Pull Request</h2>
 		<p>
-			<code>npm test</code> validates your YAML against the JSON schema, checks dependency links
-			(<code>requires</code> / <code>required_by</code>), and verifies every media folder matches a
+			<code>npm test</code> validates your YAML against the JSON schema, checks dependency and launcher links
+			(<code>requires</code> / <code>required_by</code>, <code>compatible</code> / <code>launchers</code>), and verifies every media folder matches a
 			valid entry ID.
 		</p>
 		<div class="info-actions">

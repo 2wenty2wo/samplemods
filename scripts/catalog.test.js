@@ -68,6 +68,9 @@ try {
 	assert.match(validate().stderr, /requires unknown entry/);
 	write('apps/player/app.yaml', playerRecord.replace('[host]', '[player]'));
 	assert.match(validate().stderr, /cannot require itself/);
+	write('apps/player/app.yaml', playerRecord + 'compatible: [missing-compat]\n');
+	assert.match(validate().stderr, /compatible unknown entry/);
+	write('apps/player/app.yaml', playerRecord);
 	write('apps/player/app.yaml', playerRecord + 'category: app\n');
 	assert.match(validate().stderr, /schema validation failed/);
 	write('apps/player/app.yaml', playerRecord);

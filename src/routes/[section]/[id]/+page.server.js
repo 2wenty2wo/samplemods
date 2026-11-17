@@ -32,7 +32,12 @@ export function load({ params }) {
 
 	if (params.section === canonicalSection) {
 		const mod = { ...summary, ...details[summary.id] };
-		const relatedIds = new Set([...(mod.requires ?? []), ...mod.required_by]);
+		const relatedIds = new Set([
+			...(mod.requires ?? []),
+			...mod.required_by,
+			...(mod.compatible ?? []),
+			...(mod.launchers ?? [])
+		]);
 		const related = mods.filter((entry) => relatedIds.has(entry.id)).map((entry) => ({
 			id: entry.id, section: entry.section, name: entry.name, logo: entry.logo, screenshots: entry.screenshots.slice(0, 1)
 		}));

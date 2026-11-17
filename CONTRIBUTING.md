@@ -37,7 +37,7 @@ Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, `data/c
    install: sd-card
    ```
 
-   A public GitHub `repo` is preferred — it powers stars, README, and releases on the detail page. Optional fields include `requires` (entry IDs from any section), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `concept`). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically when `repo` is set.
+   A public GitHub `repo` is preferred — it powers stars, README, and releases on the detail page. Optional fields include `requires` (entry IDs from any section), `compatible` (entry IDs a launcher is confirmed to work with; reverse `launchers` is computed), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `concept`). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically when `repo` is set.
 
    For paid or closed releases that are not on GitHub, omit `repo` and set `website` instead (required without a repo). Set `author_url` for a maker's website or profile. GitHub enrichment and star-list matching skip entries without `repo`.
 

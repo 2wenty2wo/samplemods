@@ -59,6 +59,13 @@
 	);
 	const updatedDate = $derived(formatUpdated(mod.last_commit_at ?? mod.pushed_at));
 	const isLongReadme = $derived((mod.readme_html?.length ?? 0) > 1600);
+	// Skip entries already shown via Requires / Required by (e.g. LoopPad requires Boot Thingy).
+	const compatibleIds = $derived(
+		(mod.compatible ?? []).filter((id) => !(mod.required_by ?? []).includes(id))
+	);
+	const launcherIds = $derived(
+		(mod.launchers ?? []).filter((id) => !(mod.requires ?? []).includes(id))
+	);
 
 	let readmeExpanded = $state(false);
 
@@ -403,89 +410,71 @@
 					</dl>
 				</section>
 
+				{#snippet relatedMiniCards(ids)}
+					<ul class="mini-card-list">
+						{#each ids as id}
+							{@const rel = byId[id]}
+							<li>
+								{#if rel}
+									{@const media = miniCardMedia(rel)}
+									<a
+										class="pad-card mini-pad-card"
+										href="{base}{entryPath(rel)}"
+										style="--pad-glow: {sectionGlow(rel.section)}"
+									>
+										<div class="bezel-screen mini-bezel">
+											{#if media.src}
+												<img
+													class="screen-img"
+													class:is-logo={media.kind === 'logo'}
+													src={media.src}
+													alt=""
+													loading="lazy"
+												/>
+											{:else}
+												<span class="mini-initials">{initials(rel.name)}</span>
+											{/if}
+										</div>
+										<div class="mini-card-info">
+											<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
+											<p class="mini-card-title">{rel.name}</p>
+										</div>
+									</a>
+								{:else}
+									<div class="pad-card mini-pad-card">
+										<code>{id}</code>
+									</div>
+								{/if}
+							</li>
+						{/each}
+					</ul>
+				{/snippet}
+
+				{#if compatibleIds.length}
+					<section class="detail-section">
+						<h2 class="silk-heading">Compatible with</h2>
+						{@render relatedMiniCards(compatibleIds)}
+					</section>
+				{/if}
+
+				{#if launcherIds.length}
+					<section class="detail-section">
+						<h2 class="silk-heading">Works with</h2>
+						{@render relatedMiniCards(launcherIds)}
+					</section>
+				{/if}
+
 				{#if mod.requires?.length}
 					<section class="detail-section">
 						<h2 class="silk-heading">Requires</h2>
-						<ul class="mini-card-list">
-							{#each mod.requires as id}
-								{@const rel = byId[id]}
-								<li>
-									{#if rel}
-										{@const media = miniCardMedia(rel)}
-										<a
-											class="pad-card mini-pad-card"
-											href="{base}{entryPath(rel)}"
-											style="--pad-glow: {sectionGlow(rel.section)}"
-										>
-											<div class="bezel-screen mini-bezel">
-												{#if media.src}
-													<img
-														class="screen-img"
-														class:is-logo={media.kind === 'logo'}
-														src={media.src}
-														alt=""
-														loading="lazy"
-													/>
-												{:else}
-													<span class="mini-initials">{initials(rel.name)}</span>
-												{/if}
-											</div>
-											<div class="mini-card-info">
-												<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
-												<p class="mini-card-title">{rel.name}</p>
-											</div>
-										</a>
-									{:else}
-										<div class="pad-card mini-pad-card">
-											<code>{id}</code>
-										</div>
-									{/if}
-								</li>
-							{/each}
-						</ul>
+						{@render relatedMiniCards(mod.requires)}
 					</section>
 				{/if}
 
 				{#if mod.required_by?.length}
 					<section class="detail-section">
 						<h2 class="silk-heading">Required by</h2>
-						<ul class="mini-card-list">
-							{#each mod.required_by as id}
-								{@const rel = byId[id]}
-								<li>
-									{#if rel}
-										{@const media = miniCardMedia(rel)}
-										<a
-											class="pad-card mini-pad-card"
-											href="{base}{entryPath(rel)}"
-											style="--pad-glow: {sectionGlow(rel.section)}"
-										>
-											<div class="bezel-screen mini-bezel">
-												{#if media.src}
-													<img
-														class="screen-img"
-														class:is-logo={media.kind === 'logo'}
-														src={media.src}
-														alt=""
-														loading="lazy"
-													/>
-												{:else}
-													<span class="mini-initials">{initials(rel.name)}</span>
-												{/if}
-											</div>
-											<div class="mini-card-info">
-												<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
-												<p class="mini-card-title">{rel.name}</p>
-											</div>
-										</a>
-									{:else}
-										<div class="pad-card mini-pad-card">
-											<code>{id}</code>
-										</div>
-									{/if}
-								</li>
-							{/each}
-						</ul>
+						{@render relatedMiniCards(mod.required_by)}
 					</section>
 				{/if}
 			</aside>

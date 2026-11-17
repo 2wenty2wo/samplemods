@@ -4,9 +4,31 @@ description: >-
   USB-connected web tool, then choose which one to run.
 repo: garrettjwilke/mpc-boot-thingy
 author: garrettjwilke
+status: archived
 tags:
   - boot-menu
   - launcher
 install: sd-card
 runs_on: [device, browser]
 audience: [musician, player, developer]
+# Apps listed in README "apps you can try now" at 2c60375d05cc7eba03b149e4d4b31f442ab21c89
+# (last commit touching README.md before the archive notice at 155a91963e).
+compatible:
+  - mpc-simple
+  - melodee-sample
+  - sampqol-os
+  - am-mod
+  - rhythmer-os
+  - gridzilla
+  - mpc-minimod
+  - kaosample
+  - looppad
+  - henryskillz-mod-kit
+  - maiaos
+  - lightfoot
+  - beat-train
+  - mpc-sample-tracker
+  - mpc-furnace
+  - mpc-gen1recomp
+  - mpc-cavestory
+  - mpc-tic80
