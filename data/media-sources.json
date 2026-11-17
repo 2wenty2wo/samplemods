@@ -765,9 +765,29 @@
   ],
   "smplutility": [
     {
-      "file": "screenshots/01-panel.png",
-      "note": "Official CHOP controls image from the SMPLUTILITY product page",
-      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/chop.png"
+      "file": "screenshots/01-panel.webp",
+      "note": "Official full SMPLUTILITY window with a chopped waveform and sixteen loaded pads",
+      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/panel.png"
+    },
+    {
+      "file": "screenshots/02-project.png",
+      "note": "Official pad banks and project transfer controls from the SMPLUTILITY product page",
+      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/project.png"
+    },
+    {
+      "file": "screenshots/03-stems.png",
+      "note": "Official chopped waveform and stem separation controls from the SMPLUTILITY product page",
+      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/stems.png"
+    },
+    {
+      "file": "screenshots/04-library.png",
+      "note": "Official LIBRARY, PACKS and FX tabs; this image does not show an opened FX window",
+      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/library.png"
+    },
+    {
+      "file": "logo.png",
+      "note": "Official SMPLUTILITY wordmark and companion app tagline from the product page",
+      "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/lockup.png"
     }
   ],
   "virtual-mpc-sample": [
