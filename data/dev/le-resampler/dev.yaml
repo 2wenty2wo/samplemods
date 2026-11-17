@@ -1,0 +1,10 @@
+name: Manage your sample library and export it to the Akai MPC Sample
+description: >-
+  Manage your sample library and export it to the Akai MPC Sample — organised by category into
+  folders, straight to your SD card.
+repo: flug/Le-Resampler
+author: flug
+runs_on:
+  - desktop
+audience:
+  - developer
