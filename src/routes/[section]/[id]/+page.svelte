@@ -439,7 +439,12 @@
 											{/if}
 										</div>
 										<div class="mini-card-info">
-											<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
+											<div class="mini-card-tags">
+												<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
+												{#if rel.status}
+													<span class="badge-status {rel.status}">{rel.status}</span>
+												{/if}
+											</div>
 											<p class="mini-card-title">{rel.name}</p>
 										</div>
 									</a>
@@ -1494,6 +1499,13 @@
 		gap: 0.28rem;
 		min-width: 0;
 		justify-items: start;
+	}
+
+	.mini-card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.28rem;
+		align-items: center;
 	}
 
 	.mini-card-title {
