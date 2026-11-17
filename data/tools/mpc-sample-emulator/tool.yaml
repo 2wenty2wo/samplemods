@@ -1,0 +1,14 @@
+name: MPC Remote (Pixel)
+description: >-
+  A Pixel phone control surface for the MPC Sample program running in the Linux Terminal via
+  mpc-pixel-kit. Mirrors the screen and sends pads, buttons and knobs, with an optional on-phone
+  project player.
+repo: Phenix2417/mpc-sample-emulator
+author: Phenix2417
+tags:
+  - remote
+  - screen
+  - android
+install: none
+runs_on: [device]
+audience: [musician, curious, developer]
