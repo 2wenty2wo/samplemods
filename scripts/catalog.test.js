@@ -186,7 +186,7 @@ try {
 	const page = load({ params: { section: 'app', id: 'player' } });
 	assert.equal(page.mod.readme_html, details.player.readme_html);
 	assert.deepEqual(page.mods.map((entry) => entry.id), ['host']);
-	assert.deepEqual(Object.keys(page.mods[0]).sort(), ['id', 'logo', 'name', 'screenshots', 'section']);
+	assert.deepEqual(Object.keys(page.mods[0]).sort(), ['id', 'logo', 'name', 'screenshots', 'section', 'status']);
 	assert.deepEqual(load({ params: { section: 'mod', id: 'player' } }), { id: 'player', redirectTo: '/app/player/' });
 	assert.throws(() => load({ params: { section: 'game', id: 'player' } }), (error) => error.status === 404);
 	fs.unlinkSync(path.join(dataDir, 'apps/player/screenshots/02-screen.png'));

@@ -39,7 +39,7 @@ export function load({ params }) {
 			...(mod.launchers ?? [])
 		]);
 		const related = mods.filter((entry) => relatedIds.has(entry.id)).map((entry) => ({
-			id: entry.id, section: entry.section, name: entry.name, logo: entry.logo, screenshots: entry.screenshots.slice(0, 1)
+			id: entry.id, section: entry.section, name: entry.name, status: entry.status, logo: entry.logo, screenshots: entry.screenshots.slice(0, 1)
 		}));
 		return { mod, mods: related, redirectTo: null, canonicalPath };
 	}
