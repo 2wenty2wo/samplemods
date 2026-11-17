@@ -123,6 +123,24 @@
       "source": "kaosplash binary from the KAOSAMPLE release (supplied by the catalog owner)",
       "repo": "omarhuertasllc-ops/kaosample-beta",
       "note": "Embedded 320x240 BGRX framebuffer extracted at byte offset 372528; not executed"
+    },
+    {
+      "file": "screenshots/02-kaos-menu.png",
+      "source": "https://github.com/omarhuertasllc-ops/kaosample-beta",
+      "repo": "omarhuertasllc-ops/kaosample-beta",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-channel-mixer.png",
+      "source": "https://github.com/omarhuertasllc-ops/kaosample-beta",
+      "repo": "omarhuertasllc-ops/kaosample-beta",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/04-pad-step-editor.png",
+      "source": "https://github.com/omarhuertasllc-ops/kaosample-beta",
+      "repo": "omarhuertasllc-ops/kaosample-beta",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
   "lightfoot": [
@@ -147,13 +165,44 @@
       "repo": "Dyldog/Lightfoot"
     }
   ],
-  "looppad": [],
+  "looppad": [
+    {
+      "file": "screenshots/01-four-loop-setup.png",
+      "source": "https://github.com/larsoholm/LoopPad",
+      "repo": "larsoholm/LoopPad",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-live-looping.png",
+      "source": "https://github.com/larsoholm/LoopPad",
+      "repo": "larsoholm/LoopPad",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "maiaos": [
     {
       "file": "screenshots/01-splash.webp",
       "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW/releases/download/beta/MaiaOS-V1.zip",
       "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "note": "Original PNG from release archive: MaiaOS-V1 DON'T SHARE/autorun/runtime/maia-320x240.png"
+    },
+    {
+      "file": "screenshots/02-dj-mode.png",
+      "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW",
+      "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-autotune.png",
+      "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW",
+      "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/04-input-send-effects.png",
+      "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW",
+      "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
   "melodee-sample": [
@@ -211,6 +260,20 @@
       "note": "Original 640x480 UI image extracted without resizing from page 15 of the official operator manual."
     }
   ],
+  "mpc-addin-sample-rack": [
+    {
+      "file": "screenshots/01-rack-overview.png",
+      "source": "https://github.com/jacob-sabella/mpc-addin-sample-rack",
+      "repo": "jacob-sabella/mpc-addin-sample-rack",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-submix-and-track-inserts.png",
+      "source": "https://github.com/jacob-sabella/mpc-addin-sample-rack",
+      "repo": "jacob-sabella/mpc-addin-sample-rack",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "mpc-boot-thingy": [
     {
       "file": "screenshots/01-splash-screen.webp",
@@ -236,7 +299,20 @@
       "note": "320x240 device capture, converted from PNG to lossless WebP"
     }
   ],
-  "mpc-cavestory": [],
+  "mpc-cavestory": [
+    {
+      "file": "screenshots/01-pad-rebind-no-game-data.png",
+      "source": "https://github.com/garrettjwilke/mpc-cavestory",
+      "repo": "garrettjwilke/mpc-cavestory",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-no-game-data-error.png",
+      "source": "https://github.com/garrettjwilke/mpc-cavestory",
+      "repo": "garrettjwilke/mpc-cavestory",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "mpc-extractor": [
     {
       "file": "screenshots/01-extractor.png",
@@ -244,9 +320,66 @@
       "source": "https://killaviccheatcodes.app/stems"
     }
   ],
-  "mpc-fm": [],
-  "mpc-furnace": [],
-  "mpc-gen1recomp": [],
+  "mpc-fm": [
+    {
+      "file": "screenshots/01-fm-patch-editor.png",
+      "source": "https://github.com/ThomasTestaud/mpc-fm",
+      "repo": "ThomasTestaud/mpc-fm",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-fm-envelope-editor.png",
+      "source": "https://github.com/ThomasTestaud/mpc-fm",
+      "repo": "ThomasTestaud/mpc-fm",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-fm-startup-status.png",
+      "source": "https://github.com/ThomasTestaud/mpc-fm",
+      "repo": "ThomasTestaud/mpc-fm",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "mpc-furnace": [
+    {
+      "file": "screenshots/01-pattern-editor.png",
+      "source": "https://github.com/garrettjwilke/mpc-furnace",
+      "repo": "garrettjwilke/mpc-furnace",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-wave-editor.png",
+      "source": "https://github.com/garrettjwilke/mpc-furnace",
+      "repo": "garrettjwilke/mpc-furnace",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-generated-synth-sample.png",
+      "source": "https://github.com/garrettjwilke/mpc-furnace",
+      "repo": "garrettjwilke/mpc-furnace",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "mpc-gen1recomp": [
+    {
+      "file": "screenshots/01-pad-rebind-menu.png",
+      "source": "https://github.com/garrettjwilke/mpc-gen1recomp",
+      "repo": "garrettjwilke/mpc-gen1recomp",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-settings-menu.png",
+      "source": "https://github.com/garrettjwilke/mpc-gen1recomp",
+      "repo": "garrettjwilke/mpc-gen1recomp",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-no-rom-launcher.png",
+      "source": "https://github.com/garrettjwilke/mpc-gen1recomp",
+      "repo": "garrettjwilke/mpc-gen1recomp",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "mpc-gently": [
     {
       "file": "screenshots/01-look-inside.webp",
@@ -361,6 +494,21 @@
       "file": "screenshots/01-sample-view.png",
       "note": "Official product image from the Screen Bridge page (Trim screen in the companion app)",
       "source": "https://killaviccheatcodes.app/mpc-sample/show-trim-glow.jpg"
+    },
+    {
+      "file": "screenshots/02-free-demo-main-menu.png",
+      "source": "https://killaviccheatcodes.app/screenbridge",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-free-world-one-lessons.png",
+      "source": "https://killaviccheatcodes.app/screenbridge",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/04-free-loading-samples-lesson.png",
+      "source": "https://killaviccheatcodes.app/screenbridge",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
   "mpc-sample-sdk": [],
@@ -406,10 +554,51 @@
       "file": "screenshots/01-pad-select.webp",
       "source": "https://mpcsimple.com/screen-grid.png",
       "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+    },
+    {
+      "file": "screenshots/02-program-editor.png",
+      "source": "https://mpcsimple.com/",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); MPC Simple 1.0 Beta 3"
+    },
+    {
+      "file": "screenshots/03-original-sample-editor.png",
+      "source": "https://mpcsimple.com/",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); MPC Simple 1.0 Beta 3"
+    },
+    {
+      "file": "screenshots/04-grid-step-sequencer.png",
+      "source": "https://mpcsimple.com/",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); MPC Simple 1.0 Beta 3"
     }
   ],
-  "mpc-stemloop": [],
-  "mpc-tic80": [],
+  "mpc-stemloop": [
+    {
+      "file": "screenshots/01-original-source-loop.png",
+      "source": "https://github.com/pzuzarte/mpc-stemloop",
+      "repo": "pzuzarte/mpc-stemloop",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-separation-in-progress.png",
+      "source": "https://github.com/pzuzarte/mpc-stemloop",
+      "repo": "pzuzarte/mpc-stemloop",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "mpc-tic80": [
+    {
+      "file": "screenshots/01-original-demo-cart.png",
+      "source": "https://github.com/garrettjwilke/mpc-tic80",
+      "repo": "garrettjwilke/mpc-tic80",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-game-menu.png",
+      "source": "https://github.com/garrettjwilke/mpc-tic80",
+      "repo": "garrettjwilke/mpc-tic80",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "mpc-ui-toolkit": [],
   "mpc-xpj-builder": [
     {
@@ -507,7 +696,26 @@
       "source": "https://runmpc.com/"
     }
   ],
-  "sample-base": [],
+  "sample-base": [
+    {
+      "file": "screenshots/01-beep-boop-synth.png",
+      "source": "https://github.com/keremimo/sample-base",
+      "repo": "keremimo/sample-base",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-step-sequencer.png",
+      "source": "https://github.com/keremimo/sample-base",
+      "repo": "keremimo/sample-base",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-led-showcase.png",
+      "source": "https://github.com/keremimo/sample-base",
+      "repo": "keremimo/sample-base",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "sampqol-os": [
     {
       "file": "screenshots/01-splash.webp",
