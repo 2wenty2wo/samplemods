@@ -12,3 +12,4 @@ install: sd-card
 firmware: 1.3.0.12
 runs_on: [device]
 audience: [musician, developer]
+source: closed # Public source preview covers the host and selected runtimes only; other runtimes stay private.
