@@ -1,9 +1,13 @@
-name: mpc-xpj-builder
-description: Akai MPC Sample .xpj project builder from WAV + MIDI (Python, no external deps).
+name: MPC XPJ Builder
+description: >-
+  A Windows GUI and CLI that builds Akai MPC Sample .xpj drum projects from WAV folders and MIDI
+  files, including pad mapping, batch export and optional USB audio and MIDI clock sync.
 repo: cursednik/mpc-xpj-builder
 author: cursednik
-runs_on:
-  - desktop
+tags:
+  - projects
+  - midi
+  - converter
 install: desktop
-audience:
-  - musician
+runs_on: [desktop]
+audience: [musician, developer]
