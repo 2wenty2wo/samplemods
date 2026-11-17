@@ -1,0 +1,13 @@
+name: Le Resampler
+description: >-
+  A desktop sample library manager that scans folders, tags and previews audio, then exports
+  selections to an SD card in MPC-friendly category folders.
+repo: flug/Le-Resampler
+author: flug
+tags:
+  - library
+  - samples
+  - companion
+install: desktop
+runs_on: [desktop]
+audience: [musician, curious]
