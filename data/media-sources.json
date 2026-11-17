@@ -397,6 +397,26 @@
   "mpc-stemloop": [],
   "mpc-tic80": [],
   "mpc-ui-toolkit": [],
+  "mpc-xpj-builder": [
+    {
+      "file": "screenshots/01-gui-main.png",
+      "note": "Main GUI window from the project README",
+      "repo": "cursednik/mpc-xpj-builder",
+      "source": "https://raw.githubusercontent.com/cursednik/mpc-xpj-builder/main/docs/images/gui-main.png"
+    },
+    {
+      "file": "screenshots/02-map-editor.png",
+      "note": "Sample map editor from the project docs",
+      "repo": "cursednik/mpc-xpj-builder",
+      "source": "https://raw.githubusercontent.com/cursednik/mpc-xpj-builder/main/docs/images/gui-map-editor.png"
+    },
+    {
+      "file": "screenshots/03-pad-editor.png",
+      "note": "Pad editor from the project docs",
+      "repo": "cursednik/mpc-xpj-builder",
+      "source": "https://raw.githubusercontent.com/cursednik/mpc-xpj-builder/main/docs/images/gui-pad-editor.png"
+    }
+  ],
   "mpcfirmware": [
     {
       "file": "screenshots/01-sample-view.png",
