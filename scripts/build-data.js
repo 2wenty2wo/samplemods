@@ -68,6 +68,7 @@ for (const mod of mods) {
 		.map((m) => m.id);
 	mod.launchers = mods
 		.filter((m) => (m.compatible ?? []).includes(mod.id))
+		.sort((a, b) => (a.status === 'archived') - (b.status === 'archived')) // active launchers first
 		.map((m) => m.id);
 }
 
