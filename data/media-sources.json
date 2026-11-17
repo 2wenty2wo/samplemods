@@ -404,6 +404,20 @@
       "note": "Screenshot of the site filtered to the MPC Sample (1280×960)"
     }
   ],
+  "mpckit": [
+    {
+      "file": "screenshots/01-pads.png",
+      "note": "Pads tab from the project README",
+      "repo": "bajdev/MPCkit",
+      "source": "https://raw.githubusercontent.com/bajdev/MPCkit/main/docs/images/pads.png"
+    },
+    {
+      "file": "screenshots/02-sequences.png",
+      "note": "Sequences tab from the project README",
+      "repo": "bajdev/MPCkit",
+      "source": "https://raw.githubusercontent.com/bajdev/MPCkit/main/docs/images/sequences.png"
+    }
+  ],
   "mpcsample": [
     {
       "file": "screenshots/01-demo.webp",
