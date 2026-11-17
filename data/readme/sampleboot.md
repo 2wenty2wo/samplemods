@@ -7,6 +7,13 @@
 
 <p align="center"><b>A boot selector for the Akai MPC Sample</b></p>
 
+<p align="center">
+  <a href="https://sampleboot.com"><b>sampleboot.com</b></a> ·
+  <a href="https://github.com/pxcm/SampleBoot/releases/latest">Download</a> ·
+  <a href="https://sampleboot.com/theme-editor.html">Theme editor online</a> ·
+  <a href="https://ko-fi.com/paxicom">Support on Ko-fi</a>
+</p>
+
 ![SampleBoot on the MPC Sample: the stock firmware and two custom OSes in the boot menu](docs/images/sampleboot-hero.png)
 
 SampleBoot is a boot menu for the **Akai MPC Sample**. Custom OSes for the MPC
@@ -79,7 +86,7 @@ stay on the same card.
 
 **Back up your SD card first.**
 
-1. Download `SampleBoot-1.0.0.zip` from
+1. Download `SampleBoot-1.0.1.zip` from
    [Releases](../../releases) and unzip it.
 2. Copy its `autorun` folder to the top level of the SD card.
    If the card already has an `autorun` folder from an OS, move that folder
@@ -97,7 +104,7 @@ autorun/
   autorun.sh  autorun.json  autorun.check   SampleBoot's launcher, do not edit
   sampleboot/                               SampleBoot itself and its settings
   mods/
-    Melodee 0.2.2/       Melodee's "autorun" folder, renamed
+    Melodee 0.3.0/       Melodee's "autorun" folder, renamed
     SampQOL 0.3.0/       SampQOL's "autorun" folder, renamed
 ```
 
@@ -117,7 +124,7 @@ SampleBoot without touching your settings, and adds OSes straight from their
 release zips, top-level folders included:
 
 ```sh
-python3 tools/add_mod.py /Volumes/MPC ~/Downloads/Melodee-MPC-Sample-v0.2.2.zip
+python3 tools/add_mod.py /Volumes/MPC ~/Downloads/Melodee-MPC-Sample-v0.3.0.zip
 python3 tools/add_mod.py /Volumes/MPC some-os.zip --name "Some OS 1.0"
 python3 tools/add_mod.py /Volumes/MPC              # install or update SampleBoot only
 ```
@@ -161,6 +168,7 @@ out when something is plugged in. Their volume follows the Main Volume knob.
 | `TIMEOUT_BROWSE` | 20 | The same, once the encoder has been turned |
 | `BEEP` | 100 | Level of the countdown beeps, 1–100, scaled by Main Volume (0 = no beeps) |
 | `GRACE` | 60 | Seconds a system gets to start before the stock app starts instead |
+| `ROOT_FILES` | `"mpcqol.conf"` | Settings files an OS keeps at the card root and reads from the folder above its own; SampleBoot shows them in `autorun/mods/` too (SampQOL's 16 USB outputs need this) |
 | `SPLASH` | `"dark"` | Splash screen: `"dark"`, `"light"`, `"off"`, or a name of your own to show `splash-<name>.png` (320×240) from `autorun/sampleboot/` |
 | `SPLASH_TIME` | 2 | Seconds the splash stays on screen; turning or pushing the encoder skips it |
 

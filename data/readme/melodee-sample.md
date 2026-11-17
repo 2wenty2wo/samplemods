@@ -6,10 +6,10 @@
 
 Melodee is a 16-track groovebox for the **Akai MPC Sample**. It runs on the
 MPC in place of the stock app, started from the microSD card. Each pad is a
-track: a drum kit or sampled instrument, a plug-in instrument, or a MIDI track
-for external gear. Tracks play patterns, patterns make scenes and a song,
-and every track has a mixer strip and an effect chain that takes plug-in
-effects.
+track: a drum kit, a keygroup (a sampled instrument), a plug-in instrument,
+a MIDI track for external gear, or an audio track. Tracks play patterns,
+patterns make sequences and a song, and every track has a mixer strip and an
+effect chain that takes plug-in effects.
 
 Melodee does not change anything on the MPC itself. It runs from files on
 the card. Choose **MPC APP** on its Exit screen, or remove its `autorun`
@@ -38,18 +38,29 @@ page and control, read the [user guide](docs/GUIDE.md).
   follow), Cloud (granular) and a kit filter. Each pad has its own effects
   and sends to the four buses.
 - **Sampling**: Chop, Sample Record, Audio Recall, Resample and 16 Levels.
-  Samples load from WAV, MP3, FLAC, Ogg Vorbis and AIFF files.
+  Samples load from WAV, MP3, FLAC, Ogg Vorbis and AIFF files. A sample
+  longer than 10 seconds plays from the card, up to 6 hours; a project holds
+  as many samples as fit in memory.
+- **Stems**: separate a pad's sample into drums, bass, music and vocals on
+  four new pads, on the MPC itself.
 - **Sampled instruments**: SFZ, MPC keygroup and drum programs (`.xpm`,
   `.xty`), MPC expansions (`.xpn`), Logic EXS24 (`.exs`), SoundFont (`.sf2`)
-  and DecentSampler (`.dspreset`), streamed from the card. Stock MPC Sample
-  projects (`.xpj`) open too.
+  and DecentSampler (`.dspreset`), streamed from the card, on a keygroup
+  track or a kit pad. Stock MPC Sample projects (`.xpj`) open too.
+- **Auto sampler**: samples a plug-in track, or an external instrument on a
+  MIDI track, into an MPC keygroup program on a new keygroup track.
+- **Audio tracks**: record the input into a pattern, as on the MPC 3. Each
+  take has its level, start and end, fades, reverse and warp.
 - **MIDI tracks** for external synths and drum machines over USB-C or the
   MIDI jacks, with program changes, CC knobs and SysEx.
+- **Chords**: MPC 3 chord progressions on the pads, on any track, and a
+  chord builder for your own.
 - **Sequencing**: 128 patterns per track in 8 banks, up to 128 bars each. Step
   sequencer, piano roll, step entry, parameter locks, ratchets and trig
-  conditions. Scenes, pattern chains and follow actions.
+  conditions. Sequences, as on the stock app, sequence chains and follow
+  actions.
 - **Song**: an arrangement with a lane per track, markers and a tempo lane.
-  Export a WAV mixdown, stems or a MIDI file.
+  Export a WAV mixdown, stems, a MIDI file or an MPC 3 project.
 - **Looper**: four loops that follow the tempo, with overdub and undo.
 - **Effects**: 41 effects. A six-slot chain on every track, four send buses
   and the master. Knob FX, Pad FX, Flex Beat and the master compressor work
@@ -57,6 +68,12 @@ page and control, read the [user guide](docs/GUIDE.md).
 - **Freeze**: print a track to audio and play it from the card, or deep
   freeze it to unload its plug-ins too.
 - **Sync**: MIDI clock and MTC in and out, and CV clock out.
+- **The Menu**: hold the encoder on any page for the page's jobs with their
+  shortcuts, and the 16 places laid out as the pads. Four short **lessons**
+  run on the MPC itself.
+- **Basic and Full**: Basic shows the stock app's pages plus tracks,
+  plug-ins, the mixer and Song. Full shows every page. A new install starts
+  on Basic.
 - **Web page**: connect the MPC to a computer by USB-C and open
   http://melodee.local to install updates and plug-ins, manage the card's
   files and read this guide. The MPC can also show up as a USB webcam with
@@ -152,7 +169,7 @@ every boot.
 To make a release zip from a committed tree:
 
 ```sh
-./release.sh v0.2.0
+./release.sh v0.3.0
 ```
 
 This writes `dist/Melodee-MPC-Sample-<version>.zip`.
@@ -174,8 +191,8 @@ Melodee is free. If you use it, you can support it on
 Melodee is made by Kerem Kiliç (Ellic Studio).
 
 Melodee is licensed under AGPL-3.0-only ([LICENSE](LICENSE)). It uses JUCE
-under the AGPLv3 and the Rubik typeface under the SIL Open Font License 1.1
-([THIRD_PARTY.md](THIRD_PARTY.md)). The boot animation's logo and backdrop
+under the AGPLv3, and the Rubik typeface and the other screen fonts under the
+SIL Open Font License 1.1 ([THIRD_PARTY.md](THIRD_PARTY.md)). The boot animation's logo and backdrop
 are not covered by the AGPL.
 
 Melodee is not affiliated with or endorsed by inMusic or Akai Professional.
