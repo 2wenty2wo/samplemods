@@ -1,0 +1,10 @@
+name: MPCkit
+description: Application to create basic MPC Sample starter projects and kits from your desktop.
+repo: bajdev/MPCkit
+author: bajdev
+website: https://mpckit.monoexp.com/
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
