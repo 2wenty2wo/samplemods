@@ -1,0 +1,9 @@
+name: mpc-xpj-builder
+description: Akai MPC Sample .xpj project builder from WAV + MIDI (Python, no external deps).
+repo: cursednik/mpc-xpj-builder
+author: cursednik
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
