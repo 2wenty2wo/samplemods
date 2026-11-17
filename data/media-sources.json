@@ -328,6 +328,20 @@
       "repo": "jeffwebb-to/mpc-sample-doom"
     }
   ],
+  "mpc-sample-engine-ports": [
+    {
+      "file": "screenshots/01-engines-film.jpg",
+      "note": "Engine preview film still from the project README",
+      "repo": "jazzyrhythmer/mpc-sample-engine-ports",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-engine-ports/main/assets/preview/engines-film.jpg"
+    },
+    {
+      "file": "screenshots/02-rhythmer-kit.png",
+      "note": "Rhythmer Kit preview still from the project repo",
+      "repo": "jazzyrhythmer/mpc-sample-engine-ports",
+      "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-engine-ports/main/assets/engines/rhythmer-kit-still.png"
+    }
+  ],
   "mpc-sample-export": [
     {
       "file": "logo.webp",
