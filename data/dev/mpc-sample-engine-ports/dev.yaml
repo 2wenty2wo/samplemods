@@ -1,9 +1,16 @@
-name: MPC Sample engine ports
+name: MPC Sample Engine Ports
 description: >-
-  Engine source adaptations for RHYTHMER OS on MPC Sample, including Frodhes, Tenebrae and FMini-1.
-  Original authors, names and licences retained.
+  Unofficial native engine adaptations for RHYTHMER OS on the MPC Sample, with original names,
+  authors and licences kept. Ships as source for the RHYTHMER host, not a standalone installer.
 repo: jazzyrhythmer/mpc-sample-engine-ports
 author: jazzyrhythmer
 website: https://jazzyrhythmer.github.io/mpc-sample/
-audience:
-  - developer
+tags:
+  - engines
+  - ports
+  - rhythmer
+requires:
+  - rhythmer-os
+install: none
+runs_on: [device]
+audience: [developer, musician]
