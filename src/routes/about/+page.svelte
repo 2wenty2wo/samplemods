@@ -75,24 +75,26 @@
 	<article class="info-card">
 		<h2>Project Authors &amp; Takedown / Edit Requests</h2>
 		<p>
-			Made one of these projects? Want your listing, description or images changed or removed?
+			Made one of these projects? Want your listing, description or images changed or removed? Prefer
+			<strong>Edit this entry on GitHub</strong> on the entry page (opens a pull request). Or
 			<a
 				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				Open an issue
+				open an issue
 			</a>
-			and we'll sort it out.
+			and we'll apply it (still needs a GitHub account; issues don't count as contributions).
 		</p>
 		<div class="info-actions">
+			<a class="hw-action-btn orange" href="{base}/submit/">How to contribute ↗</a>
 			<a
-				class="hw-action-btn orange"
+				class="hw-action-btn grey"
 				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				Request a Listing Change ↗
+				Issue form ↗
 			</a>
 		</div>
 	</article>

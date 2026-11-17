@@ -72,6 +72,70 @@ export const AUDIENCE_LABELS = {
 
 export const SECTIONS = Object.keys(SECTION_LABELS);
 
+/** Catalog YAML filename per section (matches scripts/catalog.js). */
+export const SECTION_YAML_FILES = {
+	mods: 'mod.yaml',
+	apps: 'app.yaml',
+	games: 'game.yaml',
+	tools: 'tool.yaml',
+	guides: 'guide.yaml',
+	dev: 'dev.yaml'
+};
+
+export const CATALOG_GITHUB_REPO = '2wenty2wo/samplemods';
+
+const STARTER_YAML = `name: My Project
+description: A concise description of what the project does and where it runs.
+repo: owner/repository
+# Or omit repo and set website instead:
+# website: https://example.com/project
+author: owner
+install: sd-card
+runs_on: [device]
+audience: [musician]
+# tags: [example]
+`;
+
+/** @param {string} section */
+export function sectionYamlFile(section) {
+	return SECTION_YAML_FILES[section] ?? `${sectionSingular(section)}.yaml`;
+}
+
+/**
+ * GitHub web editor for an existing entry YAML (forks + Propose changes for non-collaborators).
+ * @param {{ id: string, section: string }} entry
+ */
+export function githubEditEntryUrl(entry) {
+	const file = sectionYamlFile(entry.section);
+	return `https://github.com/${CATALOG_GITHUB_REPO}/edit/main/data/${entry.section}/${entry.id}/${file}`;
+}
+
+/**
+ * GitHub "Create new file" URL with starter YAML for a catalog section.
+ * @param {string} section
+ * @param {string} [entryId='your-id']
+ */
+export function githubNewEntryUrl(section, entryId = 'your-id') {
+	const file = sectionYamlFile(section);
+	const id = String(entryId || 'your-id').trim() || 'your-id';
+	const params = new URLSearchParams({
+		filename: `${id}/${file}`,
+		value: STARTER_YAML
+	});
+	return `https://github.com/${CATALOG_GITHUB_REPO}/new/main/data/${section}?${params}`;
+}
+
+/** Issue form for people who cannot open a PR (no GitHub account / prefer a form). */
+export function githubChangeEntryIssueUrl(entryUrl = '') {
+	const params = new URLSearchParams({ template: 'change-entry.yml' });
+	if (entryUrl) params.set('entry', entryUrl);
+	return `https://github.com/${CATALOG_GITHUB_REPO}/issues/new?${params}`;
+}
+
+export function githubNewEntryIssueUrl() {
+	return `https://github.com/${CATALOG_GITHUB_REPO}/issues/new?template=new-entry.yml`;
+}
+
 /** @param {string} section */
 export function sectionLabel(section) {
 	return SECTION_LABELS[section] ?? section;

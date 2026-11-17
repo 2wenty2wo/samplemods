@@ -1,13 +1,15 @@
 # Contributing
 
-## Quickest way: use a form
+## Preferred: open a pull request
 
-The fastest way to suggest a project or a change is one of these GitHub issue forms (free GitHub account required):
+Use GitHub's web editor so your change becomes a pull request and you're credited as a contributor after squash-merge:
 
-- [Suggest a project](https://github.com/2wenty2wo/samplemods/issues/new?template=new-entry.yml)
-- [Fix or update a listing](https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml)
+- **New entry:** on the [Submit page](https://samplemods.com/submit/), pick a section — that opens `data/<section>/<your-id>/<type>.yaml` with a starter template (`Propose changes` → PR).
+- **Edit a listing:** on any entry page, use **Edit this entry on GitHub** (same editor flow).
 
-Submissions are added to the catalog for you. The rest of this guide covers editing the catalog files directly with a pull request.
+Screenshots belong in `data/<section>/<id>/screenshots/`. Catalog PR checks run `npm test` on every PR (including forks).
+
+Rather not edit a file? [Suggest a project](https://github.com/2wenty2wo/samplemods/issues/new?template=new-entry.yml) or [Fix or update a listing](https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml) via an issue form (still needs a GitHub account; issues don't count as contributions) — a maintainer applies those by hand.
 
 ## Files you shouldn't edit
 

@@ -3,9 +3,19 @@
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
+	import {
+		SECTIONS,
+		sectionLabel,
+		sectionExplainer,
+		githubNewEntryUrl,
+		githubNewEntryIssueUrl,
+		githubChangeEntryIssueUrl
+	} from '$lib/categories.js';
 
 	const title = `Submit an Entry · ${SITE_NAME}`;
-	const description = `Suggest a new project or listing change via a short GitHub form, or open a pull request if you prefer editing YAML yourself.`;
+	const description = `Add or update a catalog entry on GitHub. Your change becomes a pull request and you're credited as a contributor once it's merged.`;
+	const newEntryIssueUrl = githubNewEntryIssueUrl();
+	const changeEntryIssueUrl = githubChangeEntryIssueUrl();
 </script>
 
 <SeoHead title={title} description={description} url={absoluteUrl('/submit/', base)} image={defaultShareImage(base)} />
@@ -15,11 +25,10 @@
 		<a class="back-link" href="{base}/">← All entries</a>
 		<div class="page-screen-box">
 			<p class="page-kicker">CONTRIBUTING GUIDE</p>
-			<h1 class="page-title">How to Add or Update an Entry</h1>
+			<h1 class="page-title">Add or update a project</h1>
 			<p class="page-lead">
-				Two ways to contribute: a short form, or a pull request that edits the catalog files
-				directly. Form suggestions are added to the catalog for you, and every pull request is
-				checked automatically.
+				Everything happens on GitHub (free account needed). Your change becomes a pull request, and
+				you're credited as a contributor once it's merged.
 			</p>
 		</div>
 	</div>
@@ -27,117 +36,102 @@
 
 <div class="wrap info-grid">
 	<article class="info-card">
-		<h2>Quickest way: use a form</h2>
-		<p>
-			Suggest a new project or request a change to a listing in a couple of minutes. You'll need a
-			free GitHub account, and we'll take it from there.
-		</p>
-		<div class="info-actions">
-			<a
-				class="hw-action-btn orange"
-				href="https://github.com/2wenty2wo/samplemods/issues/new?template=new-entry.yml"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Suggest a project ↗
-			</a>
-			<a
-				class="hw-action-btn blue"
-				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Fix or update a listing ↗
-			</a>
+		<h2>Add a project</h2>
+		<p>Pick the section that fits, then GitHub opens a starter file for you to edit.</p>
+		<div class="section-picker">
+			{#each SECTIONS as section}
+				<a
+					class="section-link"
+					href={githubNewEntryUrl(section)}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<span class="section-name">{sectionLabel(section)}</span>
+					<span class="section-hint">{sectionExplainer(section)}</span>
+				</a>
+			{/each}
 		</div>
+		<ol class="steps">
+			<li>Pick a section — GitHub opens a pre-filled file.</li>
+			<li>Change <code>your-id</code> in the file name and fill in the fields.</li>
+			<li>Click <strong>Propose changes</strong>, then <strong>Create pull request</strong>.</li>
+		</ol>
 	</article>
 
-	<h2 class="manual-route-heading">Manual route (pull request)</h2>
-
 	<article class="info-card">
-		<span class="step-badge">STEP 1</span>
-		<h2>Add a YAML entry in <code>data/&lt;section&gt;/&lt;id&gt;/&lt;type&gt;.yaml</code></h2>
+		<h2>Fix a listing</h2>
 		<p>
-			Pick mods, apps, games, tools, guides, or dev. Use mod.yaml, app.yaml, game.yaml, tool.yaml, guide.yaml, or dev.yaml respectively. The folder supplies the section and the unique entry ID; omit section from YAML. A public
-			GitHub <code>repo</code> is preferred - it powers stars, README, and releases on the page. A
-			<code>website</code> link is accepted for paid or closed releases that are not on GitHub.
-			Optional <code>price</code> (<code>free</code> | <code>paid</code> | <code>pay-what-you-want</code>),
-			<code>price_note</code>, and <code>source</code> (<code>open</code> | <code>closed</code>).
-			GitHub stars, latest release tags, and push dates are enriched automatically when a repo is set.
+			Use <strong>Edit this entry on GitHub</strong> at the bottom of any
+			<a href="{base}/">entry page</a>.
 		</p>
-		<pre class="code-screen"><code>name: SampQOL OS
-description: 'Free SD-card mod for the Akai MPC Sample (firmware 1.3.0)'
-repo: snarebes/SampQOL-OS
-author: snarebes
-firmware: 1.3.0
-install: sd-card
-status: beta
-tags:
-  - os
-  - qol
+	</article>
 
-# Paid / closed (no GitHub): omit repo, set website instead
+	<details class="info-card details-card">
+		<summary>What goes in the file?</summary>
+		<div class="details-body">
+			<pre class="code-screen"><code>name: My Project
+description: A concise description of what the project does and where it runs.
+repo: owner/repository
+# Or omit repo and set website instead:
 # website: https://example.com/project
-# author_url: https://example.com
-# price: pay-what-you-want
-# price_note: Suggested €9.99
-# source: closed</code></pre>
-	</article>
-
-	<article class="info-card">
-		<span class="step-badge">STEP 2</span>
-		<h2>Drop screenshots or a logo in <code>data/&lt;section&gt;/&lt;id&gt;/</code></h2>
-		<p>
-			No YAML changes are needed for images, <code>scripts/build-data.js</code> discovers them
-			automatically on build:
-		</p>
-		<ul class="info-list">
-			<li>
-				<code>data/&lt;section&gt;/&lt;id&gt;/screenshots/01-splash.png</code> - 4:3 device screen captures
-				(<code>320×240</code> renders crisp with <code>image-rendering: pixelated</code>) or
-				hardware photos (<code>.png</code>, <code>.webp</code>, <code>.jpg</code>,
-				<code>.gif</code>).
-			</li>
-			<li>
-				<code>data/&lt;section&gt;/&lt;id&gt;/logo.svg</code> (or <code>.png</code> / <code>.webp</code>) -
-				optional logo displayed when no screenshots are present.
-			</li>
-			<li>
-				Record the upstream source URL and license for any images in
-				<code>data/media-sources.json</code>, keep individual files under <strong>500 KB</strong>,
-				and run <code>npm test</code>.
-			</li>
-		</ul>
-	</article>
-
-	<article class="info-card">
-		<span class="step-badge">STEP 3</span>
-		<h2>Run <code>npm test</code> and open a Pull Request</h2>
-		<p>
-			<code>npm test</code> validates your YAML against the JSON schema, checks dependency and launcher links
-			(<code>requires</code> / <code>required_by</code>, <code>compatible</code> / <code>launchers</code>), and verifies every media folder matches a
-			valid entry ID.
-		</p>
-		<div class="info-actions">
-			<a
-				class="hw-action-btn blue"
-				href="https://github.com/2wenty2wo/samplemods"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Open GitHub Repository ↗
-			</a>
-			<a
-				class="hw-action-btn orange"
-				href="https://github.com/2wenty2wo/samplemods/blob/main/CONTRIBUTING.md"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Read CONTRIBUTING.md ↗
-			</a>
-			<a class="hw-action-btn grey" href="{base}/">Back to Catalog</a>
+author: owner
+install: sd-card
+runs_on: [device]
+audience: [musician]
+# tags: [example]</code></pre>
+			<p>
+				Screenshots go in <code>data/&lt;section&gt;/&lt;id&gt;/screenshots/</code>; optional
+				<code>logo.*</code> beside the YAML. Keep images under 500&nbsp;KB. Full notes in
+				<a
+					href="https://github.com/2wenty2wo/samplemods/blob/main/CONTRIBUTING.md"
+					target="_blank"
+					rel="noopener noreferrer">CONTRIBUTING.md</a
+				>.
+			</p>
 		</div>
-	</article>
+	</details>
+
+	<details class="info-card details-card">
+		<summary>Prefer to work locally?</summary>
+		<div class="details-body">
+			<ol class="steps">
+				<li>Fork <code>2wenty2wo/samplemods</code> on GitHub and clone your fork.</li>
+				<li>Run <code>npm ci</code>.</li>
+				<li>
+					Create <code>data/&lt;section&gt;/&lt;your-id&gt;/&lt;type&gt;.yaml</code> (same fields as
+					the starter file); put images in
+					<code>data/&lt;section&gt;/&lt;your-id&gt;/screenshots/</code> (<code>logo.*</code>
+					optional), ≤500&nbsp;KB each.
+				</li>
+				<li>Run <code>npm test</code> (validates your YAML, ids and media).</li>
+				<li>
+					Optional: <code>npm run dev</code> to see your entry at
+					<code>/&lt;section-singular&gt;/&lt;your-id&gt;/</code>.
+				</li>
+				<li>Commit on a branch, push to your fork, open a pull request to <code>main</code>.</li>
+			</ol>
+			<p>
+				Don't edit bot-owned <code>data/github.json</code>, <code>data/readme/**</code>,
+				<code>data/contributors.json</code>, or <code>data/watch.json</code> (see
+				<a
+					href="https://github.com/2wenty2wo/samplemods/blob/main/CONTRIBUTING.md"
+					target="_blank"
+					rel="noopener noreferrer">CONTRIBUTING.md</a
+				>
+				for the full protected list).
+			</p>
+		</div>
+	</details>
+
+	<p class="issue-fallback">
+		Rather not edit a file? Open an issue and we'll add it for you (still needs a GitHub account;
+		issues don't count as contributions).
+		<a href={newEntryIssueUrl} target="_blank" rel="noopener noreferrer">Suggest a project</a>
+		·
+		<a href={changeEntryIssueUrl} target="_blank" rel="noopener noreferrer"
+			>Fix or update a listing</a
+		>
+	</p>
 </div>
 
 <style>
@@ -208,15 +202,6 @@ tags:
 		gap: 1.15rem;
 	}
 
-	.manual-route-heading {
-		margin: 0.5rem 0 0;
-		font-family: var(--font-display);
-		font-weight: 800;
-		font-size: 1.05rem;
-		letter-spacing: 0.02em;
-		color: var(--mpc-silkscreen);
-	}
-
 	.info-card {
 		background: var(--mpc-body-mid);
 		border: 2px solid #282b34;
@@ -226,19 +211,7 @@ tags:
 			inset 0 1px 0 rgb(255 255 255 / 0.55),
 			0 4px 0 #1b1d24;
 		display: grid;
-		gap: 0.6rem;
-	}
-
-	.step-badge {
-		justify-self: start;
-		background: var(--mpc-screen-bg);
-		color: var(--mpc-screen-yellow);
-		font-family: var(--font-mono);
-		font-size: 0.7rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		padding: 0.15rem 0.5rem;
-		border-radius: 3px;
+		gap: 0.7rem;
 	}
 
 	.info-card h2 {
@@ -253,16 +226,92 @@ tags:
 		color: #25272e;
 	}
 
-	.info-list {
+	.info-card a {
+		color: var(--mpc-silkscreen);
+		font-weight: 600;
+	}
+
+	.section-picker {
+		display: grid;
+		gap: 0.55rem;
+	}
+
+	.section-link {
+		display: grid;
+		gap: 0.15rem;
+		padding: 0.7rem 0.85rem;
+		background: var(--mpc-screen-bg);
+		border: 2px solid #252934;
+		border-radius: 6px;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.section-link:hover {
+		border-color: var(--mpc-btn-orange);
+	}
+
+	.section-name {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 0.95rem;
+		color: var(--mpc-screen-white);
+	}
+
+	.section-hint {
+		font-size: 0.82rem;
+		line-height: 1.4;
+		color: var(--mpc-screen-text);
+	}
+
+	.steps {
 		margin: 0;
 		padding-left: 1.25rem;
 		display: grid;
-		gap: 0.4rem;
+		gap: 0.35rem;
+		color: #25272e;
+	}
+
+	.details-card {
+		padding: 0;
+	}
+
+	.details-card summary {
+		cursor: pointer;
+		list-style: none;
+		padding: 1.25rem;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.05rem;
+	}
+
+	.details-card summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.details-card summary::before {
+		content: '+ ';
+		font-family: var(--font-mono);
+		color: var(--mpc-silkscreen-muted);
+	}
+
+	.details-card[open] summary::before {
+		content: '− ';
+	}
+
+	.details-body {
+		display: grid;
+		gap: 0.7rem;
+		padding: 0 1.25rem 1.25rem;
+	}
+
+	.details-body p {
+		margin: 0;
 		color: #25272e;
 	}
 
 	.code-screen {
-		margin: 0.25rem 0 0;
+		margin: 0;
 		padding: 0.85rem 1rem;
 		background: var(--mpc-screen-bg);
 		color: var(--mpc-screen-yellow);
@@ -273,10 +322,15 @@ tags:
 		overflow-x: auto;
 	}
 
-	.info-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.6rem;
-		padding-top: 0.35rem;
+	.issue-fallback {
+		margin: 0.25rem 0 0.5rem;
+		font-size: 0.88rem;
+		line-height: 1.5;
+		color: var(--mpc-silkscreen-muted);
+	}
+
+	.issue-fallback a {
+		color: var(--mpc-silkscreen);
+		font-weight: 600;
 	}
 </style>
