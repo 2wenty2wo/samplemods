@@ -1,0 +1,18 @@
+name: VigoBeatz Stems + Grid64
+description: >-
+  A SampQOL OS v0.3.0 add-on with on-device 4-stem separation (drums, bass, vocals, other)
+  and 1/64 grid zoom. Script installer hash-checks a stock card, patches it, and keeps a
+  restore backup.
+repo: AldanisVigo/VigoBeatz-SampQOL-Stems-Grid64-Mod
+author: VigoBeatz LLC
+requires:
+  - sampqol-os
+status: beta
+tags:
+  - stems
+  - sampqol
+  - sequencer
+install: sd-card
+firmware: 1.3.0.12
+runs_on: [device]
+audience: [musician]
