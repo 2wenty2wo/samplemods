@@ -1,0 +1,15 @@
+name: Tape Workshop
+description: >-
+  Melodee community build with its own boot art, live plug-in screens (waveform,
+  spectrum, levels), Voice Search, Auto BPM, Tutorial Mode, and MIDI import.
+  Includes a USB browser companion with Live Screen and recording.
+repo: bsauce42/tape-workshop-mpc-sample
+author: bsauce42
+tags:
+  - groovebox
+  - sequencer
+  - vst
+install: sd-card
+firmware: 1.3.0.12
+runs_on: [device]
+audience: [musician]

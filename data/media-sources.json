@@ -828,6 +828,32 @@
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/lockup.png"
     }
   ],
+  "tape-workshop": [
+    {
+      "file": "screenshots/01-splash.webp",
+      "source": "https://github.com/bsauce42/tape-workshop-mpc-sample",
+      "repo": "bsauce42/tape-workshop-mpc-sample",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-fmini-live-analyzer.webp",
+      "source": "https://github.com/bsauce42/tape-workshop-mpc-sample",
+      "repo": "bsauce42/tape-workshop-mpc-sample",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-fmini-instrument-controls.webp",
+      "source": "https://github.com/bsauce42/tape-workshop-mpc-sample",
+      "repo": "bsauce42/tape-workshop-mpc-sample",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/04-fmini-piano-roll.webp",
+      "source": "https://github.com/bsauce42/tape-workshop-mpc-sample",
+      "repo": "bsauce42/tape-workshop-mpc-sample",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "virtual-mpc-sample": [
     {
       "file": "screenshots/01-screen-trim.webp",
