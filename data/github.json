@@ -78,10 +78,10 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-17T22:48:43Z",
-    "last_commit_at": "2026-11-17T20:34:20Z",
+    "pushed_at": "2026-11-18T16:28:34Z",
+    "last_commit_at": "2026-11-18T16:28:34Z",
     "contributors": 2,
-    "open_issues": 1,
+    "open_issues": 2,
     "license": "MIT",
     "description": "Nine free studio effects, track chains, key and BPM tags, LUFS meters and on-device stems for the Akai MPC Sample, installed from a web page. Add-ons for SampQOL OS (by Snare Bes, downloaded from him). No coding needed.",
     "default_branch": "main",
@@ -122,19 +122,19 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 8,
+    "stars": 9,
     "forks": 0,
-    "pushed_at": "2026-11-18T03:39:07Z",
-    "last_commit_at": "2026-11-18T03:38:53Z",
+    "pushed_at": "2026-11-18T18:45:43Z",
+    "last_commit_at": "2026-11-18T18:45:18Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 2,
     "license": "MIT",
     "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. S600 MULTI multisample instruments with an Auto Sampler, Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling. C, aarch64 Linux; runs from SD card autorun.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.6B",
-      "published_at": "2026-11-18T03:31:32Z"
+      "tag": "v1.6C",
+      "published_at": "2026-11-18T18:45:44Z"
     },
     "releases": [
       {
@@ -156,12 +156,12 @@
         "truncated": false
       },
       {
-        "tag": "v1.6B",
-        "name": "MPC 600 S, LA Version 1.6B",
+        "tag": "v1.6C",
+        "name": "MPC 600 S, LA Version 1.6C",
         "prerelease": false,
-        "published_at": "2026-11-18T03:31:32Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6B",
-        "body": "**New: USB Audio Out.** Connected to a computer by USB, the MPC 600 S is an audio input on the computer (44.1 kHz stereo, no driver). It sends the full master mix: pads and sequences, the track mixer with its EQ, sends and inserts, Input Thru, and Master Effects. It's taken after Master Effects and before the main volume, so a recording doesn't change with the volume knob. The MPC follows the computer's clock on its own.\n\n- Choose the MPC as the input in your recording software, with USB Audio Out ON.\n- Switch it on with **USB Audio Out** on Additional Settings (OFF to start).\n- With Input USB and Input Thru on, you hear the computer's audio on the MPC's phones and line out, but it is never sent back to the computer: no loop, no doubled track.\n\nEverything in v1.6 is included (long samples no longer cut on the next pass, main volume dropouts, Save/Load).\n\nInstall: extract MPC-600-S-OS-v1.6B.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n\n\n",
+        "published_at": "2026-11-18T18:45:44Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6C",
+        "body": "**Fixed: browsing sounds on the Sample: field.** Turning the wheel now steps through every sound in memory, in a fixed order, both ways. Before, with sounds in memory that weren't on a pad, it went back and forth between two.\n\n- Stems: the result line no longer shows \"0bit\".\n\nEverything in v1.6B is included (USB Audio Out, Save/Load, long samples no longer cut on the next pass).\n\nInstall: extract MPC-600-S-OS-v1.6C.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
         "truncated": false
       }
     ],
@@ -256,10 +256,10 @@
   "bajdev/MPCkit": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-18T11:03:14Z",
-    "last_commit_at": "2026-11-18T10:52:05Z",
+    "pushed_at": "2026-11-18T12:48:26Z",
+    "last_commit_at": "2026-11-18T12:47:37Z",
     "contributors": 1,
-    "open_issues": 3,
+    "open_issues": 2,
     "license": "MIT",
     "description": "Application to create basic MPC Sample starter projects and kits from your desktop",
     "default_branch": "main",
@@ -284,7 +284,7 @@
   "bsauce42/tape-workshop-mpc-sample": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-18T06:29:42Z",
+    "pushed_at": "2026-11-18T16:54:23Z",
     "last_commit_at": "2026-11-15T06:37:09Z",
     "contributors": 1,
     "open_issues": 1,
@@ -293,10 +293,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.3.0-tapeworkshop-community.87",
-      "published_at": "2026-11-18T06:29:42Z"
+      "tag": "v0.3.0-tapeworkshop-community.88",
+      "published_at": "2026-11-18T16:54:23Z"
     },
     "releases": [
+      {
+        "tag": "v0.3.0-tapeworkshop-community.88",
+        "name": "Tape Workshop v88 · Stereo Video Recording",
+        "prerelease": false,
+        "published_at": "2026-11-18T16:54:23Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.88",
+        "body": "v88 adds an explicit two-channel recording bus to preserve separate left and right audio in exported videos from Live Screen and Tutorial Mode. Live monitoring retains its own output route. Channels are preserved rather than duplicated into mono.\r\n\r\n## Downloads\r\n\r\n- **Tape-Workshop-v88-Complete.zip** — full SD-card build, bundled plug-ins, matching source, artwork, licenses, and Mac companion launcher.\r\n- **Tape-Workshop-v88-Signed-Update.zip** — signed update for compatible existing Tape Workshop installations, including v87. Choose this ZIP in Manual install.\r\n- **Melodee-v88-source.tar.gz** — matching firmware source at commit a253936, also included in the complete package. Use this attached source archive; the repository branch and GitHub-generated source archives are not synchronized to v88.\r\n- SHA-256 checksum files accompany each download.\r\n\r\n## Install\r\n\r\nFor MPC Sample firmware 1.3.0.12. Follow the included README and preserve your projects, samples, and plug-ins. After installing, close and reopen http://192.168.155.1/ with the MPC connected over USB, then make a new recording. This change applies to new recordings.\r\n\r\n## Verification\r\n\r\nARM64 build, native audio tests, source layout, packaged-module inclusion, ZIP integrity and release signature checks passed. Exported test videos from both modes retained independent 440 Hz left and 880 Hz right signals at balanced levels, with each intended tone over 20 times stronger than the opposite-channel tone. One Live Screen fixture take stopped through the existing timing guard; its exported audio still passed. The Tutorial Mode take completed normally. Physical MPC/phone verification of the stereo change remains pending.\r\n\r\nIncludes previous v87 live-feed freeze recovery, a 30 fps target, direct stereo audio, recordings up to 20 minutes, logo/background customization, Expansion Builder artwork, Roll MIDI import, and the Mac shortcut.\r\n\r\nBased on Melodee by Kerem Kiliç (Ellic Studio). Component licenses and corresponding source are retained.",
+        "truncated": false
+      },
       {
         "tag": "v0.3.0-tapeworkshop-community.87",
         "name": "Tape Workshop v87 · Live Recording Freeze Fix",
@@ -313,15 +322,6 @@
         "published_at": "2026-11-17T09:58:40Z",
         "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.53",
         "body": "This update fixes a plug-in picker bug on the Akai MPC Sample. In v52, confirming **Replace** could load a different instrument or effect from the one selected. v53 confirms the exact plug-in selected. **Erase** also uses the same filtered list shown in the picker.\r\n\r\nThe ZIP includes the v52 features and the Rhythmer instruments **Frodhes**, **Tenebrae**, and the updated **FMini-1**.\r\n\r\n## Install\r\n\r\nFor Akai MPC Sample firmware 1.3.0.12. Back up the SD card, power off the MPC, and replace the card’s top-level `autorun` folder with the one from the ZIP. Keep your `Melodee` folder. To add the Rhythmer instruments, merge the included `Melodee/Plugins` folders into the card’s plug-in library. If a project saved the wrong plug-in, select the intended one again and save the project.\r\n\r\n## Voice Search\r\n\r\nIn **Sample Select**, open a folder, hold **Shift + B2**, wait for **Listening**, say a word like “kick,” then release **B2**. Turn **Data** to browse matches and press it to load the highlighted WAV. Press **B1** to clear the search. In the folder view, **Shift + B3** toggles Auto BPM.\r\n\r\nBased on Melodee 0.3.0 by Kerem Kiliç (Ellic Studio). The ARM64 build, host tests, and ZIP verification passed. MPC Sample hardware testing is pending.",
-        "truncated": false
-      },
-      {
-        "tag": "v0.3.0-tapeworkshop-community.52-rhythmer.1",
-        "name": "Tape Workshop v52 · Rhythmer Plug-in Update",
-        "prerelease": false,
-        "published_at": "2026-11-17T09:37:46Z",
-        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.52-rhythmer.1",
-        "body": "This update pairs Tape Workshop v52 for the Akai MPC Sample with three instrument bundles from Rhythmer OS 0.2.0.\r\n\r\n- **Frodhes** and **Tenebrae** are new to the Tape Workshop pack.\r\n- **FMini-1** has updated wrapper and DSP binaries in its existing bundle folder.\r\n- All three use the shared live instrument screen with a stereo waveform, spectrum, and left/right output levels. Turn **Data** to browse presets when the instrument exposes them.\r\n- The v52 installer includes Voice Search, Auto BPM, and the Los Angeles pixel-art boot splash.\r\n\r\n## Install\r\n\r\nUse MPC Sample firmware 1.3.0.12. Back up the SD card and power off the MPC. If v52 is already installed, copy the three folders from the ZIP’s `Melodee/Plugins` to the card’s `Melodee/Plugins`. Back up the existing FMini-1 folder before replacing it. For a fresh v52 installation, also follow the README to install the ZIP’s `autorun` folder. After boot, look for the three names in the instrument picker.\r\n\r\n## Voice Search\r\n\r\nStop playback and open a folder in **Sample Select**. Hold **Shift + B2**, wait for **Listening**, say “kick,” “piano,” or “melody,” then release **B2**. Tape Workshop searches WAV filenames in that folder and its subfolders and shows progress and matches. Turn **Data** to browse and press it to load the highlighted WAV. Press **B1** to clear the search. Use **Shift + B1** for typed search and **K2** to pause or resume indexing. From the folder view, **Shift + B3** toggles Auto BPM.\r\n\r\n## Credits and verification\r\n\r\nTape Workshop is based on Melodee 0.3.0 by Kerem Kiliç (Ellic Studio). The plug-in bundles are from Rhythmer OS 0.2.0 and include their license and source information. The ZIP and ARM64 VST2 bundles were verified. Playback and live display testing on MPC Sample hardware are pending.",
         "truncated": false
       }
     ],
@@ -783,7 +783,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 235,
+    "stars": 236,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -1122,7 +1122,7 @@
     "pushed_at": "2026-11-17T19:10:47Z",
     "last_commit_at": "2026-11-17T19:10:44Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": "AGPL-3.0",
     "description": "Free and open-source firmware for MPC Sample. 22 instrument entries, 36 Rhythmer Kits, sound design, GEN, Acid and Break. Built on Melodee.",
     "default_branch": "main",
@@ -1188,7 +1188,7 @@
     "archived": false
   },
   "jeffwebb-to/mpc-sample-tracker": {
-    "stars": 9,
+    "stars": 10,
     "forks": 1,
     "pushed_at": "2026-11-10T07:56:41Z",
     "last_commit_at": "2026-11-10T07:56:20Z",
@@ -1216,21 +1216,30 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 58,
-    "forks": 8,
-    "pushed_at": "2026-11-17T22:45:28Z",
-    "last_commit_at": "2026-11-17T22:20:16Z",
+    "stars": 59,
+    "forks": 9,
+    "pushed_at": "2026-11-18T17:50:52Z",
+    "last_commit_at": "2026-11-18T17:42:45Z",
     "contributors": 1,
-    "open_issues": 15,
+    "open_issues": 11,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.4.0",
-      "published_at": "2026-11-17T22:46:19Z"
+      "tag": "v0.5.0",
+      "published_at": "2026-11-18T17:51:45Z"
     },
     "releases": [
+      {
+        "tag": "v0.5.0",
+        "name": "Melodee 0.5.0",
+        "prerelease": false,
+        "published_at": "2026-11-18T17:51:45Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.5.0",
+        "body": "Melodee 0.5.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x, 0.3.0 or 0.4.0:** copy `Melodee-MPC-Sample-v0.5.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.5.0?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **Settings and MIDI Config rows are set with K1.** The encoder picks a row, **K1** sets it (its card shows the value), **−** / **+** step it. Push no longer opens a value. Sample rate, Audio buffer and Screen Mirror wait until K1 rests before the device reopens.\n- **Chop opens on the type you picked last.** A sample with no slices opens on the last **K3** type, kept with the settings.\n\n## New\n\n### Sequencing\n\n- **Free pattern length.** An empty pattern is Free: **K1** shows *Free*. The first Seq Record take grows it a bar at a time and ends at the bar line when you press **SEQ RECORD** or **STOP**. With notes on other tracks in its sequence, the take gets their length. Up to 128 bars.\n- **Step Edit: a new bar past the end.** The cursor walks past the last step into a new bar, marked by a **+** and an arrow at the right edge. A step written there makes the pattern long enough to hold it, to the end of its bar. Left empty, nothing changes.\n\n### Chop\n\n- **Auto** chop type (**K3**). Melodee reads the sample as DRUMS, MUSIC, SHOTS or HITS, shown at the top right, and cuts to suit:\n  - DRUMS: one slice a drum hit. Ghost notes and flams stay with the hit before.\n  - MUSIC: where the chords change.\n  - SHOTS: one slice a sound between silences.\n  - HITS: the strongest hits, spread out.\n  \n  **SHIFT** + **K3** sets SLICES, 8 to 64.\n- **B2** (**CLEAN**) on Auto separates the sample's stems once and cuts on the DRUMS stem.\n- **TO PADS** has a fourth card, **KIT**: one pad a sound, kicks first. Slices that sound the same share one pad (the longest one) and the hats share a mute group.\n\n### Auto sampler\n\n- Up to **8 velocity layers**: **LAYERS** Auto or 1–8. Auto splits where the tone changes; the sheet shows the layers as VEL bars. The .xpm keeps 4 layers for MPC 2, and the keygroup track plays all of them from the .xty.\n- A WAV is written mono when both sides are the same.\n- **TIME** shows about how long sampling takes, before you press **SAMPLE**.\n- **STEP** goes up to 24 semitones, **HOLD** up to 20 s.\n\n### Plug-ins\n\n- Replacing a plug-in on a track is one undo step. Undo loads the old plug-in with its state; redo brings back the new one.\n\n### Settings\n\n- **USAGE LOG** (**K2** on the Settings doors, off at first). While on, Melodee writes pages opened, presses and turns that changed nothing, undo soon after an edit, MENU picks and lesson steps to `Melodee/Usage`. No project, sample or plug-in names.\n\n## Fixed\n\n- Recall fills the pattern a track plays when that pattern is empty, so a jam in a new project lands in P1, not P2.\n- Auto sample on a MIDI track no longer shows the SPEED readout: an outside instrument plays in real time.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.4.0",
         "name": "Melodee 0.4.0",
@@ -1248,15 +1257,6 @@
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.3.0",
         "body": "Melodee 0.3.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0, 0.2.1 or 0.2.2:** copy `Melodee-MPC-Sample-v0.3.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.3.0?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update. 0.3.0 saves the open project by itself, so a project from 0.2.x is saved again by 0.3.0 after its first change.\n\n## Changed: read this first\n\n- **SEQ opens Sequences.** The pads launch a sequence on every track, as on the stock app. Press **B1** again for **Patterns**, the selected track's own patterns.\n- **SEQ held + pad launches a sequence on every track.** Before, it changed the selected track's pattern. A track with no notes in that sequence is silent. To change one track only, use the pads on Patterns.\n- **Scenes are now called sequences** on every screen, in MIDI Config (Remote sequence CC) and in the guide.\n- **MOTION, MOD and MACRO share B3** on the sequence pages. Press **B3** again to step through them. **ADD** is **SHIFT** + **B3**.\n- **The project saves by itself**, three seconds after the last control, while nothing plays, records or prints. **B1** on Project is now **SAVE AS**. A stock MPC project you open is not saved until you press **SAVE AS**.\n- **Instrument pads become keygroup tracks.** A project saved before 0.3.0 opens each kit's instrument pad (SFZ, MPC keygroup program, EXS, SoundFont, DecentSampler) as a keygroup track of its own, with its notes. A pad of an MPC drum program stays on its kit.\n- **A new project has one of the MPC's factory kits on track 1.** On the NEW question, **B2** (**EMPTY**) starts with an empty kit.\n- **A first install starts on Basic** (see below). An MPC that already has Melodee's settings stays on Full.\n- **A new track picks its type first**, in the MPC's order: Drum, Keygroup, Plugin, MIDI, Audio. Drum and MIDI then show their sources.\n- **Knobs moved.** On Tracks, **K1** is level, **K2** pan and **K3** the send to bus A. On a kit's Stage **SENDS**, **K1** is the pad's send and **K2** the bus; **SHIFT** + **K1** is **KIT SEND**.\n- **PAD BANK:** only a tap changes the bank. While it is held, **B1**–**B3** are **TRACKS**, **MOVE** and **COPY**, and **K1**–**K3** are the selected track's level, pan and send A, on any page.\n- **ERASE + pad on a kit while playing** erases only the notes the playhead passes while you hold both, as on the MPC.\n- **A project holds as many samples as fit in memory**, not 64. When memory is full, a sample longer than 2 seconds plays from the card instead.\n- **16 Levels:** the Loop type is gone and Chords has its place. **LOOP** + **16 LEVELS**, or the Menu, opens the Looper.\n\n## New\n\n### Tracks\n\n- **Audio tracks.** Pick **Audio** on an empty track. **SEQ RECORD** + **PLAY** records one pass of the pattern from the track's input, as on the MPC 3. The take plays wherever its pattern plays, also in the Song. Stage has **CLIP** (level, start, end), **FADES** (fade in, fade out, reverse), **WARP** (Off, Stretch or Repitch, with the take's BPM, semitones and fine) and **INPUT** (source, monitor, gain). Takes are 24-bit WAV files in `<project> Audio` beside the project.\n- **Keygroup tracks.** One instrument (SFZ, MPC keygroup program, EXS, DecentSampler, SoundFont preset) or a single sample, played across the pads and keys. Stage has Zones or Trim, Tune, Amp Env, Filter, Filt Env, Play, Arp and Chord. The fader, a keyboard's pitch wheel and the sustain pedal play it. Mono programs glide and play legato as their `.xpm` says.\n- **Auto sampler** (**SHIFT** + **Pad 11** on a plug-in or MIDI track). Plays a plug-in one key at a time and records each note into an MPC keygroup program on a new keygroup track. On a MIDI track it plays an external instrument over MIDI and records it from an input. A check first finds out what the sound is and sets mono or poly, glide, one split, drums, accent layers, takes, loops, hold and release to match. The program is written to `Samples/Keygroups/<name>/` as an MPC 3 track file (`.xty`) and an `.xpm`.\n\n### Samples\n\n- **Stems** (**SHIFT** + **B3** on a kit pad's **TRIM**, or **STEMS** in the Menu on Stage). Separates the pad's sample into **DRUMS**, **BASS**, **MUSIC** and **VOCALS** on the next four empty pads, as one undo. It runs on the MPC with Deezer's Spleeter 4-stem model: a 13-second sample takes about 15 seconds, and you can keep playing meanwhile. The files go to `Samples/Stems`.\n- **Long samples play from the card.** A WAV longer than 10 seconds plays straight from its file, up to 6 hours. An MP3, FLAC, Ogg or AIFF longer than 10 seconds plays from a WAV that Melodee makes of it once in `Melodee/Cache`; your file is not changed. Trim, Chop, Normalize, Trim Sample, Extract and Save Sample work on them, and Chop's slices are written into the WAV without moving its audio. Cloud takes its grains from the first 30 seconds of the region.\n- **Recordings past 60 seconds.** With a card, Sample Record, Resample and a Looper commit run up to 6 hours, written to the card as they come.\n- A sample is kept once, at its own rate, with no copy at the device's rate. Changing the sample rate in Settings no longer remakes the samples.\n\n### MPC 3\n\n- **Export an MPC 3 project** (Song, **B1** **EXPORT**, turn to **MPC 3**). Writes `Melodee/MPC 3/<name>.xpj` with its samples. Kit tracks become drum tracks, keygroup tracks and instrument pads keygroup tracks, plug-in tracks audio tracks of their prints, audio tracks Audio tracks with their takes, MIDI tracks MIDI tracks. Each pattern number becomes a sequence and the song one sequence. Effects, sends, the song's tempo changes and samples that are not WAV files are left out.\n- **MPC 3 projects open** with their keygroup tracks and Audio tracks.\n- **Chops are kept in the WAV file**, as on the MPC. Slices made on an MPC load with the file, each slice has its own start and end, and Melodee writes changed slices back into the file.\n\n### Chords\n\n- **Prog pad layout** (hold **SAMPLE** on an instrument track, **K3**). Each pad plays a chord of an MPC 3 progression file (`.progression`), up to 48 chords in banks A–C. The encoder picks the progression, **K1** its key, **K2** its voicing. **B2** (**STORE**) puts the notes you hold on a pad.\n- **16 Levels: Chords**, on any track. Each pad plays a chord of the track's progression. A kit plays the pad's one sample at every note of the chord.\n- **16 LEVELS held has keys.** **B1** (**SCALE**) and **B2** (**CHORDS**) choose that type and turn 16 Levels on. On Chords, **B2** (**FILE**) lists the progression files on the card and **B3** (**SET**) makes a chord on a pad with **K1** (**ROOT**), **K2** (**CHORD**) and **K3** (**INVERSION**). Your progressions are saved in `Melodee/Progressions`.\n- A step holds up to eight notes (four before).\n\n### Sequences\n\n- **Sequences first.** **SEQ** opens Sequences. With **SEQ** held on any page the pads are the sequences; pads pressed in one hold chain up to eight. The sheet shows what plays now, what plays next, and a track that is on a pattern of its own.\n- **CAPTURE** (**SHIFT** + **B2** on Sequences, then a pad): the patterns playing now become that sequence.\n- **Follow** (Settings > **SEQ**): Step Edit and Roll move with the playhead, by page or by step.\n- Roll, Motion and Step Edit name the pattern they edit in the header, amber while the track plays another.\n- **TAP TEMPO** held + encoder sets the tempo by a whole BPM, as on the stock app.\n\n### Finding your way\n\n- **The Menu.** Hold the encoder on any page. **HERE** lists the page's jobs that no printed button says, each with its shortcut. **GO** shows the 16 places laid out as the pads; press a pad to open its place.\n- **Lessons.** Pad 16 on **GO** is **LEARN**: First beat, Sequences, Mix a track and Shape a pad. Each step uses one control, and its light blinks. A lesson runs on a project of its own with the MPC's factory kit; your project is saved first and opens again after.\n- **Basic and Full** (Settings, **K1** **FEATURES**). Basic shows the stock app's pages plus tracks, plug-ins, the mixer and Song. It leaves out Motion, Mod and Macro, Sends, the Looper, follow actions, VARY, MIDI and Audio tracks, and a kit pad's Layers, Colour, Follow, Cloud, Sends and Kit Filt. Nothing is deleted: Full shows everything again.\n- **The pads chip.** When the pads do not play the selected track, the first chip in the header says what they do: TRACKS, PATTERNS, SEQUENCES, STEPS, PAD FX, LOOPS, LEVELS or CHORDS.\n- A soft key with several pages lists them by name for a moment after each press.\n\n### Projects and files\n\n- **ERASE** in the sample browser and the plug-in picker deletes the file, folder, program or plug-in under the cursor from the card. Melodee asks first, and never deletes what the open project uses.\n- Picking another plug-in over one in use asks *Replace <plug-in>?* first.\n- The Loading sheet has a row for the project's samples and one for its instruments' files, with how many of each are in.\n\n### Screen\n\n- **Palettes** (Settings > **SCREEN**): NIGHT, DAY, CONTRAST, SUNSET, OCEAN, NEON, CANDY, LO-FI and LCD.\n- **Fonts**: Rubik, Inter Tight, Atkinson, Space Grotesk, IBM Plex, Manrope and two pixel fonts, Melodee Pixel and VT323. Both are picked on cards that change the whole screen as you turn.\n- Settings pages scroll.\n\n## Faster\n\n- **Cold start.** Melodee reads the card's folders ahead when it starts and when the card comes back. On the test card a project's samples loaded in 2 s where they took 35 s, and Surge XT's data opened in 1.5 s where it took a minute.\n- Samples and an instrument's files load on three threads.\n- **Instruments made of WAV files are streamed as they are on the card**, at their own rate. They open at once, with no copy in `Melodee/Cache`.\n- An MPC keygroup program opens in half the time.\n- Streaming from the card keeps what it read in memory (up to 200 MB over all files, the longest unused given back first), keeps files open between reads, reads at real-time priority and holds half a second where each pad starts, loops and ends, as the MPC's own app does.\n\n## Fixed\n\n- The master is clean up to −1 dBFS and rounds peaks off only above it. The red meter LED lights past −1 dBFS.\n- A Mono pad cuts its last note at any pitch, so 16 Levels on a Mono pad plays one note at a time. Set the pad to Poly to play chords.\n- Note Repeat and arpeggiator notes recorded after a count-in start on the pattern's first tick, not a bar later.\n- A pad with layers shows its playhead on Trim at every hit.\n- The browser previews a program's `[Previews]` WAV as well as its MP3.\n- The MPC's plug-in, sample and project browsers leave out `Melodee/Cache` and `Melodee/Crashes`.\n- **TAP TEMPO** held on the Tempo page, **POWER** on the Exit screen and **SAMPLE SELECT** on the browser close what they opened. Back from Stage returns to Tracks. **SHIFT** + **KNOB FX** steps through the effect chains. The browser's header names the pad a file loads onto.\n\n## Removed\n\n- The Loop type of 16 Levels.\n\n## Files\n\n- `Melodee-MPC-Sample-v0.3.0.zip`: the `autorun` folder for the card, and the update file. Its README and licences are inside, in `autorun/melodee/`. It is 87 MB, larger than before: 79 MB of it is the Stems model, in `autorun/melodee/stems/`.\n- `Melodee-MPC-Sample-v0.3.0.zip.sha256`: its checksum.\n\nNew to Melodee? Read the [quickstart](https://github.com/keremimo/melodee-sample/blob/main/docs/QUICKSTART.md), then the [user guide](https://github.com/keremimo/melodee-sample/blob/main/docs/GUIDE.md). Both are also on the MPC's own web page.",
         "truncated": true
-      },
-      {
-        "tag": "v0.2.2",
-        "name": "Melodee 0.2.2",
-        "prerelease": false,
-        "published_at": "2026-11-14T19:17:54Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.2.2",
-        "body": "Melodee 0.2.2 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0 or 0.2.1:** copy `Melodee-MPC-Sample-v0.2.2.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.2.2?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in the [0.2.0 notes](https://github.com/keremimo/melodee-sample/releases/tag/v0.2.0): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\n## New\n\n- **Layer play: Cycle hold and Random hold** (Stage LAYERS, **SHIFT** + **K1**). They pick a layer like Cycle and Random, but while Note Repeat repeats the pad, every repeat plays the layer the first one picked until you let go.\n- **Stage ARP: SHIFT + K2** turns the arpeggiator on or off.\n\n## Changed\n\n- **Note Repeat is no longer the arpeggiator.** It plays every pad held together on each step, as on the MPC. Before, two pads held took turns: a kick pressed over rolling hats played only every other step and halved the hats. The arpeggiator keeps its modes, rate, octaves, gate and hold on Stage ARP, and Note Repeat no longer turns it on.\n\n## Fixed\n\n- Note Repeat and the arpeggiator play each note on its exact frame. Before, a note landed at the start of the audio block it fell in, so repeats were uneven by up to 3 ms. Swung repeats and MIDI out are exact too.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -1264,8 +1264,8 @@
   "keremimo/sample-base": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-17T22:45:14Z",
-    "last_commit_at": "2026-11-17T19:52:55Z",
+    "pushed_at": "2026-11-18T18:16:19Z",
+    "last_commit_at": "2026-11-18T18:05:37Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1365,8 +1365,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-18T11:08:16Z",
-    "last_commit_at": "2026-11-18T11:08:14Z",
+    "pushed_at": "2026-11-18T12:17:33Z",
+    "last_commit_at": "2026-11-18T12:17:31Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1415,7 +1415,7 @@
     "archived": false
   },
   "orrpunk-art/virtual-mpc-sample": {
-    "stars": 25,
+    "stars": 26,
     "forks": 3,
     "pushed_at": "2026-11-01T12:48:52Z",
     "last_commit_at": "2026-11-01T12:48:18Z",
@@ -1430,10 +1430,10 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 11,
+    "stars": 14,
     "forks": 1,
-    "pushed_at": "2026-11-17T21:53:07Z",
-    "last_commit_at": "2026-11-17T21:53:05Z",
+    "pushed_at": "2026-11-18T16:07:21Z",
+    "last_commit_at": "2026-11-18T16:07:18Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1630,12 +1630,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 121,
+    "stars": 122,
     "forks": 7,
-    "pushed_at": "2026-11-16T17:07:39Z",
-    "last_commit_at": "2026-11-16T17:07:37Z",
+    "pushed_at": "2026-11-18T15:53:08Z",
+    "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 25,
+    "open_issues": 26,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
