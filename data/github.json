@@ -1,4 +1,19 @@
 {
+  "AldanisVigo/VigoBeatz-SampQOL-Stems-Grid64-Mod": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-18T19:52:26Z",
+    "last_commit_at": "2026-11-18T19:52:19Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "An unofficial MPC Sample expansion by VigoBeatz LLC, adding four-stem separation and 1/64 grid zoom to an existing SampQOL installation.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
+    "archived": false
+  },
   "AlekseyMalykh/am-mod": {
     "stars": 21,
     "forks": 1,
@@ -78,7 +93,7 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-18T16:28:34Z",
+    "pushed_at": "2026-11-18T19:08:11Z",
     "last_commit_at": "2026-11-18T16:28:34Z",
     "contributors": 2,
     "open_issues": 2,
@@ -91,6 +106,15 @@
       "published_at": "2026-11-17T20:36:54Z"
     },
     "releases": [
+      {
+        "tag": "dsb-boot-v1.0.1",
+        "name": "D.S.B Boot v1.0.1",
+        "prerelease": false,
+        "published_at": "2026-11-18T19:08:11Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/dsb-boot-v1.0.1",
+        "body": "Fix: SD Card Access no longer says 'SD card is busy' when an OS was started from the boot menu. Swap your autorun folder for this one; your os/ folders stay as they are.",
+        "truncated": false
+      },
       {
         "tag": "v0.8.0",
         "name": "v0.8.0: SampQOL 0.3.0",
@@ -108,15 +132,6 @@
         "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/dsb-boot-v1.0.0",
         "body": "**D.S.B Boot: a free boot menu for the MPC Sample.** One card, multiple setups, picked on the Sample's screen at power-on.\n\n- **HS FX:** stock firmware with three HS effects added to the Knob FX list: HS Para EQ, HS Tube Strip and HS Saturator. No SampQOL needed.\n- **Any OS:** copy an OS's unchanged release `autorun` folder into `autorun/os/` and rename it. It shows on the menu. You bring your own copy from its author.\n- **Stock:** Akai's firmware, untouched.\n\n## Install\n1. Back up your SD card.\n2. Download `dsb-boot-card.zip` and unzip it.\n3. Copy the `autorun` folder to the top level of an exFAT card.\n4. Put the card in the MPC and switch on.\n\nTurn the data encoder to browse, push to boot. SHIFT + turn switches theme. Full guide: https://www.henryskillz.com/dsb-guide\n\n**Tested:** cold boot on Henry's own MPC Sample (firmware 1.3.0.12) on 18 Nov 2026. Every unit and card is different, so back up first and [report anything odd](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/issues).\n\nSHA-256: `c83511782f803a20a7524df79c77aa3f2d4563c101657d3094e722ddd44647cf`\n\nThird-party OS support follows [SampleBoot](https://github.com/pxcm/SampleBoot) by Alessandro \"Paxi\" D'Esposito (MIT). Notices are in `autorun/boot/NOTICE.txt`.\n\nUnofficial. Not made, endorsed or supported by Akai Professional or inMusic. Pull the card and the Sample is stock again.",
         "truncated": false
-      },
-      {
-        "tag": "v0.7.1",
-        "name": "v0.7.1",
-        "prerelease": false,
-        "published_at": "2026-11-15T00:47:46Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.1",
-        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** A v0.7.1 card cold-booted on a real MPC Sample on 15 Nov 2026 and the D.S.B effects loaded. Warp on import and HS Crush Auto Gain were tested on the same unit from RAM the same day.\n\n**New in v0.7.1**\n- **HenrySkillz D.S.B (Drums. Sample. Bass.):** the kit's new name across the docs.\n- **HS HF Exciter:** its new name, now with its HS faceplate in the editor.\n- **Warp on import:** a loop loaded onto a pad plays at the project tempo straight away. One-shots are left alone. Turning off \"Audio Tracks Auto Warp\" in Preferences turns this off too.\n- **HS Crush Auto Gain:** level-matched make-up.\n\nProjects and presets saved on v0.6.x and v0.7.0 open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -127,7 +142,7 @@
     "pushed_at": "2026-11-18T18:45:43Z",
     "last_commit_at": "2026-11-18T18:45:18Z",
     "contributors": 1,
-    "open_issues": 2,
+    "open_issues": 3,
     "license": "MIT",
     "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. S600 MULTI multisample instruments with an Auto Sampler, Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling. C, aarch64 Linux; runs from SD card autorun.",
     "default_branch": "main",
@@ -1218,8 +1233,8 @@
   "keremimo/melodee-sample": {
     "stars": 59,
     "forks": 9,
-    "pushed_at": "2026-11-18T17:50:52Z",
-    "last_commit_at": "2026-11-18T17:42:45Z",
+    "pushed_at": "2026-11-18T19:24:27Z",
+    "last_commit_at": "2026-11-18T19:05:26Z",
     "contributors": 1,
     "open_issues": 11,
     "license": "AGPL-3.0",
@@ -1227,10 +1242,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.5.0",
-      "published_at": "2026-11-18T17:51:45Z"
+      "tag": "v0.5.1",
+      "published_at": "2026-11-18T19:25:20Z"
     },
     "releases": [
+      {
+        "tag": "v0.5.1",
+        "name": "Melodee 0.5.1",
+        "prerelease": false,
+        "published_at": "2026-11-18T19:25:20Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.5.1",
+        "body": "Melodee 0.5.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.5.0:** copy `Melodee-MPC-Sample-v0.5.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.5.1?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **Hold SEQ for the selected track's patterns.** On any page, a pad launches that pattern on the selected track only, and more pads in the same hold chain them. **SHIFT** + pad launches a sequence on every track. While **SHIFT** is held, the pads and the sheet show the sequences, and **SHIFT** + more pads chain them. **−** / **+** launch the previous / next pattern. A tap of **SEQ** still opens **Sequences**.\n- **Auto chop cuts DRUMS and MUSIC on the beats.** A sample with a steady beat is cut on the beats Melodee finds in it: every 1, 2, 4, 8 or 16 beats, or eighths, whichever comes nearest **SLICES**. No slice is shorter than 80 % of an eighth note, and Auto keeps its cuts that far from your hand cuts. HITS keeps 150 ms between cuts.\n\n## New\n\n### Chop\n\n- **TO PADS writes a pattern of the slices.** With the **PATTERN** card on (the default), TO PADS also writes a pattern with a note for each slice where it falls, so **PLAY** gives you the loop back on pads you can change. With KIT, each note plays the pad of its sound. The pattern goes into the track's pattern when that is empty, else into the first empty one. Undo takes back the pads and the pattern in one step.\n\n### Settings\n\n- **USB volume** on **AUDIO**: what a computer records from the MPC over USB-C. **Full** (the default) sends the mix at full level whatever **MAIN VOLUME** is set to. **Knob** follows **MAIN VOLUME**, as the jacks do.\n\n## Fixed\n\n- While a loop or MIDI track uses the mic or the rear inputs, the other input as Input Config's or an audio track's source shows **IN USE** and is silent, instead of playing the input in use under its name. Sample Record and audio takes refuse with a notice.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.5.0",
         "name": "Melodee 0.5.0",
@@ -1248,15 +1272,6 @@
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.4.0",
         "body": "Melodee 0.4.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x or 0.3.0:** copy `Melodee-MPC-Sample-v0.4.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.4.0?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **Chop is reworked.** See *Chop* below. The encoder now moves the selected slice's cut instead of selecting a slice: tap a slice's pad or use **−** / **+** to select one. Push no longer starts a Manual take. **B2** (**SNAP**) is gone: every cut always lands on a zero crossing.\n- **Rec Quantize is one press.** **SHIFT** + **Pad 10** turns it on or off, as on the MPC. Recorded notes land on the pattern's Q. The REC QUANTIZE page and Settings' Rec grid row are gone.\n- **A new project has no tracks.** The track types open on track 1. On the NEW question, **B2** (**KIT**) starts with the MPC's factory kit on track 1.\n- **Melodee starts on Full**, also after an update. Basic offers every track type.\n- **Nothing is written to the card's top level.** New samples go to `Melodee/Samples` and `.syx` files are read from `Melodee/SysEx`. The old `Samples` and `SysEx` folders at the top are still read.\n- **Push on an MPC drum program** in the sample browser opens **LOAD KIT** instead of replacing the kit at once (see below).\n- **ERASE + an empty pad** on a kit now closes the gap (see below).\n- **The meter lights** step as the stock app's: −24.1, −12.1, −6.1 and −3.1 dBFS, red past −0.1 dBFS.\n- **The manual** is updated for all of this, on GitHub and on the web page at http://melodee.local.\n\n## New\n\n### Chop\n\n- **Manual take with the red pad.** Set **K3** to Manual. Pad 1 blinks red: tap it and the region plays. The red moves to the next pad; tap it on the next hit to cut there. After pad 16 the pads turn to bank B, up to 64 slices in banks A–D. Tap a lit pad to play again from its slice and redo the cuts after it. A take is one undo step.\n- **Fix a cut by eye.** Tap a slice's pad and turn the encoder: its start moves (its end after **K2**). The view zooms in while you turn and the slice plays once when you stop. **SHIFT** + encoder jumps the cut from hit to hit, marked under the waveform.\n- **PAD BANK** steps the pads through the slices, 16 at a time.\n- **Beats chop by division:** 1/16, 1/8, 1/4, 1/2, 1, 2 or 4 bars on **SHIFT** + **K3**.\n- **Cuts you make or move by hand stay** when you chop again by type, threshold, division or regions. An automatic cut close to one of yours gives way to it, so no short slivers.\n- **ERASE + pad** joins a slice with the one before. On pad 1 it joins with the next. The pads after move down one. **ERASE** + **CHOP** takes every cut out.\n- **TO PADS** asks how the slices play: **POLY**, **MONO** (one mute group) or **THRU** (each plays on to the region's end).\n- The chop type, its amount and your hand cuts are saved in the sample's WAV file with its slices, so they are still there after a restart.\n\n### Kits\n\n- **LOAD KIT.** Push on an MPC drum program in the sample browser shows its filled banks and how many pads each has. Pick which of your kit's banks each one fills, or **WHOLE KIT**. Only the filled pads are loaded; the rest of your kit stays. One undo.\n- **Close a gap.** **ERASE** + an empty pad moves the pads after it down one, with their notes, through that bank and the next one. To take a pad out and close the gap, press **ERASE** + that pad twice. The notices say what happened.\n\n### Samples\n\n- **A sample's note is found** when it loads or is recorded. 16 Levels Scale and Chords, MIDI into 16 Levels, Roll's row names and a keygroup track of one sample play from that note instead of C. A chord stab's root is found from its chord.\n- **Stems BEST** (**B2**): separates up to 16 kHz in two passes, about three times as long. On at first, kept with the settings.\n- The sample browser's **PREVIEW** works on a keygroup track too, and stays on or off after a restart.\n\n### Sequencing\n\n- **Roll:** **K2** on marked notes moves their velocities together.\n\n## Fixed\n\n- A kept punch ends with its pattern, also with Half Seq, a shorter length, Half Speed or an editor's loop. Punches let go when the transport leaves them.\n- Motion and kept punches past a pattern's end stay out on a track at another speed.\n- A kit lane of its own length keeps its notes with Seq Record, Note Repeat and Time Correct.\n- Stopping before the bar a launched sequence waits for brings its tempo with it.\n- The song's clips play their pattern where the song is.\n- A track move takes its kept punches and its modulator and macro lanes with it.\n- An editor's loop plays the right bars on a track at another speed.\n- Clear pattern takes the pattern's Motion with its notes.\n- **SHIFT** + **PLAY** continues from the right place on a track at another speed.\n- A MIDI track's audio no longer clicks on each pad touch and release.\n- The auto sampler no longer hears an outside instrument's check notes ringing.\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.3.0",
-        "name": "Melodee 0.3.0",
-        "prerelease": false,
-        "published_at": "2026-11-16T20:41:35Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.3.0",
-        "body": "Melodee 0.3.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0, 0.2.1 or 0.2.2:** copy `Melodee-MPC-Sample-v0.3.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.3.0?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update. 0.3.0 saves the open project by itself, so a project from 0.2.x is saved again by 0.3.0 after its first change.\n\n## Changed: read this first\n\n- **SEQ opens Sequences.** The pads launch a sequence on every track, as on the stock app. Press **B1** again for **Patterns**, the selected track's own patterns.\n- **SEQ held + pad launches a sequence on every track.** Before, it changed the selected track's pattern. A track with no notes in that sequence is silent. To change one track only, use the pads on Patterns.\n- **Scenes are now called sequences** on every screen, in MIDI Config (Remote sequence CC) and in the guide.\n- **MOTION, MOD and MACRO share B3** on the sequence pages. Press **B3** again to step through them. **ADD** is **SHIFT** + **B3**.\n- **The project saves by itself**, three seconds after the last control, while nothing plays, records or prints. **B1** on Project is now **SAVE AS**. A stock MPC project you open is not saved until you press **SAVE AS**.\n- **Instrument pads become keygroup tracks.** A project saved before 0.3.0 opens each kit's instrument pad (SFZ, MPC keygroup program, EXS, SoundFont, DecentSampler) as a keygroup track of its own, with its notes. A pad of an MPC drum program stays on its kit.\n- **A new project has one of the MPC's factory kits on track 1.** On the NEW question, **B2** (**EMPTY**) starts with an empty kit.\n- **A first install starts on Basic** (see below). An MPC that already has Melodee's settings stays on Full.\n- **A new track picks its type first**, in the MPC's order: Drum, Keygroup, Plugin, MIDI, Audio. Drum and MIDI then show their sources.\n- **Knobs moved.** On Tracks, **K1** is level, **K2** pan and **K3** the send to bus A. On a kit's Stage **SENDS**, **K1** is the pad's send and **K2** the bus; **SHIFT** + **K1** is **KIT SEND**.\n- **PAD BANK:** only a tap changes the bank. While it is held, **B1**–**B3** are **TRACKS**, **MOVE** and **COPY**, and **K1**–**K3** are the selected track's level, pan and send A, on any page.\n- **ERASE + pad on a kit while playing** erases only the notes the playhead passes while you hold both, as on the MPC.\n- **A project holds as many samples as fit in memory**, not 64. When memory is full, a sample longer than 2 seconds plays from the card instead.\n- **16 Levels:** the Loop type is gone and Chords has its place. **LOOP** + **16 LEVELS**, or the Menu, opens the Looper.\n\n## New\n\n### Tracks\n\n- **Audio tracks.** Pick **Audio** on an empty track. **SEQ RECORD** + **PLAY** records one pass of the pattern from the track's input, as on the MPC 3. The take plays wherever its pattern plays, also in the Song. Stage has **CLIP** (level, start, end), **FADES** (fade in, fade out, reverse), **WARP** (Off, Stretch or Repitch, with the take's BPM, semitones and fine) and **INPUT** (source, monitor, gain). Takes are 24-bit WAV files in `<project> Audio` beside the project.\n- **Keygroup tracks.** One instrument (SFZ, MPC keygroup program, EXS, DecentSampler, SoundFont preset) or a single sample, played across the pads and keys. Stage has Zones or Trim, Tune, Amp Env, Filter, Filt Env, Play, Arp and Chord. The fader, a keyboard's pitch wheel and the sustain pedal play it. Mono programs glide and play legato as their `.xpm` says.\n- **Auto sampler** (**SHIFT** + **Pad 11** on a plug-in or MIDI track). Plays a plug-in one key at a time and records each note into an MPC keygroup program on a new keygroup track. On a MIDI track it plays an external instrument over MIDI and records it from an input. A check first finds out what the sound is and sets mono or poly, glide, one split, drums, accent layers, takes, loops, hold and release to match. The program is written to `Samples/Keygroups/<name>/` as an MPC 3 track file (`.xty`) and an `.xpm`.\n\n### Samples\n\n- **Stems** (**SHIFT** + **B3** on a kit pad's **TRIM**, or **STEMS** in the Menu on Stage). Separates the pad's sample into **DRUMS**, **BASS**, **MUSIC** and **VOCALS** on the next four empty pads, as one undo. It runs on the MPC with Deezer's Spleeter 4-stem model: a 13-second sample takes about 15 seconds, and you can keep playing meanwhile. The files go to `Samples/Stems`.\n- **Long samples play from the card.** A WAV longer than 10 seconds plays straight from its file, up to 6 hours. An MP3, FLAC, Ogg or AIFF longer than 10 seconds plays from a WAV that Melodee makes of it once in `Melodee/Cache`; your file is not changed. Trim, Chop, Normalize, Trim Sample, Extract and Save Sample work on them, and Chop's slices are written into the WAV without moving its audio. Cloud takes its grains from the first 30 seconds of the region.\n- **Recordings past 60 seconds.** With a card, Sample Record, Resample and a Looper commit run up to 6 hours, written to the card as they come.\n- A sample is kept once, at its own rate, with no copy at the device's rate. Changing the sample rate in Settings no longer remakes the samples.\n\n### MPC 3\n\n- **Export an MPC 3 project** (Song, **B1** **EXPORT**, turn to **MPC 3**). Writes `Melodee/MPC 3/<name>.xpj` with its samples. Kit tracks become drum tracks, keygroup tracks and instrument pads keygroup tracks, plug-in tracks audio tracks of their prints, audio tracks Audio tracks with their takes, MIDI tracks MIDI tracks. Each pattern number becomes a sequence and the song one sequence. Effects, sends, the song's tempo changes and samples that are not WAV files are left out.\n- **MPC 3 projects open** with their keygroup tracks and Audio tracks.\n- **Chops are kept in the WAV file**, as on the MPC. Slices made on an MPC load with the file, each slice has its own start and end, and Melodee writes changed slices back into the file.\n\n### Chords\n\n- **Prog pad layout** (hold **SAMPLE** on an instrument track, **K3**). Each pad plays a chord of an MPC 3 progression file (`.progression`), up to 48 chords in banks A–C. The encoder picks the progression, **K1** its key, **K2** its voicing. **B2** (**STORE**) puts the notes you hold on a pad.\n- **16 Levels: Chords**, on any track. Each pad plays a chord of the track's progression. A kit plays the pad's one sample at every note of the chord.\n- **16 LEVELS held has keys.** **B1** (**SCALE**) and **B2** (**CHORDS**) choose that type and turn 16 Levels on. On Chords, **B2** (**FILE**) lists the progression files on the card and **B3** (**SET**) makes a chord on a pad with **K1** (**ROOT**), **K2** (**CHORD**) and **K3** (**INVERSION**). Your progressions are saved in `Melodee/Progressions`.\n- A step holds up to eight notes (four before).\n\n### Sequences\n\n- **Sequences first.** **SEQ** opens Sequences. With **SEQ** held on any page the pads are the sequences; pads pressed in one hold chain up to eight. The sheet shows what plays now, what plays next, and a track that is on a pattern of its own.\n- **CAPTURE** (**SHIFT** + **B2** on Sequences, then a pad): the patterns playing now become that sequence.\n- **Follow** (Settings > **SEQ**): Step Edit and Roll move with the playhead, by page or by step.\n- Roll, Motion and Step Edit name the pattern they edit in the header, amber while the track plays another.\n- **TAP TEMPO** held + encoder sets the tempo by a whole BPM, as on the stock app.\n\n### Finding your way\n\n- **The Menu.** Hold the encoder on any page. **HERE** lists the page's jobs that no printed button says, each with its shortcut. **GO** shows the 16 places laid out as the pads; press a pad to open its place.\n- **Lessons.** Pad 16 on **GO** is **LEARN**: First beat, Sequences, Mix a track and Shape a pad. Each step uses one control, and its light blinks. A lesson runs on a project of its own with the MPC's factory kit; your project is saved first and opens again after.\n- **Basic and Full** (Settings, **K1** **FEATURES**). Basic shows the stock app's pages plus tracks, plug-ins, the mixer and Song. It leaves out Motion, Mod and Macro, Sends, the Looper, follow actions, VARY, MIDI and Audio tracks, and a kit pad's Layers, Colour, Follow, Cloud, Sends and Kit Filt. Nothing is deleted: Full shows everything again.\n- **The pads chip.** When the pads do not play the selected track, the first chip in the header says what they do: TRACKS, PATTERNS, SEQUENCES, STEPS, PAD FX, LOOPS, LEVELS or CHORDS.\n- A soft key with several pages lists them by name for a moment after each press.\n\n### Projects and files\n\n- **ERASE** in the sample browser and the plug-in picker deletes the file, folder, program or plug-in under the cursor from the card. Melodee asks first, and never deletes what the open project uses.\n- Picking another plug-in over one in use asks *Replace <plug-in>?* first.\n- The Loading sheet has a row for the project's samples and one for its instruments' files, with how many of each are in.\n\n### Screen\n\n- **Palettes** (Settings > **SCREEN**): NIGHT, DAY, CONTRAST, SUNSET, OCEAN, NEON, CANDY, LO-FI and LCD.\n- **Fonts**: Rubik, Inter Tight, Atkinson, Space Grotesk, IBM Plex, Manrope and two pixel fonts, Melodee Pixel and VT323. Both are picked on cards that change the whole screen as you turn.\n- Settings pages scroll.\n\n## Faster\n\n- **Cold start.** Melodee reads the card's folders ahead when it starts and when the card comes back. On the test card a project's samples loaded in 2 s where they took 35 s, and Surge XT's data opened in 1.5 s where it took a minute.\n- Samples and an instrument's files load on three threads.\n- **Instruments made of WAV files are streamed as they are on the card**, at their own rate. They open at once, with no copy in `Melodee/Cache`.\n- An MPC keygroup program opens in half the time.\n- Streaming from the card keeps what it read in memory (up to 200 MB over all files, the longest unused given back first), keeps files open between reads, reads at real-time priority and holds half a second where each pad starts, loops and ends, as the MPC's own app does.\n\n## Fixed\n\n- The master is clean up to −1 dBFS and rounds peaks off only above it. The red meter LED lights past −1 dBFS.\n- A Mono pad cuts its last note at any pitch, so 16 Levels on a Mono pad plays one note at a time. Set the pad to Poly to play chords.\n- Note Repeat and arpeggiator notes recorded after a count-in start on the pattern's first tick, not a bar later.\n- A pad with layers shows its playhead on Trim at every hit.\n- The browser previews a program's `[Previews]` WAV as well as its MP3.\n- The MPC's plug-in, sample and project browsers leave out `Melodee/Cache` and `Melodee/Crashes`.\n- **TAP TEMPO** held on the Tempo page, **POWER** on the Exit screen and **SAMPLE SELECT** on the browser close what they opened. Back from Stage returns to Tracks. **SHIFT** + **KNOB FX** steps through the effect chains. The browser's header names the pad a file loads onto.\n\n## Removed\n\n- The Loop type of 16 Levels.\n\n## Files\n\n- `Melodee-MPC-Sample-v0.3.0.zip`: the `autorun` folder for the card, and the update file. Its README and licences are inside, in `autorun/melodee/`. It is 87 MB, larger than before: 79 MB of it is the Stems model, in `autorun/melodee/stems/`.\n- `Melodee-MPC-Sample-v0.3.0.zip.sha256`: its checksum.\n\nNew to Melodee? Read the [quickstart](https://github.com/keremimo/melodee-sample/blob/main/docs/QUICKSTART.md), then the [user guide](https://github.com/keremimo/melodee-sample/blob/main/docs/GUIDE.md). Both are also on the MPC's own web page.",
-        "truncated": true
       }
     ],
     "archived": false
@@ -1430,7 +1445,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 14,
+    "stars": 15,
     "forks": 1,
     "pushed_at": "2026-11-18T16:07:21Z",
     "last_commit_at": "2026-11-18T16:07:18Z",
@@ -1635,7 +1650,7 @@
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 26,
+    "open_issues": 28,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
