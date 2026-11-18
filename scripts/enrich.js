@@ -81,7 +81,7 @@ for (const repo of repos) {
 			const body = item.body ?? '';
 			const limit = 12000;
 			const end = body.length > limit ? body.lastIndexOf('\n\n', limit) : body.length;
-			return { tag: item.tag_name, name: item.name, published_at: item.published_at, html_url: item.html_url,
+			return { tag: item.tag_name, name: item.name, prerelease: item.prerelease, published_at: item.published_at, html_url: item.html_url,
 				body: body.slice(0, end > limit / 2 ? end : limit), truncated: body.length > limit };
 		}),
 		archived: metadata.archived
