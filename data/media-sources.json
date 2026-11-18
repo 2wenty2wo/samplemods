@@ -125,19 +125,19 @@
       "note": "Embedded 320x240 BGRX framebuffer extracted at byte offset 372528; not executed"
     },
     {
-      "file": "screenshots/02-kaos-menu.png",
+      "file": "screenshots/02-kaos-menu.webp",
       "source": "https://github.com/omarhuertasllc-ops/kaosample-beta",
       "repo": "omarhuertasllc-ops/kaosample-beta",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-channel-mixer.png",
+      "file": "screenshots/03-channel-mixer.webp",
       "source": "https://github.com/omarhuertasllc-ops/kaosample-beta",
       "repo": "omarhuertasllc-ops/kaosample-beta",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/04-pad-step-editor.png",
+      "file": "screenshots/04-pad-step-editor.webp",
       "source": "https://github.com/omarhuertasllc-ops/kaosample-beta",
       "repo": "omarhuertasllc-ops/kaosample-beta",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -167,13 +167,13 @@
   ],
   "looppad": [
     {
-      "file": "screenshots/01-four-loop-setup.png",
+      "file": "screenshots/01-four-loop-setup.webp",
       "source": "https://github.com/larsoholm/LoopPad",
       "repo": "larsoholm/LoopPad",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-live-looping.png",
+      "file": "screenshots/02-live-looping.webp",
       "source": "https://github.com/larsoholm/LoopPad",
       "repo": "larsoholm/LoopPad",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -187,19 +187,19 @@
       "note": "Original PNG from release archive: MaiaOS-V1 DON'T SHARE/autorun/runtime/maia-320x240.png"
     },
     {
-      "file": "screenshots/02-dj-mode.png",
+      "file": "screenshots/02-dj-mode.webp",
       "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-autotune.png",
+      "file": "screenshots/03-autotune.webp",
       "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/04-input-send-effects.png",
+      "file": "screenshots/04-input-send-effects.webp",
       "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -262,13 +262,13 @@
   ],
   "mpc-addin-sample-rack": [
     {
-      "file": "screenshots/01-rack-overview.png",
+      "file": "screenshots/01-rack-overview.webp",
       "source": "https://github.com/jacob-sabella/mpc-addin-sample-rack",
       "repo": "jacob-sabella/mpc-addin-sample-rack",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-submix-and-track-inserts.png",
+      "file": "screenshots/02-submix-and-track-inserts.webp",
       "source": "https://github.com/jacob-sabella/mpc-addin-sample-rack",
       "repo": "jacob-sabella/mpc-addin-sample-rack",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -301,13 +301,13 @@
   ],
   "mpc-cavestory": [
     {
-      "file": "screenshots/01-pad-rebind-no-game-data.png",
+      "file": "screenshots/01-pad-rebind-no-game-data.webp",
       "source": "https://github.com/garrettjwilke/mpc-cavestory",
       "repo": "garrettjwilke/mpc-cavestory",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-no-game-data-error.png",
+      "file": "screenshots/02-no-game-data-error.webp",
       "source": "https://github.com/garrettjwilke/mpc-cavestory",
       "repo": "garrettjwilke/mpc-cavestory",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -315,26 +315,26 @@
   ],
   "mpc-extractor": [
     {
-      "file": "screenshots/01-extractor.png",
+      "file": "screenshots/01-extractor.webp",
       "note": "1280×960 screenshot of the free MPC Extractor web app at killaviccheatcodes.app/stems",
       "source": "https://killaviccheatcodes.app/stems"
     }
   ],
   "mpc-fm": [
     {
-      "file": "screenshots/01-fm-patch-editor.png",
+      "file": "screenshots/01-fm-patch-editor.webp",
       "source": "https://github.com/ThomasTestaud/mpc-fm",
       "repo": "ThomasTestaud/mpc-fm",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-fm-envelope-editor.png",
+      "file": "screenshots/02-fm-envelope-editor.webp",
       "source": "https://github.com/ThomasTestaud/mpc-fm",
       "repo": "ThomasTestaud/mpc-fm",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-fm-startup-status.png",
+      "file": "screenshots/03-fm-startup-status.webp",
       "source": "https://github.com/ThomasTestaud/mpc-fm",
       "repo": "ThomasTestaud/mpc-fm",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -342,19 +342,19 @@
   ],
   "mpc-furnace": [
     {
-      "file": "screenshots/01-pattern-editor.png",
+      "file": "screenshots/01-pattern-editor.webp",
       "source": "https://github.com/garrettjwilke/mpc-furnace",
       "repo": "garrettjwilke/mpc-furnace",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-wave-editor.png",
+      "file": "screenshots/02-wave-editor.webp",
       "source": "https://github.com/garrettjwilke/mpc-furnace",
       "repo": "garrettjwilke/mpc-furnace",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-generated-synth-sample.png",
+      "file": "screenshots/03-generated-synth-sample.webp",
       "source": "https://github.com/garrettjwilke/mpc-furnace",
       "repo": "garrettjwilke/mpc-furnace",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -362,19 +362,19 @@
   ],
   "mpc-gen1recomp": [
     {
-      "file": "screenshots/01-pad-rebind-menu.png",
+      "file": "screenshots/01-pad-rebind-menu.webp",
       "source": "https://github.com/garrettjwilke/mpc-gen1recomp",
       "repo": "garrettjwilke/mpc-gen1recomp",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-settings-menu.png",
+      "file": "screenshots/02-settings-menu.webp",
       "source": "https://github.com/garrettjwilke/mpc-gen1recomp",
       "repo": "garrettjwilke/mpc-gen1recomp",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-no-rom-launcher.png",
+      "file": "screenshots/03-no-rom-launcher.webp",
       "source": "https://github.com/garrettjwilke/mpc-gen1recomp",
       "repo": "garrettjwilke/mpc-gen1recomp",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -429,7 +429,7 @@
   ],
   "mpc-remote": [
     {
-      "file": "screenshots/01-tile.png",
+      "file": "screenshots/01-tile.webp",
       "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-remote/HEAD/docs/tile.png",
       "repo": "jacob-sabella/mpc-addin-remote"
     }
@@ -469,7 +469,7 @@
       "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-engine-ports/main/assets/preview/engines-film.jpg"
     },
     {
-      "file": "screenshots/02-rhythmer-kit.png",
+      "file": "screenshots/02-rhythmer-kit.webp",
       "note": "Rhythmer Kit preview still from the project repo",
       "repo": "jazzyrhythmer/mpc-sample-engine-ports",
       "source": "https://raw.githubusercontent.com/jazzyrhythmer/mpc-sample-engine-ports/main/assets/engines/rhythmer-kit-still.png"
@@ -491,22 +491,22 @@
   "mpc-sample-kit": [],
   "mpc-sample-screen-bridge": [
     {
-      "file": "screenshots/01-sample-view.png",
+      "file": "screenshots/01-sample-view.webp",
       "note": "Official product image from the Screen Bridge page (Trim screen in the companion app)",
       "source": "https://killaviccheatcodes.app/mpc-sample/show-trim-glow.jpg"
     },
     {
-      "file": "screenshots/02-free-demo-main-menu.png",
+      "file": "screenshots/02-free-demo-main-menu.webp",
       "source": "https://killaviccheatcodes.app/screenbridge",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-free-world-one-lessons.png",
+      "file": "screenshots/03-free-world-one-lessons.webp",
       "source": "https://killaviccheatcodes.app/screenbridge",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/04-free-loading-samples-lesson.png",
+      "file": "screenshots/04-free-loading-samples-lesson.webp",
       "source": "https://killaviccheatcodes.app/screenbridge",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
@@ -544,7 +544,7 @@
   ],
   "mpc-sample-tutorial-app": [
     {
-      "file": "screenshots/01-og.png",
+      "file": "screenshots/01-og.webp",
       "note": "Site OG image; the Android product page publishes no product screenshots",
       "source": "https://killaviccheatcodes.app/og-image.png"
     }
@@ -556,30 +556,30 @@
       "note": "Screen capture from the project website, converted from PNG to lossless WebP"
     },
     {
-      "file": "screenshots/02-program-editor.png",
+      "file": "screenshots/02-program-editor.webp",
       "source": "https://mpcsimple.com/",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); MPC Simple 1.0 Beta 3"
     },
     {
-      "file": "screenshots/03-original-sample-editor.png",
+      "file": "screenshots/03-original-sample-editor.webp",
       "source": "https://mpcsimple.com/",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); MPC Simple 1.0 Beta 3"
     },
     {
-      "file": "screenshots/04-grid-step-sequencer.png",
+      "file": "screenshots/04-grid-step-sequencer.webp",
       "source": "https://mpcsimple.com/",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); MPC Simple 1.0 Beta 3"
     }
   ],
   "mpc-stemloop": [
     {
-      "file": "screenshots/01-original-source-loop.png",
+      "file": "screenshots/01-original-source-loop.webp",
       "source": "https://github.com/pzuzarte/mpc-stemloop",
       "repo": "pzuzarte/mpc-stemloop",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-separation-in-progress.png",
+      "file": "screenshots/02-separation-in-progress.webp",
       "source": "https://github.com/pzuzarte/mpc-stemloop",
       "repo": "pzuzarte/mpc-stemloop",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -587,13 +587,13 @@
   ],
   "mpc-tic80": [
     {
-      "file": "screenshots/01-original-demo-cart.png",
+      "file": "screenshots/01-original-demo-cart.webp",
       "source": "https://github.com/garrettjwilke/mpc-tic80",
       "repo": "garrettjwilke/mpc-tic80",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-game-menu.png",
+      "file": "screenshots/02-game-menu.webp",
       "source": "https://github.com/garrettjwilke/mpc-tic80",
       "repo": "garrettjwilke/mpc-tic80",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -602,19 +602,19 @@
   "mpc-ui-toolkit": [],
   "mpc-xpj-builder": [
     {
-      "file": "screenshots/01-gui-main.png",
+      "file": "screenshots/01-gui-main.webp",
       "note": "Main GUI window from the project README",
       "repo": "cursednik/mpc-xpj-builder",
       "source": "https://raw.githubusercontent.com/cursednik/mpc-xpj-builder/main/docs/images/gui-main.png"
     },
     {
-      "file": "screenshots/02-map-editor.png",
+      "file": "screenshots/02-map-editor.webp",
       "note": "Sample map editor from the project docs",
       "repo": "cursednik/mpc-xpj-builder",
       "source": "https://raw.githubusercontent.com/cursednik/mpc-xpj-builder/main/docs/images/gui-map-editor.png"
     },
     {
-      "file": "screenshots/03-pad-editor.png",
+      "file": "screenshots/03-pad-editor.webp",
       "note": "Pad editor from the project docs",
       "repo": "cursednik/mpc-xpj-builder",
       "source": "https://raw.githubusercontent.com/cursednik/mpc-xpj-builder/main/docs/images/gui-pad-editor.png"
@@ -622,20 +622,20 @@
   ],
   "mpcfirmware": [
     {
-      "file": "screenshots/01-sample-view.png",
+      "file": "screenshots/01-sample-view.webp",
       "source": "https://mpcfirmware.com/?model=mpc-sample",
       "note": "Screenshot of the site filtered to the MPC Sample (1280×960)"
     }
   ],
   "mpckit": [
     {
-      "file": "screenshots/01-pads.png",
+      "file": "screenshots/01-pads.webp",
       "note": "Pads tab from the project README",
       "repo": "bajdev/MPCkit",
       "source": "https://raw.githubusercontent.com/bajdev/MPCkit/main/docs/images/pads.png"
     },
     {
-      "file": "screenshots/02-sequences.png",
+      "file": "screenshots/02-sequences.webp",
       "note": "Sequences tab from the project README",
       "repo": "bajdev/MPCkit",
       "source": "https://raw.githubusercontent.com/bajdev/MPCkit/main/docs/images/sequences.png"
@@ -651,7 +651,7 @@
   ],
   "open-mpc": [
     {
-      "file": "screenshots/01-sample-view.png",
+      "file": "screenshots/01-sample-view.webp",
       "source": "https://open-mpc.github.io/#plat=sample",
       "repo": "open-mpc/open-mpc.github.io",
       "note": "Screenshot of the catalog filtered to the MPC Sample (1280×960)"
@@ -691,26 +691,26 @@
   ],
   "runmpc": [
     {
-      "file": "screenshots/01-sample-view.png",
+      "file": "screenshots/01-sample-view.webp",
       "note": "Screenshot of the site with MPC Sample device filter checked (1280×960); filter is client-only so source is the homepage",
       "source": "https://runmpc.com/"
     }
   ],
   "sample-base": [
     {
-      "file": "screenshots/01-beep-boop-synth.png",
+      "file": "screenshots/01-beep-boop-synth.webp",
       "source": "https://github.com/keremimo/sample-base",
       "repo": "keremimo/sample-base",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-step-sequencer.png",
+      "file": "screenshots/02-step-sequencer.webp",
       "source": "https://github.com/keremimo/sample-base",
       "repo": "keremimo/sample-base",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-led-showcase.png",
+      "file": "screenshots/03-led-showcase.webp",
       "source": "https://github.com/keremimo/sample-base",
       "repo": "keremimo/sample-base",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
@@ -771,31 +771,31 @@
       "note": "Official single-screen animated splash, preserved unchanged"
     },
     {
-      "file": "screenshots/02-akai-firmware.png",
+      "file": "screenshots/02-akai-firmware.webp",
       "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
       "repo": "pxcm/SampleBoot",
       "note": "AKAI firmware menu (1/6), cropped from sampleboot-hero.png at (8, 8)-(648, 488); native 640x480, no scaling or gutter"
     },
     {
-      "file": "screenshots/03-customos-lite.png",
+      "file": "screenshots/03-customos-lite.webp",
       "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
       "repo": "pxcm/SampleBoot",
       "note": "CustomOS Lite menu (2/6), cropped from sampleboot-screens-1.png at (736, 8)-(1056, 248); native 320x240, no scaling or gutter"
     },
     {
-      "file": "screenshots/04-customos-v1.png",
+      "file": "screenshots/04-customos-v1.webp",
       "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
       "repo": "pxcm/SampleBoot",
       "note": "CustomOS v1.0 menu (3/6), cropped from sampleboot-hero.png at (692, 8)-(1332, 488); native 640x480, no scaling or gutter"
     },
     {
-      "file": "screenshots/05-customos-v1-1.png",
+      "file": "screenshots/05-customos-v1-1.webp",
       "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
       "repo": "pxcm/SampleBoot",
       "note": "CustomOS v1.1 menu (4/6), cropped from sampleboot-screens-1.png at (372, 8)-(692, 248); native 320x240, no scaling or gutter"
     },
     {
-      "file": "screenshots/06-customos-v2.png",
+      "file": "screenshots/06-customos-v2.webp",
       "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
       "repo": "pxcm/SampleBoot",
       "note": "CustomOS v2.0 menu (5/6), cropped from sampleboot-hero.png at (1376, 8)-(2016, 488); native 640x480, no scaling or gutter"
@@ -808,22 +808,22 @@
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/panel.png"
     },
     {
-      "file": "screenshots/02-project.png",
+      "file": "screenshots/02-project.webp",
       "note": "Official pad banks and project transfer controls from the SMPLUTILITY product page",
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/project.png"
     },
     {
-      "file": "screenshots/03-stems.png",
+      "file": "screenshots/03-stems.webp",
       "note": "Official chopped waveform and stem separation controls from the SMPLUTILITY product page",
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/stems.png"
     },
     {
-      "file": "screenshots/04-library.png",
+      "file": "screenshots/04-library.webp",
       "note": "Official LIBRARY, PACKS and FX tabs; this image does not show an opened FX window",
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/library.png"
     },
     {
-      "file": "logo.png",
+      "file": "logo.webp",
       "note": "Official SMPLUTILITY wordmark and companion app tagline from the product page",
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/lockup.png"
     }
