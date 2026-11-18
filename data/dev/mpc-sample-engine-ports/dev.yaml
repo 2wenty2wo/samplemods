@@ -4,6 +4,7 @@ description: >-
   authors and licences kept. Ships as source for the RHYTHMER host, not a standalone installer.
 repo: jazzyrhythmer/mpc-sample-engine-ports
 author: jazzyrhythmer
+status: beta
 website: https://jazzyrhythmer.github.io/mpc-sample/
 tags:
   - engines

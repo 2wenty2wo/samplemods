@@ -4,6 +4,7 @@ description: >-
   mute groups and sequences, then export a project the Sample opens as-is.
 repo: bajdev/MPCkit
 author: bajdev
+status: beta
 website: https://mpckit.monoexp.com/
 tags:
   - kits
