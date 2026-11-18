@@ -183,7 +183,7 @@
     "archived": false
   },
   "WorldLinkStudio/mpcsample": {
-    "stars": 22,
+    "stars": 23,
     "forks": 2,
     "pushed_at": "2026-06-01T21:26:53Z",
     "last_commit_at": "2026-06-01T16:08:35Z",
@@ -256,8 +256,8 @@
   "bajdev/MPCkit": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-18T06:05:03Z",
-    "last_commit_at": "2026-11-18T06:04:16Z",
+    "pushed_at": "2026-11-18T11:03:14Z",
+    "last_commit_at": "2026-11-18T10:52:05Z",
     "contributors": 1,
     "open_issues": 3,
     "license": "MIT",
@@ -276,6 +276,52 @@
         "published_at": "2026-11-16T02:13:15Z",
         "html_url": "https://github.com/bajdev/MPCkit/releases/tag/v0.5.5",
         "body": "Initial v0.5.5 (beta) release of MPCkit\r\n\r\n## What's Changed\r\n* Import mpckit beta from private repo by @bajdev in https://github.com/bajdev/MPCkit/pull/1\r\n\r\n**Full Changelog**: https://github.com/bajdev/MPCkit/commits/v0.5.5",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "bsauce42/tape-workshop-mpc-sample": {
+    "stars": 5,
+    "forks": 0,
+    "pushed_at": "2026-11-18T06:29:42Z",
+    "last_commit_at": "2026-11-15T06:37:09Z",
+    "contributors": 1,
+    "open_issues": 1,
+    "license": null,
+    "description": null,
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.3.0-tapeworkshop-community.87",
+      "published_at": "2026-11-18T06:29:42Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.3.0-tapeworkshop-community.87",
+        "name": "Tape Workshop v87 · Live Recording Freeze Fix",
+        "prerelease": false,
+        "published_at": "2026-11-18T06:29:42Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.87",
+        "body": "Tape Workshop v87 fixes the companion live picture freezing while audio continues during recording, including exported video. Independent frame sequence numbers, bounded synchronization waits and lightweight compression keep the picture moving.\r\n\r\n## Downloads\r\n\r\n- **Tape-Workshop-v87-Complete.zip** — full SD-card build, bundled plug-ins, matching source, artwork, licenses and the Mac companion launcher. Read START-HERE.txt and README.md.\r\n- **Tape-Workshop-v87-Signed-Update.zip** — signed update for compatible existing Tape Workshop installations; choose it in the companion Manual install page.\r\n- **Melodee-v87-source.tar.gz** — matching v87 firmware source at commit 4ca3434, also included in the complete ZIP. Use this attached archive; the repository branch and GitHub-generated Source code archives are not synchronized to v87.\r\n- SHA-256 checksum files are provided for each download.\r\n\r\n## Install and use\r\n\r\nFor MPC Sample firmware 1.3.0.12. Back up your SD card and follow the included README. Preserve your Melodee projects, samples and plug-ins. Connect the MPC over USB, open http://192.168.155.1/, and close/reopen the webpage after an OS update.\r\n\r\nThe Mac Companion folder contains Tape Workshop.app: move it to Applications and drag it onto the Dock. It opens the companion in a separate Chrome window, with a default-browser fallback. The MPC must be connected.\r\n\r\nIncludes Live Screen, Tutorial Mode, a 30 fps target, direct stereo audio, recordings up to 20 minutes, logo/background customization, Expansion Builder cover artwork, and Roll MIDI import via Shift+B3 or Data → Import MIDI.\r\n\r\n## Verification and credits\r\n\r\nARM64 build, screen packet/compression/sequence tests, audio tests, source layout and signed ZIP verification passed. Browser recordings stayed animated with deliberately mismatched timestamps and continuing audio. The owner reports the build is working on their unit. Broader hardware/browser testing remains ongoing.\r\n\r\nBased on Melodee by Kerem Kiliç (Ellic Studio). Component licenses and source are retained.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.3.0-tapeworkshop-community.53",
+        "name": "Tape Workshop v53 · Plug-in Picker Fix",
+        "prerelease": false,
+        "published_at": "2026-11-17T09:58:40Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.53",
+        "body": "This update fixes a plug-in picker bug on the Akai MPC Sample. In v52, confirming **Replace** could load a different instrument or effect from the one selected. v53 confirms the exact plug-in selected. **Erase** also uses the same filtered list shown in the picker.\r\n\r\nThe ZIP includes the v52 features and the Rhythmer instruments **Frodhes**, **Tenebrae**, and the updated **FMini-1**.\r\n\r\n## Install\r\n\r\nFor Akai MPC Sample firmware 1.3.0.12. Back up the SD card, power off the MPC, and replace the card’s top-level `autorun` folder with the one from the ZIP. Keep your `Melodee` folder. To add the Rhythmer instruments, merge the included `Melodee/Plugins` folders into the card’s plug-in library. If a project saved the wrong plug-in, select the intended one again and save the project.\r\n\r\n## Voice Search\r\n\r\nIn **Sample Select**, open a folder, hold **Shift + B2**, wait for **Listening**, say a word like “kick,” then release **B2**. Turn **Data** to browse matches and press it to load the highlighted WAV. Press **B1** to clear the search. In the folder view, **Shift + B3** toggles Auto BPM.\r\n\r\nBased on Melodee 0.3.0 by Kerem Kiliç (Ellic Studio). The ARM64 build, host tests, and ZIP verification passed. MPC Sample hardware testing is pending.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.3.0-tapeworkshop-community.52-rhythmer.1",
+        "name": "Tape Workshop v52 · Rhythmer Plug-in Update",
+        "prerelease": false,
+        "published_at": "2026-11-17T09:37:46Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.52-rhythmer.1",
+        "body": "This update pairs Tape Workshop v52 for the Akai MPC Sample with three instrument bundles from Rhythmer OS 0.2.0.\r\n\r\n- **Frodhes** and **Tenebrae** are new to the Tape Workshop pack.\r\n- **FMini-1** has updated wrapper and DSP binaries in its existing bundle folder.\r\n- All three use the shared live instrument screen with a stereo waveform, spectrum, and left/right output levels. Turn **Data** to browse presets when the instrument exposes them.\r\n- The v52 installer includes Voice Search, Auto BPM, and the Los Angeles pixel-art boot splash.\r\n\r\n## Install\r\n\r\nUse MPC Sample firmware 1.3.0.12. Back up the SD card and power off the MPC. If v52 is already installed, copy the three folders from the ZIP’s `Melodee/Plugins` to the card’s `Melodee/Plugins`. Back up the existing FMini-1 folder before replacing it. For a fresh v52 installation, also follow the README to install the ZIP’s `autorun` folder. After boot, look for the three names in the instrument picker.\r\n\r\n## Voice Search\r\n\r\nStop playback and open a folder in **Sample Select**. Hold **Shift + B2**, wait for **Listening**, say “kick,” “piano,” or “melody,” then release **B2**. Tape Workshop searches WAV filenames in that folder and its subfolders and shows progress and matches. Turn **Data** to browse and press it to load the highlighted WAV. Press **B1** to clear the search. Use **Shift + B1** for typed search and **K2** to pause or resume indexing. From the folder view, **Shift + B3** toggles Auto BPM.\r\n\r\n## Credits and verification\r\n\r\nTape Workshop is based on Melodee 0.3.0 by Kerem Kiliç (Ellic Studio). The plug-in bundles are from Rhythmer OS 0.2.0 and include their license and source information. The ZIP and ARM64 VST2 bundles were verified. Playback and live display testing on MPC Sample hardware are pending.",
         "truncated": false
       }
     ],
@@ -1319,8 +1365,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-18T04:55:06Z",
-    "last_commit_at": "2026-11-18T04:54:56Z",
+    "pushed_at": "2026-11-18T11:08:16Z",
+    "last_commit_at": "2026-11-18T11:08:14Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
