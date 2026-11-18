@@ -147,7 +147,7 @@ export function validateDraft(draft, workspace = root) {
 	}
 }
 
-function runGh(args, token) {
+export function runGh(args, token) {
 	return execFileSync('gh', args, { encoding: 'utf8', env: { ...process.env, GH_TOKEN: token, GITHUB_TOKEN: token }, maxBuffer: 1024 * 1024 });
 }
 
@@ -196,7 +196,7 @@ export function compareRepositories(starred, catalog, catalogRepo = '2wenty2wo/s
 	};
 }
 
-async function request(endpoint, token, method = 'GET', body) {
+export async function request(endpoint, token, method = 'GET', body) {
 	const response = await fetch(`https://api.github.com/${endpoint}`, {
 		method,
 		headers: {
@@ -217,8 +217,8 @@ async function request(endpoint, token, method = 'GET', body) {
 	return data;
 }
 
-async function optionalRequest(endpoint, token) {
-	try { return await request(endpoint, token); }
+export async function optionalRequest(endpoint, token, api = request) {
+	try { return await api(endpoint, token); }
 	catch (error) { if (error.status === 404) return null; throw error; }
 }
 
@@ -268,7 +268,7 @@ export async function readStarList(token, user, slug) {
 	return repos;
 }
 
-function markdownText(text) {
+export function markdownText(text) {
 	return String(text ?? 'No description provided.').replace(/\s+/g, ' ')
 		.replace(/[\\`*_{}\[\]<>#|~]/g, '\\$&').replaceAll('@', '&#64;');
 }

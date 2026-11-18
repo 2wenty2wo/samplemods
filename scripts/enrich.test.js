@@ -26,9 +26,9 @@ globalThis.fetch = async (url, { headers }) => {
   if (process.env.FAIL_API && url.includes('/z/readme')) return reply({}, 503);
   if (process.env.RATE_LIMIT) return reply({}, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1800000000' });
   const absent = url.includes('/z/');
-  const release = { tag_name: 'v1', name: 'First release', published_at: '2026-01-01T00:00:00Z', html_url: 'https://github.com/owner/a/releases/tag/v1', body: '**Changes**' + 'x'.repeat(13000) };
+  const release = { tag_name: 'v1', name: 'First release', prerelease: false, published_at: '2026-01-01T00:00:00Z', html_url: 'https://github.com/owner/a/releases/tag/v1', body: '**Changes**' + 'x'.repeat(13000) };
   if (url.endsWith('/releases/latest')) return reply(release, absent ? 404 : 200);
-  if (url.includes('/releases?')) return reply(absent ? [] : [release, { ...release, tag_name: 'v0.9', body: null }]);
+  if (url.includes('/releases?')) return reply(absent ? [] : [release, { ...release, tag_name: 'v0.9', prerelease: true, body: null }]);
   if (url.endsWith('/readme')) return reply({ encoding: 'base64', path: 'docs/README.md', content: Buffer.from('# A\\r\\nREADME').toString('base64') }, absent || process.env.NO_README ? 404 : 200);
   if (url.includes('/contributors?')) return reply(absent ? [] : [{ login: 'one' }], absent ? 204 : 200, absent ? {} : { link: '<https://api.github.com/repos/owner/a/contributors?anon=true&per_page=1&page=7>; rel="last"' });
   if (url.includes('/commits?')) return reply(absent ? {} : [{ commit: { committer: { date: '2026-01-02T00:00:00Z' } } }], absent ? 409 : 200);
@@ -65,6 +65,8 @@ try {
 	assert.equal(data['owner/a'].readme_path, 'docs/README.md');
 	assert.equal(data['owner/a'].default_branch, 'develop');
 	assert.equal(data['owner/a'].releases.length, 2);
+	assert.equal(data['owner/a'].releases[0].prerelease, false);
+	assert.equal(data['owner/a'].releases[1].prerelease, true);
 	assert.equal(data['owner/a'].releases[0].body.length, 12000);
 	assert.equal(data['owner/a'].releases[0].truncated, true);
 	assert.equal(data['owner/a'].releases[1].body, '');

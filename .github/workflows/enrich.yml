@@ -9,6 +9,7 @@ permissions:
   contents: write
   actions: write
   issues: write
+  pull-requests: write
 
 concurrency:
   group: enrich
@@ -51,3 +52,8 @@ jobs:
         run: gh workflow run deploy.yml --ref main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Propose catalog status changes
+        run: node scripts/suggest-status.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
