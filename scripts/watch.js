@@ -7,12 +7,14 @@ import { readEntries } from './catalog.js';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const STATE_PATH = path.join(root, 'data', 'watch.json');
 const LABEL = 'release-watch';
+const LABEL_DESCRIPTION = 'Upstream release or page change detected for a catalog entry';
 const SITE_ORIGIN = 'https://samplemods.com';
 const SECTION_SINGULAR = {
 	mods: 'mod', apps: 'app', games: 'game', tools: 'tool', guides: 'guide', dev: 'dev'
 };
 const USER_AGENT = 'samplemods-release-watch';
 const FETCH_MS = 20_000;
+const PAGE_TEXT_CAP = 8 * 1024;
 
 /** @param {string} section @param {string} id */
 export function entryPageUrl(section, id) {
@@ -140,6 +142,113 @@ export function serializeState(state) {
 	return `${JSON.stringify(sorted, null, 2)}\n`;
 }
 
+/** Distinct data/watch.json key so page watches never clash with release `watch:` state. */
+export function pageWatchStateKey(entryId, url) {
+	return `page:${entryId}:${url}`;
+}
+
+/** @param {string} url */
+export function pageWatchDisplay(url) {
+	try {
+		const parsed = new URL(url);
+		return `${parsed.host}${parsed.hash || ''}`;
+	} catch {
+		return String(url);
+	}
+}
+
+/** @param {string} html @param {string} id */
+export function extractElementById(html, id) {
+	const escaped = String(id).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+	const openRe = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid\\s*=\\s*(["'])${escaped}\\2[^>]*>`, 'i');
+	const match = openRe.exec(html);
+	if (!match) return null;
+	const tag = match[1];
+	const start = match.index;
+	const afterOpen = match.index + match[0].length;
+	if (/^(?:area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/i.test(tag)) {
+		return match[0];
+	}
+	const re = new RegExp(`</?${tag.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b[^>]*>`, 'gi');
+	re.lastIndex = afterOpen;
+	let depth = 1;
+	let nest;
+	while ((nest = re.exec(html))) {
+		if (nest[0].startsWith('</')) {
+			depth -= 1;
+			if (depth === 0) return html.slice(start, nest.index + nest[0].length);
+		} else if (!/\/\s*>$/.test(nest[0])) {
+			depth += 1;
+		}
+	}
+	return html.slice(start);
+}
+
+/**
+ * Visible text for page watches: tags stripped, block boundaries → lines, whitespace collapsed.
+ * @param {string} html
+ * @param {string} [watchUrl] URL whose hash selects an element id; omit/empty hash = whole page
+ */
+export function extractPageWatchText(html, watchUrl = '') {
+	let fragment = '';
+	try {
+		fragment = new URL(watchUrl, 'https://example.invalid').hash.replace(/^#/, '');
+	} catch {
+		fragment = '';
+	}
+	let scope = String(html ?? '');
+	if (fragment) {
+		const el = extractElementById(scope, fragment);
+		if (!el) throw new Error(`No element with id="${fragment}"`);
+		scope = el;
+	}
+	const lined = scope
+		.replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+		.replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+		.replace(/<(?:br|hr)\b[^>]*>/gi, '\n')
+		.replace(/<\/(?:p|div|tr|li|h[1-6]|section|article|header|footer|table|thead|tbody|tfoot|ul|ol)\s*>/gi, '\n')
+		.replace(/<[^>]+>/g, ' ');
+	return lined
+		.split(/\r?\n/)
+		.map((line) => line.replace(/\s+/g, ' ').trim())
+		.filter(Boolean)
+		.join('\n');
+}
+
+/** @param {string} text @param {number} [cap=PAGE_TEXT_CAP] */
+export function capPageWatchText(text, cap = PAGE_TEXT_CAP) {
+	const value = String(text ?? '');
+	if (value.length <= cap) return value;
+	return value.slice(0, cap);
+}
+
+/** @param {string} text */
+export function pageWatchFingerprint(text) {
+	return crypto.createHash('sha256').update(String(text ?? '')).digest('hex');
+}
+
+/**
+ * @param {string} previous
+ * @param {string} next
+ * @returns {{ added: string[], removed: string[] }}
+ */
+export function diffPageWatchLines(previous, next) {
+	const oldLines = String(previous ?? '').split('\n').filter(Boolean);
+	const newLines = String(next ?? '').split('\n').filter(Boolean);
+	const oldSet = new Set(oldLines);
+	const newSet = new Set(newLines);
+	return {
+		added: newLines.filter((line) => !oldSet.has(line)),
+		removed: oldLines.filter((line) => !newSet.has(line))
+	};
+}
+
+/** @param {{ record?: { compatible?: unknown, watch?: unknown } }} entry @param {string} url */
+export function pageWatchFieldHint(entry, url) {
+	if (/#works-with\b/i.test(url) || Array.isArray(entry.record?.compatible)) return '`compatible`';
+	return '`version` / `released` / related fields';
+}
+
 async function request(endpoint, token, method = 'GET', body) {
 	const response = await fetch(`https://api.github.com/${endpoint}`, {
 		method,
@@ -166,11 +275,20 @@ async function optionalRequest(endpoint, token) {
 }
 
 async function ensureLabel(token, repository) {
-	if (!await optionalRequest(`repos/${repository}/labels/${encodeURIComponent(LABEL)}`, token)) {
+	const existing = await optionalRequest(`repos/${repository}/labels/${encodeURIComponent(LABEL)}`, token);
+	if (!existing) {
 		await request(`repos/${repository}/labels`, token, 'POST', {
 			name: LABEL,
 			color: 'fbca04',
-			description: 'Upstream change detected for a repo-less catalog entry'
+			description: LABEL_DESCRIPTION
+		});
+		return;
+	}
+	if (existing.description !== LABEL_DESCRIPTION) {
+		await request(`repos/${repository}/labels/${encodeURIComponent(LABEL)}`, token, 'PATCH', {
+			new_name: LABEL,
+			color: existing.color ?? 'fbca04',
+			description: LABEL_DESCRIPTION
 		});
 	}
 }
@@ -196,6 +314,35 @@ function issueBody(entry, watchUrl, oldFingerprint, newFingerprint) {
 	].join('\n');
 }
 
+function formatDiffBlock(label, lines) {
+	if (!lines.length) return `_No ${label} lines._`;
+	const shown = lines.slice(0, 40);
+	const more = lines.length > shown.length ? `\n…and ${lines.length - shown.length} more` : '';
+	return ['```', ...shown, '```'].join('\n') + more;
+}
+
+export function pageWatchIssueBody(entry, watchUrl, previousText, nextText) {
+	const page = entryPageUrl(entry.section, entry.id);
+	const { added, removed } = diffPageWatchLines(previousText, nextText);
+	const field = pageWatchFieldHint(entry, watchUrl);
+	return [
+		`Page section change detected for **${entry.record.name}**.`,
+		'',
+		`- Catalog page: ${page}`,
+		`- Watched URL: ${watchUrl}`,
+		`- Likely catalog field: ${field}`,
+		'',
+		'### Added lines',
+		formatDiffBlock('added', added),
+		'',
+		'### Removed lines',
+		formatDiffBlock('removed', removed),
+		'',
+		'Checklist:',
+		`- [ ] review and update ${field} (and any related notes) if needed`
+	].join('\n');
+}
+
 async function openChangeIssue(token, repository, entry, watchUrl, oldFingerprint, newFingerprint) {
 	const title = `Release watch: ${entry.record.name} changed upstream`;
 	await ensureLabel(token, repository);
@@ -206,6 +353,70 @@ async function openChangeIssue(token, repository, entry, watchUrl, oldFingerprin
 	await request(`repos/${repository}/issues`, token, 'POST', {
 		title,
 		body: issueBody(entry, watchUrl, oldFingerprint, newFingerprint),
+		labels: [LABEL]
+	});
+	console.log(`Opened issue: ${title}`);
+}
+
+export function pageWatchChangedIssueTitle(entry, watchUrl) {
+	return `Page watch: ${entry.record.name} — ${pageWatchDisplay(watchUrl)} changed`;
+}
+
+export function pageWatchMissingIssueTitle(entry, watchUrl) {
+	return `Page watch: ${entry.record.name} — ${pageWatchDisplay(watchUrl)} not found`;
+}
+
+export function pageWatchMissingIssueBody(entry, watchUrl) {
+	const page = entryPageUrl(entry.section, entry.id);
+	return [
+		`The watched page loaded, but the section id was not found for **${entry.record.name}**.`,
+		'',
+		`- Catalog page: ${page}`,
+		`- Watched URL: ${watchUrl}`,
+		`- Likely catalog field: ${pageWatchFieldHint(entry, watchUrl)}`,
+		'',
+		'The site may have renamed or removed that section. Previous page-watch state was kept.',
+		'',
+		'Checklist:',
+		'- [ ] confirm the fragment still exists (or update `watch_pages`)'
+	].join('\n');
+}
+
+function isMissingFragmentError(error) {
+	return /No element with id=/.test(String(error?.message ?? error ?? ''));
+}
+
+async function openOrUpdatePageWatchIssue(token, repository, entry, watchUrl, previousText, nextText) {
+	const title = pageWatchChangedIssueTitle(entry, watchUrl);
+	const body = pageWatchIssueBody(entry, watchUrl, previousText, nextText);
+	await ensureLabel(token, repository);
+	const existing = await findOpenIssue(token, repository, title);
+	if (existing) {
+		// Keep the original issue body (first change); append later diffs as comments.
+		await request(`repos/${repository}/issues/${existing.number}/comments`, token, 'POST', { body });
+		console.log(`Commented on issue: ${title}`);
+		return;
+	}
+	await request(`repos/${repository}/issues`, token, 'POST', {
+		title,
+		body,
+		labels: [LABEL]
+	});
+	console.log(`Opened issue: ${title}`);
+}
+
+async function openOrUpdatePageWatchMissingIssue(token, repository, entry, watchUrl) {
+	const title = pageWatchMissingIssueTitle(entry, watchUrl);
+	const body = pageWatchMissingIssueBody(entry, watchUrl);
+	await ensureLabel(token, repository);
+	const existing = await findOpenIssue(token, repository, title);
+	if (existing) {
+		console.log(`Issue already open: ${title}`);
+		return;
+	}
+	await request(`repos/${repository}/issues`, token, 'POST', {
+		title,
+		body,
 		labels: [LABEL]
 	});
 	console.log(`Opened issue: ${title}`);
@@ -223,8 +434,12 @@ export async function runWatch(options = {}) {
 	const repository = options.repository ?? process.env.GITHUB_REPOSITORY ?? null;
 	const canOpenIssues = Boolean(token && repository) && !dryRun;
 
-	const entries = (options.entries ?? readEntries()).filter((entry) => entry.record?.watch);
-	/** @type {Record<string, { url: string, fingerprint: string, checked_at: string }>} */
+	const allEntries = options.entries ?? readEntries();
+	const releaseEntries = allEntries.filter((entry) => entry.record?.watch);
+	const pageEntries = allEntries.filter(
+		(entry) => Array.isArray(entry.record?.watch_pages) && entry.record.watch_pages.length
+	);
+	/** @type {Record<string, any>} */
 	let state = {};
 	if (fs.existsSync(statePath)) {
 		try { state = JSON.parse(fs.readFileSync(statePath, 'utf8')) ?? {}; }
@@ -234,7 +449,7 @@ export async function runWatch(options = {}) {
 	const nextState = { ...state };
 	const results = [];
 
-	for (const entry of entries) {
+	for (const entry of releaseEntries) {
 		const url = String(entry.record.watch);
 		const previous = state[entry.id] ?? null;
 		try {
@@ -248,7 +463,7 @@ export async function runWatch(options = {}) {
 			const fp = fingerprint(body, contentType);
 			const items = parseFeedItems(body, contentType);
 			const decision = decideWatchUpdate({ previous, url, fingerprint: fp });
-			results.push({ id: entry.id, name: entry.record.name, url, decision, fingerprint: fp });
+			results.push({ id: entry.id, name: entry.record.name, url, decision, fingerprint: fp, kind: 'release' });
 
 			if (decision.action === 'unchanged') {
 				if (items && !Array.isArray(previous?.items)) {
@@ -272,7 +487,99 @@ export async function runWatch(options = {}) {
 			nextState[entry.id] = { url, fingerprint: fp, checked_at: now(), ...(items ? { items } : {}) };
 		} catch (error) {
 			console.warn(`${entry.id}: watch failed (${error.message}); keeping previous state`);
-			results.push({ id: entry.id, name: entry.record.name, url, error: error.message });
+			results.push({ id: entry.id, name: entry.record.name, url, error: error.message, kind: 'release' });
+		}
+	}
+
+	for (const entry of pageEntries) {
+		for (const rawUrl of entry.record.watch_pages) {
+			const url = String(rawUrl);
+			const stateKey = pageWatchStateKey(entry.id, url);
+			const previous = state[stateKey] ?? null;
+			const fetchUrl = url.replace(/#.*$/, '') || url;
+			try {
+				const response = await fetchImpl(fetchUrl, {
+					signal: AbortSignal.timeout(FETCH_MS),
+					headers: { 'User-Agent': USER_AGENT, Accept: 'text/html,*/*' }
+				});
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				const body = await response.text();
+				let text;
+				try {
+					text = extractPageWatchText(body, url);
+				} catch (error) {
+					if (!isMissingFragmentError(error)) throw error;
+					console.warn(`${stateKey}: ${error.message}; keeping previous state`);
+					const missingTitle = pageWatchMissingIssueTitle(entry, url);
+					if (canOpenIssues) {
+						await openOrUpdatePageWatchMissingIssue(token, repository, entry, url);
+					} else {
+						console.log(`Would open issue: ${missingTitle}`);
+					}
+					results.push({
+						id: entry.id,
+						name: entry.record.name,
+						url,
+						error: error.message,
+						kind: 'page',
+						stateKey,
+						missingFragment: true
+					});
+					continue;
+				}
+				const capped = capPageWatchText(text);
+				const fp = pageWatchFingerprint(text);
+				const decision = decideWatchUpdate({ previous, url, fingerprint: fp });
+				results.push({
+					id: entry.id,
+					name: entry.record.name,
+					url,
+					decision,
+					fingerprint: fp,
+					kind: 'page',
+					stateKey
+				});
+
+				if (decision.action === 'unchanged') {
+					console.log(`${stateKey}: unchanged`);
+					continue;
+				}
+				if (decision.action === 'changed') {
+					console.log(`${stateKey}: CHANGED`);
+					const issueTitle = pageWatchChangedIssueTitle(entry, url);
+					if (canOpenIssues) {
+						await openOrUpdatePageWatchIssue(
+							token,
+							repository,
+							entry,
+							url,
+							previous?.text ?? '',
+							capped
+						);
+					} else {
+						console.log(`Would open issue: ${issueTitle}`);
+						console.log(pageWatchIssueBody(entry, url, previous?.text ?? '', capped));
+					}
+				} else {
+					console.log(`${stateKey}: ${decision.action === 'baseline' ? 'baseline recorded' : 'watch URL changed; re-baselined'}`);
+				}
+				nextState[stateKey] = {
+					url,
+					fingerprint: fp,
+					text: capped,
+					checked_at: now()
+				};
+			} catch (error) {
+				console.warn(`${stateKey}: page watch failed (${error.message}); keeping previous state`);
+				results.push({
+					id: entry.id,
+					name: entry.record.name,
+					url,
+					error: error.message,
+					kind: 'page',
+					stateKey
+				});
+			}
 		}
 	}
 

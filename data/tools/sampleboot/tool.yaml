@@ -20,3 +20,5 @@ compatible:
   - melodee-sample
   - mpc-simple
   - mpc-sample-tracker
+watch_pages:
+  - https://sampleboot.com/#works-with

@@ -47,6 +47,8 @@ Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, `data/c
 
    For repo-less entries, optional `version: "1.2.3"` and `released: "2026-11-07"` provide a hand-maintained latest release linked to `website`. Quote the date and use a real YYYY-MM-DD calendar date. Record a source note when using a product-page update date. GitHub release metadata remains authoritative for entries with `repo`. Optional `watch: https://…` points at an upstream URL the refresh job polls every 6 hours; when it changes, a `release-watch` issue is opened so a maintainer can update the entry by hand. Prefer an RSS/Atom feed or a stable JSON endpoint over a plain HTML page.
 
+   Optional `watch_pages: [https://example.com/#section-id]` watches partner HTML pages (any entry, with or without `repo`). A URL `#fragment` fingerprints only that element's visible text; without a fragment, the whole page text is used. Markup-only churn is ignored. On text change, a `release-watch` issue includes added/removed lines so maintainers can update fields such as `compatible`.
+
 
    Use `price: free`, `paid`, or `pay-what-you-want`; omitted prices default to `free`. Optional `price_note` adds a short clarification such as `Suggested €9.99` (up to 160 characters). Use `source: open` or `closed`; the default is `open` with a repository and `closed` without one. Set it explicitly when the repository hosts only downloads or documentation for closed-source software. These labels describe access to the project; its licence may have additional conditions.
 

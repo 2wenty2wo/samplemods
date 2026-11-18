@@ -93,6 +93,16 @@ properties:
     type: string
     pattern: ^https?://
     description: Upstream URL polled for release changes (RSS/Atom/JSON preferred)
+  watch_pages:
+    type: array
+    uniqueItems: true
+    minItems: 1
+    items:
+      type: string
+      pattern: ^https?://
+    description: >-
+      HTML page URLs polled for section text changes. A #fragment fingerprints only that
+      element id's visible text; without a fragment, the whole page text is used.
   version:
     type: string
     minLength: 1
