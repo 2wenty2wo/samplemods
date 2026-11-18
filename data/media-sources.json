@@ -143,6 +143,26 @@
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
+  "le-resampler": [
+    {
+      "file": "screenshots/01-export.webp",
+      "source": "https://github.com/flug/Le-Resampler",
+      "repo": "flug/Le-Resampler",
+      "note": "Captured by Sample Mods from a source build of v0.1.22"
+    },
+    {
+      "file": "screenshots/02-category-and-tags.webp",
+      "source": "https://github.com/flug/Le-Resampler",
+      "repo": "flug/Le-Resampler",
+      "note": "Captured by Sample Mods from a source build of v0.1.22"
+    },
+    {
+      "file": "screenshots/03-export-template.webp",
+      "source": "https://github.com/flug/Le-Resampler",
+      "repo": "flug/Le-Resampler",
+      "note": "Captured by Sample Mods from a source build of v0.1.22"
+    }
+  ],
   "lightfoot": [
     {
       "file": "screenshots/01-title.webp",
