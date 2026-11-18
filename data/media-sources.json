@@ -207,8 +207,8 @@
   ],
   "melodee-sample": [
     {
-      "file": "screenshots/01-stage.webp",
-      "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/stage.png",
+      "file": "screenshots/01-song.webp",
+      "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/song.png",
       "repo": "keremimo/melodee-sample"
     },
     {
@@ -222,8 +222,8 @@
       "repo": "keremimo/melodee-sample"
     },
     {
-      "file": "screenshots/04-song.webp",
-      "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/song.png",
+      "file": "screenshots/04-stage.webp",
+      "source": "https://raw.githubusercontent.com/keremimo/melodee-sample/HEAD/docs/images/screens/stage.png",
       "repo": "keremimo/melodee-sample"
     },
     {
