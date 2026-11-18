@@ -6,9 +6,14 @@
   },
   "mpc-simple": {
     "url": "https://sourceforge.net/projects/mpcsimple/rss?path=/",
-    "fingerprint": "/MPC-Simple-1.0-Beta-3.zip | Tue, 17 Nov 2026 02:52:46 UT",
-    "checked_at": "2026-11-17T10:50:23.792Z",
+    "fingerprint": "/MPC-Simple-1.0-Beta-4.zip | Wed, 18 Nov 2026 03:33:54 UT",
+    "checked_at": "2026-11-18T09:49:27.532Z",
     "items": [
+      {
+        "title": "/MPC-Simple-1.0-Beta-4.zip",
+        "published_at": "2026-11-18T03:33:54.000Z",
+        "html_url": "https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-4.zip/download"
+      },
       {
         "title": "/MPC-Simple-1.0-Beta-3.zip",
         "published_at": "2026-11-17T02:52:46.000Z",
@@ -25,5 +30,11 @@
         "html_url": "https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download"
       }
     ]
+  },
+  "page:sampleboot:https://sampleboot.com/#works-with": {
+    "url": "https://sampleboot.com/#works-with",
+    "fingerprint": "8640b52b5925699f4b4af3ddc6004e6132d4509687b3b54f87a1cc36062fa406",
+    "text": "04 / Works with PAGE 04/08\nSystems that work with it.\nSampleBoot runs each system's own autorun folder, unchanged. Any OS that starts from autorun should work; these are the ones known to work so far, tested on the author's MPC or reported by users. SampleBoot includes none of them: download each one from its author.\nSystem Versions Checked by Notes From\n■ Stock firmware 1.3.0 (1.3.0.12) Tested Akai Professional\n■ SampQOL OS 0.1.4.7 – 0.3.0 Tested 16 USB outputs: SampleBoot 1.0.1 or later beatops.io/sampqol\n■ Melodee 0.1.0 – 0.3.0 Tested Update it by replacing its folder github.com/keremimo/melodee-sample\n■ MPC Simple 1.0 Beta 1 – Beta 3 Tested mpcsimple.com\n■ MPCTRACKER 0.1.0 Tested Needs an empty sampleboot.inplace file in its folder (SampleBoot 1.0.2 or later) jeffwebb-to/mpc-sample-tracker\n■ ODDFORM 1.2.0 beta User report –\nUsing another system with SampleBoot? Tell us in an issue on GitHub or on r/mpcsample, with its name and version, and it goes on the list.",
+    "checked_at": "2026-11-18T09:49:28.385Z"
   }
 }
