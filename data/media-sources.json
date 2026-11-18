@@ -763,6 +763,44 @@
       "repo": "jacob-sabella/mpc-addin-sample-scalemode"
     }
   ],
+  "sampleboot": [
+    {
+      "file": "screenshots/01-splash.gif",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/splash.gif",
+      "repo": "pxcm/SampleBoot",
+      "note": "Official single-screen animated splash, preserved unchanged"
+    },
+    {
+      "file": "screenshots/02-akai-firmware.png",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "AKAI firmware menu (1/6), cropped from sampleboot-hero.png at (8, 8)-(648, 488); native 640x480, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/03-customos-lite.png",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS Lite menu (2/6), cropped from sampleboot-screens-1.png at (736, 8)-(1056, 248); native 320x240, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/04-customos-v1.png",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS v1.0 menu (3/6), cropped from sampleboot-hero.png at (692, 8)-(1332, 488); native 640x480, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/05-customos-v1-1.png",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS v1.1 menu (4/6), cropped from sampleboot-screens-1.png at (372, 8)-(692, 248); native 320x240, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/06-customos-v2.png",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS v2.0 menu (5/6), cropped from sampleboot-hero.png at (1376, 8)-(2016, 488); native 640x480, no scaling or gutter"
+    }
+  ],
   "smplutility": [
     {
       "file": "screenshots/01-panel.webp",
