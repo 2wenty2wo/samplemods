@@ -2,7 +2,7 @@ name: Draft entries from the star list
 
 on:
   schedule:
-    - cron: '30 5 * * *'
+    - cron: '43 5 * * *'
   workflow_dispatch:
 
 permissions:

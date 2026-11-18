@@ -1,0 +1,38 @@
+name: Enrich catch-up
+
+# Hourly odd-minute nudge: if enrich.yml has not succeeded for >7h and nothing
+# is already queued/running, dispatch it. Relies on enrich.yml concurrency group.
+on:
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: enrich-catchup
+  cancel-in-progress: false
+
+jobs:
+  catchup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Trigger enrich.yml if overdue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          LAST="$(gh run list --workflow enrich.yml --status success -L 1 --json updatedAt --jq '.[0].updatedAt // empty')"
+          ACTIVE="$(gh run list --workflow enrich.yml -L 20 --json status --jq '[.[] | select(.status=="queued" or .status=="in_progress" or .status=="pending" or .status=="waiting" or .status=="requested")] | length')"
+          echo "last_success=${LAST:-none} active=${ACTIVE}"
+          if node scripts/enrich-catchup.js --last "${LAST}" --active "${ACTIVE}"; then
+            echo "Dispatching enrich.yml"
+            gh workflow run enrich.yml --ref main
+          else
+            echo "No catch-up needed"
+          fi
