@@ -1,4 +1,7 @@
-# MPC Sample MINIMOD
+# MPC Sample MiniMod — written in Rust
+
+**A Rust `LD_PRELOAD` mod for the Akai MPC Sample, built on the open
+[mpc-sample-sdk](https://github.com/ioma8/mpc-sample-sdk).**
 
 I was annoyed by the complete reworks by other custom firmwares. I want the
 original MPC Sample experience, with just small fixes that enhance it for better flow. Thus I made this minimal MINIMOD for the **Akai MPC Sample** (firmware
@@ -21,16 +24,20 @@ original MPC Sample experience, with just small fixes that enhance it for better
 </tr>
 </table>
 
-## Built on the open Rust SDK
+## Written in Rust on the open SDK
 
-minimod is built on **[mpc-sample-sdk](https://github.com/ioma8/mpc-sample-sdk)**,
-a memory-safe Rust SDK for the Akai MPC Sample made by the same author. The SDK
+The MiniMod firmware mod is a Rust `cdylib`, built on
+**[mpc-sample-sdk](https://github.com/ioma8/mpc-sample-sdk)**, a memory-safe Rust
+SDK for the Akai MPC Sample made by the same author. The SDK
 owns the firmware finding and verification, the in-memory hooks, the event
 plumbing, audio/MIDI, drawing and typed access to the app's own objects, so
 custom mods can be written in **safe Rust** with typed SDK APIs. The feature code
 uses only small, documented `unsafe` blocks where an SDK API requires a lifetime,
 thread-ownership or exclusivity contract; see
 [the Rust port notes](docs/RUST-PORT.md).
+
+The optional dictation package also bundles a small C++ bridge to the
+Moonshine ARM64 runtime; the MiniMod itself and its firmware hooks remain Rust.
 
 The SDK is public and documented for anyone who wants to build their own MPC
 Sample mod:
@@ -39,8 +46,9 @@ Sample mod:
 
 The SDK ships a ready-to-use **`build-mod.sh`**; minimod's `mod/build.sh` is a
 thin wrapper around it. Install `uv` and `zig` first. The optional dictation
-build downloads the 31 MB Whisper model once and bundles it in its autorun zip.
-First-time builds need network access. Build from the root:
+build downloads Moonshine Tiny English's quantized model (about 43 MB) and
+bundles it with its ARM64 runtime. First-time builds need network access.
+Build from the root:
 
 ```sh
 cd mod
@@ -64,7 +72,7 @@ level of the SD card and power on; see [Install](#install).
 | **Synth** — eight characters (bass, piano, pads, lead, bells, strings, voice, organ); previews C2–D#3 from pads 1–16 with a purple 1→16 brightness gradient, `PLUS`/`MINUS` shift the pads by 8 semitones, the page shows the played note, and `DATA` renders the last pressed pad's note to a new pad (C2 when none was played) | `SHIFT` + `DATA`, choose **Synth**; turn `DATA` to switch character, K1/K2/K3 shape it |
 | **Live Looper** — a fullscreen 16-pad looper: each pad records a loop from the selected input source and plays it back; overdub, per-pad clear, stop-all, sync pulse with loop-length quantization and latency compensation; pads light by state (empty dim, recording red, overdub amber, playing green, stopped dim green) | `SHIFT` + `DATA`, choose **Live Looper**; pads record/play/stop, `SHIFT`+pad overdubs, `ERASE`+pad clears, `STOP` stops all, `LOOP` syncs, `SHIFT`+`DATA` exits |
 | **Recent Samples** — the native Load Sample browser includes a virtual folder at the SD-card root with up to 20 samples loaded onto pads during the current run; selecting one opens its original path, with no alias or audio files copied by MiniMod | `SAMPLE SELECT` → External → Back → **Recent Samples** |
-| **Voice project names** — captures the active ALSA input, transcribes with Whisper.cpp `tiny.en-q5_1`, and inserts the recognized name into the open Save Project field; a banner shows recording or transcription and clears when finished | On **Create name**, press `SAMPLE RECORD` to start and press it again to finish |
+| **Voice project names** — captures the active ALSA input, transcribes with Moonshine Tiny English on the MPC's four A55 CPU cores, and inserts the recognized name into the open Save Project field; a banner shows recording or transcription and clears when finished | On **Create name**, press `SAMPLE RECORD` to start and press it again to finish |
 
 The trim and pitch changes confirm themselves on screen for a second. HPSS,
 Spectral Chop, Add Reverb, Vinyl, Lo-Fi and Synth are in the small
@@ -133,11 +141,11 @@ That writes the release packages `mod/build/minimod.zip` and
 The build is delegated to the SDK's `build-mod.sh`; minimod does not maintain a
 second copy of the cross-compile, strip, glibc or autorun logic.
 
-The mod is Rust throughout: [`mpc-sample-sdk`](https://github.com/ioma8/mpc-sample-sdk) is the universal SDK
+The preload library is Rust: [`mpc-sample-sdk`](https://github.com/ioma8/mpc-sample-sdk) is the universal SDK
 (firmware image, hooks, input/audio/MIDI, drawing, typed platform objects),
-`rust/crates/minimod` is the feature code built only on that SDK, and
-`rust/crates/dsp` is the host-testable audio DSP.  The preload library is a
-`cdylib` — no C or C++ is compiled. `rust/check.sh` runs formatting, strict clippy (all +
+`rust/crates/minimod` is the feature code built on that SDK, and
+`rust/crates/dsp` is the host-testable audio DSP. The optional dictation package
+also builds a small C++ bridge to Moonshine's ARM64 runtime. `rust/check.sh` runs formatting, strict clippy (all +
 pedantic + cargo, warnings denied), a rustdoc build with warnings denied, the
 host tests including the golden DSP fixtures, and the aarch64 cross build. Layout, lint policy and the proof method:
 [`docs/RUST-PORT.md`](docs/RUST-PORT.md).

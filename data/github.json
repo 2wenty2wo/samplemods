@@ -75,8 +75,8 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-15T02:33:29Z",
-    "last_commit_at": "2026-11-15T02:33:29Z",
+    "pushed_at": "2026-11-17T22:48:43Z",
+    "last_commit_at": "2026-11-17T20:34:20Z",
     "contributors": 2,
     "open_issues": 1,
     "license": "MIT",
@@ -84,32 +84,32 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.7.1",
-      "published_at": "2026-11-15T00:47:46Z"
+      "tag": "v0.8.0",
+      "published_at": "2026-11-17T20:36:54Z"
     },
     "releases": [
+      {
+        "tag": "v0.8.0",
+        "name": "v0.8.0: SampQOL 0.3.0",
+        "published_at": "2026-11-17T20:36:54Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.8.0",
+        "body": "**D.S.B now runs on SampQOL OS 0.3.0, the latest.** The installer accepts only 0.3.0: download `SampQOL-OS-v0.3.0.zip` from [Snare Bes's official page](https://github.com/snarebes/SampQOL-OS/releases/tag/v0.3.0), then open the [installer](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/).\n\n**Hardware tested:** on 18 Nov 2026 the installer output from the pristine official 0.3.0 package (commit d5b1204, MPC Sample firmware 1.3.0.12) cold-booted and passed every check:\n- boot and splash\n- insert menu\n- HS editors\n- presets\n- pad mixer strips\n- header bar\n- EQ grid\n- SEQ desk and meters\n- browser key/BPM tags\n- Stems\n- an old project with HS effects\n- a second cold boot\n\n## What's new\n- **SampQOL 0.3.0 support.** The effects find SampQOL's internals for the version they're running on (#22). Cards already on 0.2.0 keep working if you only update the effects.\n- **Insert menu on 0.3.0:** SampQOL 0.3.0 adds AIR Lo-Fi and AIR Pitch Shifter, so 7 of the 9 HS effects fit: Channel Strip, Bus Compressor, Pump, Heat, Para EQ, Crush and Bass Focus.\n  - HS Saturator and HS Tube Strip still open in saved projects.\n  - To get their menu rows back, hide the two AIR effects in SampQOL's own settings.\n- **Boot Thingy:** presets, chains and Stems find the card from any autorun folder depth (#19).\n- **Admin:** list styling is opt-in, there's a new \"It booted\" issue template, and there's a menu note (#20).\n\n## Files\n- `henryskillz-mpc-sample-installer.html`: offline copy of the installer page (identical to the online one).\n- `henryskillz-mpc-sample-hs-tools-boot-thingy.zip`: HS Tools for stock firmware via Boot Thingy, unchanged from v0.7.1 (hardware tested).\n- `SHA256SUMS.txt`\n\nUnofficial. Not made, endorsed or supported by Akai Professional, inMusic or the SampQOL author. Back up your card first. Pull the card and the Sample is stock again.\n",
+        "truncated": false
+      },
+      {
+        "tag": "dsb-boot-v1.0.0",
+        "name": "D.S.B Boot v1.0.0",
+        "published_at": "2026-11-17T22:48:43Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/dsb-boot-v1.0.0",
+        "body": "**D.S.B Boot: a free boot menu for the MPC Sample.** One card, multiple setups, picked on the Sample's screen at power-on.\n\n- **HS FX:** stock firmware with three HS effects added to the Knob FX list: HS Para EQ, HS Tube Strip and HS Saturator. No SampQOL needed.\n- **Any OS:** copy an OS's unchanged release `autorun` folder into `autorun/os/` and rename it. It shows on the menu. You bring your own copy from its author.\n- **Stock:** Akai's firmware, untouched.\n\n## Install\n1. Back up your SD card.\n2. Download `dsb-boot-card.zip` and unzip it.\n3. Copy the `autorun` folder to the top level of an exFAT card.\n4. Put the card in the MPC and switch on.\n\nTurn the data encoder to browse, push to boot. SHIFT + turn switches theme. Full guide: https://www.henryskillz.com/dsb-guide\n\n**Tested:** cold boot on Henry's own MPC Sample (firmware 1.3.0.12) on 18 Nov 2026. Every unit and card is different, so back up first and [report anything odd](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/issues).\n\nSHA-256: `c83511782f803a20a7524df79c77aa3f2d4563c101657d3094e722ddd44647cf`\n\nThird-party OS support follows [SampleBoot](https://github.com/pxcm/SampleBoot) by Alessandro \"Paxi\" D'Esposito (MIT). Notices are in `autorun/boot/NOTICE.txt`.\n\nUnofficial. Not made, endorsed or supported by Akai Professional or inMusic. Pull the card and the Sample is stock again.",
+        "truncated": false
+      },
       {
         "tag": "v0.7.1",
         "name": "v0.7.1",
         "published_at": "2026-11-15T00:47:46Z",
         "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.1",
         "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** A v0.7.1 card cold-booted on a real MPC Sample on 15 Nov 2026 and the D.S.B effects loaded. Warp on import and HS Crush Auto Gain were tested on the same unit from RAM the same day.\n\n**New in v0.7.1**\n- **HenrySkillz D.S.B (Drums. Sample. Bass.):** the kit's new name across the docs.\n- **HS HF Exciter:** its new name, now with its HS faceplate in the editor.\n- **Warp on import:** a loop loaded onto a pad plays at the project tempo straight away. One-shots are left alone. Turning off \"Audio Tracks Auto Warp\" in Preferences turns this off too.\n- **HS Crush Auto Gain:** level-matched make-up.\n\nProjects and presets saved on v0.6.x and v0.7.0 open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.7.0",
-        "name": "v0.7.0",
-        "published_at": "2026-11-14T15:25:46Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.0",
-        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** Every item on the v0.7 checklist passed on a real MPC Sample on 15 Nov 2026, including a power-off cold boot.\n\n**Fixed in v0.7.0**\n- **No more flicker:** HS effect editors and the graphic Ch. Mixer / Pad Mixer stay steady while a pad or sequence plays.\n- **HS Heat** loads near unity instead of about +6 dB hot.\n- **HS Bus Compressor** plays the ratio its label shows.\n- **MOD:** the target knob turns with the modulated value.\n- **EQ grid** shows on the pad EQ page.\n- **Crush presets** saved before the rename are moved across.\n- **Browser tag:** short one-shots now show their note.\n\n**New in v0.7.0**\n- **KICK** and **BASSLINE** track chains (HS Tube Strip).\n\nProjects saved on v0.6.x open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.",
-        "truncated": false
-      },
-      {
-        "tag": "v0.6.1",
-        "name": "v0.6.1",
-        "published_at": "2026-11-14T06:45:21Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1",
-        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Fixed in v0.6.1**\n- **Effect names in the insert list:** HS effects now show as HS Heat, HS Bus Compressor and so on, not `hs_heat`, `hs_bus_comp`.\n- **HS Bass Focus page title:** shows HS Bass Focus, with knobs labelled Crossover, Bass and Mono Bass.\n\nProjects saved on v0.6.0 open as before. Hardware tested: the HS Tools card booted on a real MPC Sample (firmware 1.3.0.12) on 15 Nov 2026, with the SEQ desk, meters, browser tags and Stems all working.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n\n",
         "truncated": false
       }
     ],
@@ -118,8 +118,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 7,
     "forks": 0,
-    "pushed_at": "2026-11-17T14:22:07Z",
-    "last_commit_at": "2026-11-17T14:22:04Z",
+    "pushed_at": "2026-11-18T00:17:01Z",
+    "last_commit_at": "2026-11-18T00:16:57Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -127,32 +127,32 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.3",
-      "published_at": "2026-11-16T03:09:08Z"
+      "tag": "v1.5",
+      "published_at": "2026-11-17T23:34:20Z"
     },
     "releases": [
+      {
+        "tag": "v1.5",
+        "name": "MPC 600 S, LA Version 1.5",
+        "published_at": "2026-11-17T23:34:20Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.5",
+        "body": "**Fix: the screen jumping while turning knobs or using the data wheel.** Turning K1–K3, the slider or the main volume, or turning or pushing the data wheel, presses on the panel, and the pads near them could send light hits of their own. On an editing page such a hit selected another pad, so the page jumped to its sample. (1.4 caught these only right after a real pad hit.)\n\n- For 300 ms after a knob, slider or wheel movement, and while the wheel is held down, pad hits lighter than velocity 48 are ignored. Firm presses still play.\n- The 1.4 rule for neighbouring pads stays.\n- If pads still play by themselves, raise **Pad Thresh** in Additional Settings.\n\n**Save/Load:**\n\n- SHIFT + Pad 16 opens Save/Load on the Mode and Type used last: after loading an MPC 2500 PROJECT it opens on LOAD, MPC 2500 PROJECT. The first time after power-on, SAVE PROJECT.\n- LOAD has two pages: first Mode, Type, Into and Clear all, then B3 <Browse> opens the files, which work like Load Files: the wheel moves the bar, pushing the wheel (or B3) opens a folder or loads the item, B1 <Back> goes up a folder.\n- On the files page, B2 renames; Delete is SHIFT + B2, so it can't be pressed by accident. It still asks first.\n- LOAD: new **Clear all** field (NO / YES). With YES, Load asks \"Clear all, then load?\", empties every program, sound, sequence and song (settings stay), then loads. It goes back to NO after each use.\n\nInstall: extract MPC-600-S-OS-v1.5.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n\n\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.4",
+        "name": "MPC 600 S, LA Version 1.4",
+        "published_at": "2026-11-17T16:57:14Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.4",
+        "body": "**Fix: pads playing by themselves next to the pad you hit.** A hit shakes the pads around it, and they could send light hits of their own, even with light or moderate playing. On an editing page, such a hit also selected that pad, so the screen jumped to another pad's sample (your edits stayed on the pad you were editing).\n\n- A hit on a neighbouring pad (beside it or at a corner) within 40 ms of a press, under 60% of its velocity, is now taken as the panel shaking and ignored.\n- On pads further away only much lighter hits are ignored, so two pads played together still both play.\n- If pads still play by themselves, raise **Pad Thresh** in Additional Settings (1 to 60, default 12).\n\nInstall: extract MPC-600-S-OS-v1.4.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "truncated": false
+      },
       {
         "tag": "v1.3",
         "name": "MPC 600 S, LA Version 1.3",
         "published_at": "2026-11-16T03:09:08Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.3",
         "body": "**New: other MPCs' files, both ways.** Save/Load reads what an MPC 1000, MPC 2500 or MPC 500 saves, and writes projects an MPC 2500 loads.\n\n- **MPC 2500 SEQUENCE** loads a sequence from an **.ALL** file (all of an MPC's sequences together) or a **.SEQ** (one on its own). Choose the sequence, then its tracks: they go onto the first empty tracks of the sequence on Into, nothing already there touched. Drum notes go back onto the pads they were played on, by the program file beside the .ALL; each track plays its own MPC program if it is loaded. An empty sequence takes the file's tempo (to the tenth of a BPM), time signature and length, and loops to bar 1. The MPC runs at 96 PPQN, as the MPC 600 S does, so notes land on exactly the same ticks.\n- **MPC 2500 PROGRAM** loads a **.PGM** with its samples (the WAVs beside it, or a folder down or up): each pad's sample with its start, end and loop points, level, pan, tuning, play mode, mute group, envelope and filter. The message says how many WAVs were not found.\n- **MPC 2500 PROJECT** loads a **.PRJ** whole, into what is empty: every program, then every sequence, each track on its own program. MPC 1000 and MPC 500 projects load too.\n- **MPC 2500 PROJECT on SAVE** writes the project as a folder an MPC 2500 loads: the .PRJ, ALL_SEQS&SONGS.ALL (every sequence in its own number, up to 64 tracks), a .PGM for each program (pads A01-D16 and their settings), and every sample as a 16-bit 44.1 kHz WAV with its start and end. Pads in banks E-H and tracks past 64 are left out, and the message says how much.\n- **MIDI FILE** loads a Standard MIDI File the same way: tracks chosen, onto the first empty tracks; SHIFT + push makes a track DRUM or KEYS.\n- **SEQUENCE** saves and loads one sequence on its own, with all its tracks.\n- Each MPC has its own types, named for it: these are for the MPC 2500, and read the MPC 1000's and MPC 500's files too, which are the same.\n- The MPC types open at the top of the card, where an MPC's folders go. Each type remembers its folder and last item until power-off, so loading one after another stays put. B1 is <Up> out of a folder.\n\n**Knob Mode** (Additional Settings 2): how K1-K3 and the slider take over a value. CATCH (as before: nothing moves until the knob reaches the value), JUMP (straight to the knob), SCALE (from where it is, meeting the knob at the ends).\n\n**Timing Correct knobs:** K1 Swing (the SP12's six settings in SP12 mode), K2 Shift amount, K3 the Move Existing track.\n\n**Also:** SHIFT + MUTE unmutes every track. SHIFT + ERASE opens Program Config with Copy started on the last pad pressed. Resample Start defaults to THRESHOLD; FORCE is now MANUAL. 16 Levels Tune's root starts on A08, so the pads play seven semitones down to eight up on bank A.\n\nInstall: extract MPC-600-S-OS-v1.3.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.2",
-        "name": "MPC 600 S, LA Version 1.2",
-        "published_at": "2026-11-14T15:24:34Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.2",
-        "body": "**New: S600 MULTI, multisample instruments.** A third program Type (MPC, S600, S600 MULTI). One pad, the Instrument (Inst in Program Config), plays samples from the program's pads across the keyboard: up to 32 keygroups, each with two velocity zones, its root, tuning, level and pan; shared S600 envelopes, filter and LFO; key tracking (KEY>PAN, KEY>FILTER, KEY>LEVEL, KEY>ENV) with instrument templates. A keyboard view on the Keygroup page, K1 through the keygroups, keys and pads to set roots, ranges and zones.\n\n**Auto Sampler:** play each note asked for (\"Ready for Sample 1, Velocity 1\"); <End>, <Re-Do>, <Skip>; at the end each sample's pitch is detected and everything is mapped by pitch and velocity, onto pads in pitch order. 12-bit mono at 29.76 kHz to start.\n\n**Auto Map** builds the keygroups from the pads, the roots from file names and pitch detection; **Root Auto-Detect** gives S600 sounds their root note when loaded, so MIDI keys play them at true pitch. **S600** programs get an Instrument too (A01, or LAST PAD).\n\n**S600 Mod page** (B2: Filter, LFO, Mod): the mod wheel on pitch (vibrato), filter (LFO movement, or OPEN: the cutoff opened) and level (tremolo), and the pitch bend range. The Main page: Poly, Legato, Portamento, Note On, Root Note (Auto-Detect).\n\n**Insert effects** (mixer: SHIFT + B3 FX Sends, then SHIFT + B3 again): effects in any track's channel, in series before its fader, pan and sends. 8 insert slots shared across all tracks, each effect using what it costs (reverbs 4, amps, delays and modulation 2, EQs, dynamics and drives 1), with a live CPU meter. Saved with the project and included in exports.\n\n**All On** envelope template, the new default for S600 sounds: full level from note start until release.\n\n**Zone Assign TRANSIENT** (CHOP): a zone at every drum hit of a break, found at once: kicks, snares, hats and ghost notes, each zone starting just before its hit. Sensitivity 1-10, starts movable a millisecond at a time, <Delete> for a false hit.\n\n**Loading a program** asks first, naming the program it goes into (the wheel picks another; <To Empty> loads into the first empty program).\n\n**New: Live Looper.** On Audiotrack Record, B2 <Live Loop>: one-pass takes drop onto pads while the sequence keeps looping. Layer take after take without stopping; <Del Take> removes the last one. Live Loop Conversion (Additional Settings 2): IMMEDIATE converts during the pass, so the take drops in a few ms after it; AFTER 1ST LOOP drops in the raw take and converts while it plays, suited to longer takes.\n\n**Footswitch AUDIO REC** (MIDI Settings, Sustain: FOOTSWITCH): the pedal is <Rec>/<Stop> on Audiotrack Record and Live Looper, and on any page once Live Looper takes have started.\n\n**Footswitch setup** (MIDI Settings): Foot Chn (ANY to start, so any keyboard's pedal works), Foot CC (64 to start) and Polarity (AUTO works out a pedal that rests \"down\"; or NORMAL, INVERTED). <Learn> sets all three from one press of the pedal, and the bottom line shows what the pedal last sent.\n\n**Additional Settings on two pages.** Page 2 holds Loop Conv and the start values for every recording page: Sample Rate (29.76 kHz; the slider's rates, or SET to any rate), Bit Rate (12), Anti-Aliasing and Normalize (on), Input Thru (always on, or off) and Rec Mode (stereo; Convert Sample stays mono).\n\n**Metronome:** Audio Rec (click during audio track and Live Looper takes, default NO) and After Loop (click after a Live Looper take, default STOP).\n\n**SAMPLE + pad** selects a pad without playing it in every mode (Note Repeat, Local Mode off, MIDI tracks): set a loop's volume without retriggering it.\n\n**Fixed:** Master Effects are no longer kept in the settings file: they start off at power-on unless the Autoload project has them.\n\nInstall: extract **MPC-600-S-OS-v1.2.zip** and copy the `autorun` folder to the SD card root, replacing the old one. Your `MPC600S` folder is kept.\n\n\n\n\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1",
-        "name": "MPC 600 S, LA Version 1.1",
-        "published_at": "2026-11-13T20:11:54Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.1",
-        "body": "Download **mpc-os.zip**, unzip it, and copy the `autorun` folder to the top of an SD card. The Quick Start guide has the steps; the manual covers everything. The stems models are optional, only for the Stems page.",
         "truncated": false
       }
     ],
@@ -416,10 +416,10 @@
   "flug/Le-Resampler": {
     "stars": 6,
     "forks": 0,
-    "pushed_at": "2026-11-17T11:23:12Z",
-    "last_commit_at": "2026-11-17T11:08:17Z",
+    "pushed_at": "2026-11-17T18:52:29Z",
+    "last_commit_at": "2026-11-17T18:52:23Z",
     "contributors": 3,
-    "open_issues": 2,
+    "open_issues": 1,
     "license": "MIT",
     "description": "Manage your sample library and export it to the Akai MPC Sample — organised by category into folders, straight to your SD card.",
     "default_branch": "main",
@@ -500,8 +500,8 @@
     "archived": false
   },
   "garrettjwilke/mpc-boot-thingy": {
-    "stars": 23,
-    "forks": 4,
+    "stars": 24,
+    "forks": 3,
     "pushed_at": "2026-11-17T01:29:13Z",
     "last_commit_at": "2026-11-17T01:29:13Z",
     "contributors": 6,
@@ -718,19 +718,27 @@
   "ioma8/mpc-minimod": {
     "stars": 8,
     "forks": 1,
-    "pushed_at": "2026-11-17T15:22:27Z",
-    "last_commit_at": "2026-11-17T15:20:30Z",
+    "pushed_at": "2026-11-17T22:17:43Z",
+    "last_commit_at": "2026-11-17T22:17:40Z",
     "contributors": 2,
     "open_issues": 1,
     "license": null,
-    "description": "Minimal mod for the Akai MPC Sample (firmware 1.3.0.12): autotrim, octave shift in 16 Levels.",
+    "description": "A Rust mod for the Akai MPC Sample, built on mpc-sample-sdk. AutoTrim, Recent Samples, chopping, effects, synth, looper, and optional Moonshine voice dictation.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.10.3",
-      "published_at": "2026-11-17T07:35:38Z"
+      "tag": "v0.11.0",
+      "published_at": "2026-11-17T21:20:25Z"
     },
     "releases": [
+      {
+        "tag": "v0.11.0",
+        "name": "v0.11.0 — Moonshine CPU dictation",
+        "published_at": "2026-11-17T21:20:25Z",
+        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.11.0",
+        "body": "## Features\n\n- **16 Levels:** shift the pad row by ±8 semitones; external MIDI plays the selected sample chromatically across the keyboard.\n- **AutoTrim:** trim the selected sample's silent edges from the trim screen.\n- **SAMPLE OPTIONS:** HPSS, Spectral Chop, Add Reverb, Vinyl, Lo-Fi and an eight-character Synth.\n- **Live Looper:** record, play, overdub, clear and sync loops across 16 pads.\n- **Recent Samples:** a virtual folder in the native Load Sample browser for the 20 latest samples loaded onto pads; files remain at their original paths.\n- **Voice project names** in the optional dictation package: speak into the Create name field with `SAMPLE RECORD`.\n\n## Install\n\n1. Download `minimod.zip` for the standard mod or `minimod-dictation.zip` for voice naming.\n2. Unzip it and copy the `autorun` folder to the root of an SD card.\n3. Insert the card and boot the MPC Sample. Remove `autorun` and reboot to return to stock.\n\n## Changes in v0.11.0\n\n- Replace Whisper.cpp with quantized Moonshine Tiny English, running locally on the MPC's four Cortex-A55 CPU cores.\n- Keep dictation optional. The standard zip excludes model/runtime files; the dictation zip includes the ~43 MB model and ARM64 runtime.\n- Keep using the firmware's ALSA input and `SAMPLE RECORD` start/stop control, with recording and transcription feedback on the Create name screen.\n- Stage the executable and shared libraries in `/run` at boot to work around the SD card's `noexec` mount.\n\n## Verification and compatibility\n\n- Both release zips built. The ARM64 helper passed a sample transcription smoke check.\n- Dictation was manually verified on a physical MPC Sample.\n- Supports MPC Sample firmware **1.3.0.12**.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.10.3",
         "name": "v0.10.3 — repeated Chop playback fix",
@@ -745,14 +753,6 @@
         "published_at": "2026-11-17T06:52:51Z",
         "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.2",
         "body": "## Features\n\n- **16 Levels:** shift the pad row by eight semitones; external MIDI plays the selected sample across the keyboard.\n- **AutoTrim:** trim silence from the selected sample in three steps, then clear.\n- **Sample Options:** HPSS, Spectral Chop, Add Reverb, Vinyl, Lo-Fi and an eight-character Synth.\n- **Live Looper:** record, play, overdub, clear and sync loops across 16 pads.\n- **Recent Samples:** find up to 20 recently loaded sounds in the native Load Sample browser at the SD-card root. Entries open their original paths; no sample files are copied.\n\n## Install\n\nDownload `minimod.zip` from this release, unzip it, and copy the `autorun` folder to the top level of an SD card. Insert the card and power on the MPC Sample.\n\n## Changes in v0.10.2\n\n- Add Recent Samples to the native Load Sample browser. Only samples loaded onto pads appear; audition previews do not.\n- Update to `mpc-sample-sdk` v0.7.2 for virtual browser directories and successful file-open observation.\n- Correct emulator test navigation through the SD-card root.\n\n## Verification and compatibility\n\n- Complete emulator suite: 17/17 passed, including loading from Recent Samples and confirming no files were copied.\n- Strict Rust checks: 87 minimod tests, 63 DSP tests, formatting, Clippy, rustdoc, and AArch64 cross-build.\n- Release package checks passed; highest GLIBC requirement is 2.30.\n- Supports MPC Sample firmware **1.3.0.12**.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.10.1",
-        "name": "v0.10.1 — SDK 0.7, Spectral Chop and MIDI fixes",
-        "published_at": "2026-11-16T08:39:02Z",
-        "html_url": "https://github.com/ioma8/mpc-minimod/releases/tag/v0.10.1",
-        "body": "## Features\n\nMINIMOD is a Rust firmware mod built on the public `mpc-sample-sdk`. It includes 16 Levels chromatic MIDI, AutoTrim, the SAMPLE OPTIONS menu, HPSS, Spectral Chop, Reverb/Vinyl/Lo-Fi effects, eight synth characters, and a 16-pad Live Looper with recording, playback, overdub, and sync.\n\n## Install\n\n1. Download `minimod.zip` from this release.\n2. Unzip it and copy the `autorun` folder to the top level of an SD card.\n3. Insert the card and power on the MPC Sample. Remove `autorun` and reboot to unload the mod.\n\n## Changes in v0.10.1\n\n- Pin `mpc-sample-sdk` v0.7.0 with exact slice snapshots, custom-end restoration, and native chop-mode restoration.\n- Preserve existing slices and chop mode if Spectral Chop cannot write or verify markers; retain cancelled detection workers until they finish.\n- Preserve native MIDI note-on/note-off pairs at chromatic replay capacity and across 16 Levels mode changes.\n- Repaint directly only from live UI callbacks; background work requests frames through the UI repaint pump.\n\n## Verification and compatibility\n\n- `rust/check.sh`: formatting, strict Clippy, rustdoc, feature safety, 81 minimod tests, 63 DSP tests, and the AArch64 cross-build.\n- `mod/build.sh`: release package, required symbols, unresolved imports, and MPC Sample glibc limit.\n- Emulator: three menu navigation/close cycles, AutoTrim 3%/6%/9%/clear, Spectral Chop, and SDK Extract success/overwrite/full-program checks. The app did not restart during the interactive checks.\n- Built for MPC Sample firmware **1.3.0.12** only.\n",
         "truncated": false
       }
     ],
@@ -976,8 +976,8 @@
   "jazzyrhythmer/mpc-sample-engine-ports": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-17T12:29:13Z",
-    "last_commit_at": "2026-11-17T12:29:10Z",
+    "pushed_at": "2026-11-17T19:17:37Z",
+    "last_commit_at": "2026-11-17T19:17:35Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1016,8 +1016,8 @@
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
     "stars": 11,
     "forks": 0,
-    "pushed_at": "2026-11-17T12:29:10Z",
-    "last_commit_at": "2026-11-17T12:29:06Z",
+    "pushed_at": "2026-11-17T19:10:47Z",
+    "last_commit_at": "2026-11-17T19:10:44Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1086,7 +1086,7 @@
     "pushed_at": "2026-11-10T07:56:41Z",
     "last_commit_at": "2026-11-10T07:56:20Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": "MIT",
     "description": "A MOD/XM/IT Tracker for the Akai MPC Sample, run from an SD card",
     "default_branch": "main",
@@ -1108,21 +1108,29 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 55,
-    "forks": 6,
-    "pushed_at": "2026-11-16T20:40:41Z",
-    "last_commit_at": "2026-11-16T19:36:13Z",
+    "stars": 58,
+    "forks": 8,
+    "pushed_at": "2026-11-17T22:45:28Z",
+    "last_commit_at": "2026-11-17T22:20:16Z",
     "contributors": 1,
-    "open_issues": 11,
+    "open_issues": 14,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.3.0",
-      "published_at": "2026-11-16T20:41:35Z"
+      "tag": "v0.4.0",
+      "published_at": "2026-11-17T22:46:19Z"
     },
     "releases": [
+      {
+        "tag": "v0.4.0",
+        "name": "Melodee 0.4.0",
+        "published_at": "2026-11-17T22:46:19Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.4.0",
+        "body": "Melodee 0.4.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x or 0.3.0:** copy `Melodee-MPC-Sample-v0.4.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.4.0?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **Chop is reworked.** See *Chop* below. The encoder now moves the selected slice's cut instead of selecting a slice: tap a slice's pad or use **−** / **+** to select one. Push no longer starts a Manual take. **B2** (**SNAP**) is gone: every cut always lands on a zero crossing.\n- **Rec Quantize is one press.** **SHIFT** + **Pad 10** turns it on or off, as on the MPC. Recorded notes land on the pattern's Q. The REC QUANTIZE page and Settings' Rec grid row are gone.\n- **A new project has no tracks.** The track types open on track 1. On the NEW question, **B2** (**KIT**) starts with the MPC's factory kit on track 1.\n- **Melodee starts on Full**, also after an update. Basic offers every track type.\n- **Nothing is written to the card's top level.** New samples go to `Melodee/Samples` and `.syx` files are read from `Melodee/SysEx`. The old `Samples` and `SysEx` folders at the top are still read.\n- **Push on an MPC drum program** in the sample browser opens **LOAD KIT** instead of replacing the kit at once (see below).\n- **ERASE + an empty pad** on a kit now closes the gap (see below).\n- **The meter lights** step as the stock app's: −24.1, −12.1, −6.1 and −3.1 dBFS, red past −0.1 dBFS.\n- **The manual** is updated for all of this, on GitHub and on the web page at http://melodee.local.\n\n## New\n\n### Chop\n\n- **Manual take with the red pad.** Set **K3** to Manual. Pad 1 blinks red: tap it and the region plays. The red moves to the next pad; tap it on the next hit to cut there. After pad 16 the pads turn to bank B, up to 64 slices in banks A–D. Tap a lit pad to play again from its slice and redo the cuts after it. A take is one undo step.\n- **Fix a cut by eye.** Tap a slice's pad and turn the encoder: its start moves (its end after **K2**). The view zooms in while you turn and the slice plays once when you stop. **SHIFT** + encoder jumps the cut from hit to hit, marked under the waveform.\n- **PAD BANK** steps the pads through the slices, 16 at a time.\n- **Beats chop by division:** 1/16, 1/8, 1/4, 1/2, 1, 2 or 4 bars on **SHIFT** + **K3**.\n- **Cuts you make or move by hand stay** when you chop again by type, threshold, division or regions. An automatic cut close to one of yours gives way to it, so no short slivers.\n- **ERASE + pad** joins a slice with the one before. On pad 1 it joins with the next. The pads after move down one. **ERASE** + **CHOP** takes every cut out.\n- **TO PADS** asks how the slices play: **POLY**, **MONO** (one mute group) or **THRU** (each plays on to the region's end).\n- The chop type, its amount and your hand cuts are saved in the sample's WAV file with its slices, so they are still there after a restart.\n\n### Kits\n\n- **LOAD KIT.** Push on an MPC drum program in the sample browser shows its filled banks and how many pads each has. Pick which of your kit's banks each one fills, or **WHOLE KIT**. Only the filled pads are loaded; the rest of your kit stays. One undo.\n- **Close a gap.** **ERASE** + an empty pad moves the pads after it down one, with their notes, through that bank and the next one. To take a pad out and close the gap, press **ERASE** + that pad twice. The notices say what happened.\n\n### Samples\n\n- **A sample's note is found** when it loads or is recorded. 16 Levels Scale and Chords, MIDI into 16 Levels, Roll's row names and a keygroup track of one sample play from that note instead of C. A chord stab's root is found from its chord.\n- **Stems BEST** (**B2**): separates up to 16 kHz in two passes, about three times as long. On at first, kept with the settings.\n- The sample browser's **PREVIEW** works on a keygroup track too, and stays on or off after a restart.\n\n### Sequencing\n\n- **Roll:** **K2** on marked notes moves their velocities together.\n\n## Fixed\n\n- A kept punch ends with its pattern, also with Half Seq, a shorter length, Half Speed or an editor's loop. Punches let go when the transport leaves them.\n- Motion and kept punches past a pattern's end stay out on a track at another speed.\n- A kit lane of its own length keeps its notes with Seq Record, Note Repeat and Time Correct.\n- Stopping before the bar a launched sequence waits for brings its tempo with it.\n- The song's clips play their pattern where the song is.\n- A track move takes its kept punches and its modulator and macro lanes with it.\n- An editor's loop plays the right bars on a track at another speed.\n- Clear pattern takes the pattern's Motion with its notes.\n- **SHIFT** + **PLAY** continues from the right place on a track at another speed.\n- A MIDI track's audio no longer clicks on each pad touch and release.\n- The auto sampler no longer hears an outside instrument's check notes ringing.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.3.0",
         "name": "Melodee 0.3.0",
@@ -1138,14 +1146,6 @@
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.2.2",
         "body": "Melodee 0.2.2 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0 or 0.2.1:** copy `Melodee-MPC-Sample-v0.2.2.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.2.2?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in the [0.2.0 notes](https://github.com/keremimo/melodee-sample/releases/tag/v0.2.0): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\n## New\n\n- **Layer play: Cycle hold and Random hold** (Stage LAYERS, **SHIFT** + **K1**). They pick a layer like Cycle and Random, but while Note Repeat repeats the pad, every repeat plays the layer the first one picked until you let go.\n- **Stage ARP: SHIFT + K2** turns the arpeggiator on or off.\n\n## Changed\n\n- **Note Repeat is no longer the arpeggiator.** It plays every pad held together on each step, as on the MPC. Before, two pads held took turns: a kick pressed over rolling hats played only every other step and halved the hats. The arpeggiator keeps its modes, rate, octaves, gate and hold on Stage ARP, and Note Repeat no longer turns it on.\n\n## Fixed\n\n- Note Repeat and the arpeggiator play each note on its exact frame. Before, a note landed at the start of the audio block it fell in, so repeats were uneven by up to 3 ms. Swung repeats and MIDI out are exact too.\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.2.1",
-        "name": "Melodee 0.2.1",
-        "published_at": "2026-11-14T18:24:19Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.2.1",
-        "body": "Melodee 0.2.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.0:** copy `Melodee-MPC-Sample-v0.2.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.2.1?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in the [0.2.0 notes](https://github.com/keremimo/melodee-sample/releases/tag/v0.2.0): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\n## New\n\n- **Settings > LIGHTS:** Pad lights, Pad fade (100 ms by default, faster than before) and the Tap Tempo light on or off.\n- **Settings > PADS > Repeat velocity:** Note Repeat plays at the strike velocity or follows pad pressure.\n- **Web page:** installed plug-ins are listed with a delete button on each.\n\n## Faster\n\n- Idle plug-ins sleep: an instrument with no key held while stopped, or an effect with no signal, stops running after half a second of silence.\n- Plug-in rate conversion at 48 and 96 kHz takes a tenth of the time.\n- Kit voices, instrument zones, built-in effects and Room/Reverb/Plate run lighter loops; output is sample for sample the same. A busy kit bench runs 14% faster.\n\n## Fixed\n\n- **Warp by Time (Tones)** sounds cleaner: windows line up in phase, pitched-up reads are band-limited, and each hit plays once and on time, also around a kit pad's loop and in instrument zones.\n- Note Repeat plays on the press when the sequencer is stopped.\n- Step Edit lights pads under 16 Levels and as they play, names a level's pitch or velocity, marks sounding notes and records the keys a pad played.\n- Pad lights fade out when the sound stops, instead of going dark at a one-shot's end; same for 16 Levels pads.\n- Cloud is set per pad, not per kit. Older kits' Cloud setting is copied onto every pad.\n- A plug-in's chosen preset is saved with the project, so PRESETS shows it again after a restart.\n- Choosing the mic as input turns Monitor off only while the speaker plays; with headphones or line out plugged in, Monitor stays on.\n- Project page: SD card access is the first row of every folder and reads mounted / eject; entering a folder selects its first entry; dot files and folders are hidden.\n- Sample cache cleans up partial files and files not played for 30 days.\n- Web Files tab hides the `autorun` and `sample-base` folders.\n\n## Files\n\n- `Melodee-MPC-Sample-v0.2.1.zip`: the `autorun` folder for the card, and the update file. Its README and licences are inside, in `autorun/melodee/`.\n- `Melodee-MPC-Sample-v0.2.1.zip.sha256`: its checksum.\n\nMelodee is made by Kerem Kiliç (Ellic Studio). Free software under the AGPL-3.0. Not affiliated with or endorsed by inMusic or Akai Professional.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -1153,8 +1153,8 @@
   "keremimo/sample-base": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-14T11:39:36Z",
-    "last_commit_at": "2026-11-14T11:19:12Z",
+    "pushed_at": "2026-11-17T22:45:14Z",
+    "last_commit_at": "2026-11-17T19:52:55Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1248,10 +1248,10 @@
     "archived": false
   },
   "open-mpc/open-mpc.github.io": {
-    "stars": 4,
+    "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-17T13:08:24Z",
-    "last_commit_at": "2026-11-17T13:08:14Z",
+    "pushed_at": "2026-11-18T00:36:43Z",
+    "last_commit_at": "2026-11-18T00:36:41Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1315,8 +1315,8 @@
   "pxcm/SampleBoot": {
     "stars": 8,
     "forks": 0,
-    "pushed_at": "2026-11-17T08:35:34Z",
-    "last_commit_at": "2026-11-17T08:35:32Z",
+    "pushed_at": "2026-11-17T21:53:07Z",
+    "last_commit_at": "2026-11-17T21:53:05Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1324,10 +1324,18 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.0.1",
-      "published_at": "2026-11-16T20:09:03Z"
+      "tag": "v1.0.2",
+      "published_at": "2026-11-17T21:51:26Z"
     },
     "releases": [
+      {
+        "tag": "v1.0.2",
+        "name": "SampleBoot 1.0.2",
+        "published_at": "2026-11-17T21:51:26Z",
+        "html_url": "https://github.com/pxcm/SampleBoot/releases/tag/v1.0.2",
+        "body": "One card, every OS: a boot selector for the Akai MPC Sample. Website: https://sampleboot.com\r\n\r\n## Added\r\n\r\n- **`sampleboot.inplace`.** An empty file with this name in a system's folder makes SampleBoot run it from `autorun/` itself, as if it were alone on the card. For systems that take \"the folder above their own\" for the card. **MPCTRACKER 0.1.0 needs it**: without it, its file browser stays inside `autorun/mods/` and it looks for its songs and samples there.\r\n- **Boot history.** `autorun/sampleboot/boot-history.log` keeps the logs of the last 10 boots, each headed by its date, to compare tests. `BOOT_HISTORY` in `sampleboot.conf` sets how many (0 = none).\r\n- **[Notes for OS authors](https://github.com/pxcm/SampleBoot/blob/main/docs/OS-AUTHORS.md):** how to make a system that runs from SampleBoot exactly as it runs on its own.\r\n\r\n## Fixed\r\n\r\n- The last line of `last-boot.log` could be missing when the card was read from a computer through SD card access without a restart. It is now written to the card at once.\r\n\r\n## Works with\r\n\r\nFirmware 1.3.0 (1.3.0.12) with SampQOL OS 0.1.4.7 to 0.3.0, Melodee 0.1.0 to 0.3.0, MPC Simple 1.0 Beta 1 to Beta 3 and MPCTRACKER 0.1.0 (tested), ODDFORM 1.2.0 beta (reported by a user). See the [list](https://github.com/pxcm/SampleBoot#works-with).\r\n\r\n## Updating\r\n\r\nCopy the `autorun` folder from the zip over the one on your card (your systems in `autorun/mods/` stay), or run `tools/add_mod.py` with your card's path to keep your settings too. A `sampleboot.conf` from 1.0.x works as it is.\r\n",
+        "truncated": false
+      },
       {
         "tag": "v1.0.1",
         "name": "SampleBoot 1.0.1",
@@ -1500,7 +1508,7 @@
     "pushed_at": "2026-11-16T17:07:39Z",
     "last_commit_at": "2026-11-16T17:07:37Z",
     "contributors": 1,
-    "open_issues": 23,
+    "open_issues": 25,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
