@@ -28,6 +28,15 @@
 			: null;
 </script>
 
+<svelte:head>
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="Sample Mods: latest releases"
+		href="{base}/releases.xml"
+	/>
+</svelte:head>
+
 <header class="site-topbar">
 	<div class="site-topbar-inner">
 		<a class="brand-lockup" href="{base}/">

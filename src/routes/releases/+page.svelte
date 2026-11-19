@@ -92,6 +92,9 @@
 				Newest firmware mods, apps, games and companion tool updates across the catalog,
 				ordered by release date.
 			</p>
+			<p class="page-rss">
+				<a href="{base}/releases.xml">RSS feed</a>
+			</p>
 		</div>
 	</div>
 </section>
@@ -221,6 +224,19 @@
 		margin: 0;
 		color: var(--mpc-screen-text);
 		max-width: 65ch;
+	}
+
+	.page-rss {
+		margin: 0.75rem 0 0;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+	}
+
+	.page-rss a {
+		color: var(--mpc-screen-white);
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
 	}
 
 	.releases-wrap {
