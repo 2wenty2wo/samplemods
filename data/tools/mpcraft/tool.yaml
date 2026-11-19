@@ -1,9 +1,17 @@
 name: MPCraft
-description: Assign samples to AKAI MPC Sample pads right on the SD card.
+description: >-
+  A native macOS app that assigns samples to Akai MPC Sample pads right on the SD card, with
+  browsing, preview and library management for projects on the card.
 repo: jiripisa/mpcraft
 author: jiripisa
-runs_on:
-  - desktop
+website: https://jiripisa.github.io/mpcraft/
+tags:
+  - companion
+  - samples
+  - library
+  - macos
 install: desktop
-audience:
-  - musician
+runs_on: [desktop]
+audience: [musician]
+status: experimental
+version: "0.1.0"
