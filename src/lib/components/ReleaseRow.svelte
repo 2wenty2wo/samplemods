@@ -220,15 +220,15 @@
 	.release-row.is-compact {
 		width: 100%;
 		display: grid;
-		padding: 0.25rem 0.6rem;
+		padding: 0.14rem 0.55rem;
 		gap: 0;
 		background: var(--mpc-body-light);
 		border: 1.5px solid #282b34;
-		border-bottom: 3px solid var(--chip-accent, var(--pad-glow));
+		border-bottom: 2.5px solid var(--chip-accent, var(--pad-glow));
 		border-radius: 5px;
 		box-shadow:
 			inset 0 1px 0 rgb(255 255 255 / 0.65),
-			0 2px 0 #1b1d24;
+			0 1.5px 0 #1b1d24;
 	}
 
 	.release-row.is-compact:hover {
@@ -238,14 +238,14 @@
 	.compact-grid {
 		display: flex;
 		align-items: center;
-		gap: 0.45rem;
+		gap: 0.4rem;
 		min-width: 0;
 		color: inherit;
 		text-decoration: none;
 	}
 
 	.compact-thumb {
-		margin-right: 0.15rem;
+		margin-right: 0.1rem;
 	}
 
 	.compact-name {
@@ -254,16 +254,22 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		font-size: 0.88rem;
+		line-height: 1.15;
 	}
 
 	.compact-cat {
 		flex-shrink: 0;
+		font-size: 0.68rem;
+		padding: 0.08rem 0.36rem;
+		border-bottom-width: 2px;
+		line-height: 1.15;
 	}
 
 	.compact-version-wrap {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.35rem;
+		gap: 0.3rem;
 		min-width: 0;
 	}
 
@@ -274,16 +280,24 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		vertical-align: middle;
+		font-size: 0.68rem;
+		padding: 0.08rem 0.36rem;
+		line-height: 1.15;
 	}
 
 	.compact-prerelease {
 		flex-shrink: 0;
+		font-size: 0.68rem;
+		padding: 0.08rem 0.36rem;
+		border-bottom-width: 2px;
+		line-height: 1.15;
 	}
 
 	.compact-date {
 		margin-left: auto;
 		white-space: nowrap;
 		flex-shrink: 0;
+		font-size: 0.7rem;
 	}
 
 	.date-short {
@@ -309,8 +323,14 @@
 	}
 
 	.is-compact .release-bezel {
-		width: 48px;
-		height: 36px;
+		width: 32px;
+		height: 24px;
+		border-width: 1.5px;
+		border-radius: 3px;
+	}
+
+	.is-compact .mini-initials {
+		font-size: 0.65rem;
 	}
 
 	.mini-initials {
@@ -493,15 +513,15 @@
 
 	@media (max-width: 560px) {
 		.release-row.is-compact {
-			padding: 0.42rem 0.6rem;
+			padding: 0.24rem 0.48rem;
 		}
 
 		.compact-grid {
 			display: grid;
 			grid-template-columns: auto minmax(0, 1fr) auto;
 			grid-template-rows: auto auto;
-			column-gap: 0.55rem;
-			row-gap: 0.25rem;
+			column-gap: 0.45rem;
+			row-gap: 0.12rem;
 			align-items: center;
 		}
 
@@ -512,15 +532,16 @@
 		}
 
 		.is-compact .release-bezel {
-			width: 56px;
-			height: 42px;
+			width: 44px;
+			height: 33px;
 		}
 
 		.compact-name {
 			grid-column: 2;
 			grid-row: 1;
 			max-width: none;
-			font-size: 0.94rem;
+			font-size: 0.85rem;
+			line-height: 1.15;
 		}
 
 		.compact-cat {
@@ -545,7 +566,7 @@
 			grid-row: 2;
 			justify-self: end;
 			margin-left: 0;
-			font-size: 0.72rem;
+			font-size: 0.68rem;
 		}
 
 		.date-full {
