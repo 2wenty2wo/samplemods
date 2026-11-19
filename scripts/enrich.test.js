@@ -83,14 +83,17 @@ try {
 	assert.equal(data['owner/z'].contributors, 0);
 	assert.equal(data['owner/z'].license, null);
 	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/z.md')));
-	assert.deepEqual(JSON.parse(fs.readFileSync(contributorsFile, 'utf8')), [
-		{
-			login: '2wenty2wo',
-			avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
-			html_url: 'https://github.com/2wenty2wo',
-			contributions: 4
-		}
-	]);
+	assert.deepEqual(JSON.parse(fs.readFileSync(contributorsFile, 'utf8')), {
+		stars: 7,
+		contributors: [
+			{
+				login: '2wenty2wo',
+				avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
+				html_url: 'https://github.com/2wenty2wo',
+				contributions: 4
+			}
+		]
+	});
 	fs.utimesSync(output, 1000000, 1000000);
 	fs.utimesSync(readme, 1000000, 1000000);
 	fs.utimesSync(contributorsFile, 1000000, 1000000);

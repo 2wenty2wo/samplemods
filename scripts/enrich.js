@@ -93,8 +93,9 @@ for (const repo of repos) {
 	console.log(`Fetched ${repo}.`);
 }
 
+const { data: catalogRepo } = await request(CATALOG_REPO);
 const catalogContributors = await fetchCatalogContributors();
-console.log(`Fetched ${catalogContributors.length} catalog contributor(s).`);
+console.log(`Fetched ${catalogContributors.length} catalog contributor(s); ★${catalogRepo.stargazers_count}.`);
 
 // Fetch everything before changing either cache, so API failures preserve the previous snapshot.
 fs.mkdirSync(readmeDir, { recursive: true });
@@ -110,5 +111,8 @@ for (const file of fs.readdirSync(readmeDir)) {
 	if (file.endsWith('.md') && !keep.has(file)) fs.unlinkSync(path.join(readmeDir, file));
 }
 writeIfChanged(output, JSON.stringify(github, null, 2) + '\n');
-writeIfChanged(contributorsOutput, JSON.stringify(catalogContributors, null, 2) + '\n');
+writeIfChanged(contributorsOutput, JSON.stringify({
+	stars: catalogRepo.stargazers_count,
+	contributors: catalogContributors
+}, null, 2) + '\n');
 console.log(`Enriched ${repos.length} GitHub repositories and ${keep.size} READMEs.`);

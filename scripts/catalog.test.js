@@ -50,6 +50,10 @@ try {
 	fs.mkdirSync(path.join(fixture, 'schema'));
 	fs.copyFileSync(path.join(root, 'schema/mod.yaml'), path.join(fixture, 'schema/mod.yaml'));
 	const validate = () => spawnSync(process.execPath, [path.join(fixture, 'scripts/validate.js')], { encoding: 'utf8' });
+	assert.match(validate().stderr, /sampleboot/, 'validate requires the PRIMARY_LAUNCHER entry');
+	write('tools/sampleboot/tool.yaml', 'name: SampleBoot\ndescription: Primary launcher\nauthor: pxcm\nwebsite: https://sampleboot.com/\ncompatible: [host]\n');
+	write('tools/old-boot/tool.yaml', 'name: Old Boot\ndescription: Archived launcher\nauthor: other\nwebsite: https://example.com/old-boot\nstatus: archived\ncompatible: [host]\n');
+	write('tools/other-boot/tool.yaml', 'name: Other Boot\ndescription: Active launcher\nauthor: other\nwebsite: https://example.com/other-boot\ncompatible: [host]\n');
 	assert.equal(validate().status, 0, 'requires must resolve across sections');
 	const externalRecord = 'name: External\ndescription: Independent project\nauthor: Maker\nwebsite: https://example.com/project\n';
 	write('mods/external/mod.yaml', externalRecord.replace('website: https://example.com/project\n', ''));
@@ -234,7 +238,21 @@ try {
 	assert.equal(splitDetails.player.readme_from_repo, true);
 	assert.equal(splitDetails.player.releases.length, 1);
 	assert.equal(splitDetails.player.releases[0].tag, 'v1');
-	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup and release_prefix filtering.');
+	assert.deepEqual(
+		output.find((entry) => entry.id === 'host').launchers,
+		['sampleboot', 'other-boot', 'old-boot'],
+		'SampleBoot stays first in Works with, then other active launchers, then archived'
+	);
+	assert.deepEqual(
+		output.find((entry) => entry.id === 'sampleboot').compatible,
+		['host'],
+		'Compatible with on a launcher page keeps YAML order and is not rewritten by launcher sort'
+	);
+	write('contributors.json', JSON.stringify({ stars: 12, contributors: [] }));
+	result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
+	assert.equal(result.status, 0, result.stderr);
+	assert.deepEqual(JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/catalog-meta.json'), 'utf8')), { stars: 12 });
+	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup, release_prefix filtering and SampleBoot-first launchers.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
 }

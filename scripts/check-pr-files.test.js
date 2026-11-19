@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { protectedFiles } from './check-pr-files.js';
 
 const blocked = ['data/github.json', 'data/contributors.json', 'data/watch.json', 'data/readme/project.md',
-	'data/readme/nested/file.md', 'src/lib/data.json', 'src/lib/server/details.json',
+	'data/readme/nested/file.md', 'src/lib/data.json', 'src/lib/catalog-meta.json', 'src/lib/server/details.json',
 	'static/catalog.json', 'static/media/project/screenshots/01-screen.png'];
 const allowed = ['data/mods/project/mod.yaml', 'data/mods/project/about.md',
 	'data/mods/project/screenshots/01-screen.png', 'data/media-sources.json',

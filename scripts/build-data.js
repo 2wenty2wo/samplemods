@@ -10,10 +10,15 @@ const root = path.resolve(__dirname, '..');
 const mediaDir = path.join(root, 'static', 'media');
 const githubPath = path.join(root, 'data', 'github.json');
 const watchPath = path.join(root, 'data', 'watch.json');
+const contributorsPath = path.join(root, 'data', 'contributors.json');
 const outPath = path.join(root, 'src', 'lib', 'data.json');
 const publicCatalogPath = path.join(root, 'static', 'catalog.json');
 const detailsPath = path.join(root, 'src', 'lib', 'server', 'details.json');
+const catalogMetaPath = path.join(root, 'src', 'lib', 'catalog-meta.json');
 const details = {};
+
+/** Always first in each entry's "Works with" list when compatible. */
+const PRIMARY_LAUNCHER = 'sampleboot';
 
 const entries = readEntries();
 // Only this generated directory is cleared; original media stays with each entry.
@@ -27,6 +32,17 @@ let watchState = {};
 if (fs.existsSync(watchPath)) {
 	try { watchState = JSON.parse(fs.readFileSync(watchPath, 'utf8')) ?? {}; }
 	catch { watchState = {}; }
+}
+let catalogStars = null;
+if (fs.existsSync(contributorsPath)) {
+	try {
+		const payload = JSON.parse(fs.readFileSync(contributorsPath, 'utf8'));
+		if (typeof payload?.stars === 'number' && Number.isFinite(payload.stars) && payload.stars > 0) {
+			catalogStars = payload.stars;
+		}
+	} catch {
+		catalogStars = null;
+	}
 }
 
 /** @type {Array<Record<string, unknown>>} */
@@ -109,7 +125,11 @@ for (const mod of mods) {
 		.map((m) => m.id);
 	mod.launchers = mods
 		.filter((m) => (m.compatible ?? []).includes(mod.id))
-		.sort((a, b) => (a.status === 'archived') - (b.status === 'archived')) // active launchers first
+		.sort((a, b) => {
+			if (a.id === PRIMARY_LAUNCHER) return -1;
+			if (b.id === PRIMARY_LAUNCHER) return 1;
+			return (a.status === 'archived') - (b.status === 'archived'); // active launchers first
+		})
 		.map((m) => m.id);
 }
 
@@ -122,6 +142,8 @@ fs.mkdirSync(path.dirname(publicCatalogPath), { recursive: true });
 fs.writeFileSync(publicCatalogPath, json);
 fs.mkdirSync(path.dirname(detailsPath), { recursive: true });
 fs.writeFileSync(detailsPath, JSON.stringify(details, null, 2) + '\n');
+fs.mkdirSync(path.dirname(catalogMetaPath), { recursive: true });
+fs.writeFileSync(catalogMetaPath, JSON.stringify({ stars: catalogStars }, null, 2) + '\n');
 console.log(
 	`Wrote ${mods.length} catalog entries to ${path.relative(root, outPath)} and ${path.relative(root, publicCatalogPath)}`
 );

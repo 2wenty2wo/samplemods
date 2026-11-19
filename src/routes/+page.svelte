@@ -2,7 +2,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
-	import contributors from '../../data/contributors.json';
+	import catalogContributors from '../../data/contributors.json';
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
 	import '@fontsource-variable/jetbrains-mono/wght.css';
@@ -17,6 +17,9 @@
 	const homeTitle = `${SITE_NAME}: mods, apps, games & tools for the Akai MPC Sample`;
 	const homeDescription = `${SITE_NAME}: community catalog of custom firmware mods, apps, games, tools, guides, and developer libraries for the Akai MPC Sample.`;
 
+	const contributors = Array.isArray(catalogContributors)
+		? catalogContributors
+		: (catalogContributors?.contributors ?? []);
 	const contributorCount = contributors.length;
 	const contributorPeopleLabel =
 		contributorCount === 1 ? '1 person who built this catalog' : `${contributorCount} people who built this catalog`;
