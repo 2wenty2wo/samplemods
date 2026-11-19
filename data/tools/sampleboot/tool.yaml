@@ -20,5 +20,7 @@ compatible:
   - melodee-sample
   - mpc-simple
   - mpc-sample-tracker
+  # User report per sampleboot.com (Nov 2026): Rhythmer OS 0.2.0.
+  - rhythmer-os
 watch_pages:
   - https://sampleboot.com/#works-with
