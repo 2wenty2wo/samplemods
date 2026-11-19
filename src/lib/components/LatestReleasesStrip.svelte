@@ -88,27 +88,45 @@
 		min-width: 0;
 	}
 
+	.release-chip-scroll-wrap::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: -2px;
+		bottom: 0;
+		width: 28px;
+		pointer-events: none;
+		background: linear-gradient(90deg, transparent 0%, var(--mpc-pad-card) 92%);
+	}
+
 	.release-chip-list {
 		list-style: none;
 		margin: 0;
-		padding: 0 0 2px;
-		display: grid;
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: 0.45rem;
+		padding: 0 1.25rem 2px 0;
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 0.55rem;
+		overflow-x: auto;
+		scroll-snap-type: x proximity;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.release-chip-list::-webkit-scrollbar {
+		display: none;
 	}
 
 	.release-chip-item {
-		min-width: 0;
+		flex: 0 0 auto;
+		scroll-snap-align: start;
 		display: flex;
 	}
 
 	.release-chip {
-		width: 100%;
-		justify-content: flex-start;
-		gap: 0.35rem;
-		padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+		gap: 0.42rem;
+		padding: 0.25rem 0.65rem 0.25rem 0.28rem;
 		white-space: nowrap;
-		min-width: 0;
 	}
 
 	.release-chip-bezel {
@@ -128,10 +146,10 @@
 
 	.release-chip-name {
 		font-family: var(--font-sans);
-		font-size: 0.78rem;
+		font-size: 0.8rem;
 		font-weight: 700;
 		color: var(--mpc-pad-text);
-		min-width: 0;
+		max-width: 24ch;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -139,14 +157,14 @@
 
 	.release-chip-tag {
 		font-family: var(--font-mono);
-		font-size: 0.7rem;
+		font-size: 0.72rem;
 		font-weight: 700;
 		color: var(--mpc-screen-cyan);
 		background: var(--mpc-screen-bg);
 		border: 1px solid #282d3a;
 		border-radius: 3px;
-		padding: 0.06rem 0.3rem;
-		max-width: 8.5ch;
+		padding: 0.08rem 0.36rem;
+		max-width: 16ch;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -155,52 +173,11 @@
 
 	.release-chip-date {
 		font-family: var(--font-mono);
-		font-size: 0.68rem;
+		font-size: 0.7rem;
 		font-weight: 600;
 		color: var(--mpc-silkscreen-muted);
-		margin-left: auto;
+		padding-left: 0.05rem;
 		flex-shrink: 0;
-	}
-
-	@media (max-width: 1120px) {
-		.release-chip-scroll-wrap::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: -2px;
-			bottom: 0;
-			width: 28px;
-			pointer-events: none;
-			background: linear-gradient(90deg, transparent 0%, var(--mpc-pad-card) 92%);
-		}
-
-		.release-chip-list {
-			display: flex;
-			flex-wrap: nowrap;
-			overflow-x: auto;
-			scroll-snap-type: x proximity;
-			scrollbar-width: none;
-			-ms-overflow-style: none;
-			-webkit-overflow-scrolling: touch;
-			padding-right: 1.25rem;
-		}
-
-		.release-chip-list::-webkit-scrollbar {
-			display: none;
-		}
-
-		.release-chip-item {
-			flex: 0 0 auto;
-			scroll-snap-align: start;
-		}
-
-		.release-chip-name {
-			max-width: 16ch;
-		}
-
-		.release-chip-tag {
-			max-width: 11ch;
-		}
 	}
 
 	@media (max-width: 640px) {
