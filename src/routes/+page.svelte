@@ -125,9 +125,7 @@
 
 <WipBand />
 
-{#if !query && !section}
-	<LatestReleasesStrip releases={latestReleases} />
-{/if}
+<LatestReleasesStrip releases={latestReleases} />
 
 <div class="wrap" id="catalog">
 	<CatalogFilterBar
