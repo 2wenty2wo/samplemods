@@ -885,7 +885,7 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 14,
+    "stars": 15,
     "forks": 1,
     "pushed_at": "2026-11-18T22:33:10Z",
     "last_commit_at": "2026-11-18T22:33:10Z",
@@ -1303,7 +1303,7 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 65,
+    "stars": 66,
     "forks": 10,
     "pushed_at": "2026-11-18T19:24:27Z",
     "last_commit_at": "2026-11-18T19:05:26Z",
@@ -1452,8 +1452,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-19T12:21:20Z",
-    "last_commit_at": "2026-11-19T12:21:18Z",
+    "pushed_at": "2026-11-19T20:09:03Z",
+    "last_commit_at": "2026-11-19T20:09:00Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1580,8 +1580,8 @@
   "pzuzarte/mpc-stemloop": {
     "stars": 4,
     "forks": 0,
-    "pushed_at": "2026-11-11T23:53:17Z",
-    "last_commit_at": "2026-11-11T23:38:55Z",
+    "pushed_at": "2026-11-19T19:47:40Z",
+    "last_commit_at": "2026-11-19T19:47:30Z",
     "contributors": 1,
     "open_issues": 1,
     "license": null,
@@ -1722,7 +1722,7 @@
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 27,
+    "open_issues": 26,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
