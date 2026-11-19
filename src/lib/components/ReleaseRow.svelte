@@ -47,103 +47,173 @@
 			timeZone: 'UTC'
 		});
 	}
+
+	/** @param {string | number | null | undefined} value */
+	function formatShortDate(value) {
+		if (!value) return null;
+		const d = new Date(value);
+		if (Number.isNaN(d.getTime())) return null;
+		return d.toLocaleDateString('en-GB', {
+			day: 'numeric',
+			month: 'short',
+			timeZone: 'UTC'
+		});
+	}
+
+	const fullDate = $derived(formatDate(rel.published_at));
+	const shortDate = $derived(formatShortDate(rel.published_at));
 </script>
 
-<article class="release-row" class:is-compact={compact} style="--pad-glow: {glow}">
-	<div class="release-row-main">
-		<a class="release-thumb-link" href="{base}{rel.entryPath}" aria-label={rel.entryName}>
-			<div class="bezel-screen release-bezel">
-				{#if thumbSrc}
-					<img
-						class="screen-img"
-						class:is-logo={rel.thumb?.kind === 'logo'}
-						src={thumbSrc}
-						alt=""
-						loading="lazy"
-					/>
+{#if compact}
+	<article class="release-row is-compact" style="--pad-glow: {glow}">
+		<div class="compact-grid">
+			<a class="release-thumb-link compact-thumb" href="{base}{rel.entryPath}" aria-label={rel.entryName}>
+				<div class="bezel-screen release-bezel">
+					{#if thumbSrc}
+						<img
+							class="screen-img"
+							class:is-logo={rel.thumb?.kind === 'logo'}
+							src={thumbSrc}
+							alt=""
+							loading="lazy"
+						/>
+					{:else}
+						<span class="mini-initials">{initials(rel.entryName)}</span>
+					{/if}
+				</div>
+			</a>
+
+			<a class="release-entry-link compact-name" href="{base}{rel.entryPath}" title={rel.entryName}>
+				{rel.entryName}
+			</a>
+
+			<span class="chip chip-category compact-cat">{sectionSingularLabel(rel.section)}</span>
+
+			<div class="compact-version-wrap">
+				{#if rel.html_url}
+					<a
+						class="screen-badge date release-tag-link compact-tag"
+						href={rel.html_url}
+						target="_blank"
+						rel="noopener noreferrer"
+						title={rel.tag}
+					>
+						{rel.tag}
+					</a>
 				{:else}
-					<span class="mini-initials">{initials(rel.entryName)}</span>
+					<span class="screen-badge date compact-tag" title={rel.tag}>{rel.tag}</span>
+				{/if}
+				{#if rel.prerelease}
+					<span class="badge-status beta compact-prerelease">Pre-release</span>
 				{/if}
 			</div>
-		</a>
 
-		<div class="release-row-info">
-			<div class="release-row-header">
-				<div class="release-row-title-group">
-					<a class="release-entry-link" href="{base}{rel.entryPath}">{rel.entryName}</a>
-					<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
+			{#if fullDate}
+				<time class="release-pub-date compact-date" datetime={rel.published_at ?? ''}>
+					<span class="date-full">{fullDate}</span>
+					<span class="date-short">{shortDate}</span>
+				</time>
+			{/if}
+		</div>
+	</article>
+{:else}
+	<article class="release-row" style="--pad-glow: {glow}">
+		<div class="release-row-main">
+			<a class="release-thumb-link" href="{base}{rel.entryPath}" aria-label={rel.entryName}>
+				<div class="bezel-screen release-bezel">
+					{#if thumbSrc}
+						<img
+							class="screen-img"
+							class:is-logo={rel.thumb?.kind === 'logo'}
+							src={thumbSrc}
+							alt=""
+							loading="lazy"
+						/>
+					{:else}
+						<span class="mini-initials">{initials(rel.entryName)}</span>
+					{/if}
+				</div>
+			</a>
+
+			<div class="release-row-info">
+				<div class="release-row-header">
+					<div class="release-row-title-group">
+						<a class="release-entry-link" href="{base}{rel.entryPath}" title={rel.entryName}>
+							{rel.entryName}
+						</a>
+						<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
+						{#if rel.html_url}
+							<a
+								class="screen-badge date release-tag-link"
+								href={rel.html_url}
+								target="_blank"
+								rel="noopener noreferrer"
+								title={rel.tag}
+							>
+								{rel.tag}
+							</a>
+						{:else}
+							<span class="screen-badge date" title={rel.tag}>{rel.tag}</span>
+						{/if}
+						{#if rel.prerelease}
+							<span class="badge-status beta">Pre-release</span>
+						{/if}
+						{#if fullDate}
+							<time class="release-pub-date" datetime={rel.published_at ?? ''}>{fullDate}</time>
+						{/if}
+					</div>
+
 					{#if rel.html_url}
 						<a
-							class="screen-badge date release-tag-link"
+							class="release-ext-link"
 							href={rel.html_url}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							{rel.tag}
+							{rel.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
 						</a>
-					{:else}
-						<span class="screen-badge date">{rel.tag}</span>
-					{/if}
-					{#if rel.prerelease}
-						<span class="badge-status beta">Pre-release</span>
-					{/if}
-					{#if !compact && formatDate(rel.published_at)}
-						<span class="release-pub-date">{formatDate(rel.published_at)}</span>
 					{/if}
 				</div>
 
-				{#if compact && formatDate(rel.published_at)}
-					<span class="release-pub-date is-right">{formatDate(rel.published_at)}</span>
-				{:else if !compact && rel.html_url}
-					<a
-						class="release-ext-link"
-						href={rel.html_url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{rel.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
-					</a>
+				{#if rel.excerpt && rel.body_html?.trim()}
+					<p class="release-excerpt">{rel.excerpt}</p>
 				{/if}
 			</div>
-
-			{#if !compact && rel.excerpt && rel.body_html?.trim()}
-				<p class="release-excerpt">{rel.excerpt}</p>
-			{/if}
 		</div>
-	</div>
 
-	{#if !compact && rel.body_html?.trim()}
-		<details class="release-details">
-			<summary class="release-summary">
-				<span class="release-summary-label">
-					<span class="release-caret" aria-hidden="true"></span>
-					<span>Release notes</span>
-				</span>
-				{#if rel.truncated}
-					<span class="trunc-badge">Truncated</span>
-				{/if}
-			</summary>
-			<div class="release-notes-box">
-				<EntryProse html={rel.body_html} className="release-prose" />
-			</div>
-			<div class="release-notes-footer">
-				{#if rel.truncated}
-					<span class="release-truncated-text">Truncated ·</span>
-				{/if}
-				{#if rel.html_url}
-					<a
-						class="release-ext-link"
-						href={rel.html_url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{rel.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
-					</a>
-				{/if}
-			</div>
-		</details>
-	{/if}
-</article>
+		{#if rel.body_html?.trim()}
+			<details class="release-details">
+				<summary class="release-summary">
+					<span class="release-summary-label">
+						<span class="release-caret" aria-hidden="true"></span>
+						<span>Release notes</span>
+					</span>
+					{#if rel.truncated}
+						<span class="trunc-badge">Truncated</span>
+					{/if}
+				</summary>
+				<div class="release-notes-box">
+					<EntryProse html={rel.body_html} className="release-prose" />
+				</div>
+				<div class="release-notes-footer">
+					{#if rel.truncated}
+						<span class="release-truncated-text">Truncated ·</span>
+					{/if}
+					{#if rel.html_url}
+						<a
+							class="release-ext-link"
+							href={rel.html_url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{rel.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
+						</a>
+					{/if}
+				</div>
+			</details>
+		{/if}
+	</article>
+{/if}
 
 <style>
 	.release-row {
@@ -163,15 +233,64 @@
 		gap: 0;
 	}
 
+	.compact-grid {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		min-width: 0;
+	}
+
+	.compact-thumb {
+		margin-right: 0.15rem;
+	}
+
+	.compact-name {
+		min-width: 0;
+		max-width: 34ch;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.compact-cat {
+		flex-shrink: 0;
+	}
+
+	.compact-version-wrap {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		min-width: 0;
+	}
+
+	.compact-tag {
+		display: inline-block;
+		max-width: 24ch;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		vertical-align: middle;
+	}
+
+	.compact-prerelease {
+		flex-shrink: 0;
+	}
+
+	.compact-date {
+		margin-left: auto;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	.date-short {
+		display: none;
+	}
+
 	.release-row-main {
 		display: flex;
 		align-items: center;
 		gap: 0.85rem;
 		min-width: 0;
-	}
-
-	.is-compact .release-row-main {
-		gap: 0.6rem;
 	}
 
 	.release-thumb-link {
@@ -244,11 +363,6 @@
 		font-family: var(--font-mono);
 		font-size: 0.74rem;
 		color: var(--mpc-silkscreen-muted);
-	}
-
-	.release-pub-date.is-right {
-		margin-left: auto;
-		white-space: nowrap;
 	}
 
 	.release-ext-link {
@@ -363,31 +477,79 @@
 			padding: 0.65rem 0.75rem;
 		}
 
-		.release-row.is-compact {
-			padding: 0.4rem 0.6rem;
-		}
-
 		.release-row-main {
 			align-items: flex-start;
 			gap: 0.65rem;
 		}
 
-		.is-compact .release-row-main {
-			align-items: center;
-			gap: 0.55rem;
-		}
-
 		.release-bezel {
 			width: 56px;
 		}
+	}
 
-		.is-compact .release-bezel {
-			width: 53px;
-			height: 40px;
+	@media (max-width: 560px) {
+		.release-row.is-compact {
+			padding: 0.42rem 0.6rem;
 		}
 
-		.release-pub-date.is-right {
+		.compact-grid {
+			display: grid;
+			grid-template-columns: auto minmax(0, 1fr) auto;
+			grid-template-rows: auto auto;
+			column-gap: 0.55rem;
+			row-gap: 0.25rem;
+			align-items: center;
+		}
+
+		.compact-thumb {
+			grid-column: 1;
+			grid-row: 1 / span 2;
+			margin-right: 0;
+		}
+
+		.is-compact .release-bezel {
+			width: 56px;
+			height: 42px;
+		}
+
+		.compact-name {
+			grid-column: 2;
+			grid-row: 1;
+			max-width: none;
+			font-size: 0.94rem;
+		}
+
+		.compact-cat {
+			grid-column: 3;
+			grid-row: 1;
+			justify-self: end;
+		}
+
+		.compact-version-wrap {
+			grid-column: 2;
+			grid-row: 2;
+			justify-self: start;
+			max-width: 100%;
+		}
+
+		.compact-tag {
+			max-width: 180px;
+		}
+
+		.compact-date {
+			grid-column: 3;
+			grid-row: 2;
+			justify-self: end;
 			margin-left: 0;
+			font-size: 0.72rem;
+		}
+
+		.date-full {
+			display: none;
+		}
+
+		.date-short {
+			display: inline;
 		}
 	}
 </style>
