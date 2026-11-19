@@ -23,19 +23,29 @@
 		section ? releases.filter((r) => r.section === section) : releases
 	);
 
-	const referenceDay = $derived(releases[0]?.day ?? '');
-	const yesterdayDay = $derived.by(() => {
-		if (!referenceDay || !/^\d{4}-\d{2}-\d{2}$/.test(referenceDay)) return '';
-		const [y, m, d] = referenceDay.split('-').map(Number);
-		const dt = new Date(Date.UTC(y, m - 1, d - 1));
-		return dt.toISOString().slice(0, 10);
+	let todayLocalDay = $state('');
+	let yesterdayLocalDay = $state('');
+
+	/** @param {Date} dt */
+	function localYmd(dt) {
+		const y = dt.getFullYear();
+		const m = String(dt.getMonth() + 1).padStart(2, '0');
+		const d = String(dt.getDate()).padStart(2, '0');
+		return `${y}-${m}-${d}`;
+	}
+
+	$effect(() => {
+		const now = new Date();
+		todayLocalDay = localYmd(now);
+		const yest = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+		yesterdayLocalDay = localYmd(yest);
 	});
 
 	/** @param {string} day */
 	function formatDayHeading(day) {
 		if (!day || !/^\d{4}-\d{2}-\d{2}$/.test(day)) return 'Unknown date';
-		if (day === referenceDay) return 'Today';
-		if (day === yesterdayDay) return 'Yesterday';
+		if (todayLocalDay && day === todayLocalDay) return 'Today';
+		if (yesterdayLocalDay && day === yesterdayLocalDay) return 'Yesterday';
 		const [y, m, d] = day.split('-').map(Number);
 		const dt = new Date(Date.UTC(y, m - 1, d));
 		return dt.toLocaleDateString('en-GB', {

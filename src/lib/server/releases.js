@@ -8,8 +8,8 @@ import { entryPath } from '$lib/categories.js';
  * @param {string} [fallback='']
  * @returns {string}
  */
-export function releaseExcerpt(html, fallback = '') {
-	if (!html) return fallback;
+export function releaseExcerpt(html) {
+	if (!html || !String(html).trim()) return '';
 	const text = String(html)
 		.replace(/<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>/gi, ' ')
 		.replace(/<[^>]+>/g, ' ')
@@ -21,7 +21,7 @@ export function releaseExcerpt(html, fallback = '') {
 		.replace(/&amp;/gi, '&')
 		.replace(/\s+/g, ' ')
 		.trim();
-	return text || fallback;
+	return text;
 }
 
 /**
@@ -80,7 +80,7 @@ export function getAllReleases(entries = mods, entryDetails = details) {
 				day,
 				html_url: rel.html_url ?? null,
 				body_html: rel.body_html ?? '',
-				excerpt: releaseExcerpt(rel.body_html, rawName ?? entry.description ?? ''),
+				excerpt: releaseExcerpt(rel.body_html),
 				prerelease: Boolean(rel.prerelease),
 				truncated: Boolean(rel.truncated)
 			});
