@@ -45,11 +45,12 @@ if (!fs.existsSync(dataFile)) {
 const mods = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
 assert.ok(mods.length > 0);
 const pages = buildSitemapEntries(mods, '');
-assert.equal(pages.length, mods.length + 3, 'homepage + about + submit + one URL per entry');
+assert.equal(pages.length, mods.length + 4, 'homepage + releases + about + submit + one URL per entry');
 assert.equal(pages[0].loc, 'https://samplemods.com/');
 assert.ok(pages.every((p) => p.loc.startsWith('https://samplemods.com/')));
 
 const locs = new Set(pages.map((p) => p.loc));
+assert.ok(locs.has('https://samplemods.com/releases/'));
 for (const entry of mods) {
 	assert.ok(locs.has(`https://samplemods.com${entryPath(entry)}`), entry.id);
 	if (entry.section !== 'mods') {
@@ -59,7 +60,7 @@ for (const entry of mods) {
 
 const xml = renderSitemapXml(pages);
 assert.match(xml, /<urlset /);
-assert.equal((xml.match(/<url>/g) ?? []).length, mods.length + 3);
+assert.equal((xml.match(/<url>/g) ?? []).length, mods.length + 4);
 
 const og = path.join(root, 'static', 'og-default.png');
 assert.ok(fs.existsSync(og), 'static/og-default.png must exist');
@@ -83,7 +84,7 @@ if (requireBuild || hasFreshBuild) {
 	assert.match(detail, /property="og:image"\s+content="https:\/\/samplemods\.com\/[^"]+"/);
 	assert.match(detail, /property="og:title"\s+content="SampQOL OS · Sample Mods"/);
 	const sitemap = fs.readFileSync(path.join(root, 'build', 'sitemap.xml'), 'utf8');
-	assert.equal((sitemap.match(/<url>/g) ?? []).length, mods.length + 3);
+	assert.equal((sitemap.match(/<url>/g) ?? []).length, mods.length + 4);
 	console.log('SEO checks passed (including build/ HTML assertions).');
 } else {
 	console.log('SEO checks passed (build/ stale or absent — HTML assertions deferred to postbuild).');

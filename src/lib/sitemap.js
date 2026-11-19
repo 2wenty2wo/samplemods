@@ -22,6 +22,7 @@ export function buildSitemapEntries(entries, base = '') {
 	/** @type {Array<{ loc: string, lastmod?: string }>} */
 	const pages = [
 		{ loc: absoluteUrl('/', base) },
+		{ loc: absoluteUrl('/releases/', base) },
 		{ loc: absoluteUrl('/about/', base) },
 		{ loc: absoluteUrl('/submit/', base) }
 	];

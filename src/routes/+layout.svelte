@@ -36,6 +36,7 @@
 		</a>
 
 		<nav class="site-nav" aria-label="Primary">
+			<a class="nav-link" href="{base}/releases/">Releases</a>
 			<a class="nav-link" href="{base}/submit/">Submit</a>
 			<a class="nav-link" href="{base}/about/">About</a>
 			<a
