@@ -661,18 +661,20 @@ a:hover {
 	}
 
 	.site-nav {
-		gap: 0.15rem;
+		gap: 0.1rem;
 		flex-wrap: nowrap;
 	}
 
 	.nav-link {
-		font-size: 0.66rem;
-		padding: 0.22rem 0.28rem;
+		font-size: 0.62rem;
+		padding: 0.2rem 0.22rem;
+		letter-spacing: 0.05em;
 	}
 
 	.nav-btn-blue {
-		font-size: 0.65rem;
-		padding: 0.25rem 0.48rem;
+		font-size: 0.62rem;
+		padding: 0.22rem 0.4rem;
+		letter-spacing: 0.05em;
 	}
 
 	.hw-btn {

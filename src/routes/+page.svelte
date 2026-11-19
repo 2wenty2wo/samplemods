@@ -10,9 +10,13 @@
 	import { SECTIONS, sectionFromParam, sectionSingular } from '$lib/categories.js';
 	import HomeHero from '$lib/components/HomeHero.svelte';
 	import WipBand from '$lib/components/WipBand.svelte';
+	import LatestReleasesStrip from '$lib/components/LatestReleasesStrip.svelte';
 	import CatalogFilterBar from '$lib/components/CatalogFilterBar.svelte';
 	import EntryCard from '$lib/components/EntryCard.svelte';
 	import ContributorsBand from '$lib/components/ContributorsBand.svelte';
+
+	let { data } = $props();
+	const latestReleases = $derived(data?.latestReleases ?? []);
 
 	const homeTitle = `${SITE_NAME}: mods, apps, games & tools for the Akai MPC Sample`;
 	const homeDescription = `${SITE_NAME}: community catalog of custom firmware mods, apps, games, tools, guides, and developer libraries for the Akai MPC Sample.`;
@@ -120,6 +124,10 @@
 />
 
 <WipBand />
+
+{#if !query && !section}
+	<LatestReleasesStrip releases={latestReleases} />
+{/if}
 
 <div class="wrap" id="catalog">
 	<CatalogFilterBar

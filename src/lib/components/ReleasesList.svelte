@@ -11,7 +11,7 @@ import { hostnameOf } from '$lib/categories.js';
 </script>
 
 {#if releases.length}
-	<section class="detail-section" aria-label="Recent releases">
+	<section id="releases" class="detail-section" aria-label="Recent releases">
 		<h2 class="silk-heading">Recent releases</h2>
 		<ul class="release-list">
 			{#each releases as rel, i (rel.tag)}
