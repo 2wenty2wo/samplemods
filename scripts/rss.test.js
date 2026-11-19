@@ -58,7 +58,7 @@ assert.match(
 assert.match(xml, /<language>en<\/language>/);
 assert.match(xml, /Amp &amp; Bass &lt;Kit&gt; v2\.0/);
 assert.match(xml, /<!\[CDATA\[/);
-assert.match(xml, /Read the full notes on Sample Mods →/);
+assert.match(xml, /<a href="https:\/\/samplemods\.com\/[^"]+#releases">Read the full notes on Sample Mods →<\/a>/);
 
 const itemCount = (xml.match(/<item>/g) ?? []).length;
 assert.equal(itemCount, RSS_ITEM_LIMIT, 'feed must cap at 50 items');

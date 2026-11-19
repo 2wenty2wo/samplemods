@@ -72,9 +72,9 @@ export function buildReleasesRss(releases, base = '') {
 			const link = releaseItemUrl(item, base);
 			const title = `${item.entryName} ${item.tag}`.trim();
 			const excerpt = item.excerpt?.trim() ?? '';
-			const description = excerpt
-				? `${excerpt}\n\nRead the full notes on ${SITE_NAME} →`
-				: `Read the full notes on ${SITE_NAME} →`;
+			// RSS descriptions are HTML: escape the plain-text excerpt and make the call-out a real link.
+			const readMore = `<p><a href="${escapeXml(link)}">Read the full notes on ${SITE_NAME} →</a></p>`;
+			const description = excerpt ? `<p>${escapeXml(excerpt)}</p>${readMore}` : readMore;
 			const pub = formatRssDate(item.published_at);
 			return [
 				'    <item>',
