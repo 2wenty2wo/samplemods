@@ -28,7 +28,11 @@ globalThis.fetch = async (url, { headers }) => {
   const absent = url.includes('/z/');
   const release = { tag_name: 'v1', name: 'First release', prerelease: false, published_at: '2026-01-01T00:00:00Z', html_url: 'https://github.com/owner/a/releases/tag/v1', body: '**Changes**' + 'x'.repeat(13000) };
   if (url.endsWith('/releases/latest')) return reply(release, absent ? 404 : 200);
-  if (url.includes('/releases?')) return reply(absent ? [] : [release, { ...release, tag_name: 'v0.9', prerelease: true, body: null }]);
+  if (url.includes('/releases?')) {
+    if (url.includes('owner/a') && process.env.EXPECT_PREFIX) assert.match(url, /per_page=10/);
+    if (url.includes('owner/z') || (url.includes('owner/a') && !process.env.EXPECT_PREFIX)) assert.match(url, /per_page=3/);
+    return reply(absent ? [] : [release, { ...release, tag_name: 'v0.9', prerelease: true, body: null }]);
+  }
   if (url.endsWith('/readme')) return reply({ encoding: 'base64', path: 'docs/README.md', content: Buffer.from('# A\\r\\nREADME').toString('base64') }, absent || process.env.NO_README ? 404 : 200);
   if (url.includes('/contributors?')) return reply(absent ? [] : [{ login: 'one' }], absent ? 204 : 200, absent ? {} : { link: '<https://api.github.com/repos/owner/a/contributors?anon=true&per_page=1&page=7>; rel="last"' });
   if (url.includes('/commits?')) return reply(absent ? {} : [{ commit: { committer: { date: '2026-01-02T00:00:00Z' } } }], absent ? 409 : 200);
@@ -38,7 +42,7 @@ globalThis.fetch = async (url, { headers }) => {
 function run(extra = {}) {
 	return spawnSync(process.execPath, ['--import', `data:text/javascript,${encodeURIComponent(mock)}`,
 		path.join(fixture, 'scripts', 'enrich.js')], {
-		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', RATE_LIMIT: '', NO_README: '', ...extra }
+		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', RATE_LIMIT: '', NO_README: '', EXPECT_PREFIX: '', ...extra }
 	});
 }
 
@@ -106,7 +110,17 @@ try {
 	const removed = run({ NO_README: '1' });
 	assert.equal(removed.status, 0, removed.stderr);
 	assert.ok(!fs.existsSync(readme), 'removed upstream README must not remain stale');
-	console.log('Enrichment checks passed: README/release caches, stats, auth, no-op writes, rate limits and failure preservation.');
+
+	fs.mkdirSync(path.join(fixture, 'data', 'tools', 'a-boot'), { recursive: true });
+	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'a', 'mod.yaml'), 'repo: owner/a\nrelease_prefix: v\n');
+	fs.writeFileSync(path.join(fixture, 'data', 'tools', 'a-boot', 'tool.yaml'), 'repo: owner/a\nrelease_prefix: boot-\n');
+	fs.writeFileSync(path.join(fixture, 'data', 'tools', 'a-boot', 'about.md'), '# Boot about');
+	const shared = run({ EXPECT_PREFIX: '1' });
+	assert.equal(shared.status, 0, shared.stderr);
+	assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(output, 'utf8'))), ['owner/a', 'owner/z'], 'shared repo fetched once');
+	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME');
+	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/a-boot.md')), 'about.md entries skip README mirroring');
+	console.log('Enrichment checks passed: README/release caches, stats, auth, no-op writes, rate limits, failure preservation, shared-repo prefix fetch and about.md skip.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
 }

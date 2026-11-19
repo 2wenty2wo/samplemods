@@ -48,13 +48,17 @@ async function fetchCatalogContributors() {
 
 const entries = readEntries();
 const repos = [...new Set(entries.map(({ record }) => record.repo).filter(Boolean))].sort();
+const prefixRepos = new Set(
+	entries.filter(({ record }) => record.repo && record.release_prefix).map(({ record }) => record.repo)
+);
 const github = {};
 const readmes = new Map();
 for (const repo of repos) {
 	if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error(`Invalid GitHub repository: ${repo}`);
+	const releaseLimit = prefixRepos.has(repo) ? 10 : 3;
 	const { data: metadata } = await request(repo);
 	const latest = await request(`${repo}/releases/latest`, true);
-	const releases = await request(`${repo}/releases?per_page=3`, true);
+	const releases = await request(`${repo}/releases?per_page=${releaseLimit}`, true);
 	const readme = await request(`${repo}/readme`, true);
 	const contributors = await request(`${repo}/contributors?anon=true&per_page=1`, true);
 	const commits = await request(`${repo}/commits?per_page=1`, true);
@@ -77,7 +81,7 @@ for (const repo of repos) {
 		default_branch: metadata.default_branch,
 		readme_path: readme?.data.path ?? null,
 		latest_release: release ? { tag: release.tag_name, published_at: release.published_at } : null,
-		releases: (releases?.data ?? []).filter((item) => !item.draft).slice(0, 3).map((item) => {
+		releases: (releases?.data ?? []).filter((item) => !item.draft).slice(0, releaseLimit).map((item) => {
 			const body = item.body ?? '';
 			const limit = 12000;
 			const end = body.length > limit ? body.lastIndexOf('\n\n', limit) : body.length;
@@ -95,8 +99,9 @@ console.log(`Fetched ${catalogContributors.length} catalog contributor(s).`);
 // Fetch everything before changing either cache, so API failures preserve the previous snapshot.
 fs.mkdirSync(readmeDir, { recursive: true });
 const keep = new Set();
-for (const { id, record } of entries) {
-	if (!readmes.has(record.repo)) continue;
+for (const { id, dir, record } of entries) {
+	if (!record.repo || !readmes.has(record.repo)) continue;
+	if (fs.existsSync(path.join(dir, 'about.md'))) continue;
 	const file = `${id}.md`;
 	keep.add(file);
 	writeIfChanged(path.join(readmeDir, file), readmes.get(record.repo));

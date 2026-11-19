@@ -1,8 +1,10 @@
-name: HenrySkillz MPC Sample Mod Kit
+name: HenrySkillz D.S.B
 description: >-
-  A SampQOL OS add-on kit with nine studio effects, track chains, key and BPM tags, loudness meters
-  and on-device stem separation, installed through a browser.
+  Nine studio effects, track chains, key and BPM tags, loudness meters and on-device stem
+  separation for SampQOL OS, installed through a browser. HS Tools offers stems, meters and the
+  SEQ desk on stock firmware without SampQOL.
 repo: Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit
+release_prefix: v
 author: Holla-Back-Entertainment
 tags:
   - effects

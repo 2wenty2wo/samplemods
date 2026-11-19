@@ -93,8 +93,7 @@ try {
 	write('readme/external.md', '# Stale GitHub README must not appear');
 	write('mods/external/about.md', '## Local About\n[Maker guide](guide.pdf)\n<script>unsafe()</script><iframe>unsafe</iframe>');
 	write('mods/external/screenshots/01-screen.png', 'external image');
-	write('apps/player/about.md', '# Ignored local override');
-	write('mods/host/about.md', '# Also ignored without a cached README');
+	write('mods/host/about.md', '# Local host about');
 	write('media-sources.json', JSON.stringify({ external: [{ file: 'screenshots/01-screen.png', source: 'https://maker.example/screen.png' }] }));
 	assert.equal(validate().status, 0, 'local about files and repo-less media sources must validate');
 	write('apps/player/app.yaml', playerRecord + 'price: paid\nsource: closed\nauthor_url: https://example.com/author\nversion: "99.0"\nreleased: "2026-02-02"\n');
@@ -125,15 +124,17 @@ try {
 	assert.match(details.external.readme_html, /https:\/\/example.com\/guide.pdf/);
 	assert.doesNotMatch(details.external.readme_html, /script|iframe|unsafe|Stale GitHub/);
 	assert.deepEqual(details.external.releases, []);
-	assert.equal(details.host.readme_html, '', 'GitHub entries must ignore about.md even without a cached README');
+	assert.match(details.host.readme_html, /Local host about/, 'about.md is preferred over a mirrored README');
+	assert.equal(details.host.readme_from_repo, false);
+	assert.equal(details.external.readme_from_repo, false);
+	assert.equal(details.player.readme_from_repo, true);
 	assert.match(details.player.readme_html, /blob\/develop\/docs\/guide.md/);
-	assert.doesNotMatch(details.player.readme_html, /Ignored local override/);
 	assert.doesNotMatch(details.player.readme_html, /<script|<h1/);
 	assert.match(details.player.releases[0].body_html, /<strong>New<\/strong>/);
 	assert.doesNotMatch(details.player.releases[0].body_html, /iframe|unsafe/);
 	for (const catalogPath of ['src/lib/data.json', 'static/catalog.json']) {
 		const text = fs.readFileSync(path.join(fixture, catalogPath), 'utf8');
-		assert.doesNotMatch(text, /readme_html|body_html|"releases"/, 'detail content must stay out of the public catalog and homepage import');
+		assert.doesNotMatch(text, /readme_html|body_html|"releases"|readme_from_repo/, 'detail content must stay out of the public catalog and homepage import');
 	}
 	fs.copyFileSync(path.join(root, 'src/lib/categories.js'), path.join(fixture, 'src/lib/categories.js'));
 	const route = fs.readFileSync(path.join(root, 'src/routes/[section]/[id]/+page.server.js'), 'utf8')
@@ -193,7 +194,47 @@ try {
 	result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
 	assert.equal(result.status, 0, result.stderr);
 	assert.ok(!fs.existsSync(path.join(fixture, 'static/media/player/screenshots/02-screen.png')), 'stale generated media must disappear');
-	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying and stale cleanup.');
+
+	write('tools/kit/tool.yaml', 'name: Kit\ndescription: Full kit\nrepo: owner/kit\nauthor: owner\nrelease_prefix: v\n');
+	write('tools/boot/tool.yaml', 'name: Boot\ndescription: Boot menu\nrepo: owner/kit\nauthor: owner\nrelease_prefix: boot-\n');
+	write('tools/boot/about.md', '# Boot about');
+	write('github.json', JSON.stringify({
+		'owner/player': {
+			default_branch: 'develop', readme_path: 'docs/README.md', contributors: 4, open_issues: 2,
+			last_commit_at: '2026-01-01', latest_release: { tag: 'v1', published_at: '2026-01-01' },
+			releases: [{ tag: 'v1', body: '**New**', html_url: 'https://github.com/owner/player/releases/tag/v1' }]
+		},
+		'owner/kit': {
+			latest_release: { tag: 'v2.0.0', published_at: '2026-02-01' },
+			releases: [
+				{ tag: 'boot-1.1', published_at: '2026-03-01', html_url: 'https://example/boot-1.1', body: 'boot new' },
+				{ tag: 'v2.0.0', published_at: '2026-02-01', html_url: 'https://example/v2', body: 'kit new' },
+				{ tag: 'boot-1.0', published_at: '2026-01-15', html_url: 'https://example/boot-1.0', body: 'boot old' },
+				{ tag: 'v1.0.0', published_at: '2026-01-01', html_url: 'https://example/v1', body: 'kit old' },
+				{ tag: 'v0.9.0', published_at: '2025-12-01', html_url: 'https://example/v0.9', body: 'kit older' },
+				{ tag: 'v0.8.0', published_at: '2025-11-01', html_url: 'https://example/v0.8', body: 'kit oldest' }
+			]
+		}
+	}));
+	assert.equal(validate().status, 0, 'shared-repo release_prefix entries must validate');
+	result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
+	assert.equal(result.status, 0, result.stderr);
+	output = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/data.json'), 'utf8'));
+	const kit = output.find((entry) => entry.id === 'kit');
+	const boot = output.find((entry) => entry.id === 'boot');
+	assert.deepEqual(kit.latest_release, { tag: 'v2.0.0', published_at: '2026-02-01' });
+	assert.deepEqual(boot.latest_release, { tag: 'boot-1.1', published_at: '2026-03-01' });
+	assert.deepEqual(output.find((entry) => entry.id === 'player').latest_release, { tag: 'v1', published_at: '2026-01-01' }, 'entries without release_prefix stay on gh.latest_release');
+	const splitDetails = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json'), 'utf8'));
+	assert.deepEqual(splitDetails.kit.releases.map((release) => release.tag), ['v2.0.0', 'v1.0.0', 'v0.9.0']);
+	assert.deepEqual(splitDetails.boot.releases.map((release) => release.tag), ['boot-1.1', 'boot-1.0']);
+	assert.match(splitDetails.boot.readme_html, /Boot about/);
+	assert.equal(splitDetails.boot.readme_from_repo, false, 'about.md is not the mirrored GitHub README');
+	assert.equal(splitDetails.kit.readme_from_repo, true, 'repo entry without about.md uses data/readme path');
+	assert.equal(splitDetails.player.readme_from_repo, true);
+	assert.equal(splitDetails.player.releases.length, 1);
+	assert.equal(splitDetails.player.releases[0].tag, 'v1');
+	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup and release_prefix filtering.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
 }
