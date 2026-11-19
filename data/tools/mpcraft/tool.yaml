@@ -1,0 +1,9 @@
+name: MPCraft
+description: Assign samples to AKAI MPC Sample pads right on the SD card.
+repo: jiripisa/mpcraft
+author: jiripisa
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
