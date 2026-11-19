@@ -631,7 +631,7 @@ a:hover {
 		transform 120ms ease;
 }
 
-.hw-band-chip:hover {
+a.hw-band-chip:hover {
 	background: #f2f0ec;
 	border-bottom-color: var(--mpc-btn-orange);
 	transform: translateY(1px);
