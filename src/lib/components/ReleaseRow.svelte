@@ -65,7 +65,7 @@
 </script>
 
 {#if compact}
-	<article class="release-row is-compact" style="--pad-glow: {glow}">
+	<article class="release-row is-compact hw-band-chip" style="--pad-glow: {glow}; --chip-accent: {glow}">
 		<div class="compact-grid">
 			<a class="release-thumb-link compact-thumb" href="{base}{rel.entryPath}" aria-label={rel.entryName}>
 				<div class="bezel-screen release-bezel">
@@ -229,8 +229,21 @@
 	}
 
 	.release-row.is-compact {
+		width: 100%;
+		display: grid;
 		padding: 0.25rem 0.6rem;
 		gap: 0;
+		background: var(--mpc-body-light);
+		border: 1.5px solid #282b34;
+		border-bottom: 3px solid var(--chip-accent, var(--pad-glow));
+		border-radius: 5px;
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.65),
+			0 2px 0 #1b1d24;
+	}
+
+	.release-row.is-compact:hover {
+		background: #f2f0ec;
 	}
 
 	.compact-grid {
