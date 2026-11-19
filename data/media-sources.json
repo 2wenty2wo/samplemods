@@ -52,6 +52,23 @@
       "repo": "jacob-sabella/mpc-addin-sample-draw-handler"
     }
   ],
+  "dsb-boot": [
+    {
+      "file": "screenshots/01-records-theme.webp",
+      "source": "https://www.henryskillz.com/img/dsb/boot-records.png",
+      "note": "Records theme with HS FX selected; emulator capture from the official D.S.B guide, converted to lossless WebP without resizing"
+    },
+    {
+      "file": "screenshots/02-sd-card-theme.webp",
+      "source": "https://www.henryskillz.com/img/dsb/boot-sdcard.png",
+      "note": "SD card theme with HS FX selected; emulator capture from the official D.S.B guide, converted to lossless WebP without resizing"
+    },
+    {
+      "file": "screenshots/03-sampqol-os.webp",
+      "source": "https://www.henryskillz.com/img/dsb/boot-other-os.png",
+      "note": "SampQOL OS selected in the boot menu; emulator capture from the official D.S.B guide, converted to lossless WebP without resizing"
+    }
+  ],
   "ember-8": [
     {
       "file": "screenshots/01-hybrid-engine.webp",

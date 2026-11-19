@@ -18,6 +18,12 @@ properties:
     type: string
     pattern: ^[^/\s]+/[^/\s]+$
     description: GitHub repository as owner/name
+  release_prefix:
+    type: string
+    minLength: 1
+    description: >-
+      Only releases whose tag starts with this prefix belong to this entry; for repos that ship
+      more than one product
   section:
     type: string
     enum:

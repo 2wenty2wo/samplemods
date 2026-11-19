@@ -132,6 +132,69 @@
         "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/dsb-boot-v1.0.0",
         "body": "**D.S.B Boot: a free boot menu for the MPC Sample.** One card, multiple setups, picked on the Sample's screen at power-on.\n\n- **HS FX:** stock firmware with three HS effects added to the Knob FX list: HS Para EQ, HS Tube Strip and HS Saturator. No SampQOL needed.\n- **Any OS:** copy an OS's unchanged release `autorun` folder into `autorun/os/` and rename it. It shows on the menu. You bring your own copy from its author.\n- **Stock:** Akai's firmware, untouched.\n\n## Install\n1. Back up your SD card.\n2. Download `dsb-boot-card.zip` and unzip it.\n3. Copy the `autorun` folder to the top level of an exFAT card.\n4. Put the card in the MPC and switch on.\n\nTurn the data encoder to browse, push to boot. SHIFT + turn switches theme. Full guide: https://www.henryskillz.com/dsb-guide\n\n**Tested:** cold boot on Henry's own MPC Sample (firmware 1.3.0.12) on 18 Nov 2026. Every unit and card is different, so back up first and [report anything odd](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/issues).\n\nSHA-256: `c83511782f803a20a7524df79c77aa3f2d4563c101657d3094e722ddd44647cf`\n\nThird-party OS support follows [SampleBoot](https://github.com/pxcm/SampleBoot) by Alessandro \"Paxi\" D'Esposito (MIT). Notices are in `autorun/boot/NOTICE.txt`.\n\nUnofficial. Not made, endorsed or supported by Akai Professional or inMusic. Pull the card and the Sample is stock again.",
         "truncated": false
+      },
+      {
+        "tag": "v0.7.1",
+        "name": "v0.7.1",
+        "prerelease": false,
+        "published_at": "2026-11-15T00:47:46Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.1",
+        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** A v0.7.1 card cold-booted on a real MPC Sample on 15 Nov 2026 and the D.S.B effects loaded. Warp on import and HS Crush Auto Gain were tested on the same unit from RAM the same day.\n\n**New in v0.7.1**\n- **HenrySkillz D.S.B (Drums. Sample. Bass.):** the kit's new name across the docs.\n- **HS HF Exciter:** its new name, now with its HS faceplate in the editor.\n- **Warp on import:** a loop loaded onto a pad plays at the project tempo straight away. One-shots are left alone. Turning off \"Audio Tracks Auto Warp\" in Preferences turns this off too.\n- **HS Crush Auto Gain:** level-matched make-up.\n\nProjects and presets saved on v0.6.x and v0.7.0 open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.7.0",
+        "name": "v0.7.0",
+        "prerelease": false,
+        "published_at": "2026-11-14T15:25:46Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.7.0",
+        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Hardware tested.** Every item on the v0.7 checklist passed on a real MPC Sample on 15 Nov 2026, including a power-off cold boot.\n\n**Fixed in v0.7.0**\n- **No more flicker:** HS effect editors and the graphic Ch. Mixer / Pad Mixer stay steady while a pad or sequence plays.\n- **HS Heat** loads near unity instead of about +6 dB hot.\n- **HS Bus Compressor** plays the ratio its label shows.\n- **MOD:** the target knob turns with the modulated value.\n- **EQ grid** shows on the pad EQ page.\n- **Crush presets** saved before the rename are moved across.\n- **Browser tag:** short one-shots now show their note.\n\n**New in v0.7.0**\n- **KICK** and **BASSLINE** track chains (HS Tube Strip).\n\nProjects saved on v0.6.x open as before.\n\n**Not on SampQOL?** The HS Tools card for stock firmware 1.3.0 is unchanged; get `henryskillz-mpc-sample-hs-tools.zip` from [v0.6.1](https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1).\n\nCheck your download against `SHA256SUMS.txt`.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.6.1",
+        "name": "v0.6.1",
+        "prerelease": false,
+        "published_at": "2026-11-14T06:45:21Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1",
+        "body": "**Install:** open the [installer page](https://holla-back-entertainment.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**Fixed in v0.6.1**\n- **Effect names in the insert list:** HS effects now show as HS Heat, HS Bus Compressor and so on, not `hs_heat`, `hs_bus_comp`.\n- **HS Bass Focus page title:** shows HS Bass Focus, with knobs labelled Crossover, Bass and Mono Bass.\n\nProjects saved on v0.6.0 open as before. Hardware tested: the HS Tools card booted on a real MPC Sample (firmware 1.3.0.12) on 15 Nov 2026, with the SEQ desk, meters, browser tags and Stems all working.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.6.0",
+        "name": "v0.6.0",
+        "prerelease": false,
+        "published_at": "2026-11-11T23:08:20Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.0",
+        "body": "**Install:** open the [installer page](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**New in v0.6**\n- **Stems split to pad:** choose Separate and the stems land on the next empty pads in that pad's bank.\n- **Track chains:** a toast confirms every load. Name a track NAME# to save its chain, and it renames itself back to NAME.\n- **HS styling for SampQOL's list screens:** red bar, cyan selected row, dark blue palette. Only on SampQOL 0.2.0.\n- **Graphic channel mixer** for Ch. Mixer and Pad Mixer.\n- **User guide** for every effect and add-on: `docs/USER-GUIDE.md`.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.5.0",
+        "name": "v0.5.0: track chains, browser key tag, LUFS, MOD + de-esser, optional Stems",
+        "prerelease": false,
+        "published_at": "2026-11-11T15:50:25Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.5.0",
+        "body": "Five new features for SampQOL OS 0.2.0 on the MPC Sample (firmware 1.3.0). Hardware boot-tested.\n\n**Track chains.** Rename a track VOX, DRUMS or BASS and its effects load (one UNDO takes it back). Rename a dialled-in track NAME# to save your own chain.\n\n**Key and BPM in the browser.** Preview a WAV or MP3 and its row shows the key and tempo, like C# MIN 75 BPM.\n\n**LUFS meters.** SEQ page, B2: Momentary, Short-term, Integrated and a peak hold.\n\n**MOD and de-esser.** A DESS page on HS Channel Strip. A key bus (A to D) on HS Pump and HS Crush, and a MOD page on seven HS effects so any knob can follow a bus. Off by default: old projects sound the same. One Bypass for every HS effect.\n\n**Stems (optional).** Tick Add Stems on the installer and the MPC splits a sample into Vocals, Drums, Bass and Other by itself. Hold SHIFT and hold B1 for 1.5 s in the browser, or SHIFT and B3 on the Sample screen. Uses the Spleeter model by Deezer (MIT). Adds a 92 MB download.\n\n## Install or update\n- New install, or adding Stems: use the [online installer](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/) with a fresh SampQOL 0.2.0 download.\n- Already on v0.4 and no Stems: download `hs-effects-update.zip` below and copy everything in its `hs` folder into `autorun/hs` ([guide](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/UPDATE-EFFECTS.md)).\n\nSampQOL OS is by Snare Bes and is not included. Unofficial, not affiliated with Akai Professional or inMusic.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.4.0",
+        "name": "v0.4.0: HS Crush, Bass Focus, Tube Strip, SEQ desk page",
+        "prerelease": false,
+        "published_at": "2026-11-11T03:34:19Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.4.0",
+        "body": "**New install:** use the [installer page](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/). It builds this version.\n\n**Already have the kit?** Download `hs-effects-update.zip` below and follow [Update just the effects](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/UPDATE-EFFECTS.md): back up `autorun/hs`, copy in all six files, boot and press B1. No re-signing.\n\n## What's new\n- **HS Crush** (Dynamics): character compressor, 3 pages, gain-reduction meter.\n- **HS Bass Focus** (EQ/Filter): mono the lows below a crossover.\n- **HS Tube Strip** (Harmonic): tube stage, high-pass, opto compressor and four-band EQ over 7 pages, with EQ First and SC EQ switches and a gain-reduction meter.\n- **SEQ desk page**: the SEQ page redrawn as a desk panel with a live VU meter and output LEDs.\n- **Page label**: HS effects with more than one page show **PAGE n/N** over the middle button.\n\n## Menu changes\nSampQOL's insert menu has 40 rows and 32 are stock. To fit nine HS effects, **HS Air Exciter**, **HS Drive Sat** and the stock **Bus Compressor** leave the menu. They stay installed, so projects that already use them still open with them.\n\n## Tested\nBoot-tested on a real MPC Sample (firmware 1.3.0, SampQOL 0.2.0) and in the emulator.\n\nTo go back: put your backed-up `hs` folder back in `autorun`.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.3.0",
+        "name": "v0.3.0: HenrySkillz FX for MPC Sample",
+        "prerelease": false,
+        "published_at": "2026-11-10T07:55:23Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.3.0",
+        "body": "**Six free studio effects for the Akai MPC Sample**: HS Saturator, HS Air Exciter, HS Channel Strip, HS Drive Sat, HS Bus Compressor and HS Para EQ. Plus live effect displays, an EQ grid and the HenrySkillz start screen.\n\n### Install (about 15 minutes, no coding)\n1. Back up your SD card.\n2. Download **SampQOL-OS-v0.2.0.zip** from [Snare Bes's official page](https://github.com/snarebes/SampQOL-OS/releases).\n3. Open the **[online installer](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/)** (or download `henryskillz-mpc-sample-installer.html` below and double-click it), then drop the zip on it.\n4. Unzip `autorun-hs.zip` and copy the `autorun` folder to the top level of the SD card.\n5. Put the card in the MPC, switch on and press **B1**.\n\nNew to this? **[Step-by-step guide](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/INSTALL-GUIDE.md)** · [FAQ](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/FAQ.md) · [Undo it](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/RECOVERY.md)\n\n### Files\n- `henryskillz-mpc-sample-installer.html`: the offline installer (same as the online one).\n- `henryskillz-mpc-sample-starter-v0.3.0.zip`: optional boot-test card. It only shows the HenrySkillz screen, then starts the normal MPC. **No effects.**\n- `SHA256SUMS.txt`: checksums.\n\n### Requirements\nMPC Sample on firmware 1.3.0 (1.3.0.12) · SampQOL OS 0.2.0 exactly · an exFAT SD card · a web browser.\n\n### Tested\nThe installer on the official SampQOL 0.2.0 download (Chrome and Safari), and this exact build booted end to end in an MPC Sample emulator, with all six HS effects loading. The effects have run on Henry's own MPC Sample. Back up your card first, and [report anything odd](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/issues).\n\n### Credit\nSampQOL OS is by **Snare Bes** and is **not included**. You download it from him, and his license, name and start screen stay in your copy. Questions about the HS effects go to [this repo's issues](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/issues), not to him. Unofficial, and not affiliated with Akai Professional or inMusic.\n\nFree, always. Support it by shopping [Spacely](https://www.spacely.clothing). Made by [Henry Skillz](https://www.henryskillz.com).\n",
+        "truncated": false
       }
     ],
     "archived": false
