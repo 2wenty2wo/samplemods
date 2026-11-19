@@ -14,3 +14,6 @@ docs/reference/
 
 # Media is generated from data/<section>/<id>/ at build time.
 /static/media/
+
+# Leftover catalog.test.js temp dirs when a run is killed
+/.catalog-test-*/
