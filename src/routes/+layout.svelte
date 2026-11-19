@@ -1,7 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
+	import catalogMeta from '$lib/catalog-meta.json';
 	import LogoMark from '$lib/LogoMark.svelte';
 	import StarIcon from '$lib/StarIcon.svelte';
 	import '@fontsource/inter/400.css';
@@ -13,9 +13,6 @@
 	import '../app.css';
 
 	let { children } = $props();
-	let repoStars = $state(/** @type {string | null} */ (null));
-
-	const STAR_CACHE_KEY = 'samplemods_gh_stars';
 
 	/** @param {number} n */
 	function formatCompactStars(n) {
@@ -25,39 +22,10 @@
 		return String(n);
 	}
 
-	onMount(async () => {
-		try {
-			const cached = sessionStorage.getItem(STAR_CACHE_KEY);
-			if (cached !== null) {
-				const parsed = Number(cached);
-				if (Number.isFinite(parsed) && parsed > 0) {
-					repoStars = formatCompactStars(parsed);
-					return;
-				}
-			}
-		} catch {
-			// Ignore sessionStorage errors
-		}
-
-		try {
-			const res = await fetch('https://api.github.com/repos/2wenty2wo/samplemods', {
-				headers: { Accept: 'application/vnd.github+json' }
-			});
-			if (!res.ok) return;
-			const data = await res.json();
-			const count = data?.stargazers_count;
-			if (typeof count === 'number' && Number.isFinite(count) && count > 0) {
-				repoStars = formatCompactStars(count);
-				try {
-					sessionStorage.setItem(STAR_CACHE_KEY, String(count));
-				} catch {
-					// Ignore sessionStorage errors
-				}
-			}
-		} catch {
-			// Leave repoStars as null on network or rate-limit failure
-		}
-	});
+	const repoStars =
+		typeof catalogMeta?.stars === 'number' && catalogMeta.stars > 0
+			? formatCompactStars(catalogMeta.stars)
+			: null;
 </script>
 
 <header class="site-topbar">

@@ -31,7 +31,7 @@ export function isHumanContributor(user) {
 }
 
 /**
- * Stable filtered list for data/contributors.json.
+ * Stable filtered contributor list for data/contributors.json (`{ stars, contributors }`).
  * @param {Array<{ login?: string, avatar_url?: string, html_url?: string, contributions?: number, type?: string }>} users
  */
 export function normalizeCatalogContributors(users) {

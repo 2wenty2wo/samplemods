@@ -7,6 +7,7 @@ const generatedFiles = new Set([
 	'data/contributors.json',
 	'data/watch.json',
 	'src/lib/data.json',
+	'src/lib/catalog-meta.json',
 	'src/lib/server/details.json',
 	'static/catalog.json'
 ]);
