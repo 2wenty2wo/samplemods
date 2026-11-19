@@ -25,9 +25,9 @@
 <style>
 	.latest-releases-band {
 		width: min(1200px, 100% - 2rem);
-		margin: 0 auto 1.35rem;
+		margin: 0 auto 0.85rem;
 		display: grid;
-		gap: 0.6rem;
+		gap: 0.38rem;
 	}
 
 	.latest-releases-head {
@@ -68,7 +68,7 @@
 		margin: 0;
 		padding: 0;
 		display: grid;
-		gap: 0.45rem;
+		gap: 0.28rem;
 	}
 
 	@media (max-width: 640px) {

@@ -87,12 +87,14 @@
 					{#if rel.prerelease}
 						<span class="badge-status beta">Pre-release</span>
 					{/if}
-					{#if formatDate(rel.published_at)}
+					{#if !compact && formatDate(rel.published_at)}
 						<span class="release-pub-date">{formatDate(rel.published_at)}</span>
 					{/if}
 				</div>
 
-				{#if !compact && rel.html_url}
+				{#if compact && formatDate(rel.published_at)}
+					<span class="release-pub-date is-right">{formatDate(rel.published_at)}</span>
+				{:else if !compact && rel.html_url}
 					<a
 						class="release-ext-link"
 						href={rel.html_url}
@@ -104,7 +106,7 @@
 				{/if}
 			</div>
 
-			{#if rel.excerpt}
+			{#if !compact && rel.excerpt && rel.body_html?.trim()}
 				<p class="release-excerpt">{rel.excerpt}</p>
 			{/if}
 		</div>
@@ -157,7 +159,8 @@
 	}
 
 	.release-row.is-compact {
-		padding: 0.5rem 0.75rem;
+		padding: 0.25rem 0.6rem;
+		gap: 0;
 	}
 
 	.release-row-main {
@@ -165,6 +168,10 @@
 		align-items: center;
 		gap: 0.85rem;
 		min-width: 0;
+	}
+
+	.is-compact .release-row-main {
+		gap: 0.6rem;
 	}
 
 	.release-thumb-link {
@@ -179,7 +186,8 @@
 	}
 
 	.is-compact .release-bezel {
-		width: 52px;
+		width: 48px;
+		height: 36px;
 	}
 
 	.mini-initials {
@@ -236,6 +244,11 @@
 		font-family: var(--font-mono);
 		font-size: 0.74rem;
 		color: var(--mpc-silkscreen-muted);
+	}
+
+	.release-pub-date.is-right {
+		margin-left: auto;
+		white-space: nowrap;
 	}
 
 	.release-ext-link {
@@ -350,14 +363,31 @@
 			padding: 0.65rem 0.75rem;
 		}
 
+		.release-row.is-compact {
+			padding: 0.4rem 0.6rem;
+		}
+
 		.release-row-main {
 			align-items: flex-start;
 			gap: 0.65rem;
 		}
 
-		.release-bezel,
-		.is-compact .release-bezel {
+		.is-compact .release-row-main {
+			align-items: center;
+			gap: 0.55rem;
+		}
+
+		.release-bezel {
 			width: 56px;
+		}
+
+		.is-compact .release-bezel {
+			width: 53px;
+			height: 40px;
+		}
+
+		.release-pub-date.is-right {
+			margin-left: 0;
 		}
 	}
 </style>
