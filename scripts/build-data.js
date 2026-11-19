@@ -46,10 +46,11 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	}).filter((item) => item.tag);
 	const markdownOptions = { repo: raw.repo, website: raw.website, branch: gh.default_branch ?? 'main', readmePath: gh.readme_path ?? 'README.md', name: raw.name };
 	const aboutPath = path.join(dir, 'about.md');
+	const mirroredReadmePath = path.join(root, 'data', 'readme', `${id}.md`);
 	const readmePath = fs.existsSync(aboutPath)
 		? aboutPath
 		: raw.repo
-			? path.join(root, 'data', 'readme', `${id}.md`)
+			? mirroredReadmePath
 			: aboutPath;
 	const ghReleases = gh.releases ?? [];
 	const matchingReleases = raw.release_prefix
@@ -59,6 +60,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const newestMatching = matchingReleases[0] ?? null;
 	details[id] = {
 		readme_html: fs.existsSync(readmePath) ? renderMarkdown(fs.readFileSync(readmePath, 'utf8'), markdownOptions) : '',
+		readme_from_repo: readmePath === mirroredReadmePath,
 		releases: raw.repo
 			? shownReleases.map(({ body, ...release }) => ({
 				...release, body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })

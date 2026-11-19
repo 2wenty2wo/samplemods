@@ -39,7 +39,7 @@ import EntryProse from '$lib/components/EntryProse.svelte';
 				</div>
 			{/if}
 
-			{#if mod.repo}
+			{#if mod.readme_from_repo}
 				<div class="readme-footer">
 					<a
 						href="https://github.com/{mod.repo}#readme"
@@ -49,7 +49,7 @@ import EntryProse from '$lib/components/EntryProse.svelte';
 						From the project README on GitHub ↗
 					</a>
 				</div>
-			{:else if mod.website}
+			{:else if !mod.repo && mod.website}
 				<div class="readme-footer">
 					<a href={mod.website} target="_blank" rel="noopener noreferrer">
 						From the maker's page ↗

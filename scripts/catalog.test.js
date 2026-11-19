@@ -125,13 +125,16 @@ try {
 	assert.doesNotMatch(details.external.readme_html, /script|iframe|unsafe|Stale GitHub/);
 	assert.deepEqual(details.external.releases, []);
 	assert.match(details.host.readme_html, /Local host about/, 'about.md is preferred over a mirrored README');
+	assert.equal(details.host.readme_from_repo, false);
+	assert.equal(details.external.readme_from_repo, false);
+	assert.equal(details.player.readme_from_repo, true);
 	assert.match(details.player.readme_html, /blob\/develop\/docs\/guide.md/);
 	assert.doesNotMatch(details.player.readme_html, /<script|<h1/);
 	assert.match(details.player.releases[0].body_html, /<strong>New<\/strong>/);
 	assert.doesNotMatch(details.player.releases[0].body_html, /iframe|unsafe/);
 	for (const catalogPath of ['src/lib/data.json', 'static/catalog.json']) {
 		const text = fs.readFileSync(path.join(fixture, catalogPath), 'utf8');
-		assert.doesNotMatch(text, /readme_html|body_html|"releases"/, 'detail content must stay out of the public catalog and homepage import');
+		assert.doesNotMatch(text, /readme_html|body_html|"releases"|readme_from_repo/, 'detail content must stay out of the public catalog and homepage import');
 	}
 	fs.copyFileSync(path.join(root, 'src/lib/categories.js'), path.join(fixture, 'src/lib/categories.js'));
 	const route = fs.readFileSync(path.join(root, 'src/routes/[section]/[id]/+page.server.js'), 'utf8')
@@ -226,6 +229,9 @@ try {
 	assert.deepEqual(splitDetails.kit.releases.map((release) => release.tag), ['v2.0.0', 'v1.0.0', 'v0.9.0']);
 	assert.deepEqual(splitDetails.boot.releases.map((release) => release.tag), ['boot-1.1', 'boot-1.0']);
 	assert.match(splitDetails.boot.readme_html, /Boot about/);
+	assert.equal(splitDetails.boot.readme_from_repo, false, 'about.md is not the mirrored GitHub README');
+	assert.equal(splitDetails.kit.readme_from_repo, true, 'repo entry without about.md uses data/readme path');
+	assert.equal(splitDetails.player.readme_from_repo, true);
 	assert.equal(splitDetails.player.releases.length, 1);
 	assert.equal(splitDetails.player.releases[0].tag, 'v1');
 	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup and release_prefix filtering.');
