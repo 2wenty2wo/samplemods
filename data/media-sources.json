@@ -25,12 +25,22 @@
   "az0x-open-source": [],
   "beat-train": [
     {
-      "file": "screenshots/01-library.webp",
+      "file": "screenshots/01-gameplay.gif",
+      "source": "https://raw.githubusercontent.com/drose030/beat-train-mpc-sample/HEAD/docs/images/gameplay.gif",
+      "repo": "drose030/beat-train-mpc-sample"
+    },
+    {
+      "file": "screenshots/02-gameplay-horizontal.gif",
+      "source": "https://raw.githubusercontent.com/drose030/beat-train-mpc-sample/HEAD/docs/images/gameplay-horizontal.gif",
+      "repo": "drose030/beat-train-mpc-sample"
+    },
+    {
+      "file": "screenshots/03-library.webp",
       "source": "https://raw.githubusercontent.com/drose030/beat-train-mpc-sample/HEAD/docs/images/library.png",
       "repo": "drose030/beat-train-mpc-sample"
     },
     {
-      "file": "screenshots/02-pad-setup.gif",
+      "file": "screenshots/04-pad-setup.gif",
       "source": "https://raw.githubusercontent.com/drose030/beat-train-mpc-sample/HEAD/docs/images/pad-setup.gif",
       "repo": "drose030/beat-train-mpc-sample"
     }
