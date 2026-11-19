@@ -66,8 +66,9 @@
 
 {#if compact}
 	<article class="release-row is-compact hw-band-chip" style="--pad-glow: {glow}; --chip-accent: {glow}">
-		<div class="compact-grid">
-			<a class="release-thumb-link compact-thumb" href="{base}{rel.entryPath}" aria-label={rel.entryName}>
+		<!-- The whole row is one link to the entry's releases section on samplemods.com. -->
+		<a class="compact-grid" href="{base}{rel.entryPath}#releases">
+			<div class="release-thumb-link compact-thumb">
 				<div class="bezel-screen release-bezel">
 					{#if thumbSrc}
 						<img
@@ -81,28 +82,16 @@
 						<span class="mini-initials">{initials(rel.entryName)}</span>
 					{/if}
 				</div>
-			</a>
+			</div>
 
-			<a class="release-entry-link compact-name" href="{base}{rel.entryPath}" title={rel.entryName}>
+			<span class="release-entry-link compact-name" title={rel.entryName}>
 				{rel.entryName}
-			</a>
+			</span>
 
 			<span class="chip chip-category compact-cat">{sectionSingularLabel(rel.section)}</span>
 
 			<div class="compact-version-wrap">
-				{#if rel.html_url}
-					<a
-						class="screen-badge date release-tag-link compact-tag"
-						href={rel.html_url}
-						target="_blank"
-						rel="noopener noreferrer"
-						title={rel.tag}
-					>
-						{rel.tag}
-					</a>
-				{:else}
-					<span class="screen-badge date compact-tag" title={rel.tag}>{rel.tag}</span>
-				{/if}
+				<span class="screen-badge date compact-tag" title={rel.tag}>{rel.tag}</span>
 				{#if rel.prerelease}
 					<span class="badge-status beta compact-prerelease">Pre-release</span>
 				{/if}
@@ -114,7 +103,7 @@
 					<span class="date-short">{shortDate}</span>
 				</time>
 			{/if}
-		</div>
+		</a>
 	</article>
 {:else}
 	<article class="release-row" style="--pad-glow: {glow}">
@@ -251,6 +240,8 @@
 		align-items: center;
 		gap: 0.45rem;
 		min-width: 0;
+		color: inherit;
+		text-decoration: none;
 	}
 
 	.compact-thumb {
