@@ -73,21 +73,6 @@
 {/if}
 
 <style>
-.detail-section {
-		display: grid;
-		gap: 0.75rem;
-		min-width: 0;
-	}
-
-.silk-heading {
-		margin: 0;
-		font-size: 0.76rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--mpc-silkscreen-muted);
-	}
-
 .section-header {
 		display: flex;
 		flex-wrap: wrap;
