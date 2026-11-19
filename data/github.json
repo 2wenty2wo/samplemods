@@ -2,8 +2,8 @@
   "AldanisVigo/VigoBeatz-SampQOL-Stems-Grid64-Mod": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-18T19:52:26Z",
-    "last_commit_at": "2026-11-18T19:52:19Z",
+    "pushed_at": "2026-11-19T14:30:52Z",
+    "last_commit_at": "2026-11-19T14:30:51Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -76,7 +76,7 @@
     "archived": false
   },
   "Dyldog/Lightfoot": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-11-16T23:42:21Z",
     "last_commit_at": "2026-11-16T23:39:59Z",
@@ -200,7 +200,7 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 9,
+    "stars": 10,
     "forks": 0,
     "pushed_at": "2026-11-19T04:20:43Z",
     "last_commit_at": "2026-11-19T04:20:14Z",
@@ -261,7 +261,7 @@
     "archived": false
   },
   "WorldLinkStudio/mpcsample": {
-    "stars": 23,
+    "stars": 24,
     "forks": 2,
     "pushed_at": "2026-06-01T21:26:53Z",
     "last_commit_at": "2026-06-01T16:08:35Z",
@@ -371,19 +371,28 @@
   "bsauce42/tape-workshop-mpc-sample": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-18T16:54:23Z",
+    "pushed_at": "2026-11-19T09:47:15Z",
     "last_commit_at": "2026-11-15T06:37:09Z",
     "contributors": 1,
-    "open_issues": 1,
+    "open_issues": 2,
     "license": null,
     "description": null,
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.3.0-tapeworkshop-community.88",
-      "published_at": "2026-11-18T16:54:23Z"
+      "tag": "v0.5.1-tapeworkshop-community.106",
+      "published_at": "2026-11-19T09:47:16Z"
     },
     "releases": [
+      {
+        "tag": "v0.5.1-tapeworkshop-community.106",
+        "name": "Tape Workshop v106 · Complete OS + Plug-ins",
+        "prerelease": false,
+        "published_at": "2026-11-19T09:47:16Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.106",
+        "body": "Tape Workshop v106 updates the full Tape Workshop OS to the Melodee v0.5.1 base while preserving the Tape Workshop additions.\r\n\r\n## Included\r\n- Roll MIDI import, selection, Shift + K3 zoom, and persistent fine note splitting.\r\n- Prism EQ and Tape Workshop plug-in visuals, sample and voice search, Auto BPM, and custom sample folders.\r\n- Expansion browser with cover art, bank/pad import and Empty Pad; all eight banks in the browser Expansion Builder.\r\n- Live Screen and Tutorial Mode, stereo browser audio/video recording, custom logo/background options, and the black browser theme.\r\n- Tape Workshop themes, logo/icons, all-pad startup animation, and track-color lighting.\r\n- Tape Workshop's signed updater and Melodee v0.5.1 sequencing, transport, chopping, sampling, USB-volume and stem-helper updates.\r\n- Studio / the browser DAW remains removed.\r\n\r\nThe separate Melodee Plug-in UI Edition 2 build belongs to the Mac plug-in installer and is not included in this OS release.\r\n\r\n## Download and install\r\n**Tape-Workshop-v106-Complete.zip — recommended download: full OS + all 21 Tape Workshop plug-ins.** Includes the plug-in samples/resources, licenses, matching plug-in source, OS source and guides. For SD installation, replace `autorun` and merge `Melodee/Plugins`, backing up matching plug-in folders first. Keep your projects, samples, user presets and other third-party plug-ins. The complete ZIP is for SD installation; the web updater uses the separate Signed Update ZIP.\r\n\r\nThe plug-in library includes Afterglow Piano, Astral Loom, Break 26, Contour Comp, Dex FM, Gate Keeper, Layer House, Prism EQ, Rack 76, Room Grand, Second Spin, Sloop FM6, Stillwater, Sub Foundry, Velvet Choir, Vocal Tune, and the five Tape Workshop Move ports: Aphex, Braids, Dexed, Hera and Plaits.\r\n\r\n**Tape-Workshop-v106-Plugins-Source.tar.gz** is also available separately. These plug-in binaries and their corresponding sources are preserved from the same full Tape Workshop library; v106 does not change their DSP.\r\n\r\n**Tape-Workshop-v106-Signed-Update.zip** is the complete OS runtime: one `autorun` folder with 67 runtime files. Use it in Tape Workshop's Manual install, or power off the MPC and replace the SD card's `autorun` folder. Back up first and keep your existing `Melodee` folder, projects, samples and plug-ins. This smaller signed OS update does not contain the separate plug-in folders; choose Complete.zip to get the plug-ins.\r\n\r\n**Melodee-v106-source.tar.gz** is the matching full source at commit `38cad48b5d1a440cb171e7cb88a5941489bf03e8`, including the pinned base runtime. Use this attached archive: this repository's branch and GitHub-generated source archives are not synchronized with the OS source.\r\n\r\n**Tape-Workshop-v106-Guides.zip** contains the illustrated quick start, manual and offered themes. SHA-256 files accompany the downloads.\r\n\r\nFor MPC Sample firmware **1.3.0.12**. After updating, close and reopen the companion webpage at `http://192.168.155.1/` while connected over USB.\r\n\r\n## Verification\r\nThe Complete ZIP was checked against the required 21-bundle inventory: ARM64 libraries, metadata, licenses and every sample/resource are present. Its OS bytes match the verified signed update exactly. Packaging tests reject missing plug-ins and incompatible binaries.\r\n\r\nARM64 build, native engine/model/binding tests, direct-stream and stem-service tests, web/layout checks, signed-updater sandbox tests, signature and ZIP checks passed. Physical MPC playback and controls for this merged v0.5.1 build remain to be verified.\r\n\r\n## Credits\r\nTape Workshop community additions and branding: **bsauce42**.\r\nBased on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, licenses and component attribution are retained in the release and corresponding source.\r\n",
+        "truncated": false
+      },
       {
         "tag": "v0.3.0-tapeworkshop-community.88",
         "name": "Tape Workshop v88 · Stereo Video Recording",
@@ -400,15 +409,6 @@
         "published_at": "2026-11-18T06:29:42Z",
         "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.87",
         "body": "Tape Workshop v87 fixes the companion live picture freezing while audio continues during recording, including exported video. Independent frame sequence numbers, bounded synchronization waits and lightweight compression keep the picture moving.\r\n\r\n## Downloads\r\n\r\n- **Tape-Workshop-v87-Complete.zip** — full SD-card build, bundled plug-ins, matching source, artwork, licenses and the Mac companion launcher. Read START-HERE.txt and README.md.\r\n- **Tape-Workshop-v87-Signed-Update.zip** — signed update for compatible existing Tape Workshop installations; choose it in the companion Manual install page.\r\n- **Melodee-v87-source.tar.gz** — matching v87 firmware source at commit 4ca3434, also included in the complete ZIP. Use this attached archive; the repository branch and GitHub-generated Source code archives are not synchronized to v87.\r\n- SHA-256 checksum files are provided for each download.\r\n\r\n## Install and use\r\n\r\nFor MPC Sample firmware 1.3.0.12. Back up your SD card and follow the included README. Preserve your Melodee projects, samples and plug-ins. Connect the MPC over USB, open http://192.168.155.1/, and close/reopen the webpage after an OS update.\r\n\r\nThe Mac Companion folder contains Tape Workshop.app: move it to Applications and drag it onto the Dock. It opens the companion in a separate Chrome window, with a default-browser fallback. The MPC must be connected.\r\n\r\nIncludes Live Screen, Tutorial Mode, a 30 fps target, direct stereo audio, recordings up to 20 minutes, logo/background customization, Expansion Builder cover artwork, and Roll MIDI import via Shift+B3 or Data → Import MIDI.\r\n\r\n## Verification and credits\r\n\r\nARM64 build, screen packet/compression/sequence tests, audio tests, source layout and signed ZIP verification passed. Browser recordings stayed animated with deliberately mismatched timestamps and continuing audio. The owner reports the build is working on their unit. Broader hardware/browser testing remains ongoing.\r\n\r\nBased on Melodee by Kerem Kiliç (Ellic Studio). Component licenses and source are retained.",
-        "truncated": false
-      },
-      {
-        "tag": "v0.3.0-tapeworkshop-community.53",
-        "name": "Tape Workshop v53 · Plug-in Picker Fix",
-        "prerelease": false,
-        "published_at": "2026-11-17T09:58:40Z",
-        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.53",
-        "body": "This update fixes a plug-in picker bug on the Akai MPC Sample. In v52, confirming **Replace** could load a different instrument or effect from the one selected. v53 confirms the exact plug-in selected. **Erase** also uses the same filtered list shown in the picker.\r\n\r\nThe ZIP includes the v52 features and the Rhythmer instruments **Frodhes**, **Tenebrae**, and the updated **FMini-1**.\r\n\r\n## Install\r\n\r\nFor Akai MPC Sample firmware 1.3.0.12. Back up the SD card, power off the MPC, and replace the card’s top-level `autorun` folder with the one from the ZIP. Keep your `Melodee` folder. To add the Rhythmer instruments, merge the included `Melodee/Plugins` folders into the card’s plug-in library. If a project saved the wrong plug-in, select the intended one again and save the project.\r\n\r\n## Voice Search\r\n\r\nIn **Sample Select**, open a folder, hold **Shift + B2**, wait for **Listening**, say a word like “kick,” then release **B2**. Turn **Data** to browse matches and press it to load the highlighted WAV. Press **B1** to clear the search. In the folder view, **Shift + B3** toggles Auto BPM.\r\n\r\nBased on Melodee 0.3.0 by Kerem Kiliç (Ellic Studio). The ARM64 build, host tests, and ZIP verification passed. MPC Sample hardware testing is pending.",
         "truncated": false
       }
     ],
@@ -476,7 +476,7 @@
     "archived": false
   },
   "drose030/beat-train-mpc-sample": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-11-07T23:18:08Z",
     "last_commit_at": "2026-11-07T23:17:39Z",
@@ -885,7 +885,7 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 13,
+    "stars": 14,
     "forks": 1,
     "pushed_at": "2026-11-18T22:33:10Z",
     "last_commit_at": "2026-11-18T22:33:10Z",
@@ -931,7 +931,7 @@
     "archived": false
   },
   "ioma8/mpc-sample-sdk": {
-    "stars": 8,
+    "stars": 9,
     "forks": 3,
     "pushed_at": "2026-11-17T15:15:40Z",
     "last_commit_at": "2026-11-17T15:14:07Z",
@@ -1163,10 +1163,10 @@
   "jazzyrhythmer/mpc-sample-engine-ports": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-17T19:17:37Z",
-    "last_commit_at": "2026-11-17T19:17:35Z",
+    "pushed_at": "2026-11-19T18:29:32Z",
+    "last_commit_at": "2026-11-19T18:29:29Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": "AGPL-3.0",
     "description": "Engine source adaptations for RHYTHMER OS on MPC Sample, including Frodhes, Tenebrae and FMini-1. Original authors, names and licences retained.",
     "default_branch": "main",
@@ -1206,8 +1206,8 @@
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
     "stars": 13,
     "forks": 0,
-    "pushed_at": "2026-11-17T19:10:47Z",
-    "last_commit_at": "2026-11-17T19:10:44Z",
+    "pushed_at": "2026-11-19T18:29:08Z",
+    "last_commit_at": "2026-11-19T18:29:03Z",
     "contributors": 1,
     "open_issues": 1,
     "license": "AGPL-3.0",
@@ -1222,7 +1222,7 @@
         "prerelease": true,
         "published_at": "2026-11-17T04:12:34Z",
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.2.0",
-        "body": "# RHYTHMER OS 0.2.0\n## New sounds. Better flow.\n\nMore sounds to explore, more direct editing, and a smoother path from your first note to a finished groove.\n\nRHYTHMER OS 0.2.0 brings two new instruments, an updated FMini-1, refined Rhythmer Kit editing, and improvements throughout the track, Acid and Break workflows. Built for exploring Jungle, Techno, House and IDM on your MPC Sample.\n\n### Meet your new instruments\n\n- **Frodhes:** expressive electric pianos, vibraphone and marimba, with 57 original factory programs.\n- **Tenebrae:** eight oscillator models spanning basses, leads, pads, keys and more, with 164 programs including Init.\n- **FMini-1:** updated to the original 2.6.0 engine, with revised filter response, contour shaping and optimizations, retaining its 200 original factory presets.\n\n### Start a track. Change direction.\n\nTRACK SETUP brings instrument replacement, track types, MPC kit loading and track deletion into one visible menu. Change an instrument or track type while keeping your patterns; delete a track through its separate confirmation.\n\nPress the encoder on an engine-less track to choose its type. On a Sample Kit, pressing it on an empty pad opens sample loading for that pad, including when the whole kit is empty. On-screen hints show the next step.\n\nChange instruments directly from the preset list. Switch tracks while browsing and the screen follows the selected track. Preset browsing wraps from the last sound back to the first, in both directions.\n\n### Find a break. Keep the groove.\n\nBrowse loops with ORIGINAL or tempo-synchronised SYNC audition before loading them. Replacing a source preserves your existing patterns and performance settings, with clear confirmation when changing the source's bar count.\n\nBREAK GEN and BRK PERF have clearer entry, return and loading controls. Pattern Hold, CHOP, LOOP and STRETCH have more explicit operating hints, while Variation and Stretch feedback show when the performance actions are active.\n\nLoop audition remains separate from the track's musical state, so you can explore another source while keeping your current groove intact.\n\n### Your pad. Your sound.\n\nRhythmer Kit's EDIT list starts with the selected pad's native **Volume**, followed by its supported Pan, Tune or Decay controls. Related parameters stay together in rows of three, with the whole-kit filter on the next row.\n\nP01–P16 labels identify the pad you are editing; ALL PADS identifies the kit-wide filter. The 36 complete sixteen-pad factory kits retain their mixed-engine flexibility, pad-source replacement and User Kit saving.\n\n### Shape it. Save it. Come back to it.\n\nParameter names and ordering are refined across oscillator, filter, envelope, LFO, modulation and effects controls. Source, Destination and Amount stay together, and named choices make settings such as Key Tracking and Polarity easier to read.\n\nOpen SAVE SOUND or PAD SOURCE from EDIT, save to one of 64 User Sound or User Kit slots, and reload your sounds from the preset list—even in another project. Save the project separately to keep its patterns and arrangement.\n\n### Build a chord progression\n\nCHORD GEN is a separate instrument-track generator alongside the existing GENERATE Tn / MUTATE Tn workflow. Choose a genre, progression family, 1–8 chord changes and 1–16 bars; adjust rhythmic density, chord complexity, energy, voicing and register, then play the result as Block chords, an arpeggio or a strum.\n\nIt follows the project's key and scale by default. Local overrides affect only the generated part. Jazz and neo-soul profiles add extended harmony and voice leading. NEW CHORDS chooses another progression; MUTATE CHORDS keeps the progression while varying articulation. Generation keeps the instrument and other tracks, with Undo/Redo.\n\nRhythmer Kit retains genre-based drum generation; Acid and Break keep their dedicated generators. The illustrated manual and First Groove guide explain which command to use and how to return from each page.\n\n### Acid, ready to play\n\nAcid GEN keeps its NEW/MUTATE generation behavior while presenting its musical settings across two pages, without exposed seed controls.\n\nEight original Aphex choices join the Hortator Acid palette: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. Their native sound controls remain available for editing.\n\n### Refinements\n\nA steadier external MIDI BPM display keeps whole-number tempos clean while retaining meaningful fractional readings. The actual sync algorithm is unchanged. Rhythmer Kit animation flows across pad changes, and contextual Note Repeat and ARP controls remain available.\n\n### Fixes\n\n- Preset loading, parameter mapping, pad labels and state restoration.\n- Track navigation, Back, confirmation, loading cancellation and Undo/Redo.\n- Break playback, performance controls and held-command handling.\n- User Sound/User Kit saving and error feedback.\n\n### Make your first groove\n\nThe manual and **Your first groove with RHYTHMER OS.** guide cover the current navigation, track types, sound saving, independent Chord GEN and the Break workflow, with visual controls and step-by-step instructions.\n\n[Download & Installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nRHYTHMER OS remains early beta software. Back up your SD card before installing, follow the installation guide, and keep sharing what feels good and what could work better.\n\nBuilt on Melodee by Kerem Kiliç / Ellic Studio, with thanks to the original engine developers and open-source contributors. Original authorship, licenses and credits are retained.\n\n**RHYTHMER OS — by Jazzy Rhythmer**\n\n*In search of feel-good rhythms.*\n",
+        "body": "# RHYTHMER OS 0.2.0\n## New sounds. Better flow.\n\nMore sounds to explore, more direct editing, and a smoother path from your first note to a finished groove.\n\nRHYTHMER OS 0.2.0 brings two new instruments, an updated FMini-1, refined Rhythmer Kit editing, and improvements throughout the track, Acid and Break workflows. Built for exploring Jungle, Techno, House and IDM on your MPC Sample.\n\n### Meet your new instruments\n\n- **Frodhes:** expressive electric pianos, vibraphone and marimba, with 57 original factory programs.\n- **Tenebrae:** eight oscillator models spanning basses, leads, pads, keys and more, with 164 programs including Init.\n- **FMini-1:** updated to the original 2.6.0 engine, with revised filter response, contour shaping and optimizations, retaining its 200 original factory presets.\n\n### Start a track. Change direction.\n\nTRACK SETUP brings instrument replacement, track types, MPC kit loading and track deletion into one visible menu. Change an instrument or track type while keeping your patterns; delete a track through its separate confirmation.\n\nPress the encoder on an engine-less track to choose its type. On a Sample Kit, pressing it on an empty pad opens sample loading for that pad, including when the whole kit is empty. On-screen hints show the next step.\n\nChange instruments directly from the preset list. Switch tracks while browsing and the screen follows the selected track. Preset browsing wraps from the last sound back to the first, in both directions.\n\nB2 SENDS stays visible in BASIC. Its confirmation can enable FULL and open SENDS directly, or cancel without changing modes. Existing repeat-rate, MOVE/COPY and back controls retain their priority.\n\n### Find a break. Keep the groove.\n\nBrowse loops with ORIGINAL or tempo-synchronised SYNC audition before loading them. Replacing a source preserves your existing patterns and performance settings, with clear confirmation when changing the source's bar count.\n\nBREAK GEN and BRK PERF have clearer entry, return and loading controls. Pattern Hold, CHOP, LOOP and STRETCH have more explicit operating hints, while Variation and Stretch feedback show when the performance actions are active.\n\nLoop audition remains separate from the track's musical state, so you can explore another source while keeping your current groove intact.\n\n### Your pad. Your sound.\n\nRhythmer Kit's EDIT list starts with the selected pad's native **Volume**, followed by its supported Pan, Tune or Decay controls. Related parameters stay together in rows of three, with the whole-kit filter on the next row.\n\nP01–P16 labels identify the pad you are editing; ALL PADS identifies the kit-wide filter. The 36 complete sixteen-pad factory kits retain their mixed-engine flexibility, pad-source replacement and User Kit saving.\n\n### Shape it. Save it. Come back to it.\n\nParameter names and ordering are refined across oscillator, filter, envelope, LFO, modulation and effects controls. Source, Destination and Amount stay together, and named choices make settings such as Key Tracking and Polarity easier to read.\n\nOpen SAVE SOUND or PAD SOURCE from EDIT, save to one of 64 User Sound or User Kit slots, and reload your sounds from the preset list—even in another project. Save the project separately to keep its patterns and arrangement.\n\n### Save where you choose\n\nFirst SAVE and SAVE AS let you choose a folder and name. Further SAVE presses update that file. Opening another project or starting NEW offers SAVE, DISCARD or CANCEL instead of automatically overwriting your manual save.\n\nIdle autosave updates one separate recovery entry per project under Rhythmer/Autosave. On the Project home screen, SHIFT + B3 RECOVERY opens the list; load a recovered copy and SAVE it deliberately.\n\n### Build a chord progression\n\nCHORD GEN is a separate instrument-track generator alongside the existing GENERATE Tn / MUTATE Tn workflow. Choose a genre, progression family, 1–8 chord changes and 1–16 bars; adjust rhythmic density, chord complexity, energy, voicing and register, then play the result as Block chords, an arpeggio or a strum.\n\nIt follows the project's key and scale by default. Local overrides affect only the generated part. Jazz and neo-soul profiles add extended harmony and voice leading. NEW CHORDS chooses another progression; MUTATE CHORDS keeps the progression while varying articulation. Generation keeps the instrument and other tracks, with Undo/Redo.\n\nRhythmer Kit retains genre-based drum generation; Acid and Break keep their dedicated generators. The illustrated manual and First Groove guide explain which command to use and how to return from each page.\n\n### Acid, ready to play\n\nAcid GEN keeps its NEW/MUTATE generation behavior while presenting its musical settings across two pages, without exposed seed controls.\n\nEight original Aphex choices join the Hortator Acid palette: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. Their native sound controls remain available for editing.\n\n### Refinements\n\nA steadier external MIDI BPM display keeps whole-number tempos clean while retaining meaningful fractional readings. The actual sync algorithm is unchanged. Rhythmer Kit animation flows across pad changes, and contextual Note Repeat and ARP controls remain available.\n\n### Fixes\n\n- Preset loading, parameter mapping, pad labels and state restoration.\n- Track navigation, Back, confirmation, loading cancellation and Undo/Redo.\n- Break playback, performance controls and held-command handling.\n- User Sound/User Kit saving and error feedback.\n\n### Make your first groove\n\nThe manual and **Your first groove with RHYTHMER OS.** guide cover the current navigation, track types, sound saving, independent Chord GEN and the Break workflow, with visual controls and step-by-step instructions.\n\n[Download & Installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nRHYTHMER OS remains early beta software. Back up your SD card before installing, follow the installation guide, and keep sharing what feels good and what could work better.\n\nBuilt on Melodee by Kerem Kiliç / Ellic Studio, with thanks to the original engine developers and open-source contributors. Original authorship, licenses and credits are retained.\n\n**RHYTHMER OS — by Jazzy Rhythmer**\n\n*In search of feel-good rhythms.*\n",
         "truncated": false
       },
       {
@@ -1275,7 +1275,7 @@
     "archived": false
   },
   "jeffwebb-to/mpc-sample-tracker": {
-    "stars": 10,
+    "stars": 11,
     "forks": 1,
     "pushed_at": "2026-11-10T07:56:41Z",
     "last_commit_at": "2026-11-10T07:56:20Z",
@@ -1303,12 +1303,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 63,
+    "stars": 65,
     "forks": 10,
     "pushed_at": "2026-11-18T19:24:27Z",
     "last_commit_at": "2026-11-18T19:05:26Z",
     "contributors": 1,
-    "open_issues": 13,
+    "open_issues": 17,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1452,8 +1452,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-19T06:36:33Z",
-    "last_commit_at": "2026-11-19T06:36:31Z",
+    "pushed_at": "2026-11-19T12:21:20Z",
+    "last_commit_at": "2026-11-19T12:21:18Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1517,12 +1517,12 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 18,
-    "forks": 1,
-    "pushed_at": "2026-11-18T20:35:16Z",
-    "last_commit_at": "2026-11-18T20:35:13Z",
+    "stars": 19,
+    "forks": 2,
+    "pushed_at": "2026-11-19T15:21:49Z",
+    "last_commit_at": "2026-11-19T15:21:46Z",
     "contributors": 1,
-    "open_issues": 1,
+    "open_issues": 2,
     "license": null,
     "description": "One card, every OS: a boot selector for the Akai MPC Sample. Pick the stock firmware, Melodee, SampQOL OS or any custom OS with the encoder at power-on.",
     "default_branch": "main",
@@ -1717,12 +1717,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 124,
+    "stars": 126,
     "forks": 7,
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 28,
+    "open_issues": 27,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
