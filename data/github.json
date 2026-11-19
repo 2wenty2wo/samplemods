@@ -15,7 +15,7 @@
     "archived": false
   },
   "AlekseyMalykh/am-mod": {
-    "stars": 21,
+    "stars": 22,
     "forks": 1,
     "pushed_at": "2026-11-16T22:50:02Z",
     "last_commit_at": "2026-11-16T22:48:53Z",
@@ -93,7 +93,7 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-18T19:08:11Z",
+    "pushed_at": "2026-11-19T03:43:59Z",
     "last_commit_at": "2026-11-18T16:28:34Z",
     "contributors": 2,
     "open_issues": 2,
@@ -202,19 +202,28 @@
   "LA-2500/MPC-600-S": {
     "stars": 9,
     "forks": 0,
-    "pushed_at": "2026-11-18T18:45:43Z",
-    "last_commit_at": "2026-11-18T18:45:18Z",
+    "pushed_at": "2026-11-19T04:20:43Z",
+    "last_commit_at": "2026-11-19T04:20:14Z",
     "contributors": 1,
-    "open_issues": 3,
+    "open_issues": 5,
     "license": "MIT",
     "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. S600 MULTI multisample instruments with an Auto Sampler, Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling. C, aarch64 Linux; runs from SD card autorun.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.6C",
-      "published_at": "2026-11-18T18:45:44Z"
+      "tag": "v1.6D",
+      "published_at": "2026-11-19T04:20:43Z"
     },
     "releases": [
+      {
+        "tag": "v1.6D",
+        "name": "MPC 600 S, LA Version 1.6D",
+        "prerelease": false,
+        "published_at": "2026-11-19T04:20:43Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6D",
+        "body": "**Fixed: the pop at start-up is reduced.** The codec's volume glides down before the stock OS stops, then the MPC 600 S starts with 0.6 s of silence and fades in over 0.8 s. The speaker amp is no longer switched off and on again.\n\n**Fixed: the file lists no longer go back to the top.** In Load Files and in the Save/Load browser, Back lands on the folder you just left, and each folder keeps its place until power-off.\n\nEverything in v1.6C is included.\n\nInstall: extract MPC-600-S-OS-v1.6D.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "truncated": false
+      },
       {
         "tag": "v1.6",
         "name": "MPC 600 S, LA Version 1.6",
@@ -231,15 +240,6 @@
         "published_at": "2026-11-17T23:34:20Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.5",
         "body": "**Fix: the screen jumping while turning knobs or using the data wheel.** Turning K1–K3, the slider or the main volume, or turning or pushing the data wheel, presses on the panel, and the pads near them could send light hits of their own. On an editing page such a hit selected another pad, so the page jumped to its sample. (1.4 caught these only right after a real pad hit.)\n\n- For 300 ms after a knob, slider or wheel movement, and while the wheel is held down, pad hits lighter than velocity 48 are ignored. Firm presses still play.\n- The 1.4 rule for neighbouring pads stays.\n- If pads still play by themselves, raise **Pad Thresh** in Additional Settings.\n\n**Save/Load:**\n\n- SHIFT + Pad 16 opens Save/Load on the Mode and Type used last: after loading an MPC 2500 PROJECT it opens on LOAD, MPC 2500 PROJECT. The first time after power-on, SAVE PROJECT.\n- LOAD has two pages: first Mode, Type, Into and Clear all, then B3 <Browse> opens the files, which work like Load Files: the wheel moves the bar, pushing the wheel (or B3) opens a folder or loads the item, B1 <Back> goes up a folder.\n- On the files page, B2 renames; Delete is SHIFT + B2, so it can't be pressed by accident. It still asks first.\n- LOAD: new **Clear all** field (NO / YES). With YES, Load asks \"Clear all, then load?\", empties every program, sound, sequence and song (settings stay), then loads. It goes back to NO after each use.\n\nInstall: extract MPC-600-S-OS-v1.5.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n\n\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.6C",
-        "name": "MPC 600 S, LA Version 1.6C",
-        "prerelease": false,
-        "published_at": "2026-11-18T18:45:44Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6C",
-        "body": "**Fixed: browsing sounds on the Sample: field.** Turning the wheel now steps through every sound in memory, in a fixed order, both ways. Before, with sounds in memory that weren't on a pad, it went back and forth between two.\n\n- Stems: the result line no longer shows \"0bit\".\n\nEverything in v1.6B is included (USB Audio Out, Save/Load, long samples no longer cut on the next pass).\n\nInstall: extract MPC-600-S-OS-v1.6C.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
         "truncated": false
       }
     ],
@@ -334,19 +334,28 @@
   "bajdev/MPCkit": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-18T12:48:26Z",
-    "last_commit_at": "2026-11-18T12:47:37Z",
+    "pushed_at": "2026-11-19T05:24:59Z",
+    "last_commit_at": "2026-11-19T05:09:57Z",
     "contributors": 1,
-    "open_issues": 2,
+    "open_issues": 3,
     "license": "MIT",
     "description": "Application to create basic MPC Sample starter projects and kits from your desktop",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.5.5",
-      "published_at": "2026-11-16T02:13:15Z"
+      "tag": "v0.5.6",
+      "published_at": "2026-11-19T00:43:23Z"
     },
     "releases": [
+      {
+        "tag": "v0.5.6",
+        "name": "MPCkit v0.5.6 (beta)",
+        "prerelease": false,
+        "published_at": "2026-11-19T00:43:23Z",
+        "html_url": "https://github.com/bajdev/MPCkit/releases/tag/v0.5.6",
+        "body": "MPCkit 0.5.6 is a beta. Keep a copy of any project you care about before opening it in MPCkit.\r\n\r\n## What's new\r\n\r\n- **Fill a bank by dropping files.** Drop several WAV files, or a folder, onto an empty bank: on its letter, or on any of its pads. The first 16 files, in name order, fill pads 1–16. Files that can't be used are skipped, and MPCkit tells you which.\r\n- **Rename a pad's sample.** Edit the name in Pad settings and click **Rename**, or press Enter. Only the copy in the exported project gets the new name; your original file is never changed. Pads that share the file get the new name too.\r\n- **Clear bank.** One button empties a whole bank of pads, or removes a whole bank of sequences. MPCkit asks first and lists what will go.\r\n- **Play on click.** A switch on the Pads tab turns off the sound when you click a pad or change its tuning. The Play button always plays. The switch is on each time MPCkit starts.\r\n\r\nThe command-line tool, `mpckit-cli`, gains `-fill`, `-rename`, `-clearbank`, `-rmseqbank` and `-trim`. `-trim` sets where a pad's sample starts and ends. The window's start and end editor is coming in 0.6.0.\r\n\r\n## Download\r\n\r\n| Your computer | File |\r\n| --- | --- |\r\n| Windows 10 or 11 (64-bit) | `mpckit-0.5.6-windows-amd64.zip` |\r\n| Mac (Apple silicon or Intel) | `mpckit-0.5.6-macos-universal.zip` |\r\n| Linux (64-bit) | `mpckit-0.5.6-linux-amd64.tar.gz` |\r\n\r\nMPCkit isn't signed yet, so your computer warns you the first time you open it. The [README](https://github.com/bajdev/MPCkit#download-and-install) explains what to do.\r\n\r\nMPCkit is an independent project, not affiliated with Akai Professional or inMusic Brands.\r\n\r\n**Full changelog:** https://github.com/bajdev/MPCkit/compare/v0.5.5...v0.5.6\r\n",
+        "truncated": false
+      },
       {
         "tag": "v0.5.5",
         "name": "MPCkit v0.5.5 (beta)",
@@ -651,7 +660,7 @@
     "archived": false
   },
   "garrettjwilke/mpc-boot-thingy": {
-    "stars": 24,
+    "stars": 25,
     "forks": 3,
     "pushed_at": "2026-11-17T01:29:13Z",
     "last_commit_at": "2026-11-17T01:29:13Z",
@@ -861,7 +870,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 236,
+    "stars": 238,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -876,13 +885,13 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 10,
+    "stars": 13,
     "forks": 1,
-    "pushed_at": "2026-11-17T22:17:43Z",
-    "last_commit_at": "2026-11-17T22:17:40Z",
+    "pushed_at": "2026-11-18T22:33:10Z",
+    "last_commit_at": "2026-11-18T22:33:10Z",
     "contributors": 2,
     "open_issues": 1,
-    "license": null,
+    "license": "MIT",
     "description": "A Rust mod for the Akai MPC Sample, built on mpc-sample-sdk. AutoTrim, Recent Samples, chopping, effects, synth, looper, and optional Moonshine voice dictation.",
     "default_branch": "main",
     "readme_path": "README.md",
@@ -1195,7 +1204,7 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 12,
+    "stars": 13,
     "forks": 0,
     "pushed_at": "2026-11-17T19:10:47Z",
     "last_commit_at": "2026-11-17T19:10:44Z",
@@ -1294,12 +1303,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 59,
-    "forks": 9,
+    "stars": 63,
+    "forks": 10,
     "pushed_at": "2026-11-18T19:24:27Z",
     "last_commit_at": "2026-11-18T19:05:26Z",
     "contributors": 1,
-    "open_issues": 11,
+    "open_issues": 13,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1443,8 +1452,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-18T12:17:33Z",
-    "last_commit_at": "2026-11-18T12:17:31Z",
+    "pushed_at": "2026-11-19T06:36:33Z",
+    "last_commit_at": "2026-11-19T06:36:31Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1508,12 +1517,12 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 15,
+    "stars": 18,
     "forks": 1,
     "pushed_at": "2026-11-18T20:35:16Z",
     "last_commit_at": "2026-11-18T20:35:13Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": null,
     "description": "One card, every OS: a boot selector for the Akai MPC Sample. Pick the stock firmware, Melodee, SampQOL OS or any custom OS with the encoder at power-on.",
     "default_branch": "main",
@@ -1708,7 +1717,7 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 122,
+    "stars": 124,
     "forks": 7,
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
