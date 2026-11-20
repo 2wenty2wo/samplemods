@@ -26,7 +26,7 @@ import {
 	} = $props();
 </script>
 
-<section class="filter-bar" aria-label="Filter and sort entries">
+<search class="filter-bar" aria-label="Filter and sort entries">
 	<div class="filter-group">
 		<span class="silk-label">SECTION</span>
 		<div class="hw-buttons" role="group" aria-label="Section">
@@ -66,15 +66,15 @@ import {
 			<option value="updated">Recently updated</option>
 		</select>
 	</div>
-</section>
+</search>
 
-<div class="results-bar" aria-live="polite">
-	<span class="results-count">
+<div class="results-bar">
+	<p class="results-count" role="status" aria-live="polite">
 		Showing <strong>{filteredCount}</strong> of {totalMods} entries
 		{#if section}
 			in <strong>{sectionLabel(section)}</strong>
 		{/if}
-	</span>
+	</p>
 	{#if section || query}
 		<button
 			type="button"
@@ -166,6 +166,10 @@ import {
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
 		color: var(--mpc-silkscreen-muted);
+	}
+
+.results-count {
+		margin: 0;
 	}
 
 .results-count strong {

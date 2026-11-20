@@ -178,21 +178,7 @@
 		/>
 
 		<div class="wrap detail-grid">
-			<aside class="detail-side-col" aria-label="Quick facts and related entries">
-				<EntryQuickFacts
-					{mod}
-					{byId}
-					{runsOnText}
-					{install}
-					{audienceText}
-					{latestRelease}
-					{latestReleaseUrl}
-					{updatedDate}
-					{formatUpdated}
-				/>
-				<RelatedEntries {mod} {byId} {compatibleIds} {launcherIds} />
-			</aside>
-
+			<!-- DOM: main before side so Tab reaches content first; CSS grid keeps side on the right / above on small screens -->
 			<div class="detail-main-col">
 				<ScreenshotGallery
 					{mod}
@@ -208,6 +194,21 @@
 				<ReleasesList {mod} {releases} {formatUpdated} />
 				<SuggestEditBar {editOnGithubUrl} {reportProblemUrl} />
 			</div>
+
+			<aside class="detail-side-col" aria-label="Quick facts and related entries">
+				<EntryQuickFacts
+					{mod}
+					{byId}
+					{runsOnText}
+					{install}
+					{audienceText}
+					{latestRelease}
+					{latestReleaseUrl}
+					{updatedDate}
+					{formatUpdated}
+				/>
+				<RelatedEntries {mod} {byId} {compatibleIds} {launcherIds} />
+			</aside>
 		</div>
 	</article>
 

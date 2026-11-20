@@ -40,9 +40,6 @@
 						href={person.html_url}
 						target="_blank"
 						rel="noopener noreferrer"
-						title="{person.login} — {person.contributions} commit{person.contributions === 1
-							? ''
-							: 's'}"
 					>
 						<img
 							class="contributor-avatar"
@@ -51,6 +48,9 @@
 							loading="lazy"
 						/>
 						<span class="contributor-login">{person.login}</span>
+						<span class="visually-hidden">
+							— {person.contributions} commit{person.contributions === 1 ? '' : 's'}
+						</span>
 					</a>
 				</li>
 			{/each}

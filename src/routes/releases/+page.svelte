@@ -128,13 +128,13 @@
 		</div>
 	</section>
 
-	<div class="results-bar" aria-live="polite">
-		<span class="results-count">
+	<div class="results-bar">
+		<p class="results-count" role="status" aria-live="polite">
 			Showing <strong>{filtered.length}</strong> of {releases.length} releases
 			{#if section}
 				in <strong>{sectionLabel(section)}</strong>
 			{/if}
-		</span>
+		</p>
 		{#if section}
 			<button type="button" class="reset-link" onclick={() => (section = '')}>
 				Reset filter
@@ -301,6 +301,10 @@
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
 		color: var(--mpc-silkscreen-muted);
+	}
+
+	.results-count {
+		margin: 0;
 	}
 
 	.results-count strong {

@@ -37,6 +37,8 @@
 	/>
 </svelte:head>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
+
 <header class="site-topbar">
 	<div class="site-topbar-inner">
 		<a class="brand-lockup" href="{base}/">
@@ -60,7 +62,7 @@
 	</div>
 </header>
 
-<main class="site-main">
+<main id="main-content" class="site-main" tabindex="-1">
 	{@render children()}
 </main>
 

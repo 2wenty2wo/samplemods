@@ -2,6 +2,7 @@
 import { base } from '$app/paths';
 	import StarIcon from '$lib/StarIcon.svelte';
 	import {
+		entryPath,
 		sectionLabel,
 		sectionSingular,
 		sectionSingularLabel
@@ -38,13 +39,19 @@ import { base } from '$app/paths';
 <section class="detail-hero-band">
 	<div class="detail-hero-inner">
 		<nav class="breadcrumbs" aria-label="Breadcrumb">
-			<a class="crumb-link" href="{base}/">All</a>
-			<span class="crumb-sep" aria-hidden="true">›</span>
-			<a class="crumb-link" href="{base}/?section={sectionSingular(mod.section)}">
-				{sectionLabel(mod.section)}
-			</a>
-			<span class="crumb-sep" aria-hidden="true">›</span>
-			<span class="crumb-current" aria-current="page">{mod.name}</span>
+			<ol>
+				<li>
+					<a class="crumb-link" href="{base}/">All</a>
+				</li>
+				<li>
+					<a class="crumb-link" href="{base}/?section={sectionSingular(mod.section)}">
+						{sectionLabel(mod.section)}
+					</a>
+				</li>
+				<li>
+					<a class="crumb-current" href="{base}{entryPath(mod)}" aria-current="page">{mod.name}</a>
+				</li>
+			</ol>
 		</nav>
 
 		<div class="detail-screen-panel">
@@ -65,6 +72,10 @@ import { base } from '$app/paths';
 							class:pixelated={heroMedia.kind === 'shot' && pixelatedUrls[heroMedia.src]}
 							src={heroMedia.src}
 							alt="{mod.name} screen capture"
+							width="320"
+							height="240"
+							fetchpriority="high"
+							decoding="async"
 							onload={(e) => onScreenImageLoad(e, heroMedia.src)}
 						/>
 					{:else}
@@ -99,7 +110,11 @@ import { base } from '$app/paths';
 						<span class="badge-status {mod.status}">{mod.status}</span>
 					{/if}
 					{#if mod.stars != null}
-						<span class="screen-badge stars" title="{mod.stars} GitHub stars"><StarIcon />{mod.stars}</span>
+						<span class="screen-badge stars">
+							<StarIcon />{mod.stars}<span class="visually-hidden">
+								{mod.stars === 1 ? ' star' : ' stars'}</span
+							>
+						</span>
 					{/if}
 					{#if latestRelease?.tag}
 						<span class="screen-badge date">{latestRelease.tag}</span>
@@ -200,15 +215,32 @@ import { base } from '$app/paths';
 	}
 
 .breadcrumbs {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.4rem;
 		margin-bottom: 0.9rem;
 		font-size: 0.76rem;
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.09em;
+	}
+
+.breadcrumbs ol {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+.breadcrumbs li {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+.breadcrumbs li + li::before {
+		content: '›' / '';
+		color: #6b7284;
 	}
 
 .crumb-link {
@@ -220,12 +252,9 @@ import { base } from '$app/paths';
 		color: var(--mpc-screen-yellow);
 	}
 
-.crumb-sep {
-		color: #6b7284;
-	}
-
 .crumb-current {
 		color: var(--mpc-screen-yellow);
+		text-decoration: none;
 	}
 
 .detail-screen-panel {

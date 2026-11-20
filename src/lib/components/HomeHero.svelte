@@ -35,7 +35,7 @@
 				</dl>
 			</div>
 
-			<div class="hero-search-bar">
+			<search class="hero-search-bar">
 				<label class="search-label" for="mod-search">SEARCH CATALOG</label>
 				<div class="search-input-wrap">
 					<input
@@ -44,6 +44,9 @@
 						bind:value={query}
 						placeholder="Filter by name, description, tag, or author…"
 						autocomplete="off"
+						autocapitalize="off"
+						spellcheck="false"
+						enterkeyhint="search"
 					/>
 					{#if query}
 						<button type="button" class="search-clear" onclick={() => (query = '')}>
@@ -51,7 +54,7 @@
 						</button>
 					{/if}
 				</div>
-			</div>
+			</search>
 		</div>
 	</div>
 </section>
