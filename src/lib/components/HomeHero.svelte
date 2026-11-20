@@ -223,17 +223,28 @@
 
 .search-clear {
 		position: absolute;
-		right: 0.5rem;
+		right: 0.45rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-block-size: 24px;
+		min-inline-size: 24px;
 		background: #232836;
 		color: var(--mpc-screen-text);
 		border: 1px solid #3a4154;
 		border-radius: 4px;
-		padding: 0.22rem 0.55rem;
+		padding: 0.25rem 0.55rem;
 		font-size: 0.72rem;
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
 		cursor: pointer;
+	}
+
+.search-clear::after {
+		content: '';
+		position: absolute;
+		inset: -10px -6px;
 	}
 
 @media (max-width: 640px) {

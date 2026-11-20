@@ -177,9 +177,15 @@ import {
 	}
 
 .reset-link {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		min-block-size: var(--target-size, 24px);
+		min-inline-size: var(--target-size, 24px);
 		background: none;
 		border: none;
-		padding: 0;
+		padding: 0.2rem 0.35rem;
+		margin: -0.2rem -0.35rem;
 		font: inherit;
 		font-weight: 700;
 		color: var(--mpc-accent-red);
