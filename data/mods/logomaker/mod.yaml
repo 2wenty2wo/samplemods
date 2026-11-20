@@ -1,0 +1,16 @@
+name: LogoMaker
+description: >-
+  An SD-card autorun for firmware 1.3.0.12 that shows your own image and optional MP3 for a few
+  seconds at cold boot, then returns to stock. Helper programs ship as prebuilt ARM64 binaries
+  without source in the repo; replaces other autorun loaders such as SampleBoot.
+repo: Trinzik-Labs/LogoMaker
+author: Trinzik
+author_url: https://github.com/Trinzik-Labs
+install: sd-card
+firmware: '1.3.0.12'
+runs_on: [device]
+audience: [musician, curious]
+status: experimental
+tags:
+  - boot-logo
+  - display
