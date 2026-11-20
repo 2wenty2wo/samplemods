@@ -7,6 +7,7 @@
 		hostnameOf
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
+	import { formatCatalogDate } from '$lib/format-date.js';
 	import EntryProse from '$lib/components/EntryProse.svelte';
 
 	/** @type {{
@@ -37,26 +38,16 @@
 
 	/** @param {string | number | null | undefined} value */
 	function formatDate(value) {
-		if (!value) return null;
-		const d = new Date(value);
-		if (Number.isNaN(d.getTime())) return null;
-		return d.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-			timeZone: 'UTC'
-		});
+		return formatCatalogDate(value);
 	}
 
 	/** @param {string | number | null | undefined} value */
 	function formatShortDate(value) {
-		if (!value) return null;
-		const d = new Date(value);
-		if (Number.isNaN(d.getTime())) return null;
-		return d.toLocaleDateString('en-GB', {
+		return formatCatalogDate(value, {
+			locale: 'en-GB',
 			day: 'numeric',
 			month: 'short',
-			timeZone: 'UTC'
+			year: undefined
 		});
 	}
 

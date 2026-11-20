@@ -22,6 +22,7 @@
 	import ReleasesList from '$lib/components/ReleasesList.svelte';
 	import SuggestEditBar from '$lib/components/SuggestEditBar.svelte';
 	import EntryLightbox from '$lib/components/EntryLightbox.svelte';
+	import { formatCatalogDate } from '$lib/format-date.js';
 
 	let { data } = $props();
 	const mod = $derived(data.mod ?? {});
@@ -105,20 +106,7 @@
 
 	/** @param {string | number | null | undefined} value */
 	function formatUpdated(value) {
-		if (!value) return null;
-		const raw = String(value);
-		// Date-only YYYY-MM-DD: keep the calendar day (avoid UTC midnight shift).
-		if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
-			const [y, m, d] = raw.split('-').map(Number);
-			return new Date(y, m - 1, d).toLocaleDateString('en-US', {
-				year: 'numeric',
-				month: 'short',
-				day: 'numeric'
-			});
-		}
-		const d = new Date(value);
-		if (Number.isNaN(d.getTime())) return null;
-		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+		return formatCatalogDate(value);
 	}
 
 	/** @param {Event} e @param {string | null} src */

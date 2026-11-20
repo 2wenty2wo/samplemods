@@ -14,6 +14,7 @@
 	import CatalogFilterBar from '$lib/components/CatalogFilterBar.svelte';
 	import EntryCard from '$lib/components/EntryCard.svelte';
 	import ContributorsBand from '$lib/components/ContributorsBand.svelte';
+	import { formatCatalogDate } from '$lib/format-date.js';
 
 	let { data } = $props();
 	const latestReleases = $derived(data?.latestReleases ?? []);
@@ -93,10 +94,7 @@
 
 	/** @param {string | number | null | undefined} value */
 	function formatUpdated(value) {
-		if (!value) return null;
-		const d = new Date(value);
-		if (Number.isNaN(d.getTime())) return null;
-		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+		return formatCatalogDate(value);
 	}
 
 	/** @param {Event} e @param {string | null} src */
