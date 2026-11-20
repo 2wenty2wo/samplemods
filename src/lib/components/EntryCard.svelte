@@ -47,6 +47,7 @@ import { base } from '$app/paths';
 	class="pad-card"
 	href="{base}{entryPath(mod)}"
 	style="--pad-glow: {sectionGlow(mod.section)}"
+	aria-labelledby="card-section-{mod.id} card-title-{mod.id}"
 >
 	<!-- 4:3 Glossy Black Bezel Screen Display -->
 	<div class="bezel-screen card-screen">
@@ -78,7 +79,7 @@ import { base } from '$app/paths';
 	</div>
 
 	<div class="card-badges">
-		<span class="chip chip-category">{sectionSingularLabel(mod.section)}</span>
+		<span id="card-section-{mod.id}" class="chip chip-category">{sectionSingularLabel(mod.section)}</span>
 		{#if install}
 			<span class="chip chip-install">{install}</span>
 		{/if}
@@ -91,7 +92,7 @@ import { base } from '$app/paths';
 	</div>
 
 	<div class="card-body">
-		<h2 class="card-title">{mod.name}</h2>
+		<h2 id="card-title-{mod.id}" class="card-title">{mod.name}</h2>
 		<p class="card-desc">{mod.description}</p>
 	</div>
 
@@ -99,8 +100,10 @@ import { base } from '$app/paths';
 		<span class="card-author">{mod.author}</span>
 		<div class="card-readout">
 			{#if mod.stars != null}
-				<span class="screen-badge stars" title="{mod.stars} GitHub stars">
-					<StarIcon />{mod.stars}
+				<span class="screen-badge stars">
+					<StarIcon />{mod.stars}<span class="visually-hidden">
+						{mod.stars === 1 ? ' star' : ' stars'}</span
+					>
 				</span>
 			{/if}
 			{#if formatUpdated(mod.pushed_at)}

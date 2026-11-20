@@ -18,7 +18,10 @@
 <dialog
 	bind:this={lightbox}
 	class="lightbox"
+	aria-label={lightboxAlt || 'Screenshot preview'}
+	closedby="any"
 	onclick={(e) => {
+		/* Fallback light-dismiss for browsers without closedby support */
 		if (e.target === lightbox) closeLightbox();
 	}}
 	onclose={() => {
@@ -32,6 +35,8 @@
 				class:pixelated={pixelatedUrls[lightboxSrc]}
 				src={lightboxSrc}
 				alt={lightboxAlt}
+				fetchpriority="low"
+				decoding="async"
 			/>
 		</div>
 	{/if}
@@ -48,10 +53,17 @@
 		background: var(--mpc-bezel-black);
 		color: var(--mpc-screen-text);
 		width: min(860px, 94vw);
+		overscroll-behavior: contain;
+	}
+
+.lightbox:modal {
+		overscroll-behavior: contain;
 	}
 
 .lightbox::backdrop {
 		background: rgb(0 0 0 / 0.76);
+		overflow: hidden;
+		overscroll-behavior: contain;
 	}
 
 .lightbox-screen {

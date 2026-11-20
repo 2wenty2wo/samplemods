@@ -67,7 +67,11 @@
 {#if compact}
 	<article class="release-row is-compact hw-band-chip" style="--pad-glow: {glow}; --chip-accent: {glow}">
 		<!-- The whole row is one link to the entry's releases section on samplemods.com. -->
-		<a class="compact-grid" href="{base}{rel.entryPath}#releases">
+		<a
+			class="compact-grid"
+			href="{base}{rel.entryPath}#releases"
+			aria-labelledby="rel-name-{rel.key} rel-section-{rel.key}"
+		>
 			<div class="release-thumb-link compact-thumb">
 				<div class="bezel-screen release-bezel">
 					{#if thumbSrc}
@@ -84,11 +88,13 @@
 				</div>
 			</div>
 
-			<span class="release-entry-link compact-name" title={rel.entryName}>
+			<span id="rel-name-{rel.key}" class="release-entry-link compact-name" title={rel.entryName}>
 				{rel.entryName}
 			</span>
 
-			<span class="chip chip-category compact-cat">{sectionSingularLabel(rel.section)}</span>
+			<span id="rel-section-{rel.key}" class="chip chip-category compact-cat"
+				>{sectionSingularLabel(rel.section)}</span
+			>
 
 			<div class="compact-version-wrap">
 				<span class="screen-badge date compact-tag" title={rel.tag}>{rel.tag}</span>
