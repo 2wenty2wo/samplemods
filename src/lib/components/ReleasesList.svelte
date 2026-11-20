@@ -24,9 +24,9 @@ import { hostnameOf } from '$lib/categories.js';
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								{rel.tag}
+								{rel.label ?? rel.tag}
 							</a>
-							{#if rel.name && rel.name !== rel.tag}
+							{#if rel.name && rel.name !== (rel.label ?? rel.tag)}
 								<span class="release-title">{rel.name}</span>
 							{/if}
 							{#if formatUpdated(rel.published_at)}

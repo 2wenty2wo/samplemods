@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { releaseDisplayLabel } from '../src/lib/release-label.js';
 import { readEntries } from './catalog.js';
 import { renderMarkdown } from './render-markdown.js';
 import { deriveVersionFromTitle } from './watch.js';
@@ -52,9 +53,11 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const watchReleases = watchItems.map((item) => {
 		const rawName = String(item.title ?? '').trim().replace(/^\/+/, '');
 		const tag = deriveVersionFromTitle(item.title ?? '');
+		const name = rawName || tag;
 		return {
 			tag,
-			name: rawName || tag,
+			name,
+			label: releaseDisplayLabel(tag, name),
 			published_at: item.published_at ?? null,
 			html_url: item.html_url ?? raw.website ?? null,
 			body_html: ''
@@ -79,7 +82,9 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		readme_from_repo: readmePath === mirroredReadmePath,
 		releases: raw.repo
 			? shownReleases.map(({ body, ...release }) => ({
-				...release, body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
+				...release,
+				label: releaseDisplayLabel(release.tag, release.name),
+				body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
 			}))
 			: watchReleases
 	};
@@ -103,15 +108,40 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		contributors: gh.contributors ?? null,
 		open_issues: gh.open_issues ?? null,
 		license: gh.license ?? null,
-		latest_release: raw.repo
-			? (raw.release_prefix
-				? (newestMatching ? { tag: newestMatching.tag, published_at: newestMatching.published_at } : null)
-				: gh.latest_release ?? null)
-			: newestWatch ? {
-			tag: newestWatch.tag, published_at: newestWatch.published_at, html_url: newestWatch.html_url
-		} : raw.version ? {
-			tag: raw.version, published_at: raw.released ?? null, html_url: raw.website
-		} : null,
+		latest_release: (() => {
+			/** @param {{ tag?: string, published_at?: string | null, html_url?: string | null, name?: string | null, label?: string } | null} base */
+			const withLabel = (base) => {
+				if (!base?.tag) return null;
+				const match = matchingReleases.find((r) => r.tag === base.tag)
+					?? (newestWatch && newestWatch.tag === base.tag ? newestWatch : null);
+				const name = match?.name ?? base.name ?? null;
+				return {
+					...base,
+					label: match?.label ?? releaseDisplayLabel(base.tag, name)
+				};
+			};
+			if (raw.repo) {
+				if (raw.release_prefix) {
+					return newestMatching
+						? withLabel({ tag: newestMatching.tag, published_at: newestMatching.published_at, name: newestMatching.name })
+						: null;
+				}
+				return withLabel(gh.latest_release ?? null);
+			}
+			if (newestWatch) {
+				return withLabel({
+					tag: newestWatch.tag,
+					published_at: newestWatch.published_at,
+					html_url: newestWatch.html_url,
+					name: newestWatch.name,
+					label: newestWatch.label
+				});
+			}
+			if (raw.version) {
+				return withLabel({ tag: raw.version, published_at: raw.released ?? null, html_url: raw.website });
+			}
+			return null;
+		})(),
 		archived: gh.archived ?? null,
 		github_description: gh.description ?? null,
 		logo: logo ? `media/${id}/${logo}` : null,

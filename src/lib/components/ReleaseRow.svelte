@@ -97,7 +97,7 @@
 			>
 
 			<div class="compact-version-wrap">
-				<span class="screen-badge date compact-tag" title={rel.tag}>{rel.tag}</span>
+				<span class="screen-badge date compact-tag" title={rel.label ?? rel.tag}>{rel.label ?? rel.tag}</span>
 				{#if rel.prerelease}
 					<span class="badge-status beta compact-prerelease">Pre-release</span>
 				{/if}
@@ -143,12 +143,12 @@
 								href={rel.html_url}
 								target="_blank"
 								rel="noopener noreferrer"
-								title={rel.tag}
+								title={rel.label ?? rel.tag}
 							>
-								{rel.tag}
+								{rel.label ?? rel.tag}
 							</a>
 						{:else}
-							<span class="screen-badge date" title={rel.tag}>{rel.tag}</span>
+							<span class="screen-badge date" title={rel.label ?? rel.tag}>{rel.label ?? rel.tag}</span>
 						{/if}
 						{#if rel.prerelease}
 							<span class="badge-status beta">Pre-release</span>

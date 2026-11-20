@@ -78,7 +78,7 @@ import { base } from '$app/paths';
 			<dt>Latest release</dt>
 			<dd>
 				<a href={latestReleaseUrl} rel="noopener noreferrer" target="_blank">
-					{latestRelease.tag}
+					{latestRelease.label ?? latestRelease.tag}
 				</a>
 				{#if formatUpdated(latestRelease.published_at)}
 					<span class="release-date">· {formatUpdated(latestRelease.published_at)}</span>
