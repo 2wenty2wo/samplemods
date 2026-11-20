@@ -91,7 +91,7 @@
     "archived": false
   },
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
-    "stars": 3,
+    "stars": 4,
     "forks": 1,
     "pushed_at": "2026-11-19T03:43:59Z",
     "last_commit_at": "2026-11-18T16:28:34Z",
@@ -885,7 +885,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 239,
+    "stars": 240,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -1178,8 +1178,8 @@
   "jazzyrhythmer/mpc-sample-engine-ports": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-19T18:29:32Z",
-    "last_commit_at": "2026-11-19T18:29:29Z",
+    "pushed_at": "2026-11-20T16:03:54Z",
+    "last_commit_at": "2026-11-20T16:03:52Z",
     "contributors": 1,
     "open_issues": 1,
     "license": "AGPL-3.0",
@@ -1221,8 +1221,8 @@
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
     "stars": 13,
     "forks": 0,
-    "pushed_at": "2026-11-19T18:29:08Z",
-    "last_commit_at": "2026-11-19T18:29:03Z",
+    "pushed_at": "2026-11-20T16:03:41Z",
+    "last_commit_at": "2026-11-20T16:03:38Z",
     "contributors": 1,
     "open_issues": 1,
     "license": "AGPL-3.0",
@@ -1237,7 +1237,7 @@
         "prerelease": true,
         "published_at": "2026-11-17T04:12:34Z",
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.2.0",
-        "body": "# RHYTHMER OS 0.2.0\n## New sounds. Better flow.\n\nMore sounds to explore, more direct editing, and a smoother path from your first note to a finished groove.\n\nRHYTHMER OS 0.2.0 brings two new instruments, an updated FMini-1, refined Rhythmer Kit editing, and improvements throughout the track, Acid and Break workflows. Built for exploring Jungle, Techno, House and IDM on your MPC Sample.\n\n### Meet your new instruments\n\n- **Frodhes:** expressive electric pianos, vibraphone and marimba, with 57 original factory programs.\n- **Tenebrae:** eight oscillator models spanning basses, leads, pads, keys and more, with 164 programs including Init.\n- **FMini-1:** updated to the original 2.6.0 engine, with revised filter response, contour shaping and optimizations, retaining its 200 original factory presets.\n\n### Start a track. Change direction.\n\nTRACK SETUP brings instrument replacement, track types, MPC kit loading and track deletion into one visible menu. Change an instrument or track type while keeping your patterns; delete a track through its separate confirmation.\n\nPress the encoder on an engine-less track to choose its type. On a Sample Kit, pressing it on an empty pad opens sample loading for that pad, including when the whole kit is empty. On-screen hints show the next step.\n\nChange instruments directly from the preset list. Switch tracks while browsing and the screen follows the selected track. Preset browsing wraps from the last sound back to the first, in both directions.\n\nB2 SENDS stays visible in BASIC. Its confirmation can enable FULL and open SENDS directly, or cancel without changing modes. Existing repeat-rate, MOVE/COPY and back controls retain their priority.\n\n### Find a break. Keep the groove.\n\nBrowse loops with ORIGINAL or tempo-synchronised SYNC audition before loading them. Replacing a source preserves your existing patterns and performance settings, with clear confirmation when changing the source's bar count.\n\nBREAK GEN and BRK PERF have clearer entry, return and loading controls. Pattern Hold, CHOP, LOOP and STRETCH have more explicit operating hints, while Variation and Stretch feedback show when the performance actions are active.\n\nLoop audition remains separate from the track's musical state, so you can explore another source while keeping your current groove intact.\n\n### Your pad. Your sound.\n\nRhythmer Kit's EDIT list starts with the selected pad's native **Volume**, followed by its supported Pan, Tune or Decay controls. Related parameters stay together in rows of three, with the whole-kit filter on the next row.\n\nP01–P16 labels identify the pad you are editing; ALL PADS identifies the kit-wide filter. The 36 complete sixteen-pad factory kits retain their mixed-engine flexibility, pad-source replacement and User Kit saving.\n\n### Shape it. Save it. Come back to it.\n\nParameter names and ordering are refined across oscillator, filter, envelope, LFO, modulation and effects controls. Source, Destination and Amount stay together, and named choices make settings such as Key Tracking and Polarity easier to read.\n\nOpen SAVE SOUND or PAD SOURCE from EDIT, save to one of 64 User Sound or User Kit slots, and reload your sounds from the preset list—even in another project. Save the project separately to keep its patterns and arrangement.\n\n### Save where you choose\n\nFirst SAVE and SAVE AS let you choose a folder and name. Further SAVE presses update that file. Opening another project or starting NEW offers SAVE, DISCARD or CANCEL instead of automatically overwriting your manual save.\n\nIdle autosave updates one separate recovery entry per project under Rhythmer/Autosave. On the Project home screen, SHIFT + B3 RECOVERY opens the list; load a recovered copy and SAVE it deliberately.\n\n### Build a chord progression\n\nCHORD GEN is a separate instrument-track generator alongside the existing GENERATE Tn / MUTATE Tn workflow. Choose a genre, progression family, 1–8 chord changes and 1–16 bars; adjust rhythmic density, chord complexity, energy, voicing and register, then play the result as Block chords, an arpeggio or a strum.\n\nIt follows the project's key and scale by default. Local overrides affect only the generated part. Jazz and neo-soul profiles add extended harmony and voice leading. NEW CHORDS chooses another progression; MUTATE CHORDS keeps the progression while varying articulation. Generation keeps the instrument and other tracks, with Undo/Redo.\n\nRhythmer Kit retains genre-based drum generation; Acid and Break keep their dedicated generators. The illustrated manual and First Groove guide explain which command to use and how to return from each page.\n\n### Acid, ready to play\n\nAcid GEN keeps its NEW/MUTATE generation behavior while presenting its musical settings across two pages, without exposed seed controls.\n\nEight original Aphex choices join the Hortator Acid palette: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. Their native sound controls remain available for editing.\n\n### Refinements\n\nA steadier external MIDI BPM display keeps whole-number tempos clean while retaining meaningful fractional readings. The actual sync algorithm is unchanged. Rhythmer Kit animation flows across pad changes, and contextual Note Repeat and ARP controls remain available.\n\n### Fixes\n\n- Preset loading, parameter mapping, pad labels and state restoration.\n- Track navigation, Back, confirmation, loading cancellation and Undo/Redo.\n- Break playback, performance controls and held-command handling.\n- User Sound/User Kit saving and error feedback.\n\n### Make your first groove\n\nThe manual and **Your first groove with RHYTHMER OS.** guide cover the current navigation, track types, sound saving, independent Chord GEN and the Break workflow, with visual controls and step-by-step instructions.\n\n[Download & Installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nRHYTHMER OS remains early beta software. Back up your SD card before installing, follow the installation guide, and keep sharing what feels good and what could work better.\n\nBuilt on Melodee by Kerem Kiliç / Ellic Studio, with thanks to the original engine developers and open-source contributors. Original authorship, licenses and credits are retained.\n\n**RHYTHMER OS — by Jazzy Rhythmer**\n\n*In search of feel-good rhythms.*\n",
+        "body": "# RHYTHMER OS 0.2.0\n## New sounds. Better flow.\n\nMore sounds to explore, more direct editing, and a smoother path from your first note to a finished groove.\n\nRHYTHMER OS 0.2.0 brings two new instruments, an updated FMini-1, refined Rhythmer Kit editing, and improvements throughout the track, Acid and Break workflows. Built for exploring Jungle, Techno, House and IDM on your MPC Sample.\n\n### Meet your new instruments\n\n- **Frodhes:** expressive electric pianos, vibraphone and marimba, with 57 original factory programs.\n- **Tenebrae:** eight oscillator models spanning basses, leads, pads, keys and more, with 164 programs including Init.\n- **FMini-1:** updated to the original 2.6.0 engine, with revised filter response, contour shaping and optimizations, retaining its 200 original factory presets.\n\n### Start a track. Change direction.\n\nTRACK SETUP brings instrument replacement, track types, MPC kit loading and track deletion into one visible menu. Change an instrument or track type while keeping your patterns; delete a track through its separate confirmation.\n\nPress the encoder on an engine-less track to choose its type. On a Sample Kit, pressing it on an empty pad opens sample loading for that pad, including when the whole kit is empty. On-screen hints show the next step.\n\nChange instruments directly from the preset list. Switch tracks while browsing and the screen follows the selected track. Preset browsing wraps from the last sound back to the first, in both directions.\n\nB2 SENDS stays visible in BASIC. Its confirmation can enable FULL and open SENDS directly, or cancel without changing modes. Existing repeat-rate, MOVE/COPY and back controls retain their priority.\n\n### Find a break. Keep the groove.\n\nBrowse loops with ORIGINAL or tempo-synchronised SYNC audition before loading them. Replacing a source preserves your existing patterns and performance settings, with clear confirmation when changing the source's bar count.\n\nBREAK GEN and BRK PERF have clearer entry, return and loading controls. Pattern Hold, CHOP, LOOP and STRETCH have more explicit operating hints, while Variation and Stretch feedback show when the performance actions are active.\n\nLoop audition remains separate from the track's musical state, so you can explore another source while keeping your current groove intact.\n\n### Your pad. Your sound.\n\nRhythmer Kit's EDIT list starts with the selected pad's native **Volume**, followed by its supported Pan, Tune or Decay controls. Related parameters stay together in rows of three, with the whole-kit filter on the next row.\n\nP01–P16 labels identify the pad you are editing; ALL PADS identifies the kit-wide filter. The 36 complete sixteen-pad factory kits retain their mixed-engine flexibility, pad-source replacement and User Kit saving.\n\nMute individual Rhythmer Kit pads with MUTE + pad, solo a pad with SHIFT + pad in mute mode, and clear project mutes with SHIFT + MUTE. Pad LEDs show the state, which is kept in the project without changing the kit's sound settings. TRACKS retains whole-track mute. Existing release and effect tails decay naturally.\n\n### Shape it. Save it. Come back to it.\n\nParameter names and ordering are refined across oscillator, filter, envelope, LFO, modulation and effects controls. Source, Destination and Amount stay together, and named choices make settings such as Key Tracking and Polarity easier to read.\n\nOpen SAVE SOUND or PAD SOURCE from EDIT, save to one of 64 User Sound or User Kit slots, and reload your sounds from the preset list—even in another project. Save the project separately to keep its patterns and arrangement.\n\n### Save where you choose\n\nFirst SAVE and SAVE AS let you choose a folder and name. Further SAVE presses update that file. Opening another project or starting NEW offers SAVE, DISCARD or CANCEL instead of automatically overwriting your manual save.\n\nIdle autosave updates one separate recovery entry per project under Rhythmer/Autosave. On the Project home screen, SHIFT + B3 RECOVERY opens the list; load a recovered copy and SAVE it deliberately.\n\n### Build a chord progression\n\nCHORD GEN is a separate instrument-track generator alongside the existing GENERATE Tn / MUTATE Tn workflow. Choose a genre, progression family, 1–8 chord changes and 1–16 bars; adjust rhythmic density, chord complexity, energy, voicing and register, then play the result as Block chords, an arpeggio or a strum.\n\nIt follows the project's key and scale by default. Local overrides affect only the generated part. Jazz and neo-soul profiles add extended harmony and voice leading. NEW CHORDS chooses another progression; MUTATE CHORDS keeps the progression while varying articulation. Generation keeps the instrument and other tracks, with Undo/Redo.\n\nRhythmer Kit retains genre-based drum generation; Acid and Break keep their dedicated generators. The illustrated manual and First Groove guide explain which command to use and how to return from each page.\n\n### Acid, ready to play\n\nAcid GEN keeps its NEW/MUTATE generation behavior while presenting its musical settings across two pages, without exposed seed controls.\n\nEight original Aphex choices join the Hortator Acid palette: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. Their native sound controls remain available for editing.\n\n### Refinements\n\nA steadier external MIDI BPM display keeps whole-number tempos clean while retaining meaningful fractional readings. The actual sync algorithm is unchanged. Rhythmer Kit animation flows across pad changes, and contextual Note Repeat and ARP controls remain available.\n\n### Fixes\n\n- Preset loading, parameter mapping, pad labels and state restoration.\n- Track navigation, Back, confirmation, loading cancellation and Undo/Redo.\n- Break playback, performance controls and held-command handling.\n- User Sound/User Kit saving and error feedback.\n\n### Make your first groove\n\nThe manual and **Your first groove with RHYTHMER OS.** guide cover the current navigation, track types, sound saving, independent Chord GEN and the Break workflow, with visual controls and step-by-step instructions.\n\n[Download & Installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nRHYTHMER OS remains early beta software. Back up your SD card before installing, follow the installation guide, and keep sharing what feels good and what could work better.\n\nBuilt on Melodee by Kerem Kiliç / Ellic Studio, with thanks to the original engine developers and open-source contributors. Original authorship, licenses and credits are retained.\n\n**RHYTHMER OS — by Jazzy Rhythmer**\n\n*In search of feel-good rhythms.*\n",
         "truncated": false
       },
       {
@@ -1318,12 +1318,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 68,
+    "stars": 69,
     "forks": 12,
     "pushed_at": "2026-11-18T19:24:27Z",
     "last_commit_at": "2026-11-18T19:05:26Z",
     "contributors": 1,
-    "open_issues": 19,
+    "open_issues": 20,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1467,8 +1467,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-20T00:47:52Z",
-    "last_commit_at": "2026-11-20T00:47:41Z",
+    "pushed_at": "2026-11-20T11:58:29Z",
+    "last_commit_at": "2026-11-20T11:58:27Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1737,7 +1737,7 @@
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 29,
+    "open_issues": 26,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
