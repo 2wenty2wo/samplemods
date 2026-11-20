@@ -61,7 +61,10 @@
 				: null)
 	);
 	const updatedDate = $derived(formatUpdated(mod.last_commit_at ?? mod.pushed_at));
-	const isLongReadme = $derived((mod.readme_html?.length ?? 0) > 1600);
+	const readmeFold = $derived(splitReadmeHtml(mod.readme_html));
+	const isLongReadme = $derived(readmeFold.tail.length > 0);
+	const readmeHeadHtml = $derived(readmeFold.head);
+	const readmeTailHtml = $derived(readmeFold.tail);
 	// Skip entries already shown via Requires / Required by (e.g. LoopPad requires Boot Thingy).
 	const compatibleIds = $derived(
 		(mod.compatible ?? []).filter((id) => !(mod.required_by ?? []).includes(id))
@@ -138,6 +141,67 @@
 		lightbox?.close();
 		lightboxSrc = null;
 	}
+
+	/**
+	 * Split sanitized README HTML at a top-level block boundary so below-the-fold
+	 * content can live inside a `hidden="until-found"` disclosure container.
+	 * @param {string | null | undefined} html
+	 */
+	function splitReadmeHtml(html) {
+		const raw = (html ?? '').trim();
+		if (raw.length <= 1600) return { head: raw, tail: '' };
+		const tokenRe = /<(\/?)([a-z0-9]+)(?:\s[^>]*)?>/gi;
+		const voidTags = new Set([
+			'area',
+			'base',
+			'br',
+			'col',
+			'embed',
+			'hr',
+			'img',
+			'input',
+			'link',
+			'meta',
+			'param',
+			'source',
+			'track',
+			'wbr'
+		]);
+		let depth = 0;
+		let textCount = 0;
+		let blockCount = 0;
+		let lastIdx = 0;
+		let splitIdx = -1;
+		let m;
+		while ((m = tokenRe.exec(raw)) !== null) {
+			textCount += raw.slice(lastIdx, m.index).replace(/\s+/g, ' ').length;
+			const isClose = m[1] === '/';
+			const tag = m[2].toLowerCase();
+			const isSelfClose = voidTags.has(tag) || m[0].endsWith('/>');
+			if (tag === 'img') textCount += 160;
+			if (!isSelfClose) {
+				if (isClose) depth = Math.max(0, depth - 1);
+				else depth++;
+			}
+			lastIdx = tokenRe.lastIndex;
+			if (depth === 0) {
+				blockCount++;
+				if ((textCount >= 620 || blockCount >= 6) && !/^h[1-6]$/.test(tag)) {
+					splitIdx = lastIdx;
+					break;
+				}
+			}
+		}
+		if (splitIdx === -1 || splitIdx >= raw.length) {
+			return { head: raw, tail: '' };
+		}
+		const head = raw.slice(0, splitIdx).trim();
+		const tail = raw.slice(splitIdx).trim();
+		if (tail.replace(/<[^>]*>/g, '').trim().length < 200) {
+			return { head: raw, tail: '' };
+		}
+		return { head, tail };
+	}
 </script>
 
 <SeoHead
@@ -204,7 +268,14 @@
 					{onScreenImageLoad}
 					{openLightbox}
 				/>
-				<AboutReadme {mod} {isLongReadme} {siteHost} bind:readmeExpanded />
+				<AboutReadme
+					{mod}
+					{isLongReadme}
+					{readmeHeadHtml}
+					{readmeTailHtml}
+					{siteHost}
+					bind:readmeExpanded
+				/>
 				<ReleasesList {mod} {releases} {formatUpdated} />
 				<SuggestEditBar {editOnGithubUrl} {reportProblemUrl} />
 			</div>

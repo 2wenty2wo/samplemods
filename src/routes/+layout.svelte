@@ -1,5 +1,6 @@
 <script>
 	import { base } from '$app/paths';
+	import { page } from '$app/state';
 	import { SITE_NAME } from '$lib/site.js';
 	import catalogMeta from '$lib/catalog-meta.json';
 	import LogoMark from '$lib/LogoMark.svelte';
@@ -13,6 +14,13 @@
 	import '../app.css';
 
 	let { children } = $props();
+
+	/** @param {string} path */
+	function navCurrent(path) {
+		const current = page.url.pathname.replace(/\/+$/, '') || '/';
+		const target = `${base}${path}`.replace(/\/+$/, '') || '/';
+		return current === target ? 'page' : undefined;
+	}
 
 	/** @param {number} n */
 	function formatCompactStars(n) {
@@ -39,15 +47,15 @@
 
 <header class="site-topbar">
 	<div class="site-topbar-inner">
-		<a class="brand-lockup" href="{base}/">
+		<a class="brand-lockup" href="{base}/" aria-current={navCurrent('/')}>
 			<LogoMark class="brand-mark" />
 			<span class="wordmark">{SITE_NAME}</span>
 		</a>
 
 		<nav class="site-nav" aria-label="Primary">
-			<a class="nav-link" href="{base}/releases/">Releases</a>
-			<a class="nav-link" href="{base}/submit/">Submit</a>
-			<a class="nav-link" href="{base}/about/">About</a>
+			<a class="nav-link" href="{base}/releases/" aria-current={navCurrent('/releases')}>Releases</a>
+			<a class="nav-link" href="{base}/submit/" aria-current={navCurrent('/submit')}>Submit</a>
+			<a class="nav-link" href="{base}/about/" aria-current={navCurrent('/about')}>About</a>
 			<a
 				class="nav-btn-blue"
 				href="https://github.com/2wenty2wo/samplemods"

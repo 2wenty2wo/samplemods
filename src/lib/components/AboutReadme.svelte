@@ -1,41 +1,80 @@
 <script>
-import EntryProse from '$lib/components/EntryProse.svelte';
+	import EntryProse from '$lib/components/EntryProse.svelte';
 
 	/** @type {{
 	 *   mod: any,
 	 *   isLongReadme: boolean,
+	 *   readmeHeadHtml?: string,
+	 *   readmeTailHtml?: string,
 	 *   siteHost: string | null,
 	 *   readmeExpanded: boolean
 	 * }} */
-	let { mod, isLongReadme, siteHost, readmeExpanded = $bindable(false) } = $props();
+	let {
+		mod,
+		isLongReadme,
+		readmeHeadHtml = '',
+		readmeTailHtml = '',
+		siteHost,
+		readmeExpanded = $bindable(false)
+	} = $props();
+
+	/** @type {HTMLDivElement | undefined} */
+	let tailEl = $state();
+
+	$effect(() => {
+		if (!tailEl) return;
+		if (!readmeExpanded) {
+			tailEl.setAttribute('hidden', 'until-found');
+		} else {
+			tailEl.removeAttribute('hidden');
+		}
+		const handleBeforeMatch = () => {
+			readmeExpanded = true;
+		};
+		tailEl.addEventListener('beforematch', handleBeforeMatch);
+		return () => tailEl.removeEventListener('beforematch', handleBeforeMatch);
+	});
 </script>
 
 <section class="detail-section" aria-label="About">
 	<h2 class="silk-heading">About</h2>
 	{#if mod.readme_html}
-		<div class="readme-card" class:is-clamped={isLongReadme}>
-			{#if isLongReadme}
-				<input
-					type="checkbox"
-					id="readme-expand-toggle"
-					class="readme-toggle-input"
-					bind:checked={readmeExpanded}
-				/>
-			{/if}
-
+		<div
+			class="readme-card"
+			class:is-clamped={isLongReadme && !readmeExpanded}
+			class:is-expanded={isLongReadme && readmeExpanded}
+		>
 			<div class="readme-viewport">
-				<EntryProse html={mod.readme_html} className="readme-prose" />
-				{#if isLongReadme}
-					<div class="readme-fade" aria-hidden="true"></div>
+				{#if isLongReadme && readmeTailHtml}
+					<EntryProse html={readmeHeadHtml} className="readme-prose readme-prose-head" />
+					<div
+						bind:this={tailEl}
+						id="readme-overflow"
+						class="readme-tail"
+						hidden={!readmeExpanded ? 'until-found' : undefined}
+						inert={!readmeExpanded}
+					>
+						<EntryProse html={readmeTailHtml} className="readme-prose readme-prose-tail" />
+					</div>
+					{#if !readmeExpanded}
+						<div class="readme-fade" aria-hidden="true"></div>
+					{/if}
+				{:else}
+					<EntryProse html={mod.readme_html} className="readme-prose" />
 				{/if}
 			</div>
 
 			{#if isLongReadme}
 				<div class="readme-toggle-bar">
-					<label for="readme-expand-toggle" class="hw-action-btn orange readme-toggle-btn">
-						<span class="label-more">Read more</span>
-						<span class="label-less">Show less</span>
-					</label>
+					<button
+						type="button"
+						class="hw-action-btn orange readme-toggle-btn"
+						aria-expanded={readmeExpanded}
+						aria-controls="readme-overflow"
+						onclick={() => (readmeExpanded = !readmeExpanded)}
+					>
+						{readmeExpanded ? 'Show less' : 'Read more'}
+					</button>
 				</div>
 			{/if}
 
@@ -105,27 +144,21 @@ import EntryProse from '$lib/components/EntryProse.svelte';
 		margin: 0;
 	}
 
-.readme-toggle-input {
-		position: absolute;
-		opacity: 0;
-		pointer-events: none;
-		width: 1px;
-		height: 1px;
-	}
-
 .readme-viewport {
 		padding: 1.35rem 1.5rem;
 		position: relative;
 	}
 
 .readme-card.is-clamped .readme-viewport {
-		max-height: 600px;
-		overflow: hidden;
+		padding-bottom: 1.75rem;
 	}
 
-.readme-card.is-clamped .readme-toggle-input:checked ~ .readme-viewport {
-		max-height: none;
-		overflow: visible;
+.readme-tail {
+		margin-top: 0.9rem;
+	}
+
+.readme-tail[hidden] {
+		display: none;
 	}
 
 .readme-fade {
@@ -134,10 +167,6 @@ import EntryProse from '$lib/components/EntryProse.svelte';
 		height: 120px;
 		background: linear-gradient(180deg, rgb(244 242 239 / 0) 0%, #f4f2ef 90%);
 		pointer-events: none;
-	}
-
-.readme-card.is-clamped .readme-toggle-input:checked ~ .readme-viewport .readme-fade {
-		display: none;
 	}
 
 .readme-toggle-bar {
@@ -149,23 +178,6 @@ import EntryProse from '$lib/components/EntryProse.svelte';
 
 .readme-toggle-btn {
 		user-select: none;
-	}
-
-.readme-toggle-btn .label-less {
-		display: none;
-	}
-
-.readme-card.is-clamped .readme-toggle-input:checked ~ .readme-toggle-bar .label-more {
-		display: none;
-	}
-
-.readme-card.is-clamped .readme-toggle-input:checked ~ .readme-toggle-bar .label-less {
-		display: inline;
-	}
-
-.readme-toggle-input:focus-visible ~ .readme-toggle-bar .readme-toggle-btn {
-		outline: 3px solid var(--mpc-focus-ring);
-		outline-offset: 2px;
 	}
 
 .readme-footer {

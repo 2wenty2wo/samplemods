@@ -23,6 +23,7 @@
 	--mpc-btn-orange: #ff8a1e;
 	--mpc-btn-blue: #008cc1;
 	--mpc-btn-blue-light: #1da1db;
+	--mpc-btn-blue-deep: #005f85;
 	--mpc-btn-green: #2ee65a;
 	--mpc-pad-led-lime: #c8f526;
 	--mpc-screen-yellow: #e8c811;
@@ -42,6 +43,13 @@
 	--font-screen: 'JetBrains Mono Variable', var(--font-mono);
 
 	--radius: 7px;
+	--target-size: 24px;
+}
+
+@media (pointer: coarse) {
+	:root {
+		--target-size: 44px;
+	}
 }
 
 *,
@@ -84,6 +92,11 @@ a:hover {
 :focus-visible {
 	outline: 3px solid var(--mpc-focus-ring);
 	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--mpc-silkscreen);
+}
+
+:is(.site-topbar, .hero-band, .detail-hero-band, .page-hero-band) :focus-visible {
+	box-shadow: none;
 }
 
 .wrap {
@@ -119,6 +132,7 @@ a:hover {
 	align-items: center;
 	gap: 0.65rem;
 	text-decoration: none;
+	min-block-size: var(--target-size, 24px);
 }
 
 .brand-mark {
@@ -154,6 +168,10 @@ a:hover {
 }
 
 .nav-link {
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	min-block-size: var(--target-size, 24px);
 	font-family: var(--font-sans);
 	font-size: 0.76rem;
 	font-weight: 700;
@@ -171,11 +189,31 @@ a:hover {
 	background: rgb(255 255 255 / 0.06);
 }
 
+.nav-link[aria-current='page'] {
+	color: var(--mpc-screen-white);
+	background: rgb(255 255 255 / 0.08);
+}
+
+.nav-link[aria-current='page']::after {
+	content: '';
+	position: absolute;
+	left: 0.45rem;
+	right: 0.45rem;
+	bottom: 2px;
+	height: 2.5px;
+	border-radius: 2px;
+	background: var(--mpc-btn-orange);
+	box-shadow: 0 0 6px rgb(255 138 30 / 0.55);
+}
+
 .nav-btn-blue {
 	display: inline-flex;
 	align-items: center;
-	background: linear-gradient(180deg, var(--mpc-btn-blue-light) 0%, var(--mpc-btn-blue) 100%);
+	position: relative;
+	min-block-size: 24px;
+	background: linear-gradient(180deg, var(--mpc-btn-blue-light) 0%, var(--mpc-btn-blue-deep) 100%);
 	color: #ffffff;
+	text-shadow: 0 1px 2px rgb(4 5 7 / 0.72);
 	font-family: var(--font-sans);
 	font-size: 0.74rem;
 	font-weight: 700;
@@ -189,6 +227,12 @@ a:hover {
 		inset 0 1px 0 rgb(255 255 255 / 0.32),
 		0 2px 0 #040507;
 	transition: filter 100ms ease, transform 100ms ease;
+}
+
+.nav-btn-blue::after {
+	content: '';
+	position: absolute;
+	inset: -6px 0;
 }
 
 .nav-btn-blue:hover {
@@ -433,6 +477,15 @@ a:hover {
 	transform: none;
 }
 
+.hw-btn:focus-visible,
+.hw-action-btn:focus-visible,
+.hw-select:focus-visible,
+.hw-band-chip:focus-visible {
+	box-shadow:
+		0 0 0 2px var(--mpc-silkscreen),
+		inset 0 1px 0 rgb(255 255 255 / 0.35);
+}
+
 .hw-btn:active,
 .hw-btn[aria-pressed='true'],
 .hw-action-btn:active {
@@ -447,9 +500,18 @@ a:hover {
 	transform: none;
 }
 
+.hw-btn[aria-pressed='true']:focus-visible {
+	box-shadow:
+		0 0 0 2px var(--mpc-silkscreen),
+		inset 0 1px 2px rgb(0 0 0 / 0.16),
+		inset 0 1px 0 rgb(255 255 255 / 0.45),
+		0 0 10px color-mix(in srgb, var(--btn-lit, var(--mpc-btn-orange)) 65%, transparent);
+}
+
 .hw-action-btn.blue {
-	background: linear-gradient(180deg, var(--mpc-btn-blue-light) 0%, var(--mpc-btn-blue) 100%);
+	background: linear-gradient(180deg, var(--mpc-btn-blue-light) 0%, var(--mpc-btn-blue-deep) 100%);
 	color: #ffffff;
+	text-shadow: 0 1px 2px rgb(4 5 7 / 0.72);
 }
 
 .hw-action-btn.orange {
@@ -673,7 +735,8 @@ a.hw-band-chip:hover {
 	margin: 0;
 	font-size: 0.92rem;
 	letter-spacing: 0.05em;
-	text-shadow: 0 1px 0 rgb(0 0 0 / 0.14);
+	color: var(--mpc-accent-red);
+	text-shadow: 0 1px 0 rgb(255 255 255 / 0.45);
 }
 
 .footer-heading {
@@ -726,7 +789,7 @@ a.hw-band-chip:hover {
 
 	.site-topbar-inner {
 		min-height: 48px;
-		padding: 0.4rem 0;
+		padding: 0.25rem 0;
 		gap: 0.4rem;
 		flex-wrap: nowrap;
 	}
@@ -768,14 +831,29 @@ a.hw-band-chip:hover {
 
 	.nav-link {
 		font-size: 0.62rem;
-		padding: 0.2rem 0.22rem;
+		padding: 0.28rem 0.22rem;
 		letter-spacing: 0.05em;
+	}
+
+	.nav-link[aria-current='page'] {
+		background: transparent;
+	}
+
+	.nav-link[aria-current='page']::after {
+		left: 0.2rem;
+		right: 0.2rem;
+		bottom: 7px;
+		height: 2px;
 	}
 
 	.nav-btn-blue {
 		font-size: 0.62rem;
 		padding: 0.22rem 0.4rem;
 		letter-spacing: 0.05em;
+	}
+
+	.nav-btn-blue::after {
+		inset: -10px -2px;
 	}
 
 	.hw-btn {
