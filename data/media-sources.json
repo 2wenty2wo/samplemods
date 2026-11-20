@@ -865,6 +865,18 @@
       "note": "CustomOS v2.0 menu (5/6), cropped from sampleboot-hero.png at (1376, 8)-(2016, 488); native 640x480, no scaling or gutter"
     }
   ],
+  "sampleseq3000": [
+    {
+      "file": "screenshots/01-sequencer.webp",
+      "source": "https://www.sampleseq3000.com/",
+      "note": "Captured by Sample Mods from sampleseq3000.com (sequencer grid)"
+    },
+    {
+      "file": "screenshots/02-controls.webp",
+      "source": "https://www.sampleseq3000.com/",
+      "note": "Captured by Sample Mods from sampleseq3000.com (pads, export, feel controls)"
+    }
+  ],
   "smplutility": [
     {
       "file": "screenshots/01-panel.webp",
