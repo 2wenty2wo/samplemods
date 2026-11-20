@@ -1,0 +1,16 @@
+name: SampleSeq3000
+description: >-
+  Free browser step sequencer for the MPC Sample: build drum and melodic patterns, preview them,
+  and export a .xpj project. Nothing is uploaded; copy the project onto the SD card.
+author: SampleSeq3000
+author_url: https://www.sampleseq3000.com/
+website: https://www.sampleseq3000.com/
+price: free
+source: closed
+tags:
+  - companion
+  - patterns
+install: none
+runs_on: [browser]
+audience: [musician]
+status: stable
