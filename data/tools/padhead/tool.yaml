@@ -1,0 +1,19 @@
+name: Padhead
+description: >-
+  Free browser tools for the MPC Sample: build kits in any scale, generate sounds, chop samples,
+  mix projects and arrange songs. Nothing is uploaded; exports go onto the SD card.
+author: Padhead
+author_url: https://padhead.com/
+website: https://padhead.com/
+price: free
+source: closed
+tags:
+  - companion
+  - samples
+  - kits
+  - stems
+install: none
+runs_on: [browser]
+audience: [musician]
+status: stable
+version: "1.01"

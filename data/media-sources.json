@@ -704,6 +704,23 @@
       "note": "Screenshot of the catalog filtered to the MPC Sample (1280×960)"
     }
   ],
+  "padhead": [
+    {
+      "file": "screenshots/01-sound-lab.webp",
+      "source": "https://padhead.com/",
+      "note": "Captured by Sample Mods from padhead.com (Sound Lab mode)"
+    },
+    {
+      "file": "screenshots/02-pad-banks.webp",
+      "source": "https://padhead.com/",
+      "note": "Captured by Sample Mods from padhead.com (Pad Banks kit maker)"
+    },
+    {
+      "file": "screenshots/03-tools.webp",
+      "source": "https://padhead.com/tools/",
+      "note": "Captured by Sample Mods from padhead.com/tools/"
+    }
+  ],
   "rhythmer-os": [
     {
       "file": "screenshots/01-splash.webp",
