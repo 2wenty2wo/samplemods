@@ -9,6 +9,7 @@ import { base } from '$app/paths';
 		priceBadge
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
+	import { formatCatalogDate } from '$lib/format-date.js';
 
 	/** @type {{
 	 *   mod: any,
@@ -33,10 +34,7 @@ import { base } from '$app/paths';
 
 	/** @param {string | number | null | undefined} value */
 	function formatUpdated(value) {
-		if (!value) return null;
-		const d = new Date(value);
-		if (Number.isNaN(d.getTime())) return null;
-		return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+		return formatCatalogDate(value);
 	}
 
 	const media = $derived(cardScreenMedia(mod));

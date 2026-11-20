@@ -5,6 +5,7 @@
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import { sectionGlow, sectionLabel } from '$lib/categories.js';
 	import ReleaseRow from '$lib/components/ReleaseRow.svelte';
+	import { formatCatalogDate, utcDayKey } from '$lib/format-date.js';
 
 	let { data } = $props();
 	const releases = $derived(data.releases ?? []);
@@ -23,37 +24,30 @@
 		section ? releases.filter((r) => r.section === section) : releases
 	);
 
-	let todayLocalDay = $state('');
-	let yesterdayLocalDay = $state('');
-
-	/** @param {Date} dt */
-	function localYmd(dt) {
-		const y = dt.getFullYear();
-		const m = String(dt.getMonth() + 1).padStart(2, '0');
-		const d = String(dt.getDate()).padStart(2, '0');
-		return `${y}-${m}-${d}`;
-	}
+	let todayUtcDay = $state('');
+	let yesterdayUtcDay = $state('');
 
 	$effect(() => {
 		const now = new Date();
-		todayLocalDay = localYmd(now);
-		const yest = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
-		yesterdayLocalDay = localYmd(yest);
+		todayUtcDay = utcDayKey(now);
+		yesterdayUtcDay = utcDayKey(
+			new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - 1))
+		);
 	});
 
 	/** @param {string} day */
 	function formatDayHeading(day) {
 		if (!day || !/^\d{4}-\d{2}-\d{2}$/.test(day)) return 'Unknown date';
-		if (todayLocalDay && day === todayLocalDay) return 'Today';
-		if (yesterdayLocalDay && day === yesterdayLocalDay) return 'Yesterday';
-		const [y, m, d] = day.split('-').map(Number);
-		const dt = new Date(Date.UTC(y, m - 1, d));
-		return dt.toLocaleDateString('en-GB', {
-			day: 'numeric',
-			month: 'short',
-			year: 'numeric',
-			timeZone: 'UTC'
-		});
+		if (todayUtcDay && day === todayUtcDay) return 'Today';
+		if (yesterdayUtcDay && day === yesterdayUtcDay) return 'Yesterday';
+		return (
+			formatCatalogDate(day, {
+				locale: 'en-GB',
+				day: 'numeric',
+				month: 'short',
+				year: 'numeric'
+			}) ?? 'Unknown date'
+		);
 	}
 
 	const grouped = $derived.by(() => {
