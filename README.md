@@ -18,6 +18,8 @@ There are two ways to contribute: a quick form, or a pull request.
 
 The forms need a free GitHub account, and submissions are added to the catalog for you.
 
+[Code of Conduct](CODE_OF_CONDUCT.md) · [Security policy](SECURITY.md) · [Accessibility](ACCESSIBILITY.md)
+
 ## How it works
 
 - Each entry is a small YAML file in `data/<section>/<id>/`, with optional `logo.*` and `screenshots/` beside it.
