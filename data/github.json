@@ -1617,19 +1617,28 @@
   "rosen-wav/MaiaOS---Mpc-Sample-CFW": {
     "stars": 6,
     "forks": 0,
-    "pushed_at": "2026-11-17T01:09:21Z",
+    "pushed_at": "2026-11-20T21:41:45Z",
     "last_commit_at": "2026-11-17T01:09:20Z",
     "contributors": 1,
-    "open_issues": 1,
+    "open_issues": 0,
     "license": null,
     "description": "A Mod turning the Mpc Sample into a full DAW with a lot of feature",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "beta",
-      "published_at": "2026-11-13T21:39:00Z"
+      "tag": "maiaos",
+      "published_at": "2026-11-20T21:41:45Z"
     },
     "releases": [
+      {
+        "tag": "maiaos",
+        "name": "MaiaOS - Beta V2",
+        "prerelease": false,
+        "published_at": "2026-11-20T21:41:45Z",
+        "html_url": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW/releases/tag/maiaos",
+        "body": "MaiaOS V2 for MPC Sample\r\n\r\nMaiaOS V2 adds a horizontal Song timeline, stereo Master and experimental Stems export, external plug-in support, and two-deck DJ Mode. It runs from an exFAT microSD on MPC Sample with stock firmware 1.3.0.12. It requires no internal installation or SSH setup.\r\n\r\nWhat's new\r\n\r\nSong timeline and export — Arrange named sequences on a horizontal timeline and follow the playhead during playback. Open Song with Shift + Pad 12, then press B1 for Song Export. Choose Master for a stereo WAV or Stems for separate WAVs for Drums, Bass, Synths, and Melody Samples. Review and change pad assignments before rendering. Press the encoder in the main Song Export menu to combine the song into one editable MPC sequence. Audio exports go to the card's Export/ folder.\r\n\r\nExternal plug-ins — Import VST2, VST3, LV2, and CLAP builds for Linux AArch64 as instruments or effects. The encoder switches parameter pages. Hold Shift for additional controls on supported pages. Instrument plug-ins work with 16 Levels and Chord Mode.\r\n\r\nExternal MIDI — Play the selected sample or instrument pad chromatically, even with 16 Levels closed. REC and OVERDUB capture pitch, velocity, and note duration on that pad.\r\n\r\nSound editing — Three-band EQ and a spectrum display are available for samples, synths, Multisamples, and instrument plug-ins. For a sample pad, open Filter and press the encoder. Instrument screens have an oscilloscope, and Knob FX labels and values are larger.\r\n\r\nDJ Mode — Load two decks with scrolling beatgrids, tempo sync, nudge, and loops. Press Sequence to choose stereo master on OUT 1/2 with stereo USB cue, or mono master on OUT 1 with mono cue on OUT 2. Pad FX works while the decks play. Flex Beat stays bypassed, and leaving DJ Mode requires confirmation.\r\n\r\nFixes\r\n\r\nSwitching pads closes the EQ editor and preserves each pad's settings. Returning to the original pad restores normal encoder navigation.\r\n\r\nFIX: The microSD launcher and file browsers follow the mounted card when its volume is renamed.\r\n\r\nInstall from microSD\r\n\r\nExtract the V2 ZIP and copy the entire autorun folder to the root of an exFAT microSD. The volume can have any name.\r\n\r\nPower off the MPC, insert the card, and power on. When updating from an earlier build, replace the entire autorun folder.\r\n\r\nTo return to stock firmware, power off, remove the card, and power on again.\r\n\r\nIf startup fails, keep autorun/maia-boot.log if it was created. Use a fresh copy of autorun before retrying.\r\n\r\nKnown limitations\r\n\r\nStems export is experimental. Separate renders may differ from the full master, especially with compression, limiting, saturation, or sidechain processing. Audition the four WAVs before using them in another project.\r\n\r\nExternal plug-ins are session-based. Reopening a project requires reloading the plug-ins and setting their parameters again.\r\n\r\n\r\nThe external plug-in host is based on Melodee by Kerem Kilic (Ellic Studio).\r\n\r\nUse at your own risk, the developer decline any reponsibility over failed installation/crashes/bricks",
+        "truncated": false
+      },
       {
         "tag": "beta",
         "name": "MaiaOS - Beta V1",

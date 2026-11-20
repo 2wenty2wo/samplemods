@@ -241,9 +241,9 @@
   "maiaos": [
     {
       "file": "screenshots/01-splash.webp",
-      "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW/releases/download/beta/MaiaOS-V1.zip",
+      "source": "https://github.com/rosen-wav/MaiaOS---Mpc-Sample-CFW/releases/download/maiaos/MaiaOS-V2.2.zip",
       "repo": "rosen-wav/MaiaOS---Mpc-Sample-CFW",
-      "note": "Original PNG from release archive: MaiaOS-V1 DON'T SHARE/autorun/runtime/maia-320x240.png"
+      "note": "Original PNG from release archive: MaiaOS-V2/autorun/runtime/maia-320x240.png (identical to V1 splash)"
     },
     {
       "file": "screenshots/02-dj-mode.webp",
