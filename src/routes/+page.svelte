@@ -9,7 +9,6 @@
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import { SECTIONS, sectionFromParam, sectionSingular } from '$lib/categories.js';
 	import HomeHero from '$lib/components/HomeHero.svelte';
-	import WipBand from '$lib/components/WipBand.svelte';
 	import LatestReleasesStrip from '$lib/components/LatestReleasesStrip.svelte';
 	import CatalogFilterBar from '$lib/components/CatalogFilterBar.svelte';
 	import EntryCard from '$lib/components/EntryCard.svelte';
@@ -120,8 +119,6 @@
 	latestUpdateLabel={formatUpdated(latestUpdateTimestamp)}
 	bind:query
 />
-
-<WipBand />
 
 <LatestReleasesStrip releases={latestReleases} />
 
