@@ -212,6 +212,13 @@
       "repo": "Dyldog/Lightfoot"
     }
   ],
+  "logomaker": [
+    {
+      "file": "screenshots/01-example-logo.webp",
+      "source": "https://raw.githubusercontent.com/Trinzik-Labs/LogoMaker/main/autorun/image/logo.png",
+      "repo": "Trinzik-Labs/LogoMaker"
+    }
+  ],
   "looppad": [
     {
       "file": "screenshots/01-four-loop-setup.webp",
