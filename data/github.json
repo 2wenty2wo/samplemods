@@ -306,8 +306,8 @@
   "ZootedandRebooted/GRIDZILLA": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-16T18:38:27Z",
-    "last_commit_at": "2026-11-16T18:38:27Z",
+    "pushed_at": "2026-11-20T20:05:33Z",
+    "last_commit_at": "2026-11-20T20:05:32Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -321,11 +321,11 @@
     "releases": [
       {
         "tag": "GRIDZILLA",
-        "name": "GRIDZILLA",
+        "name": "GRIDZILLA 1.2.9",
         "prerelease": false,
         "published_at": "2026-11-13T17:13:41Z",
         "html_url": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/tag/GRIDZILLA",
-        "body": "Fixed in 1.2.1\r\n\r\nFixed “instrument load failed” on SD cards without development files. Instruments now use the engine included in the download, regardless of the card’s name. Older saved instrument and mixing-effect paths also load correctly.\r\n\r\nAll existing 1.2 features are included.\r\n\r\nDownload\r\n\r\nGet GRIDZILLA.zip below. It includes the installation folders, the step-by-step PDF and the video walkthrough. The guide and video are also available separately.\r\n\r\nGRIDZILLA adds instruments, MIDI editing, song arrangement, mixing and effect automation to the MPC Sample. It runs from SD without flashing Akai firmware.\r\n\r\nMixer\r\n\r\nOpen it with SHIFT + Pad 5. Select a pad, move its fader, and use SHIFT for MUTE and SOLO while the Song plays. The mixer includes a MASTER channel, four insert slots and colored meters. Faders run from silence to +12 dB, with 0 dB at unity. Existing saved levels are retained.\r\n\r\nEffects\r\n\r\nAdd EQ, Saturation, Delay, Reverb, Limiter, the native compressor or Flex Beat. Click an occupied slot to open its controls, or an empty slot to choose an effect. Use presets as a starting point and adjust with the encoder. Removing an effect also removes its automation; Undo restores the edit.\r\n\r\nFX automation\r\n\r\nUse TOUCH, LATCH or WRITE to record effect changes and READ to play them. Flex Beat supports MIX automation and individual ON/OFF points on the grid. Apply a point edit as one Undo action.\r\n\r\nInstruments and MIDI\r\n\r\n16 LEVELS opens the instrument library and chord mode. Play single notes or one-pad chords from triads through 13ths. Edit the recorded notes in Melodic and change an existing instrument while the Song plays. Recording SNAP aligns new note starts to the selected grid; SNAP OFF keeps performed timing. Existing notes stay in place.\r\n\r\nEditing and navigation\r\n\r\nUpdated Grid and Melodic Tools, ADD SEQUENCE and sequence-position controls, direct access to occupied FX slots, Flex Beat BACK handling, and separation of Arranger controls from Sample loop/reverse settings.\r\n\r\nDownload contents\r\n\r\nThe download contains the autorun and WaveGrid installation folders, the illustrated step-by-step PDF and the video walkthrough. ",
+        "body": "## Fixed in 1.2.9\r\n\r\n- Melodic mode shows recorded notes at their actual pitches immediately, without pressing Transpose.\r\n- Removed the stopped-state “STOP” text from the Arranger bar.\r\n- Includes the existing Transpose and Arranger improvements.\r\n\r\nVerified on the MPC Sample, including startup and preservation of the current session.\r\n\r\nDownload **GRIDZILLA.zip** below for the current 1.2.9 installation package, user guide, and video walkthrough. This is an end-user release; Gridzilla implementation source and development files are not included.\r\n\r\nGRIDZILLA adds instruments, MIDI editing, song arrangement, mixing and effect automation to the MPC Sample. It runs from SD without flashing Akai firmware.\r\n\r\nMixer\r\n\r\nOpen it with SHIFT + Pad 5. Select a pad, move its fader, and use SHIFT for MUTE and SOLO while the Song plays. The mixer includes a MASTER channel, four insert slots and colored meters. Faders run from silence to +12 dB, with 0 dB at unity. Existing saved levels are retained.\r\n\r\nEffects\r\n\r\nAdd EQ, Saturation, Delay, Reverb, Limiter, the native compressor or Flex Beat. Click an occupied slot to open its controls, or an empty slot to choose an effect. Use presets as a starting point and adjust with the encoder. Removing an effect also removes its automation; Undo restores the edit.\r\n\r\nFX automation\r\n\r\nUse TOUCH, LATCH or WRITE to record effect changes and READ to play them. Flex Beat supports MIX automation and individual ON/OFF points on the grid. Apply a point edit as one Undo action.\r\n\r\nInstruments and MIDI\r\n\r\n16 LEVELS opens the instrument library and chord mode. Play single notes or one-pad chords from triads through 13ths. Edit the recorded notes in Melodic and change an existing instrument while the Song plays. Recording SNAP aligns new note starts to the selected grid; SNAP OFF keeps performed timing. Existing notes stay in place.\r\n\r\nEditing and navigation\r\n\r\nUpdated Grid and Melodic Tools, ADD SEQUENCE and sequence-position controls, direct access to occupied FX slots, Flex Beat BACK handling, and separation of Arranger controls from Sample loop/reverse settings.\r\n\r\nDownload contents\r\n\r\nThe download contains the autorun and WaveGrid installation folders, the illustrated step-by-step PDF and the video walkthrough. ",
         "truncated": false
       }
     ],
@@ -386,7 +386,7 @@
   "bsauce42/tape-workshop-mpc-sample": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-20T02:57:56Z",
+    "pushed_at": "2026-11-20T19:08:02Z",
     "last_commit_at": "2026-11-20T02:57:26Z",
     "contributors": 1,
     "open_issues": 2,
@@ -395,10 +395,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.5.1-tapeworkshop-community.120",
-      "published_at": "2026-11-20T02:57:56Z"
+      "tag": "v0.5.1-tapeworkshop-community.131",
+      "published_at": "2026-11-20T19:08:02Z"
     },
     "releases": [
+      {
+        "tag": "v0.5.1-tapeworkshop-community.131",
+        "name": "Tape Workshop v131 · Tutorial Recording & Connection Updates",
+        "prerelease": false,
+        "published_at": "2026-11-20T19:08:02Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.131",
+        "body": "## What’s new\r\n\r\n- Tutorial Mode has a compact control dock with Framing, Appearance and Recording tabs. Record and Stop remain visible while adjusting the view.\r\n- Independent MPC and display zoom/pan, upright MPC framing, smooth view transitions, and optional 3D angle for the large display.\r\n- Product-photo MPC view with moving knob indicators, A–H bank labels, current-bank highlighting and stereo audio meters. Enable MPC audio for meter movement.\r\n- Normal combined video recording with direct stereo MPC audio, 1080p/720p quality options and takes up to 20 minutes, subject to the existing memory limit.\r\n- Save As where supported; other browsers use their download-location settings.\r\n- Recovery improvements after saving, browser focus changes and brief audio interruptions. Screen requests are single-flight.\r\n- Faster viewer startup: unrelated expansion-builder scripts are omitted, idle HTTP connections have a shorter initial wait, and status checks show Connecting while retrying.\r\n- File search is available in more SD-card browsing areas, including Open Project and MIDI import.\r\n\r\n## Removed\r\n\r\nFinal Cut separate-layer recording, XML export and the Mac Final Cut Prep download have been removed. Normal video recording remains. The browser DAW/Studio remains removed.\r\n\r\n## SD-card installation\r\n\r\nUse **Tape-Workshop-v131-SD-Card.zip**. It contains only `autorun/` and `Melodee/Plugins/`, with the OS, **all 22 plug-ins**, required resources and license notices.\r\n\r\nPower off the MPC and back up the matching folders. Replace the card-root `autorun` folder and merge `Melodee/Plugins`. Keep your projects, samples, user presets and other third-party plug-ins. For MPC Sample firmware 1.3.0.12. Close and reopen the companion webpage after updating.\r\n\r\n## Verification and limits\r\n\r\nARM64 build, JavaScript syntax checks, screen-cache and saved-video display regression checks passed. The SD ZIP was verified against all 22 plug-ins and their resource hashes. Bank-label visibility was checked in a browser preview. Broader MPC/browser testing of the latest connection and recording changes remains ongoing; recordings stop if the page is hidden.\r\n\r\nSD ZIP SHA-256: `e9321942106f3f110e9d1d074b8077df79c866ded58bd065fcea311f73bbdfe1`\r\n\r\n## Source and credits\r\n\r\nMatching OS source: `Melodee-v131-source.tar.gz`, commit `473ed68af6a4119c268211f81c02c5755ee4982f`. The unchanged plug-in source is available in the v118 release as `Tape-Workshop-v118-Plugins-Source.tar.gz`. The repository branch and GitHub-generated source archives are not the matching v131 OS source.\r\n\r\nTape Workshop by bsauce42. Based on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, component licenses and attribution are retained.",
+        "truncated": false
+      },
       {
         "tag": "v0.5.1-tapeworkshop-community.120",
         "name": "Tape Workshop v120 · SD Card Install · Live Search",
@@ -415,15 +424,6 @@
         "published_at": "2026-11-20T00:48:22Z",
         "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.118",
         "body": "Tape Workshop v118 adds Melody Forge 1.0 to the current OS and brings the complete library to **22 plug-ins**. It also includes the v117 on-device plug-in browser artwork.\r\n\r\n## Download and install\r\n\r\n**Tape-Workshop-v118-Complete.zip is the recommended download: full OS + all 22 plug-ins**, samples/resources, licenses, matching plug-in source, OS source and guides. Power off the MPC, back up the matching SD folders, replace `autorun` and merge `Melodee/Plugins`. Keep your projects, samples, user presets and other third-party plug-ins.\r\n\r\n**Tape-Workshop-v118-Signed-Update.zip is OS-only** for the Tape Workshop updater/Manual Install. It adds the host UI but does not install Melody Forge's separate plug-in folder. Use Complete.zip to receive Melody Forge and the full library.\r\n\r\n## New\r\n\r\n- Melody Forge: four-layer playable synthesizer, 80 factory presets grouped into Trap, HipHop, R&B, EDM and DnB; 63 controls across 21 three-knob pages.\r\n- Custom Melody Forge face with four layer settings, a real output waveform, parameter-driven filter/envelope plots, and Data-knob preset names. B2 retains the optional preset menu.\r\n- Keyboard mode plays directly; Melody mode generates a phrase while a note is held. Host Sync follows project tempo. Acoustic-style instruments are synthesized approximations.\r\n- The instrument/effect browser now shows a distinct UI preview for each of the 22 bundled plug-ins. Data browses, Data Push loads, B1 goes back. Other plug-ins without bundled artwork show a type icon. Previewing does not load a plug-in or run its DSP.\r\n- Current Tape Workshop features and all 21 previous plug-ins are retained, including the v116 Second Spin idle-wake/Crackle fix, Room Grand release-noise defaults and live UI updates. Browser DAW/Studio remains removed.\r\n\r\nThe older v46 autorun from Melody Forge's standalone ZIP is excluded; its plug-in and custom UI are integrated into the current v0.5.1-based Tape Workshop host.\r\n\r\n## Verification\r\n\r\nARM64 host build, 22-bundle completeness checks, signed update verification and packaging regression tests passed. Melody Forge engine tests and all 80 VST presets passed finite/audible-output checks; rebuilding its ARM64 library from the supplied source produced an exact binary match. All 21 Melody Forge UI pages and 22 browser artwork selections rendered successfully in host previews. Physical MPC playback, UI controls and load for this new Melody Forge integration remain to be verified.\r\n\r\n## Source and credits\r\n\r\nUse **Melodee-v118-source.tar.gz**, host commit `65b65d785cca90688eaa6718638f5a080710a8b4`, and **Tape-Workshop-v118-Plugins-Source.tar.gz** for matching source. This repository branch and GitHub-generated source archives are not synchronized with the attached OS source. SHA-256 files accompany every download.\r\n\r\nFor MPC Sample firmware 1.3.0.12. Reopen the companion webpage after updating. The separate Melodee plug-in UI installer is not this OS release.\r\n\r\nTape Workshop by bsauce42. Based on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, component licenses and attribution are retained.",
-        "truncated": false
-      },
-      {
-        "tag": "v0.5.1-tapeworkshop-community.116",
-        "name": "Tape Workshop v116 · Complete OS + Plug-ins · Crackle Fix",
-        "prerelease": false,
-        "published_at": "2026-11-19T23:12:11Z",
-        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.116",
-        "body": "Tape Workshop v116 fixes Second Spin staying silent after Crackle reaches zero and is turned back up. Parameter changes now wake an idle plug-in without requiring a new note. This was reproduced and verified on a physical MPC Sample.\r\n\r\n## Download and install\r\n\r\n**Tape-Workshop-v116-Complete.zip is the recommended download: full OS + all 21 Tape Workshop plug-ins**, samples/resources, licenses, matching plug-in source, OS source and guides. For SD installation, replace `autorun` and merge `Melodee/Plugins`. Back up matching folders first; keep your projects, samples, user presets and other third-party plug-ins.\r\n\r\n**Tape-Workshop-v116-Signed-Update.zip** is the smaller OS-only package for Tape Workshop’s Manual Install/updater. It fixes the host’s idle wake behavior but does not replace plug-in folders. Use Complete.zip to receive the updated Room Grand plug-in as well.\r\n\r\n## Changes since v106\r\n\r\n- Distinct instrument/effect panels and parameter-page layouts, live stereo waveforms, measured spectra and output meters. Voice/source-mix graphics are replaced by live audio waveforms.\r\n- Afterglow Piano hot-green theme. Second Spin’s cassette reels follow fresh audio and stop in silence.\r\n- Turn Data directly on an instrument plug-in UI to browse exposed presets; the selected preset name updates while scrolling. B2 still opens the optional preset list. Effect presets use Shift + Data.\r\n- Room Grand 1.3.1 softens the sharp release-noise burst; Release Noise defaults to zero in the engine and all factory presets. Saved project values are retained.\r\n- Read-only `/performance` diagnostics expose existing CPU/render-load and audio-dropout counters.\r\n- Sub Foundry, Contour Comp and the enlarged Prism EQ retain their established layouts.\r\n- Existing Roll MIDI import, expansion tools, browser recording, themes, startup lighting and signed updater are retained. The browser DAW/Studio remains removed.\r\n\r\n## Verification\r\n\r\nARM64 build, native engine/model/binding tests, repeated real-DSP zero/positive wake regression, signed-update verification, ZIP integrity and the complete 21-bundle inventory passed. Second Spin’s zero → back-up behavior was verified on the physical MPC running v116.\r\n\r\nA short on-device v115 test with Afterglow Piano, Astral Loom, Room Grand and Layer House playing together, live visuals and browser audio recorded zero audio dropouts or overload voice cuts. Peak audio render-budget use was about 35%; the busiest CPU core peaked at 48%. The browser audio capture had no missing samples. These results describe that workload, not every preset, effect chain or a full 16-track maximum load.\r\n\r\n## Source and credits\r\n\r\nUse the attached **Melodee-v116-source.tar.gz**, built from commit `1b1c044c5050d4288f6781defcdf0ec69c7be749`, and **Tape-Workshop-v116-Plugins-Source.tar.gz** for matching source. This repository branch and GitHub-generated source archives are not synchronized with the attached OS source. SHA-256 files accompany every download.\r\n\r\nFor MPC Sample firmware 1.3.0.12. Reopen the companion webpage after updating. The separate Melodee plug-in UI installer is not this OS release.\r\n\r\nTape Workshop by bsauce42. Based on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, component licenses and attribution are retained.",
         "truncated": false
       }
     ],
@@ -1318,12 +1318,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 69,
+    "stars": 70,
     "forks": 12,
     "pushed_at": "2026-11-18T19:24:27Z",
     "last_commit_at": "2026-11-18T19:05:26Z",
     "contributors": 1,
-    "open_issues": 20,
+    "open_issues": 21,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
