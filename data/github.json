@@ -2,9 +2,9 @@
   "AldanisVigo/VigoBeatz-SampQOL-Stems-Grid64-Mod": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-19T14:30:52Z",
-    "last_commit_at": "2026-11-19T14:30:51Z",
-    "contributors": 1,
+    "pushed_at": "2026-11-20T01:54:28Z",
+    "last_commit_at": "2026-11-20T01:54:23Z",
+    "contributors": 2,
     "open_issues": 0,
     "license": null,
     "description": "An unofficial MPC Sample expansion by VigoBeatz LLC, adding four-stem separation and 1/64 grid zoom to an existing SampQOL installation.",
@@ -91,8 +91,8 @@
     "archived": false
   },
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
-    "stars": 2,
-    "forks": 0,
+    "stars": 3,
+    "forks": 1,
     "pushed_at": "2026-11-19T03:43:59Z",
     "last_commit_at": "2026-11-18T16:28:34Z",
     "contributors": 2,
@@ -371,8 +371,8 @@
   "bsauce42/tape-workshop-mpc-sample": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-19T09:47:15Z",
-    "last_commit_at": "2026-11-15T06:37:09Z",
+    "pushed_at": "2026-11-20T02:57:56Z",
+    "last_commit_at": "2026-11-20T02:57:26Z",
     "contributors": 1,
     "open_issues": 2,
     "license": null,
@@ -380,35 +380,35 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.5.1-tapeworkshop-community.106",
-      "published_at": "2026-11-19T09:47:16Z"
+      "tag": "v0.5.1-tapeworkshop-community.120",
+      "published_at": "2026-11-20T02:57:56Z"
     },
     "releases": [
       {
-        "tag": "v0.5.1-tapeworkshop-community.106",
-        "name": "Tape Workshop v106 · Complete OS + Plug-ins",
+        "tag": "v0.5.1-tapeworkshop-community.120",
+        "name": "Tape Workshop v120 · SD Card Install · Live Search",
         "prerelease": false,
-        "published_at": "2026-11-19T09:47:16Z",
-        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.106",
-        "body": "Tape Workshop v106 updates the full Tape Workshop OS to the Melodee v0.5.1 base while preserving the Tape Workshop additions.\r\n\r\n## Included\r\n- Roll MIDI import, selection, Shift + K3 zoom, and persistent fine note splitting.\r\n- Prism EQ and Tape Workshop plug-in visuals, sample and voice search, Auto BPM, and custom sample folders.\r\n- Expansion browser with cover art, bank/pad import and Empty Pad; all eight banks in the browser Expansion Builder.\r\n- Live Screen and Tutorial Mode, stereo browser audio/video recording, custom logo/background options, and the black browser theme.\r\n- Tape Workshop themes, logo/icons, all-pad startup animation, and track-color lighting.\r\n- Tape Workshop's signed updater and Melodee v0.5.1 sequencing, transport, chopping, sampling, USB-volume and stem-helper updates.\r\n- Studio / the browser DAW remains removed.\r\n\r\nThe separate Melodee Plug-in UI Edition 2 build belongs to the Mac plug-in installer and is not included in this OS release.\r\n\r\n## Download and install\r\n**Tape-Workshop-v106-Complete.zip — recommended download: full OS + all 21 Tape Workshop plug-ins.** Includes the plug-in samples/resources, licenses, matching plug-in source, OS source and guides. For SD installation, replace `autorun` and merge `Melodee/Plugins`, backing up matching plug-in folders first. Keep your projects, samples, user presets and other third-party plug-ins. The complete ZIP is for SD installation; the web updater uses the separate Signed Update ZIP.\r\n\r\nThe plug-in library includes Afterglow Piano, Astral Loom, Break 26, Contour Comp, Dex FM, Gate Keeper, Layer House, Prism EQ, Rack 76, Room Grand, Second Spin, Sloop FM6, Stillwater, Sub Foundry, Velvet Choir, Vocal Tune, and the five Tape Workshop Move ports: Aphex, Braids, Dexed, Hera and Plaits.\r\n\r\n**Tape-Workshop-v106-Plugins-Source.tar.gz** is also available separately. These plug-in binaries and their corresponding sources are preserved from the same full Tape Workshop library; v106 does not change their DSP.\r\n\r\n**Tape-Workshop-v106-Signed-Update.zip** is the complete OS runtime: one `autorun` folder with 67 runtime files. Use it in Tape Workshop's Manual install, or power off the MPC and replace the SD card's `autorun` folder. Back up first and keep your existing `Melodee` folder, projects, samples and plug-ins. This smaller signed OS update does not contain the separate plug-in folders; choose Complete.zip to get the plug-ins.\r\n\r\n**Melodee-v106-source.tar.gz** is the matching full source at commit `38cad48b5d1a440cb171e7cb88a5941489bf03e8`, including the pinned base runtime. Use this attached archive: this repository's branch and GitHub-generated source archives are not synchronized with the OS source.\r\n\r\n**Tape-Workshop-v106-Guides.zip** contains the illustrated quick start, manual and offered themes. SHA-256 files accompany the downloads.\r\n\r\nFor MPC Sample firmware **1.3.0.12**. After updating, close and reopen the companion webpage at `http://192.168.155.1/` while connected over USB.\r\n\r\n## Verification\r\nThe Complete ZIP was checked against the required 21-bundle inventory: ARM64 libraries, metadata, licenses and every sample/resource are present. Its OS bytes match the verified signed update exactly. Packaging tests reject missing plug-ins and incompatible binaries.\r\n\r\nARM64 build, native engine/model/binding tests, direct-stream and stem-service tests, web/layout checks, signed-updater sandbox tests, signature and ZIP checks passed. Physical MPC playback and controls for this merged v0.5.1 build remain to be verified.\r\n\r\n## Credits\r\nTape Workshop community additions and branding: **bsauce42**.\r\nBased on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, licenses and component attribution are retained in the release and corresponding source.\r\n",
+        "published_at": "2026-11-20T02:57:56Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.120",
+        "body": "## SD card download\r\n\r\n**Download only Tape-Workshop-v120-SD-Card.zip for SD installation.** It contains just two top-level folders: **autorun** and **Melodee/Plugins**, including the current OS, **all 22 plug-ins**, their samples/resources, skins and required license notices. No source archives, guide ZIPs or development files are inside this SD download.\r\n\r\nPower off the MPC and back up matching folders first. Replace the card-root autorun folder and merge Melodee/Plugins. Keep your projects, samples, user presets and other third-party plug-ins. For MPC Sample firmware 1.3.0.12.\r\n\r\n## Search changes\r\n\r\n- Typed Sample Select search updates from the first letter. Open with **Shift + B1**.\r\n- Partial words and phrase fragments work: **pia** matches Piano; **warm pia** matches Warm Grand Piano.\r\n- Names beginning with your first typed word come first: **Kick 01** and **Kick Deep** precede **Kings Dog Kicks** and **Deep Kick** when searching **kick**.\r\n- Later-word matches remain below the prefix matches. Selection follows a lower result if newly indexed prefix hits are inserted above it.\r\n- DONE or BACK closes typing and keeps the filter; clearing the text restores the normal list. Voice matching is unchanged.\r\n\r\nIncludes the existing Melody Forge 1.0, 80 presets, live plug-in UIs and browser artwork for all 22 plug-ins, Second Spin's idle-wake fix and other Tape Workshop additions. Browser DAW/Studio remains removed.\r\n\r\n## Separate downloads — do not copy these onto the SD card\r\n\r\n**Tape-Workshop-v120-Signed-Update.zip** is retained for the existing web updater/Manual Install. It is OS-only and does not install plug-in folders. SD users only need the SD-Card.zip above.\r\n\r\n**Melodee-v120-source.tar.gz** is the matching OS source, host commit **9f241cc2572f1e5e22d4c4724f4f352da8f9be26**. The unchanged plug-in source for all 22 plug-ins is already available [here](https://github.com/bsauce42/tape-workshop-mpc-sample/releases/download/v0.5.1-tapeworkshop-community.118/Tape-Workshop-v118-Plugins-Source.tar.gz). Sources are separate developer downloads; this repository branch and GitHub-generated Source code archives are not the matching OS source.\r\n\r\n## Verification\r\n\r\nARM64 build, live/partial search checks, prefix ordering, late-arriving matches, result cap and selection-preservation checks passed. The SD-only ZIP was checked against all 22 plug-ins and every resource hash; its runtime exactly matches the signed OS update. MPC testing of the new search remains pending.\r\n\r\nSHA-256 (SD Card ZIP): 52362bcec60617bdf4a5b71b4e13a0fdf93eb29786f4405ba9091e0be0cd5e10\r\n\r\nTape Workshop by bsauce42. Based on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, component licenses and attribution are retained.",
         "truncated": false
       },
       {
-        "tag": "v0.3.0-tapeworkshop-community.88",
-        "name": "Tape Workshop v88 · Stereo Video Recording",
+        "tag": "v0.5.1-tapeworkshop-community.118",
+        "name": "Tape Workshop v118 · Melody Forge + Plug-in Browser Artwork",
         "prerelease": false,
-        "published_at": "2026-11-18T16:54:23Z",
-        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.88",
-        "body": "v88 adds an explicit two-channel recording bus to preserve separate left and right audio in exported videos from Live Screen and Tutorial Mode. Live monitoring retains its own output route. Channels are preserved rather than duplicated into mono.\r\n\r\n## Downloads\r\n\r\n- **Tape-Workshop-v88-Complete.zip** — full SD-card build, bundled plug-ins, matching source, artwork, licenses, and Mac companion launcher.\r\n- **Tape-Workshop-v88-Signed-Update.zip** — signed update for compatible existing Tape Workshop installations, including v87. Choose this ZIP in Manual install.\r\n- **Melodee-v88-source.tar.gz** — matching firmware source at commit a253936, also included in the complete package. Use this attached source archive; the repository branch and GitHub-generated source archives are not synchronized to v88.\r\n- SHA-256 checksum files accompany each download.\r\n\r\n## Install\r\n\r\nFor MPC Sample firmware 1.3.0.12. Follow the included README and preserve your projects, samples, and plug-ins. After installing, close and reopen http://192.168.155.1/ with the MPC connected over USB, then make a new recording. This change applies to new recordings.\r\n\r\n## Verification\r\n\r\nARM64 build, native audio tests, source layout, packaged-module inclusion, ZIP integrity and release signature checks passed. Exported test videos from both modes retained independent 440 Hz left and 880 Hz right signals at balanced levels, with each intended tone over 20 times stronger than the opposite-channel tone. One Live Screen fixture take stopped through the existing timing guard; its exported audio still passed. The Tutorial Mode take completed normally. Physical MPC/phone verification of the stereo change remains pending.\r\n\r\nIncludes previous v87 live-feed freeze recovery, a 30 fps target, direct stereo audio, recordings up to 20 minutes, logo/background customization, Expansion Builder artwork, Roll MIDI import, and the Mac shortcut.\r\n\r\nBased on Melodee by Kerem Kiliç (Ellic Studio). Component licenses and corresponding source are retained.",
+        "published_at": "2026-11-20T00:48:22Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.118",
+        "body": "Tape Workshop v118 adds Melody Forge 1.0 to the current OS and brings the complete library to **22 plug-ins**. It also includes the v117 on-device plug-in browser artwork.\r\n\r\n## Download and install\r\n\r\n**Tape-Workshop-v118-Complete.zip is the recommended download: full OS + all 22 plug-ins**, samples/resources, licenses, matching plug-in source, OS source and guides. Power off the MPC, back up the matching SD folders, replace `autorun` and merge `Melodee/Plugins`. Keep your projects, samples, user presets and other third-party plug-ins.\r\n\r\n**Tape-Workshop-v118-Signed-Update.zip is OS-only** for the Tape Workshop updater/Manual Install. It adds the host UI but does not install Melody Forge's separate plug-in folder. Use Complete.zip to receive Melody Forge and the full library.\r\n\r\n## New\r\n\r\n- Melody Forge: four-layer playable synthesizer, 80 factory presets grouped into Trap, HipHop, R&B, EDM and DnB; 63 controls across 21 three-knob pages.\r\n- Custom Melody Forge face with four layer settings, a real output waveform, parameter-driven filter/envelope plots, and Data-knob preset names. B2 retains the optional preset menu.\r\n- Keyboard mode plays directly; Melody mode generates a phrase while a note is held. Host Sync follows project tempo. Acoustic-style instruments are synthesized approximations.\r\n- The instrument/effect browser now shows a distinct UI preview for each of the 22 bundled plug-ins. Data browses, Data Push loads, B1 goes back. Other plug-ins without bundled artwork show a type icon. Previewing does not load a plug-in or run its DSP.\r\n- Current Tape Workshop features and all 21 previous plug-ins are retained, including the v116 Second Spin idle-wake/Crackle fix, Room Grand release-noise defaults and live UI updates. Browser DAW/Studio remains removed.\r\n\r\nThe older v46 autorun from Melody Forge's standalone ZIP is excluded; its plug-in and custom UI are integrated into the current v0.5.1-based Tape Workshop host.\r\n\r\n## Verification\r\n\r\nARM64 host build, 22-bundle completeness checks, signed update verification and packaging regression tests passed. Melody Forge engine tests and all 80 VST presets passed finite/audible-output checks; rebuilding its ARM64 library from the supplied source produced an exact binary match. All 21 Melody Forge UI pages and 22 browser artwork selections rendered successfully in host previews. Physical MPC playback, UI controls and load for this new Melody Forge integration remain to be verified.\r\n\r\n## Source and credits\r\n\r\nUse **Melodee-v118-source.tar.gz**, host commit `65b65d785cca90688eaa6718638f5a080710a8b4`, and **Tape-Workshop-v118-Plugins-Source.tar.gz** for matching source. This repository branch and GitHub-generated source archives are not synchronized with the attached OS source. SHA-256 files accompany every download.\r\n\r\nFor MPC Sample firmware 1.3.0.12. Reopen the companion webpage after updating. The separate Melodee plug-in UI installer is not this OS release.\r\n\r\nTape Workshop by bsauce42. Based on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, component licenses and attribution are retained.",
         "truncated": false
       },
       {
-        "tag": "v0.3.0-tapeworkshop-community.87",
-        "name": "Tape Workshop v87 · Live Recording Freeze Fix",
+        "tag": "v0.5.1-tapeworkshop-community.116",
+        "name": "Tape Workshop v116 · Complete OS + Plug-ins · Crackle Fix",
         "prerelease": false,
-        "published_at": "2026-11-18T06:29:42Z",
-        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.3.0-tapeworkshop-community.87",
-        "body": "Tape Workshop v87 fixes the companion live picture freezing while audio continues during recording, including exported video. Independent frame sequence numbers, bounded synchronization waits and lightweight compression keep the picture moving.\r\n\r\n## Downloads\r\n\r\n- **Tape-Workshop-v87-Complete.zip** — full SD-card build, bundled plug-ins, matching source, artwork, licenses and the Mac companion launcher. Read START-HERE.txt and README.md.\r\n- **Tape-Workshop-v87-Signed-Update.zip** — signed update for compatible existing Tape Workshop installations; choose it in the companion Manual install page.\r\n- **Melodee-v87-source.tar.gz** — matching v87 firmware source at commit 4ca3434, also included in the complete ZIP. Use this attached archive; the repository branch and GitHub-generated Source code archives are not synchronized to v87.\r\n- SHA-256 checksum files are provided for each download.\r\n\r\n## Install and use\r\n\r\nFor MPC Sample firmware 1.3.0.12. Back up your SD card and follow the included README. Preserve your Melodee projects, samples and plug-ins. Connect the MPC over USB, open http://192.168.155.1/, and close/reopen the webpage after an OS update.\r\n\r\nThe Mac Companion folder contains Tape Workshop.app: move it to Applications and drag it onto the Dock. It opens the companion in a separate Chrome window, with a default-browser fallback. The MPC must be connected.\r\n\r\nIncludes Live Screen, Tutorial Mode, a 30 fps target, direct stereo audio, recordings up to 20 minutes, logo/background customization, Expansion Builder cover artwork, and Roll MIDI import via Shift+B3 or Data → Import MIDI.\r\n\r\n## Verification and credits\r\n\r\nARM64 build, screen packet/compression/sequence tests, audio tests, source layout and signed ZIP verification passed. Browser recordings stayed animated with deliberately mismatched timestamps and continuing audio. The owner reports the build is working on their unit. Broader hardware/browser testing remains ongoing.\r\n\r\nBased on Melodee by Kerem Kiliç (Ellic Studio). Component licenses and source are retained.",
+        "published_at": "2026-11-19T23:12:11Z",
+        "html_url": "https://github.com/bsauce42/tape-workshop-mpc-sample/releases/tag/v0.5.1-tapeworkshop-community.116",
+        "body": "Tape Workshop v116 fixes Second Spin staying silent after Crackle reaches zero and is turned back up. Parameter changes now wake an idle plug-in without requiring a new note. This was reproduced and verified on a physical MPC Sample.\r\n\r\n## Download and install\r\n\r\n**Tape-Workshop-v116-Complete.zip is the recommended download: full OS + all 21 Tape Workshop plug-ins**, samples/resources, licenses, matching plug-in source, OS source and guides. For SD installation, replace `autorun` and merge `Melodee/Plugins`. Back up matching folders first; keep your projects, samples, user presets and other third-party plug-ins.\r\n\r\n**Tape-Workshop-v116-Signed-Update.zip** is the smaller OS-only package for Tape Workshop’s Manual Install/updater. It fixes the host’s idle wake behavior but does not replace plug-in folders. Use Complete.zip to receive the updated Room Grand plug-in as well.\r\n\r\n## Changes since v106\r\n\r\n- Distinct instrument/effect panels and parameter-page layouts, live stereo waveforms, measured spectra and output meters. Voice/source-mix graphics are replaced by live audio waveforms.\r\n- Afterglow Piano hot-green theme. Second Spin’s cassette reels follow fresh audio and stop in silence.\r\n- Turn Data directly on an instrument plug-in UI to browse exposed presets; the selected preset name updates while scrolling. B2 still opens the optional preset list. Effect presets use Shift + Data.\r\n- Room Grand 1.3.1 softens the sharp release-noise burst; Release Noise defaults to zero in the engine and all factory presets. Saved project values are retained.\r\n- Read-only `/performance` diagnostics expose existing CPU/render-load and audio-dropout counters.\r\n- Sub Foundry, Contour Comp and the enlarged Prism EQ retain their established layouts.\r\n- Existing Roll MIDI import, expansion tools, browser recording, themes, startup lighting and signed updater are retained. The browser DAW/Studio remains removed.\r\n\r\n## Verification\r\n\r\nARM64 build, native engine/model/binding tests, repeated real-DSP zero/positive wake regression, signed-update verification, ZIP integrity and the complete 21-bundle inventory passed. Second Spin’s zero → back-up behavior was verified on the physical MPC running v116.\r\n\r\nA short on-device v115 test with Afterglow Piano, Astral Loom, Room Grand and Layer House playing together, live visuals and browser audio recorded zero audio dropouts or overload voice cuts. Peak audio render-budget use was about 35%; the busiest CPU core peaked at 48%. The browser audio capture had no missing samples. These results describe that workload, not every preset, effect chain or a full 16-track maximum load.\r\n\r\n## Source and credits\r\n\r\nUse the attached **Melodee-v116-source.tar.gz**, built from commit `1b1c044c5050d4288f6781defcdf0ec69c7be749`, and **Tape-Workshop-v116-Plugins-Source.tar.gz** for matching source. This repository branch and GitHub-generated source archives are not synchronized with the attached OS source. SHA-256 files accompany every download.\r\n\r\nFor MPC Sample firmware 1.3.0.12. Reopen the companion webpage after updating. The separate Melodee plug-in UI installer is not this OS release.\r\n\r\nTape Workshop by bsauce42. Based on **Melodee by Kerem Kiliç (Ellic Studio)**. Original copyright, component licenses and attribution are retained.",
         "truncated": false
       }
     ],
@@ -660,7 +660,7 @@
     "archived": false
   },
   "garrettjwilke/mpc-boot-thingy": {
-    "stars": 25,
+    "stars": 26,
     "forks": 3,
     "pushed_at": "2026-11-17T01:29:13Z",
     "last_commit_at": "2026-11-17T01:29:13Z",
@@ -855,7 +855,7 @@
     "archived": false
   },
   "gospodindilly-ops/mpc-sample-lab": {
-    "stars": 18,
+    "stars": 19,
     "forks": 6,
     "pushed_at": "2026-10-24T19:32:11Z",
     "last_commit_at": "2026-10-23T09:43:37Z",
@@ -870,7 +870,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 238,
+    "stars": 239,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -885,8 +885,8 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 15,
-    "forks": 1,
+    "stars": 16,
+    "forks": 2,
     "pushed_at": "2026-11-18T22:33:10Z",
     "last_commit_at": "2026-11-18T22:33:10Z",
     "contributors": 2,
@@ -931,7 +931,7 @@
     "archived": false
   },
   "ioma8/mpc-sample-sdk": {
-    "stars": 9,
+    "stars": 10,
     "forks": 3,
     "pushed_at": "2026-11-17T15:15:40Z",
     "last_commit_at": "2026-11-17T15:14:07Z",
@@ -1275,12 +1275,12 @@
     "archived": false
   },
   "jeffwebb-to/mpc-sample-tracker": {
-    "stars": 11,
-    "forks": 1,
+    "stars": 12,
+    "forks": 2,
     "pushed_at": "2026-11-10T07:56:41Z",
     "last_commit_at": "2026-11-10T07:56:20Z",
     "contributors": 1,
-    "open_issues": 1,
+    "open_issues": 2,
     "license": "MIT",
     "description": "A MOD/XM/IT Tracker for the Akai MPC Sample, run from an SD card",
     "default_branch": "main",
@@ -1303,12 +1303,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 66,
-    "forks": 10,
+    "stars": 68,
+    "forks": 12,
     "pushed_at": "2026-11-18T19:24:27Z",
     "last_commit_at": "2026-11-18T19:05:26Z",
     "contributors": 1,
-    "open_issues": 17,
+    "open_issues": 19,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1452,8 +1452,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 5,
     "forks": 1,
-    "pushed_at": "2026-11-19T20:09:03Z",
-    "last_commit_at": "2026-11-19T20:09:00Z",
+    "pushed_at": "2026-11-20T00:47:52Z",
+    "last_commit_at": "2026-11-20T00:47:41Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1465,7 +1465,7 @@
     "archived": false
   },
   "orrpunk-art/mpc-sample-root-ssh": {
-    "stars": 18,
+    "stars": 19,
     "forks": 2,
     "pushed_at": "2026-10-19T14:20:09Z",
     "last_commit_at": "2026-10-19T14:19:53Z",
@@ -1502,8 +1502,8 @@
     "archived": false
   },
   "orrpunk-art/virtual-mpc-sample": {
-    "stars": 26,
-    "forks": 3,
+    "stars": 28,
+    "forks": 4,
     "pushed_at": "2026-11-01T12:48:52Z",
     "last_commit_at": "2026-11-01T12:48:18Z",
     "contributors": 1,
@@ -1517,7 +1517,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 19,
+    "stars": 21,
     "forks": 2,
     "pushed_at": "2026-11-19T15:21:49Z",
     "last_commit_at": "2026-11-19T15:21:46Z",
@@ -1717,12 +1717,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 126,
-    "forks": 7,
+    "stars": 128,
+    "forks": 8,
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 26,
+    "open_issues": 27,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
@@ -1763,8 +1763,8 @@
     "archived": false
   },
   "tarikcampos/MPC-Sample-Toolkit": {
-    "stars": 21,
-    "forks": 4,
+    "stars": 22,
+    "forks": 5,
     "pushed_at": "2026-09-17T09:34:14Z",
     "last_commit_at": "2026-09-17T09:34:14Z",
     "contributors": 2,
