@@ -12,5 +12,5 @@ runs_on: [device]
 audience: [musician, curious]
 status: experimental
 tags:
-  - boot-menu
+  - boot-logo
   - display
