@@ -5,10 +5,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { readEntries } from './catalog.js';
 import { deriveVersionFromTitle } from './watch.js';
+import { releaseDisplayLabel } from '../src/lib/release-label.js';
 
 assert.equal(deriveVersionFromTitle('/MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
 assert.equal(deriveVersionFromTitle('MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
 assert.equal(deriveVersionFromTitle('/releases/CustomBuild.zip'), 'CustomBuild');
+assert.equal(releaseDisplayLabel('v1.2.9', 'GRIDZILLA 1.2.9'), 'v1.2.9');
+assert.equal(releaseDisplayLabel('maiaos', 'MaiaOS - Beta V2'), 'MaiaOS - Beta V2');
+assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fixture = fs.mkdtempSync(path.join(root, '.catalog-test-'));
@@ -47,6 +51,8 @@ try {
 	fs.renameSync(path.join(dataDir, 'mods/host/app.yaml'), path.join(dataDir, 'mods/host/mod.yaml'));
 	fs.mkdirSync(path.join(fixture, 'scripts'));
 	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	fs.mkdirSync(path.join(fixture, 'src', 'lib'), { recursive: true });
+	fs.copyFileSync(path.join(root, 'src/lib/release-label.js'), path.join(fixture, 'src/lib/release-label.js'));
 	fs.mkdirSync(path.join(fixture, 'schema'));
 	fs.copyFileSync(path.join(root, 'schema/mod.yaml'), path.join(fixture, 'schema/mod.yaml'));
 	const validate = () => spawnSync(process.execPath, [path.join(fixture, 'scripts/validate.js')], { encoding: 'utf8' });
@@ -115,14 +121,14 @@ try {
 	assert.equal(player.last_commit_at, '2026-01-01');
 	assert.equal(player.price, 'paid');
 	assert.equal(player.source, 'closed', 'explicit source overrides the repository default');
-	assert.deepEqual(player.latest_release, { tag: 'v1', published_at: '2026-01-01' }, 'GitHub data overrides manual version/date fields');
+	assert.deepEqual(player.latest_release, { tag: 'v1', published_at: '2026-01-01', label: 'v1' }, 'GitHub data overrides manual version/date fields');
 	assert.equal(output.find((entry) => entry.id === 'host').source, 'open');
 	const external = output.find((entry) => entry.id === 'external');
 	assert.equal(external.price, 'free');
 	assert.equal(external.source, 'closed');
 	assert.equal(external.stars, null);
 	assert.equal(external.contributors, null);
-	assert.deepEqual(external.latest_release, { tag: '0.15.2', published_at: '2026-11-07', html_url: 'https://example.com/project' });
+	assert.deepEqual(external.latest_release, { tag: '0.15.2', published_at: '2026-11-07', html_url: 'https://example.com/project', label: '0.15.2' });
 	const details = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json')));
 	assert.match(details.external.readme_html, /<h2>Local About<\/h2>/);
 	assert.match(details.external.readme_html, /https:\/\/example.com\/guide.pdf/);
@@ -180,7 +186,9 @@ try {
 		{
 			tag: '1.0 Beta 3',
 			published_at: '2026-11-17T02:52:46.000Z',
-			html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-3.zip/download'
+			html_url: 'https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-3.zip/download',
+			name: 'MPC-Simple-1.0-Beta-3.zip',
+			label: '1.0 Beta 3'
 		},
 		'watch items must auto-derive latest_release and override fallback YAML version/released'
 	);
@@ -226,9 +234,9 @@ try {
 	output = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/data.json'), 'utf8'));
 	const kit = output.find((entry) => entry.id === 'kit');
 	const boot = output.find((entry) => entry.id === 'boot');
-	assert.deepEqual(kit.latest_release, { tag: 'v2.0.0', published_at: '2026-02-01' });
-	assert.deepEqual(boot.latest_release, { tag: 'boot-1.1', published_at: '2026-03-01' });
-	assert.deepEqual(output.find((entry) => entry.id === 'player').latest_release, { tag: 'v1', published_at: '2026-01-01' }, 'entries without release_prefix stay on gh.latest_release');
+	assert.deepEqual(kit.latest_release, { tag: 'v2.0.0', published_at: '2026-02-01', label: 'v2.0.0' });
+	assert.deepEqual(boot.latest_release, { tag: 'boot-1.1', published_at: '2026-03-01', label: 'boot-1.1' });
+	assert.deepEqual(output.find((entry) => entry.id === 'player').latest_release, { tag: 'v1', published_at: '2026-01-01', label: 'v1' }, 'entries without release_prefix stay on gh.latest_release');
 	const splitDetails = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json'), 'utf8'));
 	assert.deepEqual(splitDetails.kit.releases.map((release) => release.tag), ['v2.0.0', 'v1.0.0', 'v0.9.0']);
 	assert.deepEqual(splitDetails.boot.releases.map((release) => release.tag), ['boot-1.1', 'boot-1.0']);

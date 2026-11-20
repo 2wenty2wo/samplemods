@@ -1,6 +1,7 @@
 import mods from '$lib/data.json';
 import details from '$lib/server/details.json';
 import { entryPath } from '$lib/categories.js';
+import { releaseDisplayLabel } from '$lib/release-label.js';
 
 /**
  * Strip HTML tags and headings to build a clean one-line plain-text excerpt.
@@ -41,6 +42,7 @@ export function getAllReleases(entries = mods, entryDetails = details) {
 	 *   thumb: { kind: 'shot' | 'logo' | 'splash', src: string | null },
 	 *   tag: string,
 	 *   name: string | null,
+	 *   label: string,
 	 *   published_at: string | null,
 	 *   day: string,
 	 *   html_url: string | null,
@@ -63,6 +65,7 @@ export function getAllReleases(entries = mods, entryDetails = details) {
 		for (const rel of rels) {
 			const tag = String(rel.tag ?? '');
 			const rawName = rel.name && rel.name !== tag ? String(rel.name) : null;
+			const label = rel.label ?? releaseDisplayLabel(tag, rel.name);
 			const published = rel.published_at ?? null;
 			const day = published ? String(published).slice(0, 10) : 'Unknown';
 			list.push({
@@ -76,6 +79,7 @@ export function getAllReleases(entries = mods, entryDetails = details) {
 				thumb,
 				tag,
 				name: rawName,
+				label,
 				published_at: published,
 				day,
 				html_url: rel.html_url ?? null,

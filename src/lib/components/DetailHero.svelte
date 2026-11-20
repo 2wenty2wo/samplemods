@@ -117,7 +117,7 @@ import { base } from '$app/paths';
 						</span>
 					{/if}
 					{#if latestRelease?.tag}
-						<span class="screen-badge date">{latestRelease.tag}</span>
+						<span class="screen-badge date">{latestRelease.label ?? latestRelease.tag}</span>
 					{/if}
 				</div>
 
@@ -180,7 +180,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<span>Download latest release{latestRelease?.tag ? ` (${latestRelease.tag})` : ''}</span>
+							<span>Download latest release{latestRelease?.tag ? ` (${latestRelease.label ?? latestRelease.tag})` : ''}</span>
 						</a>
 					{/if}
 

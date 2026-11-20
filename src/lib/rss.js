@@ -70,7 +70,7 @@ export function buildReleasesRss(releases, base = '') {
 	const body = items
 		.map((item) => {
 			const link = releaseItemUrl(item, base);
-			const title = `${item.entryName} ${item.tag}`.trim();
+			const title = `${item.entryName} ${item.label ?? item.tag}`.trim();
 			const excerpt = item.excerpt?.trim() ?? '';
 			// RSS descriptions are HTML: escape the plain-text excerpt and make the call-out a real link.
 			const readMore = `<p><a href="${escapeXml(link)}">Read the full notes on ${SITE_NAME} →</a></p>`;
