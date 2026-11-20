@@ -1,0 +1,30 @@
+Copyright (c) 2026 2wenty2wo (Sample Mods, samplemods.com)
+
+(a) Website code and design
+
+All rights reserved for the repository material outside sections (b) and
+(c), including the code in src/ and scripts/, original assets in static/,
+and the site's styles and layout. You may view the source and submit
+contributions by pull request. Copying, redistributing, or hosting the site
+or its design, in whole or substantial part, requires written permission.
+By submitting a contribution, you grant the maintainer permission to use it
+in this project under these terms.
+
+(b) Catalog data
+
+Catalog data written for Sample Mods is licensed under Creative Commons
+Attribution 4.0 International (CC BY 4.0),
+https://creativecommons.org/licenses/by/4.0/. This includes entry YAML
+files (data/*/*/*.yaml), entry about.md files, and the metadata compilation
+in data/contributors.json and data/github.json, subject to section (c).
+Credit Sample Mods (samplemods.com) with a link to https://samplemods.com/.
+
+(c) Third-party material
+
+Third-party screenshots and splash images in entry screenshots/ folders,
+entry logo.* files, README copies in data/readme/, release notes in
+data/github.json, and project names and trademarks belong to their
+respective rights holders. Sample Mods uses this material to describe and
+link to the projects. Sections (a) and (b) grant no rights to this material.
+Akai Professional and MPC are trademarks of inMusic Brands. Sample Mods is
+independent and is not affiliated with Akai Professional or inMusic Brands.
