@@ -105,21 +105,33 @@
     },
     {
       "file": "screenshots/02-instruments.webp",
-      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA-User-Guide.pdf",
       "repo": "ZootedandRebooted/GRIDZILLA",
       "note": "Original 320x240 UI image extracted without resizing from page 6 of the official user guide; also shown on the project website."
     },
     {
       "file": "screenshots/03-arranger.webp",
-      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA-User-Guide.pdf",
       "repo": "ZootedandRebooted/GRIDZILLA",
       "note": "Original 320x240 UI image extracted without resizing from page 12 of the official user guide; also shown on the project website."
     },
     {
       "file": "screenshots/04-mixer.webp",
-      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/v1.2.1/GRIDZILLA-1.2-User-Guide.pdf",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA-User-Guide.pdf",
       "repo": "ZootedandRebooted/GRIDZILLA",
       "note": "Original 320x240 UI image extracted without resizing from page 14 of the official user guide; also shown on the project website."
+    },
+    {
+      "file": "screenshots/05-pad-note-grid.webp",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA-User-Guide.pdf",
+      "repo": "ZootedandRebooted/GRIDZILLA",
+      "note": "Original 320x240 UI image extracted without resizing from page 8 of the official user guide (SHIFT+SEQ pad-note grid); also shown on the project website. Converted to lossless WebP."
+    },
+    {
+      "file": "screenshots/06-melodic-piano-roll.webp",
+      "source": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA-User-Guide.pdf",
+      "repo": "ZootedandRebooted/GRIDZILLA",
+      "note": "Original 320x240 UI image extracted without resizing from page 9 of the official user guide (Melodic piano-roll); also shown on the project website. Converted to lossless WebP."
     }
   ],
   "henryskillz-mod-kit": [
