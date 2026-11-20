@@ -1,8 +1,9 @@
 import { getAllReleases } from '$lib/server/releases.js';
+import { latestReleasesOnePerEntry } from '$lib/latest-releases-strip.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export function load() {
 	return {
-		latestReleases: getAllReleases().slice(0, 5)
+		latestReleases: latestReleasesOnePerEntry(getAllReleases(), 5)
 	};
 }
