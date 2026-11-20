@@ -301,19 +301,25 @@
   ],
   "mpc-600-s": [
     {
-      "file": "screenshots/01-main-sequence.webp",
+      "file": "screenshots/01-tour.gif",
+      "source": "https://raw.githubusercontent.com/LA-2500/MPC-600-S/main/docs/img/tour.gif",
+      "repo": "LA-2500/MPC-600-S",
+      "note": "Original 480x360 animated GIF (18 frames) from the project repository."
+    },
+    {
+      "file": "screenshots/02-main-sequence.webp",
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 9 of the official operator manual."
     },
     {
-      "file": "screenshots/02-title.webp",
+      "file": "screenshots/03-title.webp",
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 4 of the official operator manual."
     },
     {
-      "file": "screenshots/03-timing-correct.webp",
+      "file": "screenshots/04-timing-correct.webp",
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 15 of the official operator manual."
