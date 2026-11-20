@@ -260,21 +260,6 @@
     "releases": [],
     "archived": false
   },
-  "Trinzik-Labs/LogoMaker": {
-    "stars": 1,
-    "forks": 0,
-    "pushed_at": "2026-11-20T06:44:46Z",
-    "last_commit_at": "2026-11-20T06:44:44Z",
-    "contributors": 2,
-    "open_issues": 0,
-    "license": "MIT",
-    "description": "An Open source project on the Mpc Sample allowing u to add ur own image and/or sound to the boot up screen. Making it customizable to ur own creativity.",
-    "default_branch": "main",
-    "readme_path": "README.md",
-    "latest_release": null,
-    "releases": [],
-    "archived": false
-  },
   "WorldLinkStudio/mpcsample": {
     "stars": 24,
     "forks": 2,
