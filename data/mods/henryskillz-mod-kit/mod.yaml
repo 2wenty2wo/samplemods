@@ -10,7 +10,7 @@ tags:
   - effects
   - stems
   - sampqol
-install: web-installer
+install: sd-card
 firmware: 1.3.0
 requires:
   - sampqol-os
