@@ -275,7 +275,8 @@
 
 	.compact-tag {
 		display: inline-block;
-		max-width: 24ch;
+		/* Full tag when the row has room; only ellipsis when the row itself runs out of space. */
+		max-width: 100%;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -555,10 +556,6 @@
 			grid-row: 2;
 			justify-self: start;
 			max-width: 100%;
-		}
-
-		.compact-tag {
-			max-width: 180px;
 		}
 
 		.compact-date {
