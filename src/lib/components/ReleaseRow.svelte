@@ -65,7 +65,7 @@
 </script>
 
 {#if compact}
-	<article class="release-row is-compact hw-band-chip" style="--pad-glow: {glow}; --chip-accent: {glow}">
+	<article class="release-row is-compact" style="--pad-glow: {glow}">
 		<!-- The whole row is one link to the entry's releases section on samplemods.com. -->
 		<a
 			class="compact-grid"
@@ -229,8 +229,8 @@
 		padding: 0.14rem 0.55rem;
 		gap: 0;
 		background: var(--mpc-body-light);
+		/* Neutral edge — override .hw-band-chip coloured bottom border */
 		border: 1.5px solid #282b34;
-		border-bottom: 2.5px solid var(--chip-accent, var(--pad-glow));
 		border-radius: 5px;
 		box-shadow:
 			inset 0 1px 0 rgb(255 255 255 / 0.65),
@@ -384,6 +384,12 @@
 	.release-entry-link:hover {
 		color: var(--mpc-accent-red);
 		text-decoration: underline;
+	}
+
+	/* Compact rows are one big link — keep hover via row background, not title underline */
+	.is-compact .release-entry-link:hover {
+		color: inherit;
+		text-decoration: none;
 	}
 
 	.release-tag-link {
