@@ -5,7 +5,6 @@
 	import catalogContributors from '../../data/contributors.json';
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
-	import '@fontsource-variable/jetbrains-mono/wght.css';
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import { SECTIONS, sectionFromParam, sectionSingular } from '$lib/categories.js';
 	import HomeHero from '$lib/components/HomeHero.svelte';

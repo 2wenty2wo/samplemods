@@ -5,15 +5,34 @@
 	import catalogMeta from '$lib/catalog-meta.json';
 	import LogoMark from '$lib/LogoMark.svelte';
 	import StarIcon from '$lib/StarIcon.svelte';
+	import interLatin400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+	import interLatin600 from '@fontsource/inter/files/inter-latin-600-normal.woff2?url';
+	import interLatin700 from '@fontsource/inter/files/inter-latin-700-normal.woff2?url';
+	import michromaLatin400 from '@fontsource/michroma/files/michroma-latin-400-normal.woff2?url';
+	import archivoLatinWdth from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
+	import archivoLatinWdthItalic from '@fontsource-variable/archivo/files/archivo-latin-wdth-italic.woff2?url';
+	import jetbrainsLatinWght from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
 	import '@fontsource/inter/400.css';
 	import '@fontsource/inter/600.css';
 	import '@fontsource/inter/700.css';
 	import '@fontsource/michroma/latin-400.css';
 	import '@fontsource-variable/archivo/wdth.css';
 	import '@fontsource-variable/archivo/wdth-italic.css';
+	import '@fontsource-variable/jetbrains-mono/wght.css';
+	import '$lib/font-fallbacks.css';
 	import '../app.css';
 
 	let { children } = $props();
+
+	const fontPreloads = [
+		interLatin400,
+		interLatin600,
+		interLatin700,
+		michromaLatin400,
+		archivoLatinWdth,
+		archivoLatinWdthItalic,
+		jetbrainsLatinWght
+	];
 
 	/** @param {string} path */
 	function navCurrent(path) {
@@ -37,6 +56,9 @@
 </script>
 
 <svelte:head>
+	{#each fontPreloads as href}
+		<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" {href} />
+	{/each}
 	<link
 		rel="alternate"
 		type="application/rss+xml"

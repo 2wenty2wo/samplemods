@@ -1,0 +1,41 @@
+/*
+ * Metric-matched local fallbacks (computed with fontkit against Arial / Courier New).
+ * Keeps layout stable if a webfont is briefly unavailable; final look unchanged once
+ * Inter / Archivo / Michroma / JetBrains Mono load.
+ */
+
+@font-face {
+	font-family: 'Inter Fallback';
+	src: local('Arial'), local('Helvetica'), local('sans-serif');
+	size-adjust: 104.707%;
+	ascent-override: 92.52%;
+	descent-override: 23.037%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: 'Archivo Fallback';
+	src: local('Arial'), local('Helvetica'), local('sans-serif');
+	size-adjust: 103.74%;
+	ascent-override: 84.635%;
+	descent-override: 20.243%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: 'Michroma Fallback';
+	src: local('Arial'), local('Helvetica'), local('sans-serif');
+	size-adjust: 152.146%;
+	ascent-override: 75.996%;
+	descent-override: 17.459%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono Fallback';
+	src: local('Courier New'), local('Courier'), local('monospace');
+	size-adjust: 99.984%;
+	ascent-override: 102.017%;
+	descent-override: 30.005%;
+	line-gap-override: 0%;
+}

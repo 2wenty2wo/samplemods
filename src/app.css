@@ -35,11 +35,11 @@
 	--mpc-focus-ring: #ff8a1e;
 
 	/* Fonts */
-	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-	--font-display: 'Archivo Variable', 'Inter', system-ui, sans-serif;
-	--font-wordmark: 'Michroma', var(--font-display);
+	--font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+	--font-display: 'Archivo Variable', 'Archivo Fallback', 'Inter', 'Inter Fallback', system-ui, sans-serif;
+	--font-wordmark: 'Michroma', 'Michroma Fallback', var(--font-display);
 	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
-	--font-screen: 'JetBrains Mono Variable', var(--font-mono);
+	--font-screen: 'JetBrains Mono Variable', 'JetBrains Mono Fallback', var(--font-mono);
 
 	--radius: 7px;
 	--target-size: 24px;
