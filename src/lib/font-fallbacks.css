@@ -6,7 +6,7 @@
 
 @font-face {
 	font-family: 'Inter Fallback';
-	src: local('Arial'), local('Helvetica'), local('sans-serif');
+	src: local('Arial'), local('Helvetica');
 	size-adjust: 104.707%;
 	ascent-override: 92.52%;
 	descent-override: 23.037%;
@@ -15,7 +15,7 @@
 
 @font-face {
 	font-family: 'Archivo Fallback';
-	src: local('Arial'), local('Helvetica'), local('sans-serif');
+	src: local('Arial'), local('Helvetica');
 	size-adjust: 103.74%;
 	ascent-override: 84.635%;
 	descent-override: 20.243%;
@@ -24,7 +24,7 @@
 
 @font-face {
 	font-family: 'Michroma Fallback';
-	src: local('Arial'), local('Helvetica'), local('sans-serif');
+	src: local('Arial'), local('Helvetica');
 	size-adjust: 152.146%;
 	ascent-override: 75.996%;
 	descent-override: 17.459%;
@@ -33,7 +33,7 @@
 
 @font-face {
 	font-family: 'JetBrains Mono Fallback';
-	src: local('Courier New'), local('Courier'), local('monospace');
+	src: local('Courier New'), local('Courier');
 	size-adjust: 99.984%;
 	ascent-override: 102.017%;
 	descent-override: 30.005%;
