@@ -200,10 +200,10 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 10,
+    "stars": 11,
     "forks": 0,
-    "pushed_at": "2026-11-19T04:20:43Z",
-    "last_commit_at": "2026-11-19T04:20:14Z",
+    "pushed_at": "2026-11-21T00:33:39Z",
+    "last_commit_at": "2026-11-21T00:33:21Z",
     "contributors": 1,
     "open_issues": 5,
     "license": "MIT",
@@ -211,10 +211,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.6D",
-      "published_at": "2026-11-19T04:20:43Z"
+      "tag": "v1.7",
+      "published_at": "2026-11-21T00:33:49Z"
     },
     "releases": [
+      {
+        "tag": "v1.7",
+        "name": "MPC 600 S, LA Version 1.7",
+        "prerelease": false,
+        "published_at": "2026-11-21T00:33:49Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7",
+        "body": "**New: Layout 2000XL.** Additional Settings has a new line, Layout: DEFAULT or 2000XL. On 2000XL every page takes the MPC2000XL's look: its letters, tabbed key labels and dotted lines (with Screen: MPC2000, its colour too). The main screen is laid out as on the XL (B1-B3 read TrMUTE, Tr -, Tr +; the knobs are listed along the bottom; Next: shows beside the counter while a sequence change is pending). Track Mute shows unused tracks as (Unused). Save/Load, the metronome and the envelope page have the XL's pictures. Start-up reads MPC 600 S Version 1.7.\n\n**New: USB Data Mode.** Save/Load, Mode USB DATA, <Start>: the SD card becomes a USB drive on a computer without taking it out. Copy files, eject the drive on the computer, press <Exit>. Use a USB data cable; a charge-only cable powers the MPC but the computer will not see the drive.\n\n**Fixed: pages opening by themselves.** The page buttons (KNOB FX, PAD FX, MUTE, LEVELS, LOOP, CHOP, SAMPLE SELECT, SEQ, SAMPLE REC, PAD BANK) now act only on a whole press, down then up, held 12 ms to 4 s. A release with no press is ignored, and an ERASE tap under 12 ms is ignored (the Erase page no longer opens while turning the wheel).\n\n**Fixed: pad 12 lit yellow at start-up** with Pad Lights OFF.\n\n**Fixed: sounds missing from Sample: / Snd:.** A sound a pad lets go of stays in memory unless another pad plays it; loading or recording over a pad keeps the old sound. Memory holds 512 sounds.\n\n**New: Program Config.** Copy and Swap work with another program's pads (the wheel picks the program). SHIFT + wheel on Snd: (and Sample:) steps only through sounds in memory that no pad plays.\n\n**Changed: Clear all** on LOAD stays set for the next load.\n\nEverything in v1.6D is included.\n\nInstall: extract MPC-600-S-OS-v1.7.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "truncated": false
+      },
       {
         "tag": "v1.6D",
         "name": "MPC 600 S, LA Version 1.6D",
@@ -231,15 +240,6 @@
         "published_at": "2026-11-18T00:53:45Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6",
         "body": "**Fix: long samples cutting out on the second pass.** A note longer than the loop (MPC 2500 projects often have them) left its release waiting into the next pass, where it cut off the pad's new note in the last bars. A new note on a pad now takes over that pad's release (MIDI notes too).\n\n**Fix: the main volume cutting out.** A dropout reading of 0 sent twice in a row could silence the output until the knob was touched. The main volume now needs two confirming readings for a jump; a real turn still follows at once.\n\n**Save/Load** (from v1.5):\n\n- Opens on the Mode and Type used last (after loading an MPC 2500 PROJECT: LOAD, MPC 2500 PROJECT).\n- LOAD has two pages: Mode, Type, Into and Clear all, then B3 <Browse> for the files, worked like Load Files (the wheel moves the bar, pushing it or B3 opens or loads, B1 <Back> goes up).\n- Delete is SHIFT + B2 (asks first). Clear all (NO / YES) empties memory before a load, asking first.\n\nInstall: extract MPC-600-S-OS-v1.6.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.5",
-        "name": "MPC 600 S, LA Version 1.5",
-        "prerelease": false,
-        "published_at": "2026-11-17T23:34:20Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.5",
-        "body": "**Fix: the screen jumping while turning knobs or using the data wheel.** Turning K1–K3, the slider or the main volume, or turning or pushing the data wheel, presses on the panel, and the pads near them could send light hits of their own. On an editing page such a hit selected another pad, so the page jumped to its sample. (1.4 caught these only right after a real pad hit.)\n\n- For 300 ms after a knob, slider or wheel movement, and while the wheel is held down, pad hits lighter than velocity 48 are ignored. Firm presses still play.\n- The 1.4 rule for neighbouring pads stays.\n- If pads still play by themselves, raise **Pad Thresh** in Additional Settings.\n\n**Save/Load:**\n\n- SHIFT + Pad 16 opens Save/Load on the Mode and Type used last: after loading an MPC 2500 PROJECT it opens on LOAD, MPC 2500 PROJECT. The first time after power-on, SAVE PROJECT.\n- LOAD has two pages: first Mode, Type, Into and Clear all, then B3 <Browse> opens the files, which work like Load Files: the wheel moves the bar, pushing the wheel (or B3) opens a folder or loads the item, B1 <Back> goes up a folder.\n- On the files page, B2 renames; Delete is SHIFT + B2, so it can't be pressed by accident. It still asks first.\n- LOAD: new **Clear all** field (NO / YES). With YES, Load asks \"Clear all, then load?\", empties every program, sound, sequence and song (settings stay), then loads. It goes back to NO after each use.\n\nInstall: extract MPC-600-S-OS-v1.5.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n\n\n",
         "truncated": false
       }
     ],
