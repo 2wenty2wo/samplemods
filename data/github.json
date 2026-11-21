@@ -202,8 +202,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 11,
     "forks": 0,
-    "pushed_at": "2026-11-21T00:33:39Z",
-    "last_commit_at": "2026-11-21T00:33:21Z",
+    "pushed_at": "2026-11-21T03:15:23Z",
+    "last_commit_at": "2026-11-21T03:14:51Z",
     "contributors": 1,
     "open_issues": 5,
     "license": "MIT",
@@ -211,8 +211,8 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.7",
-      "published_at": "2026-11-21T00:33:49Z"
+      "tag": "v1.7A",
+      "published_at": "2026-11-21T03:15:43Z"
     },
     "releases": [
       {
@@ -225,21 +225,21 @@
         "truncated": false
       },
       {
+        "tag": "v1.7A",
+        "name": "MPC 600 S, LA Version 1.7A",
+        "prerelease": false,
+        "published_at": "2026-11-21T03:15:43Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7A",
+        "body": "**Fixed: Export of S600 MULTI programs.** EXPORT (sequences, songs and mixdowns) played an S600 MULTI instrument as its Instrument pad's own sample, at the wrong pitch, instead of through its keygroups. It now sounds as it does when the sequence plays. Playback on the MPC was not affected.\n\nEverything in v1.7 is included: the 2000XL Layout, USB Data Mode, steadier buttons, Program Config Copy/Swap across programs, and more (see v1.7).\n\nInstall: extract MPC-600-S-OS-v1.7A.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "truncated": false
+      },
+      {
         "tag": "v1.6D",
         "name": "MPC 600 S, LA Version 1.6D",
         "prerelease": false,
         "published_at": "2026-11-19T04:20:43Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6D",
         "body": "**Fixed: the pop at start-up is reduced.** The codec's volume glides down before the stock OS stops, then the MPC 600 S starts with 0.6 s of silence and fades in over 0.8 s. The speaker amp is no longer switched off and on again.\n\n**Fixed: the file lists no longer go back to the top.** In Load Files and in the Save/Load browser, Back lands on the folder you just left, and each folder keeps its place until power-off.\n\nEverything in v1.6C is included.\n\nInstall: extract MPC-600-S-OS-v1.6D.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.6",
-        "name": "MPC 600 S, LA Version 1.6",
-        "prerelease": false,
-        "published_at": "2026-11-18T00:53:45Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6",
-        "body": "**Fix: long samples cutting out on the second pass.** A note longer than the loop (MPC 2500 projects often have them) left its release waiting into the next pass, where it cut off the pad's new note in the last bars. A new note on a pad now takes over that pad's release (MIDI notes too).\n\n**Fix: the main volume cutting out.** A dropout reading of 0 sent twice in a row could silence the output until the knob was touched. The main volume now needs two confirming readings for a jump; a real turn still follows at once.\n\n**Save/Load** (from v1.5):\n\n- Opens on the Mode and Type used last (after loading an MPC 2500 PROJECT: LOAD, MPC 2500 PROJECT).\n- LOAD has two pages: Mode, Type, Into and Clear all, then B3 <Browse> for the files, worked like Load Files (the wheel moves the bar, pushing it or B3 opens or loads, B1 <Back> goes up).\n- Delete is SHIFT + B2 (asks first). Clear all (NO / YES) empties memory before a load, asking first.\n\nInstall: extract MPC-600-S-OS-v1.6.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
         "truncated": false
       }
     ],
@@ -369,7 +369,7 @@
     "archived": false
   },
   "bsauce42/tape-workshop-mpc-sample": {
-    "stars": 5,
+    "stars": 6,
     "forks": 0,
     "pushed_at": "2026-11-20T19:08:02Z",
     "last_commit_at": "2026-11-20T02:57:26Z",
@@ -870,7 +870,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 240,
+    "stars": 241,
     "forks": 28,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -885,7 +885,7 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 16,
+    "stars": 17,
     "forks": 2,
     "pushed_at": "2026-11-18T22:33:10Z",
     "last_commit_at": "2026-11-18T22:33:10Z",
@@ -1071,8 +1071,8 @@
   "jacob-sabella/mpc-addin-sample-rack": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-06T13:23:42Z",
-    "last_commit_at": "2026-11-06T13:23:16Z",
+    "pushed_at": "2026-11-21T03:59:03Z",
+    "last_commit_at": "2026-11-21T03:24:37Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -1080,10 +1080,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "sample-rack-addin-v1.0.0",
-      "published_at": "2026-11-06T13:23:42Z"
+      "tag": "sample-rack-addin-v1.0.1",
+      "published_at": "2026-11-21T03:59:03Z"
     },
     "releases": [
+      {
+        "tag": "sample-rack-addin-v1.0.1",
+        "name": "MPC Sample rack addin v1.0.1",
+        "prerelease": false,
+        "published_at": "2026-11-21T03:59:03Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v1.0.1",
+        "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n**New in 1.0.1:** packaged with the current addin installer; RACK itself is unchanged. `install.sh` now finds the MPC Sample's `ac50` service (1.0.0's stopped with \"Unit acvs.service not found\"), installs `sample-rack-apply` executable so APPLY works, and INSTALL.md names the MPC Sample.\n\nAn addin for MPC OS standalone devices: a library MPC loads at its start (through `LD_PRELOAD`), not a plugin on a\ntrack. It is installed to `/data/mpc-addins/sample-rack/`.\n\n## Requirements\n\n- An MPC Sample (aarch64). RACK is for the Sample only; the installer refuses a device that is not aarch64.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-1.0.1 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-1.0.1/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n## Uninstall\n\n`ssh root@<device-ip> sh /data/mpc-addins/sample-rack/uninstall.sh` takes the addin out of `LD_PRELOAD`, restarts MPC and\ndeletes its folder.\n\n## Files\n\nSee `SHA256SUMS`. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins) (`docs/ADDINS.md`).\n",
+        "truncated": false
+      },
       {
         "tag": "sample-rack-addin-v1.0.0",
         "name": "MPC Sample rack addin v1.0.0",
@@ -1100,15 +1109,6 @@
         "published_at": "2026-11-06T12:48:56Z",
         "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v0.3.0",
         "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n**New in 0.3.0:** ON/OFF on a plugin MPC is running acts at once, with no restart (its input passes straight through, with a short crossfade). It lasts until MPC restarts; APPLY writes it into the project. Works alongside mpc-addin-commander 1.2.0, whose rack panel gets the same live toggle (interface 2, `mpc_sample_rack_live`).\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-0.3.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-0.3.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@18757db with mpc-vst-plugins (tools/release-aarch64.sh). Live ON/OFF is tested offline (a stand-in host); not yet on an MPC Sample.\n",
-        "truncated": false
-      },
-      {
-        "tag": "sample-rack-addin-v0.2.0",
-        "name": "MPC Sample rack addin v0.2.0",
-        "prerelease": true,
-        "published_at": "2026-11-06T03:45:09Z",
-        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v0.2.0",
-        "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-0.2.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-0.2.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@c2a988d with mpc-vst-plugins@9aab04f (tools/release-aarch64.sh). Tested on an MPC Sample on 2026-11-05.\n",
         "truncated": false
       }
     ],
@@ -1204,7 +1204,7 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 13,
+    "stars": 14,
     "forks": 0,
     "pushed_at": "2026-11-20T16:03:41Z",
     "last_commit_at": "2026-11-20T16:03:38Z",
@@ -1450,10 +1450,10 @@
     "archived": false
   },
   "open-mpc/open-mpc.github.io": {
-    "stars": 5,
+    "stars": 6,
     "forks": 1,
-    "pushed_at": "2026-11-20T11:58:29Z",
-    "last_commit_at": "2026-11-20T11:58:27Z",
+    "pushed_at": "2026-11-21T04:12:50Z",
+    "last_commit_at": "2026-11-21T04:12:48Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1565,8 +1565,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-07T21:00:23Z",
-    "last_commit_at": "2026-11-07T21:00:22Z",
+    "pushed_at": "2026-11-21T05:09:59Z",
+    "last_commit_at": "2026-11-21T05:09:57Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1615,7 +1615,7 @@
     "archived": false
   },
   "rosen-wav/MaiaOS---Mpc-Sample-CFW": {
-    "stars": 6,
+    "stars": 7,
     "forks": 0,
     "pushed_at": "2026-11-20T21:41:45Z",
     "last_commit_at": "2026-11-17T01:09:20Z",
@@ -1726,12 +1726,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 128,
+    "stars": 127,
     "forks": 8,
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 26,
+    "open_issues": 28,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
