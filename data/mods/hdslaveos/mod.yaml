@@ -1,0 +1,12 @@
+name: hdslaveOS
+description: >-
+  HdslaveOS: hdslave's fork of Melodee (by Kerem Kiliç, Ellic Studio) for the Akai MPC Sample: less
+  wasted work, same sound, the HDSLAVE palette, and a screen page for CLAP plug-ins.
+repo: hdslave/hdslaveOS
+author: hdslave
+runs_on:
+  - desktop
+  - device
+install: sd-card
+audience:
+  - musician
