@@ -6,6 +6,11 @@ import { spawnSync } from 'node:child_process';
 import { readEntries } from './catalog.js';
 import { deriveVersionFromTitle } from './watch.js';
 import { releaseDisplayLabel } from '../src/lib/release-label.js';
+import {
+	latestReleasesOnePerEntry,
+	selectNewestCatalogEntries
+} from '../src/lib/latest-releases-strip.js';
+import { parseEntryAddedDates } from './build-data.js';
 
 assert.equal(deriveVersionFromTitle('/MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
 assert.equal(deriveVersionFromTitle('MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
@@ -13,6 +18,64 @@ assert.equal(deriveVersionFromTitle('/releases/CustomBuild.zip'), 'CustomBuild')
 assert.equal(releaseDisplayLabel('v1.2.9', 'GRIDZILLA 1.2.9'), 'v1.2.9');
 assert.equal(releaseDisplayLabel('maiaos', 'MaiaOS - Beta V2'), 'MaiaOS - Beta V2');
 assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
+
+// selectNewestCatalogEntries: dedupe against Latest releases strip + newest-first order + limit + null added handling
+{
+	const sampleEntries = [
+		{ id: 'in-strip', name: 'In Strip', added: '2026-11-20T22:00:00Z' },
+		{ id: 'newest-a', name: 'Newest A', added: '2026-11-20T21:00:00Z' },
+		{ id: 'newest-b', name: 'Newest B', added: '2026-11-20T19:00:00Z' },
+		{ id: 'mid-c', name: 'Mid C', added: '2026-11-19T12:00:00Z' },
+		{ id: 'no-date', name: 'No Date', added: null },
+		{ id: 'older-d', name: 'Older D', added: '2026-11-18T10:00:00Z' }
+	];
+	const strip = latestReleasesOnePerEntry([
+		{ entryId: 'in-strip', tag: 'v1.0' },
+		{ entryId: 'in-strip', tag: 'v0.9' }
+	], 5);
+	const picked = selectNewestCatalogEntries(sampleEntries, strip, 3);
+	assert.deepEqual(
+		picked.map((e) => e.id),
+		['newest-a', 'newest-b', 'mid-c'],
+		'must exclude entries in Latest releases strip, skip null added dates, sort newest first, and enforce limit'
+	);
+	assert.deepEqual(
+		selectNewestCatalogEntries([{ id: 'x', added: null }], [], 5),
+		[],
+		'missing added dates return empty list so panel hides'
+	);
+}
+
+// parseEntryAddedDates: tracks renames/section moves back to original add commit and returns empty on shallow 1-commit logs
+{
+	const mockEntries = [
+		{ id: 'moved-mod', section: 'mods', file: '/repo/data/mods/moved-mod/mod.yaml' },
+		{ id: 'fresh-tool', section: 'tools', file: '/repo/data/tools/fresh-tool/tool.yaml' }
+	];
+	const mockGitLog = [
+		'COMMIT:2026-11-20T10:00:00Z',
+		'A\tdata/tools/fresh-tool/tool.yaml',
+		'COMMIT:2026-11-18T10:00:00Z',
+		'R095\tdata/tools/moved-mod/tool.yaml\tdata/mods/moved-mod/mod.yaml',
+		'COMMIT:2026-11-15T10:00:00Z',
+		'R094\tdata/mods/moved-mod.yaml\tdata/tools/moved-mod/tool.yaml',
+		'COMMIT:2026-11-14T10:00:00Z',
+		'A\tdata/mods/moved-mod.yaml'
+	].join('\n');
+	const parsed = parseEntryAddedDates(mockGitLog, mockEntries);
+	assert.equal(parsed.get('fresh-tool'), '2026-11-20T10:00:00Z');
+	assert.equal(
+		parsed.get('moved-mod'),
+		'2026-11-14T10:00:00Z',
+		'entry moved across sections must keep its original add date, not the move date'
+	);
+	const shallowLog = [
+		'COMMIT:2026-11-20T10:00:00Z',
+		'A\tdata/mods/moved-mod/mod.yaml',
+		'A\tdata/tools/fresh-tool/tool.yaml'
+	].join('\n');
+	assert.equal(parseEntryAddedDates(shallowLog, mockEntries).size, 0, 'shallow 1-commit checkout leaves added null');
+}
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fixture = fs.mkdtempSync(path.join(root, '.catalog-test-'));
@@ -53,6 +116,7 @@ try {
 	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	fs.mkdirSync(path.join(fixture, 'src', 'lib'), { recursive: true });
 	fs.copyFileSync(path.join(root, 'src/lib/release-label.js'), path.join(fixture, 'src/lib/release-label.js'));
+	fs.copyFileSync(path.join(root, 'src/lib/latest-releases-strip.js'), path.join(fixture, 'src/lib/latest-releases-strip.js'));
 	fs.mkdirSync(path.join(fixture, 'schema'));
 	fs.copyFileSync(path.join(root, 'schema/mod.yaml'), path.join(fixture, 'schema/mod.yaml'));
 	const validate = () => spawnSync(process.execPath, [path.join(fixture, 'scripts/validate.js')], { encoding: 'utf8' });
