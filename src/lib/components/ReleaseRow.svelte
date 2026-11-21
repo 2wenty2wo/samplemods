@@ -22,6 +22,7 @@
 	 *     thumb: { kind: 'shot' | 'logo' | 'splash', src: string | null },
 	 *     tag: string,
 	 *     name: string | null,
+	 *     label?: string,
 	 *     published_at: string | null,
 	 *     html_url: string | null,
 	 *     body_html: string,
@@ -29,9 +30,11 @@
 	 *     prerelease: boolean,
 	 *     truncated: boolean
 	 *   },
-	 *   compact?: boolean
+	 *   compact?: boolean,
+	 *   showVersion?: boolean,
+	 *   hrefHash?: string
 	 * }} */
-	let { rel, compact = false } = $props();
+	let { rel, compact = false, showVersion = true, hrefHash = '#releases' } = $props();
 
 	const thumbSrc = $derived(assetUrl(rel.thumb?.src));
 	const glow = $derived(sectionGlow(rel.section));
@@ -56,11 +59,11 @@
 </script>
 
 {#if compact}
-	<article class="release-row is-compact" style="--pad-glow: {glow}">
-		<!-- The whole row is one link to the entry's releases section on samplemods.com. -->
+	<article class="release-row is-compact" class:no-version={!showVersion} style="--pad-glow: {glow}">
+		<!-- The whole row is one link to the entry page (or its #releases section). -->
 		<a
 			class="compact-grid"
-			href="{base}{rel.entryPath}#releases"
+			href="{base}{rel.entryPath}{hrefHash}"
 			aria-labelledby="rel-name-{rel.key} rel-section-{rel.key}"
 		>
 			<div class="release-thumb-link compact-thumb">
@@ -87,12 +90,14 @@
 				>{sectionSingularLabel(rel.section)}</span
 			>
 
-			<div class="compact-version-wrap">
-				<span class="screen-badge date compact-tag" title={rel.label ?? rel.tag}>{rel.label ?? rel.tag}</span>
-				{#if rel.prerelease}
-					<span class="badge-status beta compact-prerelease">Pre-release</span>
-				{/if}
-			</div>
+			{#if showVersion && (rel.label ?? rel.tag)}
+				<div class="compact-version-wrap">
+					<span class="screen-badge date compact-tag" title={rel.label ?? rel.tag}>{rel.label ?? rel.tag}</span>
+					{#if rel.prerelease}
+						<span class="badge-status beta compact-prerelease">Pre-release</span>
+					{/if}
+				</div>
+			{/if}
 
 			{#if fullDate}
 				<time class="release-pub-date compact-date" datetime={rel.published_at ?? ''}>
@@ -575,6 +580,22 @@
 
 		.date-short {
 			display: inline;
+		}
+
+		.no-version .compact-grid {
+			display: flex;
+			grid-template-columns: none;
+			grid-template-rows: none;
+			gap: 0.4rem;
+		}
+
+		.is-compact.no-version .release-bezel {
+			width: 32px;
+			height: 24px;
+		}
+
+		.no-version .compact-date {
+			margin-left: auto;
 		}
 	}
 </style>

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { releaseDisplayLabel } from '../src/lib/release-label.js';
 import { readEntries } from './catalog.js';
@@ -21,9 +22,73 @@ const details = {};
 /** Always first in each entry's "Works with" list when compatible. */
 const PRIMARY_LAUNCHER = 'sampleboot';
 
+/**
+ * Parse `git log --format=COMMIT:%aI --name-status --diff-filter=AR -M -- data` output
+ * (newest-to-oldest) to find each entry's original addition timestamp across renames/section moves.
+ * Returns null values if git history is unavailable or shallow (single commit).
+ * @param {string} gitOutput
+ * @param {Array<{ id: string, section: string, file: string }>} catalogEntries
+ * @returns {Map<string, string>}
+ */
+export function parseEntryAddedDates(gitOutput, catalogEntries) {
+	const trackedPathToId = new Map();
+	for (const entry of catalogEntries) {
+		const relPath = path.posix.join('data', entry.section, entry.id, path.basename(entry.file));
+		trackedPathToId.set(relPath, entry.id);
+	}
+	const addedById = new Map();
+	const commitDates = new Set();
+	let currentCommitDate = null;
+	for (const rawLine of String(gitOutput ?? '').split(/\r?\n/)) {
+		const line = rawLine.trim();
+		if (!line) continue;
+		if (line.startsWith('COMMIT:')) {
+			currentCommitDate = line.slice(7).trim() || null;
+			if (currentCommitDate) commitDates.add(currentCommitDate);
+			continue;
+		}
+		if (!currentCommitDate) continue;
+		const parts = line.split('\t');
+		const status = parts[0];
+		if (status === 'A' && parts[1]) {
+			const id = trackedPathToId.get(parts[1]);
+			if (id) {
+				addedById.set(id, currentCommitDate);
+			}
+		} else if (status.startsWith('R') && parts[1] && parts[2]) {
+			const oldPath = parts[1];
+			const newPath = parts[2];
+			const id = trackedPathToId.get(newPath);
+			if (id) {
+				trackedPathToId.delete(newPath);
+				trackedPathToId.set(oldPath, id);
+				addedById.set(id, currentCommitDate);
+			}
+		}
+	}
+	if (catalogEntries.length > 1 && commitDates.size <= 1) {
+		return new Map();
+	}
+	return addedById;
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
 const entries = readEntries();
 // Only this generated directory is cleared; original media stays with each entry.
 fs.rmSync(mediaDir, { recursive: true, force: true });
+
+/** @type {Map<string, string>} */
+let addedById = new Map();
+try {
+	const gitOut = execFileSync(
+		'git',
+		['log', '--format=COMMIT:%aI', '--name-status', '--diff-filter=AR', '-M', '--', 'data'],
+		{ cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+	);
+	addedById = parseEntryAddedDates(gitOut, entries);
+} catch {
+	addedById = new Map();
+}
 
 let github = {};
 if (fs.existsSync(githubPath)) {
@@ -99,6 +164,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		id,
 		section,
 		...raw,
+		added: addedById.get(id) ?? null,
 		price: raw.price ?? 'free',
 		source: raw.source ?? (raw.repo ? 'open' : 'closed'),
 		stars: gh.stars ?? null,
@@ -177,3 +243,4 @@ fs.writeFileSync(catalogMetaPath, JSON.stringify({ stars: catalogStars }, null, 
 console.log(
 	`Wrote ${mods.length} catalog entries to ${path.relative(root, outPath)} and ${path.relative(root, publicCatalogPath)}`
 );
+}

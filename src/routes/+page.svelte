@@ -16,6 +16,7 @@
 
 	let { data } = $props();
 	const latestReleases = $derived(data?.latestReleases ?? []);
+	const newEntries = $derived(data?.newEntries ?? []);
 
 	const homeTitle = `${SITE_NAME}: mods, apps, games & tools for the Akai MPC Sample`;
 	const homeDescription = `${SITE_NAME}: community catalog of custom firmware mods, apps, games, tools, guides, and developer libraries for the Akai MPC Sample.`;
@@ -119,7 +120,7 @@
 	bind:query
 />
 
-<LatestReleasesStrip releases={latestReleases} />
+<LatestReleasesStrip releases={latestReleases} {newEntries} />
 
 <div class="wrap" id="catalog">
 	<CatalogFilterBar
