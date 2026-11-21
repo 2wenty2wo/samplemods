@@ -200,7 +200,7 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 11,
+    "stars": 12,
     "forks": 0,
     "pushed_at": "2026-11-21T03:15:23Z",
     "last_commit_at": "2026-11-21T03:14:51Z",
@@ -524,8 +524,8 @@
   "drose030/trackyard": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-07T22:56:03Z",
-    "last_commit_at": "2026-11-07T22:56:01Z",
+    "pushed_at": "2026-11-21T16:38:26Z",
+    "last_commit_at": "2026-11-21T16:38:24Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -533,10 +533,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.2.0",
-      "published_at": "2026-11-07T22:56:05Z"
+      "tag": "v1.3.0",
+      "published_at": "2026-11-21T16:38:33Z"
     },
     "releases": [
+      {
+        "tag": "v1.3.0",
+        "name": "Trackyard v1.3.0",
+        "prerelease": false,
+        "published_at": "2026-11-21T16:38:33Z",
+        "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.3.0",
+        "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.3.0-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.3.0.exe`\n\nInstall over the old version; your songs, settings and downloaded models stay. The app isn't signed by a registered developer: see the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows) for the first start.\n\n## New\n\n- **Song overview:** a strip above the footer shows the whole song's waveform, the part in view and where playback is. Click or drag it to move the view.\n- **Scroll while playing:** scrolling or zooming during playback no longer jumps back to the playhead. The view follows again once the playhead is back in view, after a jump (ruler, ←/→, Home) or on the next Play.\n- **Convert MP3** opens the dialog in the folder of the last converted file.\n\n## Fixed\n\n- Pressing Save again while the folder dialog of a new song was open saved it twice and then broke opening the next file (\"Cannot read properties of undefined\"). Only one save runs at a time now.\n",
+        "truncated": false
+      },
       {
         "tag": "v1.2.0",
         "name": "Trackyard v1.2.0",
@@ -553,15 +562,6 @@
         "published_at": "2026-11-05T09:57:38Z",
         "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.1.1",
         "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.1.1-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.1.1.exe`\n\n## Fixed\n\n- **macOS: \"damaged\" app.** The Mac app is now signed ad hoc, so macOS no longer calls it damaged and only offers the bin. It is still not signed by a registered developer: start it once, click **Done**, then **System Settings → Privacy & Security → Open Anyway**, and start it again. See the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows).\n\nNothing else changed since [1.1.0](https://github.com/drose030/trackyard/releases/tag/v1.1.0); the Windows app is the same.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1.0",
-        "name": "Trackyard v1.1.0",
-        "prerelease": false,
-        "published_at": "2026-11-05T09:30:38Z",
-        "html_url": "https://github.com/drose030/trackyard/releases/tag/v1.1.0",
-        "body": "## Download\n\n- **Mac** (Apple Silicon): `Trackyard-1.1.0-arm64.dmg`\n- **Windows** (64-bit): `Trackyard-Setup-1.1.0.exe`\n\nInstall over 1.0; your songs, settings and downloaded models stay. The app is still unsigned: see the [README](https://github.com/drose030/trackyard#or-the-app-for-mac-or-windows) for the first start.\n\n## Fixed\n\n- **Regenerate after a tempo change:** Regenerate… and the level controls now use the tempo map you are editing. Before, after an unsaved tempo or offset change, the shortest-gap rules of Hard, Medium and Easy worked with the old timing.\n- **Beat grid to the end of the song:** the grid and the metronome now run to the end of the audio, not just a few beats past the last note.\n\n## Changed\n\n- Saving refuses notes a chart file can't hold, like a cymbal on one difficulty where another has a tom at the same spot, instead of quietly turning one of them into the other.\n- Under the hood: chart reading and writing, the song folder, and the editor's document, tempo map and playback each live in one module now, with tests for the editor's JavaScript.\n",
         "truncated": false
       }
     ],
@@ -1305,19 +1305,37 @@
   "keremimo/melodee-sample": {
     "stars": 71,
     "forks": 12,
-    "pushed_at": "2026-11-21T13:42:44Z",
-    "last_commit_at": "2026-11-21T11:12:32Z",
+    "pushed_at": "2026-11-21T19:13:10Z",
+    "last_commit_at": "2026-11-21T19:02:02Z",
     "contributors": 1,
-    "open_issues": 13,
+    "open_issues": 9,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.6.1",
-      "published_at": "2026-11-21T13:46:09Z"
+      "tag": "v0.6.3",
+      "published_at": "2026-11-21T19:13:56Z"
     },
     "releases": [
+      {
+        "tag": "v0.6.3",
+        "name": "Melodee 0.6.3",
+        "prerelease": false,
+        "published_at": "2026-11-21T19:13:56Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.3",
+        "body": "Melodee 0.6.3 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.2:** copy `Melodee-MPC-Sample-v0.6.3.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.3?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **Keygroup programs from MPC software played wrong pitches.** Programs saved by the MPC software often leave each layer's root note at 0, which means \"the sample's own root note\". Melodee read it as C-1, so every key played far too high. It now takes the root note stored in the WAV file, as the MPC does.\n\n## Under the hood\n\n- Project creation and pattern clearing made once in the core instead of in every file that uses them.\n- The core's tests run in the build beside Melodee's own.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.6.2",
+        "name": "Melodee v0.6.2",
+        "prerelease": false,
+        "published_at": "2026-11-21T16:17:31Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.2",
+        "body": "Melodee 0.6.2 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.1:** copy `Melodee-MPC-Sample-v0.6.2.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.2?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## New\n\n### Projects\n\n- **Autosave can be turned off.** Settings > **SEQ** > **Autosave**: with it off, the project is saved only when you save it. **B1** on Projects reads **SAVE** and writes the project to its file. **REVERT** (**TO SAVED**) on the open project's sheet goes back to its file. **NEW**, **LOAD** and the Exit screen leave unsaved changes behind and say so first. The header shows **UNSAVED** in amber while there are changes. (#18)\n\n## Under the hood\n\n- Melodee's engine, model and file formats now live in their own repository, [ellic-core](https://github.com/keremimo/ellic-core) (MIT), shared with [Melodee for Ableton Move](https://github.com/keremimo/melodee-move). Melodee on the MPC builds it unchanged; nothing changes in how it plays. Its licence is in the zip as `licenses/ellic-core-LICENSE.txt`.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.6.1",
         "name": "Melodee v0.6.1",
@@ -1325,24 +1343,6 @@
         "published_at": "2026-11-21T13:46:09Z",
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.1",
         "body": "Melodee 0.6.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.0:** copy `Melodee-MPC-Sample-v0.6.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.1?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## New\n\n### Chop\n\n- **Record slices from Chop.** While Seq Record runs, the pads on Chop record the slices they play, as the chopped pad's note with its slice number. The kit's pads stay as they are. Step Edit and the Roll show the slice. A chop change that would renumber recorded slices (**K3**, Split, Merge, **ERASE** + pad, **ERASE** + **CHOP**) asks first. The MPC 3 export lays the recorded slices on free pads. (#24)\n\n### Sequences\n\n- **A sequence has a colour.** **SHIFT** + encoder on Sequences, or **K2** on the Patterns page's **SEQUENCE** card, sets it to none or one of the 16 track colours. Its cell and its pad light show it. **ERASE** clears it with the name and tempo. (#19)\n\n## Fixed\n\n- Stage's **FX** view can add an effect. Push the encoder past the last effect to the **+**, then push there to open the effect picker. (#29)\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.6.0",
-        "name": "Melodee 0.6.0",
-        "prerelease": false,
-        "published_at": "2026-11-21T08:30:56Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.0",
-        "body": "Melodee 0.6.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.5.1:** copy `Melodee-MPC-Sample-v0.6.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.0?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **USB-C in plays straight to the jacks.** Settings' **AUDIO** has **USB-C in**. **Direct** (the default) plays what a computer sends straight to the jacks, at the level and pan it would have in Melodee but without effects, about 8 ms sooner. **Tracks** plays it through the track's effects, as before.\n- **An audio track's MONITOR is Off, Auto or On.** **Auto** is what **On** was: you hear the input while the track is armed or recording. **On** now hears it all the time, also while you play or stop.\n\n## New\n\n### MIDI and USB-C\n\n- **MIDI played by hand goes out at once.** Pads, keys, MIDI in, pressure, the mod wheel and the knobs no longer wait for the audio latency or plug-in compensation.\n- **USB-C in and out follow the MPC's clock.** A computer's sound reaches the jacks about 20 ms sooner. A computer recording all 18 channels gets them about 17 ms sooner, for a tenth of the processor it took.\n- **A MIDI track's DELAY goes to −50 ms.** An instrument heard late, such as one on a computer over USB-C, lands with the rest.\n\n### Undo list\n\n- Hold **SHIFT** + **−** to see the undo steps, newest on top, each with its track and how long ago. Push or **B3** undoes or redoes up to the step under the cursor. A tap still undoes one step.\n\n### Sample browser\n\n- **SHIFT** + **B3** stars a file. **STARRED** and **RECENT** (the last 16 files loaded) are at the top of the card and of the Samples folder. **ERASE** in a list takes the file off it.\n\n### Tracks\n\n- **Name a track:** **SHIFT** + encoder push on Tracks, or **NAME TRACK** in the MENU. The name stays when you change the track's sound or plug-in. Undo takes it back.\n\n### Scales\n\n- The scales of Live 12, Push 3 and Move, after Melodee's own.\n\n### Performance\n\n- Idle kits, empty tracks and silent punches take less of the processor.\n\n## Fixed\n\n- **ERASE** + **K1**–**K3** on a kit pad's own values (Tune, Mix, Amp Env, Filter, Filt Env, Cloud, its sends, loop crossfade) sets them back to a new pad's. (#35)\n- The sample browser keeps its folder when a project loads, so a new DRUM PADS track lists every folder. (#30)\n- Stems finds its program when Melodee is started from a boot menu such as SampleBoot. (#22)\n- With Seq Record on, Chop's **TO PADS** ends the recording first, so Undo takes back the pads. (#24)\n- Hitting an empty pad while 32 voices sound no longer fades out the oldest.\n- The auto sampler on a MIDI track stops for a clip only where the input stays at full scale, names the key, and keeps the reason on the sheet.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.5.1",
-        "name": "Melodee 0.5.1",
-        "prerelease": false,
-        "published_at": "2026-11-18T19:25:20Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.5.1",
-        "body": "Melodee 0.5.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.5.0:** copy `Melodee-MPC-Sample-v0.5.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.5.1?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **Hold SEQ for the selected track's patterns.** On any page, a pad launches that pattern on the selected track only, and more pads in the same hold chain them. **SHIFT** + pad launches a sequence on every track. While **SHIFT** is held, the pads and the sheet show the sequences, and **SHIFT** + more pads chain them. **−** / **+** launch the previous / next pattern. A tap of **SEQ** still opens **Sequences**.\n- **Auto chop cuts DRUMS and MUSIC on the beats.** A sample with a steady beat is cut on the beats Melodee finds in it: every 1, 2, 4, 8 or 16 beats, or eighths, whichever comes nearest **SLICES**. No slice is shorter than 80 % of an eighth note, and Auto keeps its cuts that far from your hand cuts. HITS keeps 150 ms between cuts.\n\n## New\n\n### Chop\n\n- **TO PADS writes a pattern of the slices.** With the **PATTERN** card on (the default), TO PADS also writes a pattern with a note for each slice where it falls, so **PLAY** gives you the loop back on pads you can change. With KIT, each note plays the pad of its sound. The pattern goes into the track's pattern when that is empty, else into the first empty one. Undo takes back the pads and the pattern in one step.\n\n### Settings\n\n- **USB volume** on **AUDIO**: what a computer records from the MPC over USB-C. **Full** (the default) sends the mix at full level whatever **MAIN VOLUME** is set to. **Knob** follows **MAIN VOLUME**, as the jacks do.\n\n## Fixed\n\n- While a loop or MIDI track uses the mic or the rear inputs, the other input as Input Config's or an audio track's source shows **IN USE** and is silent, instead of playing the input in use under its name. Sample Record and audio takes refuse with a notice.\n",
         "truncated": false
       }
     ],
@@ -1565,8 +1565,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-21T14:32:55Z",
-    "last_commit_at": "2026-11-21T14:32:54Z",
+    "pushed_at": "2026-11-21T17:16:30Z",
+    "last_commit_at": "2026-11-21T17:16:29Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1731,7 +1731,7 @@
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 28,
+    "open_issues": 26,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
