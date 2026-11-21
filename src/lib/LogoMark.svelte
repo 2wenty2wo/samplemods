@@ -2,10 +2,13 @@
 	/** @type {{ class?: string }} */
 	let { class: className = '' } = $props();
 
-	const cells = Array.from({ length: 16 }, (_, i) => ({
-		x: (i % 4) * 33,
-		y: Math.floor(i / 4) * 33
-	}));
+	const pads = ['#ff4d7d', '#f8b800', '#38b6e8']; // pink, amber, cyan
+	const cells = Array.from({ length: 16 }, (_, i) => {
+		const col = i % 4;
+		const row = Math.floor(i / 4);
+		const d = col + row; // diagonal 0..6, top-left to bottom-right
+		return { x: col * 33, y: row * 33, d, pad: pads[d % 3] };
+	});
 </script>
 
 <svg
@@ -16,6 +19,14 @@
 	focusable="false"
 >
 	{#each cells as cell}
-		<rect x={cell.x} y={cell.y} width="29" height="29" rx="7" />
+		<rect
+			class="logo-cell"
+			style="--d:{cell.d}; --pad:{cell.pad}"
+			x={cell.x}
+			y={cell.y}
+			width="29"
+			height="29"
+			rx="7"
+		/>
 	{/each}
 </svg>

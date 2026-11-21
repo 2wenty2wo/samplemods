@@ -187,6 +187,25 @@ a:hover {
 	flex-shrink: 0;
 }
 
+@keyframes logo-wave {
+	0%,
+	100% {
+		fill: currentColor;
+	}
+	30% {
+		fill: var(--pad);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.brand-lockup:hover .logo-cell,
+	.brand-lockup:focus-visible .logo-cell,
+	.footer-brand:hover .logo-cell {
+		animation: logo-wave 650ms ease-out;
+		animation-delay: calc(var(--d) * 75ms);
+	}
+}
+
 .wordmark {
 	font-family: var(--font-wordmark);
 	font-style: normal;
