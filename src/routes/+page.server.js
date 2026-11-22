@@ -37,7 +37,7 @@ function toNewEntryRow(entry) {
 /** @type {import('./$types').PageServerLoad} */
 export function load() {
 	const latestReleases = latestReleasesOnePerEntry(getAllReleases(), 5);
-	const newEntries = selectNewestCatalogEntries(mods, latestReleases, 5).map(toNewEntryRow);
+	const newEntries = selectNewestCatalogEntries(mods, 5).map(toNewEntryRow);
 	return {
 		latestReleases,
 		newEntries

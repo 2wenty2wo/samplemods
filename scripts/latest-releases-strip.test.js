@@ -34,18 +34,22 @@ const catalogFixture = [
 	{ id: 'le-resampler', name: 'Le Resampler', added: '2026-11-17T21:20:44+11:00' },
 	{ id: 'no-date', name: 'No Date', added: null }
 ];
-const newest = selectNewestCatalogEntries(catalogFixture, strip, 5);
+const newest = selectNewestCatalogEntries(catalogFixture, 5);
 assert.equal(newest.length, 5);
 assert.deepEqual(
 	newest.map((e) => e.id),
 	[
+		'tape-workshop',
 		'sampleseq3000',
 		'padhead',
 		'dsb-boot',
-		'vigobeatz-stems-grid64',
-		'mpc-sample-engine-ports'
+		'vigobeatz-stems-grid64'
 	],
-	'dedupes against Latest releases strip, sorts newest first by added timestamp, and caps at limit'
+	'keeps entries also present in Latest releases strip when among newest, sorts by added timestamp, and caps at limit'
+);
+assert.ok(
+	newest.some((e) => strip.some((r) => r.entryId === e.id)),
+	'an entry in the releases strip is still returned when it is among the newest'
 );
 
-console.log('Latest-releases strip checks passed: 5 distinct entryIds, newest kept, new-in-catalog deduped.');
+console.log('Latest-releases strip checks passed: 5 distinct entryIds, newest kept, new-in-catalog overlap allowed.');

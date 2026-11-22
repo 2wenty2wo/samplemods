@@ -19,7 +19,7 @@ assert.equal(releaseDisplayLabel('v1.2.9', 'GRIDZILLA 1.2.9'), 'v1.2.9');
 assert.equal(releaseDisplayLabel('maiaos', 'MaiaOS - Beta V2'), 'MaiaOS - Beta V2');
 assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 
-// selectNewestCatalogEntries: dedupe against Latest releases strip + newest-first order + limit + null added handling
+// selectNewestCatalogEntries: newest-first order + limit + null added handling; may overlap Latest releases
 {
 	const sampleEntries = [
 		{ id: 'in-strip', name: 'In Strip', added: '2026-11-20T22:00:00Z' },
@@ -33,14 +33,15 @@ assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 		{ entryId: 'in-strip', tag: 'v1.0' },
 		{ entryId: 'in-strip', tag: 'v0.9' }
 	], 5);
-	const picked = selectNewestCatalogEntries(sampleEntries, strip, 3);
+	assert.equal(strip[0].entryId, 'in-strip');
+	const picked = selectNewestCatalogEntries(sampleEntries, 3);
 	assert.deepEqual(
 		picked.map((e) => e.id),
-		['newest-a', 'newest-b', 'mid-c'],
-		'must exclude entries in Latest releases strip, skip null added dates, sort newest first, and enforce limit'
+		['in-strip', 'newest-a', 'newest-b'],
+		'must keep entries also in Latest releases strip when among newest, skip null added dates, sort newest first, and enforce limit'
 	);
 	assert.deepEqual(
-		selectNewestCatalogEntries([{ id: 'x', added: null }], [], 5),
+		selectNewestCatalogEntries([{ id: 'x', added: null }], 5),
 		[],
 		'missing added dates return empty list so panel hides'
 	);
