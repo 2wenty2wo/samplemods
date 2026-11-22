@@ -17,8 +17,8 @@
   "AlekseyMalykh/am-mod": {
     "stars": 22,
     "forks": 1,
-    "pushed_at": "2026-11-16T22:50:02Z",
-    "last_commit_at": "2026-11-16T22:48:53Z",
+    "pushed_at": "2026-11-21T20:40:10Z",
+    "last_commit_at": "2026-11-21T20:38:53Z",
     "contributors": 3,
     "open_issues": 1,
     "license": "MIT",
@@ -30,6 +30,15 @@
       "published_at": "2026-11-16T22:50:36Z"
     },
     "releases": [
+      {
+        "tag": "r30c-beta1",
+        "name": "r30c beta1",
+        "prerelease": true,
+        "published_at": "2026-11-21T20:32:07Z",
+        "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30c-beta1",
+        "body": "# Am MOD r30c beta1 — MIDI, projects, synth and Piano Roll\n\n> **BETA — r30c-beta1.** This is a beta release. **Compatibility with other mods (Stock, SampQOL, D.S.B and others) still requires testing** — do not use it on the only copy of important projects; back up first. Please report problems.\n\nFor **Akai MPC Sample stock firmware 1.3.0.12**. This release continues r30b. Installed firmware is not rewritten. Items marked *pending* have passed host/emulator checks but still need a hardware check on your MPC.\n\n## MIDI\n\n- **MIDI Input modes** (B3 cycles): Drum map, Channels, Selected pad and Instrument. Switching mode keeps your channel assignments; Shift+B3 resets the mode settings only.\n- **Channels:** each MIDI channel gets a pad and a role: All pads, Tune, Chop or Synth. Tune and Chop recording from a MIDI keyboard is confirmed on MPC.\n- **Selected pad:** K1 sets the incoming channel (All or 1–16), K3 the root note; the keyboard plays Tune/16 Levels on the selected pad.\n- **MIDI Tools → MIDI Buttons:** a list of controller buttons and faders mapped to MPC buttons and knobs. B3 assigns (or press the MPC control), B2 deletes the highlighted entry or cancels, B1 goes back. Faders can be assigned; Shift+button combinations are supported.\n- **Input Config → B3 MIDI In** opens the same MIDI Input settings (B2 Map/Learn, B1 back).\n\n## Projects and storage\n\n- Internal user folders (Projects, Samples/User) are saved permanently. Internal audio exports stay on Internal flash.\n- Recovery remembers the original storage (Internal or SD) and the project's folder. The first Save returns to that place and never falls back to a same-named project on another volume. If the origin is not known, the screen says **“Original location unknown; save a new copy”**.\n- At start-up the newest project among the card, Internal and the temporary autosave is loaded, whichever firmware (Stock, SampQOL or Am MOD) saved it. The project's audio data is staged so the native recorder cannot return an older sample with the same name.\n\n## Sample Record and Synth\n\n- **B2 To Seq:** a Mic take inserts the target pad's note into the playing sequence when the take starts. If playback is stopped the input waits until Play.\n- **Synth:** 8 voices (sine, saw, square, triangle), ADSR and low-pass. Played from MIDI (Instrument mode or Synth role) or from the pads. Parameters: Mixer pad 13 → K1–K3 pages (Tone, Envelope, Keys).\n- **Input routing** (Mixer → Input → ROUTE → Input): *Clean* (signal straight to the pads), *Track* (through the Input track and its FX, default) and *Synth* (the synth is the Input track source; *Mic* layers the microphone on top). *Direct out* adds the processed synth to the output when monitoring is off.\n- **16 Levels for the synth** uses the same engine and colours as the project's 16 Levels: Monochrome, Piano, Scale and Degrees, with the project key and scale by default. Transpose moves the notes along the scale (steps in Degrees, semitones elsewhere); the key stays and the pad lights follow the notes. In Sample Record the keyboard starts off and the 16 Levels button turns it on (the button is lit while it is on).\n- Pad Bank + knob resets a synth parameter to its default. Pad Bank letters A–H stay off on the synth page, as for Master and Input.\n\n## Piano Roll, Song and Mixer\n\n- Piano Roll shows the K1–K3 values above the knobs (scroll, zoom, move, length, velocity, grid).\n- Mute on the selected row toggles that pad's local mute in the sequence; a red M marks muted rows, red SM appears in Piano Roll and Mixer headers.\n- Song window: repeat table with step colours; Mixer pad lights follow the selected track.\n\n## Limits\n\n- The synth, the new Input routing and the MIDI Buttons page were developed after the last full device check and are *pending* hardware verification.\n- Saving over an existing name does not yet show a warning in the native Save dialog.\n- Opening a project that was last saved by another mod can report an unknown original location; save a new copy.\n- Cross-mod Load/Save of Internal projects (Am MOD, Stock, SampQOL) is not fully certified.\n\nSee also [Known limitations](KNOWN_ISSUES.md) and the [changelog](../CHANGELOG.md).\n",
+        "truncated": false
+      },
       {
         "tag": "r30b",
         "name": "Am MOD r30b — USB audio, SD access and updated effects",
@@ -46,15 +55,6 @@
         "published_at": "2026-11-15T13:53:18Z",
         "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30a",
         "body": "# Am MOD r30a\n\nThe first release with the mixer, the input channel, resampling through the mixer and the tuner. Firmware **1.3.0.12** only.\n\n## Read this first\n\n- **The \"SD Card Access\" item is hidden** in the Project menu (Shift+Pad 16) in both modes. USB transfer mode (\"the card as a drive on your computer\") cannot work while the mod runs: the app runs in an isolated copy without access to raw storage devices, and the card is in use by the mod. The item was removed for safety. Use a card reader; to get USB mode back, remove `autorun/` from the card and start the MPC.\n- **Two modes: Stock and Am MOD.** Project → Mod Settings → Quick → FX mode, applied after a restart. *Stock*: the stock FX Select (one effect), no mixer. *Am MOD*: the mixer replaces FX Select; Knob FX opens the mixer; a stock FX Select effect saved in a project is ignored. Signal-path diagrams for both modes (EN/RU) are in the README.\n- Back up projects and samples before updating. Save to **External**.\n\n## What is new\n\n- **Mixer**: tracks A–H and Master, four insert effects per track, sends, sidechain, Song stems to the SD card.\n- **Input channel** (mixer pad 15): Level, Pan, Mute, Input FX; recording point **Input / Track A–H / Master**, **Wet / Dry**; monitoring follows the record point; Rear modes.\n- **Resample** a pad (Shift+Pad 11 in Sample) or a sequence (Shift+Pad 11 in Seq) through the mixer, with a destination dialog, Replace confirmation, stop confirmation and independent bank handling.\n- **Tuner**: input (mixer Input ROUTE, Sample Record B3) and the sample of any pad (Stop+Chop in Sample); B3 \"Orig note\" stores the original note.\n- **Pad colour from Track** on every screen with pad sounds.\n- New illustrated effect screens, typing names with the pads, Master compressor OptoCat/Duck.\n\n## Bugs fixed\n\n- Save Project / Save Sample: false \"Insert SD card\" and saving to Internal.\n- Stems export with an External Export window; the Stems name window now accepts pads at once.\n- Resampled pad lost its attack; sequence resample skipped the mixer and could be silent at first start.\n- Recording through Track or Master stayed dry.\n- A stock FX Select effect sounded in Am MOD; one selected pad made Knob FX hit every pad.\n- Pad colours turned stock under native dialogs.\n- Resample dialog: Pad Bank stepping, bank letters, stop confirmation, Replace prompt with red target and hint (sequences), destination bank independent of the sequence bank.\n- Compressor pad pick showed free-green / occupied-red like a destination: now a normal blinking selection.\n- Seq+Sample window lit pads differently from Sample: now the same rules.\n- Shift+Erase in the mixer started the stock copy gesture; K3 Volume in the sample library blinked; Master FX pinned Sample Comp row.\n\n## Known\n\n- Rare short crackle in the tuner window on very low notes.\n- A missing sequence cursor in Song was seen once and could not be reproduced.\n\n## Thanks\n\nHuge thanks to **Leusha** for careful, detailed testing and for finding bugs: most of the fixes above started from those reports. Thanks also to mxt1iga and everyone who tested builds.\n",
-        "truncated": false
-      },
-      {
-        "tag": "r29a",
-        "name": "Am MOD r29a",
-        "prerelease": false,
-        "published_at": "2026-11-13T00:35:16Z",
-        "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r29a",
-        "body": "# Am MOD r29a — new effect screens, SD stems and pad typing\n\nRelease for Akai MPC Sample firmware **1.3.0.12**, 13 November 2026. Replaces the pre-release r28e-fx2 (and r28e-fx3 … fx16, which were test builds). Host and package checks passed; the new Save, Stems and text-input behaviour was tried on a device while it was being built.\n\n**Back up projects and samples before updating.** Projects that use the effects added in r28e-fx2 do not load in older Am MOD versions.\n\n<table>\n<tr>\n<td width=\"50%\"><b>Tape Delay</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/tape-delay.gif\" alt=\"Tape Delay\" width=\"100%\"></td>\n<td width=\"50%\"><b>Tape (cassette)</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/tape.gif\" alt=\"Tape (cassette)\" width=\"100%\"></td>\n</tr>\n<tr>\n<td width=\"50%\"><b>Vinyl</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/vinyl.gif\" alt=\"Vinyl\" width=\"100%\"></td>\n<td width=\"50%\"><b>Spring Reverb</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/spring-reverb.gif\" alt=\"Spring Reverb\" width=\"100%\"></td>\n</tr>\n<tr>\n<td width=\"50%\"><b>Tube Drive</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/tube-drive.gif\" alt=\"Tube Drive\" width=\"100%\"></td>\n<td width=\"50%\"><b>Multi Chorus</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/multi-chorus.gif\" alt=\"Multi Chorus\" width=\"100%\"></td>\n</tr>\n<tr>\n<td width=\"50%\"><b>Pitch Shifter</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/pitch-shifter.gif\" alt=\"Pitch Shifter\" width=\"100%\"></td>\n<td width=\"50%\"><b>Ensemble</b><br><img src=\"https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r29a/docs/media/fx/ensemble.gif\" alt=\"Ensemble\" width=\"100%\"></td>\n</tr>\n</table>\n<sub>Frames rendered from the mod's own painter with a test signal, not recorded from a device. More animations are in [media/fx](media/fx).</sub>\n\n## What's new\n\n- **New effect screens.** Every effect picture was redrawn: the value strip under the picture is gone (the values are on the parameter panel), each picture has a small *AM MOD* plate in its category colour, and many are now a real object. **Tape Delay** is a reel-to-reel with wooden cheeks, tape running tangentially to guide rollers and a red erase head. **Tape** is a cassette: the left tape pack, a VU meter whose needle follows the signal level, and **PLAY** / **STOP** keys (PLAY is down while sound runs, STOP when it stops; the reels turn only while playing). **Vinyl** is a turntable with a short tonearm and record shelves on both sides. Also redrawn: Sample Delay, Spring Reverb (spring tank), Tube Drive (glowing tubes), Soft Clipper (transfer curve and waveform), Ensemble (three voices and their sum), Multi Chorus (LFO circle), Auto Wah (pedal and sweep), Pitch Shifter (keyboard), Flanger and Bit Crusher.\n- **Typing with the pads is the default** wherever a name or text is entered: Search, Save Project / Sample, Export, Stems and track names in the Mixer. **K1 still switches to Encoder.** New Mod Setting: **Quick → Text input: Pads / Encoder**, saved on the card.\n- **Shift+Erase clears the whole text** in every pad-input window (Search already did). Erase still deletes one character.\n- **The first Mod Settings tab is now called Quick** (it was Pads); FX view is there.\n- **Stems go to the SD card** in a folder named after the song: `Samples/User/Export/<song>/`. The folder holds one file per sounding Track named `<song>_track A.wav`, or `<song>_track A_<Track name>.wav` if the Track was renamed, and **`<song>_Master.wav`** (the stock mixdown).\n\n## Fixed\n\n- **Save Project and Save Sample could save to Internal.** The windows now open with External selected and force it back to External when K3 is turned.\n- **Stems export failed** (`SD_EXPORT_UNAVAILABLE`) when the stock Export window offered External. Stems now always go to the card, whichever destination the window shows, and no stray mixdown file is left in `Samples/Export`.\n- **The Stems name window showed Pads but the pads did not respond** until K1 was toggled. Pads now work as soon as the window opens.\n- **Master FX no longer shows a pinned Sample Comp row.** It only existed after Shift+Pad 5 had been opened once, and the Duck type had no Master view, so it was N/A or missing at start. Add **OptoCat Comp** from the effect list instead.\n- Tape needles, idle and bypassed pictures and other small drawing issues of the redrawn screens.\n\n## Tested and not yet tested\n\nHost checks with sanitizers and the package checks passed, including new tests for the name editor (Pads default, Shift+Erase) and the Text input setting. Tried on a device while building: Save External-only and Stems export (folder, names, Master). Not tested on a device: all redrawn pictures (frame time, readability on the real screen), Shift+Erase in every native window, the Text input setting after a power cycle.\n\n## Known limits\n\n- The stock Master FX effect from Pad FX / Program is not shown in the mixer yet.\n- The Vintage Emulator *Type* list is not named yet.\n- Seq Record in the mixer is still unused; recording parameter automation is planned.\n- Auto Wah and Amp Sim pictures are mostly static in the preview animations because the test signal does not move their controls.\n\n## Installation\n\nSelect `am-mod-r29a.zip` in MPC Sample Mod Installer, or copy its complete `autorun/` folder to the SD card root, replacing the previous mod files. Restart with the card inserted and check r29a in About. Back up first; the installer keeps a copy of the previous `autorun/`.\n\n## How to use\n\n1. **Typing:** names and search open in Pads mode. Press K1 for Encoder. Erase deletes a character, Shift+Erase clears everything.\n2. **Default input:** Mod Settings → Quick → Text input.\n3. **Stems:** Song → Export → Stems, enter a name; files appear on the card in `Samples/User/Export/<song>/`.\n4. **Effect pictures:** Mod Settings → Quick → FX view: Illustrated / Classic.\n\n[Русский](RELEASE_NOTES-r29a.ru.md)\n",
         "truncated": false
       }
     ],
@@ -91,7 +91,7 @@
     "archived": false
   },
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
-    "stars": 5,
+    "stars": 6,
     "forks": 2,
     "pushed_at": "2026-11-21T12:29:58Z",
     "last_commit_at": "2026-11-18T16:28:34Z",
@@ -200,19 +200,19 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 12,
+    "stars": 14,
     "forks": 0,
-    "pushed_at": "2026-11-21T03:15:23Z",
-    "last_commit_at": "2026-11-21T03:14:51Z",
+    "pushed_at": "2026-11-21T21:07:37Z",
+    "last_commit_at": "2026-11-21T21:07:09Z",
     "contributors": 1,
-    "open_issues": 5,
+    "open_issues": 10,
     "license": "MIT",
     "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. S600 MULTI multisample instruments with an Auto Sampler, Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling. C, aarch64 Linux; runs from SD card autorun.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.7A",
-      "published_at": "2026-11-21T03:15:43Z"
+      "tag": "v1.7B",
+      "published_at": "2026-11-21T21:07:37Z"
     },
     "releases": [
       {
@@ -225,21 +225,21 @@
         "truncated": false
       },
       {
+        "tag": "v1.7B",
+        "name": "MPC 600 S, LA Version 1.7B",
+        "prerelease": false,
+        "published_at": "2026-11-21T21:07:37Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7B",
+        "body": "**New: Step Edit Grid.** In Step Edit (SHIFT + SEQ), press SHIFT + SEQ again for the Grid, and again to go back to the list. The track is shown a page at a time, its look taken from the drum edit screens of the Atari sequencers: the sounds down the left, the steps across, a diamond for each note (hollow when soft). − and + step Now, the wheel picks the row, B1 <Dot> puts a note in or takes it out, B2/B3 go a page back or on, and pads put notes in as before.\n- A drum track shows the bank's 16 pads. With 16 Levels on, the rows are the levels (Tune: +0, +1, ...; Velocity: v7 ... v127), so each note of a chord has its own row.\n- A MIDI track shows every note, 0 to 127 (C3 = 60), 16 at a time, scrolled with the wheel.\n- Where notes share a row and a step (a chord), a music note marks them, and the top line says how many.\n\n**New: save names.** After you save or load a project (or FX chain, settings, arp pattern), the next save of that type starts on that name. The first time, the name moves past those already in the folder: PROJECT01 there, PROJECT02.\n\n**Fixed: Master Effects carried over.** Master Effects now go with the project or sequence file they were saved in; a file saved without them loads with them off, instead of keeping the last file's.\n\n**Fixed: 16 Levels chords in Step Edit.** Pads pressed together at one velocity in Step Edit with 16 Levels Tune on could lose a note's tuning (a +0 became a second +4).\n\nInstall: extract MPC-600-S-OS-v1.7B.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "truncated": false
+      },
+      {
         "tag": "v1.7A",
         "name": "MPC 600 S, LA Version 1.7A",
         "prerelease": false,
         "published_at": "2026-11-21T03:15:43Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7A",
         "body": "**Fixed: Export of S600 MULTI programs.** EXPORT (sequences, songs and mixdowns) played an S600 MULTI instrument as its Instrument pad's own sample, at the wrong pitch, instead of through its keygroups. It now sounds as it does when the sequence plays. Playback on the MPC was not affected.\n\nEverything in v1.7 is included: the 2000XL Layout, USB Data Mode, steadier buttons, Program Config Copy/Swap across programs, and more (see v1.7).\n\nInstall: extract MPC-600-S-OS-v1.7A.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v1.6D",
-        "name": "MPC 600 S, LA Version 1.6D",
-        "prerelease": false,
-        "published_at": "2026-11-19T04:20:43Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.6D",
-        "body": "**Fixed: the pop at start-up is reduced.** The codec's volume glides down before the stock OS stops, then the MPC 600 S starts with 0.6 s of silence and fades in over 0.8 s. The speaker amp is no longer switched off and on again.\n\n**Fixed: the file lists no longer go back to the top.** In Load Files and in the Save/Load browser, Back lands on the folder you just left, and each folder keeps its place until power-off.\n\nEverything in v1.6C is included.\n\nInstall: extract MPC-600-S-OS-v1.6D.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
         "truncated": false
       }
     ],
@@ -317,7 +317,7 @@
     "archived": false
   },
   "ab1428x/mpcsample-kit-converter": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-06-06T20:50:35Z",
     "last_commit_at": "2026-06-06T20:50:34Z",
@@ -872,8 +872,8 @@
   "hdslave/hdslaveOS": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-21T19:39:50Z",
-    "last_commit_at": "2026-11-21T19:36:11Z",
+    "pushed_at": "2026-11-22T06:43:44Z",
+    "last_commit_at": "2026-11-22T05:49:55Z",
     "contributors": 2,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -881,7 +881,17 @@
     "default_branch": "hdslave",
     "readme_path": "README.md",
     "latest_release": null,
-    "releases": [],
+    "releases": [
+      {
+        "tag": "v0.6.4-hdslave.5",
+        "name": "hdslaveOS v0.6.4-hdslave.5",
+        "prerelease": true,
+        "published_at": "2026-11-22T05:55:39Z",
+        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.6.4-hdslave.5",
+        "body": "hdslaveOS is hdslave's fork of [Melodee](https://github.com/keremimo/melodee-sample) by **Kerem Kiliç (Ellic Studio)**, a 16-track groovebox for the Akai MPC Sample (firmware 1.3.0.12), tracking Melodee v0.6.4. Built from commit `24ad071`.\n\n> **Not yet tested on an MPC.** Every automated check below passed, but no hardware run has been done. Back up your card first.\n\n## New in this build\n\n- **FX slot PANEL:** a plug-in effect with its own screen (such as hdslave Cortex Filter) opens that screen from the FX rack. Push the slot and pick **PANEL**. The wheel, encoder push, **− / +** and **K1–K3** control it. **B1 (BACK)** returns to the same slot.\n- **MIDI Multi channel:** a MIDI track's **CHANNEL** goes past 16 to **Multi**. Pads 1–16 send Middle C on MIDI channels 1–16, for triggering a drum machine.\n- **Save synth presets:** on a plug-in synth track, **Shift + Sample Select** saves the patch. It appears under **PRESETS → User Presets** in any project on the same card. On kit tracks the shortcut still saves the sample, or the bank in the sample browser.\n- **Sidechain follows mute:** muting a drum track also mutes its selected pad's sidechain send to the master compressor.\n- **HDSLAVE theme:** hdslaveOS starts in HDSLAVE on a new SD card, or when an older settings file holds the previous NIGHT default. Choose NIGHT in **Settings › SCREEN › Palette** to keep it.\n\n## Install (unsigned, by hand only)\n\n1. Back up the card.\n2. Unzip. It holds one `autorun` folder. Copy it to the top of the card, or into a boot menu's OS folder such as SampleBoot's `autorun/mods/hdslaveOS 0.6.4-hdslave.5/`. Don't edit anything inside it.\n\nThis package has no update signature, so Melodee's built-in updater won't take it. See `autorun/melodee/README.txt` in the zip for the full instructions.\n\n## Verified\n\nThe checks ran from a clean checkout of `24ad071` with the core submodule at `afa930b`, inside the Linux arm64 build container:\n\n- All 57 app tests and 4 core tests passed.\n- The sound self-test passed, including on the stripped release binary.\n- 3,000 random control moves found no failures.\n- All 400 screen renders were clean, and the boot animation renders.\n- End-to-end checks of PANEL with Cortex Filter passed 35/35. Checks of MIDI Multi channel routing passed 9/9.\n- All 53 files in the zip match `RELEASE.sha256`.\n\nSHA-256 of the zip: `ad0a56bce5540703b8802c0389c198375b5ce52c7970f64f64908081d52b958a`\n\n## Credits and licence\n\nMelodee is the work of Kerem Kiliç (Ellic Studio). hdslaveOS is AGPL-3.0, and the source is this tag. The boot film is hdslaveOS's own (see THIRD_PARTY.md). Licences for the bundled components are in `autorun/melodee/licenses/`.\n",
+        "truncated": false
+      }
+    ],
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
@@ -992,7 +1002,7 @@
     "archived": false
   },
   "jacob-sabella/mpc-addin-remote": {
-    "stars": 4,
+    "stars": 6,
     "forks": 3,
     "pushed_at": "2026-11-15T03:01:28Z",
     "last_commit_at": "2026-11-15T03:01:26Z",
@@ -1318,21 +1328,30 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 71,
+    "stars": 72,
     "forks": 12,
-    "pushed_at": "2026-11-21T19:13:10Z",
-    "last_commit_at": "2026-11-21T19:02:02Z",
+    "pushed_at": "2026-11-21T23:09:20Z",
+    "last_commit_at": "2026-11-21T22:29:06Z",
     "contributors": 1,
-    "open_issues": 9,
+    "open_issues": 10,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.6.3",
-      "published_at": "2026-11-21T19:13:56Z"
+      "tag": "v0.6.4",
+      "published_at": "2026-11-21T23:10:11Z"
     },
     "releases": [
+      {
+        "tag": "v0.6.4",
+        "name": "Melodee 0.6.4",
+        "prerelease": false,
+        "published_at": "2026-11-21T23:10:11Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.4",
+        "body": "Melodee 0.6.4 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.3:** copy `Melodee-MPC-Sample-v0.6.4.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.4?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **Chop hits in MPC Sample projects played the whole sample.** When you record on the stock MPC Sample's Chop pads, each note keeps the number of the slice it plays. Melodee left that number out, so every hit played the whole sample from the pad's start. Each hit now plays its own slice, as on the MPC.\n\n## New\n\n- **Ableton Live Set export.** Song's **EXPORT** has a **LIVE SET** choice. It writes `Melodee/Ableton/<name> Project/` with the `.als` file and a copy of every sample; open it in Ableton Live 12.1 or later. Patterns become Session View clips, the song goes into Arrangement View, and kits become Drum Racks of Simplers. Effects are left out. See [Ableton Live Set](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#ableton-live-set).\n- **Scale on white keys.** A new **MIDI Config** setting. On a Scale or Chords track, a keyboard's white keys play the project's scale with the root on C4, and the black keys play nothing. See [Play the scale on the white keys](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/midi-and-sync.md#play-the-scale-on-the-white-keys).\n",
+        "truncated": false
+      },
       {
         "tag": "v0.6.3",
         "name": "Melodee 0.6.3",
@@ -1349,15 +1368,6 @@
         "published_at": "2026-11-21T16:17:31Z",
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.2",
         "body": "Melodee 0.6.2 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.1:** copy `Melodee-MPC-Sample-v0.6.2.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.2?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## New\n\n### Projects\n\n- **Autosave can be turned off.** Settings > **SEQ** > **Autosave**: with it off, the project is saved only when you save it. **B1** on Projects reads **SAVE** and writes the project to its file. **REVERT** (**TO SAVED**) on the open project's sheet goes back to its file. **NEW**, **LOAD** and the Exit screen leave unsaved changes behind and say so first. The header shows **UNSAVED** in amber while there are changes. (#18)\n\n## Under the hood\n\n- Melodee's engine, model and file formats now live in their own repository, [ellic-core](https://github.com/keremimo/ellic-core) (MIT), shared with [Melodee for Ableton Move](https://github.com/keremimo/melodee-move). Melodee on the MPC builds it unchanged; nothing changes in how it plays. Its licence is in the zip as `licenses/ellic-core-LICENSE.txt`.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.6.1",
-        "name": "Melodee v0.6.1",
-        "prerelease": false,
-        "published_at": "2026-11-21T13:46:09Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.1",
-        "body": "Melodee 0.6.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.0:** copy `Melodee-MPC-Sample-v0.6.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.1?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## New\n\n### Chop\n\n- **Record slices from Chop.** While Seq Record runs, the pads on Chop record the slices they play, as the chopped pad's note with its slice number. The kit's pads stay as they are. Step Edit and the Roll show the slice. A chop change that would renumber recorded slices (**K3**, Split, Merge, **ERASE** + pad, **ERASE** + **CHOP**) asks first. The MPC 3 export lays the recorded slices on free pads. (#24)\n\n### Sequences\n\n- **A sequence has a colour.** **SHIFT** + encoder on Sequences, or **K2** on the Patterns page's **SEQUENCE** card, sets it to none or one of the 16 track colours. Its cell and its pad light show it. **ERASE** clears it with the name and tempo. (#19)\n\n## Fixed\n\n- Stage's **FX** view can add an effect. Push the encoder past the last effect to the **+**, then push there to open the effect picker. (#29)\n",
         "truncated": false
       }
     ],
@@ -1465,10 +1475,10 @@
     "archived": false
   },
   "open-mpc/open-mpc.github.io": {
-    "stars": 6,
+    "stars": 7,
     "forks": 1,
-    "pushed_at": "2026-11-21T11:46:59Z",
-    "last_commit_at": "2026-11-21T11:46:56Z",
+    "pushed_at": "2026-11-22T01:31:38Z",
+    "last_commit_at": "2026-11-22T01:31:36Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1580,8 +1590,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-21T17:16:30Z",
-    "last_commit_at": "2026-11-21T17:16:29Z",
+    "pushed_at": "2026-11-22T03:58:16Z",
+    "last_commit_at": "2026-11-22T03:58:15Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1746,7 +1756,7 @@
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 26,
+    "open_issues": 28,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
