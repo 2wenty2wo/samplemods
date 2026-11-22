@@ -1,7 +1,7 @@
 <!-- arrow-up-right (fill) from Phosphor Icons, MIT License, Copyright (c) 2023 Phosphor Icons. https://github.com/phosphor-icons/core/blob/main/LICENSE -->
 <svg
 	class="external-icon"
-	viewBox="0 0 256 256"
+	viewBox="40 40 176 176"
 	width="1em"
 	height="1em"
 	fill="currentColor"
@@ -15,9 +15,9 @@
 
 <style>
 	.external-icon {
-		display: inline-block;
-		font-size: 0.8em;
-		vertical-align: -0.1em;
+		display: inline;
+		font-size: 0.65em;
+		vertical-align: 0.05em;
 		flex-shrink: 0;
 	}
 </style>

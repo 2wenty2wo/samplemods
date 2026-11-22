@@ -161,7 +161,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							View on GitHub&nbsp;<ExternalIcon />
+							<span>View on GitHub&nbsp;<ExternalIcon /></span>
 						</a>
 					{:else if mod.website && siteHost}
 						<a
@@ -170,7 +170,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Get it on {siteHost}&nbsp;<ExternalIcon />
+							<span>Get it on {siteHost}&nbsp;<ExternalIcon /></span>
 						</a>
 					{/if}
 
@@ -192,7 +192,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Website&nbsp;<ExternalIcon />
+							<span>Website&nbsp;<ExternalIcon /></span>
 						</a>
 					{/if}
 				</div>

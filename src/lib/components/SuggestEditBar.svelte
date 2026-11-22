@@ -19,7 +19,7 @@
 			target="_blank"
 			rel="noopener noreferrer"
 		>
-			Edit this entry on GitHub&nbsp;<ExternalIcon />
+			<span>Edit this entry on GitHub&nbsp;<ExternalIcon /></span>
 		</a>
 		<a
 			class="suggest-edit-secondary"

@@ -95,7 +95,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				Issue form&nbsp;<ExternalIcon />
+				<span>Issue form&nbsp;<ExternalIcon /></span>
 			</a>
 		</div>
 	</article>
