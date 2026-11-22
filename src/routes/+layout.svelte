@@ -92,6 +92,14 @@
 	</div>
 </header>
 
+<aside class="site-notice" aria-label="Firmware notice" data-nosnippet>
+	<div class="site-notice-inner">
+		<strong class="site-notice-lead">Using mods or apps? Stay on firmware 1.3.0.12.</strong>
+		<span>The unreleased 1.4 firmware reportedly disables the SD-card autorun they rely on, and none are confirmed to work on it.</span>
+		<a class="site-notice-link" href="https://www.reddit.com/r/mpcsample/comments/1y2hryp/akai_mpc_sample_14_firmware_is_live/" target="_blank" rel="noopener noreferrer">Read the Reddit thread ↗</a>
+	</div>
+</aside>
+
 <main id="main-content" class="site-main" tabindex="-1">
 	{@render children()}
 </main>
