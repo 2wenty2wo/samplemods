@@ -1,7 +1,7 @@
-<!-- alert-triangle (filled) from Tabler Icons, MIT License, Copyright (c) 2020-2026 Paweł Kuna. https://github.com/tabler/tabler-icons/blob/main/LICENSE -->
+<!-- warning (fill) from Phosphor Icons, MIT License, Copyright (c) 2023 Phosphor Icons. https://github.com/phosphor-icons/core/blob/main/LICENSE -->
 <svg
 	class="warning-icon"
-	viewBox="0 0 24 24"
+	viewBox="0 0 256 256"
 	width="1em"
 	height="1em"
 	fill="currentColor"
@@ -9,6 +9,6 @@
 	focusable="false"
 >
 	<path
-		d="M12 1.67c.955 0 1.845 .467 2.39 1.247l.105 .16l8.114 13.548a2.914 2.914 0 0 1 -2.307 4.363l-.195 .008h-16.225a2.914 2.914 0 0 1 -2.582 -4.2l.099 -.185l8.11 -13.538a2.914 2.914 0 0 1 2.491 -1.403zm.01 13.33l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007zm-.01 -7a1 1 0 0 0 -.993 .883l-.007 .117v4l.007 .117a1 1 0 0 0 1.986 0l.007 -.117v-4l-.007 -.117a1 1 0 0 0 -.993 -.883z"
+		d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"
 	/>
 </svg>
