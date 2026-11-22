@@ -1,4 +1,5 @@
 <script>
+	import CaretIcon from '$lib/CaretIcon.svelte';
 	import ExternalIcon from '$lib/ExternalIcon.svelte';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
@@ -209,7 +210,7 @@
 			<details class="release-details">
 				<summary class="release-summary">
 					<span class="release-summary-label">
-						<span class="release-caret" aria-hidden="true"></span>
+						<CaretIcon />
 						<span>Release notes</span>
 					</span>
 					{#if rel.truncated}
@@ -494,16 +495,15 @@
 		gap: 0.4rem;
 	}
 
-	.release-caret::before {
-		content: '▸';
-		display: inline-block;
-		font-size: 0.85rem;
-		line-height: 1;
+	.release-summary-label :global(.caret-icon) {
+		width: 0.85rem;
+		height: 0.85rem;
 		color: var(--mpc-accent-red);
+		flex-shrink: 0;
 	}
 
-	.release-details[open] .release-caret::before {
-		content: '▾';
+	.release-details[open] .release-summary-label :global(.caret-icon) {
+		transform: rotate(90deg);
 	}
 
 	.release-details[open] .release-summary {
