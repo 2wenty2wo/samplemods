@@ -170,7 +170,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<span>Get it on {siteHost}&nbsp;<ExternalIcon /></span>
+							<span>Get it on <span class="ext-keep">{siteHost}&nbsp;<ExternalIcon /></span></span>
 						</a>
 					{/if}
 
@@ -351,6 +351,10 @@ import { base } from '$app/paths';
 		flex-wrap: wrap;
 		gap: 0.6rem;
 		padding-top: 0.25rem;
+	}
+
+.ext-keep {
+		white-space: nowrap;
 	}
 
 @media (max-width: 720px) {

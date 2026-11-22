@@ -103,14 +103,22 @@
 	}
 
 	.rss-link {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 24px;
-		height: 24px;
 		vertical-align: middle;
 		text-decoration: none;
-		color: inherit;
+	}
+
+	.rss-link::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 24px;
+		height: 24px;
+		transform: translate(-50%, -50%);
 	}
 
 	.rss-link:hover,
