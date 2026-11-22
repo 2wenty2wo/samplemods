@@ -4,6 +4,7 @@ description: >-
   search, per-pad EQ and resampling.
 repo: AlekseyMalykh/am-mod
 author: AlekseyMalykh
+status: beta
 tags:
   - sequencer
   - chords
