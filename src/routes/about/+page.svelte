@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
 	import { SITE_NAME } from '$lib/site.js';
@@ -87,14 +88,14 @@
 			and we'll apply it (still needs a GitHub account; issues don't count as contributions).
 		</p>
 		<div class="info-actions">
-			<a class="hw-action-btn orange" href="{base}/submit/">How to contribute ↗</a>
+			<a class="hw-action-btn orange" href="{base}/submit/">How to contribute</a>
 			<a
 				class="hw-action-btn grey"
 				href="https://github.com/2wenty2wo/samplemods/issues/new?template=change-entry.yml"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				Issue form ↗
+				<span>Issue form&nbsp;<ExternalIcon /></span>
 			</a>
 		</div>
 	</article>

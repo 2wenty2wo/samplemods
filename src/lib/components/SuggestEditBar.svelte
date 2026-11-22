@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 /** @type {{ editOnGithubUrl: string, reportProblemUrl: string }} */
 	let { editOnGithubUrl, reportProblemUrl } = $props();
 </script>
@@ -18,7 +19,7 @@
 			target="_blank"
 			rel="noopener noreferrer"
 		>
-			Edit this entry on GitHub ↗
+			<span>Edit this entry on GitHub&nbsp;<ExternalIcon /></span>
 		</a>
 		<a
 			class="suggest-edit-secondary"

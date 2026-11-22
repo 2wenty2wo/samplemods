@@ -5,6 +5,7 @@
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
 	import { sectionGlow, sectionLabel } from '$lib/categories.js';
 	import ReleaseRow from '$lib/components/ReleaseRow.svelte';
+	import RssIcon from '$lib/RssIcon.svelte';
 	import { formatCatalogDate, utcDayKey } from '$lib/format-date.js';
 
 	let { data } = $props();
@@ -87,7 +88,7 @@
 				ordered by release date.
 			</p>
 			<p class="page-rss">
-				<a href="{base}/releases.xml">RSS feed</a>
+				<a href="{base}/releases.xml"><RssIcon /> <span>RSS feed</span></a>
 			</p>
 		</div>
 	</div>
@@ -227,8 +228,15 @@
 	}
 
 	.page-rss a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35em;
 		color: var(--mpc-screen-white);
 		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.page-rss a span {
 		text-decoration: underline;
 		text-underline-offset: 0.15em;
 	}

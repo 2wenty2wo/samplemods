@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 import { hostnameOf } from '$lib/categories.js';
 	import EntryProse from '$lib/components/EntryProse.svelte';
 
@@ -39,7 +40,11 @@ import { hostnameOf } from '$lib/categories.js';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							{mod.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
+							{#if mod.repo}
+								Release on GitHub&nbsp;<ExternalIcon />
+							{:else}
+								Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
+							{/if}
 						</a>
 					</div>
 
@@ -61,7 +66,7 @@ import { hostnameOf } from '$lib/categories.js';
 								<p class="release-truncated-note">
 									Truncated,
 									<a href={rel.html_url} target="_blank" rel="noopener noreferrer">
-										see full notes on GitHub ↗
+										see full notes on GitHub&nbsp;<ExternalIcon />
 									</a>
 								</p>
 							{/if}

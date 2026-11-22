@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 	import EntryProse from '$lib/components/EntryProse.svelte';
 
 	/** @type {{
@@ -85,13 +86,13 @@
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						From the project README on GitHub ↗
+						From the project README on GitHub&nbsp;<ExternalIcon />
 					</a>
 				</div>
 			{:else if !mod.repo && mod.website}
 				<div class="readme-footer">
 					<a href={mod.website} target="_blank" rel="noopener noreferrer">
-						From the maker's page ↗
+						From the maker's page&nbsp;<ExternalIcon />
 					</a>
 				</div>
 			{/if}
@@ -102,14 +103,14 @@
 				<p>
 					No README yet. See the repository on
 					<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
-						GitHub ↗
+						GitHub&nbsp;<ExternalIcon />
 					</a>.
 				</p>
 			{:else if mod.website && siteHost}
 				<p>
 					More details on
 					<a href={mod.website} target="_blank" rel="noopener noreferrer">
-						{siteHost} ↗
+						{siteHost}&nbsp;<ExternalIcon />
 					</a>
 				</p>
 			{:else}

@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 	/** @type {{
 	 *   contributors: Array<{ login: string, html_url: string, avatar_url: string, contributions: number }>,
 	 *   contributorPeopleLabel: string
@@ -28,7 +29,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					on GitHub ↗
+					on GitHub&nbsp;<ExternalIcon />
 				</a>
 			</p>
 		</div>
