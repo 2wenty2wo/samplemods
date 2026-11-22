@@ -290,12 +290,12 @@ try {
 		'owner/kit': {
 			latest_release: { tag: 'v2.0.0', published_at: '2026-02-01' },
 			releases: [
-				{ tag: 'boot-1.1', published_at: '2026-03-01', html_url: 'https://example/boot-1.1', body: 'boot new' },
-				{ tag: 'v2.0.0', published_at: '2026-02-01', html_url: 'https://example/v2', body: 'kit new' },
+				{ tag: 'v0.8.0', published_at: '2025-11-01', html_url: 'https://example/v0.8', body: 'kit oldest' },
 				{ tag: 'boot-1.0', published_at: '2026-01-15', html_url: 'https://example/boot-1.0', body: 'boot old' },
 				{ tag: 'v1.0.0', published_at: '2026-01-01', html_url: 'https://example/v1', body: 'kit old' },
 				{ tag: 'v0.9.0', published_at: '2025-12-01', html_url: 'https://example/v0.9', body: 'kit older' },
-				{ tag: 'v0.8.0', published_at: '2025-11-01', html_url: 'https://example/v0.8', body: 'kit oldest' }
+				{ tag: 'boot-1.1', published_at: '2026-03-01', html_url: 'https://example/boot-1.1', body: 'boot new' },
+				{ tag: 'v2.0.0', published_at: '2026-02-01', html_url: 'https://example/v2', body: 'kit new' }
 			]
 		}
 	}));
