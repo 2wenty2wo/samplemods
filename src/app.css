@@ -165,6 +165,46 @@ a:hover {
 	padding: 0.5rem 0;
 }
 
+.site-notice {
+	background: var(--mpc-bezel-black);
+	color: var(--mpc-screen-text);
+	border-bottom: 1px solid #262932;
+}
+
+.site-notice-inner {
+	width: min(1200px, 100% - 2rem);
+	margin-inline: auto;
+	padding: 0.4rem 0;
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
+}
+
+.site-notice-lead {
+	color: var(--mpc-screen-amber);
+	font-weight: 700;
+}
+
+.site-notice-lead::after {
+	content: ' ';
+}
+
+.site-notice-link {
+	color: var(--mpc-screen-cyan);
+	text-decoration: underline;
+	text-underline-offset: 0.16em;
+	white-space: nowrap;
+}
+
+.site-notice-link::before {
+	content: ' ';
+}
+
+.site-notice-link:hover {
+	text-decoration: underline;
+}
+
 .brand-lockup {
 	display: inline-flex;
 	align-items: center;
