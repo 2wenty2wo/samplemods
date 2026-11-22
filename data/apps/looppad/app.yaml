@@ -9,6 +9,7 @@ tags:
   - live
   - mixing
 install: boot-thingy
+firmware: 1.3.0.12
 requires:
   - mpc-boot-thingy
 runs_on: [device]
