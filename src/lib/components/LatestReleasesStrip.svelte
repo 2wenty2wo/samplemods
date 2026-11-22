@@ -1,6 +1,7 @@
 <script>
 	import { base } from '$app/paths';
 	import ReleaseRow from '$lib/components/ReleaseRow.svelte';
+	import RssIcon from '$lib/RssIcon.svelte';
 
 	/** @type {{ releases: any[], newEntries?: any[] }} */
 	let { releases, newEntries = [] } = $props();
@@ -21,7 +22,12 @@
 							{releases.length} newest ·
 							<a href="{base}/releases/">See all releases →</a>
 							·
-							<a href="{base}/releases.xml">RSS</a>
+							<a
+								class="rss-link"
+								href="{base}/releases.xml"
+								aria-label="RSS feed of latest releases"
+								title="RSS feed"
+							><RssIcon /></a>
 						</p>
 					</div>
 					<ul class="latest-releases-list">
@@ -94,6 +100,22 @@
 		padding: 0;
 		display: grid;
 		gap: 0.22rem;
+	}
+
+	.rss-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		vertical-align: middle;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.rss-link:hover,
+	.rss-link:focus-visible {
+		text-decoration: none;
 	}
 
 	@media (max-width: 900px) {
