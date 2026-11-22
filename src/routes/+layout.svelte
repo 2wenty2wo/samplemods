@@ -5,6 +5,7 @@
 	import catalogMeta from '$lib/catalog-meta.json';
 	import LogoMark from '$lib/LogoMark.svelte';
 	import StarIcon from '$lib/StarIcon.svelte';
+	import WarningIcon from '$lib/WarningIcon.svelte';
 	import interLatin400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 	import interLatin600 from '@fontsource/inter/files/inter-latin-600-normal.woff2?url';
 	import interLatin700 from '@fontsource/inter/files/inter-latin-700-normal.woff2?url';
@@ -94,8 +95,9 @@
 
 <aside class="site-notice" aria-label="Firmware notice" data-nosnippet>
 	<div class="site-notice-inner">
-		<strong class="site-notice-lead">Using mods or apps? Stay on firmware 1.3.0.12.</strong>
-		<span>The unreleased 1.4 firmware reportedly disables the SD-card autorun they rely on, and none are confirmed to work on it.</span>
+		<WarningIcon />
+		<strong class="site-notice-lead">Unreleased firmware 1.4 breaks current mods and apps.</strong>
+		<span>Stay on 1.3.0.12 until they're updated.</span>
 		<a class="site-notice-link" href="https://www.reddit.com/r/mpcsample/comments/1y2hryp/akai_mpc_sample_14_firmware_is_live/" target="_blank" rel="noopener noreferrer">Read the Reddit thread ↗</a>
 	</div>
 </aside>
