@@ -15,7 +15,7 @@
     "archived": false
   },
   "AlekseyMalykh/am-mod": {
-    "stars": 22,
+    "stars": 23,
     "forks": 1,
     "pushed_at": "2026-11-21T20:40:10Z",
     "last_commit_at": "2026-11-21T20:38:53Z",
@@ -96,7 +96,7 @@
     "pushed_at": "2026-11-21T12:29:58Z",
     "last_commit_at": "2026-11-18T16:28:34Z",
     "contributors": 2,
-    "open_issues": 4,
+    "open_issues": 2,
     "license": "MIT",
     "description": "Nine free studio effects, track chains, key and BPM tags, LUFS meters and on-device stems for the Akai MPC Sample, installed from a web page. Add-ons for SampQOL OS (by Snare Bes, downloaded from him). No coding needed.",
     "default_branch": "main",
@@ -334,10 +334,10 @@
   "bajdev/MPCkit": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-19T05:24:59Z",
-    "last_commit_at": "2026-11-19T05:09:57Z",
+    "pushed_at": "2026-11-22T15:30:35Z",
+    "last_commit_at": "2026-11-22T15:30:33Z",
     "contributors": 1,
-    "open_issues": 3,
+    "open_issues": 2,
     "license": "MIT",
     "description": "Application to create basic MPC Sample starter projects and kits from your desktop",
     "default_branch": "main",
@@ -827,7 +827,7 @@
     "archived": false
   },
   "garrettjwilke/mpc-ui-toolkit": {
-    "stars": 7,
+    "stars": 8,
     "forks": 0,
     "pushed_at": "2026-11-15T01:34:40Z",
     "last_commit_at": "2026-11-15T01:34:37Z",
@@ -872,8 +872,8 @@
   "hdslave/hdslaveOS": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-22T06:43:44Z",
-    "last_commit_at": "2026-11-22T05:49:55Z",
+    "pushed_at": "2026-11-22T07:28:11Z",
+    "last_commit_at": "2026-11-22T07:28:10Z",
     "contributors": 2,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -896,7 +896,7 @@
   },
   "inmusic-software/az0x-open-source": {
     "stars": 241,
-    "forks": 28,
+    "forks": 29,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
     "contributors": 2,
@@ -912,8 +912,8 @@
   "ioma8/mpc-minimod": {
     "stars": 17,
     "forks": 2,
-    "pushed_at": "2026-11-18T22:33:10Z",
-    "last_commit_at": "2026-11-18T22:33:10Z",
+    "pushed_at": "2026-11-22T10:09:42Z",
+    "last_commit_at": "2026-11-22T10:09:36Z",
     "contributors": 2,
     "open_issues": 1,
     "license": "MIT",
@@ -958,8 +958,8 @@
   "ioma8/mpc-sample-sdk": {
     "stars": 10,
     "forks": 3,
-    "pushed_at": "2026-11-17T15:15:40Z",
-    "last_commit_at": "2026-11-17T15:14:07Z",
+    "pushed_at": "2026-11-22T10:08:38Z",
+    "last_commit_at": "2026-11-22T10:08:27Z",
     "contributors": 2,
     "open_issues": 0,
     "license": "MIT",
@@ -1328,46 +1328,46 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 72,
+    "stars": 73,
     "forks": 12,
-    "pushed_at": "2026-11-21T23:09:20Z",
-    "last_commit_at": "2026-11-21T22:29:06Z",
+    "pushed_at": "2026-11-22T16:59:12Z",
+    "last_commit_at": "2026-11-22T16:55:09Z",
     "contributors": 1,
-    "open_issues": 10,
+    "open_issues": 11,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.6.4",
-      "published_at": "2026-11-21T23:10:11Z"
+      "tag": "v0.6.8",
+      "published_at": "2026-11-22T16:59:57Z"
     },
     "releases": [
       {
-        "tag": "v0.6.4",
-        "name": "Melodee 0.6.4",
+        "tag": "v0.6.8",
+        "name": "Melodee 0.6.8",
         "prerelease": false,
-        "published_at": "2026-11-21T23:10:11Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.4",
-        "body": "Melodee 0.6.4 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.3:** copy `Melodee-MPC-Sample-v0.6.4.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.4?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **Chop hits in MPC Sample projects played the whole sample.** When you record on the stock MPC Sample's Chop pads, each note keeps the number of the slice it plays. Melodee left that number out, so every hit played the whole sample from the pad's start. Each hit now plays its own slice, as on the MPC.\n\n## New\n\n- **Ableton Live Set export.** Song's **EXPORT** has a **LIVE SET** choice. It writes `Melodee/Ableton/<name> Project/` with the `.als` file and a copy of every sample; open it in Ableton Live 12.1 or later. Patterns become Session View clips, the song goes into Arrangement View, and kits become Drum Racks of Simplers. Effects are left out. See [Ableton Live Set](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#ableton-live-set).\n- **Scale on white keys.** A new **MIDI Config** setting. On a Scale or Chords track, a keyboard's white keys play the project's scale with the root on C4, and the black keys play nothing. See [Play the scale on the white keys](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/midi-and-sync.md#play-the-scale-on-the-white-keys).\n",
+        "published_at": "2026-11-22T16:59:57Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.8",
+        "body": "Melodee 0.6.8 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.7:** copy `Melodee-MPC-Sample-v0.6.8.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.8?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **A sample's tempo.** Melodee finds the exact tempo of a loop far more often. **Follow** and **Seq** warp on a sample without **# Beats** use that tempo, in the octave nearest the project's.\n- **Chop slices warp as their pad.** Pad taps and cut previews on Chop play at the kit pad's tuning and Warp, and a slice keeps **# Beats** as its tempo.\n- **Solo on an empty track.** A solo kept on a track with no sound silenced every other track. A solo now counts only on a track that plays something, and **SHIFT** + an empty track's pad in mute mode shows *Track N is empty*. See [Mute and solo](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/basics.md#mute-and-solo).\n- **Recording an audio track** no longer keeps a CPU core busy for the length of the take.\n- **CLAP plug-ins at rest** take a knob turned on their page, and run when they ask to, without waiting for a note.\n- **Autosave** no longer saves a project nobody changed. A MIDI track with an audio input made it save every second. Changing the Pad FX bank or target now counts as a change.\n- **The Project page** shows **UNSAVED** and **NO CARD** in the colours of the palette in use.\n- **Settings > AUDIO** keeps the **DSP** and **PDC** lines above **K1**'s card.\n- **SysEx** going out no longer keeps the MIDI thread busy.\n\n## Faster\n\n- An effect chain that hears only silence stops running until sound comes back, then carries on where it would have been. A stopped project takes much less CPU.\n- Held sampler notes, steady mixer levels, the echoes' **SYNC** and the Compressor under its threshold take less work while playing. The sound is unchanged.\n- The sample streamer and the render workers sleep while they have nothing to do.\n- The Project list reads each project file once, not again after every save.\n",
         "truncated": false
       },
       {
-        "tag": "v0.6.3",
-        "name": "Melodee 0.6.3",
+        "tag": "v0.6.7",
+        "name": "Melodee 0.6.7",
         "prerelease": false,
-        "published_at": "2026-11-21T19:13:56Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.3",
-        "body": "Melodee 0.6.3 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.2:** copy `Melodee-MPC-Sample-v0.6.3.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.3?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **Keygroup programs from MPC software played wrong pitches.** Programs saved by the MPC software often leave each layer's root note at 0, which means \"the sample's own root note\". Melodee read it as C-1, so every key played far too high. It now takes the root note stored in the WAV file, as the MPC does.\n\n## Under the hood\n\n- Project creation and pattern clearing made once in the core instead of in every file that uses them.\n- The core's tests run in the build beside Melodee's own.\n",
+        "published_at": "2026-11-22T15:02:25Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.7",
+        "body": "Melodee 0.6.7 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.6:** copy `Melodee-MPC-Sample-v0.6.7.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.7?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **SHIFT + K1 on Patterns sets the length in 16ths.** It used to set any number of bars. Now it goes from 1 to 64 16ths (up to four bars of 4/4), for patterns such as 5/16 or 7/16 against 16 steps on another track. The card shows such a length as **7/16**. **K1** still sets Free, 1, 2, 4 … 128 bars. See [Patterns of odd lengths](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/sequencing.md#patterns-of-odd-lengths). (#27)\n\n## New\n\n- **Mute: Notes.** **Mute** in Settings (**SEQ**) sets what a mute does. **Audio**, as before, silences the track or pad at once. **Notes** stops its new notes and lets what it plays ring out; a MIDI track sends each Note Off when it is due. See [Mute and solo](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/basics.md#mute-and-solo). (#27)\n- **Pad mutes in the pattern.** With **SEQ RECORD** on, **MUTE** + pad on a kit records the mute on the pad's **MUTE** lane. Each pass of the pattern starts with the mutes as you set them, and **STOP** puts them back. The lane shows on Motion when its pad was hit last (**A05 MUTE**): its knob mutes or unmutes the pad there, and **ERASE** + the knob clears the lane. In mute mode the pads light the mute you hear. See [The pattern editors](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/sequencing.md#the-pattern-editors). (#32)\n",
         "truncated": false
       },
       {
-        "tag": "v0.6.2",
-        "name": "Melodee v0.6.2",
+        "tag": "v0.6.6",
+        "name": "Melodee 0.6.6",
         "prerelease": false,
-        "published_at": "2026-11-21T16:17:31Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.2",
-        "body": "Melodee 0.6.2 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.1:** copy `Melodee-MPC-Sample-v0.6.2.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.2?*, saves, installs and restarts.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): unzip and copy the `autorun` folder to the top level of the card.\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**.\n\nBack up `Melodee/Projects` before you update.\n\n## New\n\n### Projects\n\n- **Autosave can be turned off.** Settings > **SEQ** > **Autosave**: with it off, the project is saved only when you save it. **B1** on Projects reads **SAVE** and writes the project to its file. **REVERT** (**TO SAVED**) on the open project's sheet goes back to its file. **NEW**, **LOAD** and the Exit screen leave unsaved changes behind and say so first. The header shows **UNSAVED** in amber while there are changes. (#18)\n\n## Under the hood\n\n- Melodee's engine, model and file formats now live in their own repository, [ellic-core](https://github.com/keremimo/ellic-core) (MIT), shared with [Melodee for Ableton Move](https://github.com/keremimo/melodee-move). Melodee on the MPC builds it unchanged; nothing changes in how it plays. Its licence is in the zip as `licenses/ellic-core-LICENSE.txt`.\n",
+        "published_at": "2026-11-22T14:15:03Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.6",
+        "body": "Melodee 0.6.6 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **On firmware 1.3.0.12, from 0.2.x to 0.6.5:** copy `Melodee-MPC-Sample-v0.6.6.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.6?*, saves, installs and restarts.\n- **On firmware 1.4.0.7:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card. Earlier versions do not start on 1.4.0.7. If you update in Melodee on 1.3.0.12 first and move to 1.4.0.7 later, copy the zip's `autorun.sh` to the top level of the card too.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **SHIFT + B1 on Song opens JAMS.** In 0.6.5 it put the jam after the end of the song at once (**TAKE JAM**). Now each run from **PLAY** to **STOP** is a jam of its own, and **SHIFT** + **B1** opens the list: turn the encoder to pick one and press **B3** (**TAKE**). See [Jam capture](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#jam-capture).\n\n## New\n\n- **Firmware 1.4.0.7.** Melodee runs and starts from the card on it. Turn on **Developer Mode** in the stock app's Settings, on the **DEV ENHANCEMENTS (BETA)** page. Each time the MPC starts, the stock app asks whether to run the card's autorun script: press Yes. On 1.4.0.7, Screen Mirror is not available and Melodee runs at 44.1 kHz only: the firmware no longer lets apps load their own kernel drivers, and its audio driver takes 44.1 kHz alone. See [Requirements](https://github.com/keremimo/melodee-sample#requirements).\n- **JAMS.** Song's jam list (**SHIFT** + **B1**) shows the picked jam large, with the sequences you launched, the bars and each track's patterns, and a row with a small picture for each jam, the newest first. **K1** (**FROM**) and **K2** (**TO**) choose the bars to take, **B2** (**PLAY**) plays them as Song will, **B3** (**TAKE**) puts them after the end of the song, and **ERASE** deletes the jam. Melodee keeps the newest 8 jams and saves them with the project. See [Jam capture](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#jam-capture).\n- **Note preview.** With **Note preview** on in Settings (**SEQ**, on at first), a note you write or move without playing it is heard once: a step you set in Step Edit's STEPS mode, a held step after you turn the encoder, and Roll's marked notes after you move or paste them. See [The pattern editors](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/sequencing.md#the-pattern-editors).\n",
         "truncated": false
       }
     ],
@@ -1376,8 +1376,8 @@
   "keremimo/sample-base": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-21T08:29:55Z",
-    "last_commit_at": "2026-11-20T13:07:43Z",
+    "pushed_at": "2026-11-22T14:05:55Z",
+    "last_commit_at": "2026-11-22T14:01:32Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1404,16 +1404,26 @@
   "larsoholm/LoopPad": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-05T00:55:12Z",
-    "last_commit_at": "2026-11-05T00:55:06Z",
+    "pushed_at": "2026-11-22T15:15:26Z",
+    "last_commit_at": "2026-11-22T13:37:56Z",
     "contributors": 1,
-    "open_issues": 1,
+    "open_issues": 0,
     "license": "MIT",
     "description": "Open-source live looper for the Akai MPC Sample with synchronized loops, waveforms, per-loop mixing and 4/8-loop modes.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": null,
-    "releases": [],
+    "releases": [
+      {
+        "tag": "v0.6.1-alpha",
+        "name": "LoopPad v0.6.1-alpha",
+        "prerelease": true,
+        "published_at": "2026-11-22T13:03:46Z",
+        "html_url": "https://github.com/larsoholm/LoopPad/releases/tag/v0.6.1-alpha",
+        "body": "First public alpha binary release of LoopPad for the Akai MPC Sample.\r\n\r\n### Highlights\r\n\r\n- Detailed 4-loop and compact 8-loop modes\r\n- Independent 1–8 bar loop lengths\r\n- BAR / BEAT / OFF quantization\r\n- NEXT / 1BAR / NOW count-in\r\n- Phase-locked loop playback\r\n- Per-loop levels with fader pickup\r\n- Waveforms and moving playheads\r\n- Hardware VU meters and RGB pad feedback\r\n- Embedded LoopPad splash screen\r\n- Tested with eight simultaneous loops at XRUN 0\r\n\r\n## Installation\r\n\r\nRequires **MPC Boot Thingy**.\r\n\r\n1. Connect the MPC Sample to your computer via USB.\r\n2. Open `http://192.168.155.1:8080`.\r\n3. Choose **Install App** and select the downloaded LoopPad binary.\r\n4. Leave **Args** blank.\r\n5. Keep **Stock as the default application**.\r\n6. Launch LoopPad using **Boot now**.\r\n\r\n> **Important**\r\n>\r\n> LoopPad currently has no standalone Exit / Power-Off function.\r\n>\r\n> **Do not set LoopPad as the default boot application. Keep Stock as Default.**\r\n>\r\n> Use MPC Boot Thingy for the supported reboot/recovery workflow.",
+        "truncated": false
+      }
+    ],
     "archived": false
   },
   "micknoise/mpc-sample-kit": {
@@ -1477,8 +1487,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 7,
     "forks": 1,
-    "pushed_at": "2026-11-22T01:31:38Z",
-    "last_commit_at": "2026-11-22T01:31:36Z",
+    "pushed_at": "2026-11-22T12:17:30Z",
+    "last_commit_at": "2026-11-22T12:17:22Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1590,8 +1600,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-22T03:58:16Z",
-    "last_commit_at": "2026-11-22T03:58:15Z",
+    "pushed_at": "2026-11-22T14:31:10Z",
+    "last_commit_at": "2026-11-22T14:31:08Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1603,7 +1613,7 @@
     "archived": false
   },
   "pzuzarte/mpc-stemloop": {
-    "stars": 4,
+    "stars": 5,
     "forks": 0,
     "pushed_at": "2026-11-19T19:47:40Z",
     "last_commit_at": "2026-11-19T19:47:30Z",
@@ -1640,7 +1650,7 @@
     "archived": false
   },
   "rosen-wav/MaiaOS---Mpc-Sample-CFW": {
-    "stars": 7,
+    "stars": 8,
     "forks": 0,
     "pushed_at": "2026-11-20T21:41:45Z",
     "last_commit_at": "2026-11-17T01:09:20Z",
@@ -1751,12 +1761,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 127,
+    "stars": 129,
     "forks": 8,
     "pushed_at": "2026-11-18T15:53:08Z",
     "last_commit_at": "2026-11-18T15:53:08Z",
     "contributors": 1,
-    "open_issues": 28,
+    "open_issues": 30,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
