@@ -4,6 +4,7 @@ description: >-
   display, plus an experimental Sample Mode firmware that runs from RAM.
 repo: gospodindilly-ops/mpc-sample-lab
 author: gospodindilly-ops
+firmware: 1.3.0.12
 runs_on:
   - device
   - docs
