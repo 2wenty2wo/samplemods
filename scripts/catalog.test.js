@@ -147,6 +147,10 @@ try {
 	assert.match(validate().stderr, /requires unknown entry/);
 	write('apps/player/app.yaml', playerRecord.replace('[host]', '[player]'));
 	assert.match(validate().stderr, /cannot require itself/);
+	write('apps/player/app.yaml', playerRecord.replace('requires: [host]', 'based_on: [missing]'));
+	assert.match(validate().stderr, /based_on unknown entry/);
+	write('apps/player/app.yaml', playerRecord.replace('requires: [host]', 'based_on: [player]'));
+	assert.match(validate().stderr, /cannot be based on itself/);
 	write('apps/player/app.yaml', playerRecord + 'compatible: [missing-compat]\n');
 	assert.match(validate().stderr, /compatible unknown entry/);
 	write('apps/player/app.yaml', playerRecord);
@@ -171,12 +175,14 @@ try {
 	write('media-sources.json', JSON.stringify({ external: [{ file: 'screenshots/01-screen.png', source: 'https://maker.example/screen.png' }] }));
 	assert.equal(validate().status, 0, 'local about files and repo-less media sources must validate');
 	write('apps/player/app.yaml', playerRecord + 'price: paid\nsource: closed\nauthor_url: https://example.com/author\nversion: "99.0"\nreleased: "2026-02-02"\n');
+	write('apps/fork/app.yaml', 'name: Fork\ndescription: Forked from host\nrepo: owner/fork\nauthor: owner\nbased_on: [host]\n');
 	write('github.json', JSON.stringify({ undefined: { stars: 999, contributors: 999, releases: [{ body: 'Stale release' }] }, 'owner/player': { default_branch: 'develop', readme_path: 'docs/README.md',
 		contributors: 4, open_issues: 2, last_commit_at: '2026-01-01', latest_release: { tag: 'v1', published_at: '2026-01-01' }, releases: [{ tag: 'v1', body: '**New**<iframe>unsafe</iframe>', html_url: 'https://github.com/owner/player/releases/tag/v1' }] } }));
 	let result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
 	assert.equal(result.status, 0, result.stderr);
 	let output = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/data.json')));
 	assert.deepEqual(output.find((entry) => entry.id === 'host').required_by, ['player']);
+	assert.deepEqual(output.find((entry) => entry.id === 'host').derived, ['fork']);
 	assert.equal(output.find((entry) => entry.id === 'player').screenshots[0], 'media/player/screenshots/01-screen.png');
 	assert.equal(fs.readFileSync(path.join(fixture, 'static/media/player/screenshots/01-screen.png'), 'utf8'), 'first image');
 	const player = output.find((entry) => entry.id === 'player');
@@ -327,4 +333,13 @@ try {
 	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup, release_prefix filtering and SampleBoot-first launchers.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
+}
+
+{
+	const real = readEntries(path.join(root, 'data'));
+	const derivedFromMelodee = real
+		.filter(({ record }) => (record.based_on ?? []).includes('melodee-sample'))
+		.map(({ id }) => id)
+		.sort();
+	assert.deepEqual(derivedFromMelodee, ['hdslaveos', 'rhythmer-os', 'tape-workshop']);
 }

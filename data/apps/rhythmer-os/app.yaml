@@ -5,6 +5,7 @@ description: >-
 repo: jazzyrhythmer/mpc-sample-rhythmer-os
 author: jazzyrhythmer
 website: https://jazzyrhythmer.github.io/mpc-sample/
+based_on: [melodee-sample]
 tags:
   - groovebox
   - synth

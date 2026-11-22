@@ -5,6 +5,7 @@ description: >-
   Includes a USB browser companion with Live Screen and recording.
 repo: bsauce42/tape-workshop-mpc-sample
 author: bsauce42
+based_on: [melodee-sample]
 tags:
   - groovebox
   - sequencer

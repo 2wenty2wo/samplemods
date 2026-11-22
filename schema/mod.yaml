@@ -60,6 +60,12 @@ properties:
     items:
       type: string
       description: Entry ids (kebab-case directory names, across all sections)
+  based_on:
+    type: array
+    items:
+      type: string
+      description: >-
+        Entry ids this project was forked or built from; it runs instead of them, unlike requires
   compatible:
     type: array
     items:
