@@ -66,6 +66,9 @@
 	});
 
 	const relativeDate = $derived(now ? formatRelativeDay(rel.published_at, now) : null);
+	const relativeDateShort = $derived(
+		relativeDate ? relativeDate.replace(/ days? ago$/, 'd ago') : null
+	);
 	const dateTitle = $derived.by(() => {
 		const published = rel.published_at;
 		if (!now || !published || !fullDate) return undefined;
@@ -121,8 +124,9 @@
 
 			{#if fullDate}
 				<time class="release-pub-date compact-date" datetime={rel.published_at ?? ''} title={dateTitle}>
-					{#if relativeDate}
-						{relativeDate}
+					{#if relativeDate && relativeDateShort}
+						<span class="date-full">{relativeDate}</span>
+						<span class="date-short">{relativeDateShort}</span>
 					{:else}
 						<span class="date-full">{fullDate}</span>
 						<span class="date-short">{shortDate}</span>
