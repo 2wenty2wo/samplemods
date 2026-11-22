@@ -18,21 +18,17 @@ export function latestReleasesOnePerEntry(releases, limit = 5) {
 }
 
 /**
- * Select the newest catalog entries by `added` ISO timestamp, excluding any entry
- * already shown in the Latest releases strip. Returns empty if no entries have `added`.
+ * Select the newest catalog entries by `added` ISO timestamp.
+ * Returns empty if no entries have `added`.
  * @template {{ id: string, name?: string, added?: string | null }} T
  * @param {T[]} entries
- * @param {Array<{ entryId?: string, id?: string }>} [excludedReleases=[]]
  * @param {number} [limit=5]
  * @returns {T[]}
  */
-export function selectNewestCatalogEntries(entries, excludedReleases = [], limit = 5) {
-	const excluded = new Set(
-		excludedReleases.map((r) => r.entryId ?? r.id).filter(Boolean)
-	);
+export function selectNewestCatalogEntries(entries, limit = 5) {
 	return entries
 		.filter((entry) => {
-			if (!entry?.added || excluded.has(entry.id)) return false;
+			if (!entry?.added) return false;
 			const ts = Date.parse(entry.added);
 			return Number.isFinite(ts) && ts > 0;
 		})
