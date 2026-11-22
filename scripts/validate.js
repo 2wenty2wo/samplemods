@@ -46,6 +46,12 @@ for (const { id, section, file, dir, record, media } of entries) {
 			failed = true;
 		}
 	}
+	for (const baseId of record.based_on ?? []) {
+		if (!ids.has(baseId) || baseId === id) {
+			console.error(`${file}: ${baseId === id ? 'cannot be based on itself' : `based_on unknown entry id "${baseId}"`}`);
+			failed = true;
+		}
+	}
 	for (const compatibleId of record.compatible ?? []) {
 		if (!ids.has(compatibleId) || compatibleId === id) {
 			console.error(`${file}: ${compatibleId === id ? 'cannot list itself as compatible' : `compatible unknown entry id "${compatibleId}"`}`);

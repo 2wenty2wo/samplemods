@@ -219,6 +219,9 @@ for (const mod of mods) {
 	mod.required_by = mods
 		.filter((m) => (m.requires ?? []).includes(mod.id))
 		.map((m) => m.id);
+	mod.derived = mods
+		.filter((m) => (m.based_on ?? []).includes(mod.id))
+		.map((m) => m.id);
 	mod.launchers = mods
 		.filter((m) => (m.compatible ?? []).includes(mod.id))
 		.sort((a, b) => {

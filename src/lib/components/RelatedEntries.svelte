@@ -99,7 +99,21 @@ import { base } from '$app/paths';
 		<h2 class="silk-heading">Required by</h2>
 		{@render relatedMiniCards(mod.required_by)}
 	</section>
-	{/if}
+{/if}
+
+{#if mod.based_on?.length}
+	<section class="detail-section">
+		<h2 class="silk-heading">Based on</h2>
+		{@render relatedMiniCards(mod.based_on)}
+	</section>
+{/if}
+
+{#if mod.derived?.length}
+	<section class="detail-section">
+		<h2 class="silk-heading">Builds based on this</h2>
+		{@render relatedMiniCards(mod.derived)}
+	</section>
+{/if}
 
 <style>
 /* —— Related Mini-Cards (Requires / Required by) —— */

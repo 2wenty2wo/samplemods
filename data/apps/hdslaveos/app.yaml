@@ -6,6 +6,7 @@ description: >-
 repo: hdslave/hdslaveOS
 author: hdslave
 status: experimental
+based_on: [melodee-sample]
 tags:
   - groovebox
   - sequencer

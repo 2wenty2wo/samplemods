@@ -35,6 +35,8 @@ export function load({ params }) {
 		const relatedIds = new Set([
 			...(mod.requires ?? []),
 			...mod.required_by,
+			...(mod.based_on ?? []),
+			...(mod.derived ?? []),
 			...(mod.compatible ?? []),
 			...(mod.launchers ?? [])
 		]);

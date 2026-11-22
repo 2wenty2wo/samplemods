@@ -66,12 +66,16 @@
 	const isLongReadme = $derived(readmeFold.tail.length > 0);
 	const readmeHeadHtml = $derived(readmeFold.head);
 	const readmeTailHtml = $derived(readmeFold.tail);
-	// Skip entries already shown via Requires / Required by (e.g. LoopPad requires Boot Thingy).
+	// Skip entries already shown via Requires / Required by / Based on / Builds based on this.
 	const compatibleIds = $derived(
-		(mod.compatible ?? []).filter((id) => !(mod.required_by ?? []).includes(id))
+		(mod.compatible ?? []).filter(
+			(id) => !(mod.required_by ?? []).includes(id) && !(mod.derived ?? []).includes(id)
+		)
 	);
 	const launcherIds = $derived(
-		(mod.launchers ?? []).filter((id) => !(mod.requires ?? []).includes(id))
+		(mod.launchers ?? []).filter(
+			(id) => !(mod.requires ?? []).includes(id) && !(mod.based_on ?? []).includes(id)
+		)
 	);
 
 	let readmeExpanded = $state(false);
