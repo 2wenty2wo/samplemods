@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import {
 		sectionGlow,
@@ -7,7 +8,7 @@
 		hostnameOf
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
-	import { formatCatalogDate } from '$lib/format-date.js';
+	import { formatCatalogDate, formatRelativeDay } from '$lib/format-date.js';
 	import EntryProse from '$lib/components/EntryProse.svelte';
 
 	/** @type {{
@@ -56,6 +57,28 @@
 
 	const fullDate = $derived(formatDate(rel.published_at));
 	const shortDate = $derived(formatShortDate(rel.published_at));
+
+	/** @type {Date | null} */
+	let now = $state(null);
+
+	onMount(() => {
+		if (compact) now = new Date();
+	});
+
+	const relativeDate = $derived(now ? formatRelativeDay(rel.published_at, now) : null);
+	const relativeDateShort = $derived(
+		relativeDate ? relativeDate.replace(/ days? ago$/, 'd ago') : null
+	);
+	const dateTitle = $derived.by(() => {
+		const published = rel.published_at;
+		if (!now || !published || !fullDate) return undefined;
+		// Catalog additions only have a date, with no time to convert.
+		if (/^\d{4}-\d{2}-\d{2}$/.test(published)) return fullDate;
+		return new Date(published).toLocaleString(undefined, {
+			dateStyle: 'full',
+			timeStyle: 'long'
+		});
+	});
 </script>
 
 {#if compact}
@@ -100,9 +123,14 @@
 			{/if}
 
 			{#if fullDate}
-				<time class="release-pub-date compact-date" datetime={rel.published_at ?? ''}>
-					<span class="date-full">{fullDate}</span>
-					<span class="date-short">{shortDate}</span>
+				<time class="release-pub-date compact-date" datetime={rel.published_at ?? ''} title={dateTitle}>
+					{#if relativeDate && relativeDateShort}
+						<span class="date-full">{relativeDate}</span>
+						<span class="date-short">{relativeDateShort}</span>
+					{:else}
+						<span class="date-full">{fullDate}</span>
+						<span class="date-short">{shortDate}</span>
+					{/if}
 				</time>
 			{/if}
 		</a>
