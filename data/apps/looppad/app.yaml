@@ -4,6 +4,7 @@ description: >-
   displays, input recording and per-loop mixing.
 repo: larsoholm/LoopPad
 author: larsoholm
+status: beta
 tags:
   - looper
   - live
