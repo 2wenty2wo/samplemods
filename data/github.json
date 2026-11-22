@@ -869,6 +869,21 @@
     "releases": [],
     "archived": false
   },
+  "hdslave/hdslaveOS": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-21T19:39:50Z",
+    "last_commit_at": "2026-11-21T19:36:11Z",
+    "contributors": 2,
+    "open_issues": 0,
+    "license": "AGPL-3.0",
+    "description": "hdslaveOS: hdslave's fork of Melodee (by Kerem Kiliç, Ellic Studio) for the Akai MPC Sample: less wasted work, same sound, the HDSLAVE palette, and a screen page for CLAP plug-ins",
+    "default_branch": "hdslave",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
+    "archived": false
+  },
   "inmusic-software/az0x-open-source": {
     "stars": 241,
     "forks": 28,
