@@ -9,7 +9,6 @@ tags:
   - reference
   - tips
 install: none
-firmware: 1.3.0
 website: https://c1t1zen1.github.io/MPC-Sample-Secrets/
 runs_on: [browser, docs]
 audience: [musician, curious, developer]

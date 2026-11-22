@@ -9,6 +9,5 @@ tags:
   - modding
   - reference
 install: none
-firmware: 1.3.0.12
 runs_on: [docs]
 audience: [developer, curious]
