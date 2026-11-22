@@ -136,7 +136,16 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		: raw.repo
 			? mirroredReadmePath
 			: aboutPath;
-	const ghReleases = gh.releases ?? [];
+	const ghReleases = [...(gh.releases ?? [])].sort((a, b) => {
+		const aTime = Date.parse(a?.published_at ?? '');
+		const bTime = Date.parse(b?.published_at ?? '');
+		const aValid = Number.isFinite(aTime);
+		const bValid = Number.isFinite(bTime);
+		if (aValid && bValid) return bTime - aTime;
+		if (aValid) return -1;
+		if (bValid) return 1;
+		return 0;
+	});
 	const matchingReleases = raw.release_prefix
 		? ghReleases.filter((release) => String(release.tag ?? '').startsWith(raw.release_prefix))
 		: ghReleases;
