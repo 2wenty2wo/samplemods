@@ -134,6 +134,56 @@
       "note": "Original 320x240 UI image extracted without resizing from page 9 of the official user guide (Melodic piano-roll); also shown on the project website. Converted to lossless WebP."
     }
   ],
+  "hdslaveos": [
+    {
+      "file": "screenshots/01-fm-tone.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/02-foundry.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/03-tb-mpc-3-p-0.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/04-sidechain.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/05-stage.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/06-display.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/07-palettes.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    },
+    {
+      "file": "screenshots/08-splash.webp",
+      "source": "https://github.com/hdslave/hdslaveOS",
+      "repo": "hdslave/hdslaveOS",
+      "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
+    }
+  ],
   "henryskillz-mod-kit": [
     {
       "file": "screenshots/01-henryskillz-splash.webp",

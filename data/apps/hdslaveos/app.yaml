@@ -1,0 +1,15 @@
+name: hdslaveOS
+description: >-
+  A Melodee fork with custom screen pages for hdslave's CLAP plug-ins (FM, 808-style
+  drums, 303 acid and more), plug-in sidechain keying, and CPU, refresh and pad
+  brightness settings. No release yet: you build the unsigned SD-card package from source.
+repo: hdslave/hdslaveOS
+author: hdslave
+status: experimental
+tags:
+  - groovebox
+  - sequencer
+  - vst
+firmware: 1.3.0.12
+runs_on: [device]
+audience: [musician]
