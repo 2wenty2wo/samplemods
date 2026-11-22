@@ -308,6 +308,7 @@ audience: [musician]
 	.details-body p {
 		margin: 0;
 		color: #25272e;
+		overflow-wrap: anywhere;
 	}
 
 	.code-screen {
