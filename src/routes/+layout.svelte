@@ -94,8 +94,8 @@
 
 <aside class="site-notice" aria-label="Firmware notice" data-nosnippet>
 	<div class="site-notice-inner">
-		<strong class="site-notice-lead">Using mods or apps? Stay on firmware 1.3.0.12.</strong>
-		<span>The unreleased 1.4 firmware reportedly disables the SD-card autorun they rely on, and none are confirmed to work on it.</span>
+		<strong class="site-notice-lead">Unreleased firmware 1.4 breaks current mods and apps.</strong>
+		<span>Stay on 1.3.0.12 until they're updated.</span>
 		<a class="site-notice-link" href="https://www.reddit.com/r/mpcsample/comments/1y2hryp/akai_mpc_sample_14_firmware_is_live/" target="_blank" rel="noopener noreferrer">Read the Reddit thread ↗</a>
 	</div>
 </aside>
