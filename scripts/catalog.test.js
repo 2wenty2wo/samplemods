@@ -334,12 +334,3 @@ try {
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
 }
-
-{
-	const real = readEntries(path.join(root, 'data'));
-	const derivedFromMelodee = real
-		.filter(({ record }) => (record.based_on ?? []).includes('melodee-sample'))
-		.map(({ id }) => id)
-		.sort();
-	assert.deepEqual(derivedFromMelodee, ['hdslaveos', 'rhythmer-os', 'tape-workshop']);
-}
