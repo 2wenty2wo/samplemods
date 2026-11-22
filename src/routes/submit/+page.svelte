@@ -1,5 +1,6 @@
 <script>
 	import { base } from '$app/paths';
+	import CaretIcon from '$lib/CaretIcon.svelte';
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
@@ -67,7 +68,7 @@
 	</article>
 
 	<details class="info-card details-card">
-		<summary>What goes in the file?</summary>
+		<summary><CaretIcon /><span>What goes in the file?</span></summary>
 		<div class="details-body">
 			<pre class="code-screen"><code>name: My Project
 description: A concise description of what the project does and where it runs.
@@ -92,7 +93,7 @@ audience: [musician]
 	</details>
 
 	<details class="info-card details-card">
-		<summary>Prefer to work locally?</summary>
+		<summary><CaretIcon /><span>Prefer to work locally?</span></summary>
 		<div class="details-body">
 			<ol class="steps">
 				<li>Fork <code>2wenty2wo/samplemods</code> on GitHub and clone your fork.</li>
@@ -283,20 +284,25 @@ audience: [musician]
 		font-family: var(--font-display);
 		font-weight: 800;
 		font-size: 1.05rem;
+		display: flex;
+		align-items: flex-start;
+		gap: 0.34rem;
 	}
 
 	.details-card summary::-webkit-details-marker {
 		display: none;
 	}
 
-	.details-card summary::before {
-		content: '+ ';
-		font-family: var(--font-mono);
+	.details-card summary :global(.caret-icon) {
+		width: 0.81rem;
+		height: 0.81rem;
+		margin-top: 0.37rem;
 		color: var(--mpc-silkscreen-muted);
+		flex-shrink: 0;
 	}
 
-	.details-card[open] summary::before {
-		content: '− ';
+	.details-card[open] summary :global(.caret-icon) {
+		transform: rotate(90deg);
 	}
 
 	.details-body {
