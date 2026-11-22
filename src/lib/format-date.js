@@ -51,3 +51,36 @@ export function utcDayKey(dt = new Date()) {
 	const d = String(dt.getUTCDate()).padStart(2, '0');
 	return `${y}-${m}-${d}`;
 }
+
+/**
+ * Convert the viewer's local calendar date to UTC midnight for day arithmetic.
+ * @param {Date} date
+ * @returns {number}
+ */
+function localDayStart(date) {
+	const day = new Date(0);
+	return day.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+/**
+ * Format recent dates using the viewer's calendar day. Date-only values keep
+ * their written day. Return null when the caller should use an absolute date.
+ * @param {string | number | null | undefined} value
+ * @param {Date} [now]
+ * @returns {string | null}
+ */
+export function formatRelativeDay(value, now = new Date()) {
+	if (value == null || value === '' || Number.isNaN(now.getTime())) return null;
+
+	const dateOnly = typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+	const date = new Date(dateOnly ? value + 'T00:00:00Z' : value);
+	if (Number.isNaN(date.getTime())) return null;
+	if (dateOnly && date.toISOString().slice(0, 10) !== value) return null;
+
+	const publishedDay = dateOnly ? date.getTime() : localDayStart(date);
+	const days = (localDayStart(now) - publishedDay) / 86_400_000;
+	if (days <= 0) return 'Today';
+	if (days === 1) return '1 day ago';
+	if (days <= 30) return days + ' days ago';
+	return null;
+}
