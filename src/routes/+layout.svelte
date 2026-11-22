@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import { SITE_NAME } from '$lib/site.js';
@@ -98,7 +99,7 @@
 		<WarningIcon />
 		<strong class="site-notice-lead">Unreleased firmware 1.4 breaks current mods and apps.</strong>
 		<span>Stay on 1.3.0.12 until they're updated.</span>
-		<a class="site-notice-link" href="https://www.reddit.com/r/mpcsample/comments/1y2hryp/akai_mpc_sample_14_firmware_is_live/" target="_blank" rel="noopener noreferrer">Read the Reddit thread ↗</a>
+		<a class="site-notice-link" href="https://www.reddit.com/r/mpcsample/comments/1y2hryp/akai_mpc_sample_14_firmware_is_live/" target="_blank" rel="noopener noreferrer">Read the Reddit thread&nbsp;<ExternalIcon /></a>
 	</div>
 </aside>
 

@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	import {
@@ -189,7 +190,11 @@
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							{rel.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
+							{#if rel.repo}
+								Release on GitHub&nbsp;<ExternalIcon />
+							{:else}
+								Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
+							{/if}
 						</a>
 					{/if}
 				</div>
@@ -225,7 +230,11 @@
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							{rel.repo ? 'Release on GitHub ↗' : `Download${hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''} ↗`}
+							{#if rel.repo}
+								Release on GitHub&nbsp;<ExternalIcon />
+							{:else}
+								Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
+							{/if}
 						</a>
 					{/if}
 				</div>

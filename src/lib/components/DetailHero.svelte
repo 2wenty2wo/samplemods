@@ -1,4 +1,5 @@
 <script>
+	import ExternalIcon from '$lib/ExternalIcon.svelte';
 import { base } from '$app/paths';
 	import StarIcon from '$lib/StarIcon.svelte';
 	import {
@@ -160,7 +161,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							View on GitHub ↗
+							View on GitHub&nbsp;<ExternalIcon />
 						</a>
 					{:else if mod.website && siteHost}
 						<a
@@ -169,7 +170,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Get it on {siteHost} ↗
+							Get it on {siteHost}&nbsp;<ExternalIcon />
 						</a>
 					{/if}
 
@@ -191,7 +192,7 @@ import { base } from '$app/paths';
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Website ↗
+							Website&nbsp;<ExternalIcon />
 						</a>
 					{/if}
 				</div>
