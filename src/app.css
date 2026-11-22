@@ -985,6 +985,12 @@ a.hw-band-chip:hover {
 	}
 }
 
+@media (max-width: 374px) and (min-width: 360px) {
+	.site-nav {
+		gap: 4px;
+	}
+}
+
 @media (max-width: 359px) {
 	html {
 		/* Two-row header ~63.3px; match the +5px headroom used above 360 */
