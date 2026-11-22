@@ -945,6 +945,89 @@ a.hw-band-chip:hover {
 	}
 }
 
+/* Narrow phones under 390px: fit the sticky header without sideways scroll */
+@media (max-width: 389px) {
+	.site-topbar-inner {
+		gap: 0.2rem;
+	}
+
+	.brand-lockup {
+		gap: 0.28rem;
+	}
+
+	.brand-lockup .wordmark {
+		font-size: 0.66rem;
+		letter-spacing: 0.02em;
+	}
+
+	.site-nav {
+		gap: 0;
+	}
+
+	.nav-link {
+		padding: 0.2rem 0.1rem;
+		letter-spacing: 0.028em;
+	}
+
+	.nav-btn-blue {
+		padding: 0.2rem 0.28rem;
+		letter-spacing: 0.028em;
+	}
+
+	/* Keep tall tap targets; avoid sideways overlap when items sit tight */
+	.nav-link::after {
+		inset: -10px 0;
+	}
+
+	.nav-btn-blue::after {
+		inset: -10px 0;
+	}
+}
+
+@media (max-width: 359px) {
+	html {
+		/* Two-row sticky header is ~63px tall */
+		scroll-padding-top: 63px;
+	}
+
+	.site-topbar-inner {
+		flex-wrap: wrap;
+		align-items: stretch;
+		gap: 0.12rem;
+		padding: 0.3rem 0 0.35rem;
+		min-height: 0;
+	}
+
+	.brand-lockup {
+		flex: 1 1 100%;
+	}
+
+	.site-nav {
+		flex: 1 1 100%;
+		width: 100%;
+		justify-content: space-evenly;
+		gap: 0;
+	}
+
+	.nav-link {
+		padding: 0.2rem 0.15rem;
+		letter-spacing: 0.04em;
+	}
+
+	.nav-btn-blue {
+		padding: 0.2rem 0.35rem;
+		letter-spacing: 0.04em;
+	}
+
+	.nav-link::after {
+		inset: -8px 0;
+	}
+
+	.nav-btn-blue::after {
+		inset: -8px 0;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.pad-card,
 	.hw-band-chip,
