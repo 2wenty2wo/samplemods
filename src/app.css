@@ -945,6 +945,102 @@ a.hw-band-chip:hover {
 	}
 }
 
+/* Narrow phones under 390px: fit the sticky header without sideways scroll */
+@media (max-width: 389px) {
+	.site-topbar-inner {
+		gap: 0.15rem;
+	}
+
+	.brand-lockup {
+		gap: 0.22rem;
+	}
+
+	.brand-lockup .wordmark {
+		font-size: 0.64rem;
+		letter-spacing: 0.015em;
+	}
+
+	/* Spend free brand↔nav space on readable gaps between labels (≥7px) */
+	.site-nav {
+		gap: 7px;
+	}
+
+	.nav-link {
+		padding: 0.2rem 0.1rem;
+		letter-spacing: 0.028em;
+	}
+
+	.nav-btn-blue {
+		padding: 0.2rem 0.26rem;
+		letter-spacing: 0.028em;
+	}
+
+	/* Tall tap targets; no horizontal bleed into neighbours */
+	.nav-link::after {
+		inset: -10px 0;
+	}
+
+	.nav-btn-blue::after {
+		inset: -10px 0;
+	}
+}
+
+@media (max-width: 374px) and (min-width: 360px) {
+	.site-nav {
+		gap: 4px;
+	}
+}
+
+@media (max-width: 359px) {
+	html {
+		/* Two-row header ~63.3px; match the +5px headroom used above 360 */
+		scroll-padding-top: 69px;
+	}
+
+	.site-topbar-inner {
+		flex-wrap: wrap;
+		align-items: stretch;
+		gap: 0.12rem;
+		padding: 0.3rem 0 0.35rem;
+		min-height: 0;
+	}
+
+	.brand-lockup {
+		flex: 1 1 100%;
+	}
+
+	/* Don't let the logo's enlarged hit area reach into the nav row */
+	.brand-lockup::after {
+		inset: -12px 0 0;
+	}
+
+	.site-nav {
+		flex: 1 1 100%;
+		width: 100%;
+		justify-content: space-evenly;
+		gap: 0;
+	}
+
+	.nav-link {
+		padding: 0.2rem 0.15rem;
+		letter-spacing: 0.04em;
+	}
+
+	.nav-btn-blue {
+		padding: 0.2rem 0.35rem;
+		letter-spacing: 0.04em;
+	}
+
+	/* Grow tap area down/sideways only — never up into the logo row */
+	.nav-link::after {
+		inset: 0 -4px -10px;
+	}
+
+	.nav-btn-blue::after {
+		inset: 0 -4px -10px;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.pad-card,
 	.hw-band-chip,
