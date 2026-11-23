@@ -346,6 +346,26 @@
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
+  "marspad": [
+    {
+      "file": "screenshots/01-library-overview.webp",
+      "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/library-overview.png",
+      "repo": "jonmitten/marspad",
+      "note": "From the project README (library overview)"
+    },
+    {
+      "file": "screenshots/02-collection-filter.webp",
+      "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/collection-filter.png",
+      "repo": "jonmitten/marspad",
+      "note": "From the project README (collection filter)"
+    },
+    {
+      "file": "screenshots/03-sound-type-filter.webp",
+      "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/sound-type-filter.png",
+      "repo": "jonmitten/marspad",
+      "note": "From the project README (sound-type filter)"
+    }
+  ],
   "melodee-sample": [
     {
       "file": "screenshots/01-song.webp",
