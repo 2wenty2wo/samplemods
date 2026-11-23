@@ -39,6 +39,9 @@ jobs:
         id: commit
         run: |
           git add data/github.json data/readme/ data/contributors.json data/watch.json
+          if [ -f data/compat.json ]; then
+            git add data/compat.json
+          fi
           if git diff --cached --quiet; then
             exit 0
           fi

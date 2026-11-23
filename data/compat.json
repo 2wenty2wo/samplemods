@@ -1,0 +1,44 @@
+{
+  "sampleboot": {
+    "source": "https://github.com/pxcm/SampleBoot#works-with",
+    "updated": "2026-11-23",
+    "entries": {
+      "sampqol-os": {
+        "versions": "0.1.4.7 – 0.4.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": "16 USB outputs: SampleBoot 1.0.1 or later"
+      },
+      "melodee-sample": {
+        "versions": "0.1.0 – 0.6.8",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": "Update it by replacing its folder"
+      },
+      "mpc-simple": {
+        "versions": "1.0 Beta 1 – Beta 8",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-sample-tracker": {
+        "versions": "0.1.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": "Needs an empty sampleboot.inplace file in its folder (SampleBoot 1.0.2 or later)"
+      },
+      "mpc-600-s": {
+        "versions": "v1.7b",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": "Needs an empty sampleboot.inplace file in its folder (SampleBoot 1.0.2 or later)"
+      },
+      "rhythmer-os": {
+        "versions": "0.2.0",
+        "status": "Works",
+        "checked_by": "User report",
+        "notes": "Keep its Rhythmer and Samples folders at the card root"
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { protectedFiles } from './check-pr-files.js';
 
-const blocked = ['data/github.json', 'data/contributors.json', 'data/watch.json', 'data/readme/project.md',
+const blocked = ['data/github.json', 'data/contributors.json', 'data/watch.json', 'data/compat.json', 'data/readme/project.md',
 	'data/readme/nested/file.md', 'src/lib/data.json', 'src/lib/catalog-meta.json', 'src/lib/server/details.json',
 	'static/catalog.json', 'static/media/project/screenshots/01-screen.png'];
 const allowed = ['data/mods/project/mod.yaml', 'data/mods/project/about.md',
@@ -41,6 +41,11 @@ try {
 	git('update-ref', 'refs/remotes/origin/main', 'HEAD');
 	git('checkout', '-q', '--detach', head);
 	assert.equal(run().status, 0, 'unrelated main refresh must not fail the guard');
+	fs.writeFileSync(path.join(fixture, 'data/compat.json'), '{}');
+	commit();
+	assert.equal(run().status, 0, 'initial compatibility seed is allowed');
+	git('update-ref', 'refs/remotes/origin/main', 'HEAD');
+	fs.writeFileSync(path.join(fixture, 'data/compat.json'), '{"refresh":true}');
 	fs.unlinkSync(path.join(fixture, 'data/github.json'));
 	fs.renameSync(path.join(fixture, 'data/readme/project.md'), path.join(fixture, 'moved.md'));
 	commit();
@@ -48,6 +53,7 @@ try {
 	assert.equal(result.status, 1);
 	assert.match(result.stderr, /These files are updated automatically every 6 hours by the refresh job\. Please remove them from this PR:/);
 	assert.match(result.stderr, /- data\/github\.json/);
+	assert.match(result.stderr, /- data\/compat\.json/);
 	assert.match(result.stderr, /- data\/readme\/project\.md/);
 	assert.match(result.stderr, /Tip: `git checkout origin\/main -- <file>`\./);
 	console.log('PR file checks passed: protected paths, allowed sources, merge base, deletions and renames.');

@@ -7,14 +7,18 @@ import { base } from '$app/paths';
 		initials
 	} from '$lib/categories.js';
 	import { assetUrl } from '$lib/media.js';
+	import { formatCatalogDate } from '$lib/format-date.js';
+
+	/** @typedef {{ checked_by: string, versions: string, notes: string }} CompatRow */
 
 	/** @type {{
 	 *   mod: any,
 	 *   byId: Record<string, any>,
 	 *   compatibleIds: string[],
-	 *   launcherIds: string[]
+	 *   launcherIds: string[],
+	 *   sampleBootCompat?: { source: string, updated: string, entries: Record<string, CompatRow> }
 	 * }} */
-	let { mod, byId, compatibleIds, launcherIds } = $props();
+	let { mod, byId, compatibleIds, launcherIds, sampleBootCompat } = $props();
 
 	/** @param {{ logo?: string | null, screenshots?: string[] }} entry */
 	function miniCardMedia(entry) {
@@ -28,10 +32,11 @@ import { base } from '$app/paths';
 	}
 </script>
 
-{#snippet relatedMiniCards(ids)}
+{#snippet relatedMiniCards(ids, rows = {})}
 	<ul class="mini-card-list">
 		{#each ids as id}
 			{@const rel = byId[id]}
+			{@const compat = rows[id]}
 			<li>
 				{#if rel}
 					{@const media = miniCardMedia(rel)}
@@ -61,6 +66,12 @@ import { base } from '$app/paths';
 								{/if}
 							</div>
 							<p class="mini-card-title">{rel.name}</p>
+							{#if compat}
+								<p class="mini-card-compat">{compat.checked_by} {compat.versions}</p>
+								{#if compat.notes}
+									<p class="mini-card-compat-note">{compat.notes}</p>
+								{/if}
+							{/if}
 						</div>
 					</a>
 				{:else}
@@ -73,17 +84,25 @@ import { base } from '$app/paths';
 	</ul>
 {/snippet}
 
+{#snippet compatibilityCards(ids, compat)}
+	{#if compat && ids.some((id) => compat.entries[id])}
+		{@const date = formatCatalogDate(compat.updated, { locale: 'en-GB', year: undefined })}
+		<p class="related-source">Versions from <a href={compat.source}>SampleBoot's README</a> · updated {date}</p>
+	{/if}
+	{@render relatedMiniCards(ids, compat?.entries)}
+{/snippet}
+
 {#if compatibleIds.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Compatible with</h2>
-		{@render relatedMiniCards(compatibleIds)}
+		{@render compatibilityCards(compatibleIds, mod.id === 'sampleboot' ? sampleBootCompat : undefined)}
 	</section>
 {/if}
 
 {#if launcherIds.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Works with</h2>
-		{@render relatedMiniCards(launcherIds)}
+		{@render compatibilityCards(launcherIds, mod.id === 'sampleboot' ? undefined : sampleBootCompat)}
 	</section>
 {/if}
 

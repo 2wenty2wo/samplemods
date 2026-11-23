@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readEntries } from './catalog.js';
+import { updateSampleBootCompat } from './compat.js';
 import {
 	CATALOG_REPO,
 	normalizeCatalogContributors
@@ -110,6 +111,7 @@ for (const { id, dir, record } of entries) {
 for (const file of fs.readdirSync(readmeDir)) {
 	if (file.endsWith('.md') && !keep.has(file)) fs.unlinkSync(path.join(readmeDir, file));
 }
+updateSampleBootCompat(path.join(root, 'data'), entries);
 writeIfChanged(output, JSON.stringify(github, null, 2) + '\n');
 writeIfChanged(contributorsOutput, JSON.stringify({
 	stars: catalogRepo.stargazers_count,
