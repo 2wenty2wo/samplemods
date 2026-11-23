@@ -71,6 +71,12 @@ properties:
     items:
       type: string
       description: Entry ids confirmed to work with this launcher (kebab-case directory names)
+  compatible_versions:
+    type: object
+    description: Manual version labels keyed by entry id from compatible
+    additionalProperties:
+      type: string
+      pattern: '\S'
   firmware:
     type: string
     description: Tested MPC Sample firmware version
