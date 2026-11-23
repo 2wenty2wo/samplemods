@@ -1,0 +1,15 @@
+name: MarsPad
+description: >-
+  A macOS sample librarian and pad-bank planner for the MPC Sample. Browse and audition a local
+  library, assign sounds to banks A–H, then export a .xpj project or audio copies.
+repo: jonmitten/marspad
+author: jonmitten
+status: experimental
+tags:
+  - library
+  - samples
+  - companion
+install: desktop
+runs_on: [desktop]
+audience: [musician]
+firmware: 1.3.0.12
