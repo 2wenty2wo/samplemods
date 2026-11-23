@@ -313,10 +313,6 @@ import { base } from '$app/paths';
 		white-space: nowrap;
 	}
 
-.compat-version :global(.check-icon) {
-		color: #147a30;
-	}
-
 .compat-note {
 		margin: 0;
 		font-family: var(--font-sans);
