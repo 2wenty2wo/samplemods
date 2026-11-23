@@ -106,14 +106,12 @@ import { base } from '$app/paths';
 						</div>
 						<div class="compat-info">
 							<div class="compat-head">
-								<div class="compat-title-row">
+								<div class="compat-title-group">
 									<p class="mini-card-title compat-title">{rel.name}</p>
-									<div class="mini-card-tags compat-tags">
-										<span class="chip chip-category compat-chip">{sectionSingularLabel(rel.section)}</span>
-										{#if rel.status}
-											<span class="badge-status {rel.status} compat-chip">{rel.status}</span>
-										{/if}
-									</div>
+									<span class="chip chip-category compat-chip">{sectionSingularLabel(rel.section)}</span>
+									{#if rel.status}
+										<span class="badge-status {rel.status} compat-chip">{rel.status}</span>
+									{/if}
 								</div>
 								{#if row}
 									<span class="compat-version">
@@ -280,29 +278,30 @@ import { base } from '$app/paths';
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.16rem 0.5rem;
+		min-width: 0;
 	}
 
-.compat-title-row {
+.compat-title-group {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.22rem 0.42rem;
+		gap: 0.22rem 0.38rem;
 		min-width: 0;
 	}
 
 .compat-title {
-		font-size: 0.9rem;
-	}
-
-.compat-tags {
-		gap: 0.22rem;
+		font-size: 0.88rem;
+		line-height: 1.15;
 	}
 
 .compat-chip {
-		font-size: 0.58rem;
-		padding: 0.06rem 0.32rem;
+		flex-shrink: 0;
+		font-size: 0.62rem;
+		padding: 0.06rem 0.34rem;
 		border-bottom-width: 2px;
 		line-height: 1.15;
+		position: relative;
+		top: -0.05em;
 	}
 
 .compat-version {
@@ -315,7 +314,7 @@ import { base } from '$app/paths';
 	}
 
 .compat-version :global(.check-icon) {
-		color: var(--mpc-btn-green);
+		color: #147a30;
 	}
 
 .compat-note {
