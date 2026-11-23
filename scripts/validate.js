@@ -64,6 +64,12 @@ for (const { id, section, file, dir, record, media } of entries) {
 			failed = true;
 		}
 	}
+	for (const versionId of Object.keys(record.compatible_versions ?? {})) {
+		if (!record.compatible?.includes(versionId)) {
+			console.error(`${file}: compatible_versions entry id "${versionId}" must be listed in compatible`);
+			failed = true;
+		}
+	}
 	for (const asset of media) {
 		const bytes = fs.statSync(path.join(dir, asset)).size;
 		if (bytes > 500 * 1024) console.warn(`warn: ${id}/${asset} is ${(bytes / 1024).toFixed(1)} KB (guideline: <= 500 KB)`);

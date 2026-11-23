@@ -328,9 +328,32 @@ try {
 		'Compatible with on a launcher page keeps YAML order and is not rewritten by launcher sort'
 	);
 	write('contributors.json', JSON.stringify({ stars: 12, contributors: [] }));
+	const manualLauncher = [
+		'name: SampleBoot', 'description: Primary launcher', 'author: pxcm',
+		'website: https://sampleboot.com/', 'compatible: [host, player]',
+		'compatible_versions: { host: 0.0.27 or later, player: 2.0 or later }', ''
+	].join('\n');
+	write('tools/sampleboot/tool.yaml', manualLauncher.replace('[host, player]', '[host]'));
+	assert.match(validate().stderr, /compatible_versions.*player.*compatible/);
+	write('tools/sampleboot/tool.yaml', manualLauncher);
+	const readmeRow = { versions: '2.1', checked_by: 'Tested', status: 'Works', notes: 'From README' };
+	write('compat.json', JSON.stringify({
+		sampleboot: {
+			source: 'https://github.com/pxcm/SampleBoot#works-with',
+			updated: '2026-11-23',
+			entries: { player: readmeRow }
+		}
+	}));
+	const manualValidation = validate();
+	assert.equal(manualValidation.status, 0, manualValidation.stderr);
 	result = spawnSync(process.execPath, [path.join(fixture, 'scripts/build-data.js')], { encoding: 'utf8' });
 	assert.equal(result.status, 0, result.stderr);
 	assert.deepEqual(JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/catalog-meta.json'), 'utf8')), { stars: 12 });
+	const manualDetails = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json'), 'utf8'));
+	const manualRow = { versions: '0.0.27 or later', checked_by: '', notes: '' };
+	assert.deepEqual(manualDetails.sampleboot.sampleboot_compat.entries, { host: manualRow, player: readmeRow });
+	assert.deepEqual(manualDetails.host.sampleboot_compat.entries, { sampleboot: manualRow });
+	assert.deepEqual(manualDetails.player.sampleboot_compat.entries, { sampleboot: readmeRow });
 	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup, release_prefix filtering and SampleBoot-first launchers.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });

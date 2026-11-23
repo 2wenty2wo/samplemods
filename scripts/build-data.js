@@ -79,6 +79,14 @@ const sampleBootCompat = readSampleBootCompat(path.join(root, 'data'));
 const sampleBootRows = Object.fromEntries(Object.entries(sampleBootCompat?.entries ?? {})
 	.filter(([id]) => id !== PRIMARY_LAUNCHER && entries.some((entry) => entry.id === id)));
 const sampleBootIds = Object.keys(sampleBootRows);
+const sampleBoot = entries.find(({ id }) => id === PRIMARY_LAUNCHER)?.record;
+for (const id of sampleBoot?.compatible ?? []) {
+	const versions = sampleBoot.compatible_versions?.[id];
+	if (typeof versions === 'string' && !Object.hasOwn(sampleBootRows, id)) {
+		sampleBootRows[id] = { versions, checked_by: '', notes: '' };
+	}
+}
+const hasSampleBootCompat = sampleBootCompat || Object.keys(sampleBootRows).length > 0;
 // Only this generated directory is cleared; original media stays with each entry.
 fs.rmSync(mediaDir, { recursive: true, force: true });
 
@@ -167,7 +175,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 			}))
 			: watchReleases
 	};
-	if (sampleBootCompat) {
+	if (hasSampleBootCompat) {
 		if (id === PRIMARY_LAUNCHER) {
 			details[id].sampleboot_compat = { ...sampleBootCompat, entries: sampleBootRows };
 		} else if (Object.hasOwn(sampleBootRows, id)) {

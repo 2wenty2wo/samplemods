@@ -22,7 +22,12 @@ compatible:
   - mpc-sample-tracker
   # User report per sampleboot.com (Nov 2026): Rhythmer OS 0.2.0.
   - rhythmer-os
-  # Maker-reported in Console's changelog (0.0.26/0.0.27, Nov 2026): starts from SampleBoot.
   - console-mpc
+  - am-mod
+compatible_versions:
+  # Maker-reported SampleBoot startup fix: https://github.com/briwil/console-mpc/releases/tag/v0.0.27
+  console-mpc: 0.0.27 or later
+  # Maker-reported, checked on a physical MPC: https://github.com/AlekseyMalykh/am-mod/releases/tag/r30d-beta3
+  am-mod: r30d beta3 or later
 watch_pages:
   - https://sampleboot.com/#works-with
