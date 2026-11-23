@@ -47,6 +47,8 @@
 		return formatCatalogDate(value);
 	}
 
+	const fullDate = $derived(formatDate(rel.published_at));
+
 	/** @param {string | number | null | undefined} value */
 	function formatShortDate(value) {
 		return formatCatalogDate(value, {
@@ -57,7 +59,6 @@
 		});
 	}
 
-	const fullDate = $derived(formatDate(rel.published_at));
 	const shortDate = $derived(formatShortDate(rel.published_at));
 
 	/** @type {Date | null} */
@@ -71,6 +72,7 @@
 	const relativeDateShort = $derived(
 		relativeDate ? relativeDate.replace(/ days? ago$/, 'd ago') : null
 	);
+	const dateReady = $derived(now !== null);
 	const dateTitle = $derived.by(() => {
 		const published = rel.published_at;
 		if (!now || !published || !fullDate) return undefined;
@@ -125,13 +127,24 @@
 			{/if}
 
 			{#if fullDate}
-				<time class="release-pub-date compact-date" datetime={rel.published_at ?? ''} title={dateTitle}>
+				<!-- Compact: hide until onMount sets `now` so absolute→relative text never flashes. -->
+				<time
+					class="release-pub-date compact-date"
+					class:date-ready={dateReady}
+					datetime={rel.published_at ?? ''}
+					title={dateTitle ?? fullDate}
+					aria-label={fullDate}
+				>
 					{#if relativeDate && relativeDateShort}
 						<span class="date-full">{relativeDate}</span>
 						<span class="date-short">{relativeDateShort}</span>
-					{:else}
+					{:else if dateReady}
 						<span class="date-full">{fullDate}</span>
 						<span class="date-short">{shortDate}</span>
+					{:else}
+						<!-- Longest relative labels reserve width while visibility:hidden. -->
+						<span class="date-full" aria-hidden="true">30 days ago</span>
+						<span class="date-short" aria-hidden="true">30d ago</span>
 					{/if}
 				</time>
 			{/if}
@@ -339,6 +352,13 @@
 		white-space: nowrap;
 		flex-shrink: 0;
 		font-size: 0.7rem;
+		/* Longest relative labels: "30 days ago" / "30d ago" */
+		min-width: 7.25em;
+		text-align: right;
+	}
+
+	.compact-date:not(.date-ready) {
+		visibility: hidden;
 	}
 
 	.date-short {
