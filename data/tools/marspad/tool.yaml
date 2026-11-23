@@ -12,4 +12,3 @@ tags:
 install: desktop
 runs_on: [desktop]
 audience: [musician]
-firmware: 1.3.0.12

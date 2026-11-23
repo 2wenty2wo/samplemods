@@ -348,25 +348,19 @@
   ],
   "marspad": [
     {
-      "file": "screenshots/01-choose-library.webp",
-      "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/choose-library.png",
-      "repo": "jonmitten/marspad",
-      "note": "From the project README (Choose Library)"
-    },
-    {
-      "file": "screenshots/02-library-overview.webp",
+      "file": "screenshots/01-library-overview.webp",
       "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/library-overview.png",
       "repo": "jonmitten/marspad",
       "note": "From the project README (library overview)"
     },
     {
-      "file": "screenshots/03-collection-filter.webp",
+      "file": "screenshots/02-collection-filter.webp",
       "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/collection-filter.png",
       "repo": "jonmitten/marspad",
       "note": "From the project README (collection filter)"
     },
     {
-      "file": "screenshots/04-sound-type-filter.webp",
+      "file": "screenshots/03-sound-type-filter.webp",
       "source": "https://raw.githubusercontent.com/jonmitten/marspad/main/docs/screenshots/sound-type-filter.png",
       "repo": "jonmitten/marspad",
       "note": "From the project README (sound-type filter)"
