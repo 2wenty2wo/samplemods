@@ -21,3 +21,5 @@ compatible:
   - sampqol-os
   - mpc-simple
   - melodee-sample
+  # Maker-reported (exit to bootloader returns to D.S.B): https://github.com/AlekseyMalykh/am-mod/releases/tag/r30d-beta3
+  - am-mod
