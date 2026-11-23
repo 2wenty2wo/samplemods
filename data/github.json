@@ -1418,19 +1418,28 @@
   "keremimo/melodee-sample": {
     "stars": 73,
     "forks": 13,
-    "pushed_at": "2026-11-22T16:59:12Z",
-    "last_commit_at": "2026-11-22T16:55:09Z",
-    "contributors": 1,
-    "open_issues": 11,
+    "pushed_at": "2026-11-23T08:29:58Z",
+    "last_commit_at": "2026-11-23T08:28:39Z",
+    "contributors": 2,
+    "open_issues": 10,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.6.8",
-      "published_at": "2026-11-22T16:59:57Z"
+      "tag": "v0.7.0",
+      "published_at": "2026-11-23T08:25:50Z"
     },
     "releases": [
+      {
+        "tag": "v0.7.0",
+        "name": "Melodee 0.7.0",
+        "prerelease": false,
+        "published_at": "2026-11-23T08:25:50Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.7.0",
+        "body": "Melodee 0.7.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.8:** copy `Melodee-MPC-Sample-v0.7.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.7.0?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **− / + on a plug-in's Edit page turn its pages.** The encoder moves through the rows of three, as before. See [Plug-in instruments](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/plug-ins.md#plug-in-instruments).\n\n## New\n\n### Plug-in pages\n\n- A plug-in's parameters come in pages under **B1**–**B3**, a row of three over **K1**–**K3**. The page's name is at the top left; the dots at the right show which page is open. The pages are the plug-in's own (a CLAP plug-in's pages, an Open MPC plug-in's skin tabs), then its groups of parameters (VST3 units, LV2 port groups, CLAP modules). A row never spans two pages.\n- A page with a filter (cutoff and resonance) or an envelope (attack, decay, sustain, release) draws it above the row.\n- A plug-in effect in a chain shows its sound in and out.\n\n### Page files and skins\n\n- A page file sets a plug-in's pages by hand: which parameters, in which order, shorter names and a picture. Put it in `Melodee/Plugin Pages/` on the card; a plug-in maker can ship one in the plug-in's package. Melodee has one for Neural Amp Modeler. A file that cannot be used is named in `Melodee/Plugin Pages/problems.txt` with the reason. See [Plug-in page files](https://github.com/keremimo/melodee-sample/blob/main/docs/PLUGIN_PAGES.md).\n- A page file can bring a skin: the maker's art for each page, with a background, knobs and switches, sliders, meters, and values and labels in its own font. They move with the values. The example skin for Melodee Poly is in `docs/examples/plugin-skin`.\n\n### A plug-in's own screen\n\n- A CLAP or VST2 plug-in can draw its own page on the MPC Sample, also as a 32-bit (armv7) plug-in. On a plug-in track, Stage's **B1** goes **PRESETS**, **PANEL** (its page), **EDIT**. **SHIFT** + **B3** on Edit swaps its page and Melodee's. See [A plug-in's own screen](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/plug-ins.md#a-plug-ins-own-screen).\n- As an effect, the plug-in draws its own strip under the chain's slots. Push opens its full page; **B3** or **SHIFT** + Push goes back. **SHIFT** + **B3** opens a slot's sheet, on any effect.\n- Settings > **SCREEN** > **Plug-in screens** turns skins and plug-ins' own screens off.\n- For plug-in makers: the MIT-licensed header `sdk/melodee-screen/melodee_screen.h`, [Plug-in screens](https://github.com/keremimo/melodee-sample/blob/main/docs/PLUGIN_SCREENS.md), and the Screen Example, a drive effect that draws its own page and strip, one source for CLAP and VST2 with an armv7 build.\n\n## Fixed\n\n- **SHIFT + Push on Tracks** names the track, as the guide and the MENU say. It went back a page instead.\n- **Files with a # in their name**, such as the factory's G#m and F#m phrases, can be starred and deleted in the sample browser.\n- **An instrument with a # in its file name** (Strings C#.sfz) is no longer taken for a single sample.\n- **The undo list** shows the transport and the tempo in its header. It showed stopped and 120.\n\n## Contributors\n\n- @bsauce42: custom panels for Open MPC plug-ins ([#34](https://github.com/keremimo/melodee-sample/pull/34)), adapted into this version's plug-in pages and page files.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.6.8",
         "name": "Melodee 0.6.8",
@@ -1448,15 +1457,6 @@
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.7",
         "body": "Melodee 0.6.7 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.6:** copy `Melodee-MPC-Sample-v0.6.7.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.7?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **SHIFT + K1 on Patterns sets the length in 16ths.** It used to set any number of bars. Now it goes from 1 to 64 16ths (up to four bars of 4/4), for patterns such as 5/16 or 7/16 against 16 steps on another track. The card shows such a length as **7/16**. **K1** still sets Free, 1, 2, 4 … 128 bars. See [Patterns of odd lengths](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/sequencing.md#patterns-of-odd-lengths). (#27)\n\n## New\n\n- **Mute: Notes.** **Mute** in Settings (**SEQ**) sets what a mute does. **Audio**, as before, silences the track or pad at once. **Notes** stops its new notes and lets what it plays ring out; a MIDI track sends each Note Off when it is due. See [Mute and solo](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/basics.md#mute-and-solo). (#27)\n- **Pad mutes in the pattern.** With **SEQ RECORD** on, **MUTE** + pad on a kit records the mute on the pad's **MUTE** lane. Each pass of the pattern starts with the mutes as you set them, and **STOP** puts them back. The lane shows on Motion when its pad was hit last (**A05 MUTE**): its knob mutes or unmutes the pad there, and **ERASE** + the knob clears the lane. In mute mode the pads light the mute you hear. See [The pattern editors](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/sequencing.md#the-pattern-editors). (#32)\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.6.6",
-        "name": "Melodee 0.6.6",
-        "prerelease": false,
-        "published_at": "2026-11-22T14:15:03Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.6",
-        "body": "Melodee 0.6.6 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **On firmware 1.3.0.12, from 0.2.x to 0.6.5:** copy `Melodee-MPC-Sample-v0.6.6.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.6?*, saves, installs and restarts.\n- **On firmware 1.4.0.7:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card. Earlier versions do not start on 1.4.0.7. If you update in Melodee on 1.3.0.12 first and move to 1.4.0.7 later, copy the zip's `autorun.sh` to the top level of the card too.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **SHIFT + B1 on Song opens JAMS.** In 0.6.5 it put the jam after the end of the song at once (**TAKE JAM**). Now each run from **PLAY** to **STOP** is a jam of its own, and **SHIFT** + **B1** opens the list: turn the encoder to pick one and press **B3** (**TAKE**). See [Jam capture](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#jam-capture).\n\n## New\n\n- **Firmware 1.4.0.7.** Melodee runs and starts from the card on it. Turn on **Developer Mode** in the stock app's Settings, on the **DEV ENHANCEMENTS (BETA)** page. Each time the MPC starts, the stock app asks whether to run the card's autorun script: press Yes. On 1.4.0.7, Screen Mirror is not available and Melodee runs at 44.1 kHz only: the firmware no longer lets apps load their own kernel drivers, and its audio driver takes 44.1 kHz alone. See [Requirements](https://github.com/keremimo/melodee-sample#requirements).\n- **JAMS.** Song's jam list (**SHIFT** + **B1**) shows the picked jam large, with the sequences you launched, the bars and each track's patterns, and a row with a small picture for each jam, the newest first. **K1** (**FROM**) and **K2** (**TO**) choose the bars to take, **B2** (**PLAY**) plays them as Song will, **B3** (**TAKE**) puts them after the end of the song, and **ERASE** deletes the jam. Melodee keeps the newest 8 jams and saves them with the project. See [Jam capture](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#jam-capture).\n- **Note preview.** With **Note preview** on in Settings (**SEQ**, on at first), a note you write or move without playing it is heard once: a step you set in Step Edit's STEPS mode, a held step after you turn the encoder, and Roll's marked notes after you move or paste them. See [The pattern editors](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/sequencing.md#the-pattern-editors).\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -1464,8 +1464,8 @@
   "keremimo/sample-base": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-22T14:05:55Z",
-    "last_commit_at": "2026-11-22T14:01:32Z",
+    "pushed_at": "2026-11-23T08:24:59Z",
+    "last_commit_at": "2026-11-23T08:10:30Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1849,7 +1849,7 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 129,
+    "stars": 128,
     "forks": 9,
     "pushed_at": "2026-11-22T18:10:51Z",
     "last_commit_at": "2026-11-22T18:10:50Z",
