@@ -17,10 +17,10 @@
   "AlekseyMalykh/am-mod": {
     "stars": 23,
     "forks": 1,
-    "pushed_at": "2026-11-21T20:40:10Z",
-    "last_commit_at": "2026-11-21T20:38:53Z",
-    "contributors": 3,
-    "open_issues": 1,
+    "pushed_at": "2026-11-22T20:48:04Z",
+    "last_commit_at": "2026-11-22T20:47:58Z",
+    "contributors": 5,
+    "open_issues": 2,
     "license": "MIT",
     "description": "Unofficial SD-card mod for the Akai MPC Sample: step sequencer, chords, scale layouts, search, pad EQ, resampling, rear recording. Nothing is flashed.",
     "default_branch": "main",
@@ -30,6 +30,15 @@
       "published_at": "2026-11-16T22:50:36Z"
     },
     "releases": [
+      {
+        "tag": "r30d-beta1",
+        "name": "r30d beta1",
+        "prerelease": true,
+        "published_at": "2026-11-22T21:01:23Z",
+        "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30d-beta1",
+        "body": "# Am MOD r30d beta1 — synth, Input ROUTE, bootloader exit\n\n> **BETA — r30d-beta1.** Compatibility with other mods and boot menus (Stock, SampQOL, D.S.B, SampleBoot, mpc-boot-thingy) is still being tested. Back up your projects and card first. Items marked *pending* passed host/emulator checks but still need a check on a physical MPC.\n\nFor **Akai MPC Sample stock firmware 1.3.0.12**. This release continues r30c-beta1; installed firmware is never rewritten.\n\n![Synth modules](media/r30d/synth-modules-en.png)\n\n## Synth (Mixer pad 13)\n\n- **Five modules, nine pages.** Tone (Oscillators, Mixer), Envelope (Amp, Filter envelope), Keys, Filter + LFO, Voices (Voices, Controller). Modules sit on pads 13–16 and 9; **hold Loop and press a pad**, or step with **+ / −**. The **DATA** encoder flips the pages inside a module.\n- **More sound.** Second oscillator (wave, mix, semitone, fine), sub oscillator, noise, drive, a separate filter envelope with amount, key tracking, four LFO shapes, bend range, unison with detune and spread, glide, velocity sensitivity.\n- **One row of knobs.** K1–K3 hold the frequently used parameter; the rarely used one is on **Shift+K** and is shown above the knob while Shift is held. See the [synth guide](SYNTH_GUIDE.md) for every page.\n- **Keys page = Tune tab.** K1 Transpose16 / Shift Layout, K2 Tonic / Shift Role, K3 Scale / Shift Colour; values read like the Tune tab, e.g. “D# (P)”, “Natural Minor (P)”, “−4 st”.\n- **Fader** (Off / Mod / Pitch) is K1 of the Controller page. Parameters such as LFO Depth, Sub, Noise, Drive and Key track read “Off” at zero.\n- **Takeover.** The synth's K knobs follow the Parameter takeover mode (Pickup, Scaled, Jump) like the rest of the Mixer.\n- Entering the synth in the Mixer clears the track selection; pads 9–12 show the Input track's effects, because the synth is the Input track's source. Pad 14 no longer leaves the synth.\n- Thumbnails mirror the pad layout; the big module drawing on the left shows the live waveform, envelope or filter curve.\n\n## Input and recording\n\n- **Shift+Sample opens the Input ROUTE list from every screen** (Seq, Step Edit, compressor, Project), never the stock Input Config. Rows: Source (Mic / Rear / USB / Resample / Synth), Mode (Rear and USB: Stereo, L, R …), Monitor, Threshold, Tuner and record rows. K1 Pan, K2 Threshold, K3 Source; **B2 FX, B3 MIDI In**, Shift+B2 opens the stock screen. The list scrolls and the pad layout stays as you left it.\n- **Sample Record:** K1 selects the input Source (including Synth), Shift+K1 the Rear/USB mode. With the **16 Levels** synth keyboard on, the knobs follow the Tune tab (K1 Transpose16 / Layout, K2 Tonic / Role, K3 Scale / Colour) and redraw when Shift is released.\n- The synth always follows the master volume; the old *Direct out* and *Mic layer* options are gone. Changing the Input source takes the Input off the synth.\n\n## Piano Roll\n\n- **Area selection:** hold **DATA**, turn the encoder (time) and move the fader (rows); the covered area is selected live. Release DATA to keep it. A short DATA click without movement still selects the note under the cursor (Shift adds).\n\n## Layout swap\n\n- **Layout and Transpose16 swapped** on the Tune tab, the synth Keys page and Sample Record: **K1 = Transpose16, Shift+K1 = Layout**. Resetting the knob follows the new order.\n\n## MIDI\n\n- Global MIDI/synth defaults, a **MIDI Buttons** page (scrolling list, B3 assign, B2 delete/cancel, faders assignable) and a fader MIDI source.\n- Controller modifier buttons (for example Shift on a MiniLab) act as plain buttons unless the MPC's own Shift is held, so a keyboard Shift no longer holds the MPC Shift.\n- MIDI In from Input Config: B3 / Shift+B2 switch the input mode, Shift+B3 Buttons, Shift+B2 Clear; the MIDI synth list scrolls.\n\n## Effects\n\n- **Henry Skillz** effects HS Saturator, HS Bass Focus and HS Heat (DSP from [hs-mpc-plugins](https://github.com/Holla-Back-Entertainment/hs-mpc-plugins), used with permission), with their own visuals, a page tab strip and a Heat page highlight. Add Effect has an HS author tab and name search (B2). *Pending device check.*\n\n## Bootloader and D.S.B\n\n- **Mod Settings → About → Exit to bootloader** (B3 confirms, B1 cancels) saves a project copy to `Projects/Mod-Exit-Last` and returns to the **D.S.B menu**; without D.S.B the MPC starts stock firmware. See [Boot menus and bootloader exit](BOOTLOADERS.md).\n- **D.S.B state carry-over:** D.S.B's “start OK” marking now reaches the card's real state file, so a healthy Am MOD start is no longer counted as a crash and the menu stops offering Stock after two starts.\n- The D.S.B boot journal and the state-fix log are copied beside the mod on the card for diagnostics (`dsb-boot.log`, `dsb-state-fix.log`).\n- Fast-boot idea: pick **AM Mod** once in a boot menu and use **Exit to bootloader** whenever you want a different system.\n\n## Other\n\n- Browser search shows a **Find** label; Shift+B2 clears the whole text.\n- Synth Hold note holds the last 16 Levels note and shows it highlighted.\n- Synth FX tail hold and fade-out remove clicks when notes end.\n\n## Limits\n\n- The synth modules, Input ROUTE, takeover for synth knobs, Piano Roll area selection and the layout swap were finished after the last full device check: *pending* hardware verification.\n- To Seq recording of a Mic take may not play the new sample in the sequence in every situation; logs from the device are welcome.\n- Exit to bootloader hands over to **D.S.B** only. SampleBoot and mpc-boot-thingy are supported for starting the mod; returning to them from the mod is not implemented.\n- Cross-mod Load/Save of Internal projects (Am MOD, Stock, SampQOL) is not fully certified.\n\nSee [Known limitations](KNOWN_ISSUES.md), [Installation](INSTALL.md) and the [changelog](../CHANGELOG.md).\n",
+        "truncated": false
+      },
       {
         "tag": "r30c-beta1",
         "name": "r30c beta1",
@@ -46,15 +55,6 @@
         "published_at": "2026-11-16T22:50:36Z",
         "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30b",
         "body": "# Am MOD r30b\n\nДля **Akai MPC Sample, прошивка 1.3.0.12**. Обновление не переписывает системную прошивку.\n\n- **SD Card Access:** доступ к карте как USB-диску, обновление мода через USB и возврат **B3 Disconnect → B3 Return** после безопасного извлечения в ОС.\n- **USB audio:** Stereo Master для телефона/ПК или **Master + A–H — 18 каналов / девять стереопар**. Названия сообщает сам MPC. В Stock сохраняется стереорежим.\n- **FX:** новые экраны Tape Delay, Tape, Vinyl, Shimmer и других эффектов; 12 обновлённых GIF, отдельные раскладки K1–K3/Shift, семь гитарных/басовых Amp-вариантов.\n- **Звук и управление:** фоновый тюнер, плавные изменения FX, согласованные Copy/Paste/Bypass, DATA и выделение Duck/OptoCat, takeover и фильтрация обратных петель в Route.\n- **Sample Record:** исправлены индикатор мониторинга, Stop в Routing и лишний Rec Input Effects в Am MOD. Для записи/мониторинга с Input FX выберите **Record FX = Wet**.\n\n## Установка / Install\n\nСделайте копию проектов и сэмплов. Скачайте **am-mod-r30b.zip** и установщик ниже. Установите полный пакет, безопасно извлеките диск, вернитесь через B3 → B3 и **выключите/включите MPC**. Уже работающая RAM-версия от копирования не меняется.\n\nBack up projects/samples, install the complete ZIP, safely eject, return with B3 → B3 and **restart the MPC**. Save to External. USB mode changes also require restart. Stereo is the phone profile; individual phone/adapter compatibility varies.\n\n**Не включайте петлю мониторинга DAW ↔ MPC USB Return.** SD Card Access останавливает приложение и звук на время передачи.\n\n[Все изменения / Русский](https://github.com/AlekseyMalykh/am-mod/blob/r30b/docs/RELEASE_NOTES-r30b.ru.md) · [Full English notes](https://github.com/AlekseyMalykh/am-mod/blob/r30b/docs/RELEASE_NOTES-r30b.md) · [USB](https://github.com/AlekseyMalykh/am-mod/blob/r30b/docs/USB_GUIDE.ru.md) · [Руководство](https://github.com/AlekseyMalykh/am-mod/blob/r30b/docs/USER_GUIDE.ru.md) · [FX gallery](https://github.com/AlekseyMalykh/am-mod/blob/r30b/docs/FX_GALLERY.md)\n\n![Tape Delay](https://raw.githubusercontent.com/AlekseyMalykh/am-mod/r30b/docs/media/fx/tape-delay.gif)\n\nGIF отрисована текущим painter-кодом на синтетическом сигнале; это не запись устройства. Границы аппаратной/автоматической проверки указаны в release notes. SHA-256 всех вложений — в **SHA256SUMS.txt**. Соответствующие GPL-исходники модуля USB включены в ZIP.\n",
-        "truncated": false
-      },
-      {
-        "tag": "r30a",
-        "name": "Am MOD r30a",
-        "prerelease": false,
-        "published_at": "2026-11-15T13:53:18Z",
-        "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30a",
-        "body": "# Am MOD r30a\n\nThe first release with the mixer, the input channel, resampling through the mixer and the tuner. Firmware **1.3.0.12** only.\n\n## Read this first\n\n- **The \"SD Card Access\" item is hidden** in the Project menu (Shift+Pad 16) in both modes. USB transfer mode (\"the card as a drive on your computer\") cannot work while the mod runs: the app runs in an isolated copy without access to raw storage devices, and the card is in use by the mod. The item was removed for safety. Use a card reader; to get USB mode back, remove `autorun/` from the card and start the MPC.\n- **Two modes: Stock and Am MOD.** Project → Mod Settings → Quick → FX mode, applied after a restart. *Stock*: the stock FX Select (one effect), no mixer. *Am MOD*: the mixer replaces FX Select; Knob FX opens the mixer; a stock FX Select effect saved in a project is ignored. Signal-path diagrams for both modes (EN/RU) are in the README.\n- Back up projects and samples before updating. Save to **External**.\n\n## What is new\n\n- **Mixer**: tracks A–H and Master, four insert effects per track, sends, sidechain, Song stems to the SD card.\n- **Input channel** (mixer pad 15): Level, Pan, Mute, Input FX; recording point **Input / Track A–H / Master**, **Wet / Dry**; monitoring follows the record point; Rear modes.\n- **Resample** a pad (Shift+Pad 11 in Sample) or a sequence (Shift+Pad 11 in Seq) through the mixer, with a destination dialog, Replace confirmation, stop confirmation and independent bank handling.\n- **Tuner**: input (mixer Input ROUTE, Sample Record B3) and the sample of any pad (Stop+Chop in Sample); B3 \"Orig note\" stores the original note.\n- **Pad colour from Track** on every screen with pad sounds.\n- New illustrated effect screens, typing names with the pads, Master compressor OptoCat/Duck.\n\n## Bugs fixed\n\n- Save Project / Save Sample: false \"Insert SD card\" and saving to Internal.\n- Stems export with an External Export window; the Stems name window now accepts pads at once.\n- Resampled pad lost its attack; sequence resample skipped the mixer and could be silent at first start.\n- Recording through Track or Master stayed dry.\n- A stock FX Select effect sounded in Am MOD; one selected pad made Knob FX hit every pad.\n- Pad colours turned stock under native dialogs.\n- Resample dialog: Pad Bank stepping, bank letters, stop confirmation, Replace prompt with red target and hint (sequences), destination bank independent of the sequence bank.\n- Compressor pad pick showed free-green / occupied-red like a destination: now a normal blinking selection.\n- Seq+Sample window lit pads differently from Sample: now the same rules.\n- Shift+Erase in the mixer started the stock copy gesture; K3 Volume in the sample library blinked; Master FX pinned Sample Comp row.\n\n## Known\n\n- Rare short crackle in the tuner window on very low notes.\n- A missing sequence cursor in Song was seen once and could not be reproduced.\n\n## Thanks\n\nHuge thanks to **Leusha** for careful, detailed testing and for finding bugs: most of the fixes above started from those reports. Thanks also to mxt1iga and everyone who tested builds.\n",
         "truncated": false
       }
     ],
@@ -294,7 +294,7 @@
     "pushed_at": "2026-11-20T20:05:33Z",
     "last_commit_at": "2026-11-20T20:05:32Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": null,
     "description": "GRIDZILLA 1.2 for MPC Sample — installation package, user guide and video. By TechMasterFlex / The Sound Factory NJ.",
     "default_branch": "main",
@@ -310,7 +310,7 @@
         "prerelease": false,
         "published_at": "2026-11-13T17:13:41Z",
         "html_url": "https://github.com/ZootedandRebooted/GRIDZILLA/releases/tag/GRIDZILLA",
-        "body": "## Fixed in 1.2.9\r\n\r\n- Melodic mode shows recorded notes at their actual pitches immediately, without pressing Transpose.\r\n- Removed the stopped-state “STOP” text from the Arranger bar.\r\n- Includes the existing Transpose and Arranger improvements.\r\n\r\nVerified on the MPC Sample, including startup and preservation of the current session.\r\n\r\nDownload **GRIDZILLA.zip** below for the current 1.2.9 installation package, user guide, and video walkthrough. This is an end-user release; Gridzilla implementation source and development files are not included.\r\n\r\nGRIDZILLA adds instruments, MIDI editing, song arrangement, mixing and effect automation to the MPC Sample. It runs from SD without flashing Akai firmware.\r\n\r\nMixer\r\n\r\nOpen it with SHIFT + Pad 5. Select a pad, move its fader, and use SHIFT for MUTE and SOLO while the Song plays. The mixer includes a MASTER channel, four insert slots and colored meters. Faders run from silence to +12 dB, with 0 dB at unity. Existing saved levels are retained.\r\n\r\nEffects\r\n\r\nAdd EQ, Saturation, Delay, Reverb, Limiter, the native compressor or Flex Beat. Click an occupied slot to open its controls, or an empty slot to choose an effect. Use presets as a starting point and adjust with the encoder. Removing an effect also removes its automation; Undo restores the edit.\r\n\r\nFX automation\r\n\r\nUse TOUCH, LATCH or WRITE to record effect changes and READ to play them. Flex Beat supports MIX automation and individual ON/OFF points on the grid. Apply a point edit as one Undo action.\r\n\r\nInstruments and MIDI\r\n\r\n16 LEVELS opens the instrument library and chord mode. Play single notes or one-pad chords from triads through 13ths. Edit the recorded notes in Melodic and change an existing instrument while the Song plays. Recording SNAP aligns new note starts to the selected grid; SNAP OFF keeps performed timing. Existing notes stay in place.\r\n\r\nEditing and navigation\r\n\r\nUpdated Grid and Melodic Tools, ADD SEQUENCE and sequence-position controls, direct access to occupied FX slots, Flex Beat BACK handling, and separation of Arranger controls from Sample loop/reverse settings.\r\n\r\nDownload contents\r\n\r\nThe download contains the autorun and WaveGrid installation folders, the illustrated step-by-step PDF and the video walkthrough. ",
+        "body": "## Firmware compatibility — read before updating\r\n\r\n> **For Akai MPC Sample firmware 1.3. We strongly recommend staying on firmware 1.3 and NOT updating to firmware 1.4 if you use this GRIDZILLA release.** Firmware 1.4 compatibility has not been verified for this build. Wait for a GRIDZILLA release with confirmed 1.4 support before updating your MPC.\r\n\r\n## GRIDZILLA 1.2.9 — Stability Update\r\n\r\nGRIDZILLA adds instruments, MIDI editing, song arrangement, mixing and FX automation to the MPC Sample. It runs from the SD card without flashing Akai firmware.\r\n\r\nThis update brings the Henry Skillz FX collection, selected-pad Melodic editing, sequence looping in Grid and Melodic, a synchronized Loop light, and safer Mixer editing during project loading. The current release passed its hardware qualification, audio checks and normal reboot test on the MPC Sample.\r\n\r\n### Updated Mixer and FX\r\n\r\nOpen the Mixer with **SHIFT + Pad 5**. Select a pad or **MASTER**, open **Inserts**, and choose an empty slot.\r\n\r\n**Nine Henry Skillz effects are included:**\r\n\r\n- Heat\r\n- Pump\r\n- Bus Compressor\r\n- Channel Strip\r\n- Para EQ\r\n- Tube Strip\r\n- Bass Focus\r\n- Crush\r\n- Saturator\r\n\r\nHenry's effects are available on pad and Master inserts. **Flex Beat** is available on pad insert slots; Master inserts use the nine Henry effects. Open an occupied slot to edit it, and use **Next Page** for additional controls while playback continues.\r\n\r\nThe Mixer provides four insert slots, colored meters, pad and Master faders, and SHIFT controls for mute and solo. Faders range from silence to +12 dB, with 0 dB at unity. Existing saved levels are retained.\r\n\r\nHenry Skillz's DSP is credited in the included **HENRY-FX-NOTICE.txt**, with its MIT license.\r\n\r\n### Loop the sequence you are editing\r\n\r\n- Open Grid with **SHIFT + SEQ**, then press **LOOP** to enable or disable looping for that sequence.\r\n- The same control works in **Melodic** mode.\r\n- With Loop enabled, **STOP → PLAY** restarts the sequence you are editing at its loop start.\r\n- **SHIFT + PLAY** retains the native resume behavior, and saved sequence loop boundaries are preserved.\r\n- The **Loop button lights up when looping is enabled** and stays synchronized across modes, including Grid, Melodic, Song, Mixer and Sample.\r\n- The Arranger keeps its own song/cycle loop range.\r\n\r\n### Melodic editing and transpose\r\n\r\nMelodic mode now shows **only the selected pad's notes**, including their per-note tuning. The pad label identifies what you are editing. Switching pads changes the displayed notes; an empty pad shows an empty view.\r\n\r\nChord selection and transposition apply only to that pad, even when other pads have notes at the same pitch or time. Return to **Grid** to see the complete pattern. Single-note and chord transpose, copy, Undo/Redo, and native save/reload were checked on hardware.\r\n\r\n### Instruments, arrangement and automation\r\n\r\n- **16 LEVELS** opens the instrument library and chord mode. Play single notes or one-pad chords from triads through 13ths.\r\n- Edit recorded notes in Melodic and change an existing instrument while the Song plays.\r\n- **SNAP** aligns newly recorded note starts to the selected grid; **SNAP OFF** preserves performed timing. Existing notes stay in place.\r\n- Use Grid and Melodic Tools, **ADD SEQUENCE**, and sequence-position controls to build and edit your arrangement.\r\n- Use **TOUCH, LATCH or WRITE** to record FX changes and **READ** to play them back. Flex Beat supports MIX automation and individual ON/OFF points on the grid.\r\n- The stopped-state “STOP” text has been removed from the Arranger bar.\r\n\r\n### Stability and hardware verification\r\n\r\nMixer insert, removal, Undo and Redo actions are temporarily unavailable while a project loads, then return when loading finishes. This addresses the identified Mixer load-readiness issue.\r\n\r\nThe current build passed:\r\n\r\n- Grid and Melodic Loop on/off, repeated loop playback, Stop/Play restart and cross-mode Loop-light checks.\r\n- Song-to-Grid handoff, repeated sequence occurrences, saved loop bounds and eight reload cycles.\r\n- Selected-pad display, pad switching, chord and single-note transpose, copy, Undo/Redo, and save/reload checks.\r\n- Audio timing and pitch checks.\r\n- Flex Beat controls, bypass, audio playback, save/reload, removal and Undo/Redo.\r\n- Ten Henry FX editor cycles, including all 41 Para EQ pages during playback, plus removal and Undo/Redo.\r\n- Normal startup and reboot, with the test device's existing project and musical events preserved.\r\n\r\n**No captured faults occurred in these qualification runs.** Qualification covered the workflows listed above on the tested MPC Sample.\r\n\r\n### Download and installation\r\n\r\nDownload **[GRIDZILLA.zip](https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA.zip)** below. This is the tested 1.2.9 Stability Update for an existing supported GRIDZILLA installation on firmware 1.3.\r\n\r\nSave your project and back up your SD card before updating. Extract the complete package and follow **INSTALLATION GUIDE.txt** for installation and rollback. Keep `install.sh`, `autorun`, and `WaveGrid` together.\r\n\r\nThe illustrated **GRIDZILLA-User-Guide.pdf** and **GRIDZILLA-Video.mov** are separate release assets. Use the included installation guide for this update's current instructions.\r\n\r\nThe ZIP contains runtime files, installation scripts, documentation and license notices. **GRIDZILLA implementation source, development files, credentials and user projects are not included.**\r\n",
         "truncated": false
       }
     ],
@@ -334,10 +334,10 @@
   "bajdev/MPCkit": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-22T19:42:53Z",
-    "last_commit_at": "2026-11-22T18:39:41Z",
-    "contributors": 1,
-    "open_issues": 2,
+    "pushed_at": "2026-11-22T22:39:26Z",
+    "last_commit_at": "2026-11-22T21:35:20Z",
+    "contributors": 2,
+    "open_issues": 1,
     "license": "MIT",
     "description": "Application to create basic MPC Sample starter projects and kits from your desktop",
     "default_branch": "main",
@@ -368,11 +368,57 @@
     ],
     "archived": false
   },
+  "briwil/console-mpc": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-22T02:06:23Z",
+    "last_commit_at": "2026-11-22T02:05:14Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "GPL-3.0",
+    "description": null,
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.0.27",
+      "published_at": "2026-11-22T02:06:24Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.0.27",
+        "name": "Console for the MPC Sample v0.0.27",
+        "prerelease": false,
+        "published_at": "2026-11-22T02:06:24Z",
+        "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.27",
+        "body": "## 0.0.27\n\n- Started from SampleBoot, Console now starts at once (it waited for the stock app, which SampleBoot has already stopped, and never got going).\n\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.0.26",
+        "name": "Console for the MPC Sample v0.0.26",
+        "prerelease": false,
+        "published_at": "2026-11-22T01:21:47Z",
+        "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.26",
+        "body": "## 0.0.26\n\n- Start-up: Console no longer asks Console or MPC. It starts once the control panel is ready (SampleBoot is where you choose a system).\n- Shift + STOP opens a leave menu: BACK TO MPC OS, SHUT DOWN or CANCEL. Turn the wheel, push to choose. Console saves first.\n\n",
+        "truncated": false
+      },
+      {
+        "tag": "card-latest",
+        "name": "Console for the MPC Sample: SD card zip (built 2026-11-22 02:06 UTC)",
+        "prerelease": true,
+        "published_at": "2026-11-22T02:06:13Z",
+        "html_url": "https://github.com/briwil/console-mpc/releases/tag/card-latest",
+        "body": "Unzip onto the root of the SD card (the autorun and Console folders), put the card in the MPC Sample, switch on. See Console/README.txt inside.",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "bsauce42/tape-workshop-mpc-sample": {
     "stars": 7,
     "forks": 0,
-    "pushed_at": "2026-11-20T19:08:02Z",
-    "last_commit_at": "2026-11-20T02:57:26Z",
+    "pushed_at": "2026-11-23T00:31:59Z",
+    "last_commit_at": "2026-11-23T00:31:55Z",
     "contributors": 1,
     "open_issues": 2,
     "license": null,
@@ -762,7 +808,7 @@
     "archived": false
   },
   "garrettjwilke/mpc-gen1recomp": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-11T01:44:11Z",
     "last_commit_at": "2026-11-11T01:42:38Z",
@@ -855,7 +901,7 @@
     "archived": false
   },
   "gospodindilly-ops/mpc-sample-lab": {
-    "stars": 19,
+    "stars": 20,
     "forks": 6,
     "pushed_at": "2026-10-24T19:32:11Z",
     "last_commit_at": "2026-10-23T09:43:37Z",
@@ -895,7 +941,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 241,
+    "stars": 242,
     "forks": 29,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -956,7 +1002,7 @@
     "archived": false
   },
   "ioma8/mpc-sample-sdk": {
-    "stars": 10,
+    "stars": 11,
     "forks": 3,
     "pushed_at": "2026-11-22T10:08:38Z",
     "last_commit_at": "2026-11-22T10:08:27Z",
@@ -1229,12 +1275,12 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 14,
+    "stars": 15,
     "forks": 0,
     "pushed_at": "2026-11-20T16:03:41Z",
     "last_commit_at": "2026-11-20T16:03:38Z",
     "contributors": 1,
-    "open_issues": 1,
+    "open_issues": 2,
     "license": "AGPL-3.0",
     "description": "Free and open-source firmware for MPC Sample. 22 instrument entries, 36 Rhythmer Kits, sound design, GEN, Acid and Break. Built on Melodee.",
     "default_branch": "main",
@@ -1329,7 +1375,7 @@
   },
   "keremimo/melodee-sample": {
     "stars": 73,
-    "forks": 12,
+    "forks": 13,
     "pushed_at": "2026-11-22T16:59:12Z",
     "last_commit_at": "2026-11-22T16:55:09Z",
     "contributors": 1,
@@ -1404,7 +1450,7 @@
   "larsoholm/LoopPad": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-22T19:38:24Z",
+    "pushed_at": "2026-11-22T20:18:35Z",
     "last_commit_at": "2026-11-22T13:37:56Z",
     "contributors": 1,
     "open_issues": 0,
@@ -1485,7 +1531,7 @@
     "archived": false
   },
   "open-mpc/open-mpc.github.io": {
-    "stars": 7,
+    "stars": 8,
     "forks": 1,
     "pushed_at": "2026-11-22T12:17:30Z",
     "last_commit_at": "2026-11-22T12:17:22Z",
@@ -1537,7 +1583,7 @@
     "archived": false
   },
   "orrpunk-art/virtual-mpc-sample": {
-    "stars": 28,
+    "stars": 29,
     "forks": 4,
     "pushed_at": "2026-11-01T12:48:52Z",
     "last_commit_at": "2026-11-01T12:48:18Z",
@@ -1554,8 +1600,8 @@
   "pxcm/SampleBoot": {
     "stars": 24,
     "forks": 2,
-    "pushed_at": "2026-11-19T15:21:49Z",
-    "last_commit_at": "2026-11-19T15:21:46Z",
+    "pushed_at": "2026-11-22T22:01:33Z",
+    "last_commit_at": "2026-11-22T22:01:31Z",
     "contributors": 1,
     "open_issues": 2,
     "license": null,
@@ -1715,7 +1761,7 @@
     "archived": false
   },
   "slowphase/mpc-gently": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-21T11:19:39Z",
     "last_commit_at": "2026-11-21T11:19:38Z",
@@ -1762,11 +1808,11 @@
   },
   "snarebes/SampQOL-OS": {
     "stars": 129,
-    "forks": 8,
+    "forks": 9,
     "pushed_at": "2026-11-22T18:10:51Z",
     "last_commit_at": "2026-11-22T18:10:50Z",
     "contributors": 1,
-    "open_issues": 31,
+    "open_issues": 37,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
