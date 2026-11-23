@@ -1,0 +1,12 @@
+name: MPC Samplex
+description: >-
+  A browser companion for planning chords, scales and melodies on the MPC Sample's 16 pads,
+  with local audio preview and key detection. Ideas are recreated on the device by hand.
+repo: Daniel-Hillman/mpc-samplex
+author: Daniel-Hillman
+website: https://daniel-hillman.github.io/mpc-samplex/
+tags:
+  - companion
+install: none
+runs_on: [browser]
+audience: [musician]
