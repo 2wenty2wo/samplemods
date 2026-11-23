@@ -26,6 +26,8 @@ hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</
 
 All eleven plug-ins in the [hdslave MPC Sample Synths & Drum Machines](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines) collection use the `hdslaveOS` screen extension to render bespoke hardware-inspired interfaces right on the MPC Sample:
 
+> **Desktop CLAP versions (macOS & Windows):** All 11 plug-ins are also available for FL Studio and other desktop CLAP hosts with expanded control panels and MIDI Learn in [**hdslave-Synths-and-drum-machines-Mac-Win**](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).
+
 <table>
   <tr>
     <td align="center" width="50%">
@@ -50,6 +52,15 @@ All eleven plug-ins in the [hdslave MPC Sample Synths & Drum Machines](https://g
 </table>
 
 <p align="center">See all 11 animated plug-in interfaces in the <a href="https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines"><b>hdslave MPC Sample Synths &amp; Drum Machines</b></a> hub.</p>
+
+#### Opening a plug-in effect's PANEL (e.g. Cortex Filter)
+
+Plug-in instruments show their custom screen directly on the track's Edit page. For plug-in **effects** with a custom screen (such as **hdslave Cortex Filter**), push the encoder on the effect's slot to open its sheet, turn the encoder to **PANEL**, and push it. Use the wheel, encoder push, **− / +**, and **K1–K3** to control the panel, and press **B1** (**BACK**) to return to the slot.
+
+<p align="center">
+  <img src="docs/images/plugins/cortex-filter-panel.png" alt="Effect slot sheet for hdslave Cortex Filter with the PANEL card selected" width="400">
+  <br><sub>Push the encoder on the effect slot, highlight <b>PANEL</b>, and push to open Cortex Filter's 3D morphing interface.</sub>
+</p>
 
 ## About Melodee
 
