@@ -106,7 +106,15 @@ import { base } from '$app/paths';
 						</div>
 						<div class="compat-info">
 							<div class="compat-head">
-								<p class="mini-card-title compat-title">{rel.name}</p>
+								<div class="compat-title-row">
+									<p class="mini-card-title compat-title">{rel.name}</p>
+									<div class="mini-card-tags compat-tags">
+										<span class="chip chip-category compat-chip">{sectionSingularLabel(rel.section)}</span>
+										{#if rel.status}
+											<span class="badge-status {rel.status} compat-chip">{rel.status}</span>
+										{/if}
+									</div>
+								</div>
 								{#if row}
 									<span class="compat-version">
 										{#if row.checked_by === 'Tested'}
@@ -269,13 +277,32 @@ import { base } from '$app/paths';
 .compat-head {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: baseline;
+		align-items: center;
 		justify-content: space-between;
-		gap: 0.12rem 0.5rem;
+		gap: 0.16rem 0.5rem;
+	}
+
+.compat-title-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.22rem 0.42rem;
+		min-width: 0;
 	}
 
 .compat-title {
 		font-size: 0.9rem;
+	}
+
+.compat-tags {
+		gap: 0.22rem;
+	}
+
+.compat-chip {
+		font-size: 0.58rem;
+		padding: 0.06rem 0.32rem;
+		border-bottom-width: 2px;
+		line-height: 1.15;
 	}
 
 .compat-version {
