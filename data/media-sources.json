@@ -696,6 +696,32 @@
       "source": "https://killaviccheatcodes.app/og-image.png"
     }
   ],
+  "mpc-samplex": [
+    {
+      "file": "screenshots/01-home.webp",
+      "source": "https://daniel-hillman.github.io/mpc-samplex/",
+      "repo": "Daniel-Hillman/mpc-samplex",
+      "note": "Screenshot of the official web app (1200×900), Home"
+    },
+    {
+      "file": "screenshots/02-chords.webp",
+      "source": "https://daniel-hillman.github.io/mpc-samplex/",
+      "repo": "Daniel-Hillman/mpc-samplex",
+      "note": "Screenshot of the official web app (1200×900), Chords"
+    },
+    {
+      "file": "screenshots/03-16-levels.webp",
+      "source": "https://daniel-hillman.github.io/mpc-samplex/",
+      "repo": "Daniel-Hillman/mpc-samplex",
+      "note": "Screenshot of the official web app (1200×900), 16 Levels / Scales"
+    },
+    {
+      "file": "screenshots/04-key-finder.webp",
+      "source": "https://daniel-hillman.github.io/mpc-samplex/",
+      "repo": "Daniel-Hillman/mpc-samplex",
+      "note": "Screenshot of the official web app (1200×900), Key Finder"
+    }
+  ],
   "mpc-simple": [
     {
       "file": "screenshots/01-pad-select.webp",
