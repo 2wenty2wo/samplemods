@@ -16,7 +16,7 @@ import { base } from '$app/paths';
 	 *   byId: Record<string, any>,
 	 *   compatibleIds: string[],
 	 *   launcherIds: string[],
-	 *   sampleBootCompat?: { source: string, updated: string, entries: Record<string, CompatRow> }
+	 *   sampleBootCompat?: { source?: string, updated?: string, entries: Record<string, CompatRow> }
 	 * }} */
 	let { mod, byId, compatibleIds, launcherIds, sampleBootCompat } = $props();
 
@@ -120,7 +120,7 @@ import { base } from '$app/paths';
 										{#if row.checked_by === 'Tested'}
 											<CheckIcon />{row.versions}
 										{:else}
-											{row.checked_by} {row.versions}
+											{[row.checked_by, row.versions].filter(Boolean).join(' ')}
 										{/if}
 									</span>
 								{/if}
