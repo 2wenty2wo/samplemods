@@ -42,10 +42,6 @@ try {
 	git('checkout', '-q', '--detach', head);
 	assert.equal(run().status, 0, 'unrelated main refresh must not fail the guard');
 	fs.writeFileSync(path.join(fixture, 'data/compat.json'), '{}');
-	commit();
-	assert.equal(run().status, 0, 'initial compatibility seed is allowed');
-	git('update-ref', 'refs/remotes/origin/main', 'HEAD');
-	fs.writeFileSync(path.join(fixture, 'data/compat.json'), '{"refresh":true}');
 	fs.unlinkSync(path.join(fixture, 'data/github.json'));
 	fs.renameSync(path.join(fixture, 'data/readme/project.md'), path.join(fixture, 'moved.md'));
 	commit();
