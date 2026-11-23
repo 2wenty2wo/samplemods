@@ -1,0 +1,17 @@
+name: Console
+description: >-
+  An 8-track groovebox and tape recorder for the MPC Sample, ported from Console for Ableton Move,
+  with drum machines, VST synths and effects, step sequencers and song mode.
+repo: briwil/console-mpc
+author: briwil
+website: https://consoleforthesample.com/
+tags:
+  - groovebox
+  - sequencer
+  - vst
+  - song
+install: sd-card
+firmware: 1.3.0.12
+status: beta
+runs_on: [device]
+audience: [musician]

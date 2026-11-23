@@ -45,6 +45,32 @@
       "repo": "drose030/beat-train-mpc-sample"
     }
   ],
+  "console-mpc": [
+    {
+      "file": "screenshots/01-tape-tracks.webp",
+      "source": "https://consoleforthesample.com/img/tape-tracks.png",
+      "repo": "briwil/console-mpc",
+      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+    },
+    {
+      "file": "screenshots/02-sequencer.webp",
+      "source": "https://consoleforthesample.com/img/sequencer.png",
+      "repo": "briwil/console-mpc",
+      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+    },
+    {
+      "file": "screenshots/03-sound-page.webp",
+      "source": "https://consoleforthesample.com/img/sound-page.png",
+      "repo": "briwil/console-mpc",
+      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+    },
+    {
+      "file": "screenshots/04-song.webp",
+      "source": "https://consoleforthesample.com/img/song.png",
+      "repo": "briwil/console-mpc",
+      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+    }
+  ],
   "draw-handler": [
     {
       "file": "screenshots/01-stompbox-page.gif",
