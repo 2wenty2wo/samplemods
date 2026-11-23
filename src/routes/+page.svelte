@@ -1,4 +1,5 @@
 <script>
+	import autoAnimate from '@formkit/auto-animate';
 	import { afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
@@ -29,7 +30,11 @@
 		contributorCount === 1 ? '1 person who built this catalog' : `${contributorCount} people who built this catalog`;
 
 	let query = $state('');
-	let section = $state('');
+	let section = $state(
+		typeof window !== 'undefined'
+			? sectionFromParam(new URLSearchParams(window.location.search).get('section'))
+			: ''
+	);
 	let sort = $state('name');
 
 	/** Track image URLs whose naturalWidth <= 400 so 320×240 captures render pixelated */
@@ -96,6 +101,8 @@
 		return formatCatalogDate(value);
 	}
 
+	const gridAnimation = { duration: 200, easing: 'ease-out' };
+
 	/** @param {Event} e @param {string | null} src */
 	function onScreenImageLoad(e, src) {
 		if (!src) return;
@@ -139,7 +146,7 @@
 			<p class="empty-sub">Try clearing your search query or switching back to All sections.</p>
 		</div>
 	{:else}
-		<ul class="card-grid">
+		<ul class="card-grid" use:autoAnimate={gridAnimation}>
 			{#each filtered as mod (mod.id)}
 				<li class="card-item">
 					<EntryCard {mod} {pixelatedUrls} {onScreenImageLoad} />
