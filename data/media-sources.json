@@ -47,28 +47,34 @@
   ],
   "console-mpc": [
     {
-      "file": "screenshots/01-tape-tracks.webp",
-      "source": "https://consoleforthesample.com/img/tape-tracks.png",
+      "file": "screenshots/01-welcome.webp",
+      "source": "https://github.com/briwil/console-mpc",
       "repo": "briwil/console-mpc",
-      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12), Console v0.0.27"
     },
     {
-      "file": "screenshots/02-sequencer.webp",
-      "source": "https://consoleforthesample.com/img/sequencer.png",
+      "file": "screenshots/02-cw78-bass-drum.webp",
+      "source": "https://github.com/briwil/console-mpc",
       "repo": "briwil/console-mpc",
-      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12), Console v0.0.27"
     },
     {
-      "file": "screenshots/03-sound-page.webp",
-      "source": "https://consoleforthesample.com/img/sound-page.png",
+      "file": "screenshots/03-braids-synth.webp",
+      "source": "https://github.com/briwil/console-mpc",
       "repo": "briwil/console-mpc",
-      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12), Console v0.0.27"
     },
     {
-      "file": "screenshots/04-song.webp",
-      "source": "https://consoleforthesample.com/img/song.png",
+      "file": "screenshots/04-step-sequencer.webp",
+      "source": "https://github.com/briwil/console-mpc",
       "repo": "briwil/console-mpc",
-      "note": "Screen capture from the project website, converted from PNG to lossless WebP"
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12), Console v0.0.27"
+    },
+    {
+      "file": "screenshots/05-mixer.webp",
+      "source": "https://github.com/briwil/console-mpc",
+      "repo": "briwil/console-mpc",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12), Console v0.0.27"
     }
   ],
   "draw-handler": [
