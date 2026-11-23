@@ -1,4 +1,5 @@
 <script>
+	import { tick } from 'svelte';
 	import autoAnimate from '@formkit/auto-animate';
 	import { afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
@@ -30,12 +31,18 @@
 		contributorCount === 1 ? '1 person who built this catalog' : `${contributorCount} people who built this catalog`;
 
 	let query = $state('');
-	let section = $state(
-		typeof window !== 'undefined'
-			? sectionFromParam(new URLSearchParams(window.location.search).get('section'))
-			: ''
-	);
+	let section = $state('');
 	let sort = $state('name');
+	let ready = false;
+	/** @type {import('@formkit/auto-animate').AnimationController | undefined} */
+	let gridAnim;
+
+	/** @param {HTMLElement} el */
+	function animateGrid(el) {
+		gridAnim = autoAnimate(el, { duration: 200, easing: 'ease-out' });
+		if (!ready && gridAnim.isEnabled()) gridAnim.disable();
+		return gridAnim;
+	}
 
 	/** Track image URLs whose naturalWidth <= 400 so 320×240 captures render pixelated */
 	let pixelatedUrls = $state(/** @type {Record<string, boolean>} */ ({}));
@@ -50,10 +57,17 @@
 		return t > max ? t : max;
 	}, 0);
 
-	afterNavigate(() => {
+	afterNavigate(async () => {
 		if (typeof window === 'undefined') return;
 		const params = new URLSearchParams(window.location.search);
 		section = sectionFromParam(params.get('section'));
+		if (!ready) {
+			await tick();
+			ready = true;
+			if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				gridAnim?.enable();
+			}
+		}
 	});
 
 	/** @param {string} next */
@@ -101,8 +115,6 @@
 		return formatCatalogDate(value);
 	}
 
-	const gridAnimation = { duration: 200, easing: 'ease-out' };
-
 	/** @param {Event} e @param {string | null} src */
 	function onScreenImageLoad(e, src) {
 		if (!src) return;
@@ -146,7 +158,7 @@
 			<p class="empty-sub">Try clearing your search query or switching back to All sections.</p>
 		</div>
 	{:else}
-		<ul class="card-grid" use:autoAnimate={gridAnimation}>
+		<ul class="card-grid" use:animateGrid>
 			{#each filtered as mod (mod.id)}
 				<li class="card-item">
 					<EntryCard {mod} {pixelatedUrls} {onScreenImageLoad} />
