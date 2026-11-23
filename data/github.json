@@ -386,8 +386,8 @@
   "briwil/console-mpc": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-23T07:01:24Z",
-    "last_commit_at": "2026-11-23T07:00:29Z",
+    "pushed_at": "2026-11-23T07:37:02Z",
+    "last_commit_at": "2026-11-23T07:37:00Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "GPL-3.0",
@@ -395,10 +395,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.0.29",
-      "published_at": "2026-11-23T07:01:24Z"
+      "tag": "v0.0.30",
+      "published_at": "2026-11-23T07:24:14Z"
     },
     "releases": [
+      {
+        "tag": "v0.0.30",
+        "name": "Console for the MPC Sample v0.0.30",
+        "prerelease": false,
+        "published_at": "2026-11-23T07:24:14Z",
+        "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.30",
+        "body": "## 0.0.30\n\n- Fix: 0.0.29 didn't start (Console went back to the MPC OS after the start-up animation): the sound bridge was built in a way the Sample couldn't load.\n\n",
+        "truncated": false
+      },
       {
         "tag": "v0.0.29",
         "name": "Console for the MPC Sample v0.0.29",
@@ -415,15 +424,6 @@
         "published_at": "2026-11-23T04:02:51Z",
         "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.28",
         "body": "## 0.0.28\n\n- Screen recorder: hold Shift in SETTINGS to show SCREEN REC. It records the screen, the sound and every control you touch to the card (ConsoleRecordings). tools/screenrec-convert.py on a Mac turns a recording into a PNG sequence, matching audio and an After Effects script with a slider for every control.\n- Shift + STOP on the welcome screen now shows the leave menu (it was hidden behind it).\n- While the leave menu is up, the wheel only moves the menu (it also moved the sequencer's box behind it).\n\n",
-        "truncated": false
-      },
-      {
-        "tag": "card-latest",
-        "name": "Console for the MPC Sample: SD card zip (built 2026-11-23 07:01 UTC)",
-        "prerelease": true,
-        "published_at": "2026-11-23T07:01:15Z",
-        "html_url": "https://github.com/briwil/console-mpc/releases/tag/card-latest",
-        "body": "Unzip onto the root of the SD card (the autorun and Console folders), put the card in the MPC Sample, switch on. See Console/README.txt inside.",
         "truncated": false
       }
     ],
@@ -1398,6 +1398,21 @@
         "truncated": false
       }
     ],
+    "archived": false
+  },
+  "jonmitten/marspad": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-10-26T00:40:45Z",
+    "last_commit_at": "2026-10-26T00:40:43Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "MIT",
+    "description": null,
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
     "archived": false
   },
   "keremimo/melodee-sample": {
