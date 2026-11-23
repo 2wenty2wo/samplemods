@@ -1,5 +1,6 @@
 <script>
 import { base } from '$app/paths';
+	import CheckIcon from '$lib/CheckIcon.svelte';
 	import {
 		sectionGlow,
 		sectionSingularLabel,
@@ -67,7 +68,9 @@ import { base } from '$app/paths';
 							</div>
 							<p class="mini-card-title">{rel.name}</p>
 							{#if compat}
-								<p class="mini-card-compat">{compat.checked_by} {compat.versions}</p>
+								<p class="mini-card-compat">
+									{#if compat.checked_by === 'Tested'}<CheckIcon />{/if}{compat.checked_by} {compat.versions}
+								</p>
 								{#if compat.notes}
 									<p class="mini-card-compat-note">{compat.notes}</p>
 								{/if}
@@ -145,12 +148,18 @@ import { base } from '$app/paths';
 		gap: 0.65rem;
 	}
 
+.mini-card-list > li {
+		display: flex;
+		min-width: 0;
+	}
+
 .mini-pad-card {
 		flex-direction: row;
 		align-items: center;
 		justify-content: flex-start;
 		padding: 0.65rem 0.75rem;
 		gap: 0.75rem;
+		height: 100%;
 	}
 
 .mini-bezel {
@@ -190,5 +199,36 @@ import { base } from '$app/paths';
 		line-height: 1.2;
 		color: var(--mpc-pad-text);
 		overflow-wrap: anywhere;
+	}
+
+.mini-card-compat {
+		margin: 0;
+		font-family: var(--font-screen);
+		font-size: 0.74rem;
+		line-height: 1.3;
+		color: var(--mpc-silkscreen-muted);
+		font-variant-numeric: tabular-nums;
+	}
+
+.mini-card-compat-note {
+		margin: 0;
+		font-family: var(--font-sans);
+		font-size: 0.75rem;
+		line-height: 1.35;
+		color: var(--mpc-silkscreen-muted);
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		overflow-wrap: anywhere;
+	}
+
+.related-source {
+		margin: -0.35rem 0 0;
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		line-height: 1.4;
+		color: var(--mpc-silkscreen-muted);
 	}
 </style>
