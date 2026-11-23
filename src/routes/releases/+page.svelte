@@ -1,4 +1,5 @@
 <script>
+	import autoAnimate from '@formkit/auto-animate';
 	import { base } from '$app/paths';
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
@@ -66,6 +67,7 @@
 		return groups;
 	});
 
+	const feedAnimation = { duration: 200, easing: 'ease-out' };
 	const title = `Releases · ${SITE_NAME}`;
 	const description = `Latest firmware mods, apps, games and tool releases across the ${SITE_NAME} community catalog for the Akai MPC Sample.`;
 </script>
@@ -142,11 +144,11 @@
 			<p class="empty-title">No releases found in this section.</p>
 		</div>
 	{:else}
-		<div class="day-groups">
+		<div class="day-groups" use:autoAnimate={feedAnimation}>
 			{#each grouped as group (group.day)}
 				<section class="detail-section day-section" aria-label={group.label}>
 					<h2 class="silk-heading day-heading">{group.label}</h2>
-					<ul class="release-feed-list">
+					<ul class="release-feed-list" use:autoAnimate={feedAnimation}>
 						{#each group.items as rel (rel.key)}
 							<li>
 								<ReleaseRow {rel} />

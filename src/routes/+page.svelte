@@ -1,4 +1,6 @@
 <script>
+	import { tick } from 'svelte';
+	import autoAnimate from '@formkit/auto-animate';
 	import { afterNavigate } from '$app/navigation';
 	import { base } from '$app/paths';
 	import mods from '$lib/data.json';
@@ -31,6 +33,16 @@
 	let query = $state('');
 	let section = $state('');
 	let sort = $state('name');
+	let ready = false;
+	/** @type {import('@formkit/auto-animate').AnimationController | undefined} */
+	let gridAnim;
+
+	/** @param {HTMLElement} el */
+	function animateGrid(el) {
+		gridAnim = autoAnimate(el, { duration: 200, easing: 'ease-out' });
+		if (!ready && gridAnim.isEnabled()) gridAnim.disable();
+		return gridAnim;
+	}
 
 	/** Track image URLs whose naturalWidth <= 400 so 320×240 captures render pixelated */
 	let pixelatedUrls = $state(/** @type {Record<string, boolean>} */ ({}));
@@ -45,10 +57,17 @@
 		return t > max ? t : max;
 	}, 0);
 
-	afterNavigate(() => {
+	afterNavigate(async () => {
 		if (typeof window === 'undefined') return;
 		const params = new URLSearchParams(window.location.search);
 		section = sectionFromParam(params.get('section'));
+		if (!ready) {
+			await tick();
+			ready = true;
+			if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				gridAnim?.enable();
+			}
+		}
 	});
 
 	/** @param {string} next */
@@ -139,7 +158,7 @@
 			<p class="empty-sub">Try clearing your search query or switching back to All sections.</p>
 		</div>
 	{:else}
-		<ul class="card-grid">
+		<ul class="card-grid" use:animateGrid>
 			{#each filtered as mod (mod.id)}
 				<li class="card-item">
 					<EntryCard {mod} {pixelatedUrls} {onScreenImageLoad} />
