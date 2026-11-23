@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { releaseDisplayLabel } from '../src/lib/release-label.js';
 import { readEntries } from './catalog.js';
+import { readSampleBootCompat } from './compat.js';
 import { renderMarkdown } from './render-markdown.js';
 import { deriveVersionFromTitle } from './watch.js';
 
@@ -74,6 +75,10 @@ export function parseEntryAddedDates(gitOutput, catalogEntries) {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
 const entries = readEntries();
+const sampleBootCompat = readSampleBootCompat(path.join(root, 'data'));
+const sampleBootRows = Object.fromEntries(Object.entries(sampleBootCompat?.entries ?? {})
+	.filter(([id]) => id !== PRIMARY_LAUNCHER && entries.some((entry) => entry.id === id)));
+const sampleBootIds = Object.keys(sampleBootRows);
 // Only this generated directory is cleared; original media stays with each entry.
 fs.rmSync(mediaDir, { recursive: true, force: true });
 
@@ -162,6 +167,13 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 			}))
 			: watchReleases
 	};
+	if (sampleBootCompat) {
+		if (id === PRIMARY_LAUNCHER) {
+			details[id].sampleboot_compat = { ...sampleBootCompat, entries: sampleBootRows };
+		} else if (Object.hasOwn(sampleBootRows, id)) {
+			details[id].sampleboot_compat = { ...sampleBootCompat, entries: { [PRIMARY_LAUNCHER]: sampleBootRows[id] } };
+		}
+	}
 	for (const file of media) {
 		const destination = path.join(mediaDir, id, file);
 		fs.mkdirSync(path.dirname(destination), { recursive: true });
@@ -173,6 +185,9 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		id,
 		section,
 		...raw,
+		...(id === PRIMARY_LAUNCHER && sampleBootIds.length
+			? { compatible: [...new Set([...(raw.compatible ?? []), ...sampleBootIds])] }
+			: {}),
 		added: addedById.get(id) ?? null,
 		price: raw.price ?? 'free',
 		source: raw.source ?? (raw.repo ? 'open' : 'closed'),

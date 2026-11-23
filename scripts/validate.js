@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { readEntries } from './catalog.js';
+import { readSampleBootCompat } from './compat.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const schema = yaml.load(fs.readFileSync(path.join(root, 'schema', 'mod.yaml'), 'utf8'));
@@ -13,6 +14,11 @@ try { entries = readEntries(); }
 catch (error) { console.error(error.message); process.exit(1); }
 const ids = new Set(entries.map((entry) => entry.id));
 let failed = false;
+try { readSampleBootCompat(path.join(root, 'data')); }
+catch (error) {
+	console.error('data/compat.json: ' + error.message);
+	failed = true;
+}
 // Keep in sync with PRIMARY_LAUNCHER in build-data.js (always first in "Works with").
 if (!ids.has('sampleboot')) {
 	console.error('Missing required launcher entry "sampleboot" (PRIMARY_LAUNCHER in build-data.js).');

@@ -114,7 +114,7 @@ try {
 	assert.throws(() => readEntries(dataDir), /missing mod.yaml/);
 	fs.renameSync(path.join(dataDir, 'mods/host/app.yaml'), path.join(dataDir, 'mods/host/mod.yaml'));
 	fs.mkdirSync(path.join(fixture, 'scripts'));
-	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js', 'compat.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	fs.mkdirSync(path.join(fixture, 'src', 'lib'), { recursive: true });
 	fs.copyFileSync(path.join(root, 'src/lib/release-label.js'), path.join(fixture, 'src/lib/release-label.js'));
 	fs.copyFileSync(path.join(root, 'src/lib/latest-releases-strip.js'), path.join(fixture, 'src/lib/latest-releases-strip.js'));

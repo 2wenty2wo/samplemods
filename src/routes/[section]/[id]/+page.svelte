@@ -270,7 +270,7 @@
 					{updatedDate}
 					{formatUpdated}
 				/>
-				<RelatedEntries {mod} {byId} {compatibleIds} {launcherIds} />
+				<RelatedEntries {mod} {byId} {compatibleIds} {launcherIds} sampleBootCompat={mod.sampleboot_compat} />
 			</aside>
 		</div>
 	</article>

@@ -51,7 +51,7 @@ try {
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'a'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'apps', 'z'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'external'), { recursive: true });
-	for (const file of ['enrich.js', 'catalog.js', 'catalog-contributors.js']) {
+	for (const file of ['enrich.js', 'catalog.js', 'catalog-contributors.js', 'compat.js']) {
 		fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	}
 	fs.writeFileSync(path.join(fixture, 'data', 'apps', 'z', 'app.yaml'), 'repo: owner/z\n');
