@@ -33,11 +33,10 @@ import { base } from '$app/paths';
 	}
 </script>
 
-{#snippet relatedMiniCards(ids, rows = {})}
+{#snippet relatedMiniCards(ids)}
 	<ul class="mini-card-list">
 		{#each ids as id}
 			{@const rel = byId[id]}
-			{@const compat = rows[id]}
 			<li>
 				{#if rel}
 					{@const media = miniCardMedia(rel)}
@@ -67,14 +66,6 @@ import { base } from '$app/paths';
 								{/if}
 							</div>
 							<p class="mini-card-title">{rel.name}</p>
-							{#if compat}
-								<p class="mini-card-compat">
-									{#if compat.checked_by === 'Tested'}<CheckIcon />{/if}{compat.checked_by} {compat.versions}
-								</p>
-								{#if compat.notes}
-									<p class="mini-card-compat-note">{compat.notes}</p>
-								{/if}
-							{/if}
 						</div>
 					</a>
 				{:else}
@@ -87,25 +78,81 @@ import { base } from '$app/paths';
 	</ul>
 {/snippet}
 
-{#snippet compatibilityCards(ids, compat)}
-	{#if compat && ids.some((id) => compat.entries[id])}
-		{@const date = formatCatalogDate(compat.updated, { locale: 'en-GB', year: undefined })}
-		<p class="related-source">Versions from <a href={compat.source}>SampleBoot's README</a> · updated {date}</p>
-	{/if}
-	{@render relatedMiniCards(ids, compat?.entries)}
+{#snippet compatibilityRows(ids, compat)}
+	{@const rows = compat?.entries ?? {}}
+	<div class="compat-panel">
+		<ul class="compat-list">
+			{#each ids as id}
+				{@const rel = byId[id]}
+				{@const row = rows[id]}
+				<li>
+					{#if rel}
+						{@const media = miniCardMedia(rel)}
+						<a
+							class="compat-row"
+							href="{base}{entryPath(rel)}"
+							style="--pad-glow: {sectionGlow(rel.section)}"
+						>
+							<div class="bezel-screen compat-bezel">
+								{#if media.src}
+									<img
+										class="screen-img"
+										class:is-logo={media.kind === 'logo'}
+										src={media.src}
+										alt=""
+										loading="lazy"
+									/>
+								{:else}
+									<span class="compat-initials">{initials(rel.name)}</span>
+								{/if}
+							</div>
+							<div class="compat-body">
+								<div class="compat-head">
+									<span class="compat-name">{rel.name}</span>
+									{#if row}
+										<span class="compat-version" class:is-tested={row.checked_by === 'Tested'}>
+											{#if row.checked_by === 'Tested'}
+												<CheckIcon />{row.versions}
+											{:else}
+												{row.checked_by} {row.versions}
+											{/if}
+										</span>
+									{/if}
+								</div>
+								{#if row?.notes}
+									<p class="compat-note">{row.notes}</p>
+								{/if}
+							</div>
+						</a>
+					{:else}
+						<div class="compat-row">
+							<code>{id}</code>
+						</div>
+					{/if}
+				</li>
+			{/each}
+		</ul>
+		{#if compat && ids.some((id) => rows[id])}
+			{@const date = formatCatalogDate(compat.updated, { locale: 'en-GB', year: undefined })}
+			<p class="compat-footer">
+				<span class="compat-footer-check"><CheckIcon />tested by SampleBoot</span> · from
+				<a href={compat.source}>its README</a>, {date}
+			</p>
+		{/if}
+	</div>
 {/snippet}
 
 {#if compatibleIds.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Compatible with</h2>
-		{@render compatibilityCards(compatibleIds, mod.id === 'sampleboot' ? sampleBootCompat : undefined)}
+		{@render compatibilityRows(compatibleIds, mod.id === 'sampleboot' ? sampleBootCompat : undefined)}
 	</section>
 {/if}
 
 {#if launcherIds.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Works with</h2>
-		{@render compatibilityCards(launcherIds, mod.id === 'sampleboot' ? undefined : sampleBootCompat)}
+		{@render compatibilityRows(launcherIds, mod.id === 'sampleboot' ? undefined : sampleBootCompat)}
 	</section>
 {/if}
 
@@ -138,7 +185,136 @@ import { base } from '$app/paths';
 {/if}
 
 <style>
-/* —— Related Mini-Cards (Requires / Required by) —— */
+/* —— Compact Screen-Styled Compatibility Rows (Compatible with / Works with) —— */
+
+.compat-panel {
+		background: var(--mpc-screen-bg);
+		border: 2px solid #262930;
+		border-left: 4px solid var(--pad-glow, var(--mpc-screen-yellow));
+		border-radius: 6px;
+		overflow: hidden;
+		box-shadow: inset 0 2px 6px rgb(0 0 0 / 0.65);
+	}
+
+.compat-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+.compat-list > li + li {
+		border-top: 1px solid #1a1d24;
+	}
+
+.compat-row {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		padding: 0.5rem 0.75rem;
+		text-decoration: none;
+		color: var(--mpc-screen-text);
+		transition: background 100ms ease;
+	}
+
+a.compat-row:hover,
+a.compat-row:focus-visible {
+		background: #12151e;
+		color: var(--mpc-screen-white);
+	}
+
+.compat-bezel {
+		width: 48px;
+		flex-shrink: 0;
+		border-width: 1.5px;
+		border-color: #242834;
+		border-radius: 4px;
+	}
+
+a.compat-row:hover .compat-bezel,
+a.compat-row:focus-visible .compat-bezel {
+		border-color: var(--pad-glow, var(--mpc-screen-yellow));
+	}
+
+.compat-initials {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 0.72rem;
+		color: var(--mpc-screen-yellow);
+	}
+
+.compat-body {
+		flex: 1;
+		min-width: 0;
+		display: grid;
+		gap: 0.14rem;
+	}
+
+.compat-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.12rem 0.6rem;
+	}
+
+.compat-name {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-stretch: 105%;
+		font-variation-settings: 'wdth' 105, 'wght' 700;
+		font-size: 0.88rem;
+		line-height: 1.25;
+		color: var(--mpc-screen-white);
+		overflow-wrap: anywhere;
+	}
+
+a.compat-row:hover .compat-name,
+a.compat-row:focus-visible .compat-name {
+		color: var(--mpc-screen-yellow);
+	}
+
+.compat-version {
+		font-family: var(--font-screen);
+		font-size: 0.72rem;
+		line-height: 1.3;
+		color: var(--mpc-screen-grey);
+		font-variant-numeric: tabular-nums;
+		white-space: nowrap;
+	}
+
+.compat-version :global(.check-icon) {
+		color: var(--mpc-btn-green);
+	}
+
+.compat-note {
+		margin: 0;
+		font-family: var(--font-sans);
+		font-size: 0.75rem;
+		line-height: 1.35;
+		color: var(--mpc-screen-grey);
+		overflow-wrap: anywhere;
+	}
+
+.compat-footer {
+		margin: 0;
+		padding: 0.42rem 0.75rem;
+		background: #10131a;
+		border-top: 1px solid #1a1d24;
+		font-family: var(--font-screen);
+		font-size: 0.7rem;
+		line-height: 1.4;
+		color: var(--mpc-screen-grey);
+	}
+
+.compat-footer-check :global(.check-icon) {
+		color: var(--mpc-btn-green);
+	}
+
+.compat-footer a {
+		color: var(--mpc-screen-cyan);
+	}
+
+/* —— Related Mini-Cards (Requires / Required by / Based on) —— */
 
 .mini-card-list {
 		list-style: none;
@@ -199,36 +375,5 @@ import { base } from '$app/paths';
 		line-height: 1.2;
 		color: var(--mpc-pad-text);
 		overflow-wrap: anywhere;
-	}
-
-.mini-card-compat {
-		margin: 0;
-		font-family: var(--font-screen);
-		font-size: 0.74rem;
-		line-height: 1.3;
-		color: var(--mpc-silkscreen-muted);
-		font-variant-numeric: tabular-nums;
-	}
-
-.mini-card-compat-note {
-		margin: 0;
-		font-family: var(--font-sans);
-		font-size: 0.75rem;
-		line-height: 1.35;
-		color: var(--mpc-silkscreen-muted);
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		overflow-wrap: anywhere;
-	}
-
-.related-source {
-		margin: -0.35rem 0 0;
-		font-family: var(--font-mono);
-		font-size: 0.76rem;
-		line-height: 1.4;
-		color: var(--mpc-silkscreen-muted);
 	}
 </style>
