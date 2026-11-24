@@ -52,12 +52,23 @@ const repos = [...new Set(entries.map(({ record }) => record.repo).filter(Boolea
 const prefixRepos = new Set(
 	entries.filter(({ record }) => record.repo && record.release_prefix).map(({ record }) => record.repo)
 );
+const previous = fs.existsSync(output) ? JSON.parse(fs.readFileSync(output, 'utf8')) : {};
 const github = {};
 const readmes = new Map();
+const retainedRepos = new Set();
 for (const repo of repos) {
 	if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error(`Invalid GitHub repository: ${repo}`);
 	const releaseLimit = prefixRepos.has(repo) ? 10 : 3;
-	const { data: metadata } = await request(repo);
+	let metadata;
+	try {
+		({ data: metadata } = await request(repo));
+	} catch (error) {
+		if (!(error instanceof Error) || !error.message.includes('HTTP 404')) throw error;
+		console.warn(`::warning::GitHub ${repo}: 404, keeping previous snapshot`);
+		if (previous[repo]) github[repo] = previous[repo];
+		retainedRepos.add(repo);
+		continue;
+	}
 	const latest = await request(`${repo}/releases/latest`, true);
 	const releases = await request(`${repo}/releases?per_page=${releaseLimit}`, true);
 	const readme = await request(`${repo}/readme`, true);
@@ -102,7 +113,13 @@ console.log(`Fetched ${catalogContributors.length} catalog contributor(s); ★${
 fs.mkdirSync(readmeDir, { recursive: true });
 const keep = new Set();
 for (const { id, dir, record } of entries) {
-	if (!record.repo || !readmes.has(record.repo)) continue;
+	if (!record.repo) continue;
+	if (retainedRepos.has(record.repo)) {
+		const file = `${id}.md`;
+		if (fs.existsSync(path.join(readmeDir, file))) keep.add(file);
+		continue;
+	}
+	if (!readmes.has(record.repo)) continue;
 	if (fs.existsSync(path.join(dir, 'about.md'))) continue;
 	const file = `${id}.md`;
 	keep.add(file);

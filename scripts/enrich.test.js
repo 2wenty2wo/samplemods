@@ -13,7 +13,7 @@ const mock = `
 import assert from 'node:assert/strict';
 globalThis.fetch = async (url, { headers }) => {
   const repo = new URL(url).pathname.split('/')[3];
-  assert.ok(['a', 'z', 'samplemods'].includes(repo), 'only GitHub-backed entries or the catalog repo may trigger API requests');
+  assert.ok(['a', 'z', 'gone', 'samplemods'].includes(repo), 'only GitHub-backed entries or the catalog repo may trigger API requests');
   assert.equal(headers.Authorization, process.env.GITHUB_TOKEN ? 'Bearer test-token' : undefined);
   const reply = (data, status = 200, extra = {}) => ({ ok: status < 400, status, headers: new Headers(extra), json: async () => data });
   if (url.includes('/2wenty2wo/samplemods/contributors')) {
@@ -25,6 +25,7 @@ globalThis.fetch = async (url, { headers }) => {
   }
   if (process.env.FAIL_API && url.includes('/z/readme')) return reply({}, 503);
   if (process.env.RATE_LIMIT) return reply({}, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1800000000' });
+  if (process.env.GONE_404 && new URL(url).pathname === '/repos/owner/gone') return reply({}, 404);
   const absent = url.includes('/z/');
   const release = { tag_name: 'v1', name: 'First release', prerelease: false, published_at: '2026-01-01T00:00:00Z', html_url: 'https://github.com/owner/a/releases/tag/v1', body: '**Changes**' + 'x'.repeat(13000) };
   if (url.endsWith('/releases/latest')) return reply(release, absent ? 404 : 200);
@@ -36,19 +37,20 @@ globalThis.fetch = async (url, { headers }) => {
   if (url.endsWith('/readme')) return reply({ encoding: 'base64', path: 'docs/README.md', content: Buffer.from('# A\\r\\nREADME').toString('base64') }, absent || process.env.NO_README ? 404 : 200);
   if (url.includes('/contributors?')) return reply(absent ? [] : [{ login: 'one' }], absent ? 204 : 200, absent ? {} : { link: '<https://api.github.com/repos/owner/a/contributors?anon=true&per_page=1&page=7>; rel="last"' });
   if (url.includes('/commits?')) return reply(absent ? {} : [{ commit: { committer: { date: '2026-01-02T00:00:00Z' } } }], absent ? 409 : 200);
-  return reply({ stargazers_count: 7, forks_count: 2, pushed_at: '2026-01-01T00:00:00Z', open_issues_count: 3, default_branch: 'develop',
+  return reply({ stargazers_count: process.env.GONE_404 ? 99 : 7, forks_count: 2, pushed_at: '2026-01-01T00:00:00Z', open_issues_count: 3, default_branch: 'develop',
     license: url.endsWith('/z') ? null : { spdx_id: 'MIT' }, description: null, archived: false });
 };`;
 function run(extra = {}) {
 	return spawnSync(process.execPath, ['--import', `data:text/javascript,${encodeURIComponent(mock)}`,
 		path.join(fixture, 'scripts', 'enrich.js')], {
-		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', RATE_LIMIT: '', NO_README: '', EXPECT_PREFIX: '', ...extra }
+		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', RATE_LIMIT: '', NO_README: '', EXPECT_PREFIX: '', GONE_404: '', ...extra }
 	});
 }
 
 try {
 	fs.mkdirSync(path.join(fixture, 'scripts'));
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'a'), { recursive: true });
+	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'gone'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'apps', 'z'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'external'), { recursive: true });
 	for (const file of ['enrich.js', 'catalog.js', 'catalog-contributors.js', 'compat.js']) {
@@ -56,12 +58,16 @@ try {
 	}
 	fs.writeFileSync(path.join(fixture, 'data', 'apps', 'z', 'app.yaml'), 'repo: owner/z\n');
 	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'a', 'mod.yaml'), 'repo: owner/a\n');
+	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'gone', 'mod.yaml'), 'repo: owner/gone\n');
 	fs.writeFileSync(path.join(fixture, 'data', 'mods', 'external', 'mod.yaml'), 'name: External\nwebsite: https://example.com\n');
 	const first = run();
 	assert.equal(first.status, 0, first.stderr);
 	const original = fs.readFileSync(output, 'utf8');
 	const data = JSON.parse(original);
-	assert.deepEqual(Object.keys(data), ['owner/a', 'owner/z']);
+	assert.deepEqual(Object.keys(data), ['owner/a', 'owner/gone', 'owner/z']);
+	const goneReadme = path.join(fixture, 'data', 'readme', 'gone.md');
+	assert.equal(fs.readFileSync(goneReadme, 'utf8'), '# A\nREADME');
+	const goneSnapshot = data['owner/gone'];
 	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/external.md')));
 	assert.equal(data['owner/a'].contributors, 7);
 	assert.equal(data['owner/a'].open_issues, 3);
@@ -110,6 +116,13 @@ try {
 	const limited = run({ RATE_LIMIT: '1' });
 	assert.notEqual(limited.status, 0);
 	assert.match(limited.stderr, /rate limited.*retry.*GITHUB_TOKEN/);
+	const missing = run({ GONE_404: '1' });
+	assert.equal(missing.status, 0, missing.stderr || missing.stdout);
+	assert.match(`${missing.stdout}\n${missing.stderr}`, /::warning::GitHub owner\/gone: 404, keeping previous snapshot/);
+	const afterMissing = JSON.parse(fs.readFileSync(output, 'utf8'));
+	assert.equal(afterMissing['owner/a'].stars, 99, 'other repos must still update when one repo 404s');
+	assert.deepEqual(afterMissing['owner/gone'], goneSnapshot, '404 repo must keep previous github.json entry');
+	assert.equal(fs.readFileSync(goneReadme, 'utf8'), '# A\nREADME', '404 repo README cache must survive');
 	const removed = run({ NO_README: '1' });
 	assert.equal(removed.status, 0, removed.stderr);
 	assert.ok(!fs.existsSync(readme), 'removed upstream README must not remain stale');
@@ -120,7 +133,7 @@ try {
 	fs.writeFileSync(path.join(fixture, 'data', 'tools', 'a-boot', 'about.md'), '# Boot about');
 	const shared = run({ EXPECT_PREFIX: '1' });
 	assert.equal(shared.status, 0, shared.stderr);
-	assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(output, 'utf8'))), ['owner/a', 'owner/z'], 'shared repo fetched once');
+	assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(output, 'utf8'))), ['owner/a', 'owner/gone', 'owner/z'], 'shared repo fetched once');
 	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME');
 	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/a-boot.md')), 'about.md entries skip README mirroring');
 	console.log('Enrichment checks passed: README/release caches, stats, auth, no-op writes, rate limits, failure preservation, shared-repo prefix fetch and about.md skip.');
