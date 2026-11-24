@@ -129,7 +129,7 @@ import { base } from '$app/paths';
 						<a href={mod.author_url} target="_blank" rel="noopener noreferrer">
 							{mod.author}
 						</a>
-					{:else if mod.repo && mod.status !== 'removed'}
+					{:else if mod.repo}
 						<a
 							href="https://github.com/{mod.author}"
 							target="_blank"
