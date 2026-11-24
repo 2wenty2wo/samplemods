@@ -7,6 +7,7 @@ import {
 	CATALOG_REPO,
 	normalizeCatalogContributors
 } from './catalog-contributors.js';
+import { open404Entries } from './enrich-404-issue.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'data', 'github.json');
@@ -134,4 +135,9 @@ writeIfChanged(contributorsOutput, JSON.stringify({
 	stars: catalogRepo.stargazers_count,
 	contributors: catalogContributors
 }, null, 2) + '\n');
+if (process.env.ENRICH_404_PATH) {
+	const rows = open404Entries(entries, retainedRepos);
+	fs.mkdirSync(path.dirname(process.env.ENRICH_404_PATH), { recursive: true });
+	fs.writeFileSync(process.env.ENRICH_404_PATH, JSON.stringify(rows, null, 2) + '\n');
+}
 console.log(`Enriched ${repos.length} GitHub repositories and ${keep.size} READMEs.`);

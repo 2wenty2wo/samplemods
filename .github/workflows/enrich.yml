@@ -30,6 +30,7 @@ jobs:
       - run: node scripts/enrich.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ENRICH_404_PATH: ${{ runner.temp }}/enrich-404.json
       - run: node scripts/watch.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,6 +56,13 @@ jobs:
         run: gh workflow run deploy.yml --ref main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sync 404 repo tracking issue
+        continue-on-error: true
+        run: node scripts/enrich-404-issue.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ENRICH_404_PATH: ${{ runner.temp }}/enrich-404.json
       - name: Propose catalog status changes
         run: node scripts/suggest-status.js
         env:
