@@ -14,7 +14,7 @@ const TITLE = 'Review catalog status suggestions';
 const marker = /<!-- status-suggestions: (.*?) -->/;
 
 export function suggestStatus(record, metadata = {}, readme = '') {
-	if (!record.repo) return null;
+	if (!record.repo || record.status === 'removed') return null;
 	const repoUrl = `https://github.com/${record.repo}`;
 	if (metadata.archived === true && record.status !== 'archived') {
 		return { status: 'archived', evidence: [{ text: 'GitHub repository is archived', url: repoUrl }] };
@@ -121,7 +121,7 @@ export async function syncStatusSuggestions(token, repository, suggestions, { ap
 			if (file.encoding !== 'base64') throw new Error(`Expected base64 YAML: ${candidate.path}`);
 			const text = Buffer.from(file.content, 'base64').toString('utf8');
 			const record = yaml.load(text);
-			if (record.repo !== candidate.repo || record.status === candidate.status || (candidate.status !== 'archived' && Object.hasOwn(record, 'status'))) continue;
+			if (record.repo !== candidate.repo || record.status === 'removed' || record.status === candidate.status || (candidate.status !== 'archived' && Object.hasOwn(record, 'status'))) continue;
 			const content = setStatus(text, candidate.status);
 			if (!isDeepStrictEqual(yaml.load(content), { ...record, status: candidate.status })) throw new Error(`Status edit would change other YAML fields: ${candidate.path}`);
 			tree.push({ path: candidate.path, mode: '100644', type: 'blob', content });

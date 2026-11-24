@@ -28,11 +28,13 @@
 				<h2 class="silk-heading">Screenshots ({galleryShots.length})</h2>
 			{/if}
 			<p class="image-credit">
-				{#if mod.repo}
+				{#if mod.repo && mod.status !== 'removed'}
 					Images: from
 					<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
 						{mod.repo}
 					</a>
+				{:else if mod.repo}
+					Images: from {mod.repo}
 				{:else if imageCreditHost}
 					Images: from {imageCreditHost}
 				{/if}
@@ -61,11 +63,13 @@
 	</section>
 {:else if logoSrc}
 	<p class="image-credit standalone-credit">
-		{#if mod.repo}
+		{#if mod.repo && mod.status !== 'removed'}
 			Images: from
 			<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">
 				{mod.repo}
 			</a>
+		{:else if mod.repo}
+			Images: from {mod.repo}
 		{:else if imageCreditHost}
 			Images: from {imageCreditHost}
 		{/if}

@@ -140,7 +140,7 @@ import { base } from '$app/paths';
 					{:else}
 						{mod.author}
 					{/if}
-					{#if mod.repo}
+					{#if mod.repo && mod.status !== 'removed'}
 						<span class="byline-sep">·</span>
 						<a
 							href="https://github.com/{mod.repo}"
@@ -152,9 +152,14 @@ import { base } from '$app/paths';
 					{/if}
 				</p>
 				<p class="detail-lead">{mod.description}</p>
+				{#if mod.status === 'removed'}
+					<p class="detail-removed-note">
+						The author deleted the source repository. Details are as last captured.
+					</p>
+				{/if}
 
 				<div class="hero-actions">
-					{#if mod.repo}
+					{#if mod.repo && mod.status !== 'removed'}
 						<a
 							class="hw-action-btn blue"
 							href="https://github.com/{mod.repo}"
@@ -174,7 +179,7 @@ import { base } from '$app/paths';
 						</a>
 					{/if}
 
-					{#if (mod.repo || releasesLength) && latestReleaseUrl}
+					{#if (mod.repo || releasesLength) && latestReleaseUrl && mod.status !== 'removed'}
 						<a
 							class="hw-action-btn orange"
 							href={latestReleaseUrl}
@@ -185,7 +190,7 @@ import { base } from '$app/paths';
 						</a>
 					{/if}
 
-					{#if mod.website && mod.repo}
+					{#if mod.website && mod.repo && mod.status !== 'removed'}
 						<a
 							class="hw-action-btn grey"
 							href={mod.website}
@@ -344,6 +349,17 @@ import { base } from '$app/paths';
 		line-height: 1.5;
 		color: var(--mpc-screen-text);
 		max-width: 68ch;
+	}
+
+.detail-removed-note {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: #9ba3b4;
+	}
+
+.hero-actions:empty {
+		display: none;
 	}
 
 .hero-actions {

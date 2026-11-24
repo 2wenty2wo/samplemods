@@ -74,12 +74,16 @@ import { base } from '$app/paths';
 			<dd>{mod.license}</dd>
 		{/if}
 
-		{#if latestRelease?.tag && latestReleaseUrl}
+		{#if latestRelease?.tag}
 			<dt>Latest release</dt>
 			<dd>
-				<a href={latestReleaseUrl} rel="noopener noreferrer" target="_blank">
+				{#if latestReleaseUrl && mod.status !== 'removed'}
+					<a href={latestReleaseUrl} rel="noopener noreferrer" target="_blank">
+						{latestRelease.label ?? latestRelease.tag}
+					</a>
+				{:else}
 					{latestRelease.label ?? latestRelease.tag}
-				</a>
+				{/if}
 				{#if formatUpdated(latestRelease.published_at)}
 					<span class="release-date">· {formatUpdated(latestRelease.published_at)}</span>
 				{/if}
@@ -96,7 +100,7 @@ import { base } from '$app/paths';
 			<dd>{mod.contributors}</dd>
 		{/if}
 
-		{#if mod.open_issues != null && mod.repo}
+		{#if mod.open_issues != null && mod.repo && mod.status !== 'removed'}
 			<dt>Open issues &amp; PRs</dt>
 			<dd>
 				<a

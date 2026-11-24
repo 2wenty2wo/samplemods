@@ -79,7 +79,7 @@
 				</div>
 			{/if}
 
-			{#if mod.readme_from_repo}
+			{#if mod.readme_from_repo && mod.status !== 'removed'}
 				<div class="readme-footer">
 					<a
 						href="https://github.com/{mod.repo}#readme"
@@ -99,7 +99,7 @@
 		</div>
 	{:else}
 		<div class="readme-card readme-empty">
-			{#if mod.repo}
+			{#if mod.repo && mod.status !== 'removed'}
 				<p>
 					No README yet. See the repository on
 					<a href="https://github.com/{mod.repo}" target="_blank" rel="noopener noreferrer">

@@ -55,11 +55,13 @@
 	const releases = $derived((mod.releases ?? []).slice(0, 3));
 	const latestRelease = $derived(releases[0] ?? mod.latest_release ?? null);
 	const latestReleaseUrl = $derived(
-		releases[0]?.html_url ??
-			mod.latest_release?.html_url ??
-			(mod.repo && mod.latest_release?.tag
-				? `https://github.com/${mod.repo}/releases/tag/${mod.latest_release.tag}`
-				: null)
+		mod.status === 'removed'
+			? null
+			: (releases[0]?.html_url ??
+					mod.latest_release?.html_url ??
+					(mod.repo && mod.latest_release?.tag
+						? `https://github.com/${mod.repo}/releases/tag/${mod.latest_release.tag}`
+						: null))
 	);
 	const updatedDate = $derived(formatUpdated(mod.last_commit_at ?? mod.pushed_at));
 	const readmeFold = $derived(splitReadmeHtml(mod.readme_html));

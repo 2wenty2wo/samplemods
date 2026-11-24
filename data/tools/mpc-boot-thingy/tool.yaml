@@ -4,7 +4,7 @@ description: >-
   USB-connected web tool, then choose which one to run.
 repo: garrettjwilke/mpc-boot-thingy
 author: garrettjwilke
-status: archived
+status: removed
 tags:
   - boot-menu
   - launcher

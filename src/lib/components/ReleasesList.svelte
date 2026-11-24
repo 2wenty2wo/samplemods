@@ -20,14 +20,18 @@ import { hostnameOf } from '$lib/categories.js';
 				<li class="release-card">
 					<div class="release-header">
 						<div class="release-title-group">
-							<a
-								class="screen-badge date release-tag-link"
-								href={rel.html_url}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{rel.label ?? rel.tag}
-							</a>
+							{#if rel.html_url && mod.status !== 'removed'}
+								<a
+									class="screen-badge date release-tag-link"
+									href={rel.html_url}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{rel.label ?? rel.tag}
+								</a>
+							{:else}
+								<span class="screen-badge date">{rel.label ?? rel.tag}</span>
+							{/if}
 							{#if rel.name && rel.name !== (rel.label ?? rel.tag)}
 								<span class="release-title">{rel.name}</span>
 							{/if}
@@ -35,18 +39,20 @@ import { hostnameOf } from '$lib/categories.js';
 								<span class="release-pub-date">{formatUpdated(rel.published_at)}</span>
 							{/if}
 						</div>
-						<a
-							class="release-ext-link"
-							href={rel.html_url}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{#if mod.repo}
-								Release on GitHub&nbsp;<ExternalIcon />
-							{:else}
-								Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
-							{/if}
-						</a>
+						{#if rel.html_url && mod.status !== 'removed'}
+							<a
+								class="release-ext-link"
+								href={rel.html_url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{#if mod.repo}
+									Release on GitHub&nbsp;<ExternalIcon />
+								{:else}
+									Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
+								{/if}
+							</a>
+						{/if}
 					</div>
 
 					{#if rel.body_html?.trim()}
@@ -63,7 +69,7 @@ import { hostnameOf } from '$lib/categories.js';
 							<div class="release-notes-box">
 								<EntryProse html={rel.body_html} className="release-prose" />
 							</div>
-							{#if rel.truncated}
+							{#if rel.truncated && mod.status !== 'removed' && rel.html_url}
 								<p class="release-truncated-note">
 									Truncated,
 									<a href={rel.html_url} target="_blank" rel="noopener noreferrer">

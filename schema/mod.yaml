@@ -136,4 +136,5 @@ properties:
       - beta
       - experimental
       - archived
+      - removed
       - concept

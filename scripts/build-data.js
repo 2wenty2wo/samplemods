@@ -170,6 +170,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		releases: raw.repo
 			? shownReleases.map(({ body, ...release }) => ({
 				...release,
+				...(raw.status === 'removed' ? { html_url: null } : {}),
 				label: releaseDisplayLabel(release.tag, release.name),
 				body_html: renderMarkdown(body, { ...markdownOptions, readmePath: 'README.md', name: '' })
 			}))
@@ -259,7 +260,9 @@ for (const mod of mods) {
 		.sort((a, b) => {
 			if (a.id === PRIMARY_LAUNCHER) return -1;
 			if (b.id === PRIMARY_LAUNCHER) return 1;
-			return (a.status === 'archived') - (b.status === 'archived'); // active launchers first
+			const aInactive = a.status === 'archived' || a.status === 'removed';
+			const bInactive = b.status === 'archived' || b.status === 'removed';
+			return aInactive - bInactive; // active launchers first
 		})
 		.map((m) => m.id);
 }
