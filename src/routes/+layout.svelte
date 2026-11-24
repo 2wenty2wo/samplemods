@@ -96,7 +96,7 @@
 <aside class="site-notice" aria-label="Firmware notice" data-nosnippet>
 	<div class="site-notice-inner">
 		<WarningIcon />
-		<strong class="site-notice-lead">Firmware 1.4 breaks many current mods and apps.</strong>
+		<strong class="site-notice-lead">Firmware 1.4.x.x breaks many current mods and apps.</strong>
 		<span>Stay on 1.3.0.12 until the ones you use are updated.</span>
 	</div>
 </aside>
