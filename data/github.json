@@ -17,8 +17,8 @@
   "AlekseyMalykh/am-mod": {
     "stars": 24,
     "forks": 1,
-    "pushed_at": "2026-11-23T02:06:20Z",
-    "last_commit_at": "2026-11-23T02:06:15Z",
+    "pushed_at": "2026-11-24T11:16:45Z",
+    "last_commit_at": "2026-11-24T11:16:41Z",
     "contributors": 5,
     "open_issues": 3,
     "license": "MIT",
@@ -30,6 +30,15 @@
       "published_at": "2026-11-16T22:50:36Z"
     },
     "releases": [
+      {
+        "tag": "r30d-beta4",
+        "name": "Am MOD r30d-beta4",
+        "prerelease": true,
+        "published_at": "2026-11-24T11:16:51Z",
+        "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30d-beta4",
+        "body": "# Am MOD r30d beta4 — synth, Input ROUTE, bootloader exit\n\n> **BETA — r30d-beta4.** Compatibility with other mods and boot menus (Stock, SampQOL, D.S.B, SampleBoot, mpc-boot-thingy) is still being tested. Back up your projects and card first. Items marked *pending* passed host/emulator checks but still need a check on a physical MPC.\n\nFor **Akai MPC Sample stock firmware 1.3.0.12**. This release continues r30c-beta1; installed firmware is never rewritten.\n\n![Synth modules](media/r30d/synth-modules-en.png)\n\n## Fixes in beta4\n\n- **Tidy card root:** the power report and the status markers now live in one folder, `AmMod/` (`AmMod/MPC_POWER_AUDIT.txt`, `AmMod/Status/`), instead of `MPC_POWER_AUDIT.txt` and `MPC_TRIAL_STATUS/` at the card root, so several systems can share a card. The first start removes the old report and the old marker names; your own files are never touched. (Suggested by the SampleBoot author.)\n- **SampleBoot 1.0.3 or later** no longer shows card-root settings files such as `mpcqol.conf` inside the mod's folder, so no `ROOT_FILES=\"\"` change is needed; it remains the workaround for older SampleBoot versions.\n- **Installer 1.5.1:** the SampleBoot message is now a hint for older versions only. Bug-report logs are also collected from the boot-menu folders and SampleBoot's `last-boot.log`.\n\n## Fixes in beta3\n\n- **SampleBoot:** Am MOD installs to `autorun/mods/AM-Mod/` and starts from the SampleBoot menu. **Exit to bootloader** (Mod Settings → About) now returns to the **SampleBoot menu**, as it does for D.S.B. Checked on a physical MPC.\n- **Boot menu art:** the Am MOD logo appears in the SampleBoot carousel (`sampleboot.png`) and on the D.S.B record (`dsb-record.png`); SampleBoot shows the name “Am MOD”.\n- **Installer 1.5.1** detects SampleBoot and installs into the right folder. If SampleBoot's `ROOT_FILES` setting shows a card-root file such as `mpcqol.conf` inside `mods/`, Am MOD refuses to start (its sandbox check rejects a writable file from the card); the installer warns, and the fix is `ROOT_FILES=\"\"` in `autorun/sampleboot/sampleboot.conf` (SampQOL then does not see its card-root settings).\n\n## Fixes in beta2\n\n- **USB inputs** (USB, USB L, USB R) now go through the Input track: Input FX, fader, pan and mute apply to them. USB was mislabelled as a different input before, and its signal arrives on a native channel pair the mod did not process.\n- **Input list order:** Source, Mode, Monitor, Threshold, Record via, Record track, Record FX, Tuner, MIDI In. **Monitor** has Off / Auto / On for every source and enables Rear monitoring from the Mixer. Record track shows \"-\" for Master and Input.\n- **Pan on K1 of the FX chain** for tracks, the Input track and Master (Pad Bank + K1 resets it to centre). On the Input ROUTE tab K1 = Pan, K2 = Threshold, K3 = Source for every source, Rear included; the L/R pan and level of the Rear channels stay in Rear Routing.\n- **Rear mode:** the Mode row for Rear starts in **Stereo** (listed first, the default when you choose Rear) and offers Rear L, Rear R, L+R Split and L+R Mix. The monitor follows the mode: Rear L plays the left jack only, Rear R the right one, the others both. The MPC's physical output-level panel shows the Rear signal.\n- D.S.B: the record label under AM Mod now shows the current version.\n\n## Synth (Mixer pad 13)\n\n- **Five modules, nine pages.** Tone (Oscillators, Mixer), Envelope (Amp, Filter envelope), Keys, Filter + LFO, Voices (Voices, Controller). Modules sit on pads 13–16 and 9; **hold Loop and press a pad**, or step with **+ / −**. The **DATA** encoder flips the pages inside a module.\n- **More sound.** Second oscillator (wave, mix, semitone, fine), sub oscillator, noise, drive, a separate filter envelope with amount, key tracking, four LFO shapes, bend range, unison with detune and spread, glide, velocity sensitivity.\n- **One row of knobs.** K1–K3 hold the frequently used parameter; the rarely used one is on **Shift+K** and is shown above the knob while Shift is held. See the [synth guide](SYNTH_GUIDE.md) for every page.\n- **Keys page = Tune tab.** K1 Transpose16 / Shift Layout, K2 Tonic / Shift Role, K3 Scale / Shift Colour; values read like the Tune tab, e.g. “D# (P)”, “Natural Minor (P)”, “−4 st”.\n- **Fader** (Off / Mod / Pitch) is K1 of the Controller page. Parameters such as LFO Depth, Sub, Noise, Drive and Key track read “Off” at zero.\n- **Takeover.** The synth's K knobs follow the Parameter takeover mode (Pickup, Scaled, Jump) like the rest of the Mixer.\n- Entering the synth in the Mixer clears the track selection; pads 9–12 show the Input track's effects, because the synth is the Input track's source. Pad 14 no longer leaves the synth.\n- Thumbnails mirror the pad layout; the big module drawing on the left shows the live waveform, envelope or filter curve.\n\n## Input and recording\n\n- **Shift+Sample opens the Input ROUTE list from every screen** (Seq, Step Edit, compressor, Project), never the stock Input Config. Rows: Source (Mic / Rear / USB / Resample / Synth), Mode (Rear and USB: Stereo, L, R …), Monitor, Threshold, Tuner and record rows. K1 Pan, K2 Threshold, K3 Source; **B2 FX, B3 MIDI In**, Shift+B2 opens the stock screen. The list scrolls and the pad layout stays as you left it.\n- **Sample Record:** K1 selects the input Source (including Synth), Shift+K1 the Rear/USB mode. With the **16 Levels** synth keyboard on, the knobs follow the Tune tab (K1 Transpose16 / Layout, K2 Tonic / Role, K3 Scale / Colour) and redraw when Shift is released.\n- The synth always follows the master volume; the old *Direct out* and *Mic layer* options are gone. Changing the Input source takes the Input off the synth.\n\n## Piano Roll\n\n- **Area selection:** hold **DATA**, turn the encoder (time) and move the fader (rows); the covered area is selected live. Release DATA to keep it. A short DATA click without movement still selects the note under the cursor (Shift adds).\n\n## Layout swap\n\n- **Layout and Transpose16 swapped** on the Tune tab, the synth Keys page and Sample Record: **K1 = Transpose16, Shift+K1 = Layout**. Resetting the knob follows the new order.\n\n## MIDI\n\n- Global MIDI/synth defaults, a **MIDI Buttons** page (scrolling list, B3 assign, B2 delete/cancel, faders assignable) and a fader MIDI source.\n- Controller modifier buttons (for example Shift on a MiniLab) act as plain buttons unless the MPC's own Shift is held, so a keyboard Shift no longer holds the MPC Shift.\n- MIDI In from Input Config: B3 / Shift+B2 switch the input mode, Shift+B3 Buttons, Shift+B2 Clear; the MIDI synth list scrolls.\n\n## Effects\n\n- **Henry Skillz** effects HS Saturator, HS Bass Focus and HS Heat (DSP from [hs-mpc-plugins](https://github.com/Holla-Back-Entertainment/hs-mpc-plugins), used with permission), with their own visuals, a page tab strip and a Heat page highlight. Add Effect has an HS author tab and name search (B2). *Pending device check.*\n\n## Bootloader and D.S.B\n\n- **Mod Settings → About → Exit to bootloader** (B3 confirms, B1 cancels) saves a project copy to `Projects/Mod-Exit-Last` and returns to the **D.S.B menu**; without D.S.B the MPC starts stock firmware. See [Boot menus and bootloader exit](BOOTLOADERS.md).\n- **D.S.B state carry-over:** D.S.B's “start OK” marking now reaches the card's real state file, so a healthy Am MOD start is no longer counted as a crash and the menu stops offering Stock after two starts.\n- The D.S.B boot journal and the state-fix log are copied beside the mod on the card for diagnostics (`dsb-boot.log`, `dsb-state-fix.log`).\n- Fast-boot idea: pick **AM Mod** once in a boot menu and use **Exit to bootloader** whenever you want a different system.\n\n## Other\n\n- Browser search shows a **Find** label; Shift+B2 clears the whole text.\n- Synth Hold note holds the last 16 Levels note and shows it highlighted.\n- Synth FX tail hold and fade-out remove clicks when notes end.\n\n## Limits\n\n- The synth modules, Input ROUTE, takeover for synth knobs, Piano Roll area selection and the layout swap were finished after the last full device check: *pending* hardware verification.\n- To Seq recording of a Mic take may not play the new sample in the sequence in every situation; logs from the device are welcome.\n- Exit to bootloader hands over to **D.S.B** only. SampleBoot and mpc-boot-thingy are supported for starting the mod; returning to them from the mod is not implemented.\n- Cross-mod Load/Save of Internal projects (Am MOD, Stock, SampQOL) is not fully certified.\n\nSee [Known limitations](KNOWN_ISSUES.md), [Installation](INSTALL.md) and the [changelog](../CHANGELOG.md).\n",
+        "truncated": false
+      },
       {
         "tag": "r30d-beta3",
         "name": "Am MOD r30d-beta3",
@@ -46,15 +55,6 @@
         "published_at": "2026-11-23T01:20:51Z",
         "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30d-beta2",
         "body": "# Am MOD r30d beta2 — synth, Input ROUTE, bootloader exit\n\n> **BETA — r30d-beta2.** Compatibility with other mods and boot menus (Stock, SampQOL, D.S.B, SampleBoot, mpc-boot-thingy) is still being tested. Back up your projects and card first. Items marked *pending* passed host/emulator checks but still need a check on a physical MPC.\n\nFor **Akai MPC Sample stock firmware 1.3.0.12**. This release continues r30c-beta1; installed firmware is never rewritten.\n\n![Synth modules](media/r30d/synth-modules-en.png)\n\n## Fixes in beta2\n\n- **USB inputs** (USB, USB L, USB R) now go through the Input track: Input FX, fader, pan and mute apply to them. USB was mislabelled as a different input before, and its signal arrives on a native channel pair the mod did not process.\n- **Input list order:** Source, Mode, Monitor, Threshold, Record via, Record track, Record FX, Tuner, MIDI In. **Monitor** has Off / Auto / On for every source and enables Rear monitoring from the Mixer. Record track shows \"-\" for Master and Input.\n- **Pan on K1 of the FX chain** for tracks, the Input track and Master (Pad Bank + K1 resets it to centre). On the Input ROUTE tab K1 = Pan, K2 = Threshold, K3 = Source for every source, Rear included; the L/R pan and level of the Rear channels stay in Rear Routing.\n- **Rear mode:** the Mode row for Rear starts in **Stereo** (listed first, the default when you choose Rear) and offers Rear L, Rear R, L+R Split and L+R Mix. The monitor follows the mode: Rear L plays the left jack only, Rear R the right one, the others both. The MPC's physical output-level panel shows the Rear signal.\n- D.S.B: the record label under AM Mod now shows the current version.\n\n## Synth (Mixer pad 13)\n\n- **Five modules, nine pages.** Tone (Oscillators, Mixer), Envelope (Amp, Filter envelope), Keys, Filter + LFO, Voices (Voices, Controller). Modules sit on pads 13–16 and 9; **hold Loop and press a pad**, or step with **+ / −**. The **DATA** encoder flips the pages inside a module.\n- **More sound.** Second oscillator (wave, mix, semitone, fine), sub oscillator, noise, drive, a separate filter envelope with amount, key tracking, four LFO shapes, bend range, unison with detune and spread, glide, velocity sensitivity.\n- **One row of knobs.** K1–K3 hold the frequently used parameter; the rarely used one is on **Shift+K** and is shown above the knob while Shift is held. See the [synth guide](SYNTH_GUIDE.md) for every page.\n- **Keys page = Tune tab.** K1 Transpose16 / Shift Layout, K2 Tonic / Shift Role, K3 Scale / Shift Colour; values read like the Tune tab, e.g. “D# (P)”, “Natural Minor (P)”, “−4 st”.\n- **Fader** (Off / Mod / Pitch) is K1 of the Controller page. Parameters such as LFO Depth, Sub, Noise, Drive and Key track read “Off” at zero.\n- **Takeover.** The synth's K knobs follow the Parameter takeover mode (Pickup, Scaled, Jump) like the rest of the Mixer.\n- Entering the synth in the Mixer clears the track selection; pads 9–12 show the Input track's effects, because the synth is the Input track's source. Pad 14 no longer leaves the synth.\n- Thumbnails mirror the pad layout; the big module drawing on the left shows the live waveform, envelope or filter curve.\n\n## Input and recording\n\n- **Shift+Sample opens the Input ROUTE list from every screen** (Seq, Step Edit, compressor, Project), never the stock Input Config. Rows: Source (Mic / Rear / USB / Resample / Synth), Mode (Rear and USB: Stereo, L, R …), Monitor, Threshold, Tuner and record rows. K1 Pan, K2 Threshold, K3 Source; **B2 FX, B3 MIDI In**, Shift+B2 opens the stock screen. The list scrolls and the pad layout stays as you left it.\n- **Sample Record:** K1 selects the input Source (including Synth), Shift+K1 the Rear/USB mode. With the **16 Levels** synth keyboard on, the knobs follow the Tune tab (K1 Transpose16 / Layout, K2 Tonic / Role, K3 Scale / Colour) and redraw when Shift is released.\n- The synth always follows the master volume; the old *Direct out* and *Mic layer* options are gone. Changing the Input source takes the Input off the synth.\n\n## Piano Roll\n\n- **Area selection:** hold **DATA**, turn the encoder (time) and move the fader (rows); the covered area is selected live. Release DATA to keep it. A short DATA click without movement still selects the note under the cursor (Shift adds).\n\n## Layout swap\n\n- **Layout and Transpose16 swapped** on the Tune tab, the synth Keys page and Sample Record: **K1 = Transpose16, Shift+K1 = Layout**. Resetting the knob follows the new order.\n\n## MIDI\n\n- Global MIDI/synth defaults, a **MIDI Buttons** page (scrolling list, B3 assign, B2 delete/cancel, faders assignable) and a fader MIDI source.\n- Controller modifier buttons (for example Shift on a MiniLab) act as plain buttons unless the MPC's own Shift is held, so a keyboard Shift no longer holds the MPC Shift.\n- MIDI In from Input Config: B3 / Shift+B2 switch the input mode, Shift+B3 Buttons, Shift+B2 Clear; the MIDI synth list scrolls.\n\n## Effects\n\n- **Henry Skillz** effects HS Saturator, HS Bass Focus and HS Heat (DSP from [hs-mpc-plugins](https://github.com/Holla-Back-Entertainment/hs-mpc-plugins), used with permission), with their own visuals, a page tab strip and a Heat page highlight. Add Effect has an HS author tab and name search (B2). *Pending device check.*\n\n## Bootloader and D.S.B\n\n- **Mod Settings → About → Exit to bootloader** (B3 confirms, B1 cancels) saves a project copy to `Projects/Mod-Exit-Last` and returns to the **D.S.B menu**; without D.S.B the MPC starts stock firmware. See [Boot menus and bootloader exit](BOOTLOADERS.md).\n- **D.S.B state carry-over:** D.S.B's “start OK” marking now reaches the card's real state file, so a healthy Am MOD start is no longer counted as a crash and the menu stops offering Stock after two starts.\n- The D.S.B boot journal and the state-fix log are copied beside the mod on the card for diagnostics (`dsb-boot.log`, `dsb-state-fix.log`).\n- Fast-boot idea: pick **AM Mod** once in a boot menu and use **Exit to bootloader** whenever you want a different system.\n\n## Other\n\n- Browser search shows a **Find** label; Shift+B2 clears the whole text.\n- Synth Hold note holds the last 16 Levels note and shows it highlighted.\n- Synth FX tail hold and fade-out remove clicks when notes end.\n\n## Limits\n\n- The synth modules, Input ROUTE, takeover for synth knobs, Piano Roll area selection and the layout swap were finished after the last full device check: *pending* hardware verification.\n- To Seq recording of a Mic take may not play the new sample in the sequence in every situation; logs from the device are welcome.\n- Exit to bootloader hands over to **D.S.B** only. SampleBoot and mpc-boot-thingy are supported for starting the mod; returning to them from the mod is not implemented.\n- Cross-mod Load/Save of Internal projects (Am MOD, Stock, SampQOL) is not fully certified.\n\nSee [Known limitations](KNOWN_ISSUES.md), [Installation](INSTALL.md) and the [changelog](../CHANGELOG.md).\n",
-        "truncated": false
-      },
-      {
-        "tag": "r30d-beta1",
-        "name": "r30d beta1",
-        "prerelease": true,
-        "published_at": "2026-11-22T21:01:23Z",
-        "html_url": "https://github.com/AlekseyMalykh/am-mod/releases/tag/r30d-beta1",
-        "body": "# Am MOD r30d beta1 — synth, Input ROUTE, bootloader exit\n\n> **BETA — r30d-beta1.** Compatibility with other mods and boot menus (Stock, SampQOL, D.S.B, SampleBoot, mpc-boot-thingy) is still being tested. Back up your projects and card first. Items marked *pending* passed host/emulator checks but still need a check on a physical MPC.\n\nFor **Akai MPC Sample stock firmware 1.3.0.12**. This release continues r30c-beta1; installed firmware is never rewritten.\n\n![Synth modules](media/r30d/synth-modules-en.png)\n\n## Synth (Mixer pad 13)\n\n- **Five modules, nine pages.** Tone (Oscillators, Mixer), Envelope (Amp, Filter envelope), Keys, Filter + LFO, Voices (Voices, Controller). Modules sit on pads 13–16 and 9; **hold Loop and press a pad**, or step with **+ / −**. The **DATA** encoder flips the pages inside a module.\n- **More sound.** Second oscillator (wave, mix, semitone, fine), sub oscillator, noise, drive, a separate filter envelope with amount, key tracking, four LFO shapes, bend range, unison with detune and spread, glide, velocity sensitivity.\n- **One row of knobs.** K1–K3 hold the frequently used parameter; the rarely used one is on **Shift+K** and is shown above the knob while Shift is held. See the [synth guide](SYNTH_GUIDE.md) for every page.\n- **Keys page = Tune tab.** K1 Transpose16 / Shift Layout, K2 Tonic / Shift Role, K3 Scale / Shift Colour; values read like the Tune tab, e.g. “D# (P)”, “Natural Minor (P)”, “−4 st”.\n- **Fader** (Off / Mod / Pitch) is K1 of the Controller page. Parameters such as LFO Depth, Sub, Noise, Drive and Key track read “Off” at zero.\n- **Takeover.** The synth's K knobs follow the Parameter takeover mode (Pickup, Scaled, Jump) like the rest of the Mixer.\n- Entering the synth in the Mixer clears the track selection; pads 9–12 show the Input track's effects, because the synth is the Input track's source. Pad 14 no longer leaves the synth.\n- Thumbnails mirror the pad layout; the big module drawing on the left shows the live waveform, envelope or filter curve.\n\n## Input and recording\n\n- **Shift+Sample opens the Input ROUTE list from every screen** (Seq, Step Edit, compressor, Project), never the stock Input Config. Rows: Source (Mic / Rear / USB / Resample / Synth), Mode (Rear and USB: Stereo, L, R …), Monitor, Threshold, Tuner and record rows. K1 Pan, K2 Threshold, K3 Source; **B2 FX, B3 MIDI In**, Shift+B2 opens the stock screen. The list scrolls and the pad layout stays as you left it.\n- **Sample Record:** K1 selects the input Source (including Synth), Shift+K1 the Rear/USB mode. With the **16 Levels** synth keyboard on, the knobs follow the Tune tab (K1 Transpose16 / Layout, K2 Tonic / Role, K3 Scale / Colour) and redraw when Shift is released.\n- The synth always follows the master volume; the old *Direct out* and *Mic layer* options are gone. Changing the Input source takes the Input off the synth.\n\n## Piano Roll\n\n- **Area selection:** hold **DATA**, turn the encoder (time) and move the fader (rows); the covered area is selected live. Release DATA to keep it. A short DATA click without movement still selects the note under the cursor (Shift adds).\n\n## Layout swap\n\n- **Layout and Transpose16 swapped** on the Tune tab, the synth Keys page and Sample Record: **K1 = Transpose16, Shift+K1 = Layout**. Resetting the knob follows the new order.\n\n## MIDI\n\n- Global MIDI/synth defaults, a **MIDI Buttons** page (scrolling list, B3 assign, B2 delete/cancel, faders assignable) and a fader MIDI source.\n- Controller modifier buttons (for example Shift on a MiniLab) act as plain buttons unless the MPC's own Shift is held, so a keyboard Shift no longer holds the MPC Shift.\n- MIDI In from Input Config: B3 / Shift+B2 switch the input mode, Shift+B3 Buttons, Shift+B2 Clear; the MIDI synth list scrolls.\n\n## Effects\n\n- **Henry Skillz** effects HS Saturator, HS Bass Focus and HS Heat (DSP from [hs-mpc-plugins](https://github.com/Holla-Back-Entertainment/hs-mpc-plugins), used with permission), with their own visuals, a page tab strip and a Heat page highlight. Add Effect has an HS author tab and name search (B2). *Pending device check.*\n\n## Bootloader and D.S.B\n\n- **Mod Settings → About → Exit to bootloader** (B3 confirms, B1 cancels) saves a project copy to `Projects/Mod-Exit-Last` and returns to the **D.S.B menu**; without D.S.B the MPC starts stock firmware. See [Boot menus and bootloader exit](BOOTLOADERS.md).\n- **D.S.B state carry-over:** D.S.B's “start OK” marking now reaches the card's real state file, so a healthy Am MOD start is no longer counted as a crash and the menu stops offering Stock after two starts.\n- The D.S.B boot journal and the state-fix log are copied beside the mod on the card for diagnostics (`dsb-boot.log`, `dsb-state-fix.log`).\n- Fast-boot idea: pick **AM Mod** once in a boot menu and use **Exit to bootloader** whenever you want a different system.\n\n## Other\n\n- Browser search shows a **Find** label; Shift+B2 clears the whole text.\n- Synth Hold note holds the last 16 Levels note and shows it highlighted.\n- Synth FX tail hold and fade-out remove clicks when notes end.\n\n## Limits\n\n- The synth modules, Input ROUTE, takeover for synth knobs, Piano Roll area selection and the layout swap were finished after the last full device check: *pending* hardware verification.\n- To Seq recording of a Mic take may not play the new sample in the sequence in every situation; logs from the device are welcome.\n- Exit to bootloader hands over to **D.S.B** only. SampleBoot and mpc-boot-thingy are supported for starting the mod; returning to them from the mod is not implemented.\n- Cross-mod Load/Save of Internal projects (Am MOD, Stock, SampQOL) is not fully certified.\n\nSee [Known limitations](KNOWN_ISSUES.md), [Installation](INSTALL.md) and the [changelog](../CHANGELOG.md).\n",
         "truncated": false
       }
     ],
@@ -220,7 +220,7 @@
     "pushed_at": "2026-11-24T04:27:33Z",
     "last_commit_at": "2026-11-24T04:27:31Z",
     "contributors": 1,
-    "open_issues": 13,
+    "open_issues": 14,
     "license": "MIT",
     "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. S600 MULTI multisample instruments with an Auto Sampler, Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling. C, aarch64 Linux; runs from SD card autorun.",
     "default_branch": "main",
@@ -991,6 +991,34 @@
     "releases": [],
     "archived": false
   },
+  "hdslave/hdslave-MPCSample-Synths-and-Drum-Machines": {
+    "stars": 0,
+    "forks": 0,
+    "pushed_at": "2026-11-23T17:38:27Z",
+    "last_commit_at": "2026-11-23T17:38:25Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "The hdslave synthesizers and drum machines for the Akai MPC Sample (CLAP plug-ins), and hdslaveOS, the Melodee fork they are made for, in one clone (git submodules)",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.1",
+      "published_at": "2026-11-23T06:20:16Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.1",
+        "name": "hdslave MPC Sample Synths & Drum Machines v0.1",
+        "prerelease": false,
+        "published_at": "2026-11-23T06:20:16Z",
+        "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.1",
+        "body": "**hdslave MPC Sample Synths & Drum Machines (`v0.1`)** — all 11 Linux `aarch64` CLAP instruments and effects for the Akai MPC Sample running [hdslaveOS](https://github.com/hdslave/hdslaveOS) or [Melodee](https://github.com/keremimo/melodee-sample).\n\n> **Note:** Every plug-in in this bundle passed its repository test suite and the `hdslaveOS` host check (`clap_check`: 11 loaded and played, 0 failed), not yet tested on physical MPC hardware.\n\n### Included plug-ins\n| Plug-in | Commit | `.clap` SHA-256 (prefix) | Repository |\n| --- | --- | --- | --- |\n| **hdslave Anvil** | `d2b5386` | `686386228c0a` | [hdslave/hdslave-Anvil-Synth](https://github.com/hdslave/hdslave-Anvil-Synth) |\n| **hdslave TB-MPC-3-P-0** | `aa44b30` | `ab8ffeb8af36` | [hdslave/TB-MPC-3-P-0-Synthesizer](https://github.com/hdslave/TB-MPC-3-P-0-Synthesizer) |\n| **hdslave Psychic** | `e8b88b6` | `16b348911ba5` | [hdslave/hdslave-Psychic-Synth](https://github.com/hdslave/hdslave-Psychic-Synth) |\n| **hdslave Necronomicon** | `6431118` | `ce26e8bb355a` | [hdslave/hdslave-Necronomicon-Synth](https://github.com/hdslave/hdslave-Necronomicon-Synth) |\n| **hdslave MoonBass** | `97e958b` | `6855eacac569` | [hdslave/hdslave-MoonBass-Synth](https://github.com/hdslave/hdslave-MoonBass-Synth) |\n| **hdslave Foundry** | `d992b19` | `94f2ff7d1cc3` | [hdslave/hdslave-Foundry-Drum-Machine](https://github.com/hdslave/hdslave-Foundry-Drum-Machine) |\n| **hdslave Machine** | `ecb3484` | `0efb56a81886` | [hdslave/hdslave-Machine](https://github.com/hdslave/hdslave-Machine) |\n| **hdslave Mystik** | `7c588b1` | `ca97b27eea89` | [hdslave/hdslave-Mystik-Synth](https://github.com/hdslave/hdslave-Mystik-Synth) |\n| **hdslave Nexus** | `5c4e521` | `c16a93c64300` | [hdslave/hdslave-Nexus-Synth](https://github.com/hdslave/hdslave-Nexus-Synth) |\n| **hdslave Reverie** | `2b4e780` | `57b2cf691320` | [hdslave/hdslave-Reverie-Synth](https://github.com/hdslave/hdslave-Reverie-Synth) |\n| **hdslave Cortex Filter** | `d31acd2` | `ec306f081cfa` | [hdslave/hdslave-Cortex-Filter](https://github.com/hdslave/hdslave-Cortex-Filter) |\n\n### Install on the MPC Sample SD card\nUnzip `hdslave-MPC-Sample-Plugins-v0.1.zip` at the root of your SD card so all 11 `.clap` binaries and their licence files are placed in `Melodee/Plugins/hdslave/`.\n\n### Checksum (SHA-256)\n- `hdslave-MPC-Sample-Plugins-v0.1.zip`: `1efb4b987399b82862c5352aaf3c0f0669fec57ebf9d31630fcc33a466a344fb`\n\n### Desktop version (macOS & Windows)\nFor native macOS (`arm64`/`x86_64`) and Windows (`x64`) desktop CLAP versions with interactive panels, see [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "hdslave/hdslaveOS": {
     "stars": 1,
     "forks": 0,
@@ -1491,6 +1519,34 @@
     "releases": [],
     "archived": false
   },
+  "keremimo/melodee-modules": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-23T21:40:14Z",
+    "last_commit_at": "2026-11-23T19:02:46Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "GPL-3.0",
+    "description": "CLAP plug-in that plays Melodee synth modules (.mmod) on the MPC Sample",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.1.0",
+      "published_at": "2026-11-23T19:53:52Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.1.0",
+        "name": "Melodee Modules 0.1.0",
+        "prerelease": false,
+        "published_at": "2026-11-23T19:53:52Z",
+        "html_url": "https://github.com/keremimo/melodee-modules/releases/tag/v0.1.0",
+        "body": "The first release of Melodee Modules: a CLAP plug-in that plays Melodee synth modules (`.mmod` files with AArch64 code) on the MPC Sample running Melodee. Each module file in its `Modules` folder is one plug-in.\n\n**Install**: drop `Melodee.Modules.zip` on the Device page at http://melodee.local, or copy its `Melodee Modules` folder to `Melodee/Plugins` on the card. Then put module files into `Melodee/Plugins/Melodee Modules/Modules`.\n\n**Modules**: build them with the [Melodee module SDK](https://github.com/keremimo/melodee-module-sdk): `mod_build.py --native` adds the AArch64 code.\n\n**Signed code**: a signed module's AArch64 code runs only when its signature (the NSIG chunk, by the key its ID is made from) checks over the whole file. A file changed after signing is left out. An unsigned module still loads, but anyone can make a file with its ID: load only module files you trust.\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "keremimo/melodee-sample": {
     "stars": 74,
     "forks": 13,
@@ -1532,6 +1588,90 @@
         "published_at": "2026-11-22T16:59:57Z",
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.6.8",
         "body": "Melodee 0.6.8 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.6.7:** copy `Melodee-MPC-Sample-v0.6.8.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.6.8?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card.\n- **From 0.1.0 or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12** or **1.4.0.7**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **A sample's tempo.** Melodee finds the exact tempo of a loop far more often. **Follow** and **Seq** warp on a sample without **# Beats** use that tempo, in the octave nearest the project's.\n- **Chop slices warp as their pad.** Pad taps and cut previews on Chop play at the kit pad's tuning and Warp, and a slice keeps **# Beats** as its tempo.\n- **Solo on an empty track.** A solo kept on a track with no sound silenced every other track. A solo now counts only on a track that plays something, and **SHIFT** + an empty track's pad in mute mode shows *Track N is empty*. See [Mute and solo](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/basics.md#mute-and-solo).\n- **Recording an audio track** no longer keeps a CPU core busy for the length of the take.\n- **CLAP plug-ins at rest** take a knob turned on their page, and run when they ask to, without waiting for a note.\n- **Autosave** no longer saves a project nobody changed. A MIDI track with an audio input made it save every second. Changing the Pad FX bank or target now counts as a change.\n- **The Project page** shows **UNSAVED** and **NO CARD** in the colours of the palette in use.\n- **Settings > AUDIO** keeps the **DSP** and **PDC** lines above **K1**'s card.\n- **SysEx** going out no longer keeps the MIDI thread busy.\n\n## Faster\n\n- An effect chain that hears only silence stops running until sound comes back, then carries on where it would have been. A stopped project takes much less CPU.\n- Held sampler notes, steady mixer levels, the echoes' **SYNC** and the Compressor under its threshold take less work while playing. The sound is unchanged.\n- The sample streamer and the render workers sleep while they have nothing to do.\n- The Project list reads each project file once, not again after every save.\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "keremimo/mpc-vst-melodee-chip": {
+    "stars": 0,
+    "forks": 0,
+    "pushed_at": "2026-11-22T14:58:25Z",
+    "last_commit_at": "2026-11-22T14:57:05Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "AGPL-3.0",
+    "description": "Melodee Chip: a chip voice synth plug-in for Melodee on the MPC Sample and for MPC OS devices (Open MPC)",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-11-12T14:19:04Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "name": "Melodee Chip 1.0.0",
+        "prerelease": false,
+        "published_at": "2026-11-12T14:19:04Z",
+        "html_url": "https://github.com/keremimo/mpc-vst-melodee-chip/releases/tag/v1.0.0",
+        "body": "Melodee Chip 1.0.0 is a chip voice synth with ring mod and sync, a pulse width LFO, crush, a multimode filter, a mod matrix and factory sounds. It is an [Open MPC](https://open-mpc.github.io) plug-in for [Melodee](https://github.com/keremimo/melodee-sample) on the Akai MPC Sample and for MPC OS standalone devices.\n\n## Melodee on the MPC Sample\n\n1. Download `Melodee-Chip-1.0.0-mpc-sample.zip` below.\n2. Unzip it. It holds one folder, `Ellic Studio - VST - Melodee Chip`.\n3. Copy that folder into the `Plugins` folder at the top level of the SD card. Make the `Plugins` folder if the card has none.\n4. In Melodee, select an empty track, press **SAMPLE**, then **B1** (**SYNTH**), and load Melodee Chip.\n\nA project saved with Melodee's built-in SID engine (Melodee 0.1.0-alpha.6 and earlier) opens with that track on Melodee Chip, as it sounded.\n\n## MPC OS devices\n\n- `Melodee-Chip-1.0.0-mpc-aarch64.zip`: Gen2 devices (64-bit ARM) on MPC OS 3.x.\n- `Melodee-Chip-1.0.0-mpc-armv7.zip`: Gen1 devices (MPC Live, Live II, One, X, Key 61, Force) on MPC OS 3.x.\n\nInstalling needs root shell access (SSH) to the device, so it is for modded units only. Each zip has an `install.sh` and an `INSTALL.md` with the scripted and manual steps. Back up first; use at your own risk.\n\n## Status\n\nThe armv7 and aarch64 builds pass the synth's own checks and the Open MPC toolchain's port test. The aarch64 build is tested in Melodee on the MPC Sample. It has not been tested on an MPC OS device yet.\n\n## Checksums (SHA-256)\n\n```\n5f93d889f0186e49814c36e832b0e85d02e5ee35d3958d119fb1cddf56dc3813  Melodee-Chip-1.0.0-mpc-aarch64.zip\necd1c12a0807553cbdd081e2354b3f93a0780e4649c962bc0efe1d5cf7211d6e  Melodee-Chip-1.0.0-mpc-armv7.zip\n3f3e43ed7306a6871c45d1eabcad5fd99327a4c570493d115f6442977c8312eb  Melodee-Chip-1.0.0-mpc-sample.zip\n```\n\nFree software under the AGPL-3.0. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins).\n\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "keremimo/mpc-vst-melodee-pd": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-22T14:58:23Z",
+    "last_commit_at": "2026-11-22T14:57:05Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "AGPL-3.0",
+    "description": "Melodee PD: a phase distortion synth plug-in for Melodee on the MPC Sample and for MPC OS devices (Open MPC)",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-11-12T14:18:51Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "name": "Melodee PD 1.0.0",
+        "prerelease": false,
+        "published_at": "2026-11-12T14:18:51Z",
+        "html_url": "https://github.com/keremimo/mpc-vst-melodee-pd/releases/tag/v1.0.0",
+        "body": "Melodee PD 1.0.0 is a phase distortion synth with eight waveforms, two lines, DCW and DCA envelopes, a mod matrix and factory sounds. It is an [Open MPC](https://open-mpc.github.io) plug-in for [Melodee](https://github.com/keremimo/melodee-sample) on the Akai MPC Sample and for MPC OS standalone devices.\n\n## Melodee on the MPC Sample\n\n1. Download `Melodee-PD-1.0.0-mpc-sample.zip` below.\n2. Unzip it. It holds one folder, `Ellic Studio - VST - Melodee PD`.\n3. Copy that folder into the `Plugins` folder at the top level of the SD card. Make the `Plugins` folder if the card has none.\n4. In Melodee, select an empty track, press **SAMPLE**, then **B1** (**SYNTH**), and load Melodee PD.\n\nA project saved with Melodee's built-in CZ engine (Melodee 0.1.0-alpha.6 and earlier) opens with that track on Melodee PD, as it sounded.\n\n## MPC OS devices\n\n- `Melodee-PD-1.0.0-mpc-aarch64.zip`: Gen2 devices (64-bit ARM) on MPC OS 3.x.\n- `Melodee-PD-1.0.0-mpc-armv7.zip`: Gen1 devices (MPC Live, Live II, One, X, Key 61, Force) on MPC OS 3.x.\n\nInstalling needs root shell access (SSH) to the device, so it is for modded units only. Each zip has an `install.sh` and an `INSTALL.md` with the scripted and manual steps. Back up first; use at your own risk.\n\n## Status\n\nThe armv7 and aarch64 builds pass the synth's own checks and the Open MPC toolchain's port test. The aarch64 build is tested in Melodee on the MPC Sample. It has not been tested on an MPC OS device yet.\n\n## Checksums (SHA-256)\n\n```\na06939c9f71ab915176604b0c4bb98e11c04ed575c559b4d23a7862991a886bd  Melodee-PD-1.0.0-mpc-aarch64.zip\n102dbc02472f98989eb4a419f23c24d82ae4e147ac383aa7e148f55bfcdc7177  Melodee-PD-1.0.0-mpc-armv7.zip\nd5f023240789c29f7f5be39492080db6b3cb138d467ac26cf30bf3525fb7a7bd  Melodee-PD-1.0.0-mpc-sample.zip\n```\n\nFree software under the AGPL-3.0. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins).\n\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "keremimo/mpc-vst-melodee-poly": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-22T14:58:21Z",
+    "last_commit_at": "2026-11-22T14:57:05Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "AGPL-3.0",
+    "description": "Melodee Poly: a two-oscillator polysynth plug-in for Melodee on the MPC Sample and for MPC OS devices (Open MPC)",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-11-12T14:18:39Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "name": "Melodee Poly 1.0.0",
+        "prerelease": false,
+        "published_at": "2026-11-12T14:18:39Z",
+        "html_url": "https://github.com/keremimo/mpc-vst-melodee-poly/releases/tag/v1.0.0",
+        "body": "Melodee Poly 1.0.0 is a two-oscillator polysynth with poly mod, unison, glide, an eight-route mod matrix and 13 factory sounds. It is an [Open MPC](https://open-mpc.github.io) plug-in for [Melodee](https://github.com/keremimo/melodee-sample) on the Akai MPC Sample and for MPC OS standalone devices.\n\n## Melodee on the MPC Sample\n\n1. Download `Melodee-Poly-1.0.0-mpc-sample.zip` below.\n2. Unzip it. It holds one folder, `Ellic Studio - VST - Melodee Poly`.\n3. Copy that folder into the `Plugins` folder at the top level of the SD card. Make the `Plugins` folder if the card has none.\n4. In Melodee, select an empty track, press **SAMPLE**, then **B1** (**SYNTH**), and load Melodee Poly.\n\nA project saved with Melodee's built-in PROPHET engine (Melodee 0.1.0-alpha.6 and earlier) opens with that track on Melodee Poly, as it sounded.\n\n## MPC OS devices\n\n- `Melodee-Poly-1.0.0-mpc-aarch64.zip`: Gen2 devices (64-bit ARM) on MPC OS 3.x.\n- `Melodee-Poly-1.0.0-mpc-armv7.zip`: Gen1 devices (MPC Live, Live II, One, X, Key 61, Force) on MPC OS 3.x.\n\nInstalling needs root shell access (SSH) to the device, so it is for modded units only. Each zip has an `install.sh` and an `INSTALL.md` with the scripted and manual steps. Back up first; use at your own risk.\n\n## Status\n\nThe armv7 and aarch64 builds pass the synth's own checks and the Open MPC toolchain's port test. The aarch64 build is tested in Melodee on the MPC Sample. It has not been tested on an MPC OS device yet.\n\n## Checksums (SHA-256)\n\n```\nbf9cfd59843d5172d0939faf7f3e6805e1e08cb8636c2357a2031c8704de7903  Melodee-Poly-1.0.0-mpc-aarch64.zip\n1b934545717e2b4e2975fd05c2a96be34b3995d1ce946e9a797b2c42b7ff13df  Melodee-Poly-1.0.0-mpc-armv7.zip\n9893c7c10e1d7e7c1db836666efb0163988e35bb73afae0beeb8ebd698638671  Melodee-Poly-1.0.0-mpc-sample.zip\n```\n\nFree software under the AGPL-3.0. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins).\n\n",
         "truncated": false
       }
     ],
