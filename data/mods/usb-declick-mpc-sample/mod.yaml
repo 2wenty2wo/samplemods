@@ -1,0 +1,9 @@
+name: USB DeClick
+description: 'TODO: describe'
+repo: odeo0/usb-declick-mpc-sample
+author: odeo0
+runs_on:
+  - device
+install: sd-card
+audience:
+  - musician
