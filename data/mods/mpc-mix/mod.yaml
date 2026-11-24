@@ -1,0 +1,9 @@
+name: MPC Mix
+description: Native iPhone companion and SD bridge for Akai MPC Sample.
+repo: orrpunk-art/MPC-Mix
+author: orrpunk-art
+runs_on:
+  - device
+install: sd-card
+audience:
+  - musician
