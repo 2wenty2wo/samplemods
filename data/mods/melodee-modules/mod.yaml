@@ -1,0 +1,8 @@
+name: Melodee Modules
+description: CLAP plug-in that plays Melodee synth modules (.mmod) on the MPC Sample.
+repo: keremimo/melodee-modules
+author: keremimo
+runs_on:
+  - device
+audience:
+  - musician
