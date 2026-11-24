@@ -203,21 +203,6 @@ a:hover {
 	content: ' ';
 }
 
-.site-notice-link {
-	color: var(--mpc-screen-cyan);
-	text-decoration: underline;
-	text-underline-offset: 0.16em;
-	white-space: nowrap;
-}
-
-.site-notice-link::before {
-	content: ' ';
-}
-
-.site-notice-link:hover {
-	text-decoration: underline;
-}
-
 .brand-lockup {
 	display: inline-flex;
 	align-items: center;
