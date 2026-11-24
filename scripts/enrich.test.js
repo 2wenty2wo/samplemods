@@ -53,7 +53,7 @@ try {
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'gone'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'apps', 'z'), { recursive: true });
 	fs.mkdirSync(path.join(fixture, 'data', 'mods', 'external'), { recursive: true });
-	for (const file of ['enrich.js', 'catalog.js', 'catalog-contributors.js', 'compat.js']) {
+	for (const file of ['enrich.js', 'enrich-404-issue.js', 'check-star-list.js', 'catalog.js', 'catalog-contributors.js', 'compat.js']) {
 		fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	}
 	fs.writeFileSync(path.join(fixture, 'data', 'apps', 'z', 'app.yaml'), 'repo: owner/z\n');
@@ -116,13 +116,17 @@ try {
 	const limited = run({ RATE_LIMIT: '1' });
 	assert.notEqual(limited.status, 0);
 	assert.match(limited.stderr, /rate limited.*retry.*GITHUB_TOKEN/);
-	const missing = run({ GONE_404: '1' });
+	const report404 = path.join(fixture, 'enrich-404.json');
+	const missing = run({ GONE_404: '1', ENRICH_404_PATH: report404 });
 	assert.equal(missing.status, 0, missing.stderr || missing.stdout);
 	assert.match(`${missing.stdout}\n${missing.stderr}`, /::warning::GitHub owner\/gone: 404, keeping previous snapshot/);
 	const afterMissing = JSON.parse(fs.readFileSync(output, 'utf8'));
 	assert.equal(afterMissing['owner/a'].stars, 99, 'other repos must still update when one repo 404s');
 	assert.deepEqual(afterMissing['owner/gone'], goneSnapshot, '404 repo must keep previous github.json entry');
 	assert.equal(fs.readFileSync(goneReadme, 'utf8'), '# A\nREADME', '404 repo README cache must survive');
+	assert.deepEqual(JSON.parse(fs.readFileSync(report404, 'utf8')), [
+		{ id: 'gone', section: 'mods', repo: 'owner/gone' }
+	], '404 report lists active entries for the issue sync step');
 	const removed = run({ NO_README: '1' });
 	assert.equal(removed.status, 0, removed.stderr);
 	assert.ok(!fs.existsSync(readme), 'removed upstream README must not remain stale');
