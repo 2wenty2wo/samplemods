@@ -176,7 +176,7 @@
 							{rel.entryName}
 						</a>
 						<span class="chip chip-category">{sectionSingularLabel(rel.section)}</span>
-						{#if rel.html_url}
+						{#if rel.html_url && rel.status !== 'removed'}
 							<a
 								class="screen-badge date release-tag-link"
 								href={rel.html_url}
@@ -197,7 +197,7 @@
 						{/if}
 					</div>
 
-					{#if rel.html_url}
+					{#if rel.html_url && rel.status !== 'removed'}
 						<a
 							class="release-ext-link"
 							href={rel.html_url}
@@ -233,25 +233,27 @@
 				<div class="release-notes-box">
 					<EntryProse html={rel.body_html} className="release-prose" />
 				</div>
-				<div class="release-notes-footer">
-					{#if rel.truncated}
-						<span class="release-truncated-text">Truncated ·</span>
-					{/if}
-					{#if rel.html_url}
-						<a
-							class="release-ext-link"
-							href={rel.html_url}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{#if rel.repo}
-								Release on GitHub&nbsp;<ExternalIcon />
-							{:else}
-								Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
-							{/if}
-						</a>
-					{/if}
-				</div>
+				{#if rel.truncated || (rel.html_url && rel.status !== 'removed')}
+					<div class="release-notes-footer">
+						{#if rel.truncated}
+							<span class="release-truncated-text">{rel.html_url && rel.status !== 'removed' ? 'Truncated ·' : 'Truncated'}</span>
+						{/if}
+						{#if rel.html_url && rel.status !== 'removed'}
+							<a
+								class="release-ext-link"
+								href={rel.html_url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{#if rel.repo}
+									Release on GitHub&nbsp;<ExternalIcon />
+								{:else}
+									Download{hostnameOf(rel.html_url) ? ` on ${hostnameOf(rel.html_url)}` : ''}&nbsp;<ExternalIcon />
+								{/if}
+							</a>
+						{/if}
+					</div>
+				{/if}
 			</details>
 		{/if}
 	</article>

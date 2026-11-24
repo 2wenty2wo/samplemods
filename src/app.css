@@ -684,7 +684,8 @@ a:hover {
 	color: var(--mpc-screen-cyan);
 	border-color: #283044;
 }
-.badge-status.archived {
+.badge-status.archived,
+.badge-status.removed {
 	--chip-strip: #7a7d87;
 }
 

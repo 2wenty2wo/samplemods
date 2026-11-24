@@ -12,6 +12,8 @@ for (const status of ['stable', 'beta', 'experimental', 'concept', 'archived']) 
  assert.equal(suggestStatus({ ...kaos, status }, {}, '# Public beta'), null);
  assert.equal(suggestStatus({ ...kaos, status }, { archived: true })?.status ?? null, status === 'archived' ? null : 'archived');
 }
+assert.equal(suggestStatus({ ...kaos, status: 'removed' }, {}, '# Public beta'), null);
+assert.equal(suggestStatus({ ...kaos, status: 'removed' }, { archived: true }, '# Public beta'), null);
 const normal = { name: 'Normal', repo: 'owner/normal', author: 'owner' };
 for (const releases of [[], [{ prerelease: false }], [{}], [{ prerelease: true }, {}], [{ prerelease: true }, { prerelease: false }]]) {
  assert.equal(suggestStatus(normal, { releases }), null, 'unknown, empty and mixed releases must not imply beta');
@@ -143,6 +145,10 @@ assert.equal(open, null, 'honor status set on main after checkout');
 expectedContent = 'name: KAOSAMPLE\nrepo: omarhuertasllc-ops/kaosample-beta\nauthor: owner\nstatus: archived\ndescription: Changed on main\n';
 await sync([{ ...candidate, status: 'archived' }]);
 assert.ok(open, 'archive overrides a current explicit status');
+await sync([]);
+remote = remote.replace('status: stable\n', 'status: removed\n');
+await sync([{ ...candidate, status: 'archived' }]);
+assert.equal(open, null, 'removed status on main is never overwritten by archived suggestion');
 remote = 'name: KAOSAMPLE\nrepo: omarhuertasllc-ops/kaosample-beta\nauthor: |\n  owner\n';
 const beforeInvalid = calls.filter(c => c.method && c.method !== 'GET').length;
 await assert.rejects(sync([candidate]), /status|YAML|mapping/i);
