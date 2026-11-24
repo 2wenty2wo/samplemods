@@ -52,6 +52,18 @@ for (const { id, section, file, dir, record, media } of entries) {
 			failed = true;
 		}
 	}
+	if (section === 'plugins') {
+		if (!Array.isArray(record.hosts) || record.hosts.length === 0) {
+			console.error(`${file}: hosts is required for plugins`);
+			failed = true;
+		}
+	}
+	for (const hostId of record.hosts ?? []) {
+		if (!ids.has(hostId) || hostId === id) {
+			console.error(`${file}: ${hostId === id ? 'cannot list itself as host' : `hosts unknown entry id "${hostId}"`}`);
+			failed = true;
+		}
+	}
 	for (const baseId of record.based_on ?? []) {
 		if (!ids.has(baseId) || baseId === id) {
 			console.error(`${file}: ${baseId === id ? 'cannot be based on itself' : `based_on unknown entry id "${baseId}"`}`);

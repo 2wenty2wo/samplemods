@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 
 export const SECTION_FILES = {
-	mods: 'mod.yaml', apps: 'app.yaml', games: 'game.yaml',
+	mods: 'mod.yaml', apps: 'app.yaml', plugins: 'plugin.yaml', games: 'game.yaml',
 	tools: 'tool.yaml', guides: 'guide.yaml', dev: 'dev.yaml'
 };
 const IMAGE_EXTS = new Set(['.svg', '.png', '.webp', '.jpg', '.jpeg', '.gif']);

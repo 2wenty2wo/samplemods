@@ -23,6 +23,7 @@ Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, `data/c
    |---|---|---|
    | Mods | `data/mods/<id>/mod.yaml` | Extend the stock workflow, including add-ons |
    | Apps | `data/apps/<id>/app.yaml` | Separate music apps with their own workflow |
+   | Plugins | `data/plugins/<id>/plugin.yaml` | Instruments and effects that load inside a host app |
    | Games | `data/games/<id>/game.yaml` | Games and game runtimes |
    | Tools | `data/tools/<id>/tool.yaml` | Launchers, converters, emulators and companion tools |
    | Guides | `data/guides/<id>/guide.yaml` | Handbooks, references and modding instructions |
@@ -39,7 +40,7 @@ Pull requests must leave bot-owned `data/github.json`, `data/readme/**`, `data/c
    install: sd-card
    ```
 
-   A public GitHub `repo` is preferred — it powers stars, README, and releases on the detail page. Optional fields include `requires` (entry IDs from any section), `based_on` (entry IDs this project was forked or built from and runs instead of; use `requires` if the original must be installed first; the reverse `derived` list is computed), `compatible` (entry IDs a launcher is confirmed to work with; reverse `launchers` is computed), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `removed`, `concept`; `removed` marks entries whose author deleted the source repository while preserving the last captured catalog snapshot). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically when `repo` is set.
+   A public GitHub `repo` is preferred — it powers stars, README, and releases on the detail page. Optional fields include `requires` (entry IDs from any section), `hosts` (required for Plugins: catalog IDs of host apps it runs in; reverse `plugins` is computed), `based_on` (entry IDs this project was forked or built from and runs instead of; use `requires` if the original must be installed first; the reverse `derived` list is computed), `compatible` (entry IDs a launcher is confirmed to work with; reverse `launchers` is computed), `firmware`, `website`, and `status` (`stable`, `beta`, `experimental`, `archived`, `removed`, `concept`; `removed` marks entries whose author deleted the source repository while preserving the last captured catalog snapshot). State firmware compatibility only when the project documents it. GitHub stars/releases/activity are enriched automatically when `repo` is set.
 
    For paid or closed releases that are not on GitHub, omit `repo` and set `website` instead (required without a repo). Set `author_url` for a maker's website or profile. GitHub enrichment and star-list matching skip entries without `repo`.
 

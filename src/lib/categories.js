@@ -1,12 +1,13 @@
 /** @type {Record<string, string>} */
 export const SECTION_LABELS = {
-	mods: 'Mods', apps: 'Apps', games: 'Games', tools: 'Tools', guides: 'Guides', dev: 'Developers'
+	mods: 'Mods', apps: 'Apps', plugins: 'Plugins', games: 'Games', tools: 'Tools', guides: 'Guides', dev: 'Developers'
 };
 
 /** @type {Record<string, string>} */
 export const SECTION_SINGULAR = {
 	mods: 'mod',
 	apps: 'app',
+	plugins: 'plugin',
 	games: 'game',
 	tools: 'tool',
 	guides: 'guide',
@@ -17,6 +18,7 @@ export const SECTION_SINGULAR = {
 export const SECTION_SINGULAR_LABELS = {
 	mods: 'MOD',
 	apps: 'APP',
+	plugins: 'PLUGIN',
 	games: 'GAME',
 	tools: 'TOOL',
 	guides: 'GUIDE',
@@ -27,6 +29,7 @@ export const SECTION_SINGULAR_LABELS = {
 export const SECTION_EXPLAINERS = {
 	mods: 'Mods add features to the stock MPC Sample firmware, keeping its familiar workflow.',
 	apps: 'Apps run their own workflow and interface on the MPC Sample.',
+	plugins: 'Instruments and effects that load inside a host app; they do not run on their own.',
 	games: 'Games and game runtimes playable directly on the MPC Sample.',
 	tools: 'Launchers, emulators and computer or browser companions for the MPC Sample.',
 	guides: 'Handbooks, hardware references and step-by-step modding instructions.',
@@ -34,12 +37,12 @@ export const SECTION_EXPLAINERS = {
 };
 
 export const SECTION_GLOW = {
-	mods: '#FF4D7D', apps: '#2EE65A', games: '#C8F526',
+	mods: '#FF4D7D', apps: '#2EE65A', plugins: '#FF9E2C', games: '#C8F526',
 	tools: '#B07CFF', guides: '#E8C811', dev: '#1DA1DB'
 };
 
 export const SECTION_TINTS = {
-	mods: '#E8A0B4', apps: '#A8E8B8', games: '#D8E8A0',
+	mods: '#E8A0B4', apps: '#A8E8B8', plugins: '#E8C8A0', games: '#D8E8A0',
 	tools: '#C8B0E8', guides: '#E8D888', dev: '#98CEE8'
 };
 
@@ -76,6 +79,7 @@ export const SECTIONS = Object.keys(SECTION_LABELS);
 export const SECTION_YAML_FILES = {
 	mods: 'mod.yaml',
 	apps: 'app.yaml',
+	plugins: 'plugin.yaml',
 	games: 'game.yaml',
 	tools: 'tool.yaml',
 	guides: 'guide.yaml',

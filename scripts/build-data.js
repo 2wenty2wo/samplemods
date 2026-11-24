@@ -265,6 +265,9 @@ for (const mod of mods) {
 			return aInactive - bInactive; // active launchers first
 		})
 		.map((m) => m.id);
+	mod.plugins = mods
+		.filter((m) => (m.hosts ?? []).includes(mod.id))
+		.map((m) => m.id);
 }
 
 mods.sort((a, b) => String(a.name).localeCompare(String(b.name)));

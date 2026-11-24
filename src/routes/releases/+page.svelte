@@ -12,7 +12,7 @@
 	let { data } = $props();
 	const releases = $derived(data.releases ?? []);
 
-	const FILTER_SECTIONS = ['mods', 'apps', 'games', 'tools'];
+	const FILTER_SECTIONS = ['mods', 'apps', 'plugins', 'games', 'tools'];
 
 	let section = $state('');
 

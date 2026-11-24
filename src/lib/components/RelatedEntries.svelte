@@ -152,6 +152,20 @@ import { base } from '$app/paths';
 	</section>
 {/if}
 
+{#if mod.hosts?.length}
+	<section class="detail-section">
+		<h2 class="silk-heading">Runs in</h2>
+		{@render relatedMiniCards(mod.hosts)}
+	</section>
+{/if}
+
+{#if mod.plugins?.length}
+	<section class="detail-section">
+		<h2 class="silk-heading">Plugins</h2>
+		{@render relatedMiniCards(mod.plugins)}
+	</section>
+{/if}
+
 {#if mod.requires?.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Requires</h2>

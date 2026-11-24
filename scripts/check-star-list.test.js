@@ -33,7 +33,7 @@ assert.match(formatIssueBody(result, 'https://example.com/list', { 'owner/new': 
 assert.equal(repoId('Owner/MPC_Example.Toolkit'), 'mpc-example-toolkit');
 assert.equal(repoId('Café__Test!!'), 'cafe-test');
 assert.equal(repoId('___'), '');
-for (const [text, section] of [['DOOM emulator', 'games'], ['a handbook', 'guides'], ['Rust SDK', 'dev'], ['Windows desktop companion', 'tools'], ['own interface groovebox', 'apps'], ['firmware enhancement', 'mods']]) {
+for (const [text, section] of [['DOOM emulator', 'games'], ['a handbook', 'guides'], ['Rust SDK', 'dev'], ['Windows desktop companion', 'tools'], ['own interface groovebox', 'apps'], ['firmware enhancement', 'mods'], ['CLAP plug-in for Melodee', 'plugins']]) {
 	assert.equal(guessSection(text).section, section);
 }
 assert.equal(guessSection('small project', ['toolkit']).section, 'dev');

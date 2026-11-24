@@ -1,0 +1,18 @@
+name: Melodee Chip
+description: >-
+  A chip-voice VST2 instrument for Melodee on the MPC Sample (Melodee's SID engine as a plug-in).
+  Also builds for Open MPC on MPC OS devices.
+repo: keremimo/mpc-vst-melodee-chip
+author: keremimo
+tags:
+  - vst
+  - synth
+  - chip
+install: sd-card
+status: stable
+hosts:
+  - melodee-sample
+runs_on: [device]
+audience: [musician]
+price: free
+source: open

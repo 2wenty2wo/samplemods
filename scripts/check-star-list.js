@@ -38,14 +38,18 @@ export function guessSection(description = '', topics = [], readme = '', homepag
 	if (game.length) return { section: 'games', reason: `description/topics: ${game.join(', ')}` };
 	const guide = matches(primary, /\b(?:guide|handbook|manual[- ]only)\b/gi);
 	if (guide.length && (!signals.device.length || /\b(?:guide (?:to|for)|handbook|manual[- ]only)\b/i.test(primary))) return { section: 'guides', reason: `description/topics: ${guide.join(', ')}` };
+	const plugin = matches(primary, /\b(?:clap|vst[23]?|lv2)\s+plug-?ins?\b|\bplug-?in\s+(?:for|that|instrument|effect)\b/gi);
+	const hostApp = matches(primary, /\b(?:replaces|own interface|groovebox|tracker|daw)\b/gi);
+	if (plugin.length && !hostApp.length) return { section: 'plugins', reason: `description/topics: ${plugin.join(', ')}` };
 	if (signals.device.length) {
-		const app = matches(primary, /\b(?:replaces|own interface|groovebox|tracker|daw)\b/gi);
+		const app = hostApp.length ? hostApp : matches(primary, /\b(?:replaces|own interface|groovebox|tracker|daw)\b/gi);
 		return { section: app.length ? 'apps' : 'mods', reason: `device keywords: ${[...signals.device, ...app].join(', ')}` };
 	}
 	if (signals.desktop.length || signals.browser.length) return { section: 'tools', reason: `desktop/browser keywords: ${[...signals.desktop, ...signals.browser].join(', ')}` };
 	const rules = [
 		['games', /\b(?:games?|doom|emulator)\b/gi],
 		['guides', /\b(?:guide|manual|handbook)\b/gi],
+		['plugins', /\b(?:clap|vst[23]?|lv2)\s+plug-?ins?\b|\bplug-?in\s+(?:for|that|instrument|effect)\b/gi],
 		['dev', /\b(?:sdk|library|toolkit|framework)\b/gi],
 		['tools', /\b(?:desktop|windows|web[- ]midi|browser)\b/gi],
 		['apps', /\b(?:replaces|own interface|groovebox|tracker|daw)\b/gi]

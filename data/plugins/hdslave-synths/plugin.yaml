@@ -1,0 +1,21 @@
+name: hdslave Synths & Drum Machines
+description: >-
+  Eleven CLAP instruments and effects for Melodee and hdslaveOS: Anvil, TB-MPC-3-P-0, Psychic,
+  Necronomicon, MoonBass, Foundry, Machine, Mystik, Nexus, Reverie and Cortex Filter. Not yet tested
+  on physical MPC hardware.
+repo: hdslave/hdslave-MPCSample-Synths-and-Drum-Machines
+author: hdslave
+tags:
+  - clap
+  - synth
+  - drums
+  - effects
+install: sd-card
+status: experimental
+hosts:
+  - melodee-sample
+  - hdslaveos
+runs_on: [device]
+audience: [musician]
+price: free
+source: open
