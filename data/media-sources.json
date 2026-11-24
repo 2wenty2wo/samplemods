@@ -24,6 +24,11 @@
   ],
   "arpeggigator": [
     {
+      "file": "screenshots/00-banner.webp",
+      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/assets/readme-user-banner.webp",
+      "repo": "OSCILLUNE/ArpeggiGator"
+    },
+    {
       "file": "screenshots/01-splash.webp",
       "source": "https://github.com/OSCILLUNE/ArpeggiGator",
       "repo": "OSCILLUNE/ArpeggiGator",
