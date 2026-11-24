@@ -1228,5 +1228,61 @@
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-shutdown.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
     }
+  ],
+  "melodee-modules": [
+    {
+      "file": "screenshots/01-drone-fifths.webp",
+      "source": "https://github.com/keremimo/melodee-modules",
+      "repo": "keremimo/melodee-modules",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-clap-module-picker.webp",
+      "source": "https://github.com/keremimo/melodee-modules",
+      "repo": "keremimo/melodee-modules",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "melodee-chip": [
+    {
+      "file": "screenshots/01-presets.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-chip",
+      "repo": "keremimo/mpc-vst-melodee-chip",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-voice-controls.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-chip",
+      "repo": "keremimo/mpc-vst-melodee-chip",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "melodee-pd": [
+    {
+      "file": "screenshots/01-presets.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-pd",
+      "repo": "keremimo/mpc-vst-melodee-pd",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-wave-controls.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-pd",
+      "repo": "keremimo/mpc-vst-melodee-pd",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "melodee-poly": [
+    {
+      "file": "screenshots/01-presets.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-poly",
+      "repo": "keremimo/mpc-vst-melodee-poly",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-oscillator-controls.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-poly",
+      "repo": "keremimo/mpc-vst-melodee-poly",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
   ]
 }
