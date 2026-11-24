@@ -1,9 +1,17 @@
 name: USB DeClick
-description: 'TODO: describe'
+description: >-
+  An SD-card mod that reduces intermittent digital clicks when recording USB audio from a phone
+  into the MPC Sample, via an ALSA capture repair on the device.
 repo: odeo0/usb-declick-mpc-sample
 author: odeo0
-runs_on:
-  - device
+tags:
+  - usb
+  - audio
+  - recording
 install: sd-card
-audience:
-  - musician
+firmware: 1.3.0.12
+status: beta
+runs_on: [device]
+audience: [musician]
+price: free
+source: open
