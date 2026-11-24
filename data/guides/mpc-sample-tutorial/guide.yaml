@@ -1,0 +1,9 @@
+name: MPC Sample 图文教程
+description: Akai MPC Sample 图文教程（中文，嘻哈风）.
+repo: dalin1254428907-lang/mpc-sample-tutorial
+author: dalin1254428907-lang
+runs_on:
+  - docs
+install: none
+audience:
+  - curious
