@@ -621,6 +621,26 @@
       "repo": "ioma8/mpc-minimod"
     }
   ],
+  "mpc-mix": [
+    {
+      "file": "screenshots/01-mixer.webp",
+      "source": "https://raw.githubusercontent.com/orrpunk-art/MPC-Mix/main/docs/screenshots/mixer.png",
+      "repo": "orrpunk-art/MPC-Mix",
+      "note": "Mixer screenshot from the project README; converted to WebP quality 92"
+    },
+    {
+      "file": "screenshots/02-eq.webp",
+      "source": "https://raw.githubusercontent.com/orrpunk-art/MPC-Mix/main/docs/screenshots/eq.png",
+      "repo": "orrpunk-art/MPC-Mix",
+      "note": "EQ screenshot from the project README; converted to WebP quality 92"
+    },
+    {
+      "file": "screenshots/03-chop-editor.webp",
+      "source": "https://raw.githubusercontent.com/orrpunk-art/MPC-Mix/main/docs/screenshots/chop-editor.png",
+      "repo": "orrpunk-art/MPC-Mix",
+      "note": "Chop Editor screenshot from the project README; converted to WebP quality 92"
+    }
+  ],
   "mpc-remote": [
     {
       "file": "screenshots/01-tile.webp",

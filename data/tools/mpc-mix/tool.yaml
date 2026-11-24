@@ -1,0 +1,18 @@
+name: MPC Mix
+description: >-
+  An iPhone companion that uses the phone as external DSP for the MPC Sample over USB, with an
+  SD-card bridge, per-pad mixer, built-in effects, AUv3 inserts, chop editor and multitrack recording.
+repo: orrpunk-art/MPC-Mix
+author: orrpunk-art
+tags:
+  - companion
+  - effects
+  - ios
+  - mixer
+install: sd-card
+firmware: 1.3.0.12
+status: beta
+runs_on: [device]
+audience: [musician]
+price: free
+source: open
