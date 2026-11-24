@@ -752,6 +752,14 @@
       "repo": "jeffwebb-to/mpc-sample-tracker"
     }
   ],
+  "mpc-sample-tutorial": [
+    {
+      "file": "screenshots/01-overview.webp",
+      "source": "https://raw.githubusercontent.com/dalin1254428907-lang/mpc-sample-tutorial/main/assets/img/annotated/overview.jpg",
+      "repo": "dalin1254428907-lang/mpc-sample-tutorial",
+      "note": "Annotated overview figure from the tutorial assets; resized to max 800px wide and converted to WebP quality 90"
+    }
+  ],
   "mpc-sample-tutorial-app": [
     {
       "file": "screenshots/01-og.webp",
