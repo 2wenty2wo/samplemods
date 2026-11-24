@@ -1,9 +1,14 @@
 name: MPC Sample 图文教程
-description: Akai MPC Sample 图文教程（中文，嘻哈风）.
+description: >-
+  A Chinese illustrated hip-hop-style handbook for the Akai MPC Sample (AC50), covering functions,
+  drums, sampling and controls, published as a GitHub Pages site.
 repo: dalin1254428907-lang/mpc-sample-tutorial
 author: dalin1254428907-lang
-runs_on:
-  - docs
+website: https://dalin1254428907-lang.github.io/mpc-sample-tutorial/
+tags:
+  - beginner
+  - handbook
+  - chinese
 install: none
-audience:
-  - curious
+runs_on: [docs]
+audience: [musician, curious]
