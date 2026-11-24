@@ -209,6 +209,32 @@
       "note": "Original 320x240 UI image extracted without resizing from page 9 of the official user guide (Melodic piano-roll); also shown on the project website. Converted to lossless WebP."
     }
   ],
+  "hdslave-synths": [
+    {
+      "file": "screenshots/01-foundry.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Foundry-Drum-Machine/main/docs/foundry-screen.gif",
+      "repo": "hdslave/hdslave-Foundry-Drum-Machine",
+      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+    },
+    {
+      "file": "screenshots/02-cortex-filter.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Cortex-Filter/main/docs/cortex-filter-screen.gif",
+      "repo": "hdslave/hdslave-Cortex-Filter",
+      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+    },
+    {
+      "file": "screenshots/03-tb-mpc.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/TB-MPC-3-P-0-Synthesizer/main/docs/tb-mpc-3-p-0-screen.gif",
+      "repo": "hdslave/TB-MPC-3-P-0-Synthesizer",
+      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+    },
+    {
+      "file": "screenshots/04-machine.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Machine/main/docs/machine-screen.gif",
+      "repo": "hdslave/hdslave-Machine",
+      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+    }
+  ],
   "hdslaveos": [
     {
       "file": "screenshots/01-splash.webp",

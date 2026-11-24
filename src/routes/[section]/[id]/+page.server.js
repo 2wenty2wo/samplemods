@@ -38,7 +38,9 @@ export function load({ params }) {
 			...(mod.based_on ?? []),
 			...(mod.derived ?? []),
 			...(mod.compatible ?? []),
-			...(mod.launchers ?? [])
+			...(mod.launchers ?? []),
+			...(mod.hosts ?? []),
+			...(mod.plugins ?? [])
 		]);
 		const related = mods.filter((entry) => relatedIds.has(entry.id)).map((entry) => ({
 			id: entry.id, section: entry.section, name: entry.name, status: entry.status, logo: entry.logo, screenshots: entry.screenshots.slice(0, 1)

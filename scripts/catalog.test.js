@@ -155,6 +155,12 @@ try {
 	write('apps/player/app.yaml', playerRecord + 'compatible: [missing-compat]\n');
 	assert.match(validate().stderr, /compatible unknown entry/);
 	write('apps/player/app.yaml', playerRecord);
+	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\n');
+	assert.match(validate().stderr, /hosts is required for plugins/);
+	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\nhosts: [missing-host]\n');
+	assert.match(validate().stderr, /hosts unknown entry/);
+	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\nhosts: [host]\n');
+	assert.equal(validate().status, 0, 'plugin with valid hosts must validate');
 	write('apps/player/app.yaml', playerRecord + 'category: app\n');
 	assert.match(validate().stderr, /schema validation failed/);
 	write('apps/player/app.yaml', playerRecord);
@@ -184,6 +190,8 @@ try {
 	let output = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/data.json')));
 	assert.deepEqual(output.find((entry) => entry.id === 'host').required_by, ['player']);
 	assert.deepEqual(output.find((entry) => entry.id === 'host').derived, ['fork']);
+	assert.deepEqual(output.find((entry) => entry.id === 'host').plugins, ['fx']);
+	assert.deepEqual(output.find((entry) => entry.id === 'fx').hosts, ['host']);
 	assert.equal(output.find((entry) => entry.id === 'player').screenshots[0], 'media/player/screenshots/01-screen.png');
 	assert.equal(fs.readFileSync(path.join(fixture, 'static/media/player/screenshots/01-screen.png'), 'utf8'), 'first image');
 	const player = output.find((entry) => entry.id === 'player');

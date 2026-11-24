@@ -27,6 +27,7 @@ body:
       options:
         - Mods
         - Apps
+        - Plugins
         - Games
         - Tools
         - Guides

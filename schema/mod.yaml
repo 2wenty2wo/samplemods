@@ -29,6 +29,7 @@ properties:
     enum:
       - mods
       - apps
+      - plugins
       - games
       - tools
       - guides
@@ -60,6 +61,14 @@ properties:
     items:
       type: string
       description: Entry ids (kebab-case directory names, across all sections)
+  hosts:
+    type: array
+    minItems: 1
+    items:
+      type: string
+      description: >-
+        Catalog entry ids of host apps this plugin runs in (any one is enough); required for
+        plugins
   based_on:
     type: array
     items:

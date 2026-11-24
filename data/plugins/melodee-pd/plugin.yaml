@@ -1,0 +1,17 @@
+name: Melodee PD
+description: >-
+  A phase-distortion VST2 instrument for Melodee on the MPC Sample (Melodee's CZ engine as a
+  plug-in). Also builds for Open MPC on MPC OS devices.
+repo: keremimo/mpc-vst-melodee-pd
+author: keremimo
+tags:
+  - vst
+  - synth
+install: sd-card
+status: stable
+hosts:
+  - melodee-sample
+runs_on: [device]
+audience: [musician]
+price: free
+source: open
