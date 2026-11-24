@@ -24,29 +24,40 @@
   ],
   "arpeggigator": [
     {
-      "file": "screenshots/01-arp-plain.png",
-      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/01_ARP_plain.png",
-      "repo": "OSCILLUNE/ArpeggiGator"
+      "file": "screenshots/01-splash.webp",
+      "source": "https://github.com/OSCILLUNE/ArpeggiGator",
+      "repo": "OSCILLUNE/ArpeggiGator",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/02-melody-plain.png",
-      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/02_MELODY_plain.png",
-      "repo": "OSCILLUNE/ArpeggiGator"
+      "file": "screenshots/02-arp.webp",
+      "source": "https://github.com/OSCILLUNE/ArpeggiGator",
+      "repo": "OSCILLUNE/ArpeggiGator",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/03-mutator-plain.png",
-      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/03_MUTATOR_plain.png",
-      "repo": "OSCILLUNE/ArpeggiGator"
+      "file": "screenshots/03-melody.webp",
+      "source": "https://github.com/OSCILLUNE/ArpeggiGator",
+      "repo": "OSCILLUNE/ArpeggiGator",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/04-accordator-plain.png",
-      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/04_ACCORDATOR_plain.png",
-      "repo": "OSCILLUNE/ArpeggiGator"
+      "file": "screenshots/04-mutator.webp",
+      "source": "https://github.com/OSCILLUNE/ArpeggiGator",
+      "repo": "OSCILLUNE/ArpeggiGator",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     },
     {
-      "file": "screenshots/05-orbitator-plain.png",
-      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/05_ORBITATOR_plain.png",
-      "repo": "OSCILLUNE/ArpeggiGator"
+      "file": "screenshots/05-accordator.webp",
+      "source": "https://github.com/OSCILLUNE/ArpeggiGator",
+      "repo": "OSCILLUNE/ArpeggiGator",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/06-orbitator.webp",
+      "source": "https://github.com/OSCILLUNE/ArpeggiGator",
+      "repo": "OSCILLUNE/ArpeggiGator",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
   "az0x-open-source": [],
