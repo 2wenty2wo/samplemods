@@ -22,6 +22,33 @@
       "repo": "AlekseyMalykh/am-mod"
     }
   ],
+  "arpeggigator": [
+    {
+      "file": "screenshots/01-arp-plain.png",
+      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/01_ARP_plain.png",
+      "repo": "OSCILLUNE/ArpeggiGator"
+    },
+    {
+      "file": "screenshots/02-melody-plain.png",
+      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/02_MELODY_plain.png",
+      "repo": "OSCILLUNE/ArpeggiGator"
+    },
+    {
+      "file": "screenshots/03-mutator-plain.png",
+      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/03_MUTATOR_plain.png",
+      "repo": "OSCILLUNE/ArpeggiGator"
+    },
+    {
+      "file": "screenshots/04-accordator-plain.png",
+      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/04_ACCORDATOR_plain.png",
+      "repo": "OSCILLUNE/ArpeggiGator"
+    },
+    {
+      "file": "screenshots/05-orbitator-plain.png",
+      "source": "https://raw.githubusercontent.com/OSCILLUNE/ArpeggiGator/main/docs/screens/05_ORBITATOR_plain.png",
+      "repo": "OSCILLUNE/ArpeggiGator"
+    }
+  ],
   "az0x-open-source": [],
   "beat-train": [
     {
