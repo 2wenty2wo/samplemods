@@ -863,6 +863,14 @@
       "note": "Screenshot of the site filtered to the MPC Sample (1280×960)"
     }
   ],
+  "mpcraft": [
+    {
+      "file": "screenshots/01-window.webp",
+      "source": "https://jiripisa.github.io/mpcraft/assets/mpcraft-window.png",
+      "repo": "jiripisa/mpcraft",
+      "note": "Official welcome window from the MPCraft site; converted to lossless WebP without resizing"
+    }
+  ],
   "mpckit": [
     {
       "file": "screenshots/01-pads.webp",
