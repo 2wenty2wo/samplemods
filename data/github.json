@@ -108,8 +108,8 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 6,
     "forks": 2,
-    "pushed_at": "2026-11-23T22:30:06Z",
-    "last_commit_at": "2026-11-23T03:58:24Z",
+    "pushed_at": "2026-11-24T09:30:03Z",
+    "last_commit_at": "2026-11-24T09:29:51Z",
     "contributors": 2,
     "open_issues": 3,
     "license": "MIT",
@@ -580,6 +580,21 @@
         "truncated": false
       }
     ],
+    "archived": false
+  },
+  "dalin1254428907-lang/mpc-sample-tutorial": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-22T14:24:49Z",
+    "last_commit_at": "2026-11-22T14:24:48Z",
+    "contributors": 3,
+    "open_issues": 0,
+    "license": null,
+    "description": "Akai MPC Sample 图文教程（中文，嘻哈风）",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
     "archived": false
   },
   "drose030/beat-train-mpc-sample": {
@@ -1446,6 +1461,21 @@
     ],
     "archived": false
   },
+  "jiripisa/mpcraft": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-18T11:22:45Z",
+    "last_commit_at": "2026-11-18T11:21:57Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "MIT",
+    "description": "Assign samples to AKAI MPC Sample pads right on the SD card.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [],
+    "archived": false
+  },
   "jonmitten/marspad": {
     "stars": 2,
     "forks": 0,
@@ -1575,6 +1605,31 @@
     "releases": [],
     "archived": false
   },
+  "odeo0/usb-declick-mpc-sample": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-22T16:43:49Z",
+    "last_commit_at": "2026-11-22T16:43:43Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": null,
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [
+      {
+        "tag": "v0.1.0-beta.1",
+        "name": "USB DeClick v0.1.0 Beta 1",
+        "prerelease": true,
+        "published_at": "2026-11-22T12:39:25Z",
+        "html_url": "https://github.com/odeo0/usb-declick-mpc-sample/releases/tag/v0.1.0-beta.1",
+        "body": "# USB DeClick v0.1.0-beta.1 — First Public Beta\r\n\r\n**Experimental USB click-reduction patch for Akai MPC Sample, tested with Google Pixel 8a (Android 16).**\r\n\r\nUSB DeClick reduces recurring, sharp digital clicks that can occur when sampling a phone's audio over USB. It runs on the MPC from an SD card, without an Android companion app or permanent firmware modification.\r\n\r\n## What this beta includes\r\n\r\n- **Real-time PCM click repair** that tracks a recurring 10 ms spike pattern and corrects strong, isolated stereo impulses using neighboring audio frames.\r\n- **Manual ON/OFF control.** Edit `autorun/USB_DECLICK_MODE.txt` before startup. `ON` enables repair. With `OFF`, the MPC application starts without modification.\r\n- **Targeted USB capture processing** for the MPC's 44.1 kHz, stereo, 32-bit USB audio input.\r\n- **Fixed-size audio state** with no filesystem writes from the PCM processing loop. Long-term CPU and RAM usage on the MPC still need measurement.\r\n- **Removable SD-card installation** with rollback by restarting the MPC without the mod card.\r\n- **Monochrome startup screen** showing that the mod was launched.\r\n\r\n## Test evidence\r\n\r\nThe issue was investigated on a **Google Pixel 8a (Android 16)** connected to an **Akai MPC Sample (firmware 1.3.0.12)**. Recordings showed isolated stereo sample spikes following a **441-frame / 10 ms pattern** at 44.1 kHz.\r\n\r\nIn a controlled comparison of approximately one-minute recordings of the same track at similar volume, the detector found the following counts.\r\n\r\n| Without repair | With repair |\r\n| ---: | ---: |\r\n| 1,335 strong-spike candidates | 25 strong-spike candidates |\r\n\r\nThe detector found **approximately 98.1% fewer strong-spike candidates** in this comparison. The test used a development build with the same audio repair core as this beta. The beta produced qualitatively similar results on the MPC. A separate controlled benchmark for this beta is still pending.\r\n\r\nSome audible artifacts may remain, and results may vary across devices. See the [research findings](https://github.com/odeo0/usb-declick-mpc-sample/blob/86ecbf69e1d3e96c87044a023b5431991b8ccfcb/docs/research-findings.md) and [reproducible test methodology](https://github.com/odeo0/usb-declick-mpc-sample/blob/86ecbf69e1d3e96c87044a023b5431991b8ccfcb/docs/testing-method.md).\r\n\r\n## Device support\r\n\r\n**The Pixel 8a is the only affected phone tested so far.** A Samsung Galaxy A06 and a laptop produced clean control recordings on the same MPC. Compatibility with other affected phones remains unverified. Reports from other devices are welcome.\r\n\r\n## Installation and safety\r\n\r\nDownload the **SD install ZIP** attached to this release and follow the [installation guide](https://github.com/odeo0/usb-declick-mpc-sample/blob/86ecbf69e1d3e96c87044a023b5431991b8ccfcb/INSTALL.md).\r\n\r\nThe repair is experimental. Some clicks may remain, and `ON` may alter genuine sharp musical transients. Use `OFF` when repair is unnecessary. To switch modes, edit the mode file and reboot. There is no on-screen toggle. Keep this installation separate from other autorun modifications.\r\n\r\n**To roll back**, power off the MPC, remove the mod SD card, and reboot. Installation leaves the internal firmware intact.\r\n\r\n## Help improve it\r\n\r\nShare your phone and MPC models, firmware, test conditions, `ON` or `OFF` setting, and, if possible, two recordings of the same passage. Use the [community test report template](https://github.com/odeo0/usb-declick-mpc-sample/blob/86ecbf69e1d3e96c87044a023b5431991b8ccfcb/docs/community-test-report.md).\r\n\r\n**Unofficial experimental beta. No affiliation with or endorsement by Akai.**",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "omarhuertasllc-ops/kaosample-beta": {
     "stars": 4,
     "forks": 0,
@@ -1631,6 +1686,31 @@
     "readme_path": "README.md",
     "latest_release": null,
     "releases": [],
+    "archived": false
+  },
+  "orrpunk-art/MPC-Mix": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-22T20:02:34Z",
+    "last_commit_at": "2026-11-22T20:01:50Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "Native iPhone companion and SD bridge for Akai MPC Sample",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": null,
+    "releases": [
+      {
+        "tag": "v0.1.0-beta.1",
+        "name": "MPC Mix 0.1.0 beta 1",
+        "prerelease": true,
+        "published_at": "2026-11-22T20:02:35Z",
+        "html_url": "https://github.com/orrpunk-art/MPC-Mix/releases/tag/v0.1.0-beta.1",
+        "body": "## MPC Mix 0.1.0 beta 1\n\nNative iPhone editor and mixer for Akai MPC Sample firmware **1.3.0.12**.\n\n- Use the SD ZIP with a microSD card labelled `MPCMOD`. The bridge and the project store accept exFAT and FAT32. Keep the existing format and back up any current `autorun/` before copying.\n- Live inserts support 256-frame blocks with Warmth or AUv3 alongside Delay and Reverb. Recording and incompatible routes retain the 512-frame path. New live insert streams use 512 frames when the project opens 27 or more live inserts.\n- AUv3 racks work for the current session on internal projects. To recall them across launches, open the project from microSD.\n\n## Validation\n\n- Direct iPhone–MPC USB on exFAT hardware. Added median latency relative to dry playback was **17.1 ms** with Warmth, Delay and Spring, and **28.4 ms** with Pitch Drift, Delay and Plate. One Pitch Drift trial measured **37.8 ms**. The groove capture showed no exact-zero gaps between audible windows. Timeline playback worked and all eight exported WAVs matched the take.\n- FAT32 on a disposable image under QEMU. After card insertion, the stock Start prompt, bridge and project-store startup, transport endpoint, and the ARM64 save/restore test passed. QEMU required reinsertion to show the Start prompt after boot on both FAT32 and exFAT. Physical FAT32 validation is pending.\n- Swift DSP checks for IR convolution, Delay, and AUv3 passed. The iPhone app is distributed as source for local Xcode signing.\n\nSee the README for installation and Xcode signing. Open `mobile/ios/MPCChop.xcworkspace` and sign the iPhone app with your Apple team for device installation.\n",
+        "truncated": false
+      }
+    ],
     "archived": false
   },
   "orrpunk-art/mpc-sample-root-ssh": {
