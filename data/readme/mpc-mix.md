@@ -22,14 +22,14 @@ For multitrack recording, select pads across banks and arm a take. The next MPC 
 
 ## Install
 
-1. Extract the [SD release ZIP](https://github.com/orrpunk-art/MPC-Mix/releases/tag/v0.1.0-beta.1) to the root of a microSD card labelled `MPCMOD`. Back up any existing `autorun/` folder first.
-2. Save your MPC project, insert the card and choose **Start** when prompted. This restarts the MPC application.
+1. Use the [1.3.0.12 beta ZIP](https://github.com/orrpunk-art/MPC-Mix/releases/tag/v0.1.0-beta.1) or [build the SD ZIP for 1.4.0.8](docs/BUILD.md#sd-package). Back up existing `autorun/` and `autorun.sh` files, then extract the matching ZIP to the root of an exFAT microSD card labelled `MPCMOD`.
+2. Save your MPC project and insert the card. On 1.3.0.12, choose **Start** when prompted. On 1.4.0.8, enable Developer Mode in MIDI Config and choose **Yes** when prompted. The 1.4.0.8 launcher allows one activation attempt per boot. To retry, reboot. Remove the card before powering on for a stock session.
 3. On a Mac, run `pod install --deployment` in `mobile/ios`. Open `MPCChop.xcworkspace`, sign the app with your Apple team and run it on the iPhone.
 4. Connect the iPhone directly to the MPC with a data-capable USB-C cable. Open MPC Mix and allow local network access if prompted.
 
 ## Compatibility and limits
 
-The SD bridge targets MPC Sample firmware **1.3.0.12**. The app builds for **iOS 16.4 or later**. exFAT has been tested on hardware and FAT32 in QEMU. Save the project to microSD to recall its mixer and insert settings in later sessions. Third-party plug-ins must be installed separately. Audio latency depends on the USB connection, iPhone and effects in use. Full 128-pad recording is still unverified on hardware.
+Separate SD packages target **1.3.0.12** and **1.4.0.8**. The 1.4.0.8 package was validated in Virtual MPC. Native Amp Env and linked hardware zoom are available on 1.3.0.12. The app builds for **iOS 16.4 or later**. Save the project to microSD to recall its mixer and insert settings in later sessions. Third-party plug-ins must be installed separately. Audio latency depends on the USB connection, iPhone and effects in use. Full 128-pad recording is still unverified on hardware.
 
 ## Documentation
 

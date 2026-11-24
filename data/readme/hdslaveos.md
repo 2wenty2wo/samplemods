@@ -1,10 +1,10 @@
 <h1 align="center">hdslaveOS</h1>
 
 <p align="center"><strong>A performance-tuned 16-track groovebox OS for the Akai MPC Sample</strong><br>
-hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</a> by Kerem Kiliç (Ellic Studio), currently tracking Melodee v0.6.4.</p>
+hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</a> by Kerem Kiliç (Ellic Studio), currently tracking Melodee v0.7.1.</p>
 
 <p align="center">
-  <img src="docs/images/hdslave-theme.png" alt="hdslaveOS HDSLAVE dark purple flare theme across Palette, Tracks, Step Edit, and Audio settings" width="760">
+  <img src="docs/images/hdslave-theme.png" alt="hdslaveOS HDSLAVE purple flare theme on the Palette, Tracks, Step Edit, and Deep Freeze screens" width="760">
 </p>
 
 ## What hdslaveOS adds over stock Melodee
@@ -12,8 +12,7 @@ hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</
 **hdslaveOS** (originally `melodee-hdslave`) cuts wasted CPU and display work on the Akai MPC Sample so more headroom goes to your synths and effects and the battery lasts longer — while playing back bit-identical audio to stock Melodee.
 
 - **Performance & power controls**: Removes idle/redundant work across the engine and UI, and adds four hardware settings — **CPU speed** (runs at full speed unless you step it down yourself), **Refresh**, **Dim after**, and **Pad brightness**. See [optimization.md](optimization.md) for the full breakdown.
-- **Custom themes (`HDSLAVE` & `MONO`)**: Settings › **SCREEN** › **Palette** adds **HDSLAVE** (a static purple flare on black, the default on new cards and legacy `NIGHT` cards) and **MONO** (a crisp black-and-white dark mode), both with sharp square corners.
-- **Custom CLAP plug-in screens (`com.hdslave.melodee.screen/1`)**: CLAP instruments and effects can draw their own animated, interactive pages directly on the MPC Sample's display (documented in [docs/MELODEE.md](docs/MELODEE.md)), and sleeping CLAP plug-ins wake automatically as soon as you turn a knob.
+- **Custom themes (`HDSLAVE` & `MONO`)**: Settings › **SCREEN** › **Palette** adds **HDSLAVE** (a static purple flare on black with dark violet contours on selected list rows, the default on new cards and legacy `NIGHT` cards) and **MONO** (a crisp black-and-white dark mode), both with sharp square corners.
 - **Sidechain keying from plug-in outputs**: The master compressor's **Sidechain** can be keyed directly by a CLAP plug-in's second output (such as [Foundry](https://github.com/hdslave/hdslave-Foundry-Drum-Machine)'s **SC Key** kick-only bus).
 - **Hands-on ergonomics**: On **Step Edit**, **SHIFT + encoder** steps the caret a full bar at a time; kit pads assigned any of the 16 colours light more vividly; and a custom **hdslave intro** boot film replaces the default splash.
 
@@ -24,7 +23,7 @@ hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</
   <br><sub><b>MONO</b> — high-contrast black-and-white dark palette across 16 pages.</sub>
 </p>
 
-All eleven plug-ins in the [hdslave MPC Sample Synths & Drum Machines](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines) collection use the `hdslaveOS` screen extension to render bespoke hardware-inspired interfaces right on the MPC Sample:
+All eleven plug-ins in the [hdslave MPC Sample Synths & Drum Machines](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines) collection use Melodee’s official `melodee.screen/1` extension to render bespoke hardware-inspired interfaces right on the MPC Sample:
 
 > **Desktop CLAP versions (macOS & Windows):** Each plug-in repository below also includes a separate desktop CLAP build in its `mac-clap/` folder (for FL Studio and other desktop CLAP hosts) with all MPC screens on one interactive panel and MIDI Learn.
 
@@ -53,13 +52,12 @@ All eleven plug-ins in the [hdslave MPC Sample Synths & Drum Machines](https://g
 
 <p align="center">See all 11 animated plug-in interfaces in the <a href="https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines"><b>hdslave MPC Sample Synths &amp; Drum Machines</b></a> hub.</p>
 
-#### Opening a plug-in effect's PANEL (e.g. Cortex Filter)
+#### Opening a plug-in screen
 
-Plug-in instruments show their custom screen directly on the track's Edit page. For plug-in **effects** with a custom screen (such as **hdslave Cortex Filter**), push the encoder on the effect's slot to open its sheet, turn the encoder to **PANEL**, and push it. Use the wheel, encoder push, **− / +**, and **K1–K3** to control the panel, and press **B1** (**BACK**) to return to the slot.
+On an instrument track, Edit opens the custom screen. On Stage, press **B1** to move from **PRESETS** to **PANEL**. In an FX chain, select Cortex Filter to see its compact view. Push the encoder to open the full panel. **B3** or **Shift + Push** returns to the chain, and **Shift + B3** opens the slot sheet.
 
 <p align="center">
-  <img src="docs/images/plugins/cortex-filter-panel.png" alt="Effect slot sheet for hdslave Cortex Filter with the PANEL card selected" width="400">
-  <br><sub>Push the encoder on the effect slot, highlight <b>PANEL</b>, and push to open Cortex Filter's 3D morphing interface.</sub>
+  <img src="docs/images/plugins/cortex-filter-panel.png" alt="Cortex Filter below the selected Track FX slot, showing the morph cube, filter response and three knobs" width="400">
 </p>
 
 ## About Melodee
@@ -98,7 +96,7 @@ page and control, read the [user guide](docs/GUIDE.md).
   follow), Cloud (granular) and a kit filter. Each pad has its own effects
   and sends to the four buses.
 - **Sampling**: Chop (by hits, regions, beats, or by hand as the sample
-  plays, up to 64 slices), Sample Record, Audio Recall, Resample and 16
+  plays, up to 128 slices), Sample Record, Audio Recall, Resample and 16
   Levels.
   Samples load from WAV, MP3, FLAC, Ogg Vorbis and AIFF files. A sample
   longer than 10 seconds plays from the card, up to 6 hours; a project holds
@@ -129,7 +127,11 @@ page and control, read the [user guide](docs/GUIDE.md).
   and the master. Knob FX, Pad FX, Flex Beat and the master compressor work
   as on the stock app.
 - **Freeze**: print a track to audio and play it from the card, or deep
-  freeze it to unload its plug-ins too.
+  freeze it to unload its plug-ins too. Ring prints keep delayed repeats, reverb
+  tails and kit pad sends, and follow changes to plug-in tails. Long tails stream as they overlap
+  across successive passes of a frozen pattern. Changing the selection keeps the previous freeze
+  playable if the new selection exceeds the memory available. Deep Freeze preserves
+  playback if a new print is incompatible with the handoff or relaunch tempo.
 - **Sync**: MIDI clock and MTC in and out, and CV clock out.
 - **The Menu**: hold the encoder on any page for the page's jobs with their
   shortcuts, and the 16 places laid out as the pads. Four short **lessons**
@@ -146,8 +148,10 @@ page and control, read the [user guide](docs/GUIDE.md).
 
 ## Requirements
 
-- Akai MPC Sample with firmware **1.3.0.12**. On any other firmware Melodee
-  does not start and the stock app keeps running.
+- Akai MPC Sample with firmware **1.3.0.12** or **1.4.0.7**. On any other
+  firmware Melodee does not start and the stock app keeps running.
+- On firmware 1.4: **Developer Mode** on, in the stock app's Settings on the
+  **DEV ENHANCEMENTS (BETA)** page.
 - A microSD card.
 
 ## Install
@@ -161,12 +165,17 @@ stock Melodee, not this fork.
 
 1. Back up the card. If the card already has an `autorun` folder at its top
    level, move it somewhere safe.
-2. Unzip the package. It holds one folder, `autorun`. Copy that folder to the
-   top level of the card (or, under a boot menu such as SampleBoot, its
-   contents into that menu's folder for it). Do not edit or rename anything
-   inside it.
+2. Unzip the package. It holds the `autorun` folder and an `autorun.sh` file.
+   Copy both to the top level of the card (or, under a boot menu such as
+   SampleBoot, copy the contents of `autorun/` into that menu's folder for it).
+   Do not edit or rename anything inside them.
 3. Put the card in the MPC and switch it on. The stock app starts first.
-   A few seconds later hdslaveOS starts.
+   On firmware 1.4 it asks whether to run the card's autorun script: press
+   Yes. A few seconds later hdslaveOS starts.
+
+On firmware 1.4, Screen Mirror is not available and hdslaveOS runs at
+44.1 kHz only: the firmware no longer lets apps load their own kernel
+drivers, and its audio driver takes 44.1 kHz alone.
 
 The [quickstart](docs/QUICKSTART.md) has the full steps, with screenshots.
 
@@ -220,10 +229,10 @@ strip as `release.sh` does, and package (`release.sh` itself makes Melodee's
 signed releases and needs its author's key):
 
 ```sh
-MELODEE_VERSION=v0.6.4-hdslave.2 ./build.sh
+MELODEE_VERSION=v0.7.1-hdslave.8 ./build.sh
 docker run --rm --platform linux/arm64 -v "$PWD:/work" sample-base-builder \
     sh -c 'strip -o build/melodee.release build/melodee && build/melodee.release --self-test build/release-test.wav'
-python3 tools/package_unsigned.py v0.6.4-hdslave.2
+python3 tools/package_unsigned.py v0.7.1-hdslave.8
 ```
 
 This writes `dist/hdslaveOS-MPC-Sample-<version>-unsigned.zip`.
