@@ -1,16 +1,16 @@
 {
   "sampleboot": {
     "source": "https://github.com/pxcm/SampleBoot#works-with",
-    "updated": "2026-11-23",
+    "updated": "2026-11-24",
     "entries": {
       "sampqol-os": {
-        "versions": "0.1.4.7 – 0.4.0",
+        "versions": "0.1.4.7 – 0.4.2",
         "status": "Works",
         "checked_by": "Tested",
         "notes": "16 USB outputs: SampleBoot 1.0.1 or later"
       },
       "melodee-sample": {
-        "versions": "0.1.0 – 0.6.8",
+        "versions": "0.1.0 – 0.7.0",
         "status": "Works",
         "checked_by": "Tested",
         "notes": "Update it by replacing its folder"
@@ -32,6 +32,12 @@
         "status": "Works",
         "checked_by": "Tested",
         "notes": "Needs an empty sampleboot.inplace file in its folder (SampleBoot 1.0.2 or later)"
+      },
+      "am-mod": {
+        "versions": "r30d-beta3 or later",
+        "status": "Works",
+        "checked_by": "Author",
+        "notes": "Needs SampleBoot 1.0.3 or later"
       },
       "rhythmer-os": {
         "versions": "0.2.0",

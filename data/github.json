@@ -15,7 +15,7 @@
     "archived": false
   },
   "AlekseyMalykh/am-mod": {
-    "stars": 23,
+    "stars": 24,
     "forks": 1,
     "pushed_at": "2026-11-23T02:06:20Z",
     "last_commit_at": "2026-11-23T02:06:15Z",
@@ -215,46 +215,92 @@
     "archived": false
   },
   "LA-2500/MPC-600-S": {
-    "stars": 16,
+    "stars": 17,
     "forks": 1,
-    "pushed_at": "2026-11-23T03:50:40Z",
-    "last_commit_at": "2026-11-23T03:50:05Z",
+    "pushed_at": "2026-11-24T04:27:33Z",
+    "last_commit_at": "2026-11-24T04:27:31Z",
     "contributors": 1,
-    "open_issues": 12,
+    "open_issues": 13,
     "license": "MIT",
     "description": "Sampler and sequencer OS for the Akai MPC Sample, based on the design of the MPC 3000 operating system. S600 MULTI multisample instruments with an Auto Sampler, Live Looper, 96 PPQN, MPC 3000/MPC60 swing, 7-44.1 kHz 4-16-bit sampling. C, aarch64 Linux; runs from SD card autorun.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.7D",
-      "published_at": "2026-11-23T03:45:14Z"
+      "tag": "v2.0C",
+      "published_at": "2026-11-24T04:09:11Z"
     },
     "releases": [
       {
-        "tag": "v1.7D",
-        "name": "MPC 600 S, LA Version 1.7D",
+        "tag": "v2.0",
+        "name": "MPC 600 S, LA Version 2.0",
         "prerelease": false,
-        "published_at": "2026-11-23T03:45:14Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7D",
-        "body": "**New: Copy Events (SHIFT + ERASE).** Taken from the MPC3000's Edit 6: copy notes and fader moves from a sequence, track (0 = every track) and range (the whole sequence to start), all notes or the pads you press, to a sequence, track and start. REPLACE (where it opens) or MERGE, and any number of copies end to end. K1 picks the From sequence, the slider the From track, K2 the To track, K3 the end. B1 opens Copy Sequence, B2 Copy Bars, B3 does it; SHIFT + B1 goes back.\n\n**New: Copy Bars (B2 on Copy Events).** Taken from the MPC3000's Edit 5: COPY bars from one sequence into another before any bar (the default), INSERT BLANK bars, or DELETE bars. All tracks and fader moves move together.\n\n**New: MPC 3000 .SND.** .SND files from the MPC 3000 now load too, and Save has **For: 2000XL / 3000**. Tested on an MPC 3000 (OS 3.12) in MAME: it loads the file with its name, length, start, end, tune and stereo, and saves it back identical.\n\n**New: PLAY again restarts.** Pressing PLAY while playing goes back to the start.\n\n**Step Edit Grid:** B1 reads <Insert> (full level) or, on a note, <Delete>. SHIFT + B1 on a note: <Ghost> (velocity 48) or <Full> (127). SHIFT + wheel moves Now a tick at a time. A pad now only selects its row, so a stray pad press no longer adds or softens notes.\n\n**Fixed:** in Step Edit, a pad pressed while recording made two notes (one at Now, one at the play position). Now one press is one note, and on the list pads put notes in at Now only while stopped.\n\n**Sample page:** with the cursor on Sample:, a tap of ERASE renames the sound (on every pad playing it) instead of opening the Erase page.\n\n**Main page:** hold SHIFT and B2 shows <Rename> (as B3 shows <Copy>). Program Config's Copy is now only on its own page (SHIFT + ERASE is Copy Events).\n\nInstall: extract MPC-600-S-OS-v1.7D.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "published_at": "2026-11-24T00:06:31Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0",
+        "body": "**New: USB Indiv Out — 8 channels to your computer.** The MPC's USB audio can now carry eight channels instead of the stereo mix, so a DAW can record tracks (or pads) on their own tracks. Press SHIFT + Pad 9 on the Track Mixer (that is, twice) for the USB Indiv Out page, taken from the MPC3000's All Mix Data.\n- **USB Outs: ON** turns the MPC's USB audio (MPC Sample) into eight channels. USB MIDI keeps working beside it, so the MPC can still sync by MIDI clock.\n- **Layout**: MIX on 1-2 + 6 OUTS (the main mix on channels 1-2, outputs on 3-8), or 8 OUTS.\n- **Src TRACKS** (to start): each sequence track gets an Output (a channel, or a stereo pair), its own Volume there, and In mix (stay in the main mix too, or not). The output takes the track after its fader, pan, insert effects and EQ.\n- **Src PADS**: each pad gets an Output, Volume and Follow, beside its stereo Volume and Pan; stereo Volume 0 puts a pad on its output only. B3 <Set All> copies to every pad.\n- On Windows, a DAW on MME/DirectX sees only inputs 1/2: use ASIO4ALL for all eight.\n\n**Fixed: stray presses and screen jumps.** Pad Threshold is now 30 by default (adjust it in Settings). Light pad hits while a knob, the slider or the wheel moves, and wheel steps or cursor/page buttons that the panel sends just after a pad hit, are ignored. On the mixer, turning the EQ knobs no longer jumps to Pan or to another track.\n\n**Fixed: pop at start-up.** The sound stays silent through the title screen and comes up gradually.\n\nInstall: extract MPC-600-S-OS-v2.0.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
         "truncated": false
       },
       {
-        "tag": "v1.7C",
-        "name": "MPC 600 S, LA Version 1.7C",
+        "tag": "v2.0C",
+        "name": "LA Version 2.0C",
         "prerelease": false,
-        "published_at": "2026-11-23T02:23:34Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7C",
-        "body": "**New: .SND sounds.** Save/Load has a new type, **.SND** (after S600 OSC): an Akai .SND sound loads onto the selected pad with its start, end, loop and tuning, and the pad's sound saves as one, with the name you give. Mono and stereo. An MPC 2500 program whose sample is a .SND instead of a WAV finds it too.\n\n**New: ERASE while naming.** When naming a save, or renaming a sequence, track or program, ERASE takes out the letter at the cursor (at the end of the name, the one before it), and SHIFT + ERASE clears the whole name.\n\n**Better: the Grid while playing.** The Step Edit Grid now redraws as the sequence plays, so the page turns by itself and the play line moves. Each row with a note sounding is lit: its name dark, a line above and below it across the steps.\n\n**Renamed:** Save/Load's S600 WAVE type is now S600 OSC (the S600 waveforms).\n\n**Held notes:** if a note ever keeps sounding with no pad held, press STOP. A report is saved on the card as MPC600S/held-note-log.txt; please send it, so the cause can be found.\n\nInstall: extract MPC-600-S-OS-v1.7C.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "published_at": "2026-11-24T04:09:11Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0C",
+        "body": "## LA Version 2.0C\n\n- **KNOB FX opens Input Effects again.** The panel follows each message with zero padding, which was read as a KNOB FX release a moment after every press, so the press was thrown away as too short (since 1.7). The same padding is what made Input Effects open by itself in earlier versions; that is fixed too.\n- **Songs have names.** On the Song page, SHIFT + B2 <Rename> (B2 reads <Rename> while SHIFT is held). The name shows at the top of the page and is saved with the project.\n- **STEREO ENHANCER** (Modulation): makes a mono guitar, mic or synth wide by playing one side a few milliseconds later. Time (1-35 ms), Width, Side. In Input Effects, Print Effects and the inserts.\n- **Bank jump:** hold PAD BANK and press pad 1-8 to go straight to bank A-H.\n\nEverything from 2.0A and 2.0B is included.",
         "truncated": false
       },
       {
-        "tag": "v1.7",
-        "name": "MPC 600 S, LA Version 1.7",
+        "tag": "v2.0B",
+        "name": "LA Version 2.0B",
         "prerelease": false,
-        "published_at": "2026-11-21T00:33:49Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v1.7",
-        "body": "**New: Layout 2000XL.** Additional Settings has a new line, Layout: DEFAULT or 2000XL. On 2000XL every page takes the MPC2000XL's look: its letters, tabbed key labels and dotted lines (with Screen: MPC2000, its colour too). The main screen is laid out as on the XL (B1-B3 read TrMUTE, Tr -, Tr +; the knobs are listed along the bottom; Next: shows beside the counter while a sequence change is pending). Track Mute shows unused tracks as (Unused). Save/Load, the metronome and the envelope page have the XL's pictures. Start-up reads MPC 600 S Version 1.7.\n\n**New: USB Data Mode.** Save/Load, Mode USB DATA, <Start>: the SD card becomes a USB drive on a computer without taking it out. Copy files, eject the drive on the computer, press <Exit>. Use a USB data cable; a charge-only cable powers the MPC but the computer will not see the drive.\n\n**Fixed: pages opening by themselves.** The page buttons (KNOB FX, PAD FX, MUTE, LEVELS, LOOP, CHOP, SAMPLE SELECT, SEQ, SAMPLE REC, PAD BANK) now act only on a whole press, down then up, held 12 ms to 4 s. A release with no press is ignored, and an ERASE tap under 12 ms is ignored (the Erase page no longer opens while turning the wheel).\n\n**Fixed: pad 12 lit yellow at start-up** with Pad Lights OFF.\n\n**Fixed: sounds missing from Sample: / Snd:.** A sound a pad lets go of stays in memory unless another pad plays it; loading or recording over a pad keeps the old sound. Memory holds 512 sounds.\n\n**New: Program Config.** Copy and Swap work with another program's pads (the wheel picks the program). SHIFT + wheel on Snd: (and Sample:) steps only through sounds in memory that no pad plays.\n\n**Changed: Clear all** on LOAD stays set for the next load.\n\nEverything in v1.6D is included.\n\nInstall: extract MPC-600-S-OS-v1.7.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "published_at": "2026-11-24T03:44:43Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0B",
+        "body": "## LA Version 2.0B\n\n- **USB Indiv Out, Src TRACKS:** a pad only picks its track and plays nothing, as on the mixer. With Src PADS the pad still plays.\n\nEverything from 2.0A (MPC 2000XL programs, sequences and projects; chops kept; Purge Unused) is included.",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "OSCILLUNE/ArpeggiGator": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-24T07:32:03Z",
+    "last_commit_at": "2026-11-24T07:32:01Z",
+    "contributors": 2,
+    "open_issues": 0,
+    "license": "GPL-3.0",
+    "description": "A playful arpeggiator mod for the AKAI MPC Sample.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.0.7.4",
+      "published_at": "2026-11-22T15:19:55Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.0.7.4",
+        "name": "ArpeggiGator v0.0.7.4",
+        "prerelease": false,
+        "published_at": "2026-11-22T15:19:55Z",
+        "html_url": "https://github.com/OSCILLUNE/ArpeggiGator/releases/tag/v0.0.7.4",
+        "body": "# ArpeggiGator v0.0.7.4\r\n\r\nNative pad LED restoration fix, on top of the v0.0.7.3 STOP repaint fix.\r\n\r\n## What's new\r\n- Removed `extinguish_pads()`: leaving 16 Levels / Sample for MUTE no longer forces all 16 pads to black. The mod now calls `lighting::restore_pad_rgbs()`, which actively re-sends the MPC's native colours, so active tracks stay lit (orange in MUTE, cyan in Sample) without touching a pad.\r\n- Applies to engine-state reset, background-playback exit and `Drop`.\r\n- Unit test `mutator_mute_sample_pad_lighting_restoration` added; full suite **88 passed, 0 failed**.\r\n- Verified on DEV (:8765), QA (:8766) and on physical AKAI MPC Sample (firmware 1.3.0.12) by the project owner.\r\n\r\n## Downloads\r\n\r\n| File | Purpose | SHA-256 |\r\n|---|---|---|\r\n| `arpeggigator-v0.0.7.4.zip` | Physical MPC Sample 1.3.0.12 - extract `autorun/` to a clean SD card. Includes the pre-insertion handoff | `dea08ff69b0db23a0f79e053d40f8acede78801139e5f102cd41464ab7119c97` |\r\n| `arpeggigator-v0.0.7.4-lab.so` | Emulator / QA - `python3 lab.py preload <path>`. Not an SD-card package | `60b1cbed5a74def68873fb6ef898946e66619a9ad8198aaf9d9da458375f50ad` |\r\n\r\nPackage integrity: **20/20** checks PASS (`scripts/verify-v070.py`).\r\n\r\n## Note\r\nFirmware-guarded (hash `44507c7a...`) and writes only to `/run`. Removing the card without a restart leaves the module loaded until power cycle. Beta software - back up your SD card and projects before installing. Independent project, not affiliated with AKAI Professional.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.0.7.3",
+        "name": "ArpeggiGator v0.0.7.3",
+        "prerelease": false,
+        "published_at": "2026-11-22T14:43:11Z",
+        "html_url": "https://github.com/OSCILLUNE/ArpeggiGator/releases/tag/v0.0.7.3",
+        "body": "# ArpeggiGator v0.0.7.3\r\n\r\nRepaint fix after STOP in 16 Levels, on top of the native audio engine and the first-pad fix.\r\n\r\n## What's new\r\n- Dashboard refresh and stale-frame cleanup after STOP (code 81) in 16 Levels — the LCD no longer freezes on the last frame.\r\n- Verified in the DEV/QA emulator and confirmed on physical AKAI MPC Sample hardware (30-60 min session, firmware 1.3.0.12).\r\n\r\n## Downloads\r\n\r\n| File | Purpose | SHA-256 |\r\n|---|---|---|\r\n| `arpeggigator-v0.0.7.3.zip` | Physical MPC Sample 1.3.0.12 - extract `autorun/` to a clean SD card | `1d1a884cfbe8afaf92e47b64567a4d0f7de5110a99c20319ec42a617ddaf4369` |\r\n| `arpeggigator-v0.0.7.3-lab.so` | Emulator / QA - `python3 lab.py preload <path>`. Not an SD-card package | `4799d4a0279ee47269ca7a45ec9497a891b611953104c75023179e5b0da6b3e7` |\r\n\r\n## Note\r\nFirmware-guarded (hash `44507c7a...`) and writes only to `/run`. Removing the card without a restart leaves the module loaded until power cycle. Beta software - back up your SD card and projects before installing. Independent project, not affiliated with AKAI Professional.",
+        "truncated": false
+      },
+      {
+        "tag": "v0.0.7.2",
+        "name": "ArpeggiGator v0.0.7.2",
+        "prerelease": false,
+        "published_at": "2026-11-18T22:34:33Z",
+        "html_url": "https://github.com/OSCILLUNE/ArpeggiGator/releases/tag/v0.0.7.2",
+        "body": "# ArpeggiGator v0.0.7.2\r\n\r\nCosmetic caption release. Same audio engine, same firmware guard and same safety guarantees as v0.0.7.1.\r\n\r\n## What's new\r\n- `ACORDATOR` → `ACCORDATOR`\r\n- `MODE: ACORD` → `MODE: ACCORD`\r\n- MUTATOR no longer prints the freeze state twice: `SUBTLE FRZ:OFF` instead of `SUBTLE FRZ OFF FRZ:OFF`.\r\n- QA visual verification 10/10, 87/87 tests, 20/20 package checks, 15/15 independent verification.\r\n\r\n## Downloads\r\n\r\n| File | Purpose | SHA-256 |\r\n|---|---|---|\r\n| `arpeggigator-v0.0.7.2.zip` | Physical MPC Sample 1.3.0.12 — extract into `autorun/` on a clean SD card | `79d7db740ef1d27ac5250c33c27fc186beaa7129f8890ccbd295515da2924f2b` |\r\n| `arpeggigator-v0.0.7.2-lab.so` | Emulator / QA — `python3 lab.py preload <path>` | `3e2fac83cc4a9c5fe3421b2e58b4ec47f1943be60d1988cec01ef013d785aca8` |\r\n\r\n## Note\r\nFirmware-guarded (hash `44507c7a…`) and writes only to `/run`. Removing the card without a restart leaves the module in memory; the console returns to its factory state after a restart.",
         "truncated": false
       }
     ],
@@ -435,7 +481,7 @@
     "pushed_at": "2026-11-23T19:53:17Z",
     "last_commit_at": "2026-11-23T10:29:58Z",
     "contributors": 1,
-    "open_issues": 2,
+    "open_issues": 3,
     "license": null,
     "description": null,
     "default_branch": "main",
@@ -968,7 +1014,7 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 243,
+    "stars": 244,
     "forks": 29,
     "pushed_at": "2026-11-09T10:47:02Z",
     "last_commit_at": "2026-11-09T10:35:32Z",
@@ -1575,8 +1621,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 8,
     "forks": 1,
-    "pushed_at": "2026-11-23T23:58:14Z",
-    "last_commit_at": "2026-11-23T23:58:12Z",
+    "pushed_at": "2026-11-24T09:27:58Z",
+    "last_commit_at": "2026-11-24T09:27:50Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1642,8 +1688,8 @@
   "pxcm/SampleBoot": {
     "stars": 28,
     "forks": 2,
-    "pushed_at": "2026-11-22T22:01:33Z",
-    "last_commit_at": "2026-11-22T22:01:31Z",
+    "pushed_at": "2026-11-24T00:38:02Z",
+    "last_commit_at": "2026-11-24T00:35:01Z",
     "contributors": 1,
     "open_issues": 3,
     "license": null,
@@ -1651,10 +1697,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.0.2",
-      "published_at": "2026-11-17T21:51:26Z"
+      "tag": "v1.0.3",
+      "published_at": "2026-11-24T00:38:02Z"
     },
     "releases": [
+      {
+        "tag": "v1.0.3",
+        "name": "SampleBoot 1.0.3",
+        "prerelease": false,
+        "published_at": "2026-11-24T00:38:02Z",
+        "html_url": "https://github.com/pxcm/SampleBoot/releases/tag/v1.0.3",
+        "body": "**SampleBoot 1.0.3: one card, every OS.**\r\n\r\n### Fixed\r\n- Systems with `sampleboot.inplace` no longer get the `ROOT_FILES` binds (`mpcqol.conf` shown in `autorun/mods/`). They run from `autorun/`, so they find the card-root files by themselves.\r\n  - **Am MOD** (r30d-beta3) refused to start while that bind was there: it now starts with the default settings. No need to set `ROOT_FILES=\"\"` anymore.\r\n  - **SampQOL OS** keeps its 16 USB outputs.\r\n  - Nothing changes for systems without `sampleboot.inplace`.\r\n\r\n### Compatibility list\r\nNew in the [Works with](https://github.com/pxcm/SampleBoot#works-with) list: Melodee up to 0.7.0, SampQOL OS up to 0.4.2, MPC Simple up to Beta 8, MPC 600 S, Rhythmer OS, and Am MOD, which supports SampleBoot itself.\r\n\r\n### Update\r\nReplace `autorun/sampleboot/sampleboot.sh` and `autorun/sampleboot/sampleboot-ui` on your card with the ones in the zip. Keep your `sampleboot.conf` and your `mods/` folder as they are.\r\n",
+        "truncated": false
+      },
       {
         "tag": "v1.0.2",
         "name": "SampleBoot 1.0.2",
@@ -1672,15 +1727,6 @@
         "html_url": "https://github.com/pxcm/SampleBoot/releases/tag/v1.0.1",
         "body": "One card, every OS: a boot selector for the Akai MPC Sample.\r\n\r\n## Fixed\r\n\r\n- **SampQOL OS 0.3.0's 16 USB audio outputs now work when SampQOL is started from SampleBoot.** SampQOL keeps its settings in `mpcqol.conf` at the card root, but its start script reads them from the folder above its own, which under SampleBoot is `autorun/mods/`. SampleBoot now shows the card root's `mpcqol.conf` in `autorun/mods/` too (a bind mount of that one file, until power-off), so SampQOL reads its real settings. The first time, a copy of the file is left in `autorun/mods/`: that's expected.\r\n\r\n## Added\r\n\r\n- `ROOT_FILES` setting in `sampleboot.conf`: the settings files to show in `autorun/mods/` this way. Default `\"mpcqol.conf\"`.\r\n\r\n## Tested\r\n\r\nFirmware 1.3.0 (1.3.0.12) with Melodee 0.1.0 to 0.3.0, SampQOL OS 0.1.4.7 to 0.3.0 and MPC Simple 1.0 Beta 1 and Beta 2.\r\n\r\n## Updating from 1.0.0\r\n\r\nCopy the `autorun` folder from the zip over the one on your card (your systems in `autorun/mods/` stay), or run `tools/add_mod.py` with your card's path to keep your settings. A `sampleboot.conf` from 1.0.0 works as it is: the default applies.\r\n\r\nThanks to the user who reported the missing USB outputs!",
         "truncated": false
-      },
-      {
-        "tag": "v1.0.0",
-        "name": "SampleBoot 1.0.0",
-        "prerelease": false,
-        "published_at": "2026-11-16T11:50:09Z",
-        "html_url": "https://github.com/pxcm/SampleBoot/releases/tag/v1.0.0",
-        "body": "**One card, every OS.** SampleBoot is a boot menu for the Akai MPC Sample: the stock firmware and every custom OS (Melodee, SampQOL OS, MPC Simple, …), in as many versions as you like, live on the same SD card. Turn the encoder, push it, and the system you chose starts. No more swapping cards or moving `autorun` folders around.\r\n\r\nTested on firmware 1.3.0 (1.3.0.12). SampleBoot changes nothing on the MPC: without the card, it starts as stock. **Back up your SD card before installing.**\r\n\r\n### Install\r\n1. Download `SampleBoot-1.0.0.zip` below and unzip it.\r\n2. Copy its `autorun` folder to the top level of the SD card.\r\n3. Copy each OS's own `autorun` folder into `autorun/mods/` and rename it, e.g. `autorun/mods/Melodee 0.2.2/`.\r\n\r\nFull instructions in the [README](https://github.com/pxcm/SampleBoot#install).\r\n\r\n### In this release\r\n- Splash screen drawn line by line (dark, light, your own or off), then a full-screen boot menu with each system's image, encoder control, countdown with beeps that follow the Main Volume knob, switch-off from POWER\r\n- Switches off the pad and button lights left on by the previous app\r\n- Add an OS by copying a folder; several versions side by side; custom name and image per system\r\n- Falls back to the stock app if a system does not start; restores every audio setting it touches\r\n- Every colour configurable in `sampleboot.conf`, plus `tools/theme-editor.html`, an offline page that previews every screen exactly as the MPC draws it\r\n- `tools/add_mod.py`, an optional helper that adds OSes straight from their release zips\r\n\r\nSee [CHANGELOG.md](https://github.com/pxcm/SampleBoot/blob/main/CHANGELOG.md) for everything.\r\n\r\nSampleBoot ships no custom OS: download them from their own projects. Not affiliated with inMusic Brands or Akai Professional.\r\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -1688,8 +1734,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-23T19:04:41Z",
-    "last_commit_at": "2026-11-23T19:04:39Z",
+    "pushed_at": "2026-11-24T04:45:44Z",
+    "last_commit_at": "2026-11-24T04:45:43Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1854,7 +1900,7 @@
     "pushed_at": "2026-11-23T22:28:04Z",
     "last_commit_at": "2026-11-23T22:27:10Z",
     "contributors": 1,
-    "open_issues": 44,
+    "open_issues": 42,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
