@@ -949,9 +949,6 @@
   ],
   "mpselector": [
     {
-<<<<<<< Updated upstream
-      "file": "screenshots/01-hero.webp",
-=======
       "file": "screenshots/01-cover-flow.webp",
       "source": "https://raw.githubusercontent.com/fomoPhil/mpselector/main/docs/cover-flow.gif",
       "repo": "fomoPhil/mpselector",
@@ -959,21 +956,11 @@
     },
     {
       "file": "screenshots/02-hero.webp",
->>>>>>> Stashed changes
       "source": "https://raw.githubusercontent.com/fomoPhil/mpselector/main/docs/hero.png",
       "repo": "fomoPhil/mpselector",
       "note": "Device photo with MP Selector from docs/hero.png; converted to WebP (q90) under 500 KB"
     },
     {
-<<<<<<< Updated upstream
-      "file": "screenshots/02-cover-flow.webp",
-      "source": "https://raw.githubusercontent.com/fomoPhil/mpselector/main/docs/cover-flow.gif",
-      "repo": "fomoPhil/mpselector",
-      "note": "Cover Flow animation from docs/cover-flow.gif; preserved as animated WebP under 500 KB"
-    },
-    {
-=======
->>>>>>> Stashed changes
       "file": "screenshots/03-screen-library.webp",
       "source": "https://raw.githubusercontent.com/fomoPhil/mpselector/main/docs/screen-library.png",
       "repo": "fomoPhil/mpselector",
