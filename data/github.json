@@ -15,7 +15,7 @@
     "archived": false
   },
   "AlekseyMalykh/am-mod": {
-    "stars": 24,
+    "stars": 25,
     "forks": 1,
     "pushed_at": "2026-11-24T11:53:20Z",
     "last_commit_at": "2026-11-24T11:53:17Z",
@@ -307,7 +307,7 @@
     "archived": false
   },
   "ThomasTestaud/mpc-fm": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-11-08T10:34:15Z",
     "last_commit_at": "2026-11-08T10:34:14Z",
@@ -598,7 +598,7 @@
     "archived": false
   },
   "drose030/beat-train-mpc-sample": {
-    "stars": 5,
+    "stars": 6,
     "forks": 0,
     "pushed_at": "2026-11-07T23:18:08Z",
     "last_commit_at": "2026-11-07T23:17:39Z",
@@ -1040,7 +1040,7 @@
   "hdslave/hdslaveOS": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-25T04:26:01Z",
+    "pushed_at": "2026-11-25T06:12:45Z",
     "last_commit_at": "2026-11-25T04:25:58Z",
     "contributors": 3,
     "open_issues": 0,
@@ -1418,7 +1418,7 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 15,
+    "stars": 16,
     "forks": 0,
     "pushed_at": "2026-11-20T16:03:41Z",
     "last_commit_at": "2026-11-20T16:03:38Z",
@@ -1489,7 +1489,7 @@
     "archived": false
   },
   "jeffwebb-to/mpc-sample-tracker": {
-    "stars": 13,
+    "stars": 14,
     "forks": 2,
     "pushed_at": "2026-11-10T07:56:41Z",
     "last_commit_at": "2026-11-10T07:56:20Z",
@@ -1575,12 +1575,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 75,
+    "stars": 77,
     "forks": 14,
     "pushed_at": "2026-11-24T21:20:53Z",
     "last_commit_at": "2026-11-24T21:17:47Z",
     "contributors": 3,
-    "open_issues": 25,
+    "open_issues": 26,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1933,7 +1933,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 30,
+    "stars": 31,
     "forks": 2,
     "pushed_at": "2026-11-24T21:33:13Z",
     "last_commit_at": "2026-11-24T21:33:11Z",
@@ -1996,8 +1996,8 @@
   "pzuzarte/mpc-stemloop": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-19T19:47:40Z",
-    "last_commit_at": "2026-11-19T19:47:30Z",
+    "pushed_at": "2026-11-25T05:49:26Z",
+    "last_commit_at": "2026-11-25T05:47:18Z",
     "contributors": 1,
     "open_issues": 1,
     "license": null,
