@@ -63,6 +63,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           ENRICH_404_PATH: ${{ runner.temp }}/enrich-404.json
+      - name: Sync firmware watch issue
+        continue-on-error: true
+        run: node scripts/firmware-watch.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - name: Propose catalog status changes
         run: node scripts/suggest-status.js
         env:

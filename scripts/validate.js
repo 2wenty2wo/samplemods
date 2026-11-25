@@ -52,6 +52,18 @@ for (const { id, section, file, dir, record, media } of entries) {
 			failed = true;
 		}
 	}
+	if (record.firmware_ignore) {
+		if (!record.firmware) {
+			console.error(`${file}: firmware_ignore requires firmware`);
+			failed = true;
+		}
+		for (const build of record.firmware_ignore) {
+			if (typeof build !== 'string' || !/^1\.[3-9]\.\d+\.\d+$/.test(build)) {
+				console.error(`${file}: firmware_ignore entry must be a firmware build like 1.4.0.7 (got ${JSON.stringify(build)})`);
+				failed = true;
+			}
+		}
+	}
 	if (section === 'plugins') {
 		if (!Array.isArray(record.hosts) || record.hosts.length === 0) {
 			console.error(`${file}: hosts is required for plugins`);
