@@ -10,31 +10,42 @@ git clone --recurse-submodules https://github.com/hdslave/hdslave-MPCSample-Synt
 
 <sub>Already cloned without <code>--recurse-submodules</code>? Run <code>git submodule update --init --recursive</code> inside the folder.</sub>
 
-> **Desktop CLAP builds (macOS & Windows):** Every plug-in repository below includes both its MPC Sample version and a separate desktop CLAP build in its `mac-clap/` folder (all MPC screens on one interactive panel + MIDI Learn). Releases stay MPC Sample-only for now while the desktop builds are being finalized.
+> **Desktop CLAP builds (macOS & Windows):** Every plug-in repository below includes both its MPC Sample version and a separate desktop CLAP build in its `mac-clap/` folder (all MPC screens on one interactive panel + MIDI Learn). [Slink](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.0) and [Reverie](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1) have prebuilt desktop downloads.
 
 ---
 
 ## hdslaveOS
 
-[**hdslaveOS**](https://github.com/hdslave/hdslaveOS) (formerly `melodee-hdslave`) is hdslave's performance-tuned fork of [Melodee](https://github.com/keremimo/melodee-sample) by Kerem Kiliç (Ellic Studio), tracking Melodee v0.7.1. It cuts idle CPU and display overhead while staying bit-identical in audio, and powers the custom plug-in screens shown below. Download the unsigned OS package and its matching MPC plug-in bundle from the [hdslaveOS v0.7.1-hdslave.13 release](https://github.com/hdslave/hdslaveOS/releases/tag/v0.7.1-hdslave.13).
+[**hdslaveOS**](https://github.com/hdslave/hdslaveOS) (formerly `melodee-hdslave`) is hdslave's performance-tuned fork of [Melodee](https://github.com/keremimo/melodee-sample) by Kerem Kiliç (Ellic Studio), tracking Melodee v0.8.2. It cuts idle CPU and display overhead while staying bit-identical in audio, and powers the custom plug-in screens shown below. For the Anvil K-knob fix, download the OS-only ZIP or the complete installer from [hdslaveOS 0.8.2-hdslave.3](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.3). The complete installer and the [standalone 11-plug-in pack](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.2) include Slink 0.6.1 and Reverie 0.6.1. For an existing setup that only needs the new silver panel, use the [Slink-only MPC download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1).
+
+hdslaveOS 0.8.1 screenshots.
 
 <table>
   <tr>
     <td align="center" width="50%">
-      <a href="https://github.com/hdslave/hdslaveOS"><img src="docs/previews/hdslave-theme.png" alt="hdslaveOS HDSLAVE purple flare theme on the Palette, Tracks, Step Edit, and Deep Freeze screens" width="400"></a><br>
+      <a href="https://github.com/hdslave/hdslaveOS"><img src="docs/previews/hdslave-theme.png" alt="hdslaveOS HDSLAVE purple flare theme on the Palette, Mixer, Step Edit, and Deep Freeze screens" width="400"></a><br>
       <sub><b>HDSLAVE</b> — default static purple flare on black</sub>
     </td>
     <td align="center" width="50%">
-      <a href="https://github.com/hdslave/hdslaveOS"><img src="docs/previews/hdslave-mono-theme.png" alt="hdslaveOS MONO black-and-white dark palette across 16 screens" width="400"></a><br>
+      <a href="https://github.com/hdslave/hdslaveOS"><img src="docs/previews/hdslave-mono-theme.png" alt="hdslaveOS MONO black-and-white palette across 16 screens, including the Mixer" width="400"></a><br>
       <sub><b>MONO</b> — high-contrast black-and-white dark mode</sub>
     </td>
   </tr>
 </table>
 
 - **Efficiency & power**: Less wasted work on the MPC Sample's Cortex-A55, plus **CPU speed**, **Refresh**, **Dim after**, and **Pad brightness** controls.
-- **Custom plug-in screens**: Uses Melodee 0.7’s `melodee.screen/1` extension. The synths and drum machines have interactive Edit and Stage pages, and Cortex Filter also has an FX rack strip.
+- **Custom plug-in screens**: Uses Melodee 0.7’s `melodee.screen/1` extension. The synths and drum machines have interactive panels on Stage, and Cortex Filter also has an FX rack strip.
 - **Playability**: Wakes sleeping plug-ins when you turn a knob, keys the master compressor's Sidechain from a plug-in's second output (Foundry's kick-only **SC Key**), steps a bar at a time with **SHIFT + encoder** on Step Edit, and lights kit pads more vividly.
 - **Non-destructive**: Runs from the microSD card (`autorun/melodee` and `Melodee/`), licensed AGPL-3.0 like Melodee. See [hdslaveOS/README.md](https://github.com/hdslave/hdslaveOS) for build and install details.
+
+### Mixer
+
+Mixer opens on the channel strips in 0.8.2. Hold **+** to open the selected channel’s card and **−** to return to the strips.
+
+<p align="center">
+  <img src="docs/previews/hdslave-mixer.png" alt="Four views of the hdslaveOS mixer showing submix sends, insert effects, channel EQ, and compression" width="760">
+  <br><sub>Submix sends, insert effects, channel EQ, and compression.</sub>
+</p>
 
 ---
 
@@ -43,12 +54,12 @@ git clone --recurse-submodules https://github.com/hdslave/hdslave-MPCSample-Synt
 <table>
   <tr>
     <td width="340" align="center">
-      <a href="https://github.com/hdslave/TB-MPC-3-P-0-Synthesizer"><img src="docs/previews/tb-mpc-3-p-0.gif" alt="TB-MPC-3-P-0 acid bass synth animated screen" width="320"></a>
+      <a href="https://github.com/hdslave/hdslave-Slink-Synth"><img src="docs/previews/slink.gif" alt="Slink 0.6.1 playing on the silver MPC Stage panel with a chrome title and three satin knobs" width="320"></a>
     </td>
     <td>
-      <h3><a href="https://github.com/hdslave/TB-MPC-3-P-0-Synthesizer">TB-MPC-3-P-0</a></h3>
+      <h3><a href="https://github.com/hdslave/hdslave-Slink-Synth">Slink</a></h3>
       <p><strong>303-style acid bass synthesizer + TB-3PO generative sequencer.</strong></p>
-      <p>Pairs a classic 303 diode ladder / Twin Peak / 18 dB bass voice with a tick-accurate port of Ornament &amp; Crime's Hemisphere <b>TB-3PO</b> acid pattern generator (same seed, density, and scale produce the exact module pattern). Its <b>Press Plate</b> screen displays every step's note, gate, accent, and slide, with a <b>Blacklight Transfer</b> theme one press away.</p>
+      <p>Pairs a classic 303 diode ladder / Twin Peak / 18 dB bass voice with a tick-accurate port of Ornament &amp; Crime's Hemisphere <b>TB-3PO</b> acid pattern generator (same seed, density, and scale produce the exact module pattern). Its silver <b>Press Plate</b> screen has a wide chrome Slink title, three satin-chrome knobs, and a grid showing notes, gates, accents, and slides for up to 32 steps. Switch to <b>Blacklight Transfer</b> to see the pitch roll. On freesp16 the six encoders follow the selected bank, and you can audition steps on the pitch ribbon. <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1">Download Slink 0.6.1 for MPC Sample</a> · <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.0">Downloads for freesp16, macOS and Windows</a>.</p>
     </td>
   </tr>
   <tr>
@@ -88,7 +99,7 @@ git clone --recurse-submodules https://github.com/hdslave/hdslave-MPCSample-Synt
     <td>
       <h3><a href="https://github.com/hdslave/hdslave-Reverie-Synth">Reverie</a></h3>
       <p><strong>Chord-progression &amp; X/Y Motion pad synthesizer.</strong></p>
-      <p>208 chord progressions taken from the factory pad chord sets of Korg's M3 workstation and Pioneer DJ's TORAIZ SQUID sequencer, played straight from the MPC pads, every chord named from its own notes, voiced and voice-led across six styles in any key — with progressions and patches selected independently. Dual morphing wavetable oscillators with unison, drift, and Korg M3-inspired <b>Motion</b> paths feed ensemble, tempo delay, and shimmer reverb across six Frutiger Aero pages.</p>
+      <p>Play the 46 original progressions from Velvet Night through Moonstone in six voicing styles and any key. The 18 Mood sets each put a different chord on every pad. Existing MPC and SP-16 projects can recall the 208 Factory progressions. Dual wavetable oscillators, X/Y Motion, a phaser, ensemble, tempo delay and shimmer reverb shape the sound. <a href="https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1">Download Reverie for MPC Sample, SP-16, macOS or Windows.</a></p>
     </td>
   </tr>
   <tr>
@@ -182,7 +193,9 @@ Melodee/Plugins/hdslave/hdslave Foundry.clap
 ...
 ```
 
-Load any instrument on an empty track via **Stage → Plugin → hdslave → hdslave NAME** (or insert **hdslave Cortex Filter** in any track, bus, or master FX chain). They run in any Melodee build; under **hdslaveOS**, opening **Edit** or **Stage** shows each plug-in's custom animated screen, and turning a knob wakes a sleeping plug-in.
+Slink’s archive keeps the device filename <code>hdslave TB-MPC-3-P-0.clap</code> for saved projects. Select **hdslave Slink** in the picker.
+
+Load any instrument on an empty track via **Stage → Plugin → hdslave → hdslave NAME** (or insert **hdslave Cortex Filter** in any track, bus, or master FX chain). They run in any Melodee build; under **hdslaveOS**, press **B1** on Stage to move from **PRESETS** to **PANEL** and open an instrument’s custom screen. Turning a knob wakes a sleeping plug-in.
 
 ## Build from source
 

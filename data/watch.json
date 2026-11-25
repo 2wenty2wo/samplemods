@@ -6,9 +6,14 @@
   },
   "mpc-simple": {
     "url": "https://sourceforge.net/projects/mpcsimple/rss?path=/",
-    "fingerprint": "/MPC-Simple-1.0-Beta-10.zip | Tue, 24 Nov 2026 04:06:03 UT",
-    "checked_at": "2026-11-24T09:28:37.137Z",
+    "fingerprint": "/MPC-Simple-1.0-Beta-11.zip | Wed, 25 Nov 2026 04:47:16 UT",
+    "checked_at": "2026-11-25T05:41:55.348Z",
     "items": [
+      {
+        "title": "/MPC-Simple-1.0-Beta-11.zip",
+        "published_at": "2026-11-25T04:47:16.000Z",
+        "html_url": "https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-11.zip/download"
+      },
       {
         "title": "/MPC-Simple-1.0-Beta-10.zip",
         "published_at": "2026-11-24T04:06:03.000Z",
@@ -53,11 +58,6 @@
         "title": "/MPC-Simple-1.0-Beta-2.zip",
         "published_at": "2026-11-16T03:53:42.000Z",
         "html_url": "https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-2.zip/download"
-      },
-      {
-        "title": "/MPC-Simple-1.0-Beta-1.zip",
-        "published_at": "2026-11-15T21:30:16.000Z",
-        "html_url": "https://sourceforge.net/projects/mpcsimple/files/MPC-Simple-1.0-Beta-1.zip/download"
       }
     ]
   },

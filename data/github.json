@@ -108,8 +108,8 @@
   "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit": {
     "stars": 6,
     "forks": 2,
-    "pushed_at": "2026-11-24T09:30:03Z",
-    "last_commit_at": "2026-11-24T09:29:51Z",
+    "pushed_at": "2026-11-25T04:42:22Z",
+    "last_commit_at": "2026-11-25T04:08:46Z",
     "contributors": 2,
     "open_issues": 3,
     "license": "MIT",
@@ -121,6 +121,24 @@
       "published_at": "2026-11-17T20:36:54Z"
     },
     "releases": [
+      {
+        "tag": "fw1.4-plug-and-play-v1",
+        "name": "FW 1.4 plug-and-play card (pre-release)",
+        "prerelease": true,
+        "published_at": "2026-11-25T04:30:51Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/fw1.4-plug-and-play-v1",
+        "body": "Plug-and-play card for the **MPC Sample, firmware 1.4.0.7 only**: D.S.B, HS 25, HS Treble Bass and 16 HS effects (official plugins).\n\nUnzip to the root of the SD card and follow `README-INSTALL.txt`. Back up your card first. Taking the card out returns the Sample to stock.\n\n**Pre-release:** the Developer Mode and Enhancements menu steps are taken from Akai's SDK docs and have not been confirmed on a real Sample. The launcher only runs on the exact 1.4.0.7 firmware.\n\nNo SampQOL (it doesn't work on 1.4). Other providers' OS can't be added to this card; use a separate card per OS.\n\nLicences: includes third-party parts under GPL-3, AGPL-3 and the JUCE licence; texts are in `DSB-Performance/os/dsb-os/licenses`. To request the corresponding source for the GPL/AGPL parts, open an issue on this repository.\n\nUnofficial. Not made, endorsed or supported by Akai Professional or inMusic.\n",
+        "truncated": false
+      },
+      {
+        "tag": "fw1.3-tester-v1",
+        "name": "FW 1.3 tester build (pre-release)",
+        "prerelease": true,
+        "published_at": "2026-11-25T04:42:23Z",
+        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/fw1.3-tester-v1",
+        "body": "Early tester build of the plug-and-play card for the **MPC Sample, firmware 1.3.0.12 only**: boot menu, D.S.B, HS 25, HS FX (Para EQ, Tube Strip, Saturator), SampQOL 0.4.0 and a Stock entry.\n\n**Not the latest of everything, and not fully tested.** D.S.B and HS 25 are rebuilt from source and have not run on a real Sample yet. Stems and project import are untested. The HS QOL add-ons and HS 20, 30, 40 and 60 are not in this build.\n\nBack up your SD card first. Unzip, copy `autorun` and `HS-OS` to the top level of the card, power on and follow `README-TESTERS.txt`. Pull the card and the Sample is stock again. `ADD-OTHER-OS.md` covers adding another OS to the menu.\n\nSampQOL OS is by Snare Bes, included with the author's approval; see its licence in `autorun/os/SampQOL-0.4.0/LICENSE.txt`. Boot menu follows SampleBoot by Alessandro D'Esposito (MIT). Other third-party parts are under the GPL-3; licence texts are in `LICENSES/`. To request the corresponding source for the GPL parts, open an issue on this repository.\n\nUnofficial. Not made, endorsed or supported by Akai Professional, inMusic or the SampQOL author.\n",
+        "truncated": false
+      },
       {
         "tag": "dsb-fm1-v0.3-lab",
         "name": "D.S.B. for FM-1 v0.3-lab",
@@ -192,24 +210,6 @@
         "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.0",
         "body": "**Install:** open the [installer page](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/), or download `henryskillz-mpc-sample-installer.html` below and open it offline. You need SampQOL OS 0.2.0 from Snare Bes's official page first.\n\n**New in v0.6**\n- **Stems split to pad:** choose Separate and the stems land on the next empty pads in that pad's bank.\n- **Track chains:** a toast confirms every load. Name a track NAME# to save its chain, and it renames itself back to NAME.\n- **HS styling for SampQOL's list screens:** red bar, cyan selected row, dark blue palette. Only on SampQOL 0.2.0.\n- **Graphic channel mixer** for Ch. Mixer and Pad Mixer.\n- **User guide** for every effect and add-on: `docs/USER-GUIDE.md`.\n\n**Not on SampQOL?** `henryskillz-mpc-sample-hs-tools.zip` is a card for stock firmware 1.3.0 with on-device stems, browser key and BPM tags, and the SEQ desk with LUFS meters. Unzip it to an exFAT SD card and power on.\n\nCheck your download against `SHA256SUMS.txt`.\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.5.0",
-        "name": "v0.5.0: track chains, browser key tag, LUFS, MOD + de-esser, optional Stems",
-        "prerelease": false,
-        "published_at": "2026-11-11T15:50:25Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.5.0",
-        "body": "Five new features for SampQOL OS 0.2.0 on the MPC Sample (firmware 1.3.0). Hardware boot-tested.\n\n**Track chains.** Rename a track VOX, DRUMS or BASS and its effects load (one UNDO takes it back). Rename a dialled-in track NAME# to save your own chain.\n\n**Key and BPM in the browser.** Preview a WAV or MP3 and its row shows the key and tempo, like C# MIN 75 BPM.\n\n**LUFS meters.** SEQ page, B2: Momentary, Short-term, Integrated and a peak hold.\n\n**MOD and de-esser.** A DESS page on HS Channel Strip. A key bus (A to D) on HS Pump and HS Crush, and a MOD page on seven HS effects so any knob can follow a bus. Off by default: old projects sound the same. One Bypass for every HS effect.\n\n**Stems (optional).** Tick Add Stems on the installer and the MPC splits a sample into Vocals, Drums, Bass and Other by itself. Hold SHIFT and hold B1 for 1.5 s in the browser, or SHIFT and B3 on the Sample screen. Uses the Spleeter model by Deezer (MIT). Adds a 92 MB download.\n\n## Install or update\n- New install, or adding Stems: use the [online installer](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/) with a fresh SampQOL 0.2.0 download.\n- Already on v0.4 and no Stems: download `hs-effects-update.zip` below and copy everything in its `hs` folder into `autorun/hs` ([guide](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/UPDATE-EFFECTS.md)).\n\nSampQOL OS is by Snare Bes and is not included. Unofficial, not affiliated with Akai Professional or inMusic.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.4.0",
-        "name": "v0.4.0: HS Crush, Bass Focus, Tube Strip, SEQ desk page",
-        "prerelease": false,
-        "published_at": "2026-11-11T03:34:19Z",
-        "html_url": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.4.0",
-        "body": "**New install:** use the [installer page](https://hmukhwana.github.io/henryskillz-mpc-sample-mod-kit/install/). It builds this version.\n\n**Already have the kit?** Download `hs-effects-update.zip` below and follow [Update just the effects](https://github.com/hmukhwana/henryskillz-mpc-sample-mod-kit/blob/main/docs/UPDATE-EFFECTS.md): back up `autorun/hs`, copy in all six files, boot and press B1. No re-signing.\n\n## What's new\n- **HS Crush** (Dynamics): character compressor, 3 pages, gain-reduction meter.\n- **HS Bass Focus** (EQ/Filter): mono the lows below a crossover.\n- **HS Tube Strip** (Harmonic): tube stage, high-pass, opto compressor and four-band EQ over 7 pages, with EQ First and SC EQ switches and a gain-reduction meter.\n- **SEQ desk page**: the SEQ page redrawn as a desk panel with a live VU meter and output LEDs.\n- **Page label**: HS effects with more than one page show **PAGE n/N** over the middle button.\n\n## Menu changes\nSampQOL's insert menu has 40 rows and 32 are stock. To fit nine HS effects, **HS Air Exciter**, **HS Drive Sat** and the stock **Bus Compressor** leave the menu. They stay installed, so projects that already use them still open with them.\n\n## Tested\nBoot-tested on a real MPC Sample (firmware 1.3.0, SampQOL 0.2.0) and in the emulator.\n\nTo go back: put your backed-up `hs` folder back in `autorun`.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -217,8 +217,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 17,
     "forks": 1,
-    "pushed_at": "2026-11-24T04:27:33Z",
-    "last_commit_at": "2026-11-24T04:27:31Z",
+    "pushed_at": "2026-11-25T04:19:24Z",
+    "last_commit_at": "2026-11-25T04:19:09Z",
     "contributors": 1,
     "open_issues": 17,
     "license": "MIT",
@@ -226,35 +226,35 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v2.0C",
-      "published_at": "2026-11-24T04:09:11Z"
+      "tag": "v2.0G",
+      "published_at": "2026-11-25T04:19:24Z"
     },
     "releases": [
       {
-        "tag": "v2.0",
-        "name": "MPC 600 S, LA Version 2.0",
+        "tag": "v2.0G",
+        "name": "LA Version 2.0G",
         "prerelease": false,
-        "published_at": "2026-11-24T00:06:31Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0",
-        "body": "**New: USB Indiv Out — 8 channels to your computer.** The MPC's USB audio can now carry eight channels instead of the stereo mix, so a DAW can record tracks (or pads) on their own tracks. Press SHIFT + Pad 9 on the Track Mixer (that is, twice) for the USB Indiv Out page, taken from the MPC3000's All Mix Data.\n- **USB Outs: ON** turns the MPC's USB audio (MPC Sample) into eight channels. USB MIDI keeps working beside it, so the MPC can still sync by MIDI clock.\n- **Layout**: MIX on 1-2 + 6 OUTS (the main mix on channels 1-2, outputs on 3-8), or 8 OUTS.\n- **Src TRACKS** (to start): each sequence track gets an Output (a channel, or a stereo pair), its own Volume there, and In mix (stay in the main mix too, or not). The output takes the track after its fader, pan, insert effects and EQ.\n- **Src PADS**: each pad gets an Output, Volume and Follow, beside its stereo Volume and Pan; stereo Volume 0 puts a pad on its output only. B3 <Set All> copies to every pad.\n- On Windows, a DAW on MME/DirectX sees only inputs 1/2: use ASIO4ALL for all eight.\n\n**Fixed: stray presses and screen jumps.** Pad Threshold is now 30 by default (adjust it in Settings). Light pad hits while a knob, the slider or the wheel moves, and wheel steps or cursor/page buttons that the panel sends just after a pad hit, are ignored. On the mixer, turning the EQ knobs no longer jumps to Pan or to another track.\n\n**Fixed: pop at start-up.** The sound stays silent through the title screen and comes up gradually.\n\nInstall: extract MPC-600-S-OS-v2.0.zip and replace the autorun folder on the card. Your saved work, in MPC600S, is untouched.\n",
+        "published_at": "2026-11-25T04:19:24Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0G",
+        "body": "## LA Version 2.0G\n\n- **USB Indiv Out is eight outputs.** The Layout setting is gone: all eight USB channels are outputs, each a mono channel (1-8) or a stereo pair (1-2, 3-4, 5-6, 7-8). The main mix no longer goes over USB alongside them, so a pad or track on an output is not sent to the computer twice. For the whole song in stereo, use USB Audio Out with USB Indiv Out off.\n- **In mix is gone.** The MPC's own line out and headphones always play every track, whether or not it is on an output.\n\nEverything from 2.0A to 2.0F is included.",
         "truncated": false
       },
       {
-        "tag": "v2.0C",
-        "name": "LA Version 2.0C",
+        "tag": "v2.0F",
+        "name": "LA Version 2.0F",
         "prerelease": false,
-        "published_at": "2026-11-24T04:09:11Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0C",
-        "body": "## LA Version 2.0C\n\n- **KNOB FX opens Input Effects again.** The panel follows each message with zero padding, which was read as a KNOB FX release a moment after every press, so the press was thrown away as too short (since 1.7). The same padding is what made Input Effects open by itself in earlier versions; that is fixed too.\n- **Songs have names.** On the Song page, SHIFT + B2 <Rename> (B2 reads <Rename> while SHIFT is held). The name shows at the top of the page and is saved with the project.\n- **STEREO ENHANCER** (Modulation): makes a mono guitar, mic or synth wide by playing one side a few milliseconds later. Time (1-35 ms), Width, Side. In Input Effects, Print Effects and the inserts.\n- **Bank jump:** hold PAD BANK and press pad 1-8 to go straight to bank A-H.\n\nEverything from 2.0A and 2.0B is included.",
+        "published_at": "2026-11-25T04:04:43Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0F",
+        "body": "## LA Version 2.0F\n\n- **Track mute heard at once.** Muting or unmuting a track (Track Mute page, Track Mixer, UNMUTE ALL, and solo) now takes effect immediately. Before, a mute only stopped new notes, so a loop or long sound rang until it ended, and an unmute waited for the track's next note (often the next bar). A muted track now plays its notes unheard, so a loop comes back in where it is. Muted MIDI tracks send nothing.\n- **USB Indiv Out: the mix on any pair.** Stereo outputs are 1-2, 3-4, 5-6 or 7-8. Layout: **MIX AUTO + 6 OUTS** (new default) puts the main mix on the first pair nothing else uses and always keeps one pair whole for it (with 1, 3, 5 and 6 taken, 7 and 8 cannot be taken one at a time: the mix plays on 7-8); **MIX on 1-2 / 3-4 / 5-6 / 7-8 + 6 OUTS** fixes it to a pair; **8 OUTS** as before. In use shows the mix's pair as MM.\n\nEverything from 2.0A to 2.0E is included.",
         "truncated": false
       },
       {
-        "tag": "v2.0B",
-        "name": "LA Version 2.0B",
+        "tag": "v2.0E",
+        "name": "LA Version 2.0E",
         "prerelease": false,
-        "published_at": "2026-11-24T03:44:43Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0B",
-        "body": "## LA Version 2.0B\n\n- **USB Indiv Out, Src TRACKS:** a pad only picks its track and plays nothing, as on the mixer. With Src PADS the pad still plays.\n\nEverything from 2.0A (MPC 2000XL programs, sequences and projects; chops kept; Purge Unused) is included.",
+        "published_at": "2026-11-25T03:35:58Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0E",
+        "body": "## LA Version 2.0E\n\n- **No more held notes in 16 Levels with S600 programs.** With the arpeggiator sliding (Portamento) on a poly S600 sound or in 16 Levels, a slide could move another note sounding on the same pad, and that note never ended (a low held note not otherwise on the pads). Now only the note slid from moves.\n- **Also Play notes end.** A pad played through Also Play now ends with the note that started it (S600 sounds hold until released).\n- **New project after another program.** LOAD, B1 <New> now switches the pads back to program 1 as well. Before, after using another program (for example a Zone Assign program), a sequence or MPC 2500 project loaded next could have no sounds on its pads.\n\nEverything from 2.0A to 2.0D is included.",
         "truncated": false
       }
     ],
@@ -884,7 +884,7 @@
     "archived": false
   },
   "garrettjwilke/mpc-gen1recomp": {
-    "stars": 2,
+    "stars": 3,
     "forks": 0,
     "pushed_at": "2026-11-11T01:44:11Z",
     "last_commit_at": "2026-11-11T01:42:38Z",
@@ -994,8 +994,8 @@
   "hdslave/hdslave-MPCSample-Synths-and-Drum-Machines": {
     "stars": 0,
     "forks": 0,
-    "pushed_at": "2026-11-24T21:33:44Z",
-    "last_commit_at": "2026-11-24T21:33:33Z",
+    "pushed_at": "2026-11-25T04:27:00Z",
+    "last_commit_at": "2026-11-25T04:26:19Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1003,17 +1003,35 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.1",
-      "published_at": "2026-11-23T06:20:16Z"
+      "tag": "v0.8.2-slink.2",
+      "published_at": "2026-11-25T04:27:05Z"
     },
     "releases": [
+      {
+        "tag": "v0.8.2-slink.2",
+        "name": "MPC Sample 11-plug-in collection · Slink 0.6.1",
+        "prerelease": false,
+        "published_at": "2026-11-25T04:27:05Z",
+        "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.2",
+        "body": "This collection contains all eleven MPC Sample plug-ins, including **Slink 0.6.1** and **Reverie 0.6.1**. Slink's silver Press Plate panel has a wider chrome title and three satin-chrome knobs. All eleven plug-ins use the same card paths as the previous collection.\n\n![Slink 0.6.1 playing in the hdslaveOS Stage panel](https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/v0.6.1/docs/slink-screen.gif)\n\n**Install the pack.** Extract the ZIP and merge its `Melodee` folder onto the MPC card. On a plug-in track select **hdslave Slink**, then open **Stage → Panel**. Keep the supplied `hdslave TB-MPC-3-P-0.clap` filename so existing projects find it.\n\nThe manifest in `MPC-PLUGINS.tsv` lists each plug-in's source revision and SHA-256. The ten other plug-in binaries match the previous collection byte for byte.\n\n[Complete hdslaveOS 0.8.2-hdslave.3 installer](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.3) · [Slink-only MPC download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1)\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.8.2-slink.1",
+        "name": "MPC Sample plug-in collection for hdslaveOS 0.8.2 • Slink 0.6.0",
+        "prerelease": false,
+        "published_at": "2026-11-25T02:15:45Z",
+        "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.1",
+        "body": "The [next collection release](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.2) includes Slink 0.6.1 with the silver MPC panel. The download on this page contains Slink 0.6.0.\n\nThis MPC Sample pack updates the acid synth in the hdslaveOS 0.8.2-hdslave.1 plug-in bundle to **Slink 0.6.0**. It also includes [Reverie 0.6.1](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1). New Reverie tracks start on Velvet Night. In an existing track, open **Stage → Chords**, set **Mood** to **Off** and **Bank** to **Original** to play the 46 restored progressions. All 18 Mood overrides retain their voicings. The included manifest records all eleven source revisions and binary SHA-256 hashes.\n\nExtract the ZIP and merge its Melodee folder onto the MPC card. Choose **hdslave Slink** in the instrument picker and open **Stage → Panel**. The original device filename is intentional so projects saved with TB-MPC-3-P-0 can find the synth.\n\nAlready have the rest of the collection? [Download Slink on its own](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.0). The standalone release also includes freesp16, macOS and Windows builds. For the Anvil K-knob fix, install [hdslaveOS 0.8.2-hdslave.3](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.3). Both the OS-only ZIP and the complete installer include the fix.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.1",
         "name": "hdslave MPC Sample Synths & Drum Machines v0.1",
         "prerelease": false,
         "published_at": "2026-11-23T06:20:16Z",
         "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.1",
-        "body": "**hdslave MPC Sample Synths & Drum Machines (`v0.1`)** — all 11 Linux `aarch64` CLAP instruments and effects for the Akai MPC Sample running [hdslaveOS](https://github.com/hdslave/hdslaveOS) or [Melodee](https://github.com/keremimo/melodee-sample).\n\n> **Note:** Every plug-in in this bundle passed its repository test suite and the `hdslaveOS` host check (`clap_check`: 11 loaded and played, 0 failed), not yet tested on physical MPC hardware.\n\n### Included plug-ins\n| Plug-in | Commit | `.clap` SHA-256 (prefix) | Repository |\n| --- | --- | --- | --- |\n| **hdslave Anvil** | `d2b5386` | `686386228c0a` | [hdslave/hdslave-Anvil-Synth](https://github.com/hdslave/hdslave-Anvil-Synth) |\n| **hdslave TB-MPC-3-P-0** | `aa44b30` | `ab8ffeb8af36` | [hdslave/TB-MPC-3-P-0-Synthesizer](https://github.com/hdslave/TB-MPC-3-P-0-Synthesizer) |\n| **hdslave Psychic** | `e8b88b6` | `16b348911ba5` | [hdslave/hdslave-Psychic-Synth](https://github.com/hdslave/hdslave-Psychic-Synth) |\n| **hdslave Necronomicon** | `6431118` | `ce26e8bb355a` | [hdslave/hdslave-Necronomicon-Synth](https://github.com/hdslave/hdslave-Necronomicon-Synth) |\n| **hdslave MoonBass** | `97e958b` | `6855eacac569` | [hdslave/hdslave-MoonBass-Synth](https://github.com/hdslave/hdslave-MoonBass-Synth) |\n| **hdslave Foundry** | `d992b19` | `94f2ff7d1cc3` | [hdslave/hdslave-Foundry-Drum-Machine](https://github.com/hdslave/hdslave-Foundry-Drum-Machine) |\n| **hdslave Machine** | `ecb3484` | `0efb56a81886` | [hdslave/hdslave-Machine](https://github.com/hdslave/hdslave-Machine) |\n| **hdslave Mystik** | `7c588b1` | `ca97b27eea89` | [hdslave/hdslave-Mystik-Synth](https://github.com/hdslave/hdslave-Mystik-Synth) |\n| **hdslave Nexus** | `5c4e521` | `c16a93c64300` | [hdslave/hdslave-Nexus-Synth](https://github.com/hdslave/hdslave-Nexus-Synth) |\n| **hdslave Reverie** | `2b4e780` | `57b2cf691320` | [hdslave/hdslave-Reverie-Synth](https://github.com/hdslave/hdslave-Reverie-Synth) |\n| **hdslave Cortex Filter** | `d31acd2` | `ec306f081cfa` | [hdslave/hdslave-Cortex-Filter](https://github.com/hdslave/hdslave-Cortex-Filter) |\n\n### Install on the MPC Sample SD card\nUnzip `hdslave-MPC-Sample-Plugins-v0.1.zip` at the root of your SD card so all 11 `.clap` binaries and their licence files are placed in `Melodee/Plugins/hdslave/`.\n\n### Checksum (SHA-256)\n- `hdslave-MPC-Sample-Plugins-v0.1.zip`: `1efb4b987399b82862c5352aaf3c0f0669fec57ebf9d31630fcc33a466a344fb`\n\n### Desktop version (macOS & Windows)\nFor native macOS (`arm64`/`x86_64`) and Windows (`x64`) desktop CLAP versions with interactive panels, see [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).\n",
+        "body": "**hdslave MPC Sample Synths & Drum Machines (`v0.1`)** — all 11 Linux `aarch64` CLAP instruments and effects for the Akai MPC Sample running [hdslaveOS](https://github.com/hdslave/hdslaveOS) or [Melodee](https://github.com/keremimo/melodee-sample).\n\n> **Note:** Every plug-in in this bundle passed its repository test suite and the `hdslaveOS` host check (`clap_check`: 11 loaded and played, 0 failed), not yet tested on physical MPC hardware.\n\n### Included plug-ins\n| Plug-in | Commit | `.clap` SHA-256 (prefix) | Repository |\n| --- | --- | --- | --- |\n| **hdslave Anvil** | `d2b5386` | `686386228c0a` | [hdslave/hdslave-Anvil-Synth](https://github.com/hdslave/hdslave-Anvil-Synth) |\n| **hdslave TB-MPC-3-P-0** | `aa44b30` | `ab8ffeb8af36` | [hdslave/TB-MPC-3-P-0-Synthesizer](https://github.com/hdslave/TB-MPC-3-P-0-Synthesizer) |\n| **hdslave Psychic** | `e8b88b6` | `16b348911ba5` | [hdslave/hdslave-Psychic-Synth](https://github.com/hdslave/hdslave-Psychic-Synth) |\n| **hdslave Necronomicon** | `6431118` | `ce26e8bb355a` | [hdslave/hdslave-Necronomicon-Synth](https://github.com/hdslave/hdslave-Necronomicon-Synth) |\n| **hdslave MoonBass** | `97e958b` | `6855eacac569` | [hdslave/hdslave-MoonBass-Synth](https://github.com/hdslave/hdslave-MoonBass-Synth) |\n| **hdslave Foundry** | `d992b19` | `94f2ff7d1cc3` | [hdslave/hdslave-Foundry-Drum-Machine](https://github.com/hdslave/hdslave-Foundry-Drum-Machine) |\n| **hdslave Machine** | `ecb3484` | `0efb56a81886` | [hdslave/hdslave-Machine](https://github.com/hdslave/hdslave-Machine) |\n| **hdslave Mystik** | `7c588b1` | `ca97b27eea89` | [hdslave/hdslave-Mystik-Synth](https://github.com/hdslave/hdslave-Mystik-Synth) |\n| **hdslave Nexus** | `5c4e521` | `c16a93c64300` | [hdslave/hdslave-Nexus-Synth](https://github.com/hdslave/hdslave-Nexus-Synth) |\n| **hdslave Reverie** | `2b4e780` | `57b2cf691320` | [hdslave/hdslave-Reverie-Synth](https://github.com/hdslave/hdslave-Reverie-Synth) |\n| **hdslave Cortex Filter** | `d31acd2` | `ec306f081cfa` | [hdslave/hdslave-Cortex-Filter](https://github.com/hdslave/hdslave-Cortex-Filter) |\n\n### Install on the MPC Sample SD card\nUnzip `hdslave-MPC-Sample-Plugins-v0.1.zip` at the root of your SD card so all 11 `.clap` binaries and their licence files are placed in `Melodee/Plugins/hdslave/`.\n\n### Checksum (SHA-256)\n- `hdslave-MPC-Sample-Plugins-v0.1.zip`: `1efb4b987399b82862c5352aaf3c0f0669fec57ebf9d31630fcc33a466a344fb`\n\n### Desktop version (macOS & Windows)\nFor native macOS (`arm64`/`x86_64`) and Windows (`x64`) desktop CLAP versions with interactive panels, see [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).\n\n## Slink plug-in update\n\nThe instrument listed in this historical bundle as TB-MPC-3-P-0 is now **Slink**. The [MPC plug-in collection with Slink](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.1) provides the 0.8.2 plug-in set with the updated instrument.\n",
         "truncated": false
       }
     ],
@@ -1022,8 +1040,8 @@
   "hdslave/hdslaveOS": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-24T21:19:25Z",
-    "last_commit_at": "2026-11-24T21:19:10Z",
+    "pushed_at": "2026-11-25T04:26:01Z",
+    "last_commit_at": "2026-11-25T04:25:58Z",
     "contributors": 3,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1031,35 +1049,35 @@
     "default_branch": "hdslave",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.1",
-      "published_at": "2026-11-23T06:20:23Z"
+      "tag": "v0.8.2-hdslave.3",
+      "published_at": "2026-11-25T02:50:53Z"
     },
     "releases": [
       {
-        "tag": "v0.7.1-hdslave.13",
-        "name": "hdslaveOS 0.7.1 + MPC plug-ins for Akai MPC Sample",
-        "prerelease": true,
-        "published_at": "2026-11-24T19:02:49Z",
-        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.7.1-hdslave.13",
-        "body": "hdslaveOS tracks Melodee 0.7.1 by **Kerem Kiliç (Ellic Studio)**. This build includes the HDSLAVE list selection fix, the Freeze relaunch tempo fix, and an updated MPC plug-in bundle built against Melodee’s 0.7 screen extension. Both downloads are for the Akai MPC Sample.\n\n## What's included\n\n- HDSLAVE list selections use an even highlight while selected tiles retain their top edge.\n- Deep Freeze checks the tempo at handoff and relaunch so an incompatible print does not replace playback.\n- All 11 MPC plug-ins have been rebuilt together. Cortex Filter has both its full panel and an FX rack strip.\n- Nexus adds velocity-to-timbre routing. MoonBass starts with Split Mode at C1–F3. TB-MPC-3-P-0 adds tempo-synced sine LFOs for pitch in Tone and filter cutoff in Voice, with Tuning just above Volume.\n- The plug-in ZIP includes each binary’s source commit and SHA-256 in `MPC-PLUGINS.tsv`.\n\n## Install\n\nBack up your card and install the OS and plug-in ZIPs as a pair. For SampleBoot, put the contents of the OS ZIP’s `autorun/` into `autorun/mods/hdslaveOS 0.7.1-hdslave.13/`. Copy the plug-in ZIP’s `Melodee/` into the card’s existing `Melodee/` folder so saved projects keep the same plug-in paths. For a direct boot without SampleBoot, copy both `autorun/` and `autorun.sh` from the OS ZIP to the card root.\n\nThe OS ZIP is unsigned and installs by hand. The matching plug-ins use the Melodee 0.7 screen extension. Keep the previous pair together if you need to roll back. Firmware 1.4.0.7 requires Developer Mode and runs at 44.1 kHz. See the [installation guide](https://github.com/hdslave/hdslaveOS/blob/v0.7.1-hdslave.13/README.md#install) for supported firmware and setup.\n\n## Verification\n\nVerified in the Linux ARM64 build container. All 70 OS tests and four core tests passed, along with the stripped binary self-test, DSP reference hashes, and package checks. All 29 CLAPs in the staged card layout loaded and played. The 11 bundled plug-ins passed screen checks, including the Cortex Filter full panel and FX strip. Physical MPC testing remains pending.\n\nhdslaveOS is AGPL-3.0. The release tag contains the OS source and pins its sample-base and ellic-core dependencies. Bundled component licences are included with the downloads.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.1",
-        "name": "hdslaveOS v0.1 (MPC Sample)",
+        "tag": "v0.8.2-hdslave.3",
+        "name": "hdslaveOS 0.8.2-hdslave.3 + MPC plug-ins",
         "prerelease": false,
-        "published_at": "2026-11-23T06:20:23Z",
-        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.1",
-        "body": "**hdslaveOS v0.1** (tracking Melodee v0.6.4 / `v0.6.4-hdslave.5`, built from `24ad071`) is hdslave's fork of [Melodee](https://github.com/keremimo/melodee-sample) by **Kerem Kiliç (Ellic Studio)**, a 16-track groovebox for the Akai MPC Sample (firmware 1.3.0.12).\n\n> **Not yet tested on an MPC.** Every automated check below passed, but no hardware run of this build has been done yet. Back up your SD card first.\n\n## Highlights in v0.1\n\n- **CLAP Synth & FX PANEL screens**: Plug-in instruments and effects with their own `320×218` custom screen (all 11 hdslave CLAP plug-ins, including **hdslave Cortex Filter** in the FX rack) open their interactive custom page on the MPC screen. Push the FX slot and pick `PANEL`. The wheel, encoder push, `−` / `+` and `K1`–`K3` control it; `B1` (`BACK`) returns to the slot.\n- **MIDI Multi channel mode**: A MIDI track's `CHANNEL` goes past 16 to `Multi`. Pads 1–16 send Middle C on MIDI channels 1–16 for triggering multi-channel drum machines.\n- **User synth presets across projects**: On a plug-in synth track, `Shift + Sample Select` saves the patch under `PRESETS → User Presets` across projects on the same card.\n- **Sidechain follows drum track mute**: Muting a drum track also mutes its selected pad's sidechain send to the master compressor.\n- **HDSLAVE theme**: Starts in the `HDSLAVE` palette on a new SD card (switchable in `Settings › SCREEN › Palette`).\n\n## Install (unsigned, manual copy)\n\n1. Back up your SD card.\n2. Unzip `hdslaveOS-MPC-Sample-v0.1-unsigned.zip`. It holds one `autorun` folder. Copy it to the top of the card, or into a boot menu's OS folder such as SampleBoot's `autorun/mods/hdslaveOS 0.6.4-hdslave.5/`. Do not edit anything inside it.\n3. For the 11 companion hdslave CLAP synths, drum machines, and effects, grab `hdslave-MPC-Sample-Plugins-v0.1.zip` from [hdslave-MPCSample-Synths-and-Drum-Machines v0.1](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.1) (or for desktop DAWs on macOS & Windows, see [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win)).\n\n## Verified\n\nChecked inside the Linux `arm64` build container from `24ad071` (`core` at `afa930b`):\n- All 57 app tests and 4 core tests passed.\n- Audio self-test passed on the stripped release binary (`0249be4b45e024f1...`).\n- 3,000 random control moves found no failures.\n- All 400 screen renders and boot animation renders clean.\n- End-to-end checks of `PANEL` with Cortex Filter passed 35/35; MIDI Multi channel routing passed 9/9; `clap_check` loaded and played all 11 staged hdslave CLAP plug-ins (0 failed).\n- All 53 files in the zip match `RELEASE.sha256`.\n\nSHA-256 of `hdslaveOS-MPC-Sample-v0.1-unsigned.zip`:\n`ad0a56bce5540703b8802c0389c198375b5ce52c7970f64f64908081d52b958a`\n\n## Credits and licence\n\nMelodee is the work of **Kerem Kiliç (Ellic Studio)**. hdslaveOS is licensed under AGPL-3.0. The boot film is hdslaveOS's own (see `THIRD_PARTY.md`). Licences for bundled components are in `autorun/melodee/licenses/`.\n",
+        "published_at": "2026-11-25T02:50:53Z",
+        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.3",
+        "body": "## Install hdslaveOS on your MPC Sample\n\n**[Download hdslaveOS and all 11 plug-ins in one ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.2-hdslave.3/hdslaveOS-MPC-Sample-Complete-SD-Card-Install-v0.8.2-hdslave.3-unsigned.zip)**\n\nFor a first install, this is the only download you need. Extract it on your computer and open `START-HERE.txt`. The `SD-Card` folder beside it contains the files to copy.\n\n1. **Prepare your MPC and card.** Use firmware **1.3.0.12**, **1.4.0.7**, or **1.4.0.8**. On firmware 1.4, open the stock MPC app’s **Settings → DEV ENHANCEMENTS (BETA)** and turn on **Developer Mode**. Back up the microSD card on your computer.\n2. **Copy the OS.** Choose the row for your card. “Top level” means the first window you see when you open the card in Finder or File Explorer.\n\n   | Your card | What to copy |\n   | --- | --- |\n   | **Regular card (direct boot)** | Move any existing top-level `autorun` folder and `autorun.sh` file to your computer for safekeeping. Open the extracted `SD-Card` folder. Copy **both** the `autorun` folder and the separate `autorun.sh` file to the top level of the card. You should see `autorun.sh` as soon as you open the card. |\n   | **Card that already uses SampleBoot** | On the card, create `autorun/mods/hdslaveOS 0.8.2-hdslave.3/`. Open the extracted `SD-Card/autorun/` folder and copy its **contents** there. Check that `autorun.json` sits directly inside the new version folder. Keep the card’s existing top-level launcher. |\n\n3. **Copy the plug-ins.** If the card has no `Melodee` folder, copy `SD-Card/Melodee` to the top level. If it already exists, open or create `Melodee/Plugins/hdslave/` on the card. Copy the **files inside** the extracted `SD-Card/Melodee/Plugins/hdslave/` into that folder, replacing matching plug-in files. Your projects and samples stay in place. Check for `Melodee/Plugins/hdslave/hdslave Nexus.clap` on the card.\n4. **Start hdslaveOS.** Eject the card, insert it into the powered-off MPC Sample and turn it on. The stock app appears first. On firmware 1.4, choose **Yes** at the autorun prompt. If you use SampleBoot, turn the encoder to **hdslaveOS 0.8.2-hdslave.3** and push it.\n5. **Try a sound.** In hdslaveOS, hold **PAD BANK** and press a pad for an empty track. Choose **Plugin**, open **hdslave**, select **Nexus** and push the encoder. Press **SAMPLE** to open Stage and play a pad.\n\nIf the stock app stays on screen, check your firmware and the paths in step 2. If Nexus is missing, check the path in step 3. To boot the stock app again, power off, remove the card and restart.\n\n[Make your first beat with the illustrated quickstart](https://github.com/hdslave/hdslaveOS/blob/v0.8.2-hdslave.3/docs/QUICKSTART.md#4-load-samples-into-a-kit)\n\n### Separate downloads\n\nIf you only need one component, use the [OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.2-hdslave.3/hdslaveOS-MPC-Sample-SD-Card-Install-v0.8.2-hdslave.3-unsigned.zip) or the [11-plug-in ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.2-hdslave.3/hdslaveOS-MPC-Sample-11-CLAP-Plugins-v0.8.2-hdslave.3.zip). These ZIPs open directly to `autorun` and `autorun.sh`, or to `Melodee`, respectively. Use the same card destinations above. The `.sha256` files are optional download checks, and GitHub’s source archives are for building from source.\n\n### Slink 0.6.1 for MPC Sample\n\nBoth the complete SD-card installer and the separate 11-plug-in ZIP now include **Slink 0.6.1**. Select **hdslave Slink** and open **Stage → Panel** for the wider chrome title and satin-chrome knobs. Existing projects use the same plug-in filename. This refresh updates the plug-in payload and its archive checksums. The OS build is still **0.8.2-hdslave.3**.\n\n![Slink silver panel in Stage](https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/v0.6.1/docs/slink-screen.gif)\n\n[11-plug-in collection release](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.2) · [Slink-only download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1)\n\n### Reverie 0.6.1\n\nThe complete installer and the 11-plug-in ZIP both include [Reverie 0.6.1](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1). New tracks start on **Velvet Night**, the first of 46 original progressions. For an existing track, open **Stage → Chords**, set **Mood** to **Off**, set **Bank** to **Original**, and turn **Prog**. All 18 Mood overrides retain their voicings. Both downloads include an updated plug-in manifest and SHA-256 checksum.\n\n## Changes in 0.8.2-hdslave.3\n\nOn Anvil’s STEPS panel, K1 and K2 now take over the pitch and velocity of the selected step. A small turn starts from that step’s value in Scaled mode. Knob takeover also follows edits made with the data wheel. The fix is in hdslaveOS and applies to plug-in panels that reassign a knob. To get it on an existing installation, install the OS-only ZIP or the complete installer.\n\nThe release also includes the Deep Freeze playback fix for tempo changes during unloading and the dark selection edge in Settings. The collection includes Slink 0.6.1 and Reverie 0.6.1 with its restored Original progression bank. Existing projects keep their plug-in paths.\n\nhdslaveOS is based on Melodee 0.8.2 by Kerem Kiliç (Ellic Studio). The unsigned MPC build passed the ARM64 software tests, including Scaled, Pickup and Instant takeover. The Anvil check used the packaged host and plug-in. Physical MPC confirmation of the fix is pending.\n\nThe source tag pins sample-base and ellic-core. The plug-in archives include their licences and the source revisions and SHA-256 hashes for all eleven plug-ins in `MPC-PLUGINS.tsv`.\n",
         "truncated": false
       },
       {
-        "tag": "v0.6.4-hdslave.5",
-        "name": "hdslaveOS v0.6.4-hdslave.5",
+        "tag": "v0.8.2-hdslave.1",
+        "name": "hdslaveOS 0.8.2 + MPC plug-ins for Akai MPC Sample",
+        "prerelease": false,
+        "published_at": "2026-11-25T00:44:56Z",
+        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.1",
+        "body": "## Install hdslaveOS on your MPC Sample\n\n**[Download hdslaveOS and all 11 plug-ins in one ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.2-hdslave.1/hdslaveOS-MPC-Sample-Complete-SD-Card-Install-v0.8.2-hdslave.1-unsigned.zip)**\n\nFor a first install, this is the only download you need. Extract it on your computer and open `START-HERE.txt`. The `SD-Card` folder beside it contains the files to copy.\n\n1. **Prepare your MPC and card.** Use firmware **1.3.0.12**, **1.4.0.7**, or **1.4.0.8**. On firmware 1.4, open the stock MPC app’s **Settings → DEV ENHANCEMENTS (BETA)** and turn on **Developer Mode**. Back up the microSD card on your computer.\n2. **Copy the OS.** Choose the row for your card. “Top level” means the first window you see when you open the card in Finder or File Explorer.\n\n   | Your card | What to copy |\n   | --- | --- |\n   | **Regular card (direct boot)** | Move any existing top-level `autorun` folder and `autorun.sh` file to your computer for safekeeping. Open the extracted `SD-Card` folder. Copy **both** the `autorun` folder and the separate `autorun.sh` file to the top level of the card. You should see `autorun.sh` as soon as you open the card. |\n   | **Card that already uses SampleBoot** | On the card, create `autorun/mods/hdslaveOS 0.8.2-hdslave.1/`. Open the extracted `SD-Card/autorun/` folder and copy its **contents** there. Check that `autorun.json` sits directly inside the new version folder. Keep the card’s existing top-level launcher. |\n\n3. **Copy the plug-ins.** If the card has no `Melodee` folder, copy `SD-Card/Melodee` to the top level. If it already exists, open or create `Melodee/Plugins/hdslave/` on the card. Copy the **files inside** the extracted `SD-Card/Melodee/Plugins/hdslave/` into that folder, replacing matching plug-in files. Your projects and samples stay in place. Check for `Melodee/Plugins/hdslave/hdslave Nexus.clap` on the card.\n4. **Start hdslaveOS.** Eject the card, insert it into the powered-off MPC Sample and turn it on. The stock app appears first. On firmware 1.4, choose **Yes** at the autorun prompt. If you use SampleBoot, turn the encoder to **hdslaveOS 0.8.2-hdslave.1** and push it.\n5. **Try a sound.** In hdslaveOS, hold **PAD BANK** and press a pad for an empty track. Choose **Plugin**, open **hdslave**, select **Nexus** and push the encoder. Press **SAMPLE** to open Stage and play a pad.\n\nIf the stock app stays on screen, check your firmware and the paths in step 2. If Nexus is missing, check the path in step 3. To boot the stock app again, power off, remove the card and restart.\n\n[Make your first beat with the illustrated quickstart](https://github.com/hdslave/hdslaveOS/blob/v0.8.2-hdslave.1/docs/QUICKSTART.md#4-load-samples-into-a-kit)\n\n### Separate downloads\n\nIf you only need one component, use the [OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.2-hdslave.1/hdslaveOS-MPC-Sample-SD-Card-Install-v0.8.2-hdslave.1-unsigned.zip) or the [11-plug-in ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.2-hdslave.1/hdslaveOS-MPC-Sample-11-CLAP-Plugins-v0.8.2-hdslave.1.zip). These ZIPs open directly to `autorun` and `autorun.sh`, or to `Melodee`, respectively. Use the same card destinations above. The `.sha256` files are optional download checks, and GitHub’s source archives are for building from source.\n\n### Reverie 0.6.1\n\nThe complete installer and the 11-plug-in ZIP both include [Reverie 0.6.1](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1). New tracks start on **Velvet Night**, the first of 46 original progressions. For an existing track, open **Stage → Chords**, set **Mood** to **Off**, set **Bank** to **Original**, and turn **Prog**. All 18 Mood overrides retain their voicings. Both downloads include an updated plug-in manifest and SHA-256 checksum.\n\n## About this release\n\nhdslaveOS tracks Melodee 0.8.2 by **Kerem Kiliç (Ellic Studio)**. This unsigned release for the Akai MPC Sample includes the Mixer update and the matching bundle of 11 ARM64 CLAP plug-ins.\n\n## Mixer changes\n\n- Mixer opens with the channel strips side by side, including stereo meters, faders, and mute and solo indicators.\n- Hold **+** to open the selected channel’s card and hold **−** to return to the strips. The view slides between them.\n- Tap **+** or **−** to move through the selected block. Mixer actions occur on release so a tap and a hold can use the same controls.\n\nAudio runs at 44.1 kHz.\n\n## Verification\n\nAll 74 OS tests and four core tests passed in the Linux ARM64 build. The Mixer renders, stripped executable self-test, and package integrity checks passed. The self-test and DSP hashes matched the preceding hdslaveOS release. At the original OS release, all 11 rebuilt plug-ins matched their prior binary hashes and passed the screen checks. All 29 CLAPs in the staged card layout loaded and played. The plug-in ZIP records source commits and binary digests in `MPC-PLUGINS.tsv`. Physical MPC testing remains pending.\n\nhdslaveOS is AGPL-3.0. The tag contains the OS source and pins its sample-base and ellic-core dependencies. Bundled component licences are included with the downloads.\n\n## Slink plug-in update\n\nThe acid synth shipped here as TB-MPC-3-P-0 is now Slink. Update it in place using the MPC Sample ZIP from [Slink 0.6.0](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.0) or the [MPC plug-in collection with Slink](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.1). Both preserve the device filename used by existing projects.\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.8.1-hdslave.4",
+        "name": "hdslaveOS 0.8.1 + MPC plug-ins for Akai MPC Sample",
         "prerelease": true,
-        "published_at": "2026-11-22T05:55:39Z",
-        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.6.4-hdslave.5",
-        "body": "hdslaveOS is hdslave's fork of [Melodee](https://github.com/keremimo/melodee-sample) by **Kerem Kiliç (Ellic Studio)**, a 16-track groovebox for the Akai MPC Sample (firmware 1.3.0.12), tracking Melodee v0.6.4. Built from commit `24ad071`.\n\n> **Not yet tested on an MPC.** Every automated check below passed, but no hardware run has been done. Back up your card first.\n\n## New in this build\n\n- **FX slot PANEL:** a plug-in effect with its own screen (such as hdslave Cortex Filter) opens that screen from the FX rack. Push the slot and pick **PANEL**. The wheel, encoder push, **− / +** and **K1–K3** control it. **B1 (BACK)** returns to the same slot.\n- **MIDI Multi channel:** a MIDI track's **CHANNEL** goes past 16 to **Multi**. Pads 1–16 send Middle C on MIDI channels 1–16, for triggering a drum machine.\n- **Save synth presets:** on a plug-in synth track, **Shift + Sample Select** saves the patch. It appears under **PRESETS → User Presets** in any project on the same card. On kit tracks the shortcut still saves the sample, or the bank in the sample browser.\n- **Sidechain follows mute:** muting a drum track also mutes its selected pad's sidechain send to the master compressor.\n- **HDSLAVE theme:** hdslaveOS starts in HDSLAVE on a new SD card, or when an older settings file holds the previous NIGHT default. Choose NIGHT in **Settings › SCREEN › Palette** to keep it.\n\n## Install (unsigned, by hand only)\n\n1. Back up the card.\n2. Unzip. It holds one `autorun` folder. Copy it to the top of the card, or into a boot menu's OS folder such as SampleBoot's `autorun/mods/hdslaveOS 0.6.4-hdslave.5/`. Don't edit anything inside it.\n\nThis package has no update signature, so Melodee's built-in updater won't take it. See `autorun/melodee/README.txt` in the zip for the full instructions.\n\n## Verified\n\nThe checks ran from a clean checkout of `24ad071` with the core submodule at `afa930b`, inside the Linux arm64 build container:\n\n- All 57 app tests and 4 core tests passed.\n- The sound self-test passed, including on the stripped release binary.\n- 3,000 random control moves found no failures.\n- All 400 screen renders were clean, and the boot animation renders.\n- End-to-end checks of PANEL with Cortex Filter passed 35/35. Checks of MIDI Multi channel routing passed 9/9.\n- All 53 files in the zip match `RELEASE.sha256`.\n\nSHA-256 of the zip: `ad0a56bce5540703b8802c0389c198375b5ce52c7970f64f64908081d52b958a`\n\n## Credits and licence\n\nMelodee is the work of Kerem Kiliç (Ellic Studio). hdslaveOS is AGPL-3.0, and the source is this tag. The boot film is hdslaveOS's own (see THIRD_PARTY.md). Licences for the bundled components are in `autorun/melodee/licenses/`.\n",
+        "published_at": "2026-11-25T00:32:48Z",
+        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.1-hdslave.4",
+        "body": "hdslaveOS tracks Melodee 0.8.1 by **Kerem Kiliç (Ellic Studio)**. This unsigned build for the Akai MPC Sample includes the refreshed screenshots, the 0.8.1 Mixer, and the matching bundle of 11 ARM64 CLAP plug-ins.\n\n## What's included\n\n- The Mixer has channel strips and eight submixes, with routing for individual kit pads.\n- Deep Freeze keeps playback going when the tempo changes and rejoins the existing print when the original tempo returns during thaw.\n- Support for firmware 1.4.0.8, alongside 1.3.0.12 and 1.4.0.7.\n- All 11 MPC plug-ins were rebuilt, including Reverie 0.6.0. Open native instrument screens from Stage → PANEL. Cortex Filter supports both its full screen and FX rack strip.\n- The plug-in ZIP includes each binary’s source commit and SHA-256 in `MPC-PLUGINS.tsv`.\n\n## Install\n\nBack up the card. For SampleBoot, put the contents of the OS ZIP’s `autorun/` into `autorun/mods/hdslaveOS 0.8.1-hdslave.4/`. Copy the plug-in ZIP’s `Melodee/` into the card’s existing `Melodee/` folder so saved projects keep their plug-in paths. For a direct boot, copy both `autorun/` and `autorun.sh` from the OS ZIP to the card root.\n\nThe OS ZIP installs by hand. On firmware 1.4, enable Developer Mode. Audio runs at 44.1 kHz on firmware 1.4. See the [installation guide](https://github.com/hdslave/hdslaveOS/blob/v0.8.1-hdslave.4/README.md#install).\n\n## Verification\n\nIn the Linux ARM64 build container, 74 OS tests and four core tests passed. The base suite passed 65 tests and skipped 13 under its fixture rules. The stripped binary self-test, comparison against the preceding 0.8.1 build’s audio hashes, and package checks passed. All 29 CLAPs in the staged card layout loaded and played. The 11 bundled plug-ins passed screen checks, including the Cortex Filter full panel and FX strip. Physical MPC testing remains pending.\n\nhdslaveOS is AGPL-3.0. The release tag contains the OS source and pins its sample-base and ellic-core dependencies. Bundled component licences are included with the downloads.\n",
         "truncated": false
       }
     ],
@@ -1173,7 +1191,7 @@
     "archived": false
   },
   "jacob-sabella/mpc-addin-remote": {
-    "stars": 6,
+    "stars": 7,
     "forks": 3,
     "pushed_at": "2026-11-15T03:01:28Z",
     "last_commit_at": "2026-11-15T03:01:26Z",
@@ -1221,8 +1239,8 @@
   "jacob-sabella/mpc-addin-sample-draw-handler": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-06T19:37:32Z",
-    "last_commit_at": "2026-11-06T19:37:31Z",
+    "pushed_at": "2026-11-25T00:51:56Z",
+    "last_commit_at": "2026-11-25T00:49:49Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -1230,10 +1248,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "sample-draw-handler-addin-v1.0.1",
-      "published_at": "2026-11-06T19:13:58Z"
+      "tag": "sample-draw-handler-addin-v1.1.0",
+      "published_at": "2026-11-25T00:51:57Z"
     },
     "releases": [
+      {
+        "tag": "sample-draw-handler-addin-v1.1.0",
+        "name": "MPC Sample draw handler addin v1.1.0",
+        "prerelease": false,
+        "published_at": "2026-11-25T00:51:57Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v1.1.0",
+        "body": "# MPC Sample draw handler addin 1.1.0\n\nOwns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\nAn addin for MPC OS standalone devices: a library MPC loads at its start (through `LD_PRELOAD`), not a plugin on a\ntrack. It is installed to `/data/mpc-addins/sample-draw-handler/`.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-1.1.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-1.1.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\n## Uninstall\n\n`ssh root@<device-ip> sh /data/mpc-addins/sample-draw-handler/uninstall.sh` takes the addin out of `LD_PRELOAD`, restarts MPC and\ndeletes its folder.\n\n## Files\n\nSee `SHA256SUMS`. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins) (`docs/ADDINS.md`).\n\n\n## Changes in 1.1.0\n\n- **MPC Sample 1.4:** 1.4 updates its screen with DRM atomic commits instead of page flips, so 1.0.1 drew nothing there.\n  The handler now follows those commits the same way. 1.3 works as before.\n- **Less load on MPC's audio:** a page's refresh now sends only the rows that changed. Each refresh of the Sample's panel\n  holds back MPC's audio while it runs; with RACK scrolling, audio stuttered before and now runs at full rate.\n- **API 4:** `list()` and `show_id()`, for pages that share a name (1.4 makes two instances of a pad's Knob FX). Older\n  plugins and addins keep working unchanged.\n- `/status` reports refresh counts and the time spent refreshing.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@50d2cbe with mpc-vst-plugins (tools/release-aarch64.sh). Tested on an MPC Sample (firmware 1.4.0.8) on 2026-11-24.\n",
+        "truncated": false
+      },
       {
         "tag": "sample-draw-handler-addin-v1.0.1",
         "name": "MPC Sample draw handler addin v1.0.1",
@@ -1251,15 +1278,6 @@
         "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v1.0.0",
         "body": "Owns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-1.0.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-1.0.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@fa9cb24 with mpc-vst-plugins (tools/release-aarch64.sh). The same code as 0.6.0, tested on an MPC Sample on 2026-11-05.\n",
         "truncated": false
-      },
-      {
-        "tag": "sample-draw-handler-addin-v0.6.0",
-        "name": "MPC Sample draw handler addin v0.6.0",
-        "prerelease": true,
-        "published_at": "2026-11-06T03:45:07Z",
-        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v0.6.0",
-        "body": "Owns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-0.6.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-0.6.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@3db0a76 with mpc-vst-plugins@9aab04f (tools/release-aarch64.sh). Tested on an MPC Sample on 2026-11-05.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -1267,8 +1285,8 @@
   "jacob-sabella/mpc-addin-sample-rack": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-21T03:59:03Z",
-    "last_commit_at": "2026-11-21T03:24:37Z",
+    "pushed_at": "2026-11-25T00:51:59Z",
+    "last_commit_at": "2026-11-25T00:49:58Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -1276,10 +1294,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "sample-rack-addin-v1.0.1",
-      "published_at": "2026-11-21T03:59:03Z"
+      "tag": "sample-rack-addin-v1.1.0",
+      "published_at": "2026-11-25T00:51:59Z"
     },
     "releases": [
+      {
+        "tag": "sample-rack-addin-v1.1.0",
+        "name": "MPC Sample rack addin v1.1.0",
+        "prerelease": false,
+        "published_at": "2026-11-25T00:51:59Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v1.1.0",
+        "body": "# MPC Sample rack addin 1.1.0\n\nThe MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\nAn addin for MPC OS standalone devices: a library MPC loads at its start (through `LD_PRELOAD`), not a plugin on a\ntrack. It is installed to `/data/mpc-addins/sample-rack/`.\n\n## Requirements\n\n- An MPC Sample (aarch64). RACK is for the Sample only; the installer refuses a device that is not aarch64.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-1.1.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-1.1.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n## Uninstall\n\n`ssh root@<device-ip> sh /data/mpc-addins/sample-rack/uninstall.sh` takes the addin out of `LD_PRELOAD`, restarts MPC and\ndeletes its folder.\n\n## Files\n\nSee `SHA256SUMS`. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins) (`docs/ADDINS.md`).\n\n\n## Changes in 1.1.0\n\n- **PAGES:** after the channels, every plugin page that is open, including a pad's Knob FX, which is on no insert RACK\n  can edit. Each shows the channel running it when only one has that plugin; pages with the same name are numbered.\n  OPEN or the dial press opens one. Needs mpc-addin-sample-draw-handler 1.1; with an older one the section is hidden.\n- **Which pad:** a submix header names the pads routed to it (`SUBMIX 1: PAD A13`). On the MPC Sample a pad's Knob FX\n  is Submix 1's insert. The input is shown as `INPUT FX`.\n- **MPC Sample 1.4's settings file:** RACK reads `/data/Settings/MPC Sample/MPC Sample.settings` when present. A Sample\n  updated from 1.3 keeps the old file, so 1.0.1 listed stale plugins there. A conf that names 1.3's path gets the same\n  choice; any other path in the conf is kept.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@715f268 with mpc-vst-plugins (tools/release-aarch64.sh). Run on an MPC Sample (firmware 1.4.0.8) on 2026-11-24.\n",
+        "truncated": false
+      },
       {
         "tag": "sample-rack-addin-v1.0.1",
         "name": "MPC Sample rack addin v1.0.1",
@@ -1296,15 +1323,6 @@
         "published_at": "2026-11-06T13:23:42Z",
         "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v1.0.0",
         "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n**New since 0.2.0 (in 0.3.0):** ON/OFF on a plugin MPC is running acts at once, with no restart (its input passes straight through, with a short crossfade). It lasts until MPC restarts; APPLY writes it into the project. Works alongside mpc-addin-commander 1.2.0, whose rack panel gets the same live toggle (interface 2, `mpc_sample_rack_live`).\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-1.0.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-1.0.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@494041a with mpc-vst-plugins (tools/release-aarch64.sh). The same code as 0.3.0. Live ON/OFF is tested offline (a stand-in host); not yet on an MPC Sample.\n",
-        "truncated": false
-      },
-      {
-        "tag": "sample-rack-addin-v0.3.0",
-        "name": "MPC Sample rack addin v0.3.0",
-        "prerelease": true,
-        "published_at": "2026-11-06T12:48:56Z",
-        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-rack/releases/tag/sample-rack-addin-v0.3.0",
-        "body": "The MPC Sample's plugin rack on its own screen: add, turn on or off and remove plugins on the input, outputs, submixes and tracks.\n\n**New in 0.3.0:** ON/OFF on a plugin MPC is running acts at once, with no restart (its input passes straight through, with a short crossfade). It lasts until MPC restarts; APPLY writes it into the project. Works alongside mpc-addin-commander 1.2.0, whose rack panel gets the same live toggle (interface 2, `mpc_sample_rack_live`).\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-rack-addin-0.3.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-rack-addin-0.3.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-rack/`, adds `mpc_sample_rack.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-rack/mpc_sample_rack.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample a long hold of PAD FX now brings up RACK: the plugins on the input, outputs, submixes and tracks, to add, turn on or off and remove. Needs mpc-addin-sample-draw-handler 0.3 or later. APPLY restarts MPC with the changes in the project.\n\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-rack@18757db with mpc-vst-plugins (tools/release-aarch64.sh). Live ON/OFF is tested offline (a stand-in host); not yet on an MPC Sample.\n",
         "truncated": false
       }
     ],
@@ -1443,7 +1461,7 @@
     "archived": false
   },
   "jeffwebb-to/mpc-sample-doom": {
-    "stars": 2,
+    "stars": 3,
     "forks": 0,
     "pushed_at": "2026-11-08T17:53:06Z",
     "last_commit_at": "2026-11-08T17:53:05Z",
@@ -1562,7 +1580,7 @@
     "pushed_at": "2026-11-24T21:20:53Z",
     "last_commit_at": "2026-11-24T21:17:47Z",
     "contributors": 3,
-    "open_issues": 23,
+    "open_issues": 25,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1825,8 +1843,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 8,
     "forks": 1,
-    "pushed_at": "2026-11-24T21:41:38Z",
-    "last_commit_at": "2026-11-24T21:41:35Z",
+    "pushed_at": "2026-11-25T04:38:39Z",
+    "last_commit_at": "2026-11-25T04:38:37Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1963,8 +1981,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-24T18:32:20Z",
-    "last_commit_at": "2026-11-24T18:32:19Z",
+    "pushed_at": "2026-11-25T05:12:44Z",
+    "last_commit_at": "2026-11-25T05:12:43Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -2129,7 +2147,7 @@
     "pushed_at": "2026-11-23T22:28:04Z",
     "last_commit_at": "2026-11-23T22:27:10Z",
     "contributors": 1,
-    "open_issues": 45,
+    "open_issues": 46,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",

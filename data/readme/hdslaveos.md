@@ -1,10 +1,11 @@
 <h1 align="center">hdslaveOS</h1>
 
 <p align="center"><strong>A performance-tuned 16-track groovebox OS for the Akai MPC Sample</strong><br>
-hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</a> by Kerem Kiliç (Ellic Studio), currently tracking Melodee v0.7.1.</p>
+hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</a> by Kerem Kiliç (Ellic Studio), currently tracking Melodee v0.8.2.</p>
 
 <p align="center">
-  <img src="docs/images/hdslave-theme.png" alt="hdslaveOS HDSLAVE purple flare theme on the Palette, Tracks, Step Edit, and Deep Freeze screens" width="760">
+  <img src="docs/images/hdslave-theme.png" alt="hdslaveOS HDSLAVE purple flare theme on the Palette, Mixer, Step Edit, and Deep Freeze screens" width="760">
+  <br><sub>hdslaveOS 0.8.1 screenshots.</sub>
 </p>
 
 ## What hdslaveOS adds over stock Melodee
@@ -16,10 +17,19 @@ hdslave's fork of <a href="https://github.com/keremimo/melodee-sample">Melodee</
 - **Sidechain keying from plug-in outputs**: The master compressor's **Sidechain** can be keyed directly by a CLAP plug-in's second output (such as [Foundry](https://github.com/hdslave/hdslave-Foundry-Drum-Machine)'s **SC Key** kick-only bus).
 - **Hands-on ergonomics**: On **Step Edit**, **SHIFT + encoder** steps the caret a full bar at a time; kit pads assigned any of the 16 colours light more vividly; and a custom **hdslave intro** boot film replaces the default splash.
 
+### Mixer
+
+In 0.8.2, Mixer opens on the channel strips. Hold **+** to open the selected channel’s card and hold **−** to return to the strips. Tap **+** or **−** to move through the selected block.
+
+<p align="center">
+  <img src="docs/images/hdslave-mixer.png" alt="Four views of the hdslaveOS mixer showing submix sends, insert effects, channel EQ, and compression" width="760">
+  <br><sub>Submix sends, insert effects, channel EQ, and compression.</sub>
+</p>
+
 ### Palettes & Custom Plug-in Screens
 
 <p align="center">
-  <img src="docs/images/hdslave-mono-theme.png" alt="hdslaveOS MONO black-and-white dark palette across 16 screens" width="760">
+  <img src="docs/images/hdslave-mono-theme.png" alt="hdslaveOS MONO black-and-white palette across 16 screens, including the Mixer" width="760">
   <br><sub><b>MONO</b> — high-contrast black-and-white dark palette across 16 pages.</sub>
 </p>
 
@@ -54,7 +64,9 @@ All eleven plug-ins in the [hdslave MPC Sample Synths & Drum Machines](https://g
 
 #### Opening a plug-in screen
 
-On an instrument track, Edit opens the custom screen. On Stage, press **B1** to move from **PRESETS** to **PANEL**. In an FX chain, select Cortex Filter to see its compact view. Push the encoder to open the full panel. **B3** or **Shift + Push** returns to the chain, and **Shift + B3** opens the slot sheet.
+On an instrument track, press **B1** on Stage to move from **PRESETS** to **PANEL** and open the plug-in’s custom screen. **EDIT** shows Melodee’s parameter pages. In an FX chain, select Cortex Filter to see its compact view. Push the encoder to open the full panel. **B3** or **Shift + Push** returns to the chain, and **Shift + B3** opens the slot sheet.
+
+On a plug-in panel, K1–K3 follow the knob takeover setting when you select another step or change which parameters a row controls.
 
 <p align="center">
   <img src="docs/images/plugins/cortex-filter-panel.png" alt="Cortex Filter below the selected Track FX slot, showing the morph cube, filter response and three knobs" width="400">
@@ -132,6 +144,8 @@ page and control, read the [user guide](docs/GUIDE.md).
   across successive passes of a frozen pattern. Changing the selection keeps the previous freeze
   playable if the new selection exceeds the memory available. Deep Freeze preserves
   playback if a new print is incompatible with the handoff or relaunch tempo.
+  A later tempo change automatically reloads the plug-ins while the original
+  print plays, then returns the track to live playback on its next pattern pass.
 - **Sync**: MIDI clock and MTC in and out, and CV clock out.
 - **The Menu**: hold the encoder on any page for the page's jobs with their
   shortcuts, and the 16 places laid out as the pads. Four short **lessons**
@@ -148,7 +162,7 @@ page and control, read the [user guide](docs/GUIDE.md).
 
 ## Requirements
 
-- Akai MPC Sample with firmware **1.3.0.12** or **1.4.0.7**. On any other
+- Akai MPC Sample with firmware **1.3.0.12**, **1.4.0.7** or **1.4.0.8**. On any other
   firmware Melodee does not start and the stock app keeps running.
 - On firmware 1.4: **Developer Mode** on, in the stock app's Settings on the
   **DEV ENHANCEMENTS (BETA)** page.
@@ -193,6 +207,10 @@ the `Melodee` folder at the top level), in any subfolders. Melodee loads:
 Plug-ins built only for Windows or macOS do not run on the MPC. The
 plug-in picker shows them dimmed, with the reason.
 
+The [11-plug-in collection](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.2) and the [complete installer](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.3) both include **Slink 0.6.1**. To update only that instrument, merge the `Melodee` folder from the [Slink MPC download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1) onto your card. Keep the supplied plug-in filename for saved projects. Select **hdslave Slink** and open **Stage → Panel** to see the silver panel below.
+
+<a href="https://github.com/hdslave/hdslave-Slink-Synth/blob/v0.6.1/docs/screen.md#silver-panel-on-mpc"><img src="https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/v0.6.1/docs/slink-mpc-pattern.png" width="320" alt="Slink 0.6.1 playing in Stage on its silver MPC panel"></a>
+
 The Melodee synths are free downloads:
 [Melodee Poly](https://github.com/keremimo/mpc-vst-melodee-poly/releases/latest), [Melodee PD](https://github.com/keremimo/mpc-vst-melodee-pd/releases/latest) and
 [Melodee Chip](https://github.com/keremimo/mpc-vst-melodee-chip/releases/latest). From each release, download the
@@ -229,10 +247,10 @@ strip as `release.sh` does, and package (`release.sh` itself makes Melodee's
 signed releases and needs its author's key):
 
 ```sh
-MELODEE_VERSION=v0.7.1-hdslave.8 ./build.sh
+MELODEE_VERSION=v0.8.1-hdslave.3 ./build.sh
 docker run --rm --platform linux/arm64 -v "$PWD:/work" sample-base-builder \
     sh -c 'strip -o build/melodee.release build/melodee && build/melodee.release --self-test build/release-test.wav'
-python3 tools/package_unsigned.py v0.7.1-hdslave.8
+python3 tools/package_unsigned.py v0.8.1-hdslave.3
 ```
 
 This writes `dist/hdslaveOS-MPC-Sample-<version>-unsigned.zip`.
