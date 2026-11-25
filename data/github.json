@@ -781,6 +781,34 @@
     ],
     "archived": false
   },
+  "fomoPhil/mpselector": {
+    "stars": 2,
+    "forks": 0,
+    "pushed_at": "2026-11-25T06:44:22Z",
+    "last_commit_at": "2026-11-25T06:44:21Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "GPL-2.0",
+    "description": "One card, many firmwares. A microSD launcher for the Akai MPC Sample: turn the dial to pick which app or mod runs.",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.0.1",
+      "published_at": "2026-11-25T05:38:42Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.0.1",
+        "name": "MP Selector 1.0.1",
+        "prerelease": false,
+        "published_at": "2026-11-25T05:38:42Z",
+        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.0.1",
+        "body": "The download no longer includes the installer for Melodee and MPC Simple. It has one cover, Akai, and does not include or install any other firmware.\n\nThe files that go on the card are the same as in 1.0.0. Tested on Akai MPC Sample firmware 1.4.0.8.\n\nDownload `MP-Selector-1.0.1.zip`, then follow the three steps in the [README](https://github.com/fomoPhil/mp-selector#set-up-your-card).\n\nSHA-256: `089548d6f0e667b2976a67f476b5226c12ce23770372a3a3977f31642dfabae6`",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "garrettjwilke/mpc-boot-thingy": {
     "stars": 26,
     "forks": 3,
