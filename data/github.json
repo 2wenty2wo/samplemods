@@ -261,7 +261,7 @@
     "archived": false
   },
   "OSCILLUNE/ArpeggiGator": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-24T07:32:03Z",
     "last_commit_at": "2026-11-24T07:32:01Z",
@@ -350,7 +350,7 @@
     "archived": false
   },
   "ZootedandRebooted/GRIDZILLA": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-20T20:05:33Z",
     "last_commit_at": "2026-11-20T20:05:32Z",
@@ -782,10 +782,10 @@
     "archived": false
   },
   "fomoPhil/mpselector": {
-    "stars": 2,
+    "stars": 9,
     "forks": 0,
-    "pushed_at": "2026-11-25T06:44:22Z",
-    "last_commit_at": "2026-11-25T06:44:21Z",
+    "pushed_at": "2026-11-25T21:19:19Z",
+    "last_commit_at": "2026-11-25T21:19:16Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "GPL-2.0",
@@ -1066,7 +1066,7 @@
     "archived": false
   },
   "hdslave/hdslaveOS": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-25T06:12:45Z",
     "last_commit_at": "2026-11-25T04:25:58Z",
@@ -1112,12 +1112,12 @@
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 244,
+    "stars": 243,
     "forks": 29,
-    "pushed_at": "2026-11-09T10:47:02Z",
-    "last_commit_at": "2026-11-09T10:35:32Z",
+    "pushed_at": "2026-11-25T14:00:03Z",
+    "last_commit_at": "2026-11-24T19:23:57Z",
     "contributors": 2,
-    "open_issues": 0,
+    "open_issues": 2,
     "license": null,
     "description": "Open source components used in inMusic software. Published in compliance with the terms of their various software licenses.",
     "default_branch": "main",
@@ -1311,7 +1311,7 @@
     "archived": false
   },
   "jacob-sabella/mpc-addin-sample-rack": {
-    "stars": 3,
+    "stars": 4,
     "forks": 0,
     "pushed_at": "2026-11-25T00:51:59Z",
     "last_commit_at": "2026-11-25T00:49:58Z",
@@ -1405,16 +1405,28 @@
   "jazzyrhythmer/mpc-sample-engine-ports": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-20T16:03:54Z",
-    "last_commit_at": "2026-11-20T16:03:52Z",
+    "pushed_at": "2026-11-25T20:17:20Z",
+    "last_commit_at": "2026-11-25T20:17:18Z",
     "contributors": 1,
     "open_issues": 1,
     "license": "AGPL-3.0",
     "description": "Engine source adaptations for RHYTHMER OS on MPC Sample, including Frodhes, Tenebrae and FMini-1. Original authors, names and licences retained.",
     "default_branch": "main",
     "readme_path": "README.md",
-    "latest_release": null,
+    "latest_release": {
+      "tag": "os-v0.3.0",
+      "published_at": "2026-11-25T19:59:08Z"
+    },
     "releases": [
+      {
+        "tag": "os-v0.3.0",
+        "name": "Engine ports for RHYTHMER OS 0.3.0",
+        "prerelease": false,
+        "published_at": "2026-11-25T19:59:08Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-engine-ports/releases/tag/os-v0.3.0",
+        "body": "Matching engine-port source for RHYTHMER OS 0.3.0.\n\n24 engine entries, including Amino (324 original presets) and Fizzik (31 original presets), plus 69 complete Rhythmer Kits. This source release follows the matching OS version. These adapters use the RHYTHMER host integration.\n\nDownload and installation: https://jazzyrhythmer.github.io/mpc-sample/installer/\nEngine collection, animations and audio: https://jazzyrhythmer.github.io/mpc-sample/#engines\nRelease film: https://jazzyrhythmer.github.io/mpc-sample/#update-030\n\nOriginal source references, developers and licences are retained in the repository and each release-ports source snapshot. Built on the work of the original engine authors, with Melodee by Kerem Kiliç (Ellic Studio) providing the OS foundation. Please consult each source project's licence before reuse.\n\nFree and open source. Early beta; software-validated, with physical-device validation pending.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.4.0-beta.3-r1",
         "name": "0.2.0-beta.3 r1 - workflow and Kit update",
@@ -1432,15 +1444,6 @@
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-engine-ports/releases/tag/v0.4.0-beta.3",
         "body": "# MPC Sample engine ports — 0.2.0-beta.3\n\nSharing the engine porting and integration work developed for RHYTHMER OS for MPC Sample. The original authors created the instruments and DSP; my contribution is adapting and optimizing the code for the hardware, connecting parameters and controls, and fitting the ports into the RHYTHMER workflow.\n\nThis source release includes current adapters, parameter contracts, original pinned sources, build guidance and retained credits/licences. Native control order/units, preset persistence, Plaits FM programs and selected-pad behavior have been updated alongside the matching OS.\n\n[Install the matching OS beta](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3) · [Explore the engines](https://jazzyrhythmer.github.io/mpc-sample/#engines) · [Build](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/BUILD.md) · [Original projects, credits and licences](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/THIRD_PARTY_NOTICES.md)\n\nThe OS has 20 track entries; Rhythmer Kit and Break are host features, not claims of new original synth DSP. Use the OS full SD package for installation; this SOURCE ZIP is for developers. SOURCE, MOVE-SOURCE and SUPPORT-SOURCE companions are also provided with the matching OS release.\n\nThanks to the original engine developers, the Melodee team and everyone sharing their work. Check each component’s licence before reuse. The restricted external Prophet/Elixir banks remain excluded. \n\nFree and open source. RHYTHMER OS — by Jazzy Rhythmer.\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.4.0-beta.1",
-        "name": "MPC Sample engine ports for Rhythmer OS 0.2.0-beta.1",
-        "prerelease": true,
-        "published_at": "2026-11-14T16:57:49Z",
-        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-engine-ports/releases/tag/v0.4.0-beta.1",
-        "body": "MPC Sample engine ports for **Rhythmer OS 0.2.0-beta.1**. Original names, pinned DSP sources, transitive dependencies and original credits are retained.\n\n[Install Rhythmer OS and the curated plugins](https://github.com/JazzyRhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.1) · [Build guidance](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/BUILD.md) · [Credits](https://github.com/JazzyRhythmer/mpc-sample-engine-ports/blob/main/THIRD_PARTY_NOTICES.md).\n\nThe source archive includes port adapters and original FM-1/Move DSP trees. The OS repository owns the UI, Rhythmer Kit catalogue, authored Prophet/Elixir presets, GEN and Break host integration. A generic standalone wrapper does not expose those host-side features by itself. External Sequential and Erica/Hrtl banks are excluded; original GPL Init states remain.\n\nThis is unofficial software with per-component licenses and no warranty. Offline host checks passed;  Download the complete OS SD package for installation, not this source archive.\n",
-        "truncated": false
       }
     ],
     "archived": false
@@ -1448,16 +1451,28 @@
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
     "stars": 16,
     "forks": 0,
-    "pushed_at": "2026-11-20T16:03:41Z",
-    "last_commit_at": "2026-11-20T16:03:38Z",
+    "pushed_at": "2026-11-25T21:08:58Z",
+    "last_commit_at": "2026-11-25T21:05:06Z",
     "contributors": 1,
     "open_issues": 2,
     "license": "AGPL-3.0",
     "description": "Free and open-source firmware for MPC Sample. 22 instrument entries, 36 Rhythmer Kits, sound design, GEN, Acid and Break. Built on Melodee.",
     "default_branch": "main",
     "readme_path": "README.md",
-    "latest_release": null,
+    "latest_release": {
+      "tag": "v0.3.0",
+      "published_at": "2026-11-25T19:52:03Z"
+    },
     "releases": [
+      {
+        "tag": "v0.3.0",
+        "name": "RHYTHMER OS 0.3.0 — 24 engines, 69 kits & MPC Sample 1.4",
+        "prerelease": false,
+        "published_at": "2026-11-25T19:52:03Z",
+        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.3.0",
+        "body": "RHYTHMER OS 0.3.0 — 24 engine entries, 69 complete kits and MPC Sample 1.4 support.\n\n## New sounds\n\n- **Amino**: wavetable synthesis with 324 original presets.\n- **Fizzik**: physical-modeling synthesis with 31 original presets.\n- **33 new Rhythmer Kits**: 32 sixteen-pad kits built from Weird Dreams’ original banks, plus one KrautDrums kit containing all 16 original voices. 69 complete kits in total.\n\n## Performance and workflow\n\nBreak PERF held effects, A/B switching and Return follow RHYTHMER OS for FM-1 more closely. Effects remain active while switching performance pages; performance-pad velocity no longer lowers the break’s level.\n\nMore consistent parameter groups, clearer selected-pad controls and sequencer lighting, and refinements to track switching, cancellation and Back navigation across GEN, Acid and Break. Preset restoration, parameter displays, control matching and save/recovery fixes are included.\n\n## Installation\n\n**Use `RHYTHMER-OS-0.3.0-SD.zip`, the full SD package.** The new plug-ins and catalogue must accompany the application. Back up the whole card and save projects before updating. Merge the supplied contents; preserve your own projects, recordings, samples and user sounds.\n\nSupported stock firmware: **1.3.0.12, 1.4.0.7 and 1.4.0.8**. An official firmware update is not required.\n\nOn stock **1.4**, enable **Developer Mode** under **SHIFT + Pad 8 (MIDI CONFIG) → Dev Enhancements (Beta)** before direct installation. The standalone installation uses the supplied root `autorun.sh`, `autorun/` and `Rhythmer/`. Accept the stock autorun prompt. On **1.3.0.12**, copy `autorun/` and `Rhythmer/` to the card root.\n\n**Boot-manager users:** preserve the manager’s root launcher and follow its version-specific instructions. This full SD ZIP is a standalone package, not a boot-manager app ZIP. It does not establish compatibility with every boot manager or firmware combination.\n\nOn 1.4, audio is 44.1 kHz; USB-camera screen mirroring is unavailable. USB audio and USB web access are separate features. No break recordings are bundled.\n\n[Installation guide](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Engine collection and audio](https://jazzyrhythmer.github.io/mpc-sample/#engines)\n\n## Verification and source\n\nEarly beta. This release is software-validated; physical-device installation has not been verified. Keep backups and try a copy of an existing project before relying on it.\n\nThe matching application source, engine-port sources, notices and checksums accompany the release. Each source project retains its own licence; consult it before reuse. The support-source archive provides the corresponding source for bundled support libraries. These support-library sources are unchanged from 0.2.0; the matching application and engine sources are in the separate 0.3.0 archives.\n\nBuilt on **Melodee by Kerem Kiliç (Ellic Studio)**, with thanks to the original engine authors and open-source communities. New engine sources: [Amino](https://github.com/klaine/amino), [Fizzik](https://github.com/filliformes/fizzik-move), [Weird Dreams](https://github.com/filliformes/weird-dreams-move), [KrautDrums](https://github.com/filliformes/krautdrums-move).\n\nFree and open source.\nRHYTHMER OS — by Jazzy Rhythmer\n\n\n## 0.3.0 package refresh — 26 November\n\nThe version remains 0.3.0. The full SD ZIP now includes a track-type layout correction and the current illustrated manual, including Mixer and Track Setup entry paths. Download the refreshed ZIP and its matching checksum when updating. Engine binaries and sound content are unchanged. The attached SOURCE ZIP and the default branch contain the matching revised source; the original v0.3.0 tag remains the initial release snapshot.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.2.0",
         "name": "RHYTHMER OS 0.2.0 — New sounds. Better flow.",
@@ -1474,15 +1489,6 @@
         "published_at": "2026-11-16T09:37:22Z",
         "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.3",
         "body": "RHYTHMER OS for MPC Sample — 0.2.0-beta.3.\n\nThe release version is **0.2.0-beta.3**. Use the **full SD ZIP** for installation; it includes the app and matching preset catalogue. Back up your card and preserve your own projects, presets and recordings. A same-version UPDATE is not automatically offered by the native updater.\n\n## Workflow\n\n- On native Sample Kit SOUND/TRIM, encoder Push opens TRACK TYPE if all 128 pads and layers are empty. SAMPLE KIT starts first-sample loading. If other pads contain samples, Push opens SAMPLES for the selected empty pad. Screen hints show both routes.\n- Loaded/layered pads, other editors, recording/Freeze guards, Break loop entry and contextual Note Repeat controls keep their existing jobs. Shift + Push cancels the browser; B1 goes up folders or exits at the root. Sample load Undo preserves other pads.\n- Preset lists and main PRESETS browsing wrap in both directions using the encoder or Minus/Plus. Folder lists wrap within the current folder. User Sound/User Kit remain included; absolute pot selection and existing load timing are unchanged.\n\n## Acid Engine\n\nThe four original Hortator Acid sounds are retained. Eight unmodified Aphex factory choices are also available: **Acid Squelch, Lead Scream, Whistle Lead, Resonant Spike, Acid Seq, Reso Bass, Filter Cry and Techno Pulse**. They use the original Aphex DSP, native filters and source edit parameters. Source identity and edits persist in projects and User Sound; Rhythmer Kit pad source/restore is also covered.\n\n## Validation\n\nARM64 build; 19 runtime unit tests; 290 track/input/navigation assertions; GEN/Acid/Break integration; audio self-test; 36,000 random surface moves; 430 UI previews with no text issues. Host regressions cover single instruments, 36 kits, engine/kit filters and 4,587 control round trips. All eight aliases match original Aphex control values and pass five-note output, project/User Sound and pad-source restore checks under ASan/UBSan for the host code. Original native DSP libraries are unchanged and not all are sanitizer-instrumented. Signed-update identity and tamper checks pass.\n\nThis is early beta software.  No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Manual](https://jazzyrhythmer.github.io/mpc-sample/manual/) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html)\n\nBased on Melodee by Kerem Kiliç (Ellic Studio) and the credited open-source engine projects. SOURCE, MOVE-SOURCE and SUPPORT-SOURCE provide corresponding source and notices.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.4.0-beta.3-hotfix.2",
-        "name": "RHYTHMER OS 0.2.0-beta.3 — Break workflow hotfix.2",
-        "prerelease": true,
-        "published_at": "2026-11-16T00:30:55Z",
-        "html_url": "https://github.com/jazzyrhythmer/mpc-sample-rhythmer-os/releases/tag/v0.4.0-beta.3-hotfix.2",
-        "body": "RHYTHMER OS for MPC Sample — 0.2.0-beta.3 / Break workflow hotfix.2.\n\nThe release version is **0.2.0-beta.3**. This separate release record identifies the matching installation files and corresponding source. The Sound / Kit save hotfix is included.\n\n## Break: load, find the controls, play\n\n- Loading or reloading source A makes a straight sixteen-chop pattern and stays in **BREAK GEN**, with **BRK PERF** selected. Push / B3 OPEN enters the performance pages.\n- While decoding, **B1 CANCEL** or **SHIFT + encoder Push** cancels track assignment. Other generator actions and knob cards wait until loading finishes. A cached decoded file may remain; a cancelled request cannot replace the track.\n- Source A/B completion does not reopen a dismissed menu or pull you away from another track. Replacing/deleting the target track continues to invalidate pending loads.\n- Reopen controls from the Break track: **SEQ / PATTERNS → SHIFT + B3 GEN → BREAK GEN → BRK PERF**. In BRK PERF, B1 GEN returns to BREAK GEN. BACK / Shift + Push returns to main GEN, then closes it.\n- **Pattern Hold** replaces the misleading LOOP HOLD label. It holds the internal generated pattern in LOOP mode, not audio sustain or track Freeze. The stored parameter and DSP behavior are unchanged. CHOP mode and zero variation can make the difference inaudible.\n- Grain / Splice / Slow explicitly describe stretched hits. With playback running, hold Pad 3 STRETCH on ROLLS, keep it held while paging to GRAIN, adjust the controls and release; recorded STRETCH works too. Pattern Hold is not required.\n- Rejected/undecodable files return to the owned browser for retry without replacing the previous instrument. A track frozen during decoding cancels assignment without a late Unfreeze dialog.\n- All six pages have clearer operating hints. SOURCE B requires a loaded B file; TRACK MIX changes the track mix rather than generating a pattern. RETURN clears Variation/Drift while keeping the selected A/B source.\n- General GEN also saves the Acid RNG stream with its Undo/Redo operation, keeping the generated notes and random state together. The generation algorithm and seed policy are unchanged.\n\n## Install and learn\n\nUse the **full SD ZIP**, verify its SHA-256 and back up the entire card first. The signed UPDATE ZIP is app-only and is not a first-install package; the native updater may not offer a same-version hotfix. Target: MPC Sample AC50 / stock firmware 1.3.0.12. No break recordings are bundled.\n\n[Download & installation](https://jazzyrhythmer.github.io/mpc-sample/installer/) · [Break navigation and six-page guide](https://jazzyrhythmer.github.io/mpc-sample/manual/#break-performance) · [Your first groove](https://jazzyrhythmer.github.io/mpc-sample/manual/quickstart.html#break-load)\n\nThe written manual and first-groove guide now match this hotfix. The existing tutorial film predates the load/menu change; its music and edited arrangement remain examples. Follow the current written navigation when screens differ. Random generation does not reproduce the edited example exactly.\n\n## Validation scope\n\nSoftware checks cover cancellation, A/B async ownership, current-track navigation, Undo/Redo, project save/reload, held STRETCH release after paging, CHOP/LOOP pattern hold, grain processing, existing track workflows, runtime tests, audio self-test, random surface inputs and native UI text/layout. Exact results and source identity are recorded in the validation receipt. Current software results: 19 runtime tests, 161 track-workflow assertions, three final fresh-process GEN/Acid/Break passes, 430 standard UI states with zero reported text issues, 12 × 3,000 random surface inputs, 16 original roll commands and 2,400 Acid reference cases. All 41 plug-in binaries and eight sample files are unchanged. Engine DSP, preset banks and serialized control IDs remain unchanged from the prior reviewed hotfix. Signatures, archive checksums and corresponding-source files are checked before publication.\n\n **\n\nBuilt on **Melodee by Kerem Kiliç (Ellic Studio)** and the work of the credited engine authors. Porting, integration and additions by jazzy rhythmer. Original licences and credits are retained in the repositories and corresponding SOURCE / MOVE-SOURCE / SUPPORT-SOURCE archives.\n\nPublished source commit: `fe3c15879686fea7ee0ce59515b2edbfc9a70b31`.\n",
         "truncated": false
       }
     ],
@@ -1603,10 +1609,10 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 77,
+    "stars": 79,
     "forks": 14,
-    "pushed_at": "2026-11-24T21:20:53Z",
-    "last_commit_at": "2026-11-24T21:17:47Z",
+    "pushed_at": "2026-11-25T19:02:37Z",
+    "last_commit_at": "2026-11-25T18:44:10Z",
     "contributors": 3,
     "open_issues": 26,
     "license": "AGPL-3.0",
@@ -1614,10 +1620,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.8.2",
-      "published_at": "2026-11-24T21:21:38Z"
+      "tag": "v0.8.3",
+      "published_at": "2026-11-25T19:03:24Z"
     },
     "releases": [
+      {
+        "tag": "v0.8.3",
+        "name": "Melodee 0.8.3",
+        "prerelease": false,
+        "published_at": "2026-11-25T19:03:24Z",
+        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.8.3",
+        "body": "Melodee 0.8.3 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.8.2:** copy `Melodee-MPC-Sample-v0.8.3.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.8.3?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **Firmware 1.4.0.8:** 0.7.1 and earlier do not start on it. Update Melodee first, then the firmware. Already on 1.4.0.8: install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card. Moving from 1.3.0.12 to 1.4, copy the zip's `autorun.sh` to the top level of the card too.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier, from 0.1.0, or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**, **1.4.0.7** or **1.4.0.8**.\n\nBack up `Melodee/Projects` before you update.\n\n## Changed: read this first\n\n- **Sequences keep track mutes.** A track you mute (**MUTE** + pad) is kept muted in the sequence in hand. Launching a sequence mutes and unmutes its tracks as it keeps them, at the next bar (at once when stopped). A track the sequence keeps nothing for keeps its mute. Projects from before keep each track's mute as it was saved in every sequence.\n\n## New\n\n- **Copy a sequence.** On Sequences, press **SHIFT** + **ERASE**, then the sequence to copy, then where it goes. The copy gets the name, tempo, colour and mutes. Each pattern it keeps is copied into the track's next free pattern, so the two sequences can be edited apart. A track with no free pattern keeps the same pattern in both. One undo.\n- **Clear one lock.** Hold a step, then hold **ERASE** and turn the knob of the lock. The step's notes and its other locks stay.\n- **Plug-in pages** can take **MUTE** and **ERASE** taps (`keys()` in `melodee.screen-host/2`, see docs/PLUGIN_SCREENS.md).\n\n## Fixed\n\n- **MIDI tracks after Play** (#59): a MIDI track's notes no longer start bars late after Play, Locate or MTC. They play from the first bar.\n- **Plug-ins at exit:** a CLAP or VST2 plug-in built with a static C++ runtime no longer crashes Melodee when it is unloaded.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.8.2",
         "name": "Melodee 0.8.2",
@@ -1634,15 +1649,6 @@
         "published_at": "2026-11-24T19:16:14Z",
         "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.8.1",
         "body": "Melodee 0.8.1 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.8.0:** copy `Melodee-MPC-Sample-v0.8.1.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.8.1?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **Firmware 1.4.0.8:** 0.7.1 and earlier do not start on it. Update Melodee first, then the firmware. Already on 1.4.0.8: install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card. Moving from 1.3.0.12 to 1.4, copy the zip's `autorun.sh` to the top level of the card too.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier, from 0.1.0, or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**, **1.4.0.7** or **1.4.0.8**.\n\nBack up `Melodee/Projects` before you update.\n\n## Fixed\n\n- **Echo and reverb tails.** An effect plug-in that reports a tail keeps running for that tail after its last sound, up to 10 seconds, instead of stopping after half a second of silence. Echoes with long gaps between repeats play out. A tail that a preset changes counts from the change.\n- **Presets on a plug-in at rest.** A preset picked on **PRESETS** for a sleeping CLAP plug-in takes effect at once, without waiting for a note.\n- **A sustain pedal left down** no longer keeps a plug-in instrument running in silence: All Sound Off (CC 120) and Reset All Controllers (CC 121) lift it.\n\n## Faster\n\n- The screen copies the kits and the pattern overviews only after a change, not for every frame (about 0.8 MB a frame before).\n- Plug-ins take less work on every block: their load is measured on one block in 16, their output level while it is copied, and a CLAP plug-in's unused inputs are cleared once instead of every block.\n- 32-bit VST2 plug-ins: when a plug-in takes longer than a short wait, Melodee sleeps until it answers instead of keeping a core busy. An idle plug-in no longer wakes ten times a second.\n- The controls' lights no longer go through all 8,192 sample slots every 5 ms.\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.8.0",
-        "name": "Melodee 0.8.0",
-        "prerelease": false,
-        "published_at": "2026-11-24T18:34:32Z",
-        "html_url": "https://github.com/keremimo/melodee-sample/releases/tag/v0.8.0",
-        "body": "Melodee 0.8.0 for the Akai MPC Sample: a 16-track groovebox that runs on the MPC in place of the stock app, from the microSD card.\n\n## Update\n\n- **From 0.2.x to 0.7.1:** copy `Melodee-MPC-Sample-v0.8.0.zip` to the card, or send it from the web page at http://melodee.local. Melodee asks *Update to v0.8.0?*, saves, installs and restarts. On firmware 1.4.0.7 this works from 0.6.6.\n- **Firmware 1.4.0.8:** 0.7.1 and earlier do not start on it. Update Melodee first, then the firmware. Already on 1.4.0.8: install by hand as in [Install](https://github.com/keremimo/melodee-sample#install): turn on **Developer Mode**, unzip, and copy the `autorun` folder and the `autorun.sh` file to the top level of the card. Moving from 1.3.0.12 to 1.4, copy the zip's `autorun.sh` to the top level of the card too.\n- **On firmware 1.4.0.7 from 0.6.5 or earlier, from 0.1.0, or a new card:** install by hand as in [Install](https://github.com/keremimo/melodee-sample#install).\n- **With SampleBoot:** replace Melodee's folder in `autorun/mods/` with the zip's `autorun` folder.\n\nRequires an MPC Sample on firmware **1.3.0.12**, **1.4.0.7** or **1.4.0.8**.\n\nBack up `Melodee/Projects` before you update. Projects from earlier versions open as they were: each track keeps its level, pan and sends, and its new strip starts flat.\n\n## Changed: read this first\n\n- **The mixer replaces Tracks and Sends.** **PAD FX** + **KNOB FX** opens the new mixer (see below). The Menu's pad 10 (**SENDS**) is empty.\n- **Stage's MIX and SENDS are gone.** A track's level, pan and sends are on the mixer; **B3** on Stage is **FX**. On a kit, **B3** still has **SENDS** for the pads' own sends; the kit's own sends (**KIT SEND**) are on the mixer.\n- **Track speed** is on Patterns: **SHIFT** + **K3** (**SPEED**). It was **SHIFT** + **K1** on Tracks. The metronome level, which **SHIFT** + **K3** set there before, is on Tempo.\n- **CPU:** the Menu's header shows how much of the processor the tracks use and the selected track's share. Tracks showed it per track.\n- **Plug-in tracks have no separate Edit page.** Picking a plug-in opens Stage on **EDIT**, the third page under **B1**; a plug-in's own screen is **PANEL**, the page before. Hold **SHIFT** on a **B1** page for the plug-in's keys: **B1** (**PLUG-INS**) the picker, **B2** (**PRESETS**) the preset list, **B3** (**TRANSPORT**) whether it hears Play and Stop.\n\n## New\n\n### Mixer\n\n- Press **PAD FX** and **KNOB FX** together, or pad 9 (**MIXER**) on the Menu's **GO**. The selected channel is the wide card in the middle with its meter, fader, pan, **M** and **S**; its neighbours are narrow strips with their meters and faders. Pads select a channel, the encoder brings the next one to the middle, the fader sets its level.\n- Every track plays through its effect chain, then its **strip**: trim, a nine-band EQ, a compressor and width. Then its level and pan.\n- **B1** (**SENDS**): sends A–C on **K1**–**K3**; **+** for pan, output and send D. **B1** again (**FX**): the channel's effect chain in the card. Push edits the lit effect on its FX page, **MUTE** turns it off or on, **ERASE** removes it, **SHIFT** + **ERASE** copies it, and Push on the **+** opens the effect picker.\n- **B2** (**EQ**): nine bands, 63 Hz to 16 kHz, ±12 dB, drawn as a curve. **K1**–**K3** set three at a time; **B2** again for the next three. Behind the curve is what the channel plays now.\n- **B3** (**COMP**): **K1** amount, **K2** ratio, **K3** speed; **SHIFT**: key, mix, gain. The picture shows the curve with the sound on it and the gain reduction.\n- **Eight submixes.** **OUTPUT** (**SENDS**, second row) sends a track to the master or to submix 1–8. A submix has its own chain, strip, level, pan, mute, solo and four sends; its solo solos the tracks in it.\n- **PAD BANK** shows the second row: the submixes on pads 1–8, the buses A–D on pads 9–12, the input on pad 15 and the master on pad 16. Each has an EQ and a compressor; buses and the master have their chains.\n- **The input** (pad 15): **B1** (**INPUT**) **K1** trim, **K2** monitor (**OFF**, **AUTO**, **ON**), **K3** record **DRY** or **WET**: takes before or after the input's strip.\n- **The master** (pad 16): **B3** is the master compressor, as **SHIFT** + **Pad 5**.\n- In mute mode, a pad mutes its channel and **SHIFT** + pad solos it. Pads light in their channel's colour, as bright as its level.\n- **SHIFT** + **KNOB FX** opens the selected channel's full effect page; **B1** (**MIXER**) comes back.\n- With **SEQ RECORD** on, the selected track's level, pan, sends and strip are recorded as Motion lanes.\n- **Pad outputs.** As on MPC 3, a kit pad can play into a submix instead of the kit: on the kit's Stage **SENDS** page, hold **SHIFT** and turn **K2** (**OUTPUT**), **KIT** or **SUB 1**–**SUB 8**. The pad goes there after its own effects, volume and pan, at the kit's level, pan and mute. **STEMS** puts it in the submix's WAV, and an **MPC 3** export sends it to the same submix. A kit with pads sent to submixes cannot be frozen.\n- In Basic, the mixer has **SENDS** with send A and pan.\n- See [The mixer](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/mixer-and-effects.md#the-mixer).\n\n### USB out\n\n- **Settings** (**AUDIO**) > **USB out** chooses what a computer records on inputs 3 to 18 after the mix: **Tracks** (as before: tracks 1–16, one mono input each) or **Submixes** (submixes 1–8 in stereo, 3–4 submix 1 up to 17–18 submix 8). Changing it keeps the computer connected.\n\n### Export\n\n- **STEMS writes each kit pad apart.** Each pad the song plays gets a WAV of its own, in a folder for each kit beside the kit's own WAV: `03 Drums pads/A01 Kick.wav`. A pad's WAV is the pad after its own effects, volume and pan, at the kit's level, pan and mute; with no effects or strip on the kit, its pads add up to the kit's WAV. A silent pad gets none, a frozen kit's pads are not split. When there are more stems than one play of the song can write to the card, **STEMS** plays the song again for the rest of the pads (*Stems: pass 2 of 3*), with the same hits.\n- **STEMS** also writes one WAV for each submix the tracks play into, named after the submix.\n- Stems are written to the card in large blocks from a thread of their own, so more of them keep up as the song plays.\n- An **MPC 3** export sends each track to the same submix in MPC 3, with the submix's level, pan, mute and solo.\n- **MPC 3** and **LIVE SET** exports say *mixer settings left out* when the project has mixer settings they cannot carry, such as the strips.\n- See [Export](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/song.md#export).\n\n### Plug-ins\n\n- **Companion screens.** A VST2 plug-in can get a page of its own without changing the plug-in: copy a screen's folder into `Melodee/Plugin Screens/` on the card, beside the plug-in as it was released. It shows on Stage's **PANEL** when the plug-in has no screen of its own. Melodee checks that every parameter the screen uses is where it expects and otherwise shows its own pages, with the reason in `Melodee/Plugin Screens/problems.txt`. The screen runs in a process of its own: one that stops working is closed, Melodee's pages come back and the plug-in plays on. Projects never need the screen. See [A screen installed apart from the plug-in](https://github.com/keremimo/melodee-sample/blob/main/docs/guide/plug-ins.md#a-screen-installed-apart-from-the-plug-in); screen makers: [Companion screens](https://github.com/keremimo/melodee-sample/blob/main/docs/PLUGIN_COMPANIONS.md).\n- A CLAP plug-in whose preset locations have a `/` in their names lists them as folders on **PRESETS**.\n\n### Browsing\n\n- **The browsers start at the top of the card.** The first time you open the sample browser or the project list, it opens at the top of the card, where most keep their own folders, instead of in Melodee's own `Melodee/Samples` or `Melodee/Projects`. After that it opens where you left it. The sample browser keeps a folder for kits, keygroups, audio tracks and the rest apart. The project list still opens on the open project the first time.\n\n### Firmware 1.4.0.8\n\n- Melodee runs and starts from the card on firmware 1.4.0.8, as on 1.4.0.7: turn on **Developer Mode** and press Yes when the stock app asks to run the card's autorun script.\n",
         "truncated": false
       }
     ],
@@ -1735,8 +1741,8 @@
   "keremimo/sample-base": {
     "stars": 2,
     "forks": 1,
-    "pushed_at": "2026-11-24T18:33:29Z",
-    "last_commit_at": "2026-11-24T17:13:59Z",
+    "pushed_at": "2026-11-25T19:02:22Z",
+    "last_commit_at": "2026-11-25T18:16:28Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1871,8 +1877,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 8,
     "forks": 1,
-    "pushed_at": "2026-11-25T04:38:39Z",
-    "last_commit_at": "2026-11-25T04:38:37Z",
+    "pushed_at": "2026-11-25T13:17:51Z",
+    "last_commit_at": "2026-11-25T13:17:48Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1961,7 +1967,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 31,
+    "stars": 32,
     "forks": 2,
     "pushed_at": "2026-11-24T21:33:13Z",
     "last_commit_at": "2026-11-24T21:33:11Z",
@@ -2009,8 +2015,8 @@
   "pzuzarte/mpc-grid": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-25T05:12:44Z",
-    "last_commit_at": "2026-11-25T05:12:43Z",
+    "pushed_at": "2026-11-25T16:26:29Z",
+    "last_commit_at": "2026-11-25T16:26:27Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -2024,8 +2030,8 @@
   "pzuzarte/mpc-stemloop": {
     "stars": 5,
     "forks": 0,
-    "pushed_at": "2026-11-25T05:49:26Z",
-    "last_commit_at": "2026-11-25T05:47:18Z",
+    "pushed_at": "2026-11-25T16:34:30Z",
+    "last_commit_at": "2026-11-25T16:23:58Z",
     "contributors": 1,
     "open_issues": 1,
     "license": null,
@@ -2175,7 +2181,7 @@
     "pushed_at": "2026-11-23T22:28:04Z",
     "last_commit_at": "2026-11-23T22:27:10Z",
     "contributors": 1,
-    "open_issues": 46,
+    "open_issues": 48,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
