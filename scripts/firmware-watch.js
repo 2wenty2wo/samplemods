@@ -9,7 +9,7 @@ export const LABEL = 'firmware-watch';
 
 const CLOSE_COMMENT = 'No firmware mentions to review.';
 const GUIDANCE =
-	'Confirm the maker states support (not a \'does not work\' warning), then add the build to `firmware` as `1.x.x.x (vX+)`. False alarm? Add it to `firmware_ignore`.';
+	'Confirm the maker states support (not a \'does not work\' warning), then add the build to `firmware` as `1.x.x.x (vX+)`, keeping the builds already listed (a new build never replaces 1.3.0.12). False alarm? Add it to `firmware_ignore`.';
 const BUILD_RE = () => /\b(1\.[3-9]\.\d+\.\d+)\b/g;
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
