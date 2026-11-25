@@ -9,6 +9,6 @@ tags:
   - development
   - synth
 install: sd-card
-firmware: 1.3.0.12, 1.4.0.7 (source only)
+firmware: 1.3.0.12, 1.4.0.7 (source only), 1.4.0.8 (source only)
 runs_on: [device]
 audience: [developer]
