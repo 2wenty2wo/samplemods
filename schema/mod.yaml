@@ -89,6 +89,13 @@ properties:
   firmware:
     type: string
     description: Tested MPC Sample firmware version
+  firmware_ignore:
+    type: array
+    uniqueItems: true
+    description: Firmware builds mentioned upstream that should not be flagged for review
+    items:
+      type: string
+      pattern: '^1\.[3-9]\.\d+\.\d+$'
   install:
     type: string
     enum:
