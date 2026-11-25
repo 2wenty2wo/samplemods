@@ -116,6 +116,10 @@ export function excludeKnown(candidates, { catalogRepos, starRepos, catalogRepo 
 		const key = normalizeRepo(candidate.repo);
 		if (seen.has(key)) continue;
 		seen.add(key);
+		if (key.split('/')[0] === self.split('/')[0] && key !== self) {
+			excluded.push({ ...candidate, why: "maintainer's own repository" });
+			continue;
+		}
 		if (key === self) {
 			excluded.push({ ...candidate, why: 'catalog repository itself' });
 			continue;

@@ -58,7 +58,8 @@ const kept = excludeKnown(
 		...authors,
 		{ repo: 'fomoPhil/mp-doom', description: 'DOOM', stars: 10, created: '2026-01-01', reason: 'search: x', html_url: 'https://github.com/fomoPhil/mp-doom' },
 		{ repo: 'someone/starred', description: 'x', stars: 1, created: '2026-11-11', reason: 'search: x', html_url: 'https://github.com/someone/starred' },
-		{ repo: '2wenty2wo/samplemods', description: 'catalog', stars: 0, created: '2026-11-11', reason: 'search: x', html_url: 'https://github.com/2wenty2wo/samplemods' }
+		{ repo: '2wenty2wo/samplemods', description: 'catalog', stars: 0, created: '2026-11-11', reason: 'search: x', html_url: 'https://github.com/2wenty2wo/samplemods' },
+			{ repo: '2wenty2wo/mpc-boot-thingy', description: 'test copy', stars: 0, created: '2026-11-13', reason: 'search: x', html_url: 'https://github.com/2wenty2wo/mpc-boot-thingy' }
 	],
 	{
 		catalogRepos: new Set(['fomophil/mp-doom']),
@@ -69,6 +70,7 @@ const kept = excludeKnown(
 assert.deepEqual(kept.candidates.map((c) => c.repo).sort(), ['Trinzik-Labs2/ImageBoot', 'fomoPhil/mpselector']);
 assert.ok(kept.excluded.some((e) => e.repo === 'fomoPhil/mp-doom' && /catalog/i.test(e.why)));
 assert.ok(kept.excluded.some((e) => e.repo === 'someone/starred' && /star list/i.test(e.why)));
+assert.ok(kept.excluded.some((e) => e.repo === '2wenty2wo/mpc-boot-thingy' && /maintainer/i.test(e.why)));
 
 const previous = [
 	'- [x] [old/done](https://github.com/old/done): gone · ★1 · created 2026-10-01 · search: x',
