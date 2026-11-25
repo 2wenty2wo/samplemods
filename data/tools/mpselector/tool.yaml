@@ -1,0 +1,19 @@
+name: MP Selector
+description: >-
+  One card, many firmwares. A microSD launcher for the MPC Sample: turn the dial to pick which app
+  or mod runs (Cover Flow and Library views). Currently opens the stock app on 1.4.0.8; other covers
+  are added by hand.
+repo: fomoPhil/mpselector
+author: fomoPhil
+website: https://philwoolley.com/mpselector/
+tags:
+  - boot-menu
+  - launcher
+install: sd-card
+firmware: 1.4.0.8
+status: beta
+released: "2026-11-25"
+runs_on: [device]
+audience: [musician, player, developer]
+price: free
+source: open
