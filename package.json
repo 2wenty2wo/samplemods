@@ -11,7 +11,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "validate": "node scripts/validate.js",
-    "test": "node scripts/validate.js && node scripts/render-markdown.test.js && node scripts/catalog.test.js && node scripts/catalog-contributors.test.js && node scripts/enrich.test.js && node scripts/enrich-404-issue.test.js && node scripts/firmware-watch.test.js && node scripts/compat.test.js && node scripts/check-star-list.test.js && node scripts/check-pr-files.test.js && node scripts/watch.test.js && node scripts/suggest-status.test.js && node scripts/enrich-catchup.test.js && node scripts/seo.test.js && node scripts/rss.test.js && node scripts/latest-releases-strip.test.js && node scripts/format-date.test.js",
+    "test": "node scripts/validate.js && node scripts/render-markdown.test.js && node scripts/catalog.test.js && node scripts/catalog-contributors.test.js && node scripts/enrich.test.js && node scripts/enrich-404-issue.test.js && node scripts/firmware-watch.test.js && node scripts/discover.test.js && node scripts/compat.test.js && node scripts/check-star-list.test.js && node scripts/check-pr-files.test.js && node scripts/watch.test.js && node scripts/suggest-status.test.js && node scripts/enrich-catchup.test.js && node scripts/seo.test.js && node scripts/rss.test.js && node scripts/latest-releases-strip.test.js && node scripts/format-date.test.js",
     "enrich": "node scripts/enrich.js",
     "watch": "node scripts/watch.js",
     "postbuild": "node scripts/seo.test.js --require-build"
