@@ -2,8 +2,8 @@
 
 **A Rust SDK for building Akai MPC Sample mods.**
 
-The universal mod SDK for the Akai MPC Sample 1.3.0.12, written in Rust
-(edition 2024, MSRV 1.97). The SDK is an ordinary Cargo crate: a mod is a Rust
+The universal mod SDK for the Akai MPC Sample 1.3.0.12 and 1.4.0.8, written
+in Rust (edition 2024, MSRV 1.97). The SDK is an ordinary Cargo crate: a mod is a Rust
 `cdylib`, and the build script invokes `cargo` — no C or C++ is compiled.
 
 ## Built in Rust
@@ -31,7 +31,7 @@ See [the hands-on guide](docs/README.md) and the
 
 It owns everything that is not a feature:
 
-* **Firmware** — find the loaded app, verify the 59 fingerprint words, and map
+* **Firmware** — find the loaded app, verify the 63 fingerprint words, and map
   the image (`image`, `loader`).
 * **Native sample seed** — create a silent, app-owned stereo sample in memory
   for Extract when no pad provides a source. The SDK retains one seed for the
@@ -60,15 +60,29 @@ The current checkout exposes hardware identifiers in `event::button` and `event:
 
 ## Install
 
-Install the published crate from [crates.io](https://crates.io/crates/mpc-sample-sdk):
+The two-firmware port is available from Git and has not been released to
+[crates.io](https://crates.io/crates/mpc-sample-sdk) yet. Select the firmware
+in your mod's `Cargo.toml`; the selection is made at compile time.
+
+For **MPC Sample 1.3.0.12**, use the default `fw-1-3` feature:
 
 ```toml
 [dependencies]
-mpc-sample-sdk = "0.8"
+mpc-sample-sdk = { git = "https://github.com/ioma8/mpc-sample-sdk.git", rev = "5bd56a7" }
 ```
 
-Use a Git dependency only when you need an unreleased change from the SDK
-repository.
+For **MPC Sample 1.4.0.8**, disable the default feature and select `fw-1-4`:
+
+```toml
+[dependencies]
+mpc-sample-sdk = { git = "https://github.com/ioma8/mpc-sample-sdk.git", rev = "5bd56a7", default-features = false, features = ["fw-1-4"] }
+```
+
+To switch versions, change the dependency declaration and rebuild the mod.
+Enable exactly one firmware feature: enabling both or neither fails the build.
+The loader checks the app's fingerprints and refuses to install a mod built for
+a different firmware. See [Firmware and the loader](docs/17-firmware.md) for
+details.
 
 A mod builds as a `cdylib`:
 
@@ -93,7 +107,8 @@ The hands-on guide is in [`docs/`](docs/README.md). It has one short page per
 topic — buttons, pads, encoder, knobs, MIDI, screens, drawing, samples, audio, pad
 lighting, tasks, Extract, WAV files, state, firmware, build/install and the
 [emulator loop](docs/23-autonomous-development.md) — and every page ends with a
-code example.
+code example. To pull the stock app out of the official updater, see
+[APP-EXTRACTION.md](APP-EXTRACTION.md).
 
 ## A minimal mod
 

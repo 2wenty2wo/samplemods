@@ -10,13 +10,15 @@ git clone --recurse-submodules https://github.com/hdslave/hdslave-MPCSample-Synt
 
 <sub>Already cloned without <code>--recurse-submodules</code>? Run <code>git submodule update --init --recursive</code> inside the folder.</sub>
 
-> **Desktop CLAP builds (macOS & Windows):** Every plug-in repository below includes both its MPC Sample version and a separate desktop CLAP build in its `mac-clap/` folder (all MPC screens on one interactive panel + MIDI Learn). [Slink](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.0) and [Reverie](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1) have prebuilt desktop downloads.
+> **Desktop CLAP builds (macOS & Windows):** Every plug-in repository below includes both its MPC Sample version and a separate desktop CLAP build in its `mac-clap/` folder (all MPC screens on one interactive panel + MIDI Learn). [Slink](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.8.0) and [Reverie](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1) have prebuilt desktop downloads.
 
 ---
 
 ## hdslaveOS
 
-[**hdslaveOS**](https://github.com/hdslave/hdslaveOS) (formerly `melodee-hdslave`) is hdslave's performance-tuned fork of [Melodee](https://github.com/keremimo/melodee-sample) by Kerem Kiliç (Ellic Studio), tracking Melodee v0.8.2. It cuts idle CPU and display overhead while staying bit-identical in audio, and powers the custom plug-in screens shown below. For the Anvil K-knob fix, download the OS-only ZIP or the complete installer from [hdslaveOS 0.8.2-hdslave.3](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.2-hdslave.3). The complete installer and the [standalone 11-plug-in pack](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.2-slink.2) include Slink 0.6.1 and Reverie 0.6.1. For an existing setup that only needs the new silver panel, use the [Slink-only MPC download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1).
+hdslaveOS is hdslave's performance-tuned fork of Melodee by Kerem Kiliç (Ellic Studio), tracking Melodee v0.8.3. It cuts idle CPU and display overhead and powers the custom plug-in screens below. [hdslaveOS](https://github.com/hdslave/hdslaveOS) · [Melodee](https://github.com/keremimo/melodee-sample)
+
+Choose the complete SD-card installer for hdslaveOS and all eleven plug-ins, or the standalone pack for the plug-ins alone. Both include **Slink 0.6.3** and **Reverie 0.6.3**. The manifest lists all eleven source revisions and file hashes. [Complete installer and OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/latest) · [11-plug-in pack](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/latest)
 
 hdslaveOS 0.8.1 screenshots.
 
@@ -33,14 +35,14 @@ hdslaveOS 0.8.1 screenshots.
   </tr>
 </table>
 
-- **Efficiency & power**: Less wasted work on the MPC Sample's Cortex-A55, plus **CPU speed**, **Refresh**, **Dim after**, and **Pad brightness** controls.
-- **Custom plug-in screens**: Uses Melodee 0.7’s `melodee.screen/1` extension. The synths and drum machines have interactive panels on Stage, and Cortex Filter also has an FX rack strip.
+- **Efficiency & power**: Less wasted work on the MPC Sample's Cortex-A55, plus **CPU speed**, **Display refresh**, **Dim after**, and **Pad brightness**. Display refresh caps the built-in display during playback and input.
+- **Custom plug-in screens**: The synths and drum machines have interactive panels on Stage, and Cortex Filter also has an FX rack strip. Plug-in pages that use the new screen host extension can handle **MUTE** and **ERASE** taps.
 - **Playability**: Wakes sleeping plug-ins when you turn a knob, keys the master compressor's Sidechain from a plug-in's second output (Foundry's kick-only **SC Key**), steps a bar at a time with **SHIFT + encoder** on Step Edit, and lights kit pads more vividly.
 - **Non-destructive**: Runs from the microSD card (`autorun/melodee` and `Melodee/`), licensed AGPL-3.0 like Melodee. See [hdslaveOS/README.md](https://github.com/hdslave/hdslaveOS) for build and install details.
 
 ### Mixer
 
-Mixer opens on the channel strips in 0.8.2. Hold **+** to open the selected channel’s card and **−** to return to the strips.
+Mixer opens on the channel strips. Hold **+** to open the selected channel’s card and **−** to return to the strips.
 
 <p align="center">
   <img src="docs/previews/hdslave-mixer.png" alt="Four views of the hdslaveOS mixer showing submix sends, insert effects, channel EQ, and compression" width="760">
@@ -59,7 +61,7 @@ Mixer opens on the channel strips in 0.8.2. Hold **+** to open the selected chan
     <td>
       <h3><a href="https://github.com/hdslave/hdslave-Slink-Synth">Slink</a></h3>
       <p><strong>303-style acid bass synthesizer + TB-3PO generative sequencer.</strong></p>
-      <p>Pairs a classic 303 diode ladder / Twin Peak / 18 dB bass voice with a tick-accurate port of Ornament &amp; Crime's Hemisphere <b>TB-3PO</b> acid pattern generator (same seed, density, and scale produce the exact module pattern). Its silver <b>Press Plate</b> screen has a wide chrome Slink title, three satin-chrome knobs, and a grid showing notes, gates, accents, and slides for up to 32 steps. Switch to <b>Blacklight Transfer</b> to see the pitch roll. On freesp16 the six encoders follow the selected bank, and you can audition steps on the pitch ribbon. <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.1">Download Slink 0.6.1 for MPC Sample</a> · <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.6.0">Downloads for freesp16, macOS and Windows</a>.</p>
+      <p>Pairs a classic 303 diode ladder / Twin Peak / 18 dB bass voice with a tick-accurate port of Ornament &amp; Crime's Hemisphere <b>TB-3PO</b> acid pattern generator (same seed, density, and scale produce the exact module pattern). Its silver <b>Press Plate</b> screen has a wide chrome Slink title, three satin-chrome knobs, and a grid showing notes, gates, accents, and slides for up to 32 steps. Switch to <b>Blacklight Transfer</b> to see the pitch roll. The freesp16 Thorn Crown panel has direct step editing, a dedicated Slide switch, and a Clock ruler that shows swing. <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.8.0">Download Slink 0.8.0 for MPC Sample, freesp16, macOS and Windows</a> · <a href="https://github.com/hdslave/hdslave-Slink-Synth/blob/v0.8.0/docs/screen.md#thorn-crown-on-freesp16">freesp16 gallery</a>.</p>
     </td>
   </tr>
   <tr>
