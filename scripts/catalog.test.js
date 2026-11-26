@@ -212,7 +212,7 @@ try {
 	assert.match(details.external.readme_html, /<h2>Local About<\/h2>/);
 	assert.match(details.external.readme_html, /https:\/\/example.com\/guide.pdf/);
 	assert.doesNotMatch(details.external.readme_html, /script|iframe|unsafe|Stale GitHub/);
-	assert.deepEqual(details.external.releases, []);
+	assert.deepEqual(details.external.releases.map(({ tag, published_at, prerelease }) => ({ tag, published_at, prerelease })), [{ tag: '0.15.2', published_at: '2026-11-07', prerelease: false }], 'a hand-kept version becomes one release row');
 	assert.match(details.host.readme_html, /Local host about/, 'about.md is preferred over a mirrored README');
 	assert.equal(details.host.readme_from_repo, false);
 	assert.equal(details.external.readme_from_repo, false);
@@ -237,7 +237,7 @@ try {
 	assert.equal(externalPage.mod.stars, null);
 	assert.equal(externalPage.mod.contributors, null);
 	assert.equal(details.external.readme_html, externalPage.mod.readme_html);
-	assert.deepEqual(externalPage.mod.releases, []);
+	assert.deepEqual(externalPage.mod.releases, details.external.releases);
 	write('watch.json', JSON.stringify({
 		external: {
 			url: 'https://sourceforge.net/projects/mpcsimple/rss?path=/',

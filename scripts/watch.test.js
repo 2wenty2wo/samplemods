@@ -7,6 +7,7 @@ import {
 	diffPageWatchLines,
 	extractPageWatchText,
 	fingerprint,
+	manualReleases,
 	pageWatchFingerprint,
 	pageWatchChangedIssueTitle,
 	pageWatchIssueBody,
@@ -355,5 +356,16 @@ try {
 }
 
 assert.match(pageWatchMissingIssueTitle(pageEntry, 'https://sampleboot.com/#works-with'), /not found$/);
+
+// Entries without a repo: feed items win; otherwise one row from version/released. Betas are pre-releases.
+const feedRows = manualReleases({ website: 'https://x.test' }, [{ title: '/MPC-Simple-1.0-Beta-10.zip', published_at: '2026-11-24T04:06:03Z', html_url: 'https://dl.test/b10' }]);
+assert.equal(feedRows.length, 1);
+assert.equal(feedRows[0].tag, '1.0 Beta 10');
+assert.equal(feedRows[0].prerelease, true);
+const manualRows = manualReleases({ version: '0.1.93 Beta', released: '2026-11-25', website: 'https://getdfos.com/' }, []);
+assert.deepEqual(manualRows.map(({ tag, published_at, html_url, prerelease }) => ({ tag, published_at, html_url, prerelease })), [{ tag: '0.1.93 Beta', published_at: '2026-11-25', html_url: 'https://getdfos.com/', prerelease: true }]);
+assert.equal(manualReleases({ version: '1.01', website: 'https://p.test' }, [])[0].prerelease, false);
+assert.equal(manualReleases({ version: 'r30d-beta3' }, [])[0].prerelease, true);
+assert.deepEqual(manualReleases({ website: 'https://none.test' }, []), []);
 
 console.log('Watch checks passed: RSS channel dates ignored, first-item change, JSON, decideWatchUpdate, HTML hash, no-op runs, alert retry, page watch extract/diff.');

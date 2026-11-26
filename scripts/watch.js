@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readEntries } from './catalog.js';
+import { releaseDisplayLabel } from '../src/lib/release-label.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const STATE_PATH = path.join(root, 'data', 'watch.json');
@@ -68,6 +69,30 @@ export function deriveVersionFromTitle(title) {
 	const digitIdx = stem.search(/\d/);
 	if (digitIdx === -1) return stem;
 	return stem.slice(digitIdx).replace(/-+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Release rows for an entry without a repo: its watch feed items, or else one row from the
+ * hand-kept version/released. Alpha, beta and rc versions count as pre-releases.
+ * @param {Record<string, any>} raw
+ * @param {Array<Record<string, any>>} items
+ */
+export function manualReleases(raw, items) {
+	const rows = items.map((item) => {
+		const rawName = String(item.title ?? '').trim().replace(/^\/+/, '');
+		const tag = deriveVersionFromTitle(item.title ?? '');
+		return { tag, name: rawName || tag, published_at: item.published_at ?? null, html_url: item.html_url ?? raw.website ?? null };
+	}).filter((row) => row.tag);
+	if (!rows.length && raw.version) {
+		const tag = String(raw.version);
+		rows.push({ tag, name: tag, published_at: raw.released ?? null, html_url: raw.website ?? null });
+	}
+	return rows.map((row) => ({
+		...row,
+		label: releaseDisplayLabel(row.tag, row.name),
+		prerelease: /(?:^|[\s._-])(?:alpha|beta|rc)/i.test(row.tag),
+		body_html: ''
+	}));
 }
 
 /**

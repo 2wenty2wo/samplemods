@@ -6,7 +6,7 @@ import { releaseDisplayLabel } from '../src/lib/release-label.js';
 import { readEntries } from './catalog.js';
 import { readSampleBootCompat } from './compat.js';
 import { renderMarkdown } from './render-markdown.js';
-import { deriveVersionFromTitle } from './watch.js';
+import { manualReleases } from './watch.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -128,19 +128,7 @@ if (fs.existsSync(contributorsPath)) {
 const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const gh = raw.repo ? github[raw.repo] ?? {} : {};
 	const watchItems = !raw.repo && Array.isArray(watchState[id]?.items) ? watchState[id].items : [];
-	const watchReleases = watchItems.map((item) => {
-		const rawName = String(item.title ?? '').trim().replace(/^\/+/, '');
-		const tag = deriveVersionFromTitle(item.title ?? '');
-		const name = rawName || tag;
-		return {
-			tag,
-			name,
-			label: releaseDisplayLabel(tag, name),
-			published_at: item.published_at ?? null,
-			html_url: item.html_url ?? raw.website ?? null,
-			body_html: ''
-		};
-	}).filter((item) => item.tag);
+	const watchReleases = raw.repo ? [] : manualReleases(raw, watchItems);
 	const markdownOptions = { repo: raw.repo, website: raw.website, branch: gh.default_branch ?? 'main', readmePath: gh.readme_path ?? 'README.md', name: raw.name };
 	const aboutPath = path.join(dir, 'about.md');
 	const mirroredReadmePath = path.join(root, 'data', 'readme', `${id}.md`);
@@ -189,7 +177,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 		fs.copyFileSync(path.join(dir, file), destination);
 	}
 	const logo = media.find((file) => file.startsWith('logo.'));
-	const newestWatch = watchReleases[0] ?? null;
+	const newestWatch = watchItems.length ? watchReleases[0] ?? null : null;
 	return {
 		id,
 		section,
