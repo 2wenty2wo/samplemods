@@ -1,0 +1,26 @@
+name: DFOS
+description: >-
+  An independent custom OS for the MPC Sample by Damon Flores: 16 tracks, a grid editor, a full
+  mixer with inserts, stem splitters and seven built-in instruments. Runs from the SD card with the
+  stock app stopped; leave and the stock app comes back.
+author: Damon Flores
+author_url: https://getdfos.com/
+website: https://getdfos.com/
+watch_pages:
+  - https://getdfos.com/release-notes/ # No RSS/Atom; page has no stable #fragment for the current release block
+
+tags:
+  - groovebox
+  - sequencer
+  - mixer
+  - stems
+install: sd-card
+firmware: 1.3.0.12
+status: beta
+version: "0.1.93"
+released: "2026-11-25" # https://getdfos.com/release-notes/ — "Released 25 November 2026"
+runs_on: [device]
+audience: [musician]
+price: free
+price_note: "Given away; optional tips via Buy Me a Coffee / PayPal"
+source: closed

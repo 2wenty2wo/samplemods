@@ -1310,5 +1310,27 @@
       "repo": "keremimo/mpc-vst-melodee-poly",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
+  ],
+  "dfos": [
+    {
+      "file": "screenshots/01-main.webp",
+      "source": "https://getdfos.com/plates/bento-main.ae6a8cf6.png",
+      "note": "Main screen plate from getdfos.com; lossless WebP"
+    },
+    {
+      "file": "screenshots/02-grid.webp",
+      "source": "https://getdfos.com/plates/bento-grid.20ead50c.png",
+      "note": "Grid editor plate from getdfos.com; lossless WebP"
+    },
+    {
+      "file": "screenshots/03-mixer.webp",
+      "source": "https://getdfos.com/plates/bento-mixer.be00cfaa.png",
+      "note": "Mixer plate from getdfos.com; lossless WebP"
+    },
+    {
+      "file": "screenshots/04-tracks.webp",
+      "source": "https://getdfos.com/plates/bento-tracks-choosing.0597cc1c.png",
+      "note": "New-track chooser plate from getdfos.com; lossless WebP"
+    }
   ]
 }
