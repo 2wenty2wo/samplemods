@@ -1,0 +1,12 @@
+name: hdslave Nexus
+description: >-
+  Hdslave Nexus: Mutable Instruments Plaits' 24 models as a polyphonic CLAP synth (unison, two
+  ADSRs, two LFOs, cycle and random sources, a filter, two modulation matrices, Slide/Tie) with its
+  own screen page, for the Akai MPC Sample running Melodee.
+repo: hdslave/hdslave-Nexus-Synth
+author: hdslave
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
