@@ -272,7 +272,7 @@
 					{updatedDate}
 					{formatUpdated}
 				/>
-				<RelatedEntries {mod} {byId} {compatibleIds} {launcherIds} sampleBootCompat={mod.sampleboot_compat} />
+				<RelatedEntries {mod} {byId} {compatibleIds} {launcherIds} compatRows={mod.compat_rows} />
 			</aside>
 		</div>
 	</article>

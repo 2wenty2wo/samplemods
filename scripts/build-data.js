@@ -4,7 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { releaseDisplayLabel } from '../src/lib/release-label.js';
 import { readEntries } from './catalog.js';
-import { readSampleBootCompat } from './compat.js';
+import { COMPAT_LAUNCHERS, readCompat } from './compat.js';
 import { renderMarkdown } from './render-markdown.js';
 import { manualReleases } from './watch.js';
 
@@ -22,6 +22,7 @@ const details = {};
 
 /** Always first in each entry's "Works with" list when compatible. */
 const PRIMARY_LAUNCHER = 'sampleboot';
+const COMPAT_LAUNCHER_IDS = Object.keys(COMPAT_LAUNCHERS);
 
 /**
  * Parse `git log --format=COMMIT:%aI --name-status --diff-filter=AR -M -- data` output
@@ -75,18 +76,23 @@ export function parseEntryAddedDates(gitOutput, catalogEntries) {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
 const entries = readEntries();
-const sampleBootCompat = readSampleBootCompat(path.join(root, 'data'));
-const sampleBootRows = Object.fromEntries(Object.entries(sampleBootCompat?.entries ?? {})
-	.filter(([id]) => id !== PRIMARY_LAUNCHER && entries.some((entry) => entry.id === id)));
-const sampleBootIds = Object.keys(sampleBootRows);
-const sampleBoot = entries.find(({ id }) => id === PRIMARY_LAUNCHER)?.record;
-for (const id of sampleBoot?.compatible ?? []) {
-	const versions = sampleBoot.compatible_versions?.[id];
-	if (typeof versions === 'string' && !Object.hasOwn(sampleBootRows, id)) {
-		sampleBootRows[id] = { versions, checked_by: '', notes: '' };
+const compatFile = readCompat(path.join(root, 'data')) ?? {};
+/** @type {Record<string, Record<string, { versions: string, checked_by: string, notes: string, status?: string }>>} */
+const launcherRows = {};
+for (const launcherId of COMPAT_LAUNCHER_IDS) {
+	const snapshot = compatFile[launcherId];
+	const rows = Object.fromEntries(Object.entries(snapshot?.entries ?? {})
+		.filter(([id]) => id !== launcherId && entries.some((entry) => entry.id === id)));
+	const launcher = entries.find(({ id }) => id === launcherId)?.record;
+	for (const id of launcher?.compatible ?? []) {
+		const versions = launcher.compatible_versions?.[id];
+		if (typeof versions === 'string' && !Object.hasOwn(rows, id)) {
+			rows[id] = { versions, checked_by: '', notes: '' };
+		}
 	}
+	launcherRows[launcherId] = rows;
 }
-const hasSampleBootCompat = sampleBootCompat || Object.keys(sampleBootRows).length > 0;
+const hasCompatRows = COMPAT_LAUNCHER_IDS.some((id) => Object.keys(launcherRows[id]).length > 0);
 // Only this generated directory is cleared; original media stays with each entry.
 fs.rmSync(mediaDir, { recursive: true, force: true });
 
@@ -164,11 +170,19 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 			}))
 			: watchReleases
 	};
-	if (hasSampleBootCompat) {
-		if (id === PRIMARY_LAUNCHER) {
-			details[id].sampleboot_compat = { ...sampleBootCompat, entries: sampleBootRows };
-		} else if (Object.hasOwn(sampleBootRows, id)) {
-			details[id].sampleboot_compat = { ...sampleBootCompat, entries: { [PRIMARY_LAUNCHER]: sampleBootRows[id] } };
+	if (hasCompatRows) {
+		if (Object.hasOwn(launcherRows, id) && Object.keys(launcherRows[id]).length) {
+			// Launcher page: firmware id → compat row
+			details[id].compat_rows = launcherRows[id];
+		} else {
+			// Firmware page: launcher id → this firmware's row under that launcher
+			const rows = {};
+			for (const launcherId of COMPAT_LAUNCHER_IDS) {
+				if (Object.hasOwn(launcherRows[launcherId], id)) {
+					rows[launcherId] = launcherRows[launcherId][id];
+				}
+			}
+			if (Object.keys(rows).length) details[id].compat_rows = rows;
 		}
 	}
 	for (const file of media) {
@@ -178,12 +192,13 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	}
 	const logo = media.find((file) => file.startsWith('logo.'));
 	const newestWatch = watchItems.length ? watchReleases[0] ?? null : null;
+	const compatIds = launcherRows[id] ? Object.keys(launcherRows[id]) : [];
 	return {
 		id,
 		section,
 		...raw,
-		...(id === PRIMARY_LAUNCHER && sampleBootIds.length
-			? { compatible: [...new Set([...(raw.compatible ?? []), ...sampleBootIds])] }
+		...(compatIds.length
+			? { compatible: [...new Set([...(raw.compatible ?? []), ...compatIds])] }
 			: {}),
 		added: addedById.get(id) ?? null,
 		price: raw.price ?? 'free',
