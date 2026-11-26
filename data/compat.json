@@ -46,5 +46,83 @@
         "notes": "Keep its Rhythmer and Samples folders at the card root"
       }
     }
+  },
+  "mpselector": {
+    "source": "https://github.com/fomoPhil/mpselector#opened-on-akai-1408",
+    "updated": "2026-11-27",
+    "entries": {
+      "melodee-sample": {
+        "versions": "0.8.3",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-simple": {
+        "versions": "1.0 Beta 11",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "rhythmer-os": {
+        "versions": "0.3.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "hdslaveos": {
+        "versions": "0.8.2-hdslave.3",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-600-s": {
+        "versions": "2.0H",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-sample-tracker": {
+        "versions": "0.1.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-furnace": {
+        "versions": "1.0.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "beat-train": {
+        "versions": "1.6",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-sample-doom": {
+        "versions": "1.0.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-cavestory": {
+        "versions": "1.0.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-tic80": {
+        "versions": "1.0.0",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "mpc-gen1recomp": {
+        "versions": "1.0.1",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      }
+    }
   }
 }

@@ -16,9 +16,9 @@ import { base } from '$app/paths';
 	 *   byId: Record<string, any>,
 	 *   compatibleIds: string[],
 	 *   launcherIds: string[],
-	 *   sampleBootCompat?: { source?: string, updated?: string, entries: Record<string, CompatRow> }
+	 *   compatRows?: Record<string, CompatRow>
 	 * }} */
-	let { mod, byId, compatibleIds, launcherIds, sampleBootCompat } = $props();
+	let { mod, byId, compatibleIds, launcherIds, compatRows } = $props();
 
 	/** @param {{ logo?: string | null, screenshots?: string[] }} entry */
 	function miniCardMedia(entry) {
@@ -77,12 +77,11 @@ import { base } from '$app/paths';
 	</ul>
 {/snippet}
 
-{#snippet compatibilityCards(ids, compat)}
-	{@const rows = compat?.entries ?? {}}
+{#snippet compatibilityCards(ids, rows)}
 	<ul class="mini-card-list compat-card-list">
 		{#each ids as id}
 			{@const rel = byId[id]}
-			{@const row = rows[id]}
+			{@const row = rows?.[id]}
 			<li>
 				{#if rel}
 					{@const media = miniCardMedia(rel)}
@@ -141,14 +140,14 @@ import { base } from '$app/paths';
 {#if compatibleIds.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Compatible with</h2>
-		{@render compatibilityCards(compatibleIds, mod.id === 'sampleboot' ? sampleBootCompat : undefined)}
+		{@render compatibilityCards(compatibleIds, compatRows)}
 	</section>
 {/if}
 
 {#if launcherIds.length}
 	<section class="detail-section">
 		<h2 class="silk-heading">Works with</h2>
-		{@render compatibilityCards(launcherIds, mod.id === 'sampleboot' ? undefined : sampleBootCompat)}
+		{@render compatibilityCards(launcherIds, compatRows)}
 	</section>
 {/if}
 

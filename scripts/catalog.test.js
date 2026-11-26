@@ -359,9 +359,9 @@ try {
 	assert.deepEqual(JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/catalog-meta.json'), 'utf8')), { stars: 12 });
 	const manualDetails = JSON.parse(fs.readFileSync(path.join(fixture, 'src/lib/server/details.json'), 'utf8'));
 	const manualRow = { versions: '0.0.27 or later', checked_by: '', notes: '' };
-	assert.deepEqual(manualDetails.sampleboot.sampleboot_compat.entries, { host: manualRow, player: readmeRow });
-	assert.deepEqual(manualDetails.host.sampleboot_compat.entries, { sampleboot: manualRow });
-	assert.deepEqual(manualDetails.player.sampleboot_compat.entries, { sampleboot: readmeRow });
+	assert.deepEqual(manualDetails.sampleboot.compat_rows, { host: manualRow, player: readmeRow });
+	assert.deepEqual(manualDetails.host.compat_rows, { sampleboot: manualRow });
+	assert.deepEqual(manualDetails.player.compat_rows, { sampleboot: readmeRow });
 	console.log('Catalog checks passed: section discovery, invalid layouts, cross-section references, media copying, stale cleanup, release_prefix filtering and SampleBoot-first launchers.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
