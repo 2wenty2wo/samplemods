@@ -1,0 +1,12 @@
+name: hdslave Mystik
+description: >-
+  Hdslave Mystik: a west-coast hand drum (membrane and complex oscillator struck through a modelled
+  vactrol low-pass gate) with a six-mode sequencer, cheap effects and its own screen page, as a CLAP
+  plug-in for the Akai MPC Sample running Melodee.
+repo: hdslave/hdslave-Mystik-Synth
+author: hdslave
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
