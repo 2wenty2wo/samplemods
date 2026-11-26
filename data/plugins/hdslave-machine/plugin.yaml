@@ -1,0 +1,12 @@
+name: hdslave Machine
+description: >-
+  Hdslave Machine: a multi-machine synthesizer in the style of Elektron's machines (4-op FM, seven
+  drum machines, an eight-slot KIT, eight stranger voices, a resonator kick) with its own page on
+  the MPC's screen, as a CLAP plug-in for the Akai MPC Sample running Melodee.
+repo: hdslave/hdslave-Machine
+author: hdslave
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
