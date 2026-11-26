@@ -216,9 +216,9 @@
   },
   "LA-2500/MPC-600-S": {
     "stars": 17,
-    "forks": 1,
-    "pushed_at": "2026-11-25T04:19:24Z",
-    "last_commit_at": "2026-11-25T04:19:09Z",
+    "forks": 2,
+    "pushed_at": "2026-11-26T03:34:02Z",
+    "last_commit_at": "2026-11-26T03:33:33Z",
     "contributors": 1,
     "open_issues": 17,
     "license": "MIT",
@@ -226,10 +226,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v2.0G",
-      "published_at": "2026-11-25T04:19:24Z"
+      "tag": "v2.0H",
+      "published_at": "2026-11-26T03:34:02Z"
     },
     "releases": [
+      {
+        "tag": "v2.0H",
+        "name": "LA Version 2.0H",
+        "prerelease": false,
+        "published_at": "2026-11-26T03:34:02Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0H",
+        "body": "## LA Version 2.0H\n\n- **Knobs no longer move things by themselves.** A knob (or the slider, or the main volume) resting between two positions sends a constant flicker, and each reading was taken as a turn. Zoomed in on Trim, a resting Zone End knob could nudge Zone End and make the view jump from Start to End; on Trim, K3 could move the cursor to Do. Now a control has to move two steps from rest before it counts. Turning still takes every step, turning back takes two, and after 0.4 s still it is at rest again. A flicker never changes anything. Also: B1-B3, -/+ and the wheel's push just after a knob turn are ignored as the panel shaking (as after a pad press), and a flickering knob no longer makes light pad presses get ignored.\n- **Playhead.** While a pad plays, a solid line moves along the waveform where the sound is, on Trim, Loop and Zone Assign, to set Zone End by eye.\n- **MPC60 pitching.** Every sound now plays at another pitch by zero-order hold, taken from the MPC60: each output is the stored sample at or before the play position, never blended, with the pitch step in 4.12 fixed point as on the MPC60 and MPC3000 chips. Pitched down it has the stepped, metallic edge, pitched up the crunch. Pitch on Sample New Sound (before a sound is stored) stays high quality. The manual has a new chapter, **Pitching**, comparing the MPC60, the MPC3000's 8-point interpolation, modern methods and the stock OS, with measurements.\n- **USB Indiv Out knobs.** K1 picks the track (or pad), K2 sets its Indiv Out Volume, K3 its Output.\n\nEverything from 2.0A to 2.0G is included.",
+        "truncated": false
+      },
       {
         "tag": "v2.0G",
         "name": "LA Version 2.0G",
@@ -246,15 +255,6 @@
         "published_at": "2026-11-25T04:04:43Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0F",
         "body": "## LA Version 2.0F\n\n- **Track mute heard at once.** Muting or unmuting a track (Track Mute page, Track Mixer, UNMUTE ALL, and solo) now takes effect immediately. Before, a mute only stopped new notes, so a loop or long sound rang until it ended, and an unmute waited for the track's next note (often the next bar). A muted track now plays its notes unheard, so a loop comes back in where it is. Muted MIDI tracks send nothing.\n- **USB Indiv Out: the mix on any pair.** Stereo outputs are 1-2, 3-4, 5-6 or 7-8. Layout: **MIX AUTO + 6 OUTS** (new default) puts the main mix on the first pair nothing else uses and always keeps one pair whole for it (with 1, 3, 5 and 6 taken, 7 and 8 cannot be taken one at a time: the mix plays on 7-8); **MIX on 1-2 / 3-4 / 5-6 / 7-8 + 6 OUTS** fixes it to a pair; **8 OUTS** as before. In use shows the mix's pair as MM.\n\nEverything from 2.0A to 2.0E is included.",
-        "truncated": false
-      },
-      {
-        "tag": "v2.0E",
-        "name": "LA Version 2.0E",
-        "prerelease": false,
-        "published_at": "2026-11-25T03:35:58Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0E",
-        "body": "## LA Version 2.0E\n\n- **No more held notes in 16 Levels with S600 programs.** With the arpeggiator sliding (Portamento) on a poly S600 sound or in 16 Levels, a slide could move another note sounding on the same pad, and that note never ended (a low held note not otherwise on the pads). Now only the note slid from moves.\n- **Also Play notes end.** A pad played through Also Play now ends with the note that started it (S600 sounds hold until released).\n- **New project after another program.** LOAD, B1 <New> now switches the pads back to program 1 as well. Before, after using another program (for example a Zone Assign program), a sequence or MPC 2500 project loaded next could have no sounds on its pads.\n\nEverything from 2.0A to 2.0D is included.",
         "truncated": false
       }
     ],
@@ -782,21 +782,39 @@
     "archived": false
   },
   "fomoPhil/mpselector": {
-    "stars": 9,
+    "stars": 10,
     "forks": 0,
-    "pushed_at": "2026-11-25T21:19:19Z",
-    "last_commit_at": "2026-11-25T21:19:16Z",
+    "pushed_at": "2026-11-26T08:19:14Z",
+    "last_commit_at": "2026-11-26T08:19:07Z",
     "contributors": 1,
-    "open_issues": 0,
+    "open_issues": 4,
     "license": "GPL-2.0",
     "description": "One card, many firmwares. A microSD launcher for the Akai MPC Sample: turn the dial to pick which app or mod runs.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.0.1",
-      "published_at": "2026-11-25T05:38:42Z"
+      "tag": "v1.2.0",
+      "published_at": "2026-11-26T08:19:15Z"
     },
     "releases": [
+      {
+        "tag": "v1.2.0",
+        "name": "MP Selector 1.2.0",
+        "prerelease": false,
+        "published_at": "2026-11-26T08:19:15Z",
+        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.2.0",
+        "body": "Copy a firmware onto your card as it is. Download it from its maker, unzip it, make a new folder inside `firmware` on your card and copy everything in. It opens from Cover Flow and runs the way it would alone on a card.\n\nThirteen firmwares opened this way on Akai 1.4.0.8, among them Melodee, MPC Simple, Rhythmer OS, hdslaveOS, EPICYCLE, MPC 600 S and MPCTRACKER. The full list, and what does not run on 1.4 yet, is in the [README](https://github.com/fomoPhil/mpselector#add-firmware).\n\nCover art can now be a picture. Put a square `cover.png` or `cover.jpg` in the firmware's folder.\n\nFirmware that changes the Akai app itself was made for Akai 1.3. On 1.4 its cover says \"Requires Akai firmware 1.3.0.12\" and nothing runs.\n\nAlready set up? Copy the new `autorun` folder and `autorun.sh` over the ones on your card. Leave your `firmware` folder as it is.\n\nTested on Akai MPC Sample firmware 1.4.0.8.\n\nSHA-256: `a378d3c01e02df140c6e74dfc4b754d3295e579258e589375965646a4bb308ee`",
+        "truncated": false
+      },
+      {
+        "tag": "v1.1.0",
+        "name": "MP Selector 1.1.0",
+        "prerelease": false,
+        "published_at": "2026-11-25T23:17:18Z",
+        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.1.0",
+        "body": "MP Selector now opens any firmware that is built for it. A firmware folder with a small `akai` file listing your Akai firmware opens from Cover Flow, whatever it is called. Firmware makers: see [docs/DEVELOPERS.md](https://github.com/fomoPhil/mpselector/blob/main/docs/DEVELOPERS.md).\n\nThe download now includes `Add Firmware.html`, the offline copy of [philwoolley.com/mpselector/add](https://philwoolley.com/mpselector/add/). Drop a Melodee or MPC Simple ZIP on it and it goes on your card.\n\nAlready set up? Copy the new `autorun` folder and `autorun.sh` over the ones on your card. Leave your `firmware` folder as it is.\n\nThe selector program is the same as in 1.0.1. Tested on Akai MPC Sample firmware 1.4.0.8.\n\nSHA-256: `9238e67d6b7da46ddb6a3bb86afddfe48543b580d1475725cfdc985272ccf92c`",
+        "truncated": false
+      },
       {
         "tag": "v1.0.1",
         "name": "MP Selector 1.0.1",
@@ -1022,8 +1040,8 @@
   "hdslave/hdslave-MPCSample-Synths-and-Drum-Machines": {
     "stars": 0,
     "forks": 0,
-    "pushed_at": "2026-11-25T04:27:00Z",
-    "last_commit_at": "2026-11-25T04:26:19Z",
+    "pushed_at": "2026-11-25T23:48:19Z",
+    "last_commit_at": "2026-11-25T17:29:44Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1068,10 +1086,10 @@
   "hdslave/hdslaveOS": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-25T06:12:45Z",
-    "last_commit_at": "2026-11-25T04:25:58Z",
+    "pushed_at": "2026-11-26T08:21:28Z",
+    "last_commit_at": "2026-11-26T08:21:04Z",
     "contributors": 3,
-    "open_issues": 0,
+    "open_issues": 1,
     "license": "AGPL-3.0",
     "description": "hdslaveOS: hdslave's fork of Melodee (by Kerem Kiliç, Ellic Studio) for the Akai MPC Sample: less wasted work, same sound, the HDSLAVE palette, and a screen page for CLAP plug-ins",
     "default_branch": "hdslave",
@@ -1113,7 +1131,7 @@
   },
   "inmusic-software/az0x-open-source": {
     "stars": 243,
-    "forks": 29,
+    "forks": 28,
     "pushed_at": "2026-11-25T14:00:03Z",
     "last_commit_at": "2026-11-24T19:23:57Z",
     "contributors": 2,
@@ -1267,8 +1285,8 @@
   "jacob-sabella/mpc-addin-sample-draw-handler": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-25T00:51:56Z",
-    "last_commit_at": "2026-11-25T00:49:49Z",
+    "pushed_at": "2026-11-25T23:34:03Z",
+    "last_commit_at": "2026-11-25T23:34:01Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "MIT",
@@ -1276,10 +1294,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "sample-draw-handler-addin-v1.1.0",
-      "published_at": "2026-11-25T00:51:57Z"
+      "tag": "sample-draw-handler-addin-v1.1.1",
+      "published_at": "2026-11-25T23:27:54Z"
     },
     "releases": [
+      {
+        "tag": "sample-draw-handler-addin-v1.1.1",
+        "name": "MPC Sample draw handler addin v1.1.1",
+        "prerelease": false,
+        "published_at": "2026-11-25T23:27:54Z",
+        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v1.1.1",
+        "body": "# MPC Sample draw handler addin 1.1.1\n\nOwns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\nAn addin for MPC OS standalone devices: a library MPC loads at its start (through `LD_PRELOAD`), not a plugin on a\ntrack. It is installed to `/data/mpc-addins/sample-draw-handler/`.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-1.1.1 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-1.1.1/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\n## Uninstall\n\n`ssh root@<device-ip> sh /data/mpc-addins/sample-draw-handler/uninstall.sh` takes the addin out of `LD_PRELOAD`, restarts MPC and\ndeletes its folder.\n\n## Files\n\nSee `SHA256SUMS`. Made with [mpc-vst-plugins](https://github.com/open-mpc/mpc-vst-plugins) (`docs/ADDINS.md`).\n\n\n## Changes in 1.1.1\n\n- **A soft key's release goes where its press went.** A page that takes the screen on MPC's own press of a key (KITLOAD\n  on B3 Load Kit) used to get that key's release, so MPC kept the key held and ignored the next press: Load Kit needed\n  two presses. A page that gives the screen back on its own press used to let that key's release through to MPC. Both\n  now follow the press.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@2faf3b7 with mpc-vst-plugins (tools/release-aarch64.sh). Running on an MPC Sample (firmware 1.4.0.8) since 2026-11-25.\n",
+        "truncated": false
+      },
       {
         "tag": "sample-draw-handler-addin-v1.1.0",
         "name": "MPC Sample draw handler addin v1.1.0",
@@ -1296,15 +1323,6 @@
         "published_at": "2026-11-06T19:13:58Z",
         "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v1.0.1",
         "body": "Owns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-1.0.1 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-1.0.1/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n\n## Changes in 1.0.1\n\n- After a page gave the screen back, parts of it could stay on the glass under MPC's waveform. MPC double-buffers its\n  screen and redraws only what changed, so each framebuffer now keeps its own copy of MPC's pixels (seen on an MPC Sample,\n  2026-11-06).\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@c7f3960 with mpc-vst-plugins (tools/release-aarch64.sh). Tested on an MPC Sample (firmware 1.3.0.12) on 2026-11-06.\n",
-        "truncated": false
-      },
-      {
-        "tag": "sample-draw-handler-addin-v1.0.0",
-        "name": "MPC Sample draw handler addin v1.0.0",
-        "prerelease": false,
-        "published_at": "2026-11-06T13:23:40Z",
-        "html_url": "https://github.com/jacob-sabella/mpc-addin-sample-draw-handler/releases/tag/sample-draw-handler-addin-v1.0.0",
-        "body": "Owns the MPC Sample's screen for plugins that draw on it: the last plugin to ask gets the whole screen until it gives it back.\n\n## Requirements\n\n- A Gen2 MPC OS standalone device (aarch64: Live III, One G2, Key(s) G2). The installer refuses anything else.\n- **Root shell access** (SSH) to the device. Stock MPC OS doesn't offer this; you need a modded unit.\n- Installing addins this way is unofficial: back up first, use at your own risk.\n\n## Install\n\n1. Unzip, then copy the whole folder to the device, e.g. `scp -r MPC-Sample-draw-handler-addin-1.0.0 root@<device-ip>:/tmp/`\n2. Run it: `ssh root@<device-ip> sh /tmp/MPC-Sample-draw-handler-addin-1.0.0/install.sh`\n\nThe installer copies the addin into `/data/mpc-addins/sample-draw-handler/`, adds `mpc_sample_draw_handler.so` to the `LD_PRELOAD` list of MPC's service\nand **restarts MPC** (save your project first). The list is extended, never replaced: other addins and the\nlibraries the firmware preloads stay. Where no writable file sets the list (the unit is on the read-only root), one\ndrop-in shared by every addin sets it, `/etc/systemd/system/<service>.service.d/90-mpc-addins.conf`. Re-run the\ninstaller after a firmware update. `-y` skips the question, `-n` leaves the restart to you.\n\nSettings are in `/data/mpc-addins/sample-draw-handler/mpc_sample_draw_handler.conf`; an upgrade keeps your edits.\n\nOn the MPC Sample it now owns the screen for plugins and addins that draw on it; a long hold of PAD FX cycles their pages. Control (on the device): http://127.0.0.1:6740/status, /test?on=1 shows a test pattern, /release gives MPC its screen back. From a computer: ssh -L 6740:127.0.0.1:6740 root@<device address>.\n\nUninstalling and the file list are in `INSTALL.md` inside the zip.\n\n---\nBuilt from jacob-sabella/mpc-addin-sample-draw-handler@fa9cb24 with mpc-vst-plugins (tools/release-aarch64.sh). The same code as 0.6.0, tested on an MPC Sample on 2026-11-05.\n",
         "truncated": false
       }
     ],
@@ -1449,7 +1467,7 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 16,
+    "stars": 17,
     "forks": 0,
     "pushed_at": "2026-11-25T21:08:58Z",
     "last_commit_at": "2026-11-25T21:05:06Z",
@@ -1609,12 +1627,12 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 79,
+    "stars": 80,
     "forks": 14,
     "pushed_at": "2026-11-25T19:02:37Z",
     "last_commit_at": "2026-11-25T18:44:10Z",
     "contributors": 3,
-    "open_issues": 26,
+    "open_issues": 27,
     "license": "AGPL-3.0",
     "description": "Melodee groovebox for the Akai MPC Sample, on sample-base",
     "default_branch": "main",
@@ -1877,8 +1895,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 8,
     "forks": 1,
-    "pushed_at": "2026-11-25T13:17:51Z",
-    "last_commit_at": "2026-11-25T13:17:48Z",
+    "pushed_at": "2026-11-26T08:11:29Z",
+    "last_commit_at": "2026-11-26T08:11:26Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1952,7 +1970,7 @@
     "archived": false
   },
   "orrpunk-art/virtual-mpc-sample": {
-    "stars": 29,
+    "stars": 30,
     "forks": 4,
     "pushed_at": "2026-11-24T18:42:39Z",
     "last_commit_at": "2026-11-24T18:42:27Z",
@@ -1967,7 +1985,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 32,
+    "stars": 33,
     "forks": 2,
     "pushed_at": "2026-11-24T21:33:13Z",
     "last_commit_at": "2026-11-24T21:33:11Z",
@@ -2176,7 +2194,7 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 133,
+    "stars": 134,
     "forks": 9,
     "pushed_at": "2026-11-23T22:28:04Z",
     "last_commit_at": "2026-11-23T22:27:10Z",
@@ -2222,7 +2240,7 @@
     "archived": false
   },
   "tarikcampos/MPC-Sample-Toolkit": {
-    "stars": 23,
+    "stars": 24,
     "forks": 5,
     "pushed_at": "2026-09-17T09:34:14Z",
     "last_commit_at": "2026-09-17T09:34:14Z",
