@@ -1,17 +1,23 @@
-# GRIDZILLA
+# GRIDZILLA — Choose your MPC firmware
 
+## 🟢 [DOWNLOAD GRIDZILLA FOR FIRMWARE 1.4](https://github.com/ZootedandRebooted/GRIDZILLA-1.4/releases/download/v1.4.0/GRIDZILLA-1.4.zip)
 
-## A monster in your machine.
+> [!TIP]
+> **Firmware 1.4 is ready.** The download includes the automatic-startup installer and all nine Henry Skillz effects.
+> [Open the 1.4 repository](https://github.com/ZootedandRebooted/GRIDZILLA-1.4) · [Read the 1.4 installation guide](https://github.com/ZootedandRebooted/GRIDZILLA-1.4/blob/main/INSTALLATION.md)
 
+| Firmware | Repository | Download |
+| --- | --- | --- |
+| **1.4** | **[GRIDZILLA-1.4](https://github.com/ZootedandRebooted/GRIDZILLA-1.4)** | [Download for firmware 1.4](https://github.com/ZootedandRebooted/GRIDZILLA-1.4/releases/latest) |
+| **1.3** | **GRIDZILLA — this repository** | [Download for firmware 1.3](https://github.com/ZootedandRebooted/GRIDZILLA/releases/tag/GRIDZILLA) |
 
-GRIDZILLA expands the MPC Sample with virtual instruments, editable MIDI, a song arranger, a live mixer and effect automation. It runs from SD without flashing Akai firmware.
+The two builds have separate downloads and installation instructions. The firmware 1.4 build includes automatic startup.
 
+---
 
-**[Download GRIDZILLA 1.2.9](https://github.com/ZootedandRebooted/GRIDZILLA/releases/download/GRIDZILLA/GRIDZILLA.zip)**
+# GRIDZILLA for firmware 1.3
 
-
-[GitHub release](https://github.com/ZootedandRebooted/GRIDZILLA/releases/tag/GRIDZILLA)
-
+Everything below describes the **firmware 1.3** build. Its application version is **1.2.9**.
 
 ## Fixed in 1.2.9
 

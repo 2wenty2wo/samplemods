@@ -10,15 +10,15 @@ git clone --recurse-submodules https://github.com/hdslave/hdslave-MPCSample-Synt
 
 <sub>Already cloned without <code>--recurse-submodules</code>? Run <code>git submodule update --init --recursive</code> inside the folder.</sub>
 
-> **Desktop CLAP builds (macOS & Windows):** Every plug-in repository below includes both its MPC Sample version and a separate desktop CLAP build in its `mac-clap/` folder (all MPC screens on one interactive panel + MIDI Learn). [Slink](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.8.0) and [Reverie](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1) have prebuilt desktop downloads.
+> **Desktop CLAP builds (macOS & Windows):** Every plug-in repository below includes both its MPC Sample version and a separate desktop CLAP build in its `mac-clap/` folder (all MPC screens on one interactive panel + MIDI Learn). [Slink 0.9.10](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.9.10) and [Reverie](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.3) have prebuilt desktop downloads.
 
 ---
 
 ## hdslaveOS
 
-hdslaveOS is hdslave's performance-tuned fork of Melodee by Kerem Kiliç (Ellic Studio), tracking Melodee v0.8.3. It cuts idle CPU and display overhead and powers the custom plug-in screens below. [hdslaveOS](https://github.com/hdslave/hdslaveOS) · [Melodee](https://github.com/keremimo/melodee-sample)
+hdslaveOS is hdslave's performance-tuned fork of Melodee by Kerem Kiliç (Ellic Studio), tracking Melodee v0.9.1. It cuts idle CPU and display overhead and powers the custom plug-in screens below. [hdslaveOS](https://github.com/hdslave/hdslaveOS) · [Melodee](https://github.com/keremimo/melodee-sample)
 
-Choose the complete SD-card installer for hdslaveOS and all eleven plug-ins, or the standalone pack for the plug-ins alone. Both include **Slink 0.6.3** and **Reverie 0.6.3**. The manifest lists all eleven source revisions and file hashes. [Complete installer and OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/latest) · [11-plug-in pack](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/latest)
+Choose the complete SD-card installer for hdslaveOS and all eleven plug-ins, or the standalone pack for the plug-ins alone. Both carry the plug-ins of hdslaveOS **0.9.1-hdslave.1**, including **Slink 0.8.2**, **Nexus 0.1.9**, **Anvil 0.6.8** and **Cortex Filter 0.3.4**. The manifest lists all eleven source revisions and file hashes. [Complete installer and OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/latest) · [11-plug-in pack](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/latest)
 
 hdslaveOS 0.8.1 screenshots.
 
@@ -61,7 +61,7 @@ Mixer opens on the channel strips. Hold **+** to open the selected channel’s c
     <td>
       <h3><a href="https://github.com/hdslave/hdslave-Slink-Synth">Slink</a></h3>
       <p><strong>303-style acid bass synthesizer + TB-3PO generative sequencer.</strong></p>
-      <p>Pairs a classic 303 diode ladder / Twin Peak / 18 dB bass voice with a tick-accurate port of Ornament &amp; Crime's Hemisphere <b>TB-3PO</b> acid pattern generator (same seed, density, and scale produce the exact module pattern). Its silver <b>Press Plate</b> screen has a wide chrome Slink title, three satin-chrome knobs, and a grid showing notes, gates, accents, and slides for up to 32 steps. Switch to <b>Blacklight Transfer</b> to see the pitch roll. The freesp16 Thorn Crown panel has direct step editing, a dedicated Slide switch, and a Clock ruler that shows swing. <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.8.0">Download Slink 0.8.0 for MPC Sample, freesp16, macOS and Windows</a> · <a href="https://github.com/hdslave/hdslave-Slink-Synth/blob/v0.8.0/docs/screen.md#thorn-crown-on-freesp16">freesp16 gallery</a>.</p>
+      <p>Pairs a classic 303 diode ladder / Twin Peak / 18 dB bass voice with a tick-accurate port of Ornament &amp; Crime's Hemisphere <b>TB-3PO</b> acid pattern generator (same seed, density, and scale produce the exact module pattern). Its silver <b>Press Plate</b> screen has a wide chrome Slink title, three satin-chrome knobs, and a grid showing notes, gates, accents, and slides for up to 32 steps. Switch to <b>Blacklight Transfer</b> to see the pitch roll. The freesp16 Thorn Crown panel has a pitch trace above the note keys. Drag either to edit a step, or press the step number to audition it. <a href="https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.9.10">Slink 0.9.10 for freesp16, macOS and Windows</a> · <a href="https://github.com/hdslave/hdslave-Slink-Synth#downloads">All platform downloads</a> · <a href="https://github.com/hdslave/hdslave-Slink-Synth/blob/main/docs/screen.md#thorn-crown-on-freesp16">freesp16 gallery</a>.</p>
     </td>
   </tr>
   <tr>
@@ -101,7 +101,7 @@ Mixer opens on the channel strips. Hold **+** to open the selected channel’s c
     <td>
       <h3><a href="https://github.com/hdslave/hdslave-Reverie-Synth">Reverie</a></h3>
       <p><strong>Chord-progression &amp; X/Y Motion pad synthesizer.</strong></p>
-      <p>Play the 46 original progressions from Velvet Night through Moonstone in six voicing styles and any key. The 18 Mood sets each put a different chord on every pad. Existing MPC and SP-16 projects can recall the 208 Factory progressions. Dual wavetable oscillators, X/Y Motion, a phaser, ensemble, tempo delay and shimmer reverb shape the sound. <a href="https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1">Download Reverie for MPC Sample, SP-16, macOS or Windows.</a></p>
+      <p>Play the 46 original progressions from Velvet Night through Moonstone in six voicing styles and any key. The 18 Mood sets each put a different chord on every pad. Existing MPC and SP-16 projects can recall the 208 Factory progressions. Dual wavetable oscillators, X/Y Motion, a phaser, ensemble, tempo delay and shimmer reverb shape the sound. <a href="https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.3">Download Reverie for MPC Sample, SP-16, macOS or Windows.</a></p>
     </td>
   </tr>
   <tr>
