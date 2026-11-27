@@ -264,11 +264,19 @@ export function excludeKnown(candidates, { catalogRepos, starRepos, catalogRepo 
 }
 
 const LINK_ROW_RE = /^- \[(x| )\] \[([^\]]+)\]\(([^)]+)\):(.*)$/i;
-const PLAIN_ROW_RE = /^- \[(x| )\] ([^[\n][^:]*):\s*(.*)$/i;
+const PLAIN_TICKED_RE = /^- \[(x| )\] `([^`]+)`:\s*(.*)$/i;
+/** Legacy plain rows without backticks (pre-backtick delimiter). */
+const PLAIN_ROW_RE = /^- \[(x| )\] ([^[\n`][^:]*):\s*(.*)$/i;
+
+function encodeLinkUrl(url) {
+	return String(url).replaceAll('(', '%28').replaceAll(')', '%29');
+}
 
 function tickedRowKey(line) {
 	const linked = line.match(LINK_ROW_RE);
 	if (linked) return normalizeRepo(linked[2]);
+	const plainTicked = line.match(PLAIN_TICKED_RE);
+	if (plainTicked) return normalizeRepo(plainTicked[2].trim());
 	const plain = line.match(PLAIN_ROW_RE);
 	if (plain) return normalizeRepo(plain[2].trim());
 	return null;
@@ -297,9 +305,10 @@ function candidateRow(candidate) {
 	const desc = markdownText(candidate.description || 'No description provided.');
 	const tail = `${desc} · ★${candidate.stars} · created ${candidate.created} · ${candidate.reason}`;
 	if (candidate.html_url) {
-		return `- [ ] [${candidate.repo}](${candidate.html_url}): ${tail}`;
+		return `- [ ] [${candidate.repo}](${encodeLinkUrl(candidate.html_url)}): ${tail}`;
 	}
-	return `- [ ] ${candidate.repo}: ${tail}`;
+	const name = String(candidate.repo).replaceAll('`', '');
+	return `- [ ] \`${name}\`: ${tail}`;
 }
 
 export function formatDiscoveryBody(candidates, tickedRepos = new Set(), previousBody = '') {

@@ -267,6 +267,65 @@ assert.match(plainBody, /- \[ \] \[Phenix2417\/mpc-sample-emulator\]\(https:\/\/
 assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 
 {
+	// Colon in plain-text name: backtick delimiter keeps the full ticked key.
+	const colonCandidate = {
+		repo: 'Synth: Sample',
+		description: 'has a colon',
+		stars: 0,
+		created: '2026-11-20',
+		reason: 'listed in a community catalog (added 2026-11-20)',
+		html_url: null
+	};
+	const colonBody = mergeDiscoveryBody([colonCandidate], '');
+	assert.match(colonBody, /- \[ \] `Synth: Sample`:/);
+	const colonTicked = colonBody.replace('- [ ] `Synth: Sample`:', '- [x] `Synth: Sample`:');
+	assert.deepEqual([...parseTickedRepos(colonTicked)], ['synth: sample']);
+	const colonMerged = mergeDiscoveryBody([colonCandidate], colonTicked);
+	assert.match(colonMerged, /- \[x\] `Synth: Sample`:/);
+	assert.doesNotMatch(colonMerged, /- \[ \] `Synth: Sample`:/, 'ticked colon-name row must not reappear unchecked');
+	assert.equal([...colonMerged.matchAll(/Synth: Sample/g)].length, 1);
+}
+
+{
+	// Parentheses in link URLs: encode so LINK_ROW_RE still recognises the ticked row.
+	const parenCandidate = {
+		repo: 'example/synth-sample',
+		description: 'parens in url',
+		stars: 0,
+		created: '2026-11-20',
+		reason: 'search: x',
+		html_url: 'https://example.com/Synth_(Sample)'
+	};
+	const parenBody = mergeDiscoveryBody([parenCandidate], '');
+	assert.match(parenBody, /https:\/\/example\.com\/Synth_%28Sample%29/);
+	assert.doesNotMatch(parenBody, /Synth_\(Sample\)/);
+	const parenTicked = parenBody.replace('- [ ] [', '- [x] [');
+	assert.deepEqual([...parseTickedRepos(parenTicked)], ['example/synth-sample']);
+	const parenMerged = mergeDiscoveryBody([parenCandidate], parenTicked);
+	assert.match(parenMerged, /- \[x\] \[example\/synth-sample\]\(https:\/\/example\.com\/Synth_%28Sample%29\):/);
+	assert.doesNotMatch(parenMerged, /- \[ \] \[example\/synth-sample\]/, 'ticked paren-URL row must not reappear unchecked');
+}
+
+{
+	// Legacy plain rows (no backticks) still parse as a fallback.
+	const legacyPrevious = '- [x] NOISEWAVE HA: old style · ★0 · created 2026-11-20 · listed in a community catalog (added 2026-11-20)';
+	assert.deepEqual([...parseTickedRepos(legacyPrevious)], ['noisewave ha']);
+	const legacyMerged = mergeDiscoveryBody(
+		[{
+			repo: 'NOISEWAVE HA',
+			description: 'x',
+			stars: 0,
+			created: '2026-11-20',
+			reason: 'listed in a community catalog (added 2026-11-20)',
+			html_url: null
+		}],
+		legacyPrevious
+	);
+	assert.match(legacyMerged, /- \[x\] NOISEWAVE HA:/);
+	assert.doesNotMatch(legacyMerged, /- \[ \] `?NOISEWAVE HA`?:/, 'legacy ticked plain row must not reappear unchecked');
+}
+
+{
 	const warnings = [];
 	const logs = [];
 	const warn = console.warn;
