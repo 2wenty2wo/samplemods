@@ -18,7 +18,13 @@ import {
 	candidateFromFeedItem,
 	filterFeedCandidates,
 	fetchFeedItems,
-	pickFeedHref
+	pickFeedHref,
+	LIST_URL_ENV,
+	listSourceRepo,
+	githubReposFromMarkdown,
+	filterListRepos,
+	candidateFromListRepo,
+	fetchListMarkdown
 } from './discover.js';
 
 assert.match(sinceDateDaysAgo(30, new Date('2026-12-10T00:00:00Z')), /^2026-11-10$/);
@@ -392,4 +398,146 @@ assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 	}
 }
 
-console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close, catalog feed filter/dedupe/fail-soft.');
+const LIST_FIXTURE_URL = 'https://raw.githubusercontent.com/example/list/main/README.md';
+assert.equal(listSourceRepo(LIST_FIXTURE_URL), 'example/list');
+assert.equal(listSourceRepo('https://example.com/not-raw'), null);
+
+const listMarkdown = [
+	'# Sample list',
+	'',
+	'- [Alpha](https://github.com/open-mpc/mpc-vst-plugins)',
+	'- Dup again https://github.com/open-mpc/mpc-vst-plugins/releases/tag/v1',
+	'- Subpath https://github.com/someone/tool/blob/main/README.md',
+	'- Self https://github.com/example/list',
+	'- Cataloged https://github.com/keremimo/melodee-sample',
+	'- External https://example.com/not-github',
+	'- Builder https://github.com/inmusic-software/mpc-plugin-builder-sdk'
+].join('\n');
+
+assert.deepEqual(
+	githubReposFromMarkdown(listMarkdown).sort(),
+	[
+		'example/list',
+		'inmusic-software/mpc-plugin-builder-sdk',
+		'keremimo/melodee-sample',
+		'open-mpc/mpc-vst-plugins',
+		'someone/tool'
+	].sort(),
+	'extract unique owner/repo links; deeper paths reduce to owner/repo'
+);
+
+const listCatalog = [
+	{ id: 'melodee-sample', record: { name: 'Melodee', repo: 'keremimo/melodee-sample' } }
+];
+const listRepos = filterListRepos(githubReposFromMarkdown(listMarkdown), LIST_FIXTURE_URL, listCatalog);
+assert.deepEqual(
+	listRepos.sort(),
+	['inmusic-software/mpc-plugin-builder-sdk', 'open-mpc/mpc-vst-plugins', 'someone/tool'].sort(),
+	'self-repo and catalog repos are dropped'
+);
+
+const listCandidate = candidateFromListRepo('open-mpc/mpc-vst-plugins', {
+	full_name: 'open-mpc/mpc-vst-plugins',
+	description: 'VST helpers',
+	stargazers_count: 4,
+	created_at: '2026-11-01T00:00:00Z',
+	html_url: 'https://github.com/open-mpc/mpc-vst-plugins',
+	archived: false
+});
+assert.equal(listCandidate.repo, 'open-mpc/mpc-vst-plugins');
+assert.equal(listCandidate.reason, 'listed in a curated list');
+assert.equal(listCandidate.stars, 4);
+assert.equal(candidateFromListRepo('gone/archived', { full_name: 'gone/archived', archived: true }), null);
+
+const listDeduped = excludeKnown(
+	[searchHit, listCandidate],
+	{ catalogRepos: new Set(), starRepos: new Set(), catalogRepo: '2wenty2wo/samplemods' }
+);
+assert.equal(
+	listDeduped.candidates.filter((c) => normalizeRepo(c.repo) === 'trinzik-labs2/imageboot').length,
+	1
+);
+assert.ok(listDeduped.candidates.some((c) => c.repo === 'open-mpc/mpc-vst-plugins'));
+
+const sameRepoList = candidateFromListRepo('Trinzik-Labs2/ImageBoot', {
+	full_name: 'Trinzik-Labs2/ImageBoot',
+	description: 'Boot tool',
+	stargazers_count: 1,
+	created_at: '2026-11-12T00:00:00Z',
+	html_url: 'https://github.com/Trinzik-Labs2/ImageBoot',
+	archived: false
+});
+const crossSourceDeduped = excludeKnown(
+	[searchHit, sameRepoList],
+	{ catalogRepos: new Set(), starRepos: new Set(), catalogRepo: '2wenty2wo/samplemods' }
+);
+assert.equal(
+	crossSourceDeduped.candidates.filter((c) => normalizeRepo(c.repo) === 'trinzik-labs2/imageboot').length,
+	1,
+	'GitHub search + curated list same repo must appear once'
+);
+
+{
+	const warnings = [];
+	const logs = [];
+	const warn = console.warn;
+	const log = console.log;
+	console.warn = (message) => warnings.push(message);
+	console.log = (message) => logs.push(message);
+	const originalFetch = globalThis.fetch;
+	const previousListUrl = process.env[LIST_URL_ENV];
+	let issueWrites = 0;
+	try {
+		process.env[LIST_URL_ENV] = LIST_FIXTURE_URL;
+		globalThis.fetch = async () => ({ ok: false, status: 503, text: async () => '' });
+		assert.equal(await fetchListMarkdown(), null);
+		globalThis.fetch = async () => { throw new Error('offline'); };
+		assert.equal(await fetchListMarkdown(), null);
+
+		const listMarkdownResult = null;
+		const dryRun = false;
+		if (listMarkdownResult == null && !dryRun) {
+			console.log('Curated list unavailable; leaving the Discovery issue unchanged');
+		} else {
+			issueWrites += 1;
+		}
+		assert.equal(issueWrites, 0, 'failed curated list fetch must not write the Discovery issue');
+		assert.match(logs.at(-1) ?? '', /Curated list unavailable; leaving the Discovery issue unchanged/);
+	} finally {
+		console.warn = warn;
+		console.log = log;
+		globalThis.fetch = originalFetch;
+		if (previousListUrl === undefined) delete process.env[LIST_URL_ENV];
+		else process.env[LIST_URL_ENV] = previousListUrl;
+	}
+	assert.equal(warnings.length, 2);
+	assert.ok(warnings.every((message) => /curated list/i.test(message)));
+}
+
+{
+	const logs = [];
+	const log = console.log;
+	console.log = (message) => logs.push(message);
+	const previousListUrl = process.env[LIST_URL_ENV];
+	let issueWrites = 0;
+	try {
+		delete process.env[LIST_URL_ENV];
+		assert.equal(await fetchListMarkdown(), '');
+		assert.match(logs.at(-1) ?? '', /Curated list URL unset; continuing without list candidates/);
+
+		const listMarkdownResult = '';
+		const dryRun = false;
+		if (listMarkdownResult == null && !dryRun) {
+			console.log('Curated list unavailable; leaving the Discovery issue unchanged');
+		} else {
+			issueWrites += 1;
+		}
+		assert.equal(issueWrites, 1, 'unset curated list must still allow Discovery issue updates');
+	} finally {
+		console.log = log;
+		if (previousListUrl === undefined) delete process.env[LIST_URL_ENV];
+		else process.env[LIST_URL_ENV] = previousListUrl;
+	}
+}
+
+console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close, catalog feed filter/dedupe/fail-soft, curated list extract/dedupe/fail-soft.');

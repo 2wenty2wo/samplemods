@@ -65,6 +65,7 @@ function toCandidate(repo, reason) {
 }
 
 export const FEED_URL_ENV = 'DISCOVERY_FEED_URL';
+export const LIST_URL_ENV = 'DISCOVERY_LIST_URL';
 
 export function feedHostname(feedUrl) {
 	try {
@@ -184,6 +185,97 @@ export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process
 		return data;
 	} catch (error) {
 		console.warn(`warn: catalog feed fetch failed (${error.message}).`);
+		return null;
+	}
+}
+
+/** owner/repo from a raw.githubusercontent.com/<owner>/<repo>/… URL, or null. */
+export function listSourceRepo(listUrl) {
+	try {
+		const parsed = new URL(String(listUrl));
+		if (parsed.hostname.toLowerCase() !== 'raw.githubusercontent.com') return null;
+		const parts = parsed.pathname.split('/').filter(Boolean);
+		if (parts.length < 2) return null;
+		return `${parts[0]}/${parts[1]}`;
+	} catch {
+		return null;
+	}
+}
+
+/** Unique github.com owner/repo links from markdown (deeper paths reduce to owner/repo). */
+export function githubReposFromMarkdown(markdown) {
+	const found = [];
+	const seen = new Set();
+	const re = /https?:\/\/(?:www\.)?github\.com\/[^\s)\]>"']+/gi;
+	for (const match of String(markdown ?? '').matchAll(re)) {
+		const cleaned = match[0].replace(/[.,;:]+$/g, '');
+		const repo = githubRepoFromUrl(cleaned);
+		if (!repo) continue;
+		const key = normalizeRepo(repo);
+		if (seen.has(key)) continue;
+		seen.add(key);
+		found.push(repo);
+	}
+	return found;
+}
+
+/** Drop the list's own repo and anything already in the catalog. */
+export function filterListRepos(repos, listUrl, entries) {
+	const self = listSourceRepo(listUrl);
+	const selfKey = self ? normalizeRepo(self) : null;
+	const catalog = catalogRepoSet(entries);
+	const out = [];
+	const seen = new Set();
+	for (const repo of repos ?? []) {
+		const key = normalizeRepo(repo);
+		if (seen.has(key)) continue;
+		seen.add(key);
+		if (selfKey && key === selfKey) continue;
+		if (catalog.has(key)) continue;
+		out.push(repo);
+	}
+	return out;
+}
+
+export function candidateFromListRepo(repo, meta) {
+	if (meta) {
+		if (meta.archived) return null;
+		return toCandidate(meta, 'listed in a curated list');
+	}
+	return {
+		repo,
+		description: '',
+		stars: 0,
+		created: '',
+		reason: 'listed in a curated list',
+		html_url: `https://github.com/${repo}`,
+		archived: false
+	};
+}
+
+/**
+ * Fetch the optional curated-list README once (plain text).
+ * Unset DISCOVERY_LIST_URL → '' (list disabled).
+ * Set but fetch fails → null (caller must leave the issue unchanged).
+ * @returns {Promise<string|null>}
+ */
+export async function fetchListMarkdown(fetchImpl = globalThis.fetch, env = process.env) {
+	const url = env[LIST_URL_ENV];
+	if (!url) {
+		console.log('Curated list URL unset; continuing without list candidates.');
+		return '';
+	}
+	try {
+		const response = await fetchImpl(url, {
+			headers: { 'User-Agent': 'SampleModsDiscovery/1.0' }
+		});
+		if (!response.ok) {
+			console.warn(`warn: curated list returned HTTP ${response.status}.`);
+			return null;
+		}
+		return await response.text();
+	} catch (error) {
+		console.warn(`warn: curated list fetch failed (${error.message}).`);
 		return null;
 	}
 }
@@ -468,6 +560,17 @@ async function forkCandidates(token, entries, since) {
 	return out;
 }
 
+async function listCandidates(token, markdown, listUrl, entries) {
+	const repos = filterListRepos(githubReposFromMarkdown(markdown), listUrl, entries);
+	const out = [];
+	for (const repo of repos) {
+		const meta = await ghOptional(`repos/${repo}`, token);
+		const candidate = candidateFromListRepo(repo, meta && typeof meta === 'object' ? meta : null);
+		if (candidate) out.push(candidate);
+	}
+	return out;
+}
+
 function catalogRepoSet(entries) {
 	const set = new Set();
 	for (const { record } of entries) {
@@ -508,12 +611,20 @@ async function main() {
 		console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
 		return;
 	}
+	const listUrl = process.env[LIST_URL_ENV] ?? '';
+	const listMarkdown = await fetchListMarkdown();
+	if (listMarkdown == null && !dryRun) {
+		console.log('Curated list unavailable; leaving the Discovery issue unchanged');
+		return;
+	}
 	const feed = filterFeedCandidates(feedItems ?? [], entries, feedHost);
+	const list = await listCandidates(token, listMarkdown ?? '', listUrl, entries);
 	const raw = [
 		...await searchCandidates(token, since),
 		...await authorCandidates(token, entries, since),
 		...await forkCandidates(token, entries, since),
-		...feed
+		...feed,
+		...list
 	];
 	const { candidates, excluded } = excludeKnown(raw, {
 		catalogRepos: catalogRepoSet(entries),
