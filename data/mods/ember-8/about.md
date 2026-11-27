@@ -30,15 +30,17 @@ synth. B3 returns to the normal MPC view without unloading it.
 
 ## Requirements
 
-- Firmware **1.3.0.12**, displayed as **1.3.0** on the device.
+- Firmware **1.3.0.12** (displayed as **1.3.0** on the device) for the main
+  Workflow Beta package, or the separate **FW 1.4.x** package for 1.4 builds.
 - An **exFAT microSD card** with the download's `autorun` folder, copied according
   to the maker's installation instructions.
 - Saved projects and a backup before installing or updating.
 
 ## Beta and availability
 
-The product page lists **0.15.2 Workflow Beta**; the linked guide covers v0.9.
-The page was posted on 6 November and updated on 7 November 2026.
+The product page lists **0.15.2 Workflow Beta** plus an **FW 1.4.x** download; the
+linked guide covers v0.9. The page was posted on 6 November and updated on
+26 November 2026.
 
 This is a development beta. Tempo and transport do not automatically follow
 the MPC clock, so manually started playback can drift. The supplied images are

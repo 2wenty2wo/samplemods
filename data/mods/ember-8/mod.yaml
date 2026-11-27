@@ -7,10 +7,10 @@ author_url: https://mpctoolkit.com
 website: https://mpctoolkit.com/downloads/ember-8-hybrid-synthesizer-mod-for-akai-mpc-sample/
 watch: https://mpctoolkit.com/wp-json/wp/v2/edd-downloads?slug=ember-8-hybrid-synthesizer-mod-for-akai-mpc-sample&_fields=modified_gmt
 install: sd-card
-firmware: 1.3.0.12
+firmware: 1.3.0.12, 1.4.0.8
 status: beta
 version: "0.15.2"
-released: "2026-11-07" # Product page's updated date; no separate release timestamp is published.
+released: "2026-11-26" # Product page's updated date; no separate release timestamp is published.
 runs_on: [device]
 audience: [musician]
 tags: [synth, fm, granular, sequencer]
