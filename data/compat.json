@@ -49,8 +49,20 @@
   },
   "mpselector": {
     "source": "https://github.com/fomoPhil/mpselector#opened-on-akai-1408",
-    "updated": "2026-11-26",
+    "updated": "2026-11-27",
     "entries": {
+      "mp-doom": {
+        "versions": "1.0.4",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "dfos": {
+        "versions": "0.1.105 Beta",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
       "melodee-sample": {
         "versions": "0.8.3",
         "status": "Works",
@@ -95,12 +107,6 @@
       },
       "beat-train": {
         "versions": "1.6",
-        "status": "Works",
-        "checked_by": "Tested",
-        "notes": ""
-      },
-      "mpc-sample-doom": {
-        "versions": "1.0.0",
         "status": "Works",
         "checked_by": "Tested",
         "notes": ""

@@ -782,21 +782,39 @@
     "archived": false
   },
   "fomoPhil/mpselector": {
-    "stars": 10,
+    "stars": 11,
     "forks": 0,
-    "pushed_at": "2026-11-26T15:23:45Z",
-    "last_commit_at": "2026-11-26T08:19:07Z",
+    "pushed_at": "2026-11-27T19:52:26Z",
+    "last_commit_at": "2026-11-27T18:14:16Z",
     "contributors": 1,
-    "open_issues": 7,
+    "open_issues": 4,
     "license": "GPL-2.0",
     "description": "One card, many firmwares. A microSD launcher for the Akai MPC Sample: turn the dial to pick which app or mod runs.",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v1.2.0",
-      "published_at": "2026-11-26T08:19:15Z"
+      "tag": "v1.2.2",
+      "published_at": "2026-11-27T18:14:50Z"
     },
     "releases": [
+      {
+        "tag": "v1.2.2",
+        "name": "MP Selector 1.2.2",
+        "prerelease": false,
+        "published_at": "2026-11-27T18:14:50Z",
+        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.2.2",
+        "body": "DFOS opens again after its Stock OS button.\n\nWhen you leave DFOS with Stock OS, DFOS stays shut until the MPC restarts. On 1.2.1 Cover Flow then said \"DFOS did not start\". Opening DFOS from Cover Flow now starts it every time.\n\nNothing else changed from 1.2.1: fourteen firmwares open from their own downloads on Akai 1.4.0.8. The list is in the [README](https://github.com/fomoPhil/mpselector#add-firmware).\n\nAlready set up? Copy the new `autorun` folder and `autorun.sh` over the ones on your card. Leave your `firmware` folder as it is.\n\nTested on Akai MPC Sample firmware 1.4.0.8.\n\nSHA-256: `525448091af26667f761d8997480bb6ded06617d6b9adf115e55df3999d20886`\n",
+        "truncated": false
+      },
+      {
+        "tag": "v1.2.1",
+        "name": "MP Selector 1.2.1",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:44:02Z",
+        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.2.1",
+        "body": "DFOS and MP DOOM now open from their own downloads, copied in as they are.\n\n- DFOS 0.1.105 Beta starts on Akai 1.4.0.8. DFOS checks for the Akai 1.3.0.12 app and stops on anything else. MP Selector lets it start, and it ran on one MPC Sample with pads, buttons and sound working. Its author says it is for 1.3.0.12 and does not support it on 1.4.\n- MP DOOM 1.0.4: copy the whole starter download into a folder in `firmware`. No extra file needed.\n\nFourteen firmwares now open this way on Akai 1.4.0.8. The list is in the [README](https://github.com/fomoPhil/mpselector#add-firmware).\n\nAlready set up? Copy the new `autorun` folder and `autorun.sh` over the ones on your card. Leave your `firmware` folder as it is.\n\nTested on Akai MPC Sample firmware 1.4.0.8.\n\nSHA-256: `8e4d1f5e68eed5ab42431b5d1d20496dcf9ca8588f0cb8b459158bb4a5b01a33`\n",
+        "truncated": false
+      },
       {
         "tag": "v1.2.0",
         "name": "MP Selector 1.2.0",
@@ -804,24 +822,6 @@
         "published_at": "2026-11-26T08:19:15Z",
         "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.2.0",
         "body": "Copy a firmware onto your card as it is. Download it from its maker, unzip it, make a new folder inside `firmware` on your card and copy everything in. It opens from Cover Flow and runs the way it would alone on a card.\n\nThirteen firmwares opened this way on Akai 1.4.0.8, among them Melodee, MPC Simple, Rhythmer OS, hdslaveOS, EPICYCLE, MPC 600 S and MPCTRACKER. The full list, and what does not run on 1.4 yet, is in the [README](https://github.com/fomoPhil/mpselector#add-firmware).\n\nCover art can now be a picture. Put a square `cover.png` or `cover.jpg` in the firmware's folder.\n\nFirmware that changes the Akai app itself was made for Akai 1.3. On 1.4 its cover says \"Requires Akai firmware 1.3.0.12\" and nothing runs.\n\nAlready set up? Copy the new `autorun` folder and `autorun.sh` over the ones on your card. Leave your `firmware` folder as it is.\n\nTested on Akai MPC Sample firmware 1.4.0.8.\n\nSHA-256: `a378d3c01e02df140c6e74dfc4b754d3295e579258e589375965646a4bb308ee`",
-        "truncated": false
-      },
-      {
-        "tag": "v1.1.0",
-        "name": "MP Selector 1.1.0",
-        "prerelease": false,
-        "published_at": "2026-11-25T23:17:18Z",
-        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.1.0",
-        "body": "MP Selector now opens any firmware that is built for it. A firmware folder with a small `akai` file listing your Akai firmware opens from Cover Flow, whatever it is called. Firmware makers: see [docs/DEVELOPERS.md](https://github.com/fomoPhil/mpselector/blob/main/docs/DEVELOPERS.md).\n\nThe download now includes `Add Firmware.html`, the offline copy of [philwoolley.com/mpselector/add](https://philwoolley.com/mpselector/add/). Drop a Melodee or MPC Simple ZIP on it and it goes on your card.\n\nAlready set up? Copy the new `autorun` folder and `autorun.sh` over the ones on your card. Leave your `firmware` folder as it is.\n\nThe selector program is the same as in 1.0.1. Tested on Akai MPC Sample firmware 1.4.0.8.\n\nSHA-256: `9238e67d6b7da46ddb6a3bb86afddfe48543b580d1475725cfdc985272ccf92c`",
-        "truncated": false
-      },
-      {
-        "tag": "v1.0.1",
-        "name": "MP Selector 1.0.1",
-        "prerelease": false,
-        "published_at": "2026-11-25T05:38:42Z",
-        "html_url": "https://github.com/fomoPhil/mpselector/releases/tag/v1.0.1",
-        "body": "The download no longer includes the installer for Melodee and MPC Simple. It has one cover, Akai, and does not include or install any other firmware.\n\nThe files that go on the card are the same as in 1.0.0. Tested on Akai MPC Sample firmware 1.4.0.8.\n\nDownload `MP-Selector-1.0.1.zip`, then follow the three steps in the [README](https://github.com/fomoPhil/mp-selector#set-up-your-card).\n\nSHA-256: `089548d6f0e667b2976a67f476b5226c12ce23770372a3a3977f31642dfabae6`",
         "truncated": false
       }
     ],
@@ -1037,11 +1037,149 @@
     "releases": [],
     "archived": false
   },
+  "hdslave/hdslave-Anvil-Synth": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T17:31:26Z",
+    "last_commit_at": "2026-11-27T17:21:06Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "hdslave Anvil: an 8-step analog-style percussion synthesizer (DFAM/Edge panel and flow) as a CLAP plug-in for the Akai MPC Sample running Melodee",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.7.0",
+      "published_at": "2026-11-27T17:34:56Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.7.0",
+        "name": "hdslave Anvil 0.7.0 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:34:56Z",
+        "html_url": "https://github.com/hdslave/hdslave-Anvil-Synth/releases/tag/v0.7.0",
+        "body": "**hdslave Anvil 0.7.0** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `215e54f`. The previous release was 0.6.8.\n\n### Changes\n\n- The plug-in now carries a drum map, so hdslaveOS (and Melodee) play its pads A01–A16 as keys 36–51 whatever the track's octave, key or scale. **−** / **+** then move the pad bank (B, C, D) instead of the octave, and the plug-in decides what each bank plays, so they can no longer shuffle or silence the pads ([hdslaveOS issue 1](https://github.com/hdslave/hdslaveOS/issues/1)). The Keys page shows the pads' names.\n- With **Run** on, or **Notes: Steps**, every bank plays the same eight steps (pads 9–16 repeat 1–8), an octave up a bank: A plays them as before, D three octaves up. Before, one octave change moved every pad four steps on.\n- With Run off and **Notes: Pitch**, every key plays exactly the pitch it did in 0.6.8, so saved melodies and keyboards are unchanged.\n\n### Install\n\nUnzip `hdslave-Anvil-MPC-Sample-v0.7.0.zip` at the root of the MPC Sample's SD card, so `hdslave Anvil.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. Sound fingerprints are unchanged except 4 of 63 scenarios, which play a step pad in another bank, changed on purpose. The new pad behaviour has tests that fail on the previous release. It loaded and played in hdslaveOS's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Anvil-MPC-Sample-v0.7.0.zip`: `8042bfd560b167c7057cf34cf8364342b03df389e5f16050cc9e27f3d4b2b423`\n- `hdslave Anvil.clap`: `93ce090729423a43bfe5b94ba7a7d604074601f08c3fd202ba19f1e73e107093`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.6.8",
+        "name": "hdslave Anvil 0.6.8 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T07:32:48Z",
+        "html_url": "https://github.com/hdslave/hdslave-Anvil-Synth/releases/tag/v0.6.8",
+        "body": "**hdslave Anvil 0.6.8** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `7047519`. The previous release was 0.6.7.\n\n### Changes\n\n- A song place told a little off its line (hdslaveOS's clamps, swing and MTC trim, up to about 0.002 quarter) no longer plays a step twice or loses one: a move of less than a 64th note is drift, not a locate.\n- A move of exactly a 64th note is judged as hdslaveOS judges it.\n- A forward move that passes more than one clock at a fine Clock Div re-syncs instead of firing two clocks on one frame.\n- A Clock Div change while a step is held counts from where the steps got to, so no step plays twice.\n\n### Install\n\nUnzip `hdslave-Anvil-MPC-Sample-v0.6.8.zip` at the root of the MPC Sample's SD card, so `hdslave Anvil.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS 0.9.1-hdslave.1's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Anvil-MPC-Sample-v0.6.8.zip`: `934dd2bca1722d648ce85b331874c858d59a714d3d87179374033fdde4589735`\n- `hdslave Anvil.clap`: `332f4816930aec4a7147fca3aedcef12358455fe619f52a4aca9fdc33b7a4de7`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.6.7",
+        "name": "hdslave Anvil 0.6.7 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T00:34:44Z",
+        "html_url": "https://github.com/hdslave/hdslave-Anvil-Synth/releases/tag/v0.6.7",
+        "body": "**hdslave Anvil 0.6.7** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `4038455`. The hdslaveOS release pack had 0.6.5.\n\n### Changes\n\n- A choke's fade always finishes, and nothing of the choked hit follows it: the short burst of the old sound after every choke is gone.\n- A hit inside a choke's fade waits for the fade (at most 1.5 ms) and then plays whole, as the README promised.\n- A choke or All Sound Off while nothing is running (no envelope still decaying) leaves the next hit, and knob changes made with it, exactly as they would be without it. While an envelope still runs unheard, it resets the envelopes, as All Sound Off should.\n\n### Install\n\nUnzip `hdslave-Anvil-MPC-Sample-v0.6.7.zip` at the root of the MPC Sample's SD card, so `hdslave Anvil.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Anvil-MPC-Sample-v0.6.7.zip`: `c204bb494757752eb0a62e52ad6aa1f16e53571402324bdbc7c853c1e3bd0d4e`\n- `hdslave Anvil.clap`: `c09cf3b4dcf44bea14a4e5523b5d40c9aa9014ec385c9807470c0ba96a2699d1`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "hdslave/hdslave-Cortex-Filter": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T07:33:32Z",
+    "last_commit_at": "2026-11-27T04:47:59Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "A stereo 3D morphing filter (CLAP effect) for the Akai MPC Sample running Melodee, with a 3D cube and response readout on the MPC's screen",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.3.4",
+      "published_at": "2026-11-27T07:33:33Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.3.4",
+        "name": "hdslave Cortex Filter 0.3.4 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T07:33:33Z",
+        "html_url": "https://github.com/hdslave/hdslave-Cortex-Filter/releases/tag/v0.3.4",
+        "body": "**hdslave Cortex Filter 0.3.4** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `edb5824`. The previous release was 0.3.3.\n\n### Changes\n\n- After hdslaveOS has put the effect to sleep, the filter sequence and the LFO catch up on the time slept: a loop going round, a locate, a Stop and tempo changes in the rest land where an always-awake instance would be. This needs hdslaveOS 0.9.1-hdslave.1 or later (its steady_time and loop points); on other hosts it behaves as 0.3.3.\n- Its quiet count follows hdslaveOS's idle gate exactly, so a bypass or freeze is not taken for a sleep.\n- A small step back of the song place no longer fires a clock twice, and MTC drift no longer double-counts.\n- Env Trigger at its lowest Trig Level no longer fires in silence.\n- Known limits, documented in the README: a tempo change and a locate back in the same rest, and more than one tempo change while playing.\n\n### Install\n\nUnzip `hdslave-Cortex-Filter-MPC-Sample-v0.3.4.zip` at the root of the MPC Sample's SD card, so `hdslave Cortex Filter.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 128 sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS 0.9.1-hdslave.1's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Cortex-Filter-MPC-Sample-v0.3.4.zip`: `0bf420d9407eb0009fdcd05d3d087ee193546e380cd82961b34344ed7487d840`\n- `hdslave Cortex Filter.clap`: `9f9e802c966df333f2ae2464f6c1d9d5057f6b6222805aa15ec70c8ce09e0efb`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.3.3",
+        "name": "hdslave Cortex Filter 0.3.3 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T00:35:30Z",
+        "html_url": "https://github.com/hdslave/hdslave-Cortex-Filter/releases/tag/v0.3.3",
+        "body": "**hdslave Cortex Filter 0.3.3** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `3118c86`. The hdslaveOS release pack had 0.3.2.\n\n### Changes\n\n- The envelope follower stays right while the host would put the effect to sleep: with Env Trigger or an Env depth in use, it keeps itself awake until what it follows is silent, so Env Trigger re-arms and Env modulation falls as it should.\n- A running filter sequence sleeps through rests and lines up again on the transport when hdslaveOS 0.8.3-hdslave.3 or later wakes it for Play, Stop and jumps.\n- Known limit: a loop going round, a locate back, or a Stop during a rest leaves the sequence behind by the clocks passed while it slept, until a Reset, a Play or a new sequence lines it up.\n\n### Install\n\nUnzip `hdslave-Cortex-Filter-MPC-Sample-v0.3.3.zip` at the root of the MPC Sample's SD card, so `hdslave Cortex Filter.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 128 sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Cortex-Filter-MPC-Sample-v0.3.3.zip`: `120df370bbe2da1dd17f3784fc170ae6149356786ed081902ba1ad6d569c7453`\n- `hdslave Cortex Filter.clap`: `c33ec9999b55a13dcb1e392b3cae674c13eb265d29f751bf0568ef6b75c0d623`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1",
+        "name": "hdslave Cortex Filter v0.1 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-23T06:19:57Z",
+        "html_url": "https://github.com/hdslave/hdslave-Cortex-Filter/releases/tag/v0.1",
+        "body": "**hdslave Cortex Filter** (`v0.1`, built from `d31acd2`) — a Linux `aarch64` CLAP plug-in for the Akai MPC Sample running [hdslaveOS](https://github.com/hdslave/hdslaveOS) or [Melodee](https://github.com/keremimo/melodee-sample).\n\n> **Note:** Verified by automated host, audio, state, and screen tests in the arm64 test harness (`clap_check`), not yet tested on physical MPC hardware.\n\n### Install on the MPC Sample SD card\nUnzip `hdslave-Cortex-Filter-MPC-Sample-v0.1.zip` at the root of your SD card (so `hdslave Cortex Filter.clap` and its licence/documentation files land in `Melodee/Plugins/hdslave/`).\n\n### Checksums (SHA-256)\n- `hdslave-Cortex-Filter-MPC-Sample-v0.1.zip`: `92acb31032e124758066c05cd4ca513b35e8def2db7edb1a75c4e0f56005e5a3`\n- `hdslave Cortex Filter.clap`: `ec306f081cfa9540ebc6b8b58c195e949eae8e3d83a8259a9de0b28288df5112`\n\n### Desktop version (macOS & Windows)\nLooking for the desktop CLAP version for FL Studio / desktop DAWs? See [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "hdslave/hdslave-Foundry-Drum-Machine": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T17:32:00Z",
+    "last_commit_at": "2026-11-27T16:59:01Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "A 16-voice 808/909/606-style drum machine as a CLAP plug-in for the Akai MPC Sample (Melodee): TR-1000-style controls per voice, 606 mod controls, kick side chain, reverb, delay, bus compressor",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.7.0",
+      "published_at": "2026-11-27T17:35:52Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.7.0",
+        "name": "hdslave Foundry 0.7.0 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:35:52Z",
+        "html_url": "https://github.com/hdslave/hdslave-Foundry-Drum-Machine/releases/tag/v0.7.0",
+        "body": "**hdslave Foundry 0.7.0** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `0ac7172`. The previous release was 0.6.7.\n\n### Changes\n\n- The plug-in now carries a drum map, so hdslaveOS (and Melodee) play its pads A01–A16 as keys 36–51 whatever the track's octave, key or scale. **−** / **+** then move the pad bank (B, C, D) instead of the octave, and the plug-in decides what each bank plays, so they can no longer shuffle or silence the pads ([hdslaveOS issue 1](https://github.com/hdslave/hdslaveOS/issues/1)). The Keys page shows the pads' names.\n- With **Key Map: Pads**, every pad bank plays the same 16 voices at the same sound. Before, banks B–D were silent.\n- **Keys Voice** and the **GM** key map play exactly as in 0.6.7.\n\n### Install\n\nUnzip `hdslave-Foundry-MPC-Sample-v0.7.0.zip` at the root of the MPC Sample's SD card, so `hdslave Foundry.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 93 sound fingerprints are unchanged; one scenario was added for the banks. The new pad behaviour has tests that fail on the previous release. It loaded and played in hdslaveOS's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Foundry-MPC-Sample-v0.7.0.zip`: `c5ec1fbb63ba8f3221a76b2bc5687a23cfa104f99efab57551f0fb4420a923b2`\n- `hdslave Foundry.clap`: `80d20467b96da4de4ac4af8d55d2d0be10e71be45f60f4bdacfb2a3c76dc302c`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.6.7",
+        "name": "hdslave Foundry 0.6.7 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T00:34:50Z",
+        "html_url": "https://github.com/hdslave/hdslave-Foundry-Drum-Machine/releases/tag/v0.6.7",
+        "body": "**hdslave Foundry 0.6.7** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `8a8b766`. The hdslaveOS release pack had 0.6.5.\n\n### Changes\n\n- Key Map GM no longer plays the Bass Drum on MIDI key 0.\n- A voice hit again inside its fade eases the old tail out over about 2 ms under the new hit, instead of cutting it (a click with an Attack Time), and that easing follows a later choke.\n\n### Install\n\nUnzip `hdslave-Foundry-MPC-Sample-v0.6.7.zip` at the root of the MPC Sample's SD card, so `hdslave Foundry.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 93 fingerprint scenarios are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Foundry-MPC-Sample-v0.6.7.zip`: `c09c6c770239d8fdcbeead7437f94ee3bb61514da3ed60715dd28c93097fc940`\n- `hdslave Foundry.clap`: `ecc745495181f06c00eeaa7d6b19b7bc7b30a913d1e2ea1c89c8720d59fb648a`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1",
+        "name": "hdslave Foundry v0.1 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-23T06:19:42Z",
+        "html_url": "https://github.com/hdslave/hdslave-Foundry-Drum-Machine/releases/tag/v0.1",
+        "body": "**hdslave Foundry** (`v0.1`, built from `d992b19`) — a Linux `aarch64` CLAP plug-in for the Akai MPC Sample running [hdslaveOS](https://github.com/hdslave/hdslaveOS) or [Melodee](https://github.com/keremimo/melodee-sample).\n\n> **Note:** Verified by automated host, audio, state, and screen tests in the arm64 test harness (`clap_check`), not yet tested on physical MPC hardware.\n\n### Install on the MPC Sample SD card\nUnzip `hdslave-Foundry-MPC-Sample-v0.1.zip` at the root of your SD card (so `hdslave Foundry.clap` and its licence/documentation files land in `Melodee/Plugins/hdslave/`).\n\n### Checksums (SHA-256)\n- `hdslave-Foundry-MPC-Sample-v0.1.zip`: `ccb393a8e297fa6615e2e4f02b033904449e325bbe1d73ff5fec473730a4d4c0`\n- `hdslave Foundry.clap`: `94f2ff7d1cc356b5cdb7a1d6e68585828ce55d6d26cf806ee6a0feef3cec4f54`\n\n### Desktop version (macOS & Windows)\nLooking for the desktop CLAP version for FL Studio / desktop DAWs? See [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
   "hdslave/hdslave-MPCSample-Synths-and-Drum-Machines": {
     "stars": 0,
     "forks": 0,
-    "pushed_at": "2026-11-27T07:31:12Z",
-    "last_commit_at": "2026-11-27T07:27:46Z",
+    "pushed_at": "2026-11-27T17:42:15Z",
+    "last_commit_at": "2026-11-27T17:37:41Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1049,10 +1187,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.9.1-hdslave.1",
-      "published_at": "2026-11-27T07:31:34Z"
+      "tag": "v0.9.1-hdslave.2",
+      "published_at": "2026-11-27T17:42:44Z"
     },
     "releases": [
+      {
+        "tag": "v0.9.1-hdslave.2",
+        "name": "MPC Sample 11-plug-in collection for hdslaveOS 0.9.1-hdslave.2",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:42:44Z",
+        "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.9.1-hdslave.2",
+        "body": "All eleven MPC Sample CLAPs from their published source branches, for **hdslaveOS 0.9.1-hdslave.2**. New versions: Anvil 0.7.0, Slink 0.9.0, Psychic 0.3.0, Necronomicon 0.3.0, Mystik 0.4.0, MoonBass 0.2.0, Foundry 0.7.0 and Machine 0.2.0. Nexus 0.1.9, Cortex Filter 0.3.4 and Reverie 0.6.4 have the same MPC build as before. Each plug-in keeps its existing card filename.\n\nThe eight new versions carry a drum map: their pads A01–A16 are keys 36–51 whatever the track's octave, key or scale, and **−** / **+** move the pad bank, where each bank plays the same pads (step pads an octave up a bank). Playing a plug-in as a keyboard, with its sequencer off, gives every key the pitch it had before.\n\n**Install the pack.** Extract the ZIP and copy the files inside `Melodee/Plugins/hdslave/` into the same folder on the MPC card. Replace matching plug-in files and keep the filenames. Slink appears as **hdslave Slink** in the picker and uses `hdslave TB-MPC-3-P-0.clap` on the card.\n\nThe pack includes the plug-in licences and `MPC-PLUGINS.tsv` with the source commits and SHA-256 hashes. The eight updated plug-ins passed their build tests and AddressSanitizer; their sound fingerprints changed only where pads outside 36–51 now play differently, on purpose. All eleven loaded and played in hdslaveOS 0.9.1-hdslave.2 in software. Physical MPC testing is pending. Each plug-in's changes are in its own release and in the [hdslaveOS release](https://github.com/hdslave/hdslaveOS/releases/tag/v0.9.1-hdslave.2), which also has the complete installer and the OS-only ZIP.\n",
+        "truncated": false
+      },
       {
         "tag": "v0.9.1-hdslave.1",
         "name": "MPC Sample 11-plug-in collection for hdslaveOS 0.9.1-hdslave.1",
@@ -1070,14 +1217,189 @@
         "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.3-hdslave.3",
         "body": "All eleven MPC Sample CLAPs from their published source branches, for **hdslaveOS 0.8.3-hdslave.3**. Ten carry fixes from a full review that started from [hdslaveOS issue #1](https://github.com/hdslave/hdslaveOS/issues/1): Nexus 0.1.7, Mystik 0.3.5, Anvil 0.6.7, Foundry 0.6.7, Machine 0.1.7, Slink 0.8.1, Reverie 0.6.4, Psychic 0.2.6, Necronomicon 0.2.4 and Cortex Filter 0.3.3. MoonBass is at 0.1.7. Each plug-in keeps its existing card filename.\n\n**Install the pack.** Extract the ZIP and copy the files inside `Melodee/Plugins/hdslave/` into the same folder on the MPC card. Replace matching plug-in files and keep the filenames. Slink appears as **hdslave Slink** in the picker and uses `hdslave TB-MPC-3-P-0.clap` on the card.\n\nThe pack includes the plug-in licences and `MPC-PLUGINS.tsv` with the source commits and SHA-256 hashes. All eleven passed their build tests and AddressSanitizer. Their sound fingerprints are unchanged, apart from one Mystik scenario changed on purpose. All eleven loaded and played in hdslaveOS 0.8.3-hdslave.3 in software. Physical MPC testing is pending. Each plug-in's changes are in its own release, and in the [hdslaveOS release](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.3-hdslave.3), which also has the complete installer and the OS-only ZIP.\n",
         "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "hdslave/hdslave-Machine": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T17:32:06Z",
+    "last_commit_at": "2026-11-27T17:21:01Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "hdslave Machine: a multi-machine synthesizer in the style of Elektron's machines (4-op FM, seven drum machines, an eight-slot KIT, eight stranger voices, a resonator kick) with its own page on the MPC's screen, as a CLAP plug-in for the Akai MPC Sample running Melodee",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.2.0",
+      "published_at": "2026-11-27T17:35:56Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.2.0",
+        "name": "hdslave Machine 0.2.0 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:35:56Z",
+        "html_url": "https://github.com/hdslave/hdslave-Machine/releases/tag/v0.2.0",
+        "body": "**hdslave Machine 0.2.0** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `432cca0`. The previous release was 0.1.7.\n\n### Changes\n\n- The plug-in now carries a drum map, so hdslaveOS (and Melodee) play its pads A01–A16 as keys 36–51 whatever the track's octave, key or scale. **−** / **+** then move the pad bank (B, C, D) instead of the octave, and the plug-in decides what each bank plays, so they can no longer shuffle or silence the pads ([hdslaveOS issue 1](https://github.com/hdslave/hdslaveOS/issues/1)). The Keys page shows the pads' names.\n- **KIT**: every key plays a slot. Pads 9–16, and the other banks, repeat slots 1–8; before, only keys 36–43 played.\n- Every other machine plays every key exactly as in 0.1.7.\n\n### Install\n\nUnzip `hdslave-Machine-MPC-Sample-v0.2.0.zip` at the root of the MPC Sample's SD card, so `hdslave Machine.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. Sound fingerprints are unchanged except 2 of 101, KIT scenarios whose keys outside 36–43 now sound. The new pad behaviour has tests that fail on the previous release. It loaded and played in hdslaveOS's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Machine-MPC-Sample-v0.2.0.zip`: `388b3c1c0bc033311212dec4305bb397625b5399baa83f70b0fcbf4bd2198b1d`\n- `hdslave Machine.clap`: `555193fb2e2d13d5f07b55327febee978f2e66246ef5d21e72bb828c38c34d27`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
       },
       {
-        "tag": "v0.8.3-hdslave.1",
-        "name": "MPC Sample 11-plug-in collection for hdslaveOS 0.8.3",
+        "tag": "v0.1.7",
+        "name": "hdslave Machine 0.1.7 (MPC Sample)",
         "prerelease": false,
-        "published_at": "2026-11-26T09:03:19Z",
-        "html_url": "https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/tag/v0.8.3-hdslave.1",
-        "body": "All eleven MPC Sample CLAPs built from their published source branches, including **Slink 0.6.3** and **Reverie 0.6.3**. Each plug-in keeps its existing card filename. The other nine CLAP binaries match the previous local staging byte for byte.\n\n**Install the pack.** Extract the ZIP and copy the files inside `Melodee/Plugins/hdslave/` into the same folder on the MPC card. Replace matching plug-in files and keep the filenames. Slink appears as **hdslave Slink** in the picker and uses `hdslave TB-MPC-3-P-0.clap` on the card.\n\nThe pack includes the plug-in licences and `MPC-PLUGINS.tsv` with the source commits and SHA-256 hashes. All eleven passed their build tests and loaded and played in hdslaveOS 0.8.3-hdslave.1 in software. Physical MPC testing is pending. [Complete hdslaveOS installer and OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.3-hdslave.1)\n",
+        "published_at": "2026-11-27T00:34:56Z",
+        "html_url": "https://github.com/hdslave/hdslave-Machine/releases/tag/v0.1.7",
+        "body": "**hdslave Machine 0.1.7** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `96625ec`. The hdslaveOS release pack had 0.1.6.\n\n### Changes\n\n- Two hits of one key on one frame: the louder one plays.\n- A note pressed and let go within one block sounds, to the end of the 32-frame step it started in, then releases.\n- A note choked in the block it was struck stays silent instead of sounding for 3 ms.\n- On, off, on of one key on one frame plays the second note held, on the tonal machines and on KIT's VOX and PULSAR slots.\n\n### Install\n\nUnzip `hdslave-Machine-MPC-Sample-v0.1.7.zip` at the root of the MPC Sample's SD card, so `hdslave Machine.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 101 sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Machine-MPC-Sample-v0.1.7.zip`: `f6517f8bf4d02eaf294c96b8afd219246999cfb7b7a3c9622415ebc7c8e7f134`\n- `hdslave Machine.clap`: `977d4c943751c07cd86cf1f5dc8e65da305a9fce94810a2ce951cfc365b71766`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1",
+        "name": "hdslave Machine v0.1 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-23T06:19:44Z",
+        "html_url": "https://github.com/hdslave/hdslave-Machine/releases/tag/v0.1",
+        "body": "**hdslave Machine** (`v0.1`, built from `ecb3484`) — a Linux `aarch64` CLAP plug-in for the Akai MPC Sample running [hdslaveOS](https://github.com/hdslave/hdslaveOS) or [Melodee](https://github.com/keremimo/melodee-sample).\n\n> **Note:** Verified by automated host, audio, state, and screen tests in the arm64 test harness (`clap_check`), not yet tested on physical MPC hardware.\n\n### Install on the MPC Sample SD card\nUnzip `hdslave-Machine-MPC-Sample-v0.1.zip` at the root of your SD card (so `hdslave Machine.clap` and its licence/documentation files land in `Melodee/Plugins/hdslave/`).\n\n### Checksums (SHA-256)\n- `hdslave-Machine-MPC-Sample-v0.1.zip`: `d6dc561eb4adcbde92e264293104e195b8801f07f3fce7496b2ba3eb734451a9`\n- `hdslave Machine.clap`: `0efb56a81886bf56723e0075e010a9582f335b10bb86c8156133e2a95aed2dce`\n\n### Desktop version (macOS & Windows)\nLooking for the desktop CLAP version for FL Studio / desktop DAWs? See [hdslave-Synths-and-drum-machines-Mac-Win](https://github.com/hdslave/hdslave-Synths-and-drum-machines-Mac-Win).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "hdslave/hdslave-MoonBass-Synth": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T17:31:55Z",
+    "last_commit_at": "2026-11-27T17:21:27Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "hdslave MoonBass: an analog-style kick drum synthesizer (Jomox ModBase 09 Mk I/II and MBase 11 style, every parameter paged out) as a CLAP plug-in for the Akai MPC Sample running Melodee",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.2.0",
+      "published_at": "2026-11-27T17:35:46Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.2.0",
+        "name": "hdslave MoonBass 0.2.0 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:35:46Z",
+        "html_url": "https://github.com/hdslave/hdslave-MoonBass-Synth/releases/tag/v0.2.0",
+        "body": "**hdslave MoonBass 0.2.0** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `255c0b0`. The previous release was 0.1.8.\n\n### Changes\n\n- The plug-in now carries a drum map, so hdslaveOS (and Melodee) play its pads A01–A16 as keys 36–51 whatever the track's octave, key or scale. **−** / **+** then move the pad bank (B, C, D) instead of the octave, and the plug-in decides what each bank plays, so they can no longer shuffle or silence the pads ([hdslaveOS issue 1](https://github.com/hdslave/hdslaveOS/issues/1)). The Keys page shows the pads' names.\n- Every key inside the **Key Range** plays exactly as in 0.1.8.\n- A key outside the range, silent before, now plays the same note name inside the range, so no pad bank is silent. The pads are named Kick 1–16.\n\n### Install\n\nUnzip `hdslave-MoonBass-MPC-Sample-v0.2.0.zip` at the root of the MPC Sample's SD card, so `hdslave MoonBass.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. Sound fingerprints are unchanged except 23 of 64 random scenarios whose out-of-range notes, silent before, now sound. The new pad behaviour has tests that fail on the previous release. It loaded and played in hdslaveOS's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-MoonBass-MPC-Sample-v0.2.0.zip`: `861cbc81dcee423e49cd132bb1a9340ca457b7dd257f5c06b461b21574b4f76e`\n- `hdslave MoonBass.clap`: `995c3acb967f6994e04974649b366cb5b21eae71aa296ee221c90c912f91a1f3`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1.8",
+        "name": "hdslave MoonBass 0.1.8 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T07:33:15Z",
+        "html_url": "https://github.com/hdslave/hdslave-MoonBass-Synth/releases/tag/v0.1.8",
+        "body": "**hdslave MoonBass 0.1.8** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `7876b15`. The previous release was 0.1.7.\n\n### Changes\n\n- A Free synced LFO's edge no longer repeats when the song place is told a little behind.\n- Its count of the song is re-based every block, so under MTC drift a gap can't build up and stop the LFO.\n- A move of exactly a 64th note is judged as hdslaveOS judges it. The desktop copy has the same change.\n\n### Install\n\nUnzip `hdslave-MoonBass-MPC-Sample-v0.1.8.zip` at the root of the MPC Sample's SD card, so `hdslave MoonBass.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS 0.9.1-hdslave.1's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-MoonBass-MPC-Sample-v0.1.8.zip`: `6dab138256e41c64530bde9125a794fbdc538ac9bedac4234f847b2d23a55986`\n- `hdslave MoonBass.clap`: `cdc59a22bf11f86c5be70ac4c70cc5ffa32f8e46d81885e33949af18d218d0ba`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1.7",
+        "name": "hdslave MoonBass 0.1.7 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T00:35:35Z",
+        "html_url": "https://github.com/hdslave/hdslave-MoonBass-Synth/releases/tag/v0.1.7",
+        "body": "**hdslave MoonBass 0.1.7** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `43e5ea5`. The hdslaveOS release pack had 0.1.6.\n\n### Changes\n\n- A hit sets off a shockwave on the Orbital Impact page.\n- Split Mode is now named Key Range, and its Any Note choice All Keys. The parameter's id, choice order and values are as before, so saved projects load unchanged.\n\n### Install\n\nUnzip `hdslave-MoonBass-MPC-Sample-v0.1.7.zip` at the root of the MPC Sample's SD card, so `hdslave MoonBass.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All sound fingerprints are unchanged. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-MoonBass-MPC-Sample-v0.1.7.zip`: `32b1071a9b1206998506d95ea52b13744db324c84d5fd1ce978507bd19cb2e84`\n- `hdslave MoonBass.clap`: `508dabd15d5f57f5ff7a1504f64effabe9881c68164f1492ebd9dcffe1f275b2`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "hdslave/hdslave-Mystik-Synth": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T17:31:49Z",
+    "last_commit_at": "2026-11-27T17:22:29Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "hdslave Mystik: a west-coast hand drum (membrane and complex oscillator struck through a modelled vactrol low-pass gate) with a six-mode sequencer, cheap effects and its own screen page, as a CLAP plug-in for the Akai MPC Sample running Melodee",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.4.0",
+      "published_at": "2026-11-27T17:35:40Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.4.0",
+        "name": "hdslave Mystik 0.4.0 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:35:40Z",
+        "html_url": "https://github.com/hdslave/hdslave-Mystik-Synth/releases/tag/v0.4.0",
+        "body": "**hdslave Mystik 0.4.0** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `defcdb7`. The previous release was 0.3.6.\n\n### Changes\n\n- The plug-in now carries a drum map, so hdslaveOS (and Melodee) play its pads A01–A16 as keys 36–51 whatever the track's octave, key or scale. **−** / **+** then move the pad bank (B, C, D) instead of the octave, and the plug-in decides what each bank plays, so they can no longer shuffle or silence the pads ([hdslaveOS issue 1](https://github.com/hdslave/hdslaveOS/issues/1)). The Keys page shows the pads' names.\n- With the **Sequencer** on, or **Notes: Steps**, every bank plays the same 16 steps, an octave up a bank.\n- With the Sequencer on, keys outside the pads no longer transpose the pattern. **Notes: Pitch** and **Strokes** play every key exactly as in 0.3.6.\n\n### Install\n\nUnzip `hdslave-Mystik-MPC-Sample-v0.4.0.zip` at the root of the MPC Sample's SD card, so `hdslave Mystik.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. Sound fingerprints are unchanged except 9 of 47 scenarios that play step pads outside 36–51, changed on purpose. The new pad behaviour has tests that fail on the previous release. It loaded and played in hdslaveOS's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Mystik-MPC-Sample-v0.4.0.zip`: `074e040291ceba8e854ce96c7b8c2a0ce2860dd67bb6c0019e1f71f152d72be1`\n- `hdslave Mystik.clap`: `b73934eea7ce90afa5838acac447203b393d8ac81f76a0e418bc2e4801308ddb`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.3.6",
+        "name": "hdslave Mystik 0.3.6 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T07:33:20Z",
+        "html_url": "https://github.com/hdslave/hdslave-Mystik-Synth/releases/tag/v0.3.6",
+        "body": "**hdslave Mystik 0.3.6** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `afa4384`. The previous release was 0.3.5.\n\n### Changes\n\n- Hold follows the key or pad that struck the drum last: letting it go ends Hold, even with older keys held.\n- An older strike's gate end no longer cuts a newer strike's Hold (Bounce in short loops, a step's gate across a loop wrap, a Rate or tempo change).\n- A full event queue drops a hit, never a gate end, so Hold can't stay lit for good.\n- Steps before the song's top (a pre-roll) get their gate ends; a step a late loop wrap replays plays as it would on time; a step drops an audition's later roll hits.\n- A song place told a little off its line no longer plays a step twice; a move of exactly a 64th is judged as hdslaveOS judges it; a Rate change while a step is held no longer replays it.\n- The desktop copy (0.2.5) has the same rules, its glue runs settings, transport, notes, then page presses, and it restores the sequence state on a late wrap.\n\n### Install\n\nUnzip `hdslave-Mystik-MPC-Sample-v0.3.6.zip` at the root of the MPC Sample's SD card, so `hdslave Mystik.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. Six of 47 sound fingerprints changed on purpose: pads-stopped and pads-playing, where a pad let go now ends its Hold with an older key held, and the four blocks-* renders of one scene, where an older step's gate end no longer cuts a newer step's Hold. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS 0.9.1-hdslave.1's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Mystik-MPC-Sample-v0.3.6.zip`: `a2a60630240f5ce738a61b0f55a2784f0ac6b84e8ed2b90cee82d5badc736604`\n- `hdslave Mystik.clap`: `a9b8faa7e1adce50a8f07dee5f028d2a1faaed1cd9e247318f10c95f10bd7a2d`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.3.5",
+        "name": "hdslave Mystik 0.3.5 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T00:34:38Z",
+        "html_url": "https://github.com/hdslave/hdslave-Mystik-Synth/releases/tag/v0.3.5",
+        "body": "**hdslave Mystik 0.3.5** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `e97f109`. The hdslaveOS release pack had 0.3.3.\n\n### Changes\n\n- A key struck before Play ends its Hold when it is let go after Play.\n- Stop, and switching the Sequencer off, leave a held key's Hold lit until the key is let go.\n- The page's audition keeps its gate: a key let go during it, an earlier step's gate end, or a Stop no longer cut it short, and its gate ending with an older key still held no longer leaves Hold lit.\n- Hold ends when a slide's next step never plays (Density, Trig, Length, Rate or Seq Mode changed in between), instead of droning until Stop.\n- A key let go no longer strikes the drum again once it has gone quiet.\n\n### Install\n\nUnzip `hdslave-Mystik-MPC-Sample-v0.3.5.zip` at the root of the MPC Sample's SD card, so `hdslave Mystik.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. 46 of 47 sound fingerprints are unchanged. One, `knobs-moving`, changed on purpose: a Rate change there stops the step a gate end was waiting for, and Hold now ends at that step's clock instead of staying lit to the end. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Mystik-MPC-Sample-v0.3.5.zip`: `dceea7212abcfc3b6d273bea2f68ccc275f6e5623d42d7b158be4b51598b77f8`\n- `hdslave Mystik.clap`: `deda253a68fb649b8f05f245ccdc262e203a5f09ddd7e8342459a09ebe68dfba`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "hdslave/hdslave-Nexus-Synth": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-27T07:33:25Z",
+    "last_commit_at": "2026-11-27T07:15:22Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": null,
+    "description": "hdslave Nexus: Mutable Instruments Plaits' 24 models as a polyphonic CLAP synth (unison, two ADSRs, two LFOs, cycle and random sources, a filter, two modulation matrices, Slide/Tie) with its own screen page, for the Akai MPC Sample running Melodee",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v0.1.9",
+      "published_at": "2026-11-27T07:33:25Z"
+    },
+    "releases": [
+      {
+        "tag": "v0.1.9",
+        "name": "hdslave Nexus 0.1.9 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T07:33:25Z",
+        "html_url": "https://github.com/hdslave/hdslave-Nexus-Synth/releases/tag/v0.1.9",
+        "body": "**hdslave Nexus 0.1.9** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `af20e1f`. The previous release was 0.1.8.\n\n### Changes\n\n- A song-locked LFO no longer restarts its cycle when the song place is told a little behind, so its Random values stay in step with the song.\n- A locked LFO tells a jump as hdslaveOS does (more than a 64th note from where the last call led).\n- The desktop copy is at 0.1.9 with the same change.\n\n### Install\n\nUnzip `hdslave-Nexus-MPC-Sample-v0.1.9.zip` at the root of the MPC Sample's SD card, so `hdslave Nexus.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 67 sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS 0.9.1-hdslave.1's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Nexus-MPC-Sample-v0.1.9.zip`: `27f84a205dfeccd5888bb7b50c7af7f3c7cbb372845e06b5dfe645fdc443d2f6`\n- `hdslave Nexus.clap`: `5919ea9a5eb3b9c96cfb8ecdaaea13136328da8d707f2455f32ba16ce9895ccc`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1.8",
+        "name": "hdslave Nexus 0.1.8 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T06:01:41Z",
+        "html_url": "https://github.com/hdslave/hdslave-Nexus-Synth/releases/tag/v0.1.8",
+        "body": "**hdslave Nexus 0.1.8** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `cc57f2d`. The hdslaveOS release pack has 0.1.7.\n\n### Changes\n\n- Chiptune notes end when their key is let go. Played with a trigger (Gate, Ping or Env), the model makes its own envelope and skips the low-pass gate, and with T ATT at 0 that envelope never fell, so a released key (the Chip Arp preset) sounded forever and kept its voice. Now each strike opens the note and the gate's own fall closes it, at LPG DECAY and COLOR: in Ping from the strike, held or not; in Gate and Env once the key is let go. Held notes sound as before.\n- FM Bells plays the second 6-op bank's tubular bells; its old setting picked a patch an octave below the key.\n- Drawbar Organ plays the Harmonic model's organ output, in Drone, an octave down so that the key is the 8' drawbar, with velocity all but flat.\n- String Ensemble plays octaves on each key instead of a minor ninth chord, which clashed when chords were played.\n- String Ensemble and Wavetable Pad let go sooner: their tails took 11 and 14 s to fall away, now about 3 and 4 s.\n\n### Install\n\nUnzip `hdslave-Nexus-MPC-Sample-v0.1.8.zip` at the root of the MPC Sample's SD card, so `hdslave Nexus.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, preset keys and saved states carry over unchanged; the four presets above load with their new values.\n\n### Verification\n\nIts build tests passed (354,064 checks), also under AddressSanitizer and UBSan. Of the sound fingerprints, only those of the five presets and the Chiptune scenario moved, on purpose; held Chiptune notes hash the same as in 0.1.7. Every fix has a test that fails on the build before it, and two independent reviews' findings each have a check. It loaded and played in hdslaveOS's CLAP host, in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it yet.\n\n### Checksums (SHA-256)\n\n- `hdslave-Nexus-MPC-Sample-v0.1.8.zip`: `2cabfa4f8bc013f8d27e24685627248959b596c267d20a68968edd2460b9c2ea`\n- `hdslave Nexus.clap`: `001adb5445c0c33d12f0d5b8c70c39a44fbf3eb24b14d9b409f92acdcf148128`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
+      {
+        "tag": "v0.1.7",
+        "name": "hdslave Nexus 0.1.7 (MPC Sample)",
+        "prerelease": false,
+        "published_at": "2026-11-27T00:34:31Z",
+        "html_url": "https://github.com/hdslave/hdslave-Nexus-Synth/releases/tag/v0.1.7",
+        "body": "**hdslave Nexus 0.1.7** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `b318c3a`. The hdslaveOS release pack had 0.1.4.\n\n### Changes\n\n- A 6-op FM model no longer plays what the model before it left in the shared engine memory. After Particle that could be silence (not-a-number samples); after Wavetable, Speech, Swarm or String Machine, a click.\n- NOTES keeps its limit when a chord's keys arrive on one frame, as hdslaveOS sends them.\n- A 6-op note after a choke or a model change has its attack again; it could start at sustain, or not sound at all.\n- In Poly with Glide, a key let go before it has played a block no longer makes the next key on that frame glide.\n\n### Install\n\nUnzip `hdslave-Nexus-MPC-Sample-v0.1.7.zip` at the root of the MPC Sample's SD card, so `hdslave Nexus.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 64 sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `hdslave-Nexus-MPC-Sample-v0.1.7.zip`: `a2b067d61b9a5d54c91f4fd05f33458e48cd15a49f6711d85abcf8a333d4c361`\n- `hdslave Nexus.clap`: `4353fd7a9d4e175f0cf4aac265369ce44a1b777e2b89124fcf4508cd6e382575`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
         "truncated": false
       }
     ],
@@ -1086,8 +1408,8 @@
   "hdslave/hdslaveOS": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-27T07:28:39Z",
-    "last_commit_at": "2026-11-27T07:17:07Z",
+    "pushed_at": "2026-11-27T17:40:34Z",
+    "last_commit_at": "2026-11-27T17:10:06Z",
     "contributors": 3,
     "open_issues": 0,
     "license": "AGPL-3.0",
@@ -1095,10 +1417,19 @@
     "default_branch": "hdslave",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.9.1-hdslave.1",
-      "published_at": "2026-11-27T07:30:52Z"
+      "tag": "v0.9.1-hdslave.2",
+      "published_at": "2026-11-27T17:42:01Z"
     },
     "releases": [
+      {
+        "tag": "v0.9.1-hdslave.2",
+        "name": "hdslaveOS 0.9.1-hdslave.2 + MPC Sample plug-ins",
+        "prerelease": false,
+        "published_at": "2026-11-27T17:42:01Z",
+        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.9.1-hdslave.2",
+        "body": "> **Back up `Melodee/Projects` before you update.** Like 0.9.1-hdslave.1, this build counts 960 ticks a quarter note, as Melodee 0.9 does. A project saved in 0.9.1 plays ten times too slow in hdslaveOS 0.8.3 and earlier.\n\n## Downloads\n\n- **Complete SD-card install** for hdslaveOS and all eleven plug-ins. [Download complete installer](https://github.com/hdslave/hdslaveOS/releases/download/v0.9.1-hdslave.2/hdslaveOS-MPC-Sample-Complete-SD-Card-Install-v0.9.1-hdslave.2-unsigned.zip)\n- **OS-only ZIP** for updating an existing install. [Download OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.9.1-hdslave.2/hdslaveOS-MPC-Sample-SD-Card-Install-v0.9.1-hdslave.2-unsigned.zip)\n- **11-plug-in pack** with the updated hdslave plug-ins. [Download plug-ins](https://github.com/hdslave/hdslaveOS/releases/download/v0.9.1-hdslave.2/hdslaveOS-MPC-Sample-11-CLAP-Plugins-v0.9.1-hdslave.2.zip)\n\nBack up the card and extract the unsigned ZIP on your computer.\n- **First install:** open `START-HERE.txt` in the complete installer.\n- **Direct-boot card:** copy both `autorun/` and `autorun.sh` to the card's top level.\n- **SampleBoot card:** keep its launcher and copy the contents of `autorun/` into `autorun/mods/hdslaveOS 0.9.1-hdslave.2/`.\n- **Plug-ins:** copy the supplied files to `Melodee/Plugins/hdslave/`, and keep their filenames so existing projects can load them.\n\n[Illustrated quickstart](https://github.com/hdslave/hdslaveOS/blob/v0.9.1-hdslave.2/docs/QUICKSTART.md)\n\n## Changes\n\n**− / + on Stage work as in Melodee again.** On a plug-in's **PRESETS** page they move the octave (in the Drums layout, the bank), as on the track's other pages; the encoder walks the presets. On a plug-in's **PANEL** and **EDIT** they go to the plug-in, with **SAMPLE** held or not. 0.8.3-hdslave.2 to 0.9.1-hdslave.1 had changed these keys to work around the hdslave plug-ins' pads; the fix is now in the plug-ins themselves ([#1](https://github.com/hdslave/hdslaveOS/issues/1)).\n\nThe encoder on PRESETS keeps its rules: nothing loads against an end of the list or back on the preset playing, nothing while the plug-in opens, would not open or shows **STOPPED**, a notice while it looks for its presets, and a frozen track is asked only for a turn that would load. Everything else in 0.9.1-hdslave.1 is unchanged.\n\n**Plug-ins.** The step and drum plug-ins now carry a drum map: their pads A01–A16 are keys 36–51 whatever the octave, key or scale, and **−** / **+** move the pad bank. Each bank plays the same pads: step pads an octave up a bank, kit voices the same. Playing a plug-in as a keyboard (its sequencer off) gives every key the pitch it had before, so saved melodies and external keyboards are unchanged. Each version is built from the plug-in's published `main`:\n\n| Plug-in | Was | Now | Changes |\n| --- | --- | --- | --- |\n| Anvil | 0.6.8 | 0.7.0 | Drum map; with Run on or Notes: Steps, every bank plays the same eight steps, an octave up a bank |\n| Slink | 0.8.2 | 0.9.0 | Drum map; in Sequence mode every bank plays the 16 step pads, an octave up a bank, and keys no longer transpose (use Transpose) |\n| Psychic | 0.2.6 | 0.3.0 | Drum map; with Run on every bank plays the 16 bit pads, an octave up a bank, and keys no longer transpose |\n| Necronomicon | 0.2.5 | 0.3.0 | Drum map; with Run on every bank plays the step pads, an octave up a bank, and keys no longer transpose or gate |\n| Mystik | 0.3.6 | 0.4.0 | Drum map; with the Sequencer on or Notes: Steps every bank plays the 16 steps, an octave up a bank |\n| MoonBass | 0.1.8 | 0.2.0 | Drum map; keys outside the Key Range, silent before, play the same note inside it |\n| Foundry | 0.6.7 | 0.7.0 | With Key Map: Pads every bank plays the same 16 voices (banks B–D were silent) |\n| Machine | 0.1.7 | 0.2.0 | Drum map; KIT plays a slot on every key (pads 9–16 and other banks repeat slots 1–8) |\n| Nexus | 0.1.9 | 0.1.9 | Unchanged |\n| Cortex Filter | 0.3.4 | 0.3.4 | Unchanged |\n| Reverie | 0.6.4 | 0.6.4 | Unchanged |\n\n`MPC-PLUGINS.tsv` lists the commit and SHA-256 of each CLAP. Slink keeps the filename `hdslave TB-MPC-3-P-0.clap` on the card.\n\n## Checks\n\n- **hdslaveOS:** the ARM64 build passed 110 tests (one skipped, as before), the monkey test and 420 page previews. The − / + tests now check Melodee's keys, and walk the presets with the encoder.\n- **Audio:** the self-test is identical to 0.9.1-hdslave.1's and upstream Melodee v0.9.1's, bit for bit. The engine is unchanged.\n- **Plug-ins:** the eight updated plug-ins passed their build tests and AddressSanitizer. Their sound fingerprints are unchanged except scenarios that play pads outside 36–51, changed on purpose, and every keyboard-mode scenario matches the previous release. The new pad behaviour has tests that fail on the previous releases. All eleven loaded and played in this build's plug-in host.\n- **Device:** physical MPC testing is pending for this build and the new plug-ins.\n\nBased on Melodee 0.9.1 by Kerem Kiliç (Ellic Studio).\n",
+        "truncated": false
+      },
       {
         "tag": "v0.9.1-hdslave.1",
         "name": "hdslaveOS 0.9.1-hdslave.1 + MPC Sample plug-ins",
@@ -1116,21 +1447,12 @@
         "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.3-hdslave.3",
         "body": "## Downloads\n\n- **Complete SD-card install** for hdslaveOS and all eleven plug-ins. [Download complete installer](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.3-hdslave.3/hdslaveOS-MPC-Sample-Complete-SD-Card-Install-v0.8.3-hdslave.3-unsigned.zip)\n- **OS-only ZIP** for updating an existing install. [Download OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.3-hdslave.3/hdslaveOS-MPC-Sample-SD-Card-Install-v0.8.3-hdslave.3-unsigned.zip)\n- **11-plug-in pack**: ten plug-ins updated with fixes, plus MoonBass 0.1.7. [Download plug-ins](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.3-hdslave.3/hdslaveOS-MPC-Sample-11-CLAP-Plugins-v0.8.3-hdslave.3.zip)\n\nBack up the card and extract the unsigned ZIP on your computer.\n- **First install:** open `START-HERE.txt` in the complete installer.\n- **Direct-boot card:** copy both `autorun/` and `autorun.sh` to the card's top level.\n- **SampleBoot card:** keep its launcher, and copy the contents of `autorun/` into `autorun/mods/hdslaveOS 0.8.3-hdslave.3/`.\n- **Plug-ins:** copy the supplied files to `Melodee/Plugins/hdslave/`, and keep their filenames so existing projects can load them.\n\n[Illustrated quickstart](https://github.com/hdslave/hdslaveOS/blob/v0.8.3-hdslave.3/docs/QUICKSTART.md)\n\n## Changes\n\n**The issue this release fixes, [#1](https://github.com/hdslave/hdslaveOS/issues/1).** On a plug-in track's **PRESETS** page, **−** and **+** now step through the plug-in's presets, as the encoder does. Before, they moved every pad an octave (in the Drums layout, a bank) with no notice. Plug-ins that map pads to steps or voices then played other steps or went silent.\n- At either end of the list, or back on the preset that is playing, nothing loads, so an edited preset stays as it is.\n- While the plug-in opens, or if it would not open, − and + do nothing there.\n- A frozen track asks to unfreeze first.\n- Hold **SAMPLE** and press − or + to move the octave.\n\n**Plug-in hosting.** A review of the whole plug-in path, started from #1, found and fixed these:\n- **Undo:** it brings a removed or replaced plug-in back with its settings, also when several steps are undone at once. A plug-in entry that the undo history still names is never reused for another plug-in. If all 32 entries are in use, hdslaveOS says when it lets the oldest undo steps go.\n- **The PLUG-INS picker:** it asks before a plug-in replaces a track's sound, acts on the rows it shows while the list is still loading, and lands on the folder you came from.\n- **PRESETS:** the list follows the selected track, also after Copy Track. PANEL never loads a preset by mistake right after a track change. A companion screen's program pick asks on a frozen track.\n- **Sleep:** sleeping plug-ins wake for one block on Play, Stop and a jump, so they hear the transport. They no longer wake on every block at 44.1 kHz, with swing or at uneven tempos.\n- **State:** a crashed bridged plug-in keeps its last good state, and opening another project never carries the last project's plug-in states over.\n- **Smaller fixes:** the Samples browser acts on the rows it draws. Erase in STARRED or RECENT never offers to delete the file. The Name sheet saves, and names, what it was opened for. Picking an effect into an empty slot is one undo step.\n\n**Plug-ins.** These versions come from each plug-in's published `main`:\n\n| Plug-in | Was | Now | Fixes |\n| --- | --- | --- | --- |\n| Nexus | 0.1.4 | 0.1.7 | 6-op models no longer play another model's leftovers; NOTES keeps its limit with chords on one frame; 6-op notes after a choke keep their attack |\n| Mystik | 0.3.3 | 0.3.5 | Hold ends and holds as it should across Play, Stop, the Sequencer switch, auditions and slides |\n| Anvil | 0.6.5 | 0.6.7 | No burst after a choke's fade; a hit inside the fade plays whole; a choke over silence leaves the next hit alone |\n| Foundry | 0.6.5 | 0.6.7 | GM Key Map no longer plays the Bass Drum on key 0; a re-hit inside a fade eases the old tail out |\n| Machine | 0.1.6 | 0.1.7 | The louder of two same-frame hits plays; very short notes sound; same-block chokes stay silent |\n| Slink | 0.6.3 | 0.8.1 | The 0.8.0 MPC panel order, a clean filter after long notes, and very short notes in Notes mode |\n| Reverie | 0.6.3 | 0.6.4 | A chord let go on its first sample sounds; LP 24 restarts clean |\n| Psychic | 0.2.5 | 0.2.6 | Drone sounds after a silence or a drone preset load, also while asleep |\n| Necronomicon | 0.2.3 | 0.2.4 | A keyed choke stops the voice |\n| Cortex Filter | 0.3.2 | 0.3.3 | The envelope follower stays right while the effect would sleep |\n| MoonBass | 0.1.6 | 0.1.7 | A hit sets off a shockwave on the Orbital Impact page; Split Mode is named Key Range |\n\n`MPC-PLUGINS.tsv` lists the commit and SHA-256 of each CLAP. Slink keeps the filename `hdslave TB-MPC-3-P-0.clap` on the card.\n\n## Checks\n\nBased on Melodee 0.8.3 by Kerem Kiliç (Ellic Studio).\n- **hdslaveOS:** the ARM64 build passed 102 tests (one skipped, as before), the monkey test and all 412 page previews. Its audio is identical to 0.8.3-hdslave.1, bit for bit: the self-test and three bench hashes match.\n- **Issue #1:** − / + was checked with ten of the plug-ins in a real rack. The preset steps and every pad keeps its key and sounds, with no clipped samples. Cortex Filter, an effect, has no pads.\n- **Plug-ins:** each passed its build tests and AddressSanitizer, and its sound fingerprints are unchanged. The one exception is a Mystik scenario that changed on purpose. All eleven plug-ins loaded and played in this build's plug-in host.\n- **Reviews:** every fix was reviewed by fresh reviewers in several rounds, and each has a test that fails on the build before it.\n\nPhysical MPC testing is pending. [Upstream Melodee release](https://github.com/keremimo/melodee-sample/releases/tag/v0.8.3)\n",
         "truncated": false
-      },
-      {
-        "tag": "v0.8.3-hdslave.2",
-        "name": "hdslaveOS 0.8.3-hdslave.2 + MPC Sample plug-ins",
-        "prerelease": false,
-        "published_at": "2026-11-26T19:02:29Z",
-        "html_url": "https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.3-hdslave.2",
-        "body": "## Downloads\n\n- **Complete SD-card install** for hdslaveOS and all eleven plug-ins. [Download complete installer](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.3-hdslave.2/hdslaveOS-MPC-Sample-Complete-SD-Card-Install-v0.8.3-hdslave.2-unsigned.zip)\n- **OS-only ZIP** for updating an existing install. [Download OS-only ZIP](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.3-hdslave.2/hdslaveOS-MPC-Sample-SD-Card-Install-v0.8.3-hdslave.2-unsigned.zip)\n- **11-plug-in pack**, the same plug-in files as in 0.8.3-hdslave.1. [Download plug-ins](https://github.com/hdslave/hdslaveOS/releases/download/v0.8.3-hdslave.2/hdslaveOS-MPC-Sample-11-CLAP-Plugins-v0.8.3-hdslave.2.zip)\n\nBack up the card and extract the unsigned ZIP on your computer. For a first install, open `START-HERE.txt` in the complete installer. On a direct-boot card, copy both `autorun/` and `autorun.sh` to the card's top level. On a SampleBoot card, keep its launcher and copy the contents of `autorun/` into `autorun/mods/hdslaveOS 0.8.3-hdslave.2/`. Copy the supplied plug-in files to `Melodee/Plugins/hdslave/` and keep their filenames so existing projects can load them. [Illustrated quickstart](https://github.com/hdslave/hdslaveOS/blob/v0.8.3-hdslave.2/docs/QUICKSTART.md)\n\n## Changes\n\n- **− and + on a plug-in's PRESETS page** now step through the plug-in's presets, as the encoder does. Before, they moved every pad an octave (in the Drums layout, a bank) with no notice, so plug-ins that map pads to steps or voices played other steps or went silent. This was reported on 0.8.2-hdslave.3.\n- At either end of the list, or back on the preset that is playing, nothing loads, so an edited preset stays as it is. While the plug-in opens, or if it would not open, − and + do nothing on that page. While it looks for its presets, the screen says **Looking for presets**. A frozen track asks to unfreeze first.\n- For the octave, hold **SAMPLE** and press − or +, as before. On a plug-in with no presets, and on the track's other Stage pages, − and + still move the octave or the bank.\n\nEverything else is as in [0.8.3-hdslave.1](https://github.com/hdslave/hdslaveOS/releases/tag/v0.8.3-hdslave.1).\n\nBased on Melodee 0.8.3 by Kerem Kiliç (Ellic Studio). The ARM64 build plays the same audio as 0.8.3-hdslave.1, bit for bit, and all 29 staged CLAPs loaded and played in software. Physical MPC testing is pending. [Upstream Melodee release](https://github.com/keremimo/melodee-sample/releases/tag/v0.8.3)\n",
-        "truncated": false
       }
     ],
     "archived": false
   },
   "inmusic-software/az0x-open-source": {
-    "stars": 245,
+    "stars": 246,
     "forks": 28,
     "pushed_at": "2026-11-25T14:00:03Z",
     "last_commit_at": "2026-11-24T19:23:57Z",
@@ -1145,10 +1467,10 @@
     "archived": false
   },
   "ioma8/mpc-minimod": {
-    "stars": 17,
+    "stars": 16,
     "forks": 2,
-    "pushed_at": "2026-11-27T08:36:56Z",
-    "last_commit_at": "2026-11-27T08:36:54Z",
+    "pushed_at": "2026-11-27T09:43:48Z",
+    "last_commit_at": "2026-11-27T09:43:46Z",
     "contributors": 3,
     "open_issues": 1,
     "license": "MIT",
@@ -1231,6 +1553,34 @@
         "published_at": "2026-11-17T06:50:40Z",
         "html_url": "https://github.com/ioma8/mpc-sample-sdk/releases/tag/v0.7.2",
         "body": "Adds a public native-browser API for registering virtual directories and files, resolving entries to original paths, and observing successful file opens. Intended for SD-card browser extensions without copying audio files. Verified with 124 SDK unit tests, formatting, Clippy, rustdoc, and a minimod AArch64 emulator integration build.",
+        "truncated": false
+      }
+    ],
+    "archived": false
+  },
+  "iwazowsky/mpc-nam-player": {
+    "stars": 1,
+    "forks": 0,
+    "pushed_at": "2026-11-25T18:58:42Z",
+    "last_commit_at": "2026-11-25T18:58:42Z",
+    "contributors": 1,
+    "open_issues": 0,
+    "license": "MIT",
+    "description": "Neural Amp Modeler (NAM A1/A2) profile player for Akai MPC standalone hardware, built for the MPC Sample, with a web UI over USB",
+    "default_branch": "main",
+    "readme_path": "README.md",
+    "latest_release": {
+      "tag": "v1.0.0",
+      "published_at": "2026-11-25T18:58:27Z"
+    },
+    "releases": [
+      {
+        "tag": "v1.0.0",
+        "name": "NAM Player 1.0.0",
+        "prerelease": false,
+        "published_at": "2026-11-25T18:58:27Z",
+        "html_url": "https://github.com/iwazowsky/mpc-nam-player/releases/tag/v1.0.0",
+        "body": "First public build of NAM Player for Akai MPC standalone hardware.\n\n**Install:** unzip, then copy the folder `Vazgen - VST - NAM Player` into `VST2 Plugins` at the top of your MPC's card (SD Card Access mode), eject, and restart the MPC. On the MPC Sample you need firmware 1.4.0 or later with MIDI Config → Dev Enhancements (Beta) → Custom Plug-In Support turned on. Full steps are in the README and in INSTALL.txt inside the zip.\n\n**Tested on:** one MPC Sample, firmware 1.4.0.8. Not run on other MPC models; the 32-bit build has never been executed.\n\n**Known gaps:** TONE3000 sign-in from the plugin's page has not been run against the live service yet. See the README's Status section for the rest.",
         "truncated": false
       }
     ],
@@ -1467,10 +1817,10 @@
     "archived": false
   },
   "jazzyrhythmer/mpc-sample-rhythmer-os": {
-    "stars": 18,
+    "stars": 19,
     "forks": 0,
-    "pushed_at": "2026-11-25T21:08:58Z",
-    "last_commit_at": "2026-11-25T21:05:06Z",
+    "pushed_at": "2026-11-27T18:04:36Z",
+    "last_commit_at": "2026-11-27T18:04:33Z",
     "contributors": 1,
     "open_issues": 2,
     "license": "AGPL-3.0",
@@ -1627,7 +1977,7 @@
     "archived": false
   },
   "keremimo/melodee-sample": {
-    "stars": 85,
+    "stars": 86,
     "forks": 15,
     "pushed_at": "2026-11-26T23:30:54Z",
     "last_commit_at": "2026-11-26T23:30:06Z",
@@ -1895,8 +2245,8 @@
   "open-mpc/open-mpc.github.io": {
     "stars": 8,
     "forks": 1,
-    "pushed_at": "2026-11-27T04:39:20Z",
-    "last_commit_at": "2026-11-27T04:39:18Z",
+    "pushed_at": "2026-11-27T12:48:58Z",
+    "last_commit_at": "2026-11-27T12:48:56Z",
     "contributors": 2,
     "open_issues": 0,
     "license": null,
@@ -1933,7 +2283,7 @@
     "archived": false
   },
   "orrpunk-art/mpc-sample-root-ssh": {
-    "stars": 19,
+    "stars": 20,
     "forks": 2,
     "pushed_at": "2026-10-19T14:20:09Z",
     "last_commit_at": "2026-10-19T14:19:53Z",
@@ -1970,10 +2320,10 @@
     "archived": false
   },
   "orrpunk-art/virtual-mpc-sample": {
-    "stars": 31,
+    "stars": 32,
     "forks": 4,
-    "pushed_at": "2026-11-24T18:42:39Z",
-    "last_commit_at": "2026-11-24T18:42:27Z",
+    "pushed_at": "2026-11-27T18:14:54Z",
+    "last_commit_at": "2026-11-27T18:14:34Z",
     "contributors": 1,
     "open_issues": 2,
     "license": "MIT",
@@ -2194,12 +2544,12 @@
     "archived": false
   },
   "snarebes/SampQOL-OS": {
-    "stars": 134,
+    "stars": 136,
     "forks": 10,
     "pushed_at": "2026-11-26T16:07:41Z",
     "last_commit_at": "2026-11-26T16:07:39Z",
     "contributors": 1,
-    "open_issues": 51,
+    "open_issues": 50,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
@@ -2240,7 +2590,7 @@
     "archived": false
   },
   "tarikcampos/MPC-Sample-Toolkit": {
-    "stars": 24,
+    "stars": 25,
     "forks": 5,
     "pushed_at": "2026-09-17T09:34:14Z",
     "last_commit_at": "2026-09-17T09:34:14Z",
