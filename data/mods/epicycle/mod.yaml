@@ -1,0 +1,9 @@
+name: EPICYCLE
+description: Custom MPC SAMPLE OS providing an experimental looping environment.
+repo: tubedigga/EPICYCLE
+author: tubedigga
+runs_on:
+  - device
+install: sd-card
+audience:
+  - musician
