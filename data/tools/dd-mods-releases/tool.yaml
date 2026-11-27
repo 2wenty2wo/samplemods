@@ -1,0 +1,11 @@
+name: DD Mods
+description: >-
+  Windows companion and removable SD-card modifications for the MPC Sample. Public beta downloads
+  are not available yet.
+repo: Daniel-Hillman/dd-mods-releases
+author: Daniel-Hillman
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
