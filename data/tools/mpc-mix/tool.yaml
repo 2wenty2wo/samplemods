@@ -11,7 +11,7 @@ tags:
   - mixer
 install: sd-card
 firmware: 1.3.0.12
-status: beta
+status: removed
 runs_on: [device]
 audience: [musician]
 price: free
