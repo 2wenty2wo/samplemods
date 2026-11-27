@@ -1,0 +1,16 @@
+name: Open MPC Plugin Toolchain
+description: >-
+  Build, skin, test and catalog native VST2 plugins for Akai MPC OS standalone, including pages and
+  Knob FX support documented for the MPC Sample.
+repo: open-mpc/mpc-vst-plugins
+author: open-mpc
+website: https://open-mpc.github.io/mpc-vst-plugins/
+tags:
+  - plugins
+  - vst
+  - development
+install: none
+runs_on: [desktop]
+audience: [developer]
+price: free
+source: open
