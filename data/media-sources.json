@@ -214,7 +214,7 @@
       "file": "screenshots/01-anvil-screen.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Anvil-Synth/main/docs/anvil-screen.gif",
       "repo": "hdslave/hdslave-Anvil-Synth",
-      "note": "MPC Sample screen from the hdslave Anvil README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave Anvil README; animated WebP (lossy mixed q70, infinite loop)"
     }
   ],
   "hdslave-cortex-filter": [
@@ -222,7 +222,7 @@
       "file": "screenshots/01-cortex-filter-screen.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Cortex-Filter/main/docs/cortex-filter-screen.gif",
       "repo": "hdslave/hdslave-Cortex-Filter",
-      "note": "MPC Sample screen from the hdslave Cortex Filter README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave Cortex Filter README; animated WebP (lossy mixed q9, infinite loop)"
     }
   ],
   "hdslave-foundry-drum-machine": [
@@ -230,7 +230,7 @@
       "file": "screenshots/01-foundry-screen.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Foundry-Drum-Machine/main/docs/foundry-screen.gif",
       "repo": "hdslave/hdslave-Foundry-Drum-Machine",
-      "note": "MPC Sample screen from the hdslave Foundry README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave Foundry README; animated WebP (lossy mixed q70, infinite loop)"
     }
   ],
   "hdslave-machine": [
@@ -246,7 +246,7 @@
       "file": "screenshots/01-moonbass-screen.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-MoonBass-Synth/main/docs/moonbass-screen.gif",
       "repo": "hdslave/hdslave-MoonBass-Synth",
-      "note": "MPC Sample screen from the hdslave MoonBass README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave MoonBass README; animated WebP (lossy mixed q70, infinite loop)"
     }
   ],
   "hdslave-mystik-synth": [
@@ -254,7 +254,7 @@
       "file": "screenshots/01-mystik-pages.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Mystik-Synth/main/docs/mystik-pages.gif",
       "repo": "hdslave/hdslave-Mystik-Synth",
-      "note": "MPC Sample screen from the hdslave Mystik README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave Mystik README; animated WebP (lossy mixed q55, infinite loop)"
     }
   ],
   "hdslave-nexus-synth": [
@@ -270,13 +270,13 @@
       "file": "screenshots/01-foundry.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Foundry-Drum-Machine/main/docs/foundry-screen.gif",
       "repo": "hdslave/hdslave-Foundry-Drum-Machine",
-      "note": "MPC Sample screen from the hdslave Foundry README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave Foundry README; animated WebP (lossy mixed q70, infinite loop)"
     },
     {
       "file": "screenshots/02-cortex-filter.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Cortex-Filter/main/docs/cortex-filter-screen.gif",
       "repo": "hdslave/hdslave-Cortex-Filter",
-      "note": "MPC Sample screen from the hdslave Cortex Filter README; animated WebP (mixed q90, infinite loop)"
+      "note": "MPC Sample screen from the hdslave Cortex Filter README; animated WebP (lossy mixed q9, infinite loop)"
     },
     {
       "file": "screenshots/03-slink.webp",
