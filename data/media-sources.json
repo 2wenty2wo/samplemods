@@ -395,6 +395,14 @@
       "note": "Upstream MPC Sample screen GIF converted to animated WebP."
     }
   ],
+  "imageboot": [
+    {
+      "file": "screenshots/01-boot.webp",
+      "source": "https://github.com/Trinzik-Labs2/ImageBoot",
+      "repo": "Trinzik-Labs2/ImageBoot",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); LogoMaker showing the Sample Mods logo instead of the bundled default"
+    }
+  ],
   "kaosample": [
     {
       "file": "screenshots/01-splash.webp",
