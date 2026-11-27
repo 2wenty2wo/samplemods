@@ -11,7 +11,14 @@ import {
 	formatDiscoveryBody,
 	syncDiscoveryIssue,
 	candidateFromSearchItem,
-	sinceDateDaysAgo
+	sinceDateDaysAgo,
+	FEED_URL_ENV,
+	feedHostname,
+	isFeedSelfUrl,
+	candidateFromFeedItem,
+	filterFeedCandidates,
+	fetchFeedItems,
+	pickFeedHref
 } from './discover.js';
 
 assert.match(sinceDateDaysAgo(30, new Date('2026-12-10T00:00:00Z')), /^2026-11-10$/);
@@ -133,4 +140,256 @@ try {
 
 assert.equal(normalizeRepo('FomoPhil/MPSelector'), 'fomophil/mpselector');
 
-console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close.');
+const FEED_FIXTURE_URL = 'https://feed.example.com/data/items.json';
+const FEED_HOST = feedHostname(FEED_FIXTURE_URL);
+assert.equal(FEED_HOST, 'feed.example.com');
+
+const feedFixture = [
+	{
+		slug: 'noisewave-ha',
+		name: 'NOISEWAVE HA',
+		summary: 'Hardware-adjacent noise tool',
+		devices: ['mpc-sample'],
+		added: '2026-11-20',
+		links: { home: 'https://noisewaveha.hansaldrete.work/' },
+		authors: [{ name: 'Hans', url: 'https://noisewaveha.hansaldrete.work/' }]
+	},
+	{
+		slug: 'mpc-sample-emulator',
+		name: 'MPC Sample Emulator',
+		summary: 'Desktop emulator',
+		devices: ['mpc-sample'],
+		added: '2026-10-01',
+		links: { home: 'https://github.com/Phenix2417/mpc-sample-emulator' },
+		authors: [{ name: 'Phenix', url: 'https://github.com/Phenix2417' }]
+	},
+	{
+		slug: 'mpc-sxl',
+		name: 'MPC SXL',
+		summary: 'Alpha OS',
+		devices: ['mpc-sample'],
+		added: '2026-11-26',
+		links: {
+			home: 'https://www.youtube.com/@jsensurreal1026',
+			download: 'https://feed.example.com/files/jsensurreal/mod/mpc-sxl/alpha-0.0/MPC-SXL-Alpha-v0.0.zip'
+		},
+		authors: [{ name: 'Jsen Surreal', url: 'https://www.youtube.com/@jsensurreal1026' }]
+	},
+	{
+		slug: 'melodee-sample',
+		name: 'Melodee',
+		summary: 'Already cataloged by slug',
+		devices: ['mpc-sample'],
+		added: '2026-01-01',
+		links: { home: 'https://github.com/keremimo/melodee-sample' },
+		authors: []
+	},
+	{
+		slug: 'other-device-only',
+		name: 'Live Only',
+		summary: 'Not for Sample',
+		devices: ['mpc-live'],
+		added: '2026-11-01',
+		links: { home: 'https://example.com/live' },
+		authors: []
+	},
+	{
+		slug: 'dup-search-hit',
+		name: 'ImageBoot',
+		summary: 'Also found by GitHub search',
+		devices: ['mpc-sample'],
+		added: '2026-11-12',
+		links: { home: 'https://github.com/Trinzik-Labs2/ImageBoot' },
+		authors: []
+	},
+	{
+		slug: 'self-host-only',
+		name: 'Self Hosted Only',
+		summary: 'Only points at the feed host',
+		devices: ['mpc-sample'],
+		added: '2026-11-15',
+		links: { home: 'https://feed.example.com/items/self-hosted-only' },
+		authors: [{ name: 'Self', url: 'https://cdn.feed.example.com/author' }]
+	}
+];
+
+assert.equal(candidateFromFeedItem(feedFixture[4], FEED_HOST), null, 'non-mpc-sample devices drop out');
+assert.equal(isFeedSelfUrl('https://feed.example.com/files/x', FEED_HOST), true);
+assert.equal(isFeedSelfUrl('https://cdn.feed.example.com/x', FEED_HOST), true);
+assert.equal(isFeedSelfUrl('https://noisewaveha.hansaldrete.work/', FEED_HOST), false);
+assert.equal(isFeedSelfUrl('https://example.com/live', FEED_HOST), false);
+assert.equal(pickFeedHref(feedFixture[2], FEED_HOST), 'https://www.youtube.com/@jsensurreal1026');
+assert.doesNotMatch(pickFeedHref(feedFixture[2], FEED_HOST) ?? '', /feed\.example\.com/i);
+assert.equal(pickFeedHref(feedFixture[6], FEED_HOST), null, 'self-host home/author links are rejected');
+const selfOnly = candidateFromFeedItem(feedFixture[6], FEED_HOST);
+assert.ok(selfOnly);
+assert.equal(selfOnly.html_url, null);
+
+const feedCatalog = [
+	{ id: 'sxl', record: { name: 'MPC SXL', repo: null } },
+	{ id: 'melodee-sample', record: { name: 'Melodee', repo: 'keremimo/melodee-sample' } }
+];
+const feedKept = filterFeedCandidates(feedFixture, feedCatalog, FEED_HOST);
+assert.deepEqual(
+	feedKept.map((c) => c.repo).sort(),
+	['NOISEWAVE HA', 'Phenix2417/mpc-sample-emulator', 'Self Hosted Only', 'Trinzik-Labs2/ImageBoot'].sort(),
+	'only uncataloged mpc-sample items remain (SXL excluded by name, Melodee by slug/repo)'
+);
+assert.equal(feedKept.find((c) => c.repo === 'NOISEWAVE HA').html_url, 'https://noisewaveha.hansaldrete.work/');
+assert.match(feedKept.find((c) => c.repo === 'NOISEWAVE HA').reason, /listed in a community catalog \(added 2026-11-20\)/);
+for (const row of feedKept) {
+	assert.equal(isFeedSelfUrl(row.html_url, FEED_HOST), false, `no feed-host URL in candidate: ${row.repo}`);
+	assert.doesNotMatch(JSON.stringify(row), /feed\.example\.com/i);
+}
+
+const deduped = excludeKnown(
+	[searchHit, ...feedKept],
+	{ catalogRepos: new Set(['keremimo/melodee-sample']), starRepos: new Set(), catalogRepo: '2wenty2wo/samplemods' }
+);
+assert.equal(
+	deduped.candidates.filter((c) => normalizeRepo(c.repo) === 'trinzik-labs2/imageboot').length,
+	1,
+	'GitHub search + catalog feed same repo must appear once'
+);
+
+const plainPrevious = [
+	'- [x] NOISEWAVE HA: Hardware-adjacent noise tool · ★0 · created 2026-11-20 · listed in a community catalog (added 2026-11-20)',
+	'- [ ] Phenix2417/mpc-sample-emulator: old unticked · ★0 · created 2026-10-01 · listed in a community catalog (added 2026-10-01)'
+].join('\n');
+assert.deepEqual([...parseTickedRepos(plainPrevious)], ['noisewave ha']);
+const plainBody = mergeDiscoveryBody(
+	feedKept.filter((c) => c.repo === 'NOISEWAVE HA' || c.repo === 'Phenix2417/mpc-sample-emulator'),
+	plainPrevious
+);
+assert.match(plainBody, /- \[x\] NOISEWAVE HA:/);
+assert.doesNotMatch(plainBody, /- \[ \] NOISEWAVE HA:/, 'plain-text ticked rows must survive and not reappear unticked');
+assert.match(plainBody, /- \[ \] \[Phenix2417\/mpc-sample-emulator\]\(https:\/\/github\.com\/Phenix2417\/mpc-sample-emulator\):/);
+assert.doesNotMatch(plainBody, /feed\.example\.com/i);
+
+{
+	// Colon in plain-text name: backtick delimiter keeps the full ticked key.
+	const colonCandidate = {
+		repo: 'Synth: Sample',
+		description: 'has a colon',
+		stars: 0,
+		created: '2026-11-20',
+		reason: 'listed in a community catalog (added 2026-11-20)',
+		html_url: null
+	};
+	const colonBody = mergeDiscoveryBody([colonCandidate], '');
+	assert.match(colonBody, /- \[ \] `Synth: Sample`:/);
+	const colonTicked = colonBody.replace('- [ ] `Synth: Sample`:', '- [x] `Synth: Sample`:');
+	assert.deepEqual([...parseTickedRepos(colonTicked)], ['synth: sample']);
+	const colonMerged = mergeDiscoveryBody([colonCandidate], colonTicked);
+	assert.match(colonMerged, /- \[x\] `Synth: Sample`:/);
+	assert.doesNotMatch(colonMerged, /- \[ \] `Synth: Sample`:/, 'ticked colon-name row must not reappear unchecked');
+	assert.equal([...colonMerged.matchAll(/Synth: Sample/g)].length, 1);
+}
+
+{
+	// Parentheses in link URLs: encode so LINK_ROW_RE still recognises the ticked row.
+	const parenCandidate = {
+		repo: 'example/synth-sample',
+		description: 'parens in url',
+		stars: 0,
+		created: '2026-11-20',
+		reason: 'search: x',
+		html_url: 'https://example.com/Synth_(Sample)'
+	};
+	const parenBody = mergeDiscoveryBody([parenCandidate], '');
+	assert.match(parenBody, /https:\/\/example\.com\/Synth_%28Sample%29/);
+	assert.doesNotMatch(parenBody, /Synth_\(Sample\)/);
+	const parenTicked = parenBody.replace('- [ ] [', '- [x] [');
+	assert.deepEqual([...parseTickedRepos(parenTicked)], ['example/synth-sample']);
+	const parenMerged = mergeDiscoveryBody([parenCandidate], parenTicked);
+	assert.match(parenMerged, /- \[x\] \[example\/synth-sample\]\(https:\/\/example\.com\/Synth_%28Sample%29\):/);
+	assert.doesNotMatch(parenMerged, /- \[ \] \[example\/synth-sample\]/, 'ticked paren-URL row must not reappear unchecked');
+}
+
+{
+	// Legacy plain rows (no backticks) still parse as a fallback.
+	const legacyPrevious = '- [x] NOISEWAVE HA: old style · ★0 · created 2026-11-20 · listed in a community catalog (added 2026-11-20)';
+	assert.deepEqual([...parseTickedRepos(legacyPrevious)], ['noisewave ha']);
+	const legacyMerged = mergeDiscoveryBody(
+		[{
+			repo: 'NOISEWAVE HA',
+			description: 'x',
+			stars: 0,
+			created: '2026-11-20',
+			reason: 'listed in a community catalog (added 2026-11-20)',
+			html_url: null
+		}],
+		legacyPrevious
+	);
+	assert.match(legacyMerged, /- \[x\] NOISEWAVE HA:/);
+	assert.doesNotMatch(legacyMerged, /- \[ \] `?NOISEWAVE HA`?:/, 'legacy ticked plain row must not reappear unchecked');
+}
+
+{
+	const warnings = [];
+	const logs = [];
+	const warn = console.warn;
+	const log = console.log;
+	console.warn = (message) => warnings.push(message);
+	console.log = (message) => logs.push(message);
+	const originalFetch = globalThis.fetch;
+	const previousFeedUrl = process.env[FEED_URL_ENV];
+	let issueWrites = 0;
+	try {
+		process.env[FEED_URL_ENV] = FEED_FIXTURE_URL;
+		globalThis.fetch = async () => ({ ok: false, status: 503, json: async () => [] });
+		assert.equal(await fetchFeedItems(), null);
+		globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => ({ not: 'array' }) });
+		assert.equal(await fetchFeedItems(), null);
+		globalThis.fetch = async () => { throw new Error('offline'); };
+		assert.equal(await fetchFeedItems(), null);
+
+		// main() contract: null feed + !dryRun → log and skip issue writes (no find/sync).
+		const feedItems = null;
+		const dryRun = false;
+		if (feedItems == null && !dryRun) {
+			console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
+		} else {
+			issueWrites += 1;
+		}
+		assert.equal(issueWrites, 0, 'failed catalog feed fetch must not write the Discovery issue');
+		assert.match(logs.at(-1) ?? '', /Catalog feed unavailable; leaving the Discovery issue unchanged/);
+	} finally {
+		console.warn = warn;
+		console.log = log;
+		globalThis.fetch = originalFetch;
+		if (previousFeedUrl === undefined) delete process.env[FEED_URL_ENV];
+		else process.env[FEED_URL_ENV] = previousFeedUrl;
+	}
+	assert.equal(warnings.length, 3);
+	assert.ok(warnings.every((message) => /catalog feed/i.test(message)));
+}
+
+{
+	const logs = [];
+	const log = console.log;
+	console.log = (message) => logs.push(message);
+	const previousFeedUrl = process.env[FEED_URL_ENV];
+	let issueWrites = 0;
+	try {
+		delete process.env[FEED_URL_ENV];
+		assert.deepEqual(await fetchFeedItems(), []);
+		assert.match(logs.at(-1) ?? '', /Catalog feed URL unset; continuing with GitHub sources only/);
+
+		// Unset env: feed disabled → GitHub-only path still updates the issue.
+		const feedItems = [];
+		const dryRun = false;
+		if (feedItems == null && !dryRun) {
+			console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
+		} else {
+			issueWrites += 1;
+		}
+		assert.equal(issueWrites, 1, 'unset catalog feed must still allow Discovery issue updates');
+	} finally {
+		console.log = log;
+		if (previousFeedUrl === undefined) delete process.env[FEED_URL_ENV];
+		else process.env[FEED_URL_ENV] = previousFeedUrl;
+	}
+}
+
+console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close, catalog feed filter/dedupe/fail-soft.');

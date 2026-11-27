@@ -64,6 +64,130 @@ function toCandidate(repo, reason) {
 	};
 }
 
+export const FEED_URL_ENV = 'DISCOVERY_FEED_URL';
+
+export function feedHostname(feedUrl) {
+	try {
+		return new URL(String(feedUrl)).hostname.toLowerCase();
+	} catch {
+		return null;
+	}
+}
+
+/** True when url's host equals feedHost or is a subdomain of it. */
+export function isFeedSelfUrl(url, feedHost) {
+	if (!feedHost) return false;
+	try {
+		const host = new URL(String(url)).hostname.toLowerCase();
+		return host === feedHost || host.endsWith(`.${feedHost}`);
+	} catch {
+		return false;
+	}
+}
+
+/** owner/repo from a github.com URL, or undefined. */
+export function githubRepoFromUrl(url) {
+	const match = String(url ?? '').match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)(?:[/#?]|$)/i);
+	if (!match) return;
+	const owner = match[1];
+	const name = match[2];
+	if (['orgs', 'users', 'sponsors', 'settings', 'topics', 'collections'].includes(owner.toLowerCase())) return;
+	return `${owner}/${name}`;
+}
+
+export function normalizeName(name) {
+	return String(name ?? '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+/** First github.com/owner/repo found in item.links values. */
+export function githubRepoFromItemLinks(item) {
+	for (const value of Object.values(item?.links ?? {})) {
+		const repo = githubRepoFromUrl(value);
+		if (repo) return repo;
+	}
+	return;
+}
+
+/** Prefer GitHub repo URL, else non-feed-host home / author URL, else null. */
+export function pickFeedHref(item, feedHost) {
+	const links = item?.links ?? {};
+	const github = githubRepoFromItemLinks(item);
+	if (github) return `https://github.com/${github}`;
+	if (links.home && !isFeedSelfUrl(links.home, feedHost)) return links.home;
+	for (const author of item?.authors ?? []) {
+		if (author?.url && !isFeedSelfUrl(author.url, feedHost)) return author.url;
+	}
+	return null;
+}
+
+export function candidateFromFeedItem(item, feedHost) {
+	if (!Array.isArray(item?.devices) || !item.devices.includes('mpc-sample')) return null;
+	const github = githubRepoFromItemLinks(item);
+	const href = pickFeedHref(item, feedHost);
+	if (href && isFeedSelfUrl(href, feedHost)) return null;
+	const label = github ?? String(item.name ?? '').trim();
+	if (!label) return null;
+	const added = String(item.added ?? '').slice(0, 10);
+	return {
+		repo: label,
+		description: item.summary ?? '',
+		stars: 0,
+		created: added,
+		reason: `listed in a community catalog (added ${added || 'unknown'})`,
+		html_url: href,
+		archived: false
+	};
+}
+
+export function filterFeedCandidates(items, entries, feedHost) {
+	const catalogRepos = catalogRepoSet(entries);
+	const catalogIds = new Set(entries.map((entry) => entry.id));
+	const catalogNames = new Set(entries.map((entry) => normalizeName(entry.record?.name)).filter(Boolean));
+	const out = [];
+	for (const item of items ?? []) {
+		const candidate = candidateFromFeedItem(item, feedHost);
+		if (!candidate) continue;
+		const github = githubRepoFromItemLinks(item);
+		if (github && catalogRepos.has(normalizeRepo(github))) continue;
+		if (item.slug && catalogIds.has(item.slug)) continue;
+		if (normalizeName(item.name) && catalogNames.has(normalizeName(item.name))) continue;
+		out.push(candidate);
+	}
+	return out;
+}
+
+/**
+ * Fetch the optional catalog feed once.
+ * Unset DISCOVERY_FEED_URL → [] (feed disabled).
+ * Set but fetch/JSON fails → null (caller must leave the issue unchanged).
+ * @returns {Promise<object[]|null>}
+ */
+export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process.env) {
+	const url = env[FEED_URL_ENV];
+	if (!url) {
+		console.log('Catalog feed URL unset; continuing with GitHub sources only.');
+		return [];
+	}
+	try {
+		const response = await fetchImpl(url, {
+			headers: { 'User-Agent': 'SampleModsDiscovery/1.0' }
+		});
+		if (!response.ok) {
+			console.warn(`warn: catalog feed returned HTTP ${response.status}.`);
+			return null;
+		}
+		const data = await response.json();
+		if (!Array.isArray(data)) {
+			console.warn('warn: catalog feed was not an array.');
+			return null;
+		}
+		return data;
+	} catch (error) {
+		console.warn(`warn: catalog feed fetch failed (${error.message}).`);
+		return null;
+	}
+}
+
 export function candidateFromSearchItem(item, query) {
 	if (isEmptyFork(item)) return null;
 	return toCandidate(item, `search: ${query}`);
@@ -139,14 +263,31 @@ export function excludeKnown(candidates, { catalogRepos, starRepos, catalogRepo 
 	return { candidates: kept, excluded };
 }
 
-const ROW_RE = /^- \[(x| )\] \[([^\]]+)\]\(([^)]+)\):(.*)$/i;
+const LINK_ROW_RE = /^- \[(x| )\] \[([^\]]+)\]\(([^)]+)\):(.*)$/i;
+const PLAIN_TICKED_RE = /^- \[(x| )\] `([^`]+)`:\s*(.*)$/i;
+/** Legacy plain rows without backticks (pre-backtick delimiter). */
+const PLAIN_ROW_RE = /^- \[(x| )\] ([^[\n`][^:]*):\s*(.*)$/i;
+
+function encodeLinkUrl(url) {
+	return String(url).replaceAll('(', '%28').replaceAll(')', '%29');
+}
+
+function tickedRowKey(line) {
+	const linked = line.match(LINK_ROW_RE);
+	if (linked) return normalizeRepo(linked[2]);
+	const plainTicked = line.match(PLAIN_TICKED_RE);
+	if (plainTicked) return normalizeRepo(plainTicked[2].trim());
+	const plain = line.match(PLAIN_ROW_RE);
+	if (plain) return normalizeRepo(plain[2].trim());
+	return null;
+}
 
 export function parseTickedRepos(body) {
 	const ticked = new Set();
 	if (!body) return ticked;
 	for (const line of String(body).split(/\r?\n/)) {
-		const match = line.match(ROW_RE);
-		if (match && match[1].toLowerCase() === 'x') ticked.add(normalizeRepo(match[2]));
+		const key = /^- \[x\] /i.test(line) ? tickedRowKey(line) : null;
+		if (key) ticked.add(key);
 	}
 	return ticked;
 }
@@ -155,15 +296,19 @@ function parseTickedLines(body) {
 	const lines = [];
 	if (!body) return lines;
 	for (const line of String(body).split(/\r?\n/)) {
-		const match = line.match(ROW_RE);
-		if (match && match[1].toLowerCase() === 'x') lines.push(line.trim());
+		if (/^- \[x\] /i.test(line) && tickedRowKey(line)) lines.push(line.trim());
 	}
 	return lines;
 }
 
 function candidateRow(candidate) {
 	const desc = markdownText(candidate.description || 'No description provided.');
-	return `- [ ] [${candidate.repo}](${candidate.html_url}): ${desc} · ★${candidate.stars} · created ${candidate.created} · ${candidate.reason}`;
+	const tail = `${desc} · ★${candidate.stars} · created ${candidate.created} · ${candidate.reason}`;
+	if (candidate.html_url) {
+		return `- [ ] [${candidate.repo}](${encodeLinkUrl(candidate.html_url)}): ${tail}`;
+	}
+	const name = String(candidate.repo).replaceAll('`', '');
+	return `- [ ] \`${name}\`: ${tail}`;
 }
 
 export function formatDiscoveryBody(candidates, tickedRepos = new Set(), previousBody = '') {
@@ -189,7 +334,7 @@ export function mergeDiscoveryBody(candidates, previousBody = '', tickedRepos) {
 }
 
 export function hasUntickedRows(body) {
-	return String(body ?? '').split(/\r?\n/).some((line) => /^- \[ \] \[/.test(line));
+	return String(body ?? '').split(/\r?\n/).some((line) => /^- \[ \] /.test(line));
 }
 
 async function ensureLabel(token, repository) {
@@ -356,10 +501,19 @@ async function main() {
 	// readStarList bypasses our counter; estimate from typical 2–4 graphql calls by bumping after.
 	apiCalls += Math.max(2, Math.ceil(starred.length / 100) + 1);
 
+	const feedUrl = process.env[FEED_URL_ENV];
+	const feedHost = feedUrl ? feedHostname(feedUrl) : null;
+	const feedItems = await fetchFeedItems();
+	if (feedItems == null && !dryRun) {
+		console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
+		return;
+	}
+	const feed = filterFeedCandidates(feedItems ?? [], entries, feedHost);
 	const raw = [
 		...await searchCandidates(token, since),
 		...await authorCandidates(token, entries, since),
-		...await forkCandidates(token, entries, since)
+		...await forkCandidates(token, entries, since),
+		...feed
 	];
 	const { candidates, excluded } = excludeKnown(raw, {
 		catalogRepos: catalogRepoSet(entries),
