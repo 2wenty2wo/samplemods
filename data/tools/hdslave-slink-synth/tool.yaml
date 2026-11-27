@@ -1,0 +1,11 @@
+name: hdslave Slink Synthesizer
+description: >-
+  Slink is an acid bass synthesizer and generative TB-3PO sequencer for MPC Sample, freesp16 on
+  SP-16, macOS and Windows.
+repo: hdslave/hdslave-Slink-Synth
+author: hdslave
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
