@@ -31,3 +31,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           DISCOVERY_FEED_URL: ${{ secrets.DISCOVERY_FEED_URL }}
+          DISCOVERY_LIST_URL: ${{ secrets.DISCOVERY_LIST_URL }}
