@@ -1,0 +1,22 @@
+name: SXL
+description: >-
+  An SD-card mod for the MPC Sample with up to 32 tracks, sequence launching, a Sample Library,
+  NAM amp modelling, CLAP plugins, USB host/audio, a live looper and strum. Early alpha; extract
+  to the card root and run from autorun.
+author: Jsen Surreal
+author_url: https://www.youtube.com/@jsensurreal1026
+website: https://www.youtube.com/watch?v=qmQVvTvBr2c
+tags:
+  - os
+  - sequencer
+  - usb-host
+  - looper
+install: sd-card
+firmware: 1.3.0.12, 1.4.0.7
+status: experimental
+version: "0.0"
+released: "2026-11-26" # YouTube alpha release video upload date
+runs_on: [device]
+audience: [musician]
+price: free
+source: closed
