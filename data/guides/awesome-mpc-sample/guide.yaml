@@ -1,0 +1,9 @@
+name: Awesome MPC Sample
+description: >-
+  Curated links covering official MPC Sample resources, firmware 1.4 changes, Knob FX plug-ins and
+  SDK, custom OS mods, Linux setup, hardware notes, and communities.
+repo: mattaereal/awesome-mpc-sample
+author: mattaereal
+runs_on: [docs]
+install: none
+audience: [musician, curious, developer]
