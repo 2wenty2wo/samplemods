@@ -1,0 +1,13 @@
+name: hdslave Psychic
+description: >-
+  Hdslave Psychic: a generative analog-style synthesizer (Labyrinth panel and flow) with two
+  corruptible 8-bit sequencers, as a CLAP plug-in for the Akai MPC Sample running Melodee.
+repo: hdslave/hdslave-Psychic-Synth
+author: hdslave
+runs_on: [device]
+install: sd-card
+audience:
+  - musician
+hosts:
+  - melodee-sample
+  - hdslaveos

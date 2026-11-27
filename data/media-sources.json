@@ -235,6 +235,14 @@
       "note": "Upstream device screen GIF converted to animated WebP quality 80"
     }
   ],
+  "hdslave-psychic-synth": [
+    {
+      "file": "screenshots/01-contact-sheet.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Psychic-Synth/main/docs/psychic-screen.gif",
+      "repo": "hdslave/hdslave-Psychic-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "hdslaveos": [
     {
       "file": "screenshots/01-splash.webp",
