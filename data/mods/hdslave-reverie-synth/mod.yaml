@@ -1,0 +1,12 @@
+name: hdslave Reverie
+description: >-
+  Hdslave Reverie: a pad and chord CLAP synth for the Akai MPC Sample. The pads play jazzy, soulful
+  chord progressions on morphing wavetables with an X/Y Motion path and shimmer reverb.
+repo: hdslave/hdslave-Reverie-Synth
+author: hdslave
+runs_on:
+  - desktop
+  - device
+install: desktop
+audience:
+  - musician
