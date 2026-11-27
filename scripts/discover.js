@@ -64,6 +64,110 @@ function toCandidate(repo, reason) {
 	};
 }
 
+const RUNMPC_ITEMS_URL = 'https://runmpc.com/data/items.json';
+
+export function isRunmpcUrl(url) {
+	try {
+		const host = new URL(String(url)).hostname.toLowerCase();
+		return host === 'runmpc.com' || host.endsWith('.runmpc.com');
+	} catch {
+		return false;
+	}
+}
+
+/** owner/repo from a github.com URL, or undefined. */
+export function githubRepoFromUrl(url) {
+	const match = String(url ?? '').match(/^https?:\/\/(?:www\.)?github\.com\/([^/]+)\/([^/#?]+)(?:[/#?]|$)/i);
+	if (!match) return;
+	const owner = match[1];
+	const name = match[2];
+	if (['orgs', 'users', 'sponsors', 'settings', 'topics', 'collections'].includes(owner.toLowerCase())) return;
+	return `${owner}/${name}`;
+}
+
+export function normalizeName(name) {
+	return String(name ?? '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+/** First github.com/owner/repo found in item.links values. */
+export function runmpcGithubRepo(item) {
+	for (const value of Object.values(item?.links ?? {})) {
+		const repo = githubRepoFromUrl(value);
+		if (repo) return repo;
+	}
+	return;
+}
+
+/** Prefer GitHub repo URL, else non-runmpc home / author URL, else null. */
+export function pickRunmpcHref(item) {
+	const links = item?.links ?? {};
+	const github = runmpcGithubRepo(item);
+	if (github) return `https://github.com/${github}`;
+	if (links.home && !isRunmpcUrl(links.home)) return links.home;
+	for (const author of item?.authors ?? []) {
+		if (author?.url && !isRunmpcUrl(author.url)) return author.url;
+	}
+	return null;
+}
+
+export function candidateFromRunmpcItem(item) {
+	if (!Array.isArray(item?.devices) || !item.devices.includes('mpc-sample')) return null;
+	const github = runmpcGithubRepo(item);
+	const href = pickRunmpcHref(item);
+	if (href && isRunmpcUrl(href)) return null;
+	const label = github ?? String(item.name ?? '').trim();
+	if (!label) return null;
+	const added = String(item.added ?? '').slice(0, 10);
+	return {
+		repo: label,
+		description: item.summary ?? '',
+		stars: 0,
+		created: added,
+		reason: `listed on RunMPC (added ${added || 'unknown'})`,
+		html_url: href,
+		archived: false
+	};
+}
+
+export function filterRunmpcCandidates(items, entries) {
+	const catalogRepos = catalogRepoSet(entries);
+	const catalogIds = new Set(entries.map((entry) => entry.id));
+	const catalogNames = new Set(entries.map((entry) => normalizeName(entry.record?.name)).filter(Boolean));
+	const out = [];
+	for (const item of items ?? []) {
+		const candidate = candidateFromRunmpcItem(item);
+		if (!candidate) continue;
+		const github = runmpcGithubRepo(item);
+		if (github && catalogRepos.has(normalizeRepo(github))) continue;
+		if (item.slug && catalogIds.has(item.slug)) continue;
+		if (normalizeName(item.name) && catalogNames.has(normalizeName(item.name))) continue;
+		out.push(candidate);
+	}
+	return out;
+}
+
+/** Fetch RunMPC items.json once. Fail soft: warn and return []. */
+export async function fetchRunmpcItems(fetchImpl = globalThis.fetch) {
+	try {
+		const response = await fetchImpl(RUNMPC_ITEMS_URL, {
+			headers: { 'User-Agent': 'SampleModsDiscovery/1.0' }
+		});
+		if (!response.ok) {
+			console.warn(`warn: RunMPC items.json returned HTTP ${response.status}; continuing without RunMPC candidates.`);
+			return [];
+		}
+		const data = await response.json();
+		if (!Array.isArray(data)) {
+			console.warn('warn: RunMPC items.json was not an array; continuing without RunMPC candidates.');
+			return [];
+		}
+		return data;
+	} catch (error) {
+		console.warn(`warn: RunMPC items.json fetch failed (${error.message}); continuing without RunMPC candidates.`);
+		return [];
+	}
+}
+
 export function candidateFromSearchItem(item, query) {
 	if (isEmptyFork(item)) return null;
 	return toCandidate(item, `search: ${query}`);
@@ -139,14 +243,23 @@ export function excludeKnown(candidates, { catalogRepos, starRepos, catalogRepo 
 	return { candidates: kept, excluded };
 }
 
-const ROW_RE = /^- \[(x| )\] \[([^\]]+)\]\(([^)]+)\):(.*)$/i;
+const LINK_ROW_RE = /^- \[(x| )\] \[([^\]]+)\]\(([^)]+)\):(.*)$/i;
+const PLAIN_ROW_RE = /^- \[(x| )\] ([^[\n][^:]*):\s*(.*)$/i;
+
+function tickedRowKey(line) {
+	const linked = line.match(LINK_ROW_RE);
+	if (linked) return normalizeRepo(linked[2]);
+	const plain = line.match(PLAIN_ROW_RE);
+	if (plain) return normalizeRepo(plain[2].trim());
+	return null;
+}
 
 export function parseTickedRepos(body) {
 	const ticked = new Set();
 	if (!body) return ticked;
 	for (const line of String(body).split(/\r?\n/)) {
-		const match = line.match(ROW_RE);
-		if (match && match[1].toLowerCase() === 'x') ticked.add(normalizeRepo(match[2]));
+		const key = /^- \[x\] /i.test(line) ? tickedRowKey(line) : null;
+		if (key) ticked.add(key);
 	}
 	return ticked;
 }
@@ -155,15 +268,18 @@ function parseTickedLines(body) {
 	const lines = [];
 	if (!body) return lines;
 	for (const line of String(body).split(/\r?\n/)) {
-		const match = line.match(ROW_RE);
-		if (match && match[1].toLowerCase() === 'x') lines.push(line.trim());
+		if (/^- \[x\] /i.test(line) && tickedRowKey(line)) lines.push(line.trim());
 	}
 	return lines;
 }
 
 function candidateRow(candidate) {
 	const desc = markdownText(candidate.description || 'No description provided.');
-	return `- [ ] [${candidate.repo}](${candidate.html_url}): ${desc} · ★${candidate.stars} · created ${candidate.created} · ${candidate.reason}`;
+	const tail = `${desc} · ★${candidate.stars} · created ${candidate.created} · ${candidate.reason}`;
+	if (candidate.html_url) {
+		return `- [ ] [${candidate.repo}](${candidate.html_url}): ${tail}`;
+	}
+	return `- [ ] ${candidate.repo}: ${tail}`;
 }
 
 export function formatDiscoveryBody(candidates, tickedRepos = new Set(), previousBody = '') {
@@ -189,7 +305,7 @@ export function mergeDiscoveryBody(candidates, previousBody = '', tickedRepos) {
 }
 
 export function hasUntickedRows(body) {
-	return String(body ?? '').split(/\r?\n/).some((line) => /^- \[ \] \[/.test(line));
+	return String(body ?? '').split(/\r?\n/).some((line) => /^- \[ \] /.test(line));
 }
 
 async function ensureLabel(token, repository) {
@@ -356,10 +472,13 @@ async function main() {
 	// readStarList bypasses our counter; estimate from typical 2–4 graphql calls by bumping after.
 	apiCalls += Math.max(2, Math.ceil(starred.length / 100) + 1);
 
+	const runmpcItems = await fetchRunmpcItems();
+	const runmpc = filterRunmpcCandidates(runmpcItems, entries);
 	const raw = [
 		...await searchCandidates(token, since),
 		...await authorCandidates(token, entries, since),
-		...await forkCandidates(token, entries, since)
+		...await forkCandidates(token, entries, since),
+		...runmpc
 	];
 	const { candidates, excluded } = excludeKnown(raw, {
 		catalogRepos: catalogRepoSet(entries),

@@ -11,7 +11,12 @@ import {
 	formatDiscoveryBody,
 	syncDiscoveryIssue,
 	candidateFromSearchItem,
-	sinceDateDaysAgo
+	sinceDateDaysAgo,
+	candidateFromRunmpcItem,
+	filterRunmpcCandidates,
+	fetchRunmpcItems,
+	isRunmpcUrl,
+	pickRunmpcHref
 } from './discover.js';
 
 assert.match(sinceDateDaysAgo(30, new Date('2026-12-10T00:00:00Z')), /^2026-11-10$/);
@@ -133,4 +138,131 @@ try {
 
 assert.equal(normalizeRepo('FomoPhil/MPSelector'), 'fomophil/mpselector');
 
-console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close.');
+const runmpcFixture = [
+	{
+		slug: 'noisewave-ha',
+		name: 'NOISEWAVE HA',
+		summary: 'Hardware-adjacent noise tool',
+		devices: ['mpc-sample'],
+		added: '2026-11-20',
+		links: { home: 'https://noisewaveha.hansaldrete.work/' },
+		authors: [{ name: 'Hans', url: 'https://noisewaveha.hansaldrete.work/' }]
+	},
+	{
+		slug: 'mpc-sample-emulator',
+		name: 'MPC Sample Emulator',
+		summary: 'Desktop emulator',
+		devices: ['mpc-sample'],
+		added: '2026-10-01',
+		links: { home: 'https://github.com/Phenix2417/mpc-sample-emulator' },
+		authors: [{ name: 'Phenix', url: 'https://github.com/Phenix2417' }]
+	},
+	{
+		slug: 'mpc-sxl',
+		name: 'MPC SXL',
+		summary: 'Alpha OS',
+		devices: ['mpc-sample'],
+		added: '2026-11-26',
+		links: {
+			home: 'https://www.youtube.com/@jsensurreal1026',
+			download: 'https://runmpc.com/files/jsensurreal/mod/mpc-sxl/alpha-0.0/MPC-SXL-Alpha-v0.0.zip'
+		},
+		authors: [{ name: 'Jsen Surreal', url: 'https://www.youtube.com/@jsensurreal1026' }]
+	},
+	{
+		slug: 'melodee-sample',
+		name: 'Melodee',
+		summary: 'Already cataloged by slug',
+		devices: ['mpc-sample'],
+		added: '2026-01-01',
+		links: { home: 'https://github.com/keremimo/melodee-sample' },
+		authors: []
+	},
+	{
+		slug: 'other-device-only',
+		name: 'Live Only',
+		summary: 'Not for Sample',
+		devices: ['mpc-live'],
+		added: '2026-11-01',
+		links: { home: 'https://example.com/live' },
+		authors: []
+	},
+	{
+		slug: 'dup-search-hit',
+		name: 'ImageBoot',
+		summary: 'Also found by GitHub search',
+		devices: ['mpc-sample'],
+		added: '2026-11-12',
+		links: { home: 'https://github.com/Trinzik-Labs2/ImageBoot' },
+		authors: []
+	}
+];
+
+assert.equal(candidateFromRunmpcItem(runmpcFixture[4]), null, 'non-mpc-sample devices drop out');
+assert.equal(isRunmpcUrl('https://runmpc.com/files/x'), true);
+assert.equal(isRunmpcUrl('https://noisewaveha.hansaldrete.work/'), false);
+assert.equal(pickRunmpcHref(runmpcFixture[2]), 'https://www.youtube.com/@jsensurreal1026');
+assert.doesNotMatch(pickRunmpcHref(runmpcFixture[2]) ?? '', /runmpc\.com/i);
+
+const runmpcCatalog = [
+	{ id: 'sxl', record: { name: 'MPC SXL', repo: null } },
+	{ id: 'melodee-sample', record: { name: 'Melodee', repo: 'keremimo/melodee-sample' } }
+];
+const runmpcKept = filterRunmpcCandidates(runmpcFixture, runmpcCatalog);
+assert.deepEqual(
+	runmpcKept.map((c) => c.repo).sort(),
+	['NOISEWAVE HA', 'Phenix2417/mpc-sample-emulator', 'Trinzik-Labs2/ImageBoot'].sort(),
+	'only uncataloged mpc-sample items remain (SXL excluded by name, Melodee by slug/repo)'
+);
+assert.equal(runmpcKept.find((c) => c.repo === 'NOISEWAVE HA').html_url, 'https://noisewaveha.hansaldrete.work/');
+assert.match(runmpcKept.find((c) => c.repo === 'NOISEWAVE HA').reason, /listed on RunMPC \(added 2026-11-20\)/);
+for (const row of runmpcKept) {
+	assert.equal(isRunmpcUrl(row.html_url), false, `no runmpc URL in candidate: ${row.repo}`);
+	assert.doesNotMatch(JSON.stringify(row), /runmpc\.com/i);
+}
+
+const deduped = excludeKnown(
+	[searchHit, ...runmpcKept],
+	{ catalogRepos: new Set(['keremimo/melodee-sample']), starRepos: new Set(), catalogRepo: '2wenty2wo/samplemods' }
+);
+assert.equal(
+	deduped.candidates.filter((c) => normalizeRepo(c.repo) === 'trinzik-labs2/imageboot').length,
+	1,
+	'GitHub search + RunMPC same repo must appear once'
+);
+
+const plainPrevious = [
+	'- [x] NOISEWAVE HA: Hardware-adjacent noise tool · ★0 · created 2026-11-20 · listed on RunMPC (added 2026-11-20)',
+	'- [ ] Phenix2417/mpc-sample-emulator: old unticked · ★0 · created 2026-10-01 · listed on RunMPC (added 2026-10-01)'
+].join('\n');
+assert.deepEqual([...parseTickedRepos(plainPrevious)], ['noisewave ha']);
+const plainBody = mergeDiscoveryBody(
+	runmpcKept.filter((c) => c.repo === 'NOISEWAVE HA' || c.repo === 'Phenix2417/mpc-sample-emulator'),
+	plainPrevious
+);
+assert.match(plainBody, /- \[x\] NOISEWAVE HA:/);
+assert.doesNotMatch(plainBody, /- \[ \] NOISEWAVE HA:/, 'plain-text ticked rows must survive and not reappear unticked');
+assert.match(plainBody, /- \[ \] \[Phenix2417\/mpc-sample-emulator\]\(https:\/\/github\.com\/Phenix2417\/mpc-sample-emulator\):/);
+assert.doesNotMatch(plainBody, /runmpc\.com/i);
+
+{
+	const warnings = [];
+	const warn = console.warn;
+	console.warn = (message) => warnings.push(message);
+	const originalFetch = globalThis.fetch;
+	try {
+		globalThis.fetch = async () => ({ ok: false, status: 503, json: async () => [] });
+		assert.deepEqual(await fetchRunmpcItems(), []);
+		globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => ({ not: 'array' }) });
+		assert.deepEqual(await fetchRunmpcItems(), []);
+		globalThis.fetch = async () => { throw new Error('offline'); };
+		assert.deepEqual(await fetchRunmpcItems(), []);
+	} finally {
+		console.warn = warn;
+		globalThis.fetch = originalFetch;
+	}
+	assert.equal(warnings.length, 3);
+	assert.ok(warnings.every((message) => /RunMPC/i.test(message)));
+}
+
+console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close, RunMPC filter/dedupe/fail-soft.');
