@@ -4,8 +4,10 @@ description: >-
   CLAP plug-in for the Akai MPC Sample running Melodee.
 repo: hdslave/hdslave-Necronomicon-Synth
 author: hdslave
-runs_on:
-  - desktop
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
