@@ -5,8 +5,10 @@ description: >-
   own screen page, for the Akai MPC Sample running Melodee.
 repo: hdslave/hdslave-Nexus-Synth
 author: hdslave
-runs_on:
-  - desktop
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
