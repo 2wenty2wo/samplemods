@@ -1,0 +1,23 @@
+name: HS Plug and Play Card
+description: >-
+  One SD-card unzip for the MPC Sample on firmware 1.4.0.7: D.S.B, HS 25, HS Treble Bass and
+  16 HS effects as official plugins. Take the card out and the Sample is stock again.
+repo: Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit
+release_prefix: fw1.4-plug-and-play
+author: Holla-Back-Entertainment
+author_url: https://www.henryskillz.com
+website: https://www.henryskillz.com/mpc-sample
+status: experimental
+tags:
+  - effects
+  - launcher
+  - dsb
+install: sd-card
+firmware: 1.4.0.7
+runs_on: [device]
+audience: [musician]
+price: free
+source: open
+compatible:
+  - dsb-boot
+  - henryskillz-mod-kit

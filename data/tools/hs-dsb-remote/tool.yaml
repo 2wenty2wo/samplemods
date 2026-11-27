@@ -1,0 +1,23 @@
+name: HS-DSB Remote
+description: >-
+  A free TestFlight companion for iPhone, iPad and Mac that mirrors a USB-connected MPC Sample
+  screen and reaches pads, panel controls, mixer shortcuts and a custom Map grid.
+author: Holla-Back-Entertainment
+author_url: https://www.henryskillz.com
+website: https://www.henryskillz.com/mpc-sample
+status: beta
+tags:
+  - companion
+  - remote
+  - ios
+  - macos
+install: none
+firmware: 1.3.0.12
+runs_on: [desktop]
+audience: [musician]
+price: free
+source: closed
+compatible:
+  - dsb-boot
+  - henryskillz-mod-kit
+  - sampqol-os

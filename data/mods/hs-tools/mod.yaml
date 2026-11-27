@@ -1,0 +1,19 @@
+name: HS Tools
+description: >-
+  Free stock-firmware tools for the MPC Sample: on-device stem separation, browser key and BPM
+  tags, a SEQ mixing desk and loudness meters, without SampQOL or the full D.S.B effects kit.
+author: Holla-Back-Entertainment
+author_url: https://www.henryskillz.com
+website: https://www.henryskillz.com/dsb-guide
+repo: Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit
+release_prefix: v0.6.1
+tags:
+  - stems
+  - meters
+  - workflow
+install: sd-card
+firmware: 1.3.0.12
+runs_on: [device]
+audience: [musician]
+price: free
+source: open

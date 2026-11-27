@@ -1,0 +1,17 @@
+name: HS Effects for MPC Sample 1.4
+description: >-
+  A free pack of 22 insert effects for a stock MPC Sample on firmware 1.4: copy one VST2 Plugins
+  folder to the SD card and the effects appear under Henry Skillz in an insert slot. No custom OS.
+author: Holla-Back-Entertainment
+author_url: https://www.henryskillz.com
+website: https://www.henryskillz.com/mpc-sample
+status: experimental
+tags:
+  - effects
+  - vst
+install: sd-card
+firmware: 1.4.0.7
+runs_on: [device]
+audience: [musician]
+price: free
+source: closed
