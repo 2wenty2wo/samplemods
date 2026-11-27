@@ -1,0 +1,16 @@
+name: Your Akai MPC Sample's screen, pads and sound in one browser tab
+description: >-
+  Your Akai MPC Sample's screen, pads and sound in one browser tab - live screen mirror, pad
+  visualizer, ~7 ms audio, 7 themes. Unofficial.
+repo: bmarcinb/SampleScope
+author: bmarcinb
+runs_on:
+  - desktop
+install: desktop
+audience:
+  - musician
+tags:
+  - beatmaking
+  - midi
+  - obs
+  - sampler
