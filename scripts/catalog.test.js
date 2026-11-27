@@ -156,7 +156,9 @@ try {
 	assert.match(validate().stderr, /compatible unknown entry/);
 	write('apps/player/app.yaml', playerRecord);
 	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\n');
-	assert.match(validate().stderr, /hosts is required for plugins/);
+	assert.match(validate().stderr, /plugins need hosts \(host app ids\) or firmware \(runs in stock Akai plug-in support\)/);
+	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\nfirmware: 1.4.0.8\n');
+	assert.equal(validate().status, 0, 'plugin with firmware but no hosts must validate');
 	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\nhosts: [missing-host]\n');
 	assert.match(validate().stderr, /hosts unknown entry/);
 	write('plugins/fx/plugin.yaml', 'name: FX\ndescription: Hosted effect\nrepo: owner/fx\nauthor: owner\nhosts: [host]\n');

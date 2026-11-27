@@ -1,0 +1,15 @@
+name: NAM Player for Akai MPC
+description: >-
+  Neural Amp Modeler (NAM A1/A2) profile player for Akai MPC standalone hardware, built for the MPC
+  Sample, with a web UI over USB.
+repo: iwazowsky/mpc-nam-player
+author: iwazowsky
+runs_on: [device]
+install: sd-card
+audience:
+  - musician
+tags:
+  - audio-plugin
+  - nam
+  - neural-amp-modeler
+firmware: 1.4.0.8

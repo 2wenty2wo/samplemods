@@ -65,8 +65,10 @@ for (const { id, section, file, dir, record, media } of entries) {
 		}
 	}
 	if (section === 'plugins') {
-		if (!Array.isArray(record.hosts) || record.hosts.length === 0) {
-			console.error(`${file}: hosts is required for plugins`);
+		const hasHosts = Array.isArray(record.hosts) && record.hosts.length > 0;
+		const hasFirmware = Boolean(record.firmware);
+		if (!hasHosts && !hasFirmware) {
+			console.error(`${file}: plugins need hosts (host app ids) or firmware (runs in stock Akai plug-in support)`);
 			failed = true;
 		}
 	}
