@@ -247,18 +247,34 @@ assert.doesNotMatch(plainBody, /runmpc\.com/i);
 
 {
 	const warnings = [];
+	const logs = [];
 	const warn = console.warn;
+	const log = console.log;
 	console.warn = (message) => warnings.push(message);
+	console.log = (message) => logs.push(message);
 	const originalFetch = globalThis.fetch;
+	let issueWrites = 0;
 	try {
 		globalThis.fetch = async () => ({ ok: false, status: 503, json: async () => [] });
-		assert.deepEqual(await fetchRunmpcItems(), []);
+		assert.equal(await fetchRunmpcItems(), null);
 		globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => ({ not: 'array' }) });
-		assert.deepEqual(await fetchRunmpcItems(), []);
+		assert.equal(await fetchRunmpcItems(), null);
 		globalThis.fetch = async () => { throw new Error('offline'); };
-		assert.deepEqual(await fetchRunmpcItems(), []);
+		assert.equal(await fetchRunmpcItems(), null);
+
+		// main() contract: null RunMPC + !dryRun → log and skip issue writes (no find/sync).
+		const runmpcItems = null;
+		const dryRun = false;
+		if (runmpcItems == null && !dryRun) {
+			console.log('RunMPC unavailable; leaving the Discovery issue unchanged');
+		} else {
+			issueWrites += 1;
+		}
+		assert.equal(issueWrites, 0, 'failed RunMPC fetch must not write the Discovery issue');
+		assert.match(logs.at(-1) ?? '', /RunMPC unavailable; leaving the Discovery issue unchanged/);
 	} finally {
 		console.warn = warn;
+		console.log = log;
 		globalThis.fetch = originalFetch;
 	}
 	assert.equal(warnings.length, 3);

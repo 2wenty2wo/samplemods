@@ -146,25 +146,28 @@ export function filterRunmpcCandidates(items, entries) {
 	return out;
 }
 
-/** Fetch RunMPC items.json once. Fail soft: warn and return []. */
+/**
+ * Fetch RunMPC items.json once.
+ * @returns {Promise<object[]|null>} Real list (maybe empty), or null when the fetch failed.
+ */
 export async function fetchRunmpcItems(fetchImpl = globalThis.fetch) {
 	try {
 		const response = await fetchImpl(RUNMPC_ITEMS_URL, {
 			headers: { 'User-Agent': 'SampleModsDiscovery/1.0' }
 		});
 		if (!response.ok) {
-			console.warn(`warn: RunMPC items.json returned HTTP ${response.status}; continuing without RunMPC candidates.`);
-			return [];
+			console.warn(`warn: RunMPC items.json returned HTTP ${response.status}.`);
+			return null;
 		}
 		const data = await response.json();
 		if (!Array.isArray(data)) {
-			console.warn('warn: RunMPC items.json was not an array; continuing without RunMPC candidates.');
-			return [];
+			console.warn('warn: RunMPC items.json was not an array.');
+			return null;
 		}
 		return data;
 	} catch (error) {
-		console.warn(`warn: RunMPC items.json fetch failed (${error.message}); continuing without RunMPC candidates.`);
-		return [];
+		console.warn(`warn: RunMPC items.json fetch failed (${error.message}).`);
+		return null;
 	}
 }
 
@@ -473,7 +476,11 @@ async function main() {
 	apiCalls += Math.max(2, Math.ceil(starred.length / 100) + 1);
 
 	const runmpcItems = await fetchRunmpcItems();
-	const runmpc = filterRunmpcCandidates(runmpcItems, entries);
+	if (runmpcItems == null && !dryRun) {
+		console.log('RunMPC unavailable; leaving the Discovery issue unchanged');
+		return;
+	}
+	const runmpc = filterRunmpcCandidates(runmpcItems ?? [], entries);
 	const raw = [
 		...await searchCandidates(token, since),
 		...await authorCandidates(token, entries, since),
