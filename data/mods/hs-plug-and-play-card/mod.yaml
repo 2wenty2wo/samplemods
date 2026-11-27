@@ -14,6 +14,8 @@ tags:
   - dsb
 install: sd-card
 firmware: 1.4.0.7
+# Shared-repo cross-talk: fw1.3-tester-v1 names 1.3.0.12 for a separate 1.3 tester card, not this 1.4 entry.
+firmware_ignore: ["1.3.0.12"]
 runs_on: [device]
 audience: [musician]
 price: free

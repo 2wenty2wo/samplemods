@@ -1,7 +1,8 @@
 name: GRIDZILLA
 description: >-
   An SD-card mod that extends the MPC Sample with virtual instruments, MIDI grid and piano-roll
-  editing, a song arranger, live mixing and effect automation.
+  editing, a song arranger, live mixing and effect automation. Firmware 1.3 downloads live in this
+  repo; firmware 1.4 builds are in ZootedandRebooted/GRIDZILLA-1.4.
 repo: ZootedandRebooted/GRIDZILLA
 author: ZootedandRebooted
 tags:
@@ -10,7 +11,7 @@ tags:
   - arranger
   - mixing
 install: sd-card
-firmware: 1.3.0.12
+firmware: 1.3.0.12, 1.4.0.8
 website: https://zootedandrebooted.github.io/GRIDZILLA/
 runs_on: [device]
 audience: [musician]

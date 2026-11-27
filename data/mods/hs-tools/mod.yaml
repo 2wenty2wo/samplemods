@@ -13,6 +13,8 @@ tags:
   - workflow
 install: sd-card
 firmware: 1.3.0.12
+# Shared-repo cross-talk: fw1.4-plug-and-play-v1 names 1.4.0.7 for the plug-and-play card, not HS Tools.
+firmware_ignore: ["1.4.0.7"]
 runs_on: [device]
 audience: [musician]
 price: free
