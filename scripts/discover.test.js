@@ -628,16 +628,33 @@ const directoryDetail = (sameAs) => ldScript({ '@graph': [{ '@type': 'SoftwareAp
 }
 
 {
-	const items = Array.from({ length: 12 }, (_, i) => [`Item ${i}`, `/entries/${i}`]);
+	const items = Array.from({ length: 12 }, (_, i) => [`Item ${i}`, `/entries/${String(i).padStart(2, '0')}`]);
 	const requests = [];
 	const directory = await fetchDirectoryCandidates([], async (url) => {
 		requests.push(url);
 		if (url === directoryUrl) return directoryResponse(directoryList(items));
-		if (url.endsWith('/0')) throw new Error('detail failed');
+		if (url.endsWith('/00')) throw new Error('detail failed');
 		return directoryResponse('<html></html>');
-	}, directoryEnv);
+	}, directoryEnv, new Date(0));
 	assert.equal(requests.length, 11);
 	assert.deepEqual(directory.map(({ repo }) => repo), items.slice(1, 10).map(([name]) => name));
+}
+
+{
+	const items = Array.from({ length: 25 }, (_, i) => [`Item ${i}`, `/entries/${i}`]);
+	const inspected = new Set();
+	for (let day = 1; day <= 3; day += 1) {
+		const listing = day === 2 ? [...items].reverse() : items;
+		const requests = [];
+		await fetchDirectoryCandidates([], async (url) => {
+			if (url === directoryUrl) return directoryResponse(directoryList(listing));
+			requests.push(url);
+			inspected.add(url);
+			return directoryResponse('<html></html>');
+		}, directoryEnv, new Date(Date.UTC(2026, 10, day)));
+		assert.equal(requests.length, 10);
+	}
+	assert.deepEqual(inspected, new Set(items.map(([, url]) => new URL(url, directoryUrl).href)));
 }
 
 {

@@ -357,7 +357,7 @@ function directoryUpstream(html, detail) {
 	return null;
 }
 
-export async function fetchDirectoryCandidates(entries, fetchImpl = globalThis.fetch, env = process.env) {
+export async function fetchDirectoryCandidates(entries, fetchImpl = globalThis.fetch, env = process.env, now = new Date()) {
 	const url = env[DIRECTORY_URL_ENV];
 	if (!url) {
 		console.log('Mod directory URL unset; continuing without directory candidates.');
@@ -378,10 +378,8 @@ export async function fetchDirectoryCandidates(entries, fetchImpl = globalThis.f
 	}
 	const catalogNames = new Set(entries.map(({ record }) => normalizeName(record?.name)));
 	const catalogIds = new Set(entries.map(({ id }) => normalizeName(id)));
-	const requested = new Set();
-	const candidates = [];
+	const unmatched = new Map();
 	for (const item of items) {
-		if (requested.size === DIRECTORY_DETAIL_LIMIT) break;
 		if (typeof item?.name !== 'string' || catalogNames.has(normalizeName(item.name))) continue;
 		const name = item.name.replace(/[\[\]`]/g, '').trim().replace(/\s+/g, ' ');
 		if (!name) continue;
@@ -390,8 +388,21 @@ export async function fetchDirectoryCandidates(entries, fetchImpl = globalThis.f
 		const slug = detail.pathname.split('/').filter(Boolean).at(-1);
 		if (catalogIds.has(normalizeName(slug))) continue;
 		detail.hash = '';
-		if (detail.href === page.href || requested.has(detail.href)) continue;
-		requested.add(detail.href);
+		if (detail.href === page.href || unmatched.has(detail.href)) continue;
+		unmatched.set(detail.href, { detail, name });
+	}
+	const urls = [...unmatched.keys()];
+	let start = 0;
+	if (urls.length > DIRECTORY_DETAIL_LIMIT) {
+		// Advance by one full window per UTC day, independent of the listing order.
+		urls.sort();
+		const day = Math.floor(now.getTime() / 86_400_000);
+		const offset = (day * DIRECTORY_DETAIL_LIMIT) % urls.length;
+		start = (offset + urls.length) % urls.length;
+	}
+	const candidates = [];
+	for (let index = 0; index < Math.min(DIRECTORY_DETAIL_LIMIT, urls.length); index += 1) {
+		const { detail, name } = unmatched.get(urls[(start + index) % urls.length]);
 		try {
 			const response = await fetchImpl(detail.href, options);
 			if (response.status !== 200) continue;
