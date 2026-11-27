@@ -4,9 +4,7 @@ description: >-
   Sample, with a web UI over USB.
 repo: iwazowsky/mpc-nam-player
 author: iwazowsky
-runs_on:
-  - desktop
-  - device
+runs_on: [device]
 install: sd-card
 audience:
   - musician
@@ -14,3 +12,5 @@ tags:
   - audio-plugin
   - nam
   - neural-amp-modeler
+hosts:
+  - melodee-sample
