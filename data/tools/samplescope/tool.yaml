@@ -1,0 +1,16 @@
+name: SampleScope
+description: >-
+  Mirrors the MPC Sample screen, shows pad hits, and plays USB audio in a browser tab. A local
+  bridge runs on Windows or macOS.
+repo: bmarcinb/SampleScope
+author: bmarcinb
+runs_on: [desktop, browser]
+install: desktop
+firmware: 1.4+
+audience:
+  - musician
+tags:
+  - beatmaking
+  - midi
+  - obs
+  - sampler

@@ -257,6 +257,14 @@
       "note": "MPC Sample screen from the hdslave Mystik README; animated WebP (lossy mixed q55, infinite loop)"
     }
   ],
+  "hdslave-necronomicon-synth": [
+    {
+      "file": "screenshots/01-liquid-light.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Necronomicon-Synth/main/docs/necronomicon-screen.gif",
+      "repo": "hdslave/hdslave-Necronomicon-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "hdslave-nexus-synth": [
     {
       "file": "screenshots/01-nexus-pages.webp",
@@ -289,6 +297,14 @@
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Machine/main/docs/machine-screen.gif",
       "repo": "hdslave/hdslave-Machine",
       "note": "MPC Sample screen from the hdslave Machine README; lossless animated WebP"
+    }
+  ],
+  "hdslave-psychic-synth": [
+    {
+      "file": "screenshots/01-contact-sheet.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Psychic-Synth/main/docs/psychic-screen.gif",
+      "repo": "hdslave/hdslave-Psychic-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
     }
   ],
   "hdslaveos": [
@@ -341,6 +357,14 @@
       "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
     }
   ],
+  "hdslave-reverie-synth": [
+    {
+      "file": "screenshots/01-reverie-pages.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Reverie-Synth/main/docs/reverie-pages.gif",
+      "repo": "hdslave/hdslave-Reverie-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "henryskillz-mod-kit": [
     {
       "file": "screenshots/01-henryskillz-splash.webp",
@@ -361,6 +385,14 @@
       "file": "screenshots/04-stems-chooser.webp",
       "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/HEAD/assets/screens/stems-chooser.png",
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
+    }
+  ],
+  "hdslave-slink-synth": [
+    {
+      "file": "screenshots/01-slink-panel.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/main/docs/slink-screen.gif",
+      "repo": "hdslave/hdslave-Slink-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
     }
   ],
   "kaosample": [

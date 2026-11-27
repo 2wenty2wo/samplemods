@@ -170,10 +170,26 @@ export function filterFeedCandidates(items, entries, feedHost) {
 	return out;
 }
 
+function warnSourceFailure(source, status) {
+	const failure = Number.isInteger(status) && status >= 100 && status <= 599
+		? `returned HTTP ${status}`
+		: 'network error';
+	console.warn(`warn: ${source} ${failure}.`);
+}
+
+async function readCandidateSource(source, read) {
+	try {
+		return await read();
+	} catch (error) {
+		warnSourceFailure(source, error?.status);
+		return null;
+	}
+}
+
 /**
  * Fetch the optional catalog feed once.
  * Unset DISCOVERY_FEED_URL → [] (feed disabled).
- * Set but fetch/JSON fails → null (caller must leave the issue unchanged).
+ * Set but fetch/JSON fails → null (source unavailable).
  * @returns {Promise<object[]|null>}
  */
 export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process.env) {
@@ -185,7 +201,7 @@ export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process
 	try {
 		const response = await fetchImpl(url, { headers: SOURCE_HEADERS });
 		if (!response.ok) {
-			console.warn('warn: catalog feed returned an HTTP error.');
+			warnSourceFailure('catalog feed', response.status);
 			return null;
 		}
 		const data = await response.json();
@@ -195,7 +211,7 @@ export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process
 		}
 		return data;
 	} catch {
-		console.warn('warn: catalog feed fetch failed.');
+		warnSourceFailure('catalog feed');
 		return null;
 	}
 }
@@ -267,7 +283,7 @@ export function candidateFromListRepo(repo, meta) {
 /**
  * Fetch the optional curated-list README once (plain text).
  * Unset DISCOVERY_LIST_URL → '' (list disabled).
- * Set but fetch fails → null (caller must leave the issue unchanged).
+ * Set but fetch fails → null (source unavailable).
  * @returns {Promise<string|null>}
  */
 export async function fetchListMarkdown(fetchImpl = globalThis.fetch, env = process.env) {
@@ -279,12 +295,12 @@ export async function fetchListMarkdown(fetchImpl = globalThis.fetch, env = proc
 	try {
 		const response = await fetchImpl(url, { headers: SOURCE_HEADERS });
 		if (!response.ok) {
-			console.warn('warn: curated list returned an HTTP error.');
+			warnSourceFailure('curated list', response.status);
 			return null;
 		}
 		return await response.text();
 	} catch {
-		console.warn('warn: curated list fetch failed.');
+		warnSourceFailure('curated list');
 		return null;
 	}
 }
@@ -364,13 +380,22 @@ export async function fetchDirectoryCandidates(entries, fetchImpl = globalThis.f
 		return [];
 	}
 	const page = httpUrl(url);
+	if (!page) {
+		console.warn('warn: mod directory configuration is invalid.');
+		return null;
+	}
 	const options = { headers: { 'User-Agent': 'Mozilla/5.0' }, redirect: 'error' };
 	let items;
 	try {
-		const response = page && await fetchImpl(page.href, options);
-		if (response?.status === 200) items = directoryItems(await response.text());
+		const response = await fetchImpl(page.href, options);
+		if (response.status !== 200) {
+			warnSourceFailure('mod directory', response.status);
+			return null;
+		}
+		items = directoryItems(await response.text());
 	} catch {
-		// Fetch and parse failures leave the issue unchanged.
+		warnSourceFailure('mod directory');
+		return null;
 	}
 	if (!items) {
 		console.warn('warn: mod directory unavailable.');
@@ -505,7 +530,7 @@ function encodeLinkUrl(url) {
 	return String(url).replaceAll('(', '%28').replaceAll(')', '%29');
 }
 
-function tickedRowKey(line) {
+function discoveryRowKey(line) {
 	const linked = line.match(LINK_ROW_RE);
 	if (linked) return normalizeRepo(linked[2]);
 	const plainTicked = line.match(PLAIN_TICKED_RE);
@@ -519,7 +544,7 @@ export function parseTickedRepos(body) {
 	const ticked = new Set();
 	if (!body) return ticked;
 	for (const line of String(body).split(/\r?\n/)) {
-		const key = /^- \[x\] /i.test(line) ? tickedRowKey(line) : null;
+		const key = /^- \[x\] /i.test(line) ? discoveryRowKey(line) : null;
 		if (key) ticked.add(key);
 	}
 	return ticked;
@@ -529,7 +554,7 @@ function parseTickedLines(body) {
 	const lines = [];
 	if (!body) return lines;
 	for (const line of String(body).split(/\r?\n/)) {
-		if (/^- \[x\] /i.test(line) && tickedRowKey(line)) lines.push(line.trim());
+		if (/^- \[x\] /i.test(line) && discoveryRowKey(line)) lines.push(line.trim());
 	}
 	return lines;
 }
@@ -548,8 +573,19 @@ export function formatDiscoveryBody(candidates, tickedRepos = new Set(), previou
 	return mergeDiscoveryBody(candidates, previousBody, tickedRepos);
 }
 
-/** Build issue body: preserved ticks + current unticked candidates. */
-export function mergeDiscoveryBody(candidates, previousBody = '', tickedRepos) {
+function carryForwardRows(previousBody, seen, exclusions) {
+	const previous = [];
+	for (const line of previousBody.split(/\r?\n/)) {
+		const key = line.startsWith('- [ ] ') ? discoveryRowKey(line) : null;
+		if (!key || seen.has(key)) continue;
+		seen.add(key);
+		previous.push({ repo: normalizeName(key), line });
+	}
+	return excludeKnown(previous, exclusions).candidates.map(({ line }) => line);
+}
+
+/** Build the issue body with preserved ticks and any carried-forward candidates. */
+export function mergeDiscoveryBody(candidates, previousBody = '', tickedRepos, carryForwardExclusions) {
 	const ticked = tickedRepos ?? parseTickedRepos(previousBody);
 	const tickedLines = parseTickedLines(previousBody);
 	const lines = ['Repositories that may belong in the catalog:', ''];
@@ -558,6 +594,10 @@ export function mergeDiscoveryBody(candidates, previousBody = '', tickedRepos) {
 	for (const candidate of candidates) {
 		if (ticked.has(normalizeRepo(candidate.repo))) continue;
 		active.push(candidateRow(candidate));
+	}
+	if (carryForwardExclusions) {
+		const seen = new Set([...ticked, ...active.map(discoveryRowKey)]);
+		active.push(...carryForwardRows(previousBody, seen, carryForwardExclusions));
 	}
 	active.sort((a, b) => a.localeCompare(b));
 	lines.push(...active);
@@ -594,17 +634,18 @@ async function findDiscoveryIssue(token, repository) {
 	return null;
 }
 
-export async function syncDiscoveryIssue(token, repository, body, hasOpenCandidates) {
+export async function syncDiscoveryIssue(token, repository, body, hasOpenCandidates, keepOpen = false) {
 	const base = `repos/${repository}`;
 	const issue = await findDiscoveryIssue(token, repository);
 
-	if (!hasOpenCandidates) {
+	if (!hasOpenCandidates && !keepOpen) {
 		if (issue?.state === 'open') {
 			await gh(`${base}/issues/${issue.number}/comments`, token, 'POST', { body: CLOSE_COMMENT });
 			await gh(`${base}/issues/${issue.number}`, token, 'PATCH', { state: 'closed' });
 		}
 		return;
 	}
+	if (!hasOpenCandidates && issue?.state !== 'open') return;
 
 	await ensureLabel(token, repository);
 	if (!issue || issue.state === 'closed') {
@@ -726,7 +767,7 @@ function parseSinceArg(argv) {
 	return sinceDateDaysAgo(30);
 }
 
-async function main() {
+export async function main(entries) {
 	const dryRun = process.argv.includes('--dry-run');
 	const since = parseSinceArg(process.argv);
 	const token = process.env.GITHUB_TOKEN;
@@ -734,7 +775,7 @@ async function main() {
 	if (!token) throw new Error('GITHUB_TOKEN is required.');
 
 	resetApiCallCount();
-	const entries = readEntries(path.join(root, 'data'));
+	entries ??= readEntries(path.join(root, 'data'));
 	const starUser = process.env.STAR_LIST_USER || '2wenty2wo';
 	const starSlug = process.env.STAR_LIST_SLUG || 'mpc-sample';
 
@@ -748,40 +789,36 @@ async function main() {
 	const feedUrl = process.env[FEED_URL_ENV];
 	const feedHost = feedUrl ? feedHostname(feedUrl) : null;
 	const feedItems = await fetchFeedItems();
-	if (feedItems == null && !dryRun) {
-		console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
-		return;
-	}
 	const listUrl = process.env[LIST_URL_ENV] ?? '';
 	const listMarkdown = await fetchListMarkdown();
-	const list = await listCandidates(token, listMarkdown ?? '', listUrl, entries).catch(() => {
-		console.warn('warn: curated list repository lookup failed.');
-		return null;
-	});
-	if ((listMarkdown == null || list == null) && !dryRun) {
-		console.log('Curated list unavailable; leaving the Discovery issue unchanged');
-		return;
-	}
+	const list = listMarkdown == null ? null
+		: await readCandidateSource('curated list repository lookup', () => listCandidates(token, listMarkdown, listUrl, entries));
 	const directory = await fetchDirectoryCandidates(entries);
-	if (directory == null && !dryRun) {
-		console.log('Mod directory unavailable; leaving the Discovery issue unchanged');
+	const search = await readCandidateSource('GitHub search', () => searchCandidates(token, since));
+	const external = [[feedUrl, feedItems], [listUrl, list], [process.env[DIRECTORY_URL_ENV], directory]];
+	if (search == null && !external.some(([url, result]) => url && result != null)) {
+		console.log('All configured external sources and GitHub search unavailable. Leaving the Discovery issue unchanged.');
 		return;
 	}
+	const authors = await readCandidateSource('GitHub author lookup', () => authorCandidates(token, entries, since));
+	const forks = await readCandidateSource('GitHub fork lookup', () => forkCandidates(token, entries, since));
+	const partial = [feedItems, list, directory, search, authors, forks].includes(null);
 	const feed = filterFeedCandidates(feedItems ?? [], entries, feedHost);
 	const raw = [
-		...await searchCandidates(token, since),
-		...await authorCandidates(token, entries, since),
-		...await forkCandidates(token, entries, since),
+		...(search ?? []),
+		...(authors ?? []),
+		...(forks ?? []),
 		...feed,
 		...(list ?? []),
 		...(directory ?? [])
 	];
-	const { candidates, excluded } = excludeKnown(raw, {
+	const exclusions = {
 		catalogRepos: catalogRepoSet(entries),
 		starRepos: new Set(starred.map((repo) => normalizeRepo(repo.nameWithOwner))),
 		catalogRepo: CATALOG_REPO,
 		listUrl
-	});
+	};
+	const { candidates, excluded } = excludeKnown(raw, exclusions);
 
 	let previousBody = '';
 	if (!dryRun) {
@@ -789,12 +826,20 @@ async function main() {
 		previousBody = existing?.body ?? '';
 	}
 
-	const body = mergeDiscoveryBody(candidates, previousBody);
+	const carryForwardExclusions = partial ? {
+		...exclusions,
+		catalogRepos: new Set([
+			...exclusions.catalogRepos,
+			...entries.flatMap(({ id, record }) => [normalizeName(id), normalizeName(record.name)]).filter(Boolean)
+		])
+	} : undefined;
+	const body = mergeDiscoveryBody(candidates, previousBody, undefined, carryForwardExclusions);
 	const open = hasUntickedRows(body);
 
 	if (dryRun) {
 		console.log(`${TITLE}\n\nsince: ${since}\napi_calls: ${getApiCallCount()} (approx; star-list graphql counted roughly)\n`);
-		console.log(open || parseTickedRepos(previousBody).size ? body : '(no candidates — issue would close)\n');
+		const empty = partial ? '(no candidates — existing open issue would stay open)\n' : '(no candidates — issue would close)\n';
+		console.log(open || parseTickedRepos(previousBody).size ? body : empty);
 		console.log('\n## Excluded (already in catalog or star list)\n');
 		const interesting = excluded.filter((row) => /catalog|star list/i.test(row.why));
 		if (!interesting.length) console.log('(none)');
@@ -810,8 +855,8 @@ async function main() {
 	if (!process.env.GITHUB_REPOSITORY) {
 		throw new Error('GITHUB_REPOSITORY is required unless --dry-run.');
 	}
-	await syncDiscoveryIssue(token, repository, body, open);
-	console.log(open
+	await syncDiscoveryIssue(token, repository, body, open, partial);
+	console.log(partial ? `Discovery finished with unavailable sources (${getApiCallCount()} API calls).` : open
 		? `Synced discovery issue (${candidates.length} open candidate${candidates.length === 1 ? '' : 's'}; ${getApiCallCount()} API calls).`
 		: `Closed discovery issue (${getApiCallCount()} API calls).`);
 }
