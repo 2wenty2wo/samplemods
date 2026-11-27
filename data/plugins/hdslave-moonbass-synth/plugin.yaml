@@ -4,8 +4,10 @@ description: >-
   style, every parameter paged out) as a CLAP plug-in for the Akai MPC Sample running Melodee.
 repo: hdslave/hdslave-MoonBass-Synth
 author: hdslave
-runs_on:
-  - desktop
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
