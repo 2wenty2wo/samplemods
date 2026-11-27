@@ -1,0 +1,10 @@
+name: MPC Sample addin
+description: >-
+  MPC Sample addin: Load Kit bank by bank (the KITLOAD page): put a kit's banks onto the banks you
+  choose, keep the rest.
+repo: jacob-sabella/mpc-addin-sample-kitload
+author: jacob-sabella
+runs_on:
+  - device
+audience:
+  - musician
