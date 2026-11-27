@@ -1,0 +1,10 @@
+name: Awesome MPC Sample [](https://awesome.re)
+description: An awesome-inspired repo for the MPC Sample from Akai.
+repo: mattaereal/awesome-mpc-sample
+author: mattaereal
+runs_on:
+  - desktop
+  - device
+install: sd-card
+audience:
+  - musician
