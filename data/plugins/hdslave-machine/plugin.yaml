@@ -5,8 +5,10 @@ description: >-
   the MPC's screen, as a CLAP plug-in for the Akai MPC Sample running Melodee.
 repo: hdslave/hdslave-Machine
 author: hdslave
-runs_on:
-  - desktop
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
