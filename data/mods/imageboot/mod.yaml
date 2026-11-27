@@ -1,11 +1,11 @@
-name: LogoMaker — SD-card drop-in edition
+name: LogoMaker
 description: >-
-  An Open source project on the Mpc Sample allowing u to add ur own image and/or sound to the boot
-  up screen. Making it customizable to ur own creativity.
+  Displays a custom still image and optional MP3 during late startup on the MPC Sample. Copy
+  the autorun package to the SD card and replace the supplied media.
 repo: Trinzik-Labs2/ImageBoot
 author: Trinzik-Labs2
-runs_on:
-  - device
+runs_on: [device]
 install: sd-card
-audience:
-  - musician
+firmware: 1.3.0.12
+status: experimental
+audience: [musician]
