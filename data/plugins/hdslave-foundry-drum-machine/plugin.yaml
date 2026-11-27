@@ -1,0 +1,14 @@
+name: hdslave Foundry
+description: >-
+  A 16-voice 808/909/606-style drum machine as a CLAP plug-in for the Akai MPC Sample (Melodee):
+  TR-1000-style controls per voice, 606 mod controls, kick side chain, reverb, delay, bus
+  compressor.
+repo: hdslave/hdslave-Foundry-Drum-Machine
+author: hdslave
+runs_on: [device]
+install: sd-card
+audience:
+  - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
