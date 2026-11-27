@@ -16,3 +16,6 @@ runs_on: [device]
 audience: [musician]
 price: free
 source: open
+compatible:
+  - melodee-module-sdk
+

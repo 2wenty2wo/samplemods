@@ -1,0 +1,19 @@
+name: Melodee Module SDK
+description: >-
+  Build Melodee synth modules (.mmod) from C: ABI 3 contract, builder, signing and example. Modules
+  load in Melodee and in the Melodee Modules CLAP on the MPC Sample.
+repo: keremimo/melodee-module-sdk
+author: keremimo
+tags:
+  - sdk
+  - melodee
+  - modules
+install: none
+runs_on: [desktop]
+audience: [developer]
+price: free
+source: open
+requires:
+  - melodee-sample
+compatible:
+  - melodee-modules
