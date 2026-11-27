@@ -1332,5 +1332,17 @@
       "source": "https://getdfos.com/plates/bento-tracks-choosing.0597cc1c.png",
       "note": "New-track chooser plate from getdfos.com; lossless WebP"
     }
+  ],
+  "sxl": [
+    {
+      "file": "screenshots/01-main.webp",
+      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); SXL main view (Mixer / Effects / Grid)"
+    },
+    {
+      "file": "screenshots/02-sample-trim.webp",
+      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); SXL sample Trim page"
+    }
   ]
 }
