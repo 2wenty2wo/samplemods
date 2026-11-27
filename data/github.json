@@ -217,8 +217,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 18,
     "forks": 3,
-    "pushed_at": "2026-11-27T04:38:31Z",
-    "last_commit_at": "2026-11-27T04:38:06Z",
+    "pushed_at": "2026-11-27T20:59:24Z",
+    "last_commit_at": "2026-11-27T20:59:23Z",
     "contributors": 1,
     "open_issues": 18,
     "license": "MIT",
@@ -226,10 +226,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v2.0I",
-      "published_at": "2026-11-27T04:38:31Z"
+      "tag": "v2.0J",
+      "published_at": "2026-11-27T20:27:11Z"
     },
     "releases": [
+      {
+        "tag": "v2.0J",
+        "name": "LA Version 2.0J",
+        "prerelease": false,
+        "published_at": "2026-11-27T20:27:11Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0J",
+        "body": "## LA Version 2.0J\n\n- **Live Looper footswitch: LOOP NEXT** (MIDI Settings, Footswitch). The first press starts a Live Looper take on the selected pad (or the next empty pad after it), from any page. Each press after that arms the next empty pad, and a message names it (`Next take: Pad A03`). Pressed while a take is recording, the next take starts on the bar 1 after it drops in. The pedal never stops a take: **STOP** ends it.\n- **Playhead in every program.** The playhead on Trim, Loop and Zone Assign only showed in program 1; on any other program it was missing. It now shows in every program.\n- **USB Indiv Out, by track:** a pad pressed by hand comes out on its part's output. When the active track doesn't play that pad, it plays through the track of the sequence that does (same program) and has an output.\n- **Outs to DAW** (Additional Settings 3, default ON): with USB Indiv Out on, the MPC 600 S tells the computer what is on each output (mono or a stereo side, and the track or sound name) over USB MIDI, when anything changes and at each Start. LA DAW names its tracks from it; other programs ignore it. OFF sends nothing extra.\n- **Note Repeat starts at Start TC.** At power-on, Note Repeat's rate is the Start TC value (Additional Settings). Repeat has no 1/64: 1/64 and 1/64T start it at 1/32 and 1/32T, OFF at 1/16.\n- Manual updated.\n",
+        "truncated": false
+      },
       {
         "tag": "v2.0I",
         "name": "LA Version 2.0I",
@@ -246,15 +255,6 @@
         "published_at": "2026-11-26T03:34:02Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0H",
         "body": "## LA Version 2.0H\n\n- **Knobs no longer move things by themselves.** A knob (or the slider, or the main volume) resting between two positions sends a constant flicker, and each reading was taken as a turn. Zoomed in on Trim, a resting Zone End knob could nudge Zone End and make the view jump from Start to End; on Trim, K3 could move the cursor to Do. Now a control has to move two steps from rest before it counts. Turning still takes every step, turning back takes two, and after 0.4 s still it is at rest again. A flicker never changes anything. Also: B1-B3, -/+ and the wheel's push just after a knob turn are ignored as the panel shaking (as after a pad press), and a flickering knob no longer makes light pad presses get ignored.\n- **Playhead.** While a pad plays, a solid line moves along the waveform where the sound is, on Trim, Loop and Zone Assign, to set Zone End by eye.\n- **MPC60 pitching.** Every sound now plays at another pitch by zero-order hold, taken from the MPC60: each output is the stored sample at or before the play position, never blended, with the pitch step in 4.12 fixed point as on the MPC60 and MPC3000 chips. Pitched down it has the stepped, metallic edge, pitched up the crunch. Pitch on Sample New Sound (before a sound is stored) stays high quality. The manual has a new chapter, **Pitching**, comparing the MPC60, the MPC3000's 8-point interpolation, modern methods and the stock OS, with measurements.\n- **USB Indiv Out knobs.** K1 picks the track (or pad), K2 sets its Indiv Out Volume, K3 its Output.\n\nEverything from 2.0A to 2.0G is included.",
-        "truncated": false
-      },
-      {
-        "tag": "v2.0G",
-        "name": "LA Version 2.0G",
-        "prerelease": false,
-        "published_at": "2026-11-25T04:19:24Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0G",
-        "body": "## LA Version 2.0G\n\n- **USB Indiv Out is eight outputs.** The Layout setting is gone: all eight USB channels are outputs, each a mono channel (1-8) or a stereo pair (1-2, 3-4, 5-6, 7-8). The main mix no longer goes over USB alongside them, so a pad or track on an output is not sent to the computer twice. For the whole song in stereo, use USB Audio Out with USB Indiv Out off.\n- **In mix is gone.** The MPC's own line out and headphones always play every track, whether or not it is on an output.\n\nEverything from 2.0A to 2.0F is included.",
         "truncated": false
       }
     ],
@@ -2335,7 +2335,7 @@
     "archived": false
   },
   "pxcm/SampleBoot": {
-    "stars": 34,
+    "stars": 36,
     "forks": 2,
     "pushed_at": "2026-11-24T21:33:13Z",
     "last_commit_at": "2026-11-24T21:33:11Z",
@@ -2549,7 +2549,7 @@
     "pushed_at": "2026-11-26T16:07:41Z",
     "last_commit_at": "2026-11-26T16:07:39Z",
     "contributors": 1,
-    "open_issues": 50,
+    "open_issues": 48,
     "license": null,
     "description": "SampQOL OS: a free SD-card mod for the Akai MPC Sample (firmware 1.3.0)",
     "default_branch": "main",
