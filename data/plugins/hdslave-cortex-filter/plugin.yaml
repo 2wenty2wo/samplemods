@@ -1,11 +1,13 @@
-name: hdslave Cortex Filter
+﻿name: hdslave Cortex Filter
 description: >-
   A stereo 3D morphing filter (CLAP effect) for the Akai MPC Sample running Melodee, with a 3D cube
   and response readout on the MPC's screen.
 repo: hdslave/hdslave-Cortex-Filter
 author: hdslave
-runs_on:
-  - desktop
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
