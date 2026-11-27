@@ -285,6 +285,14 @@
       "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
     }
   ],
+  "hdslave-reverie-synth": [
+    {
+      "file": "screenshots/01-reverie-pages.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Reverie-Synth/main/docs/reverie-pages.gif",
+      "repo": "hdslave/hdslave-Reverie-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "henryskillz-mod-kit": [
     {
       "file": "screenshots/01-henryskillz-splash.webp",

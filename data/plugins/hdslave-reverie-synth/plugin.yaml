@@ -4,9 +4,10 @@ description: >-
   chord progressions on morphing wavetables with an X/Y Motion path and shimmer reverb.
 repo: hdslave/hdslave-Reverie-Synth
 author: hdslave
-runs_on:
-  - desktop
-  - device
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
