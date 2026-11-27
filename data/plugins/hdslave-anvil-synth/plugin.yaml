@@ -1,0 +1,13 @@
+name: hdslave Anvil
+description: >-
+  Hdslave Anvil: an 8-step analog-style percussion synthesizer (DFAM/Edge panel and flow) as a CLAP
+  plug-in for the Akai MPC Sample running Melodee.
+repo: hdslave/hdslave-Anvil-Synth
+author: hdslave
+runs_on: [device]
+install: sd-card
+audience:
+  - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
