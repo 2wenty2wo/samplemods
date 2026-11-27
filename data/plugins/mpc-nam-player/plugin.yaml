@@ -12,5 +12,4 @@ tags:
   - audio-plugin
   - nam
   - neural-amp-modeler
-hosts:
-  - melodee-sample
+firmware: 1.4.0.8
