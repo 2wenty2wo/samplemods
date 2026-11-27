@@ -1,9 +1,0 @@
-name: MPC Sample Emulator for Pixel/Android
-description: 'TODO: describe'
-repo: Phenix2417/mpc-sample-emulator
-author: Phenix2417
-runs_on:
-  - device
-install: sd-card
-audience:
-  - musician

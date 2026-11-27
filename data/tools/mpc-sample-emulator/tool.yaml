@@ -1,0 +1,12 @@
+name: MPC Sample Emulator for Pixel/Android
+description: >-
+  Runs stock MPC Sample firmware in Android's Linux Terminal with a touch control panel and a phone
+  folder as the SD card. Requires the official Akai updater.
+repo: Phenix2417/mpc-sample-emulator
+author: Phenix2417
+firmware: 1.3.0
+audience:
+  - musician
+tags:
+  - android
+  - emulator
