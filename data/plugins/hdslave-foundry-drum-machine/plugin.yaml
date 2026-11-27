@@ -5,8 +5,10 @@ description: >-
   compressor.
 repo: hdslave/hdslave-Foundry-Drum-Machine
 author: hdslave
-runs_on:
-  - desktop
-install: desktop
+runs_on: [device]
+install: sd-card
 audience:
   - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
