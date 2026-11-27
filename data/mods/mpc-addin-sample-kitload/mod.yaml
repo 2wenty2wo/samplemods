@@ -1,10 +1,14 @@
-name: MPC Sample addin
+name: MPC Sample Kit Load Addin
 description: >-
-  MPC Sample addin: Load Kit bank by bank (the KITLOAD page): put a kit's banks onto the banks you
-  choose, keep the rest.
+  Loads a kit into selected MPC Sample banks while keeping the other banks intact. Requires Draw
+  Handler 1.1.1 or later.
 repo: jacob-sabella/mpc-addin-sample-kitload
 author: jacob-sabella
+requires:
+  - draw-handler
 runs_on:
   - device
+install: ssh
+firmware: 1.4.0.8
 audience:
   - musician
