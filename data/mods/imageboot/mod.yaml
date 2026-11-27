@@ -1,0 +1,11 @@
+name: LogoMaker
+description: >-
+  Displays a custom still image and optional MP3 during late startup on the MPC Sample. Copy
+  the autorun package to the SD card and replace the supplied media.
+repo: Trinzik-Labs2/ImageBoot
+author: Trinzik-Labs2
+runs_on: [device]
+install: sd-card
+firmware: 1.3.0.12
+status: experimental
+audience: [musician]
