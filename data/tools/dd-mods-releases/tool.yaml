@@ -1,7 +1,7 @@
-name: DD Mods — downloads
+name: DD Mods
 description: >-
-  Public downloads and release notes for DD Mods, the MPC Sample companion. Source development is
-  maintained separately.
+  Windows companion and removable SD-card modifications for the MPC Sample. Public beta downloads
+  are not available yet.
 repo: Daniel-Hillman/dd-mods-releases
 author: Daniel-Hillman
 runs_on:
