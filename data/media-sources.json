@@ -1332,27 +1332,5 @@
       "source": "https://getdfos.com/plates/bento-tracks-choosing.0597cc1c.png",
       "note": "New-track chooser plate from getdfos.com; lossless WebP"
     }
-  ],
-  "sxl": [
-    {
-      "file": "screenshots/01-grid.webp",
-      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
-      "note": "Cropped screen overlay from SXL Alpha Release video (Grid / arrangement); WebP"
-    },
-    {
-      "file": "screenshots/02-usb-host.webp",
-      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
-      "note": "Cropped screen overlay from SXL Alpha Release video (USB Host settings); WebP"
-    },
-    {
-      "file": "screenshots/03-live-looper.webp",
-      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
-      "note": "Cropped screen overlay from SXL Alpha Release video (Live Looper Perform); WebP"
-    },
-    {
-      "file": "screenshots/04-sample-library.webp",
-      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
-      "note": "Cropped screen overlay from SXL Alpha Release video (Sample Library pad menu); WebP"
-    }
   ]
 }
