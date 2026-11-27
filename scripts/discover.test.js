@@ -24,7 +24,9 @@ import {
 	githubReposFromMarkdown,
 	filterListRepos,
 	candidateFromListRepo,
-	fetchListMarkdown
+	fetchListMarkdown,
+	DIRECTORY_URL_ENV,
+	fetchDirectoryCandidates
 } from './discover.js';
 
 assert.match(sinceDateDaysAgo(30, new Date('2026-12-10T00:00:00Z')), /^2026-11-10$/);
@@ -230,6 +232,11 @@ assert.equal(pickFeedHref(feedFixture[6], FEED_HOST), null, 'self-host home/auth
 const selfOnly = candidateFromFeedItem(feedFixture[6], FEED_HOST);
 assert.ok(selfOnly);
 assert.equal(selfOnly.html_url, null);
+const attributed = candidateFromFeedItem({
+	...feedFixture[0],
+	summary: 'Hardware-adjacent noise tool. Unconfirmed by FeedSite.'
+}, 'www.feedsite.example');
+assert.equal(attributed.description, 'Hardware-adjacent noise tool.');
 
 const feedCatalog = [
 	{ id: 'sxl', record: { name: 'MPC SXL', repo: null } },
@@ -380,7 +387,7 @@ assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 	try {
 		delete process.env[FEED_URL_ENV];
 		assert.deepEqual(await fetchFeedItems(), []);
-		assert.match(logs.at(-1) ?? '', /Catalog feed URL unset; continuing with GitHub sources only/);
+		assert.match(logs.at(-1) ?? '', /Catalog feed URL unset; continuing without feed candidates/);
 
 		// Unset env: feed disabled → GitHub-only path still updates the issue.
 		const feedItems = [];
@@ -400,6 +407,12 @@ assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 
 const LIST_FIXTURE_URL = 'https://raw.githubusercontent.com/example/list/main/README.md';
 assert.equal(listSourceRepo(LIST_FIXTURE_URL), 'example/list');
+const listedSource = excludeKnown([candidateFromSearchItem({ full_name: 'Example/List' }, 'query')], {
+	catalogRepos: new Set(),
+	starRepos: new Set(['example/list']),
+	listUrl: LIST_FIXTURE_URL
+});
+assert.deepEqual(listedSource, { candidates: [], excluded: [] });
 assert.equal(listSourceRepo('https://example.com/not-raw'), null);
 
 const listMarkdown = [
@@ -540,4 +553,112 @@ assert.equal(
 	}
 }
 
-console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, create/update/close, catalog feed filter/dedupe/fail-soft, curated list extract/dedupe/fail-soft.');
+{
+	const messages = [];
+	const { warn, log } = console;
+	const privateHost = 'directory.example.com';
+	const privateUrl = `https://${privateHost}/private`;
+	const failingFetch = async () => {
+		throw new Error(`Could not fetch ${privateUrl}`, { cause: new Error(`DNS failed for ${privateHost}`) });
+	};
+	console.warn = console.log = (...args) => messages.push(args.join(' '));
+	try {
+		assert.equal(await fetchFeedItems(failingFetch, { [FEED_URL_ENV]: privateUrl }), null);
+		assert.equal(await fetchListMarkdown(failingFetch, { [LIST_URL_ENV]: privateUrl }), null);
+		assert.equal(await fetchDirectoryCandidates([], failingFetch, { [DIRECTORY_URL_ENV]: privateUrl }), null);
+	} finally {
+		Object.assign(console, { warn, log });
+	}
+	assert.match(messages.join('\n'), /catalog feed/i);
+	assert.match(messages.join('\n'), /curated list/i);
+	assert.match(messages.join('\n'), /mod directory/i);
+	assert.ok(messages.every((message) => !message.includes(privateHost)), 'source logs must omit hostnames');
+}
+
+const directoryUrl = 'https://directory.example.com/mods/sampler/';
+const directoryEnv = { [DIRECTORY_URL_ENV]: directoryUrl };
+const ldScript = (data) => `<script type='application/ld+json'>${JSON.stringify(data)}</script>`;
+const directoryList = (items) => ldScript({
+	'@type': 'CollectionPage',
+	mainEntity: { '@type': 'ItemList', itemListElement: items.map(([name, url]) => ({ name, url })) }
+});
+const directoryResponse = (body, status = 200) => new Response(body, { status });
+const directoryDetail = (sameAs) => ldScript({ '@graph': [{ '@type': 'SoftwareApplication', sameAs }] });
+
+{
+	const makerUrl = 'https://maker.example.com/kit';
+	const matches = [{ id: 'different-id', record: { name: 'Same [Name]' } }, { id: 'already-known', record: {} }];
+	const pages = new Map([
+		[directoryUrl, `<script type="application/ld+json">malformed</script>${directoryList([
+			['  Same   [NAME] ', '/entries/name-match'], ['Different title', '/entries/already-known/'],
+			['Offsite', 'https://elsewhere.example.com/item'], ['Wrong port', 'https://directory.example.com:444/item'],
+			['Repo tool', '/entries/repo'], ['Maker kit', '/entries/kit'], ['Second kit', '/entries/kit2'],
+			['Directory link only', '/entries/self'], ['No link', '/entries/plain'], ['Broken detail', '/entries/broken']
+		])}`],
+		['https://directory.example.com/entries/repo', directoryDetail('https://github.com/Owner/Repo/releases/latest')],
+		['https://directory.example.com/entries/kit', `<header class='library-head mods-head'><a href='${makerUrl}' class='mods-go button'>Get it</a></header>`],
+		['https://directory.example.com/entries/kit2', directoryDetail(['https://directory.example.com/entries/kit2', makerUrl])],
+		['https://directory.example.com/entries/self', directoryDetail('https://sub.directory.example.com./entries/self')],
+		['https://directory.example.com/entries/plain', '<html></html>']
+	]);
+	const requests = [];
+	const directory = await fetchDirectoryCandidates(matches, async (url, options) => {
+		requests.push(url);
+		assert.equal(options.redirect, 'error');
+		assert.ok(options.headers['User-Agent']);
+		return pages.has(url) ? directoryResponse(pages.get(url)) : directoryResponse('private body', 502);
+	}, directoryEnv);
+	assert.deepEqual(requests, [...pages.keys(), 'https://directory.example.com/entries/broken']);
+	assert.deepEqual(directory.map(({ repo, html_url: href, reason }) => [repo, href, reason]), [
+		['owner/repo', 'https://github.com/owner/repo', 'listed in a mod directory'],
+		['Maker kit', makerUrl, 'listed in a mod directory'],
+		['Second kit', makerUrl, 'listed in a mod directory'],
+		['Directory link only', null, 'listed in a mod directory'],
+		['No link', null, 'listed in a mod directory']
+	]);
+	assert.doesNotMatch(formatDiscoveryBody(directory), /directory\.example\.com/i);
+	const feed = candidateFromFeedItem({ devices: ['mpc-sample'], links: { repo: 'https://github.com/OWNER/Repo' } });
+	const list = candidateFromListRepo('owner/repo', null);
+	const exclusions = { catalogRepos: new Set(), starRepos: new Set() };
+	for (const source of [feed, list]) {
+		assert.equal(excludeKnown([source, ...directory], exclusions).candidates.length, directory.length);
+	}
+	const known = excludeKnown(directory, { ...exclusions, catalogRepos: new Set(['owner/repo']) });
+	assert.equal(known.excluded[0].why, 'already in catalog');
+}
+
+{
+	const items = Array.from({ length: 12 }, (_, i) => [`Item ${i}`, `/entries/${i}`]);
+	const requests = [];
+	const directory = await fetchDirectoryCandidates([], async (url) => {
+		requests.push(url);
+		if (url === directoryUrl) return directoryResponse(directoryList(items));
+		if (url.endsWith('/0')) throw new Error('detail failed');
+		return directoryResponse('<html></html>');
+	}, directoryEnv);
+	assert.equal(requests.length, 11);
+	assert.deepEqual(directory.map(({ repo }) => repo), items.slice(1, 10).map(([name]) => name));
+}
+
+{
+	const logs = [];
+	const { warn, log } = console;
+	console.warn = console.log = (...args) => logs.push(args.join(' '));
+	try {
+		let fetches = 0;
+		assert.deepEqual(await fetchDirectoryCandidates([], async () => { fetches += 1; }, {}), []);
+		assert.equal(fetches, 0);
+		assert.equal(logs.length, 1);
+		assert.match(logs[0], /mod directory.*unset/i);
+		const privateBody = 'https://directory.example.com/private';
+		for (const [body, status] of [[privateBody, 503], [directoryList([]), 201], [privateBody, 200]]) {
+			assert.equal(await fetchDirectoryCandidates([], async () => directoryResponse(body, status), directoryEnv), null);
+		}
+		assert.deepEqual(await fetchDirectoryCandidates([], async () => directoryResponse(directoryList([])), directoryEnv), []);
+		assert.ok(logs.every((message) => !message.includes(privateBody)));
+	} finally {
+		Object.assign(console, { warn, log });
+	}
+}
+
+console.log('Discovery checks passed: search/author/fork filters, exclusions, ticked merge, issue lifecycle, external source filtering and fail-soft logging.');

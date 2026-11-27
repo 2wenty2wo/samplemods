@@ -66,6 +66,9 @@ function toCandidate(repo, reason) {
 
 export const FEED_URL_ENV = 'DISCOVERY_FEED_URL';
 export const LIST_URL_ENV = 'DISCOVERY_LIST_URL';
+export const DIRECTORY_URL_ENV = 'DISCOVERY_DIRECTORY_URL';
+const DIRECTORY_DETAIL_LIMIT = 10;
+const SOURCE_HEADERS = { 'User-Agent': 'SampleModsDiscovery/1.0' };
 
 export function feedHostname(feedUrl) {
 	try {
@@ -79,8 +82,9 @@ export function feedHostname(feedUrl) {
 export function isFeedSelfUrl(url, feedHost) {
 	if (!feedHost) return false;
 	try {
-		const host = new URL(String(url)).hostname.toLowerCase();
-		return host === feedHost || host.endsWith(`.${feedHost}`);
+		const host = new URL(String(url)).hostname.toLowerCase().replace(/\.$/, '');
+		const sourceHost = feedHost.replace(/\.$/, '');
+		return host === sourceHost || host.endsWith(`.${sourceHost}`);
 	} catch {
 		return false;
 	}
@@ -121,6 +125,15 @@ export function pickFeedHref(item, feedHost) {
 	return null;
 }
 
+function feedSummary(summary, feedHost) {
+	const text = String(summary ?? '');
+	const sourceName = feedHost?.replace(/^www\./, '').split('.')[0];
+	if (!sourceName || !text.toLowerCase().includes(sourceName)) return text;
+	return text.split(/(?<=[.!?])\s+/)
+		.filter((sentence) => !sentence.toLowerCase().includes(sourceName))
+		.join(' ');
+}
+
 export function candidateFromFeedItem(item, feedHost) {
 	if (!Array.isArray(item?.devices) || !item.devices.includes('mpc-sample')) return null;
 	const github = githubRepoFromItemLinks(item);
@@ -131,7 +144,7 @@ export function candidateFromFeedItem(item, feedHost) {
 	const added = String(item.added ?? '').slice(0, 10);
 	return {
 		repo: label,
-		description: item.summary ?? '',
+		description: feedSummary(item.summary, feedHost),
 		stars: 0,
 		created: added,
 		reason: `listed in a community catalog (added ${added || 'unknown'})`,
@@ -166,15 +179,13 @@ export function filterFeedCandidates(items, entries, feedHost) {
 export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process.env) {
 	const url = env[FEED_URL_ENV];
 	if (!url) {
-		console.log('Catalog feed URL unset; continuing with GitHub sources only.');
+		console.log('Catalog feed URL unset; continuing without feed candidates.');
 		return [];
 	}
 	try {
-		const response = await fetchImpl(url, {
-			headers: { 'User-Agent': 'SampleModsDiscovery/1.0' }
-		});
+		const response = await fetchImpl(url, { headers: SOURCE_HEADERS });
 		if (!response.ok) {
-			console.warn(`warn: catalog feed returned HTTP ${response.status}.`);
+			console.warn('warn: catalog feed returned an HTTP error.');
 			return null;
 		}
 		const data = await response.json();
@@ -183,8 +194,8 @@ export async function fetchFeedItems(fetchImpl = globalThis.fetch, env = process
 			return null;
 		}
 		return data;
-	} catch (error) {
-		console.warn(`warn: catalog feed fetch failed (${error.message}).`);
+	} catch {
+		console.warn('warn: catalog feed fetch failed.');
 		return null;
 	}
 }
@@ -266,18 +277,134 @@ export async function fetchListMarkdown(fetchImpl = globalThis.fetch, env = proc
 		return '';
 	}
 	try {
-		const response = await fetchImpl(url, {
-			headers: { 'User-Agent': 'SampleModsDiscovery/1.0' }
-		});
+		const response = await fetchImpl(url, { headers: SOURCE_HEADERS });
 		if (!response.ok) {
-			console.warn(`warn: curated list returned HTTP ${response.status}.`);
+			console.warn('warn: curated list returned an HTTP error.');
 			return null;
 		}
 		return await response.text();
-	} catch (error) {
-		console.warn(`warn: curated list fetch failed (${error.message}).`);
+	} catch {
+		console.warn('warn: curated list fetch failed.');
 		return null;
 	}
+}
+
+function htmlAttribute(attributes, name) {
+	const pattern = new RegExp(`(?:^|\\s)${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s"'=<>]+))`, 'i');
+	const match = attributes.match(pattern);
+	return match?.[1] ?? match?.[2] ?? match?.[3] ?? '';
+}
+
+function hasHtmlClass(attributes, name) {
+	return htmlAttribute(attributes, 'class').split(/\s+/).includes(name);
+}
+
+function jsonLdNodes(html) {
+	const nodes = [];
+	for (const [, attributes, body] of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)) {
+		if (htmlAttribute(attributes, 'type').toLowerCase() !== 'application/ld+json') continue;
+		try {
+			const data = JSON.parse(body);
+			for (const node of Array.isArray(data) ? data : [data]) {
+				nodes.push(node);
+				if (Array.isArray(node?.['@graph'])) nodes.push(...node['@graph']);
+			}
+		} catch {
+			// A page can carry several independent JSON-LD scripts.
+		}
+	}
+	return nodes;
+}
+
+function directoryItems(html) {
+	return jsonLdNodes(html)
+		.map((node) => node?.mainEntity ?? node)
+		.find((node) => node?.['@type'] === 'ItemList' && Array.isArray(node.itemListElement))
+		?.itemListElement ?? null;
+}
+
+function httpUrl(value, base) {
+	if (typeof value !== 'string' || !value.trim()) return null;
+	try {
+		const url = new URL(value, base);
+		if (/^https?:$/.test(url.protocol) && !url.username && !url.password) return url;
+	} catch {
+		// Ignore invalid links.
+	}
+	return null;
+}
+
+function directoryUpstream(html, detail) {
+	function upstream(value) {
+		const url = httpUrl(value, detail);
+		return url && !isFeedSelfUrl(url, detail.hostname) ? url.href : null;
+	}
+	for (const node of jsonLdNodes(html)) {
+		if (node?.['@type'] !== 'SoftwareApplication') continue;
+		for (const value of Array.isArray(node.sameAs) ? node.sameAs : [node.sameAs]) {
+			const href = upstream(value);
+			if (href) return href;
+		}
+	}
+	for (const [, attributes, body] of html.matchAll(/<header\b([^>]*)>([\s\S]*?)<\/header\s*>/gi)) {
+		if (!hasHtmlClass(attributes, 'mods-head')) continue;
+		for (const [, link] of body.matchAll(/<a\b([^>]*)>/gi)) {
+			if (!hasHtmlClass(link, 'mods-go')) continue;
+			const href = upstream(htmlAttribute(link, 'href').replaceAll('&amp;', '&'));
+			if (href) return href;
+		}
+	}
+	return null;
+}
+
+export async function fetchDirectoryCandidates(entries, fetchImpl = globalThis.fetch, env = process.env) {
+	const url = env[DIRECTORY_URL_ENV];
+	if (!url) {
+		console.log('Mod directory URL unset; continuing without directory candidates.');
+		return [];
+	}
+	const page = httpUrl(url);
+	const options = { headers: { 'User-Agent': 'Mozilla/5.0' }, redirect: 'error' };
+	let items;
+	try {
+		const response = page && await fetchImpl(page.href, options);
+		if (response?.status === 200) items = directoryItems(await response.text());
+	} catch {
+		// Fetch and parse failures leave the issue unchanged.
+	}
+	if (!items) {
+		console.warn('warn: mod directory unavailable.');
+		return null;
+	}
+	const catalogNames = new Set(entries.map(({ record }) => normalizeName(record?.name)));
+	const catalogIds = new Set(entries.map(({ id }) => normalizeName(id)));
+	const requested = new Set();
+	const candidates = [];
+	for (const item of items) {
+		if (requested.size === DIRECTORY_DETAIL_LIMIT) break;
+		if (typeof item?.name !== 'string' || catalogNames.has(normalizeName(item.name))) continue;
+		const name = item.name.replace(/[\[\]`]/g, '').trim().replace(/\s+/g, ' ');
+		if (!name) continue;
+		const detail = httpUrl(item.url, page);
+		if (!detail || detail.origin !== page.origin) continue;
+		const slug = detail.pathname.split('/').filter(Boolean).at(-1);
+		if (catalogIds.has(normalizeName(slug))) continue;
+		detail.hash = '';
+		if (detail.href === page.href || requested.has(detail.href)) continue;
+		requested.add(detail.href);
+		try {
+			const response = await fetchImpl(detail.href, options);
+			if (response.status !== 200) continue;
+			const upstream = directoryUpstream(await response.text(), detail);
+			const github = githubRepoFromUrl(upstream);
+			const repo = github ? normalizeRepo(github) : name;
+			const reason = 'listed in a mod directory';
+			candidates.push({ ...toCandidate({ repo }, reason), html_url: github ? `https://github.com/${repo}` : upstream });
+		} catch {
+			// A broken detail page does not prevent other candidates from being found.
+		}
+	}
+	return candidates;
 }
 
 export function candidateFromSearchItem(item, query) {
@@ -317,19 +444,22 @@ export function filterForks(forks, since, parentRepo) {
 	return out;
 }
 
-export function excludeKnown(candidates, { catalogRepos, starRepos, catalogRepo = CATALOG_REPO }) {
+export function excludeKnown(candidates, { catalogRepos, starRepos, catalogRepo = CATALOG_REPO, listUrl }) {
 	const catalog = catalogRepos instanceof Set ? catalogRepos : new Set([...catalogRepos].map(normalizeRepo));
 	const stars = starRepos instanceof Set ? starRepos : new Set([...starRepos].map(normalizeRepo));
 	const self = normalizeRepo(catalogRepo);
+	const listSource = listSourceRepo(listUrl);
+	const listSourceKey = listSource ? normalizeRepo(listSource) : null;
 	const kept = [];
 	const excluded = [];
 	const seen = new Set();
 	for (const candidate of candidates) {
+		const key = normalizeRepo(candidate.repo);
+		if (key === listSourceKey) continue;
 		if (candidate.archived) {
 			excluded.push({ ...candidate, why: 'archived' });
 			continue;
 		}
-		const key = normalizeRepo(candidate.repo);
 		if (seen.has(key)) continue;
 		seen.add(key);
 		if (key.split('/')[0] === self.split('/')[0] && key !== self) {
@@ -613,23 +743,33 @@ async function main() {
 	}
 	const listUrl = process.env[LIST_URL_ENV] ?? '';
 	const listMarkdown = await fetchListMarkdown();
-	if (listMarkdown == null && !dryRun) {
+	const list = await listCandidates(token, listMarkdown ?? '', listUrl, entries).catch(() => {
+		console.warn('warn: curated list repository lookup failed.');
+		return null;
+	});
+	if ((listMarkdown == null || list == null) && !dryRun) {
 		console.log('Curated list unavailable; leaving the Discovery issue unchanged');
 		return;
 	}
+	const directory = await fetchDirectoryCandidates(entries);
+	if (directory == null && !dryRun) {
+		console.log('Mod directory unavailable; leaving the Discovery issue unchanged');
+		return;
+	}
 	const feed = filterFeedCandidates(feedItems ?? [], entries, feedHost);
-	const list = await listCandidates(token, listMarkdown ?? '', listUrl, entries);
 	const raw = [
 		...await searchCandidates(token, since),
 		...await authorCandidates(token, entries, since),
 		...await forkCandidates(token, entries, since),
 		...feed,
-		...list
+		...(list ?? []),
+		...(directory ?? [])
 	];
 	const { candidates, excluded } = excludeKnown(raw, {
 		catalogRepos: catalogRepoSet(entries),
 		starRepos: new Set(starred.map((repo) => normalizeRepo(repo.nameWithOwner))),
-		catalogRepo: CATALOG_REPO
+		catalogRepo: CATALOG_REPO,
+		listUrl
 	});
 
 	let previousBody = '';
