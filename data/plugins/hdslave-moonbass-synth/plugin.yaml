@@ -1,0 +1,13 @@
+name: hdslave MoonBass
+description: >-
+  Hdslave MoonBass: an analog-style kick drum synthesizer (Jomox ModBase 09 Mk I/II and MBase 11
+  style, every parameter paged out) as a CLAP plug-in for the Akai MPC Sample running Melodee.
+repo: hdslave/hdslave-MoonBass-Synth
+author: hdslave
+runs_on: [device]
+install: sd-card
+audience:
+  - musician
+hosts:
+  - melodee-sample
+  - hdslaveos
