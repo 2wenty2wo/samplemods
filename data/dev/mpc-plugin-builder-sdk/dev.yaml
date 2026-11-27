@@ -1,0 +1,11 @@
+name: MPC Plugin SDK
+description: >-
+  Build instrument and effect plug-ins for Akai MPC standalone hardware with an AI coding agent.
+  The SDK targets Knob FX on the MPC Sample.
+repo: inmusic-software/mpc-plugin-builder-sdk
+author: inmusic-software
+website: https://www.akaipro.com
+runs_on: [desktop]
+install: none
+firmware: 1.4.0+ (Custom Plug-In Support)
+audience: [developer]
