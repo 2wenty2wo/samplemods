@@ -209,6 +209,14 @@
       "note": "Original 320x240 UI image extracted without resizing from page 9 of the official user guide (Melodic piano-roll); also shown on the project website. Converted to lossless WebP."
     }
   ],
+  "hdslave-necronomicon-synth": [
+    {
+      "file": "screenshots/01-liquid-light.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Necronomicon-Synth/main/docs/necronomicon-screen.gif",
+      "repo": "hdslave/hdslave-Necronomicon-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "hdslave-synths": [
     {
       "file": "screenshots/01-foundry.webp",
