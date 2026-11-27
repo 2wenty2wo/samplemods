@@ -1,0 +1,13 @@
+name: hdslave Slink Synthesizer
+description: >-
+  A 303-style acid bass CLAP synthesizer with a TB-3PO generative sequencer for Melodee and
+  hdslaveOS on the MPC Sample.
+repo: hdslave/hdslave-Slink-Synth
+author: hdslave
+runs_on: [device]
+install: sd-card
+audience:
+  - musician
+hosts:
+  - melodee-sample
+  - hdslaveos

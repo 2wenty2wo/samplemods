@@ -323,6 +323,14 @@
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     }
   ],
+  "hdslave-slink-synth": [
+    {
+      "file": "screenshots/01-slink-panel.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/main/docs/slink-screen.gif",
+      "repo": "hdslave/hdslave-Slink-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "kaosample": [
     {
       "file": "screenshots/01-splash.webp",
