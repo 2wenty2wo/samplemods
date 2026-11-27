@@ -26,7 +26,8 @@ import {
 	candidateFromListRepo,
 	fetchListMarkdown,
 	DIRECTORY_URL_ENV,
-	fetchDirectoryCandidates
+	fetchDirectoryCandidates,
+	main as runDiscovery
 } from './discover.js';
 
 assert.match(sinceDateDaysAgo(30, new Date('2026-12-10T00:00:00Z')), /^2026-11-10$/);
@@ -347,7 +348,6 @@ assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 	console.log = (message) => logs.push(message);
 	const originalFetch = globalThis.fetch;
 	const previousFeedUrl = process.env[FEED_URL_ENV];
-	let issueWrites = 0;
 	try {
 		process.env[FEED_URL_ENV] = FEED_FIXTURE_URL;
 		globalThis.fetch = async () => ({ ok: false, status: 503, json: async () => [] });
@@ -356,17 +356,6 @@ assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 		assert.equal(await fetchFeedItems(), null);
 		globalThis.fetch = async () => { throw new Error('offline'); };
 		assert.equal(await fetchFeedItems(), null);
-
-		// main() contract: null feed + !dryRun → log and skip issue writes (no find/sync).
-		const feedItems = null;
-		const dryRun = false;
-		if (feedItems == null && !dryRun) {
-			console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
-		} else {
-			issueWrites += 1;
-		}
-		assert.equal(issueWrites, 0, 'failed catalog feed fetch must not write the Discovery issue');
-		assert.match(logs.at(-1) ?? '', /Catalog feed unavailable; leaving the Discovery issue unchanged/);
 	} finally {
 		console.warn = warn;
 		console.log = log;
@@ -383,21 +372,10 @@ assert.doesNotMatch(plainBody, /feed\.example\.com/i);
 	const log = console.log;
 	console.log = (message) => logs.push(message);
 	const previousFeedUrl = process.env[FEED_URL_ENV];
-	let issueWrites = 0;
 	try {
 		delete process.env[FEED_URL_ENV];
 		assert.deepEqual(await fetchFeedItems(), []);
 		assert.match(logs.at(-1) ?? '', /Catalog feed URL unset; continuing without feed candidates/);
-
-		// Unset env: feed disabled → GitHub-only path still updates the issue.
-		const feedItems = [];
-		const dryRun = false;
-		if (feedItems == null && !dryRun) {
-			console.log('Catalog feed unavailable; leaving the Discovery issue unchanged');
-		} else {
-			issueWrites += 1;
-		}
-		assert.equal(issueWrites, 1, 'unset catalog feed must still allow Discovery issue updates');
 	} finally {
 		console.log = log;
 		if (previousFeedUrl === undefined) delete process.env[FEED_URL_ENV];
@@ -499,23 +477,12 @@ assert.equal(
 	console.log = (message) => logs.push(message);
 	const originalFetch = globalThis.fetch;
 	const previousListUrl = process.env[LIST_URL_ENV];
-	let issueWrites = 0;
 	try {
 		process.env[LIST_URL_ENV] = LIST_FIXTURE_URL;
 		globalThis.fetch = async () => ({ ok: false, status: 503, text: async () => '' });
 		assert.equal(await fetchListMarkdown(), null);
 		globalThis.fetch = async () => { throw new Error('offline'); };
 		assert.equal(await fetchListMarkdown(), null);
-
-		const listMarkdownResult = null;
-		const dryRun = false;
-		if (listMarkdownResult == null && !dryRun) {
-			console.log('Curated list unavailable; leaving the Discovery issue unchanged');
-		} else {
-			issueWrites += 1;
-		}
-		assert.equal(issueWrites, 0, 'failed curated list fetch must not write the Discovery issue');
-		assert.match(logs.at(-1) ?? '', /Curated list unavailable; leaving the Discovery issue unchanged/);
 	} finally {
 		console.warn = warn;
 		console.log = log;
@@ -532,20 +499,10 @@ assert.equal(
 	const log = console.log;
 	console.log = (message) => logs.push(message);
 	const previousListUrl = process.env[LIST_URL_ENV];
-	let issueWrites = 0;
 	try {
 		delete process.env[LIST_URL_ENV];
 		assert.equal(await fetchListMarkdown(), '');
 		assert.match(logs.at(-1) ?? '', /Curated list URL unset; continuing without list candidates/);
-
-		const listMarkdownResult = '';
-		const dryRun = false;
-		if (listMarkdownResult == null && !dryRun) {
-			console.log('Curated list unavailable; leaving the Discovery issue unchanged');
-		} else {
-			issueWrites += 1;
-		}
-		assert.equal(issueWrites, 1, 'unset curated list must still allow Discovery issue updates');
 	} finally {
 		console.log = log;
 		if (previousListUrl === undefined) delete process.env[LIST_URL_ENV];
@@ -566,6 +523,10 @@ assert.equal(
 		assert.equal(await fetchFeedItems(failingFetch, { [FEED_URL_ENV]: privateUrl }), null);
 		assert.equal(await fetchListMarkdown(failingFetch, { [LIST_URL_ENV]: privateUrl }), null);
 		assert.equal(await fetchDirectoryCandidates([], failingFetch, { [DIRECTORY_URL_ENV]: privateUrl }), null);
+		const httpFailure = (status) => async () => new Response(privateUrl, { status });
+		assert.equal(await fetchFeedItems(httpFailure(403), { [FEED_URL_ENV]: privateUrl }), null);
+		assert.equal(await fetchListMarkdown(httpFailure(429), { [LIST_URL_ENV]: privateUrl }), null);
+		assert.equal(await fetchDirectoryCandidates([], httpFailure(503), { [DIRECTORY_URL_ENV]: privateUrl }), null);
 	} finally {
 		Object.assign(console, { warn, log });
 	}
@@ -573,6 +534,14 @@ assert.equal(
 	assert.match(messages.join('\n'), /curated list/i);
 	assert.match(messages.join('\n'), /mod directory/i);
 	assert.ok(messages.every((message) => !message.includes(privateHost)), 'source logs must omit hostnames');
+	assert.deepEqual(messages, [
+		'warn: catalog feed network error.',
+		'warn: curated list network error.',
+		'warn: mod directory network error.',
+		'warn: catalog feed returned HTTP 403.',
+		'warn: curated list returned HTTP 429.',
+		'warn: mod directory returned HTTP 503.'
+	]);
 }
 
 const directoryUrl = 'https://directory.example.com/mods/sampler/';
@@ -584,6 +553,97 @@ const directoryList = (items) => ldScript({
 });
 const directoryResponse = (body, status = 200) => new Response(body, { status });
 const directoryDetail = (sameAs) => ldScript({ '@graph': [{ '@type': 'SoftwareApplication', sameAs }] });
+
+async function runDiscoveryFixture({ previousBody, feedStatus = 200, otherStatus = 200, searchStatus = 200, fresh = false }) {
+	const env = {
+		GITHUB_TOKEN: 'fixture-token', GITHUB_REPOSITORY: 'fixture/catalog', STAR_LIST_SLUG: 'mpc-sample',
+		[FEED_URL_ENV]: FEED_FIXTURE_URL, [LIST_URL_ENV]: LIST_FIXTURE_URL, [DIRECTORY_URL_ENV]: directoryUrl
+	};
+	const originalEnv = Object.fromEntries(Object.keys(env).map((key) => [key, process.env[key]]));
+	const { fetch, setTimeout } = globalThis;
+	const { log, warn } = console;
+	const writes = [];
+	const unexpected = [];
+	const base = 'https://api.github.com/';
+	const issue = { number: 21, title: TITLE, state: 'open', labels: [{ name: 'discovery' }], body: previousBody };
+	Object.assign(process.env, env);
+	console.log = console.warn = () => {};
+	globalThis.setTimeout = (callback) => queueMicrotask(callback);
+	globalThis.fetch = async (url, options) => {
+		if (url === FEED_FIXTURE_URL) return reply([], feedStatus);
+		if (url === LIST_FIXTURE_URL) return directoryResponse(fresh ? 'https://github.com/fixture/list-tool' : '', otherStatus);
+		if (url === directoryUrl) return directoryResponse(directoryList(fresh ? [['Directory Tool', '/entries/tool']] : []), otherStatus);
+		if (url === new URL('/entries/tool', directoryUrl).href) return directoryResponse('<html></html>');
+		const endpoint = url.slice(base.length);
+		if (endpoint === 'graphql') {
+			const { variables } = JSON.parse(options.body);
+			const pageInfo = { hasNextPage: false };
+			return reply({ data: variables.user
+				? { user: { lists: { nodes: [{ id: 'fixture', slug: 'mpc-sample' }], pageInfo } } }
+				: { node: { items: { nodes: [{ nameWithOwner: 'Fixture/Starred' }], pageInfo } } } });
+		}
+		if (endpoint.startsWith('search/repositories?')) return reply({ items: [] }, searchStatus);
+		if (endpoint.startsWith('users/Fixture/repos?') || endpoint.startsWith('repos/Fixture/Known/forks?')) return reply([]);
+		if (endpoint === 'repos/fixture/list-tool') return reply({ full_name: 'fixture/list-tool', description: 'Fresh list result' });
+		if (endpoint === 'repos/fixture/catalog/labels/discovery') return reply({});
+		if (endpoint.startsWith('repos/fixture/catalog/issues?state=open')) return reply([issue]);
+		if (/^repos\/fixture\/catalog\/issues\/21(?:\/comments)?$/.test(endpoint)) {
+			writes.push({ method: options.method, ...JSON.parse(options.body) });
+			return reply({});
+		}
+		unexpected.push(url);
+		throw new Error('Unexpected fixture request');
+	};
+	try {
+		await runDiscovery([{ id: 'maker-known', record: { name: 'Maker Known', repo: 'Fixture/Known' } }]);
+	} finally {
+		Object.assign(globalThis, { fetch, setTimeout });
+		Object.assign(console, { log, warn });
+		for (const [key, value] of Object.entries(originalEnv)) {
+			if (value === undefined) delete process.env[key];
+			else process.env[key] = value;
+		}
+	}
+	assert.deepEqual(unexpected, []);
+	return writes;
+}
+
+{
+	const oldFeed = '- [ ] [Feed Tool](https://maker.example.com/feed-tool): Old feed result';
+	const known = '- [ ] [fixture/known](https://github.com/fixture/known): Now in the catalog';
+	const knownName = '- [ ] `Maker Known`: Now in the catalog by name';
+	const starred = '- [ ] [fixture/starred](https://github.com/fixture/starred): Now starred';
+	const duplicate = '- [ ] [Fixture/List-Tool](https://github.com/fixture/list-tool): Stale list result';
+	const ticked = '- [x] `Dismissed Tool`: Already reviewed';
+	const previousBody = [oldFeed, known, knownName, starred, duplicate, ticked].join('\n');
+	const writes = await runDiscoveryFixture({ previousBody, feedStatus: 403, fresh: true });
+	assert.equal(writes.length, 1);
+	assert.equal(writes[0].method, 'PATCH');
+	assert.equal(writes[0].state, undefined);
+	assert.ok(writes[0].body.includes(oldFeed));
+	assert.ok(writes[0].body.includes(ticked));
+	assert.match(writes[0].body, /Fresh list result/);
+	assert.match(writes[0].body, /Directory Tool/);
+	assert.doesNotMatch(writes[0].body, /Now in the catalog|Now starred|Stale list result/);
+
+	const empty = await runDiscoveryFixture({ previousBody: known, feedStatus: 403 });
+	assert.equal(empty.length, 1);
+	assert.equal(empty[0].state, undefined);
+	assert.doesNotMatch(empty[0].body, /- \[ \]/);
+
+	const healthy = await runDiscoveryFixture({ previousBody });
+	assert.equal(healthy.at(-1).state, 'closed');
+	const replaced = await runDiscoveryFixture({ previousBody, fresh: true });
+	assert.doesNotMatch(replaced[0].body, /Old feed result/);
+	assert.match(replaced[0].body, /Fresh list result/);
+
+	const searchUnavailable = await runDiscoveryFixture({ previousBody, fresh: true, searchStatus: 503 });
+	assert.match(searchUnavailable[0].body, /Fresh list result/);
+	assert.ok(searchUnavailable[0].body.includes(oldFeed));
+
+	const unavailable = await runDiscoveryFixture({ previousBody, feedStatus: 403, otherStatus: 503, searchStatus: 503 });
+	assert.deepEqual(unavailable, []);
+}
 
 {
 	const makerUrl = 'https://maker.example.com/kit';
