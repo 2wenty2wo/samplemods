@@ -1,0 +1,13 @@
+name: EPICYCLE
+description: >-
+  Standalone looping environment for the MPC Sample. Its Tombola sequencer triggers pads when
+  bouncing balls hit the walls.
+repo: tubedigga/EPICYCLE
+author: tubedigga
+runs_on:
+  - device
+install: sd-card
+status: experimental
+firmware: 1.3.0.12 (packaging), 1.4.x (primary)
+audience:
+  - musician
