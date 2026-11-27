@@ -209,6 +209,54 @@
       "note": "Original 320x240 UI image extracted without resizing from page 9 of the official user guide (Melodic piano-roll); also shown on the project website. Converted to lossless WebP."
     }
   ],
+  "hdslave-anvil-synth": [
+    {
+      "file": "screenshots/01-anvil-screen.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Anvil-Synth/main/docs/anvil-screen.gif",
+      "repo": "hdslave/hdslave-Anvil-Synth",
+      "note": "MPC Sample screen from the hdslave Anvil README; animated WebP (lossy mixed q70, infinite loop)"
+    }
+  ],
+  "hdslave-cortex-filter": [
+    {
+      "file": "screenshots/01-cortex-filter-screen.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Cortex-Filter/main/docs/cortex-filter-screen.gif",
+      "repo": "hdslave/hdslave-Cortex-Filter",
+      "note": "MPC Sample screen from the hdslave Cortex Filter README; animated WebP (lossy mixed q9, infinite loop)"
+    }
+  ],
+  "hdslave-foundry-drum-machine": [
+    {
+      "file": "screenshots/01-foundry-screen.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Foundry-Drum-Machine/main/docs/foundry-screen.gif",
+      "repo": "hdslave/hdslave-Foundry-Drum-Machine",
+      "note": "MPC Sample screen from the hdslave Foundry README; animated WebP (lossy mixed q70, infinite loop)"
+    }
+  ],
+  "hdslave-machine": [
+    {
+      "file": "screenshots/01-machine-screen.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Machine/main/docs/machine-screen.gif",
+      "repo": "hdslave/hdslave-Machine",
+      "note": "MPC Sample screen from the hdslave Machine README; lossless animated WebP"
+    }
+  ],
+  "hdslave-moonbass-synth": [
+    {
+      "file": "screenshots/01-moonbass-screen.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-MoonBass-Synth/main/docs/moonbass-screen.gif",
+      "repo": "hdslave/hdslave-MoonBass-Synth",
+      "note": "MPC Sample screen from the hdslave MoonBass README; animated WebP (lossy mixed q70, infinite loop)"
+    }
+  ],
+  "hdslave-mystik-synth": [
+    {
+      "file": "screenshots/01-mystik-pages.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Mystik-Synth/main/docs/mystik-pages.gif",
+      "repo": "hdslave/hdslave-Mystik-Synth",
+      "note": "MPC Sample screen from the hdslave Mystik README; animated WebP (lossy mixed q55, infinite loop)"
+    }
+  ],
   "hdslave-necronomicon-synth": [
     {
       "file": "screenshots/01-liquid-light.webp",
@@ -217,30 +265,38 @@
       "note": "Upstream MPC Sample screen GIF converted to animated WebP."
     }
   ],
+  "hdslave-nexus-synth": [
+    {
+      "file": "screenshots/01-nexus-pages.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Nexus-Synth/main/docs/nexus-pages.gif",
+      "repo": "hdslave/hdslave-Nexus-Synth",
+      "note": "MPC Sample screen from the hdslave Nexus README; lossless animated WebP"
+    }
+  ],
   "hdslave-synths": [
     {
       "file": "screenshots/01-foundry.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Foundry-Drum-Machine/main/docs/foundry-screen.gif",
       "repo": "hdslave/hdslave-Foundry-Drum-Machine",
-      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+      "note": "MPC Sample screen from the hdslave Foundry README; animated WebP (lossy mixed q70, infinite loop)"
     },
     {
       "file": "screenshots/02-cortex-filter.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Cortex-Filter/main/docs/cortex-filter-screen.gif",
       "repo": "hdslave/hdslave-Cortex-Filter",
-      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+      "note": "MPC Sample screen from the hdslave Cortex Filter README; animated WebP (lossy mixed q9, infinite loop)"
     },
     {
-      "file": "screenshots/03-tb-mpc.webp",
-      "source": "https://raw.githubusercontent.com/hdslave/TB-MPC-3-P-0-Synthesizer/main/docs/tb-mpc-3-p-0-screen.gif",
-      "repo": "hdslave/TB-MPC-3-P-0-Synthesizer",
-      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+      "file": "screenshots/03-slink.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/main/docs/slink-screen.gif",
+      "repo": "hdslave/hdslave-Slink-Synth",
+      "note": "MPC Sample screen from the hdslave Slink README (formerly TB-MPC-3-P-0); animated WebP (mixed q90, infinite loop)"
     },
     {
       "file": "screenshots/04-machine.webp",
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Machine/main/docs/machine-screen.gif",
       "repo": "hdslave/hdslave-Machine",
-      "note": "Upstream device screen GIF converted to animated WebP quality 80"
+      "note": "MPC Sample screen from the hdslave Machine README; lossless animated WebP"
     }
   ],
   "hdslave-psychic-synth": [
