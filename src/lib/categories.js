@@ -110,7 +110,7 @@ export function firmwareFilterParam(fw) {
 
 /** @param {string} fw */
 export function firmwareFilterGlow(fw) {
-	return FIRMWARE_FILTER_GLOW[fw] ?? '#FF8A1E';
+	return FIRMWARE_FILTER_GLOW[fw] ?? '#EA5716';
 }
 
 /**

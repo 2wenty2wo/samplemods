@@ -20,7 +20,8 @@
 	/* Hardware Button & Screen Accents */
 	--mpc-wordmark-red: #e6243c;
 	--mpc-accent-red: #a6192e;
-	--mpc-btn-orange: #ff8a1e;
+	--mpc-btn-orange: #ea5716;
+	--mpc-btn-orange-light: #f46a25;
 	--mpc-btn-blue: #008cc1;
 	--mpc-btn-blue-light: #1da1db;
 	--mpc-btn-green: #2ee65a;
@@ -32,7 +33,7 @@
 	--mpc-screen-grey: #a0a0a0;
 	--mpc-screen-cyan: #38b6e8;
 	--mpc-screen-magenta: #ff4d7d;
-	--mpc-focus-ring: #ff8a1e;
+	--mpc-focus-ring: #ea5716;
 
 	/* Fonts */
 	--font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
@@ -619,7 +620,7 @@ a:hover {
 }
 
 .hw-action-btn.orange {
-	background: linear-gradient(180deg, #ff9e3d 0%, var(--mpc-btn-orange) 100%);
+	background: linear-gradient(180deg, var(--mpc-btn-orange-light) 0%, var(--mpc-btn-orange) 100%);
 	color: var(--mpc-pad-text);
 }
 

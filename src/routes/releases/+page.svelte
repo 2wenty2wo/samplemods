@@ -104,7 +104,7 @@
 				<button
 					type="button"
 					class="hw-btn"
-					style="--btn-lit: #FF8A1E"
+					style="--btn-lit: var(--mpc-btn-orange)"
 					aria-pressed={section === ''}
 					onclick={() => (section = '')}
 				>
