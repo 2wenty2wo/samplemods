@@ -10,7 +10,7 @@ import {
 	latestReleasesOnePerEntry,
 	selectNewestCatalogEntries
 } from '../src/lib/latest-releases-strip.js';
-import { parseEntryAddedDates } from './build-data.js';
+import { computeFirmwareStatus, parseEntryAddedDates } from './build-data.js';
 
 assert.equal(deriveVersionFromTitle('/MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
 assert.equal(deriveVersionFromTitle('MPC-Simple-1.0-Beta-3.zip'), '1.0 Beta 3');
@@ -76,6 +76,34 @@ assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 		'A\tdata/tools/fresh-tool/tool.yaml'
 	].join('\n');
 	assert.equal(parseEntryAddedDates(shallowLog, mockEntries).size, 0, 'shallow 1-commit checkout leaves added null');
+}
+
+// computeFirmwareStatus: 1.4 maker support, 1.3 only, and null when neither 1.3 nor 1.4
+{
+	assert.deepEqual(
+		computeFirmwareStatus('1.3.0.12, 1.4.0.8'),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4' }
+	);
+	assert.deepEqual(
+		computeFirmwareStatus('1.3.0.12, 1.4.x (v1.1.4+)'),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4' }
+	);
+	assert.deepEqual(
+		computeFirmwareStatus('1.4.0.8'),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.4' }
+	);
+	assert.deepEqual(
+		computeFirmwareStatus('1.3.0.12'),
+		{ firmware_status: '1.3', firmware_label: 'FW 1.3' }
+	);
+	assert.deepEqual(
+		computeFirmwareStatus('1.2.0+'),
+		{ firmware_status: null, firmware_label: null }
+	);
+	assert.deepEqual(
+		computeFirmwareStatus(null),
+		{ firmware_status: null, firmware_label: null }
+	);
 }
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');

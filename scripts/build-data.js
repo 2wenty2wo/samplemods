@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { releaseDisplayLabel } from '../src/lib/release-label.js';
 import { readEntries } from './catalog.js';
 import { COMPAT_LAUNCHERS, readCompat } from './compat.js';
+import { parseListedBuilds } from './firmware-watch.js';
 import { renderMarkdown } from './render-markdown.js';
 import { manualReleases } from './watch.js';
 
@@ -72,6 +73,41 @@ export function parseEntryAddedDates(gitOutput, catalogEntries) {
 		return new Map();
 	}
 	return addedById;
+}
+
+/**
+ * Compute single firmware compatibility tier and chip label from the maker's `firmware` field:
+ * - "1.4": `firmware` lists a 1.4 build → "FW 1.4" (or "FW 1.3 / 1.4" when 1.3 is also listed)
+ * - "1.3": `firmware` lists 1.3 but not 1.4 → "FW 1.3"
+ * - null: anything else or blank → no chip
+ * @param {string | null | undefined | { firmware?: string | null }} input
+ * @returns {{ firmware_status: '1.4' | '1.3' | null, firmware_label: string | null }}
+ */
+export function computeFirmwareStatus(input) {
+	const raw = typeof input === 'object' && input !== null ? input.firmware : input;
+	const fw = typeof raw === 'string' ? raw.trim() : '';
+	const builds = parseListedBuilds(fw);
+	const has14 = builds.some((b) => b.startsWith('1.4.')) || /\b1\.4(?:\.[0-9x]+|\+)/i.test(fw);
+	const has13 = builds.some((b) => b.startsWith('1.3.')) || /\b1\.3(?:\.[0-9x]+|\b)/i.test(fw);
+
+	if (has14) {
+		return {
+			firmware_status: '1.4',
+			firmware_label: has13 ? 'FW 1.3 / 1.4' : 'FW 1.4'
+		};
+	}
+
+	if (has13) {
+		return {
+			firmware_status: '1.3',
+			firmware_label: 'FW 1.3'
+		};
+	}
+
+	return {
+		firmware_status: null,
+		firmware_label: null
+	};
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -193,10 +229,12 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const logo = media.find((file) => file.startsWith('logo.'));
 	const newestWatch = watchItems.length ? watchReleases[0] ?? null : null;
 	const compatIds = launcherRows[id] ? Object.keys(launcherRows[id]) : [];
+	const fwMeta = computeFirmwareStatus(raw.firmware);
 	return {
 		id,
 		section,
 		...raw,
+		...fwMeta,
 		...(compatIds.length
 			? { compatible: [...new Set([...(raw.compatible ?? []), ...compatIds])] }
 			: {}),

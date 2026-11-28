@@ -98,6 +98,7 @@
 		<WarningIcon />
 		<strong class="site-notice-lead">Firmware 1.4.x.x breaks many current mods and apps.</strong>
 		<span>Stay on 1.3.0.12 until the ones you use are updated.</span>
+		<a class="site-notice-link" href="{base}/?fw=1-4">See what works on 1.4 →</a>
 	</div>
 </aside>
 

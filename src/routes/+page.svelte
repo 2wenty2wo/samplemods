@@ -8,7 +8,14 @@
 	import { SITE_NAME } from '$lib/site.js';
 	import SeoHead from '$lib/SeoHead.svelte';
 	import { absoluteUrl, defaultShareImage } from '$lib/seo.js';
-	import { SECTIONS, sectionFromParam, sectionSingular } from '$lib/categories.js';
+	import {
+		SECTIONS,
+		sectionFromParam,
+		sectionSingular,
+		FIRMWARE_FILTERS,
+		firmwareFromParam,
+		firmwareFilterParam
+	} from '$lib/categories.js';
 	import HomeHero from '$lib/components/HomeHero.svelte';
 	import LatestReleasesStrip from '$lib/components/LatestReleasesStrip.svelte';
 	import CatalogFilterBar from '$lib/components/CatalogFilterBar.svelte';
@@ -32,6 +39,7 @@
 
 	let query = $state('');
 	let section = $state('');
+	let firmware = $state('');
 	let sort = $state('name');
 	let ready = false;
 	/** @type {import('@formkit/auto-animate').AnimationController | undefined} */
@@ -51,6 +59,12 @@
 	const sectionCounts = Object.fromEntries(
 		SECTIONS.map((s) => [s, mods.filter((m) => m.section === s).length])
 	);
+	const firmwareCounts = Object.fromEntries(
+		FIRMWARE_FILTERS.map((fw) => [
+			fw,
+			mods.filter((m) => (m.firmware_status ?? 'none') === fw).length
+		])
+	);
 	const totalAuthors = new Set(mods.map((m) => m.author)).size;
 	const latestUpdateTimestamp = mods.reduce((max, m) => {
 		const t = m.pushed_at ? Date.parse(m.pushed_at) : 0;
@@ -61,6 +75,7 @@
 		if (typeof window === 'undefined') return;
 		const params = new URLSearchParams(window.location.search);
 		section = sectionFromParam(params.get('section'));
+		firmware = firmwareFromParam(params.get('fw'));
 		if (!ready) {
 			await tick();
 			ready = true;
@@ -84,12 +99,34 @@
 		}
 	}
 
+	/** @param {string} next */
+	function selectFirmware(next) {
+		firmware = next;
+		if (typeof window !== 'undefined') {
+			const url = new URL(window.location.href);
+			if (next) {
+				url.searchParams.set('fw', firmwareFilterParam(next));
+			} else {
+				url.searchParams.delete('fw');
+			}
+			window.history.replaceState(window.history.state, '', url);
+		}
+	}
+
 	const filtered = $derived.by(() => {
 		const q = query.trim().toLowerCase();
 		let list = mods.filter((mod) => {
 			if (section && mod.section !== section) return false;
+			if (firmware && (mod.firmware_status ?? 'none') !== firmware) return false;
 			if (!q) return true;
-			const hay = [mod.name, mod.description, mod.author, ...(mod.tags ?? [])]
+			const hay = [
+				mod.name,
+				mod.description,
+				mod.author,
+				mod.firmware ?? '',
+				mod.firmware_label ?? '',
+				...(mod.tags ?? [])
+			]
 				.join(' ')
 				.toLowerCase();
 			return hay.includes(q);
@@ -144,12 +181,15 @@
 <div class="wrap" id="catalog">
 	<CatalogFilterBar
 		{section}
+		{firmware}
 		bind:sort
 		{totalMods}
 		{sectionCounts}
+		{firmwareCounts}
 		filteredCount={filtered.length}
 		bind:query
 		{selectSection}
+		{selectFirmware}
 	/>
 
 	{#if filtered.length === 0}

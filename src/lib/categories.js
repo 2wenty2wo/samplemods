@@ -75,6 +75,58 @@ export const AUDIENCE_LABELS = {
 
 export const SECTIONS = Object.keys(SECTION_LABELS);
 
+/** @type {Record<string, string>} */
+export const FIRMWARE_FILTER_LABELS = {
+	'1.4': '1.4',
+	'1.3': '1.3 only',
+	none: 'Not stated'
+};
+
+/** @type {Record<string, string>} */
+export const FIRMWARE_FILTER_PARAMS = {
+	'1.4': '1-4',
+	'1.3': '1-3',
+	none: 'none'
+};
+
+export const FIRMWARE_FILTERS = ['1.4', '1.3', 'none'];
+
+/** @type {Record<string, string>} */
+export const FIRMWARE_FILTER_GLOW = {
+	'1.4': '#2EE65A',
+	'1.3': '#F8B800',
+	none: '#A0A0A0'
+};
+
+/** @param {string} fw */
+export function firmwareFilterLabel(fw) {
+	return FIRMWARE_FILTER_LABELS[fw] ?? fw;
+}
+
+/** @param {string} fw */
+export function firmwareFilterParam(fw) {
+	return FIRMWARE_FILTER_PARAMS[fw] ?? fw;
+}
+
+/** @param {string} fw */
+export function firmwareFilterGlow(fw) {
+	return FIRMWARE_FILTER_GLOW[fw] ?? '#FF8A1E';
+}
+
+/**
+ * Resolve a ?fw= query parameter to the canonical firmware filter key.
+ * @param {string | null | undefined} param
+ * @returns {string}
+ */
+export function firmwareFromParam(param) {
+	if (!param) return '';
+	const clean = String(param).trim().toLowerCase();
+	if (clean === '1-4' || clean === '1.4') return '1.4';
+	if (clean === '1-3' || clean === '1.3') return '1.3';
+	if (clean === 'none' || clean === 'not-stated') return 'none';
+	return '';
+}
+
 /** Catalog YAML filename per section (matches scripts/catalog.js). */
 export const SECTION_YAML_FILES = {
 	mods: 'mod.yaml',

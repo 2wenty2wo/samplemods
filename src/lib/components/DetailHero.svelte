@@ -35,6 +35,13 @@ import { base } from '$app/paths';
 		onScreenImageLoad,
 		openLightbox
 	} = $props();
+	const fwClass = $derived(
+		mod.firmware_status === '1.4'
+			? 'fw-1-4'
+			: mod.firmware_status === '1.3'
+				? 'fw-1-3'
+				: ''
+	);
 </script>
 
 <section class="detail-hero-band">
@@ -83,8 +90,8 @@ import { base } from '$app/paths';
 						<div class="splash-fallback" aria-hidden="true">
 							<div class="splash-topbar">
 								<span class="splash-cat">{sectionSingularLabel(mod.section)}</span>
-								{#if mod.firmware}
-									<span class="splash-fw">FW {mod.firmware}</span>
+								{#if mod.firmware_status && mod.firmware_label}
+									<span class="fw-chip {fwClass}">{mod.firmware_label}</span>
 								{/if}
 							</div>
 							<p class="splash-title">{mod.name}</p>
