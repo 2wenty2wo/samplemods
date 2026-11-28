@@ -1,5 +1,6 @@
 <script>
-import {
+	import SearchIcon from '$lib/SearchIcon.svelte';
+	import {
 		SECTIONS,
 		sectionGlow,
 		sectionLabel,
@@ -19,7 +20,8 @@ import {
 	 *   filteredCount: number,
 	 *   query: string,
 	 *   selectSection: (next: string) => void,
-	 *   selectFirmware: (next: string) => void
+	 *   selectFirmware: (next: string) => void,
+	 *   onQueryInput?: (next: string) => void
 	 * }} */
 	let {
 		section,
@@ -31,14 +33,48 @@ import {
 		filteredCount,
 		query = $bindable(''),
 		selectSection,
-		selectFirmware
+		selectFirmware,
+		onQueryInput
 	} = $props();
+
+	/** @param {string} next */
+	function setQuery(next) {
+		query = next;
+		onQueryInput?.(next);
+	}
 </script>
 
 <search class="filter-bar" aria-label="Filter and sort entries">
-	<div class="filter-group">
-		<span class="silk-label">SECTION</span>
-		<div class="hw-buttons" role="group" aria-label="Section">
+	<div class="deck-top-row">
+		<div class="deck-top-head">
+			<span class="silk-label">SECTION</span>
+			<div class="results-inline">
+				<p class="results-count" role="status" aria-live="polite">
+					Showing <strong>{filteredCount}</strong> of {totalMods} entries
+					{#if section}
+						in <strong>{sectionLabel(section)}</strong>
+					{/if}
+					{#if firmware}
+						· <strong>{firmwareFilterLabel(firmware)}</strong>
+					{/if}
+				</p>
+				{#if section || firmware || query}
+					<button
+						type="button"
+						class="reset-link"
+						onclick={() => {
+							selectSection('');
+							selectFirmware('');
+							setQuery('');
+						}}
+					>
+						Reset filters
+					</button>
+				{/if}
+			</div>
+		</div>
+
+		<div class="section-buttons" role="group" aria-label="Section">
 			<button
 				type="button"
 				class="hw-btn"
@@ -46,7 +82,7 @@ import {
 				aria-pressed={section === ''}
 				onclick={() => selectSection('')}
 			>
-				All <span class="btn-count">{totalMods}</span>
+				<span class="sec-label">All</span> <span class="btn-count">{totalMods}</span>
 			</button>
 			{#each SECTIONS as cat}
 				<button
@@ -56,10 +92,17 @@ import {
 					aria-pressed={section === cat}
 					onclick={() => selectSection(cat)}
 				>
-					{sectionLabel(cat)} <span class="btn-count">{sectionCounts[cat]}</span>
+					{#if cat === 'dev'}
+						<span class="sec-label-full">{sectionLabel(cat)}</span>
+						<span class="sec-label-short">Dev</span>
+					{:else}
+						<span class="sec-label">{sectionLabel(cat)}</span>
+					{/if}
+					<span class="btn-count">{sectionCounts[cat]}</span>
 				</button>
 			{/each}
 		</div>
+
 		{#if section && sectionExplainer(section)}
 			<p class="section-explainer" style="--explainer-accent: {sectionGlow(section)}">
 				{sectionExplainer(section)}
@@ -67,147 +110,105 @@ import {
 		{/if}
 	</div>
 
-	<div class="filter-group fw-filter-group">
-		<span class="silk-label">FIRMWARE</span>
-		<div class="hw-buttons" role="group" aria-label="Firmware">
-			<button
-				type="button"
-				class="hw-btn"
-				style="--btn-lit: #FF8A1E"
-				aria-pressed={firmware === ''}
-				onclick={() => selectFirmware('')}
-			>
-				All <span class="btn-count">{totalMods}</span>
-			</button>
-			{#each FIRMWARE_FILTERS as fw}
+	<div class="deck-bottom-row">
+		<div class="deck-field search-field">
+			<label class="silk-label" for="mod-search">SEARCH CATALOG</label>
+			<div class="deck-search-wrap">
+				<SearchIcon />
+				<input
+					id="mod-search"
+					type="search"
+					value={query}
+					oninput={(e) => setQuery(e.currentTarget.value)}
+					placeholder="Filter by name, description, tag, author, or firmware…"
+					autocomplete="off"
+					autocapitalize="off"
+					spellcheck="false"
+					enterkeyhint="search"
+				/>
+				{#if query}
+					<button type="button" class="search-clear" onclick={() => setQuery('')}>
+						Clear
+					</button>
+				{/if}
+			</div>
+		</div>
+
+		<div class="deck-field fw-field">
+			<span class="silk-label">FIRMWARE</span>
+			<div class="fw-rocker" role="group" aria-label="Firmware">
 				<button
 					type="button"
-					class="hw-btn"
-					style="--btn-lit: {firmwareFilterGlow(fw)}"
-					aria-pressed={firmware === fw}
-					onclick={() => selectFirmware(fw)}
+					class="fw-rocker-btn"
+					style="--btn-lit: #FF8A1E"
+					aria-pressed={firmware === ''}
+					onclick={() => selectFirmware('')}
 				>
-					{firmwareFilterLabel(fw)} <span class="btn-count">{firmwareCounts[fw] ?? 0}</span>
+					<span>All</span> <span class="r-count">{totalMods}</span>
 				</button>
-			{/each}
+				{#each FIRMWARE_FILTERS as fw}
+					<button
+						type="button"
+						class="fw-rocker-btn"
+						style="--btn-lit: {firmwareFilterGlow(fw)}"
+						aria-pressed={firmware === fw}
+						onclick={() => selectFirmware(fw)}
+					>
+						<span>{firmwareFilterLabel(fw)}</span>
+						<span class="r-count">{firmwareCounts[fw] ?? 0}</span>
+					</button>
+				{/each}
+			</div>
 		</div>
-	</div>
 
-	<div class="sort-group">
-		<label class="silk-label" for="mod-sort">SORT ORDER</label>
-		<select id="mod-sort" class="hw-select" bind:value={sort}>
-			<option value="name">Name (A–Z)</option>
-			<option value="stars">Stars (High–Low)</option>
-			<option value="updated">Recently updated</option>
-		</select>
+		<div class="deck-field sort-field">
+			<label class="silk-label" for="mod-sort">SORT ORDER</label>
+			<select id="mod-sort" class="hw-select deck-sort-select" bind:value={sort}>
+				<option value="name">Name (A–Z)</option>
+				<option value="stars">Stars (High–Low)</option>
+				<option value="updated">Recently updated</option>
+			</select>
+		</div>
 	</div>
 </search>
 
-<div class="results-bar">
-	<p class="results-count" role="status" aria-live="polite">
-		Showing <strong>{filteredCount}</strong> of {totalMods} entries
-		{#if section}
-			in <strong>{sectionLabel(section)}</strong>
-		{/if}
-		{#if firmware}
-			· <strong>{firmwareFilterLabel(firmware)}</strong>
-		{/if}
-	</p>
-	{#if section || firmware || query}
-		<button
-			type="button"
-			class="reset-link"
-			onclick={() => {
-				selectSection('');
-				selectFirmware('');
-				query = '';
-			}}
-		>
-			Reset filters
-		</button>
-	{/if}
-</div>
-
 <style>
 .filter-bar {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-end;
-		justify-content: space-between;
-		gap: 1rem 1.5rem;
-		padding: 0.95rem 1.1rem;
+		display: grid;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
 		background: var(--mpc-body-mid);
-		border: 1px solid var(--mpc-body-recess);
+		border: 1.5px solid #282b34;
 		border-radius: var(--radius);
 		box-shadow:
 			inset 0 1px 0 rgb(255 255 255 / 0.55),
-			0 2px 4px rgb(0 0 0 / 0.06);
-		margin-bottom: 1rem;
+			0 3px 0 #1b1d24;
+		margin-bottom: 1.05rem;
 	}
 
-.filter-group {
+.deck-top-row {
 		display: grid;
-		gap: 0.45rem;
-		flex: 1 1 520px;
+		gap: 0.42rem;
 	}
 
-.fw-filter-group {
-		flex: 1 1 520px;
-	}
-
-.sort-group {
-		display: grid;
-		gap: 0.45rem;
-		flex: 0 1 210px;
-		min-width: 180px;
-	}
-
-.hw-buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.45rem;
-	}
-
-.btn-count {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		font-family: var(--font-mono);
-		font-size: 0.68rem;
-		font-weight: 700;
-		line-height: 1;
-		opacity: 0.82;
-		padding: 0.14rem 0.34rem;
-		border-radius: 3px;
-		background: rgb(0 0 0 / 0.22);
-	}
-
-.hw-btn[aria-pressed='true'] .btn-count {
-		background: rgb(0 0 0 / 0.16);
-		opacity: 0.95;
-	}
-
-.section-explainer {
-		margin: 0.2rem 0 0;
-		padding: 0.45rem 0.75rem;
-		background: var(--mpc-body-light);
-		border-left: 3px solid var(--explainer-accent, var(--mpc-btn-orange));
-		border-radius: 4px;
-		font-size: 0.86rem;
-		font-weight: 600;
-		color: var(--mpc-silkscreen);
-	}
-
-.results-bar {
+.deck-top-head {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.5rem 1rem;
-		margin-bottom: 0.9rem;
-		font-size: 0.82rem;
+		gap: 0.35rem 0.85rem;
+	}
+
+.results-inline {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.35rem 0.65rem;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.05em;
 		color: var(--mpc-silkscreen-muted);
 	}
 
@@ -227,8 +228,8 @@ import {
 		min-inline-size: var(--target-size, 24px);
 		background: none;
 		border: none;
-		padding: 0.2rem 0.35rem;
-		margin: -0.2rem -0.35rem;
+		padding: 0.15rem 0.3rem;
+		margin: -0.15rem -0.3rem;
 		font: inherit;
 		font-weight: 700;
 		color: var(--mpc-accent-red);
@@ -236,15 +237,303 @@ import {
 		cursor: pointer;
 	}
 
-@media (max-width: 640px) {
-.filter-bar {
-			padding: 0.65rem 0.75rem;
-			gap: 0.65rem;
-			margin-bottom: 0.65rem;
+.section-buttons {
+		display: grid;
+		grid-template-columns: repeat(8, minmax(0, 1fr));
+		gap: 0.4rem;
+	}
+
+.section-buttons .hw-btn {
+		width: 100%;
+		padding: 0.44rem 0.4rem;
+		font-size: 0.72rem;
+		white-space: nowrap;
+	}
+
+.sec-label-short {
+		display: none;
+	}
+
+.btn-count {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--font-mono);
+		font-size: 0.66rem;
+		font-weight: 700;
+		line-height: 1;
+		opacity: 0.82;
+		padding: 0.13rem 0.32rem;
+		border-radius: 3px;
+		background: rgb(0 0 0 / 0.22);
+	}
+
+.hw-btn[aria-pressed='true'] .btn-count {
+		background: rgb(0 0 0 / 0.16);
+		opacity: 0.95;
+	}
+
+.section-explainer {
+		margin: 0.15rem 0 0;
+		padding: 0.45rem 0.75rem;
+		background: var(--mpc-body-light);
+		border-left: 3px solid var(--explainer-accent, var(--mpc-btn-orange));
+		border-radius: 4px;
+		font-size: 0.86rem;
+		font-weight: 600;
+		color: var(--mpc-silkscreen);
+	}
+
+.deck-bottom-row {
+		display: grid;
+		grid-template-columns: minmax(220px, 1fr) auto auto;
+		align-items: start;
+		gap: 0.75rem 0.85rem;
+		padding-top: 0.7rem;
+		border-top: 1px solid rgb(0 0 0 / 0.12);
+	}
+
+.deck-field {
+		display: grid;
+		gap: 0.34rem;
+		min-width: 0;
+	}
+
+.deck-search-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+.deck-search-wrap :global(.search-icon) {
+		position: absolute;
+		left: 0.68rem;
+		width: 14px;
+		height: 14px;
+		color: var(--mpc-screen-cyan);
+		pointer-events: none;
+	}
+
+.deck-search-wrap input[type='search'] {
+		width: 100%;
+		min-height: 36px;
+		font-family: var(--font-sans);
+		font-size: 0.86rem;
+		color: var(--mpc-screen-text);
+		background: var(--mpc-screen-bg);
+		border: 2px solid #282b34;
+		border-radius: 5px;
+		padding: 0.42rem 0.75rem 0.42rem 2.05rem;
+		box-shadow: inset 0 2px 5px rgb(0 0 0 / 0.8);
+		transition: border-color 120ms ease;
+	}
+
+.deck-search-wrap input[type='search']::placeholder {
+		color: #848d9f;
+	}
+
+.deck-search-wrap input[type='search']:focus-visible {
+		border-color: var(--mpc-screen-cyan);
+		outline: 2px solid var(--mpc-focus-ring);
+		outline-offset: 1px;
+		box-shadow: inset 0 2px 5px rgb(0 0 0 / 0.8);
+	}
+
+.search-clear {
+		position: absolute;
+		right: 0.35rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-block-size: 24px;
+		min-inline-size: 24px;
+		background: #232836;
+		color: var(--mpc-screen-text);
+		border: 1px solid #3a4154;
+		border-radius: 4px;
+		padding: 0.18rem 0.5rem;
+		font-size: 0.68rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		cursor: pointer;
+	}
+
+.search-clear::after {
+		content: '';
+		position: absolute;
+		inset: -8px -4px;
+	}
+
+/* Recessed Segmented Rocker for Firmware */
+.fw-rocker {
+		display: inline-flex;
+		align-items: stretch;
+		min-height: 36px;
+		background: #14161c;
+		padding: 3px;
+		border-radius: 5px;
+		border: 1.5px solid #282b34;
+		box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.75);
+		gap: 2px;
+	}
+
+.fw-rocker-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.3rem;
+		border: none;
+		background: transparent;
+		color: #c5cad6;
+		font-family: var(--font-sans);
+		font-size: 0.71rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		padding: 0.32rem 0.58rem;
+		border-radius: 3px;
+		cursor: pointer;
+		white-space: nowrap;
+		transition: background 100ms ease, color 100ms ease, box-shadow 100ms ease;
+	}
+
+.fw-rocker-btn:hover {
+		color: #ffffff;
+		background: rgb(255 255 255 / 0.06);
+	}
+
+.fw-rocker-btn:focus-visible {
+		outline: 2px solid var(--mpc-focus-ring);
+		outline-offset: 1px;
+		box-shadow: none;
+	}
+
+.fw-rocker-btn .r-count {
+		font-family: var(--font-mono);
+		font-size: 0.64rem;
+		font-weight: 700;
+		line-height: 1;
+		opacity: 0.75;
+		padding: 0.1rem 0.28rem;
+		border-radius: 2px;
+		background: rgb(255 255 255 / 0.08);
+	}
+
+.fw-rocker-btn[aria-pressed='true'] {
+		background: var(--btn-lit, var(--mpc-btn-orange));
+		color: var(--mpc-pad-text);
+		box-shadow: 0 0 8px color-mix(in srgb, var(--btn-lit, var(--mpc-btn-orange)) 55%, transparent);
+	}
+
+.fw-rocker-btn[aria-pressed='true'] .r-count {
+		background: rgb(0 0 0 / 0.18);
+		color: var(--mpc-pad-text);
+		opacity: 0.95;
+	}
+
+.deck-sort-select {
+		min-width: 175px;
+		min-height: 36px;
+		padding: 0.38rem 0.65rem;
+		font-size: 0.82rem;
+	}
+
+@media (max-width: 1120px) {
+		.section-buttons .hw-btn {
+			padding: 0.42rem 0.25rem;
+			font-size: 0.68rem;
+			letter-spacing: 0.04em;
+			gap: 0.25rem;
+		}
+	}
+
+@media (max-width: 920px) {
+		.section-buttons {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
 		}
 
-.sort-group {
-			flex: 1 1 100%;
+		.section-buttons .hw-btn {
+			padding: 0.44rem 0.4rem;
+			font-size: 0.72rem;
+			letter-spacing: 0.07em;
+			gap: 0.35rem;
+		}
+
+		.deck-bottom-row {
+			grid-template-columns: 1fr auto;
+		}
+
+		.search-field {
+			grid-column: 1 / -1;
+		}
+
+		.fw-rocker {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+@media (max-width: 640px) {
+		.filter-bar {
+			padding: 0.7rem 0.75rem;
+			gap: 0.65rem;
+			margin-bottom: 0.85rem;
+		}
+
+		.section-buttons {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 0.32rem;
+		}
+
+		.section-buttons .hw-btn {
+			padding: 0.36rem 0.25rem;
+			font-size: 0.64rem;
+			letter-spacing: 0.03em;
+			gap: 0.22rem;
+		}
+
+		.sec-label-full {
+			display: none;
+		}
+
+		.sec-label-short {
+			display: inline;
+		}
+
+		.section-buttons .btn-count {
+			font-size: 0.58rem;
+			padding: 0.08rem 0.22rem;
+		}
+
+		.deck-bottom-row {
+			grid-template-columns: 1fr;
+			gap: 0.55rem;
+			padding-top: 0.6rem;
+		}
+
+		.fw-rocker {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.fw-rocker-btn {
+			padding: 0.32rem 0.15rem;
+			font-size: 0.6rem;
+			letter-spacing: 0.02em;
+			gap: 0.18rem;
+		}
+
+		.fw-rocker-btn .r-count {
+			font-size: 0.56rem;
+			padding: 0.07rem 0.18rem;
+		}
+
+		.deck-sort-select {
+			width: 100%;
+			min-width: 0;
 		}
 	}
 </style>

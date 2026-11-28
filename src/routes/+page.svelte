@@ -76,6 +76,7 @@
 		const params = new URLSearchParams(window.location.search);
 		section = sectionFromParam(params.get('section'));
 		firmware = firmwareFromParam(params.get('fw'));
+		query = params.get('q') ?? '';
 		if (!ready) {
 			await tick();
 			ready = true;
@@ -108,6 +109,21 @@
 				url.searchParams.set('fw', firmwareFilterParam(next));
 			} else {
 				url.searchParams.delete('fw');
+			}
+			window.history.replaceState(window.history.state, '', url);
+		}
+	}
+
+	/** @param {string} next */
+	function onQueryInput(next) {
+		query = next;
+		if (typeof window !== 'undefined') {
+			const url = new URL(window.location.href);
+			const trimmed = next.trim();
+			if (trimmed) {
+				url.searchParams.set('q', trimmed);
+			} else {
+				url.searchParams.delete('q');
 			}
 			window.history.replaceState(window.history.state, '', url);
 		}
@@ -173,7 +189,6 @@
 	{totalMods}
 	{totalAuthors}
 	latestUpdateLabel={formatUpdated(latestUpdateTimestamp)}
-	bind:query
 />
 
 <LatestReleasesStrip releases={latestReleases} {newEntries} />
@@ -190,6 +205,7 @@
 		bind:query
 		{selectSection}
 		{selectFirmware}
+		{onQueryInput}
 	/>
 
 	{#if filtered.length === 0}
