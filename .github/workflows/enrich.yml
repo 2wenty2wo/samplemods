@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '17 */6 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      # Entry YAML only — enrich's own commits (github.json, readme/**, etc.) never match.
+      - 'data/*/*/*.yaml'
 
 permissions:
   contents: write
@@ -16,7 +21,40 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  should-run:
+    runs-on: ubuntu-latest
+    outputs:
+      enrich: ${{ steps.decide.outputs.enrich }}
+    steps:
+      - uses: actions/checkout@v7
+        if: github.event_name == 'push'
+        with:
+          fetch-depth: 0
+
+      - name: Decide whether enrich should run
+        id: decide
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          ACTOR: ${{ github.actor }}
+          MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" != "push" ]; then
+            echo "enrich=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if node scripts/enrich-on-push.js --before "$BEFORE" --after "$AFTER" --actor "$ACTOR" --message "$MESSAGE"; then
+            echo "enrich=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enrich=false" >> "$GITHUB_OUTPUT"
+            echo "No new entry YAML / repo: change — skipping enrich"
+          fi
+
   enrich:
+    needs: should-run
+    if: needs.should-run.outputs.enrich == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
