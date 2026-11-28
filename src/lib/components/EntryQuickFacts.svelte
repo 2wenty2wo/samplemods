@@ -24,6 +24,15 @@ import { base } from '$app/paths';
 		updatedDate,
 		formatUpdated
 	} = $props();
+	const fwClass = $derived(
+		mod.firmware_status === '1.4'
+			? 'fw-1-4'
+			: mod.firmware_status === 'community'
+				? 'fw-community'
+				: mod.firmware_status === '1.3'
+					? 'fw-1-3'
+					: ''
+	);
 </script>
 
 <section class="detail-section quick-facts-section" aria-label="Quick facts">
@@ -64,9 +73,22 @@ import { base } from '$app/paths';
 			</dd>
 		{/if}
 
-		{#if mod.firmware}
+		{#if mod.firmware || mod.firmware_status}
 			<dt>Firmware</dt>
-			<dd><code>{mod.firmware}</code></dd>
+			<dd class="spec-fw-dd">
+				{#if mod.firmware}
+					<code>{mod.firmware}</code>
+				{/if}
+				{#if mod.firmware_status && mod.firmware_label}
+					<span
+						class="fw-chip {fwClass}"
+						title={mod.firmware_note ?? undefined}
+						aria-label={mod.firmware_note ? `${mod.firmware_label}. ${mod.firmware_note}` : undefined}
+					>
+						{mod.firmware_label}
+					</span>
+				{/if}
+			</dd>
 		{/if}
 
 		{#if mod.license}
@@ -169,6 +191,13 @@ import { base } from '$app/paths';
 		font-family: var(--font-mono);
 		font-size: 0.92em;
 		color: var(--mpc-screen-text);
+	}
+
+.spec-fw-dd {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.35rem 0.55rem;
 	}
 
 .release-date {

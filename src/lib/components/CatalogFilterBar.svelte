@@ -3,26 +3,35 @@ import {
 		SECTIONS,
 		sectionGlow,
 		sectionLabel,
-		sectionExplainer
+		sectionExplainer,
+		FIRMWARE_FILTERS,
+		firmwareFilterLabel,
+		firmwareFilterGlow
 	} from '$lib/categories.js';
 
 	/** @type {{
 	 *   section: string,
+	 *   firmware: string,
 	 *   sort: string,
 	 *   totalMods: number,
 	 *   sectionCounts: Record<string, number>,
+	 *   firmwareCounts: Record<string, number>,
 	 *   filteredCount: number,
 	 *   query: string,
-	 *   selectSection: (next: string) => void
+	 *   selectSection: (next: string) => void,
+	 *   selectFirmware: (next: string) => void
 	 * }} */
 	let {
 		section,
+		firmware = '',
 		sort = $bindable('name'),
 		totalMods,
 		sectionCounts,
+		firmwareCounts = {},
 		filteredCount,
 		query = $bindable(''),
-		selectSection
+		selectSection,
+		selectFirmware
 	} = $props();
 </script>
 
@@ -58,6 +67,32 @@ import {
 		{/if}
 	</div>
 
+	<div class="filter-group fw-filter-group">
+		<span class="silk-label">FIRMWARE</span>
+		<div class="hw-buttons" role="group" aria-label="Firmware">
+			<button
+				type="button"
+				class="hw-btn"
+				style="--btn-lit: #FF8A1E"
+				aria-pressed={firmware === ''}
+				onclick={() => selectFirmware('')}
+			>
+				All <span class="btn-count">{totalMods}</span>
+			</button>
+			{#each FIRMWARE_FILTERS as fw}
+				<button
+					type="button"
+					class="hw-btn"
+					style="--btn-lit: {firmwareFilterGlow(fw)}"
+					aria-pressed={firmware === fw}
+					onclick={() => selectFirmware(fw)}
+				>
+					{firmwareFilterLabel(fw)} <span class="btn-count">{firmwareCounts[fw] ?? 0}</span>
+				</button>
+			{/each}
+		</div>
+	</div>
+
 	<div class="sort-group">
 		<label class="silk-label" for="mod-sort">SORT ORDER</label>
 		<select id="mod-sort" class="hw-select" bind:value={sort}>
@@ -74,13 +109,17 @@ import {
 		{#if section}
 			in <strong>{sectionLabel(section)}</strong>
 		{/if}
+		{#if firmware}
+			· <strong>{firmwareFilterLabel(firmware)}</strong>
+		{/if}
 	</p>
-	{#if section || query}
+	{#if section || firmware || query}
 		<button
 			type="button"
 			class="reset-link"
 			onclick={() => {
 				selectSection('');
+				selectFirmware('');
 				query = '';
 			}}
 		>
@@ -109,6 +148,10 @@ import {
 .filter-group {
 		display: grid;
 		gap: 0.45rem;
+		flex: 1 1 520px;
+	}
+
+.fw-filter-group {
 		flex: 1 1 520px;
 	}
 

@@ -39,6 +39,15 @@ import { base } from '$app/paths';
 
 	const media = $derived(cardScreenMedia(mod));
 	const install = $derived(installLabel(mod.install));
+	const fwClass = $derived(
+		mod.firmware_status === '1.4'
+			? 'fw-1-4'
+			: mod.firmware_status === 'community'
+				? 'fw-community'
+				: mod.firmware_status === '1.3'
+					? 'fw-1-3'
+					: ''
+	);
 </script>
 
 <a
@@ -59,16 +68,31 @@ import { base } from '$app/paths';
 				loading="lazy"
 				onload={(e) => onScreenImageLoad(e, media.src)}
 			/>
+			{#if mod.firmware_status && mod.firmware_label}
+				<span
+					class="fw-chip fw-chip-corner {fwClass}"
+					title={mod.firmware_note ?? undefined}
+					aria-label={mod.firmware_note ? `${mod.firmware_label}. ${mod.firmware_note}` : undefined}
+				>
+					{mod.firmware_label}
+				</span>
+			{/if}
 		{:else}
-			<div class="splash-fallback" aria-hidden="true">
+			<div class="splash-fallback">
 				<div class="splash-topbar">
-					<span class="splash-cat">{sectionSingularLabel(mod.section)}</span>
-					{#if mod.firmware}
-						<span class="splash-fw">FW {mod.firmware}</span>
+					<span class="splash-cat" aria-hidden="true">{sectionSingularLabel(mod.section)}</span>
+					{#if mod.firmware_status && mod.firmware_label}
+						<span
+							class="fw-chip {fwClass}"
+							title={mod.firmware_note ?? undefined}
+							aria-label={mod.firmware_note ? `${mod.firmware_label}. ${mod.firmware_note}` : undefined}
+						>
+							{mod.firmware_label}
+						</span>
 					{/if}
 				</div>
-				<p class="splash-title">{mod.name}</p>
-				<div class="splash-footer">
+				<p class="splash-title" aria-hidden="true">{mod.name}</p>
+				<div class="splash-footer" aria-hidden="true">
 					<span class="splash-bar"></span>
 					<span class="splash-author">{mod.author}</span>
 				</div>
