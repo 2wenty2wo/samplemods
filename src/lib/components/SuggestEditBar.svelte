@@ -74,6 +74,6 @@
 	}
 
 .suggest-edit-secondary:hover {
-		color: var(--mpc-btn-orange);
+		color: var(--mpc-accent-red);
 	}
 </style>

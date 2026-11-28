@@ -2,7 +2,7 @@
 	/** @type {{ class?: string }} */
 	let { class: className = '' } = $props();
 
-	const pads = ['#ff4d7d', '#f8b800', '#38b6e8']; // pink, amber, cyan
+	const pads = ['#ff4d7d', '#f8b800', '#008cc1']; // pink, amber, blue
 	const cells = Array.from({ length: 16 }, (_, i) => {
 		const col = i % 4;
 		const row = Math.floor(i / 4);

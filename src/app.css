@@ -23,7 +23,7 @@
 	--mpc-btn-orange: #ea5716;
 	--mpc-btn-orange-light: #f46a25;
 	--mpc-btn-blue: #008cc1;
-	--mpc-btn-blue-light: #1da1db;
+	--mpc-btn-blue-light: #009fd8;
 	--mpc-btn-green: #2ee65a;
 	--mpc-pad-led-lime: #c8f526;
 	--mpc-screen-yellow: #e8c811;
@@ -31,9 +31,9 @@
 	--mpc-screen-amber: #f8b800;
 	--mpc-screen-white: #f8f8f8;
 	--mpc-screen-grey: #a0a0a0;
-	--mpc-screen-cyan: #38b6e8;
+	--mpc-screen-cyan: var(--mpc-btn-blue);
 	--mpc-screen-magenta: #ff4d7d;
-	--mpc-focus-ring: #ea5716;
+	--mpc-focus-ring: var(--mpc-btn-orange);
 
 	/* Fonts */
 	--font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, sans-serif;
@@ -663,7 +663,7 @@ a:hover {
 }
 
 .chip-install {
-	--chip-strip: var(--mpc-btn-blue-light);
+	--chip-strip: var(--mpc-btn-blue);
 }
 
 .chip-price {
@@ -680,9 +680,9 @@ a:hover {
 	--chip-strip: var(--mpc-screen-magenta);
 }
 .badge-status.concept {
-	--chip-strip: var(--mpc-screen-cyan);
+	--chip-strip: var(--mpc-btn-blue);
 	background: #141822;
-	color: var(--mpc-screen-cyan);
+	color: var(--mpc-btn-blue);
 	border-color: #283044;
 }
 .badge-status.archived,
@@ -809,8 +809,8 @@ a:hover {
 	width: 10px;
 	height: 4px;
 	border-radius: 2px;
-	background: var(--band-led, var(--mpc-btn-blue-light));
-	box-shadow: 0 0 6px color-mix(in srgb, var(--band-led, var(--mpc-btn-blue-light)) 55%, transparent);
+	background: var(--band-led, var(--mpc-btn-blue));
+	box-shadow: 0 0 6px color-mix(in srgb, var(--band-led, var(--mpc-btn-blue)) 55%, transparent);
 }
 
 .hw-band-sub {
@@ -833,7 +833,7 @@ a:hover {
 	background: var(--mpc-body-light);
 	color: var(--mpc-pad-text);
 	border: 1.5px solid #282b34;
-	border-bottom: 3px solid var(--chip-accent, var(--mpc-btn-blue-light));
+	border-bottom: 3px solid var(--chip-accent, var(--mpc-btn-blue));
 	border-radius: 5px;
 	box-shadow:
 		inset 0 1px 0 rgb(255 255 255 / 0.65),

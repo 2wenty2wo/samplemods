@@ -129,7 +129,7 @@
 	.page-screen-box {
 		background: var(--mpc-screen-bg);
 		border: 2px solid #252934;
-		border-left: 4px solid var(--mpc-btn-blue-light);
+		border-left: 4px solid var(--mpc-btn-blue);
 		border-radius: 8px;
 		padding: 1.25rem;
 	}
@@ -172,7 +172,7 @@
 	.info-card {
 		background: var(--mpc-body-mid);
 		border: 2px solid #282b34;
-		border-top: 4px solid var(--mpc-btn-blue-light);
+		border-top: 4px solid var(--mpc-btn-blue);
 		border-radius: var(--radius);
 		padding: 1.25rem;
 		box-shadow:

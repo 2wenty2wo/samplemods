@@ -37,13 +37,13 @@ export const SECTION_EXPLAINERS = {
 };
 
 export const SECTION_GLOW = {
-	mods: '#FF4D7D', apps: '#2EE65A', plugins: '#FF9E2C', games: '#C8F526',
-	tools: '#B07CFF', guides: '#E8C811', dev: '#1DA1DB'
+	mods: '#FF4D7D', apps: '#2EE65A', plugins: '#EA5716', games: '#C8F526',
+	tools: '#B07CFF', guides: '#E8C811', dev: '#008CC1'
 };
 
 export const SECTION_TINTS = {
-	mods: '#E8A0B4', apps: '#A8E8B8', plugins: '#E8C8A0', games: '#D8E8A0',
-	tools: '#C8B0E8', guides: '#E8D888', dev: '#98CEE8'
+	mods: '#E8A0B4', apps: '#A8E8B8', plugins: '#E8B098', games: '#D8E8A0',
+	tools: '#C8B0E8', guides: '#E8D888', dev: '#88C0D8'
 };
 
 /** @type {Record<string, string>} */
@@ -238,7 +238,7 @@ export function entryPath(entry) {
 
 /** @param {string} section */
 export function sectionGlow(section) {
-	return SECTION_GLOW[section] ?? '#FF9E2C';
+	return SECTION_GLOW[section] ?? '#EA5716';
 }
 
 /** @param {string} section */
