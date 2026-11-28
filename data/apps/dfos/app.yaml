@@ -17,8 +17,8 @@ tags:
 install: sd-card
 firmware: 1.3.0.12
 status: beta
-version: "0.1.93 Beta"
-released: "2026-11-25" # https://getdfos.com/release-notes/ — "Released 25 November 2026"
+version: "0.1.105 Beta"
+released: "2026-11-27" # https://getdfos.com/release-notes/ — "Released 27 November 2026"
 runs_on: [device]
 audience: [musician]
 price: free
