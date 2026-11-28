@@ -94,7 +94,7 @@ export const FIRMWARE_FILTERS = ['1.4', '1.3', 'none'];
 /** @type {Record<string, string>} */
 export const FIRMWARE_FILTER_GLOW = {
 	'1.4': '#2EE65A',
-	'1.3': '#F8B800',
+	'1.3': '#EA5716',
 	none: '#A0A0A0'
 };
 
