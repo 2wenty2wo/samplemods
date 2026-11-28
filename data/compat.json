@@ -49,7 +49,7 @@
   },
   "mpselector": {
     "source": "https://github.com/fomoPhil/mpselector#opened-on-akai-1408",
-    "updated": "2026-11-27",
+    "updated": "2026-11-28",
     "entries": {
       "mp-doom": {
         "versions": "1.0.4",
@@ -83,6 +83,12 @@
       },
       "hdslaveos": {
         "versions": "0.8.2-hdslave.3",
+        "status": "Works",
+        "checked_by": "Tested",
+        "notes": ""
+      },
+      "epicycle": {
+        "versions": "0.3.6",
         "status": "Works",
         "checked_by": "Tested",
         "notes": ""
