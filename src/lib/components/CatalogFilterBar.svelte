@@ -52,9 +52,7 @@
 	/** Transitions enabled only after the first correct position (no load slide). */
 	let fwPillAnimate = $state(false);
 
-	const fwPillLit = $derived(
-		firmware ? firmwareFilterGlow(firmware) : 'var(--mpc-btn-orange)'
-	);
+	const fwPillLit = $derived(firmwareFilterGlow(firmware));
 
 	function measureFwPill() {
 		const rocker = fwRockerEl;
@@ -206,7 +204,7 @@
 				<button
 					type="button"
 					class="fw-rocker-btn"
-					style="--btn-lit: var(--mpc-btn-orange)"
+					style="--btn-lit: #FF8A1E"
 					aria-pressed={firmware === ''}
 					onclick={() => selectFirmware('')}
 				>
