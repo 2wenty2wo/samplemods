@@ -395,6 +395,20 @@
       "note": "Upstream MPC Sample screen GIF converted to animated WebP."
     }
   ],
+  "hs-tools": [
+    {
+      "file": "screenshots/01-seq-desk.webp",
+      "source": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1",
+      "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12). HS Tools v0.6.1 SEQ mixing desk during playback."
+    },
+    {
+      "file": "screenshots/02-loudness-meters.webp",
+      "source": "https://github.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/releases/tag/v0.6.1",
+      "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12). HS Tools v0.6.1 stereo VU, LUFS and peak readouts during playback."
+    }
+  ],
   "imageboot": [
     {
       "file": "screenshots/01-boot.webp",
