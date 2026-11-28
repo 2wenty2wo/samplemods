@@ -110,19 +110,20 @@
 						· <strong>{firmwareFilterLabel(firmware)}</strong>
 					{/if}
 				</p>
-				{#if section || firmware || query}
-					<button
-						type="button"
-						class="reset-link"
-						onclick={() => {
-							selectSection('');
-							selectFirmware('');
-							setQuery('');
-						}}
-					>
-						Reset filters
-					</button>
-				{/if}
+				<button
+					type="button"
+					class="reset-link"
+					class:is-hidden={!(section || firmware || query)}
+					tabindex={section || firmware || query ? 0 : -1}
+					aria-hidden={!(section || firmware || query) ? 'true' : undefined}
+					onclick={() => {
+						selectSection('');
+						selectFirmware('');
+						setQuery('');
+					}}
+				>
+					Reset filters
+				</button>
 			</div>
 		</div>
 
@@ -278,6 +279,7 @@
 
 .results-count {
 		margin: 0;
+		white-space: nowrap;
 	}
 
 .results-count strong {
@@ -288,17 +290,50 @@
 		position: relative;
 		display: inline-flex;
 		align-items: center;
-		min-block-size: var(--target-size, 24px);
-		min-inline-size: var(--target-size, 24px);
 		background: none;
 		border: none;
-		padding: 0.15rem 0.3rem;
-		margin: -0.15rem -0.3rem;
+		padding: 0;
+		margin: 0;
+		line-height: inherit;
 		font: inherit;
 		font-weight: 700;
 		color: var(--mpc-accent-red);
 		text-decoration: underline;
 		cursor: pointer;
+	}
+
+/* Hit target without growing .deck-top-head (layout height stays text-sized). */
+.reset-link::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		min-inline-size: var(--target-size, 24px);
+		min-block-size: var(--target-size, 24px);
+		inline-size: 100%;
+		block-size: 100%;
+		transform: translate(-50%, -50%);
+	}
+
+/* Narrow widths: Reset always on its own row (hidden still reserves height).
+   Desktop: share the results row; hide completely when idle. */
+.reset-link.is-hidden {
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+@media (max-width: 640px) {
+		.results-inline {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.35rem;
+		}
+	}
+
+@media (min-width: 641px) {
+		.reset-link.is-hidden {
+			display: none;
+		}
 	}
 
 .section-buttons {
