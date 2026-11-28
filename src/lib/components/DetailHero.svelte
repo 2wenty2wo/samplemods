@@ -38,11 +38,9 @@ import { base } from '$app/paths';
 	const fwClass = $derived(
 		mod.firmware_status === '1.4'
 			? 'fw-1-4'
-			: mod.firmware_status === 'community'
-				? 'fw-community'
-				: mod.firmware_status === '1.3'
-					? 'fw-1-3'
-					: ''
+			: mod.firmware_status === '1.3'
+				? 'fw-1-3'
+				: ''
 	);
 </script>
 

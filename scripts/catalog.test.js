@@ -78,53 +78,31 @@ assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 	assert.equal(parseEntryAddedDates(shallowLog, mockEntries).size, 0, 'shallow 1-commit checkout leaves added null');
 }
 
-// computeFirmwareStatus: 1.4 maker support, community 1.4 launcher table, 1.3 only, and none
+// computeFirmwareStatus: 1.4 maker support, 1.3 only, and null when neither 1.3 nor 1.4
 {
-	const mockCompat = {
-		sampleboot: {
-			source: 'https://github.com/pxcm/SampleBoot#works-with',
-			entries: { 'mod-13': { status: 'Works' } }
-		},
-		mpselector: {
-			source: 'https://github.com/fomoPhil/mpselector#opened-on-akai-1408',
-			entries: {
-				'mod-comm': { status: 'Works' },
-				'mod-both': { status: 'Works' }
-			}
-		}
-	};
-	const names = { sampleboot: 'SampleBoot', mpselector: 'MP Selector' };
 	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-both', firmware: '1.3.0.12, 1.4.0.8' }, mockCompat, names),
-		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4', firmware_note: null }
+		computeFirmwareStatus('1.3.0.12, 1.4.0.8'),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4' }
 	);
 	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-14x', firmware: '1.3.0.12, 1.4.x (v1.1.4+)' }, mockCompat, names),
-		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4', firmware_note: null }
+		computeFirmwareStatus('1.3.0.12, 1.4.x (v1.1.4+)'),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4' }
 	);
 	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-14', firmware: '1.4.0.8' }, mockCompat, names),
-		{ firmware_status: '1.4', firmware_label: 'FW 1.4', firmware_note: null }
+		computeFirmwareStatus('1.4.0.8'),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.4' }
 	);
 	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-comm', firmware: '1.3.0.12' }, mockCompat, names),
-		{
-			firmware_status: 'community',
-			firmware_label: 'OPENS ON 1.4',
-			firmware_note: 'Tested by the MP Selector maker, not the mod maker'
-		}
+		computeFirmwareStatus('1.3.0.12'),
+		{ firmware_status: '1.3', firmware_label: 'FW 1.3' }
 	);
 	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-13', firmware: '1.3.0.12' }, mockCompat, names),
-		{ firmware_status: '1.3', firmware_label: 'FW 1.3', firmware_note: null }
+		computeFirmwareStatus('1.2.0+'),
+		{ firmware_status: null, firmware_label: null }
 	);
 	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-12', firmware: '1.2.0+' }, mockCompat, names),
-		{ firmware_status: null, firmware_label: null, firmware_note: null }
-	);
-	assert.deepEqual(
-		computeFirmwareStatus({ id: 'mod-none' }, mockCompat, names),
-		{ firmware_status: null, firmware_label: null, firmware_note: null }
+		computeFirmwareStatus(null),
+		{ firmware_status: null, firmware_label: null }
 	);
 }
 

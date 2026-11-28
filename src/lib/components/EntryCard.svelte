@@ -42,11 +42,9 @@ import { base } from '$app/paths';
 	const fwClass = $derived(
 		mod.firmware_status === '1.4'
 			? 'fw-1-4'
-			: mod.firmware_status === 'community'
-				? 'fw-community'
-				: mod.firmware_status === '1.3'
-					? 'fw-1-3'
-					: ''
+			: mod.firmware_status === '1.3'
+				? 'fw-1-3'
+				: ''
 	);
 </script>
 
@@ -69,11 +67,7 @@ import { base } from '$app/paths';
 				onload={(e) => onScreenImageLoad(e, media.src)}
 			/>
 			{#if mod.firmware_status && mod.firmware_label}
-				<span
-					class="fw-chip fw-chip-corner {fwClass}"
-					title={mod.firmware_note ?? undefined}
-					aria-label={mod.firmware_note ? `${mod.firmware_label}. ${mod.firmware_note}` : undefined}
-				>
+				<span class="fw-chip fw-chip-corner {fwClass}">
 					{mod.firmware_label}
 				</span>
 			{/if}
@@ -82,11 +76,7 @@ import { base } from '$app/paths';
 				<div class="splash-topbar">
 					<span class="splash-cat" aria-hidden="true">{sectionSingularLabel(mod.section)}</span>
 					{#if mod.firmware_status && mod.firmware_label}
-						<span
-							class="fw-chip {fwClass}"
-							title={mod.firmware_note ?? undefined}
-							aria-label={mod.firmware_note ? `${mod.firmware_label}. ${mod.firmware_note}` : undefined}
-						>
+						<span class="fw-chip {fwClass}">
 							{mod.firmware_label}
 						</span>
 					{/if}

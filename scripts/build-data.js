@@ -76,18 +76,16 @@ export function parseEntryAddedDates(gitOutput, catalogEntries) {
 }
 
 /**
- * Compute single firmware compatibility tier, chip label, and optional community note for an entry.
- * - "1.4": maker's `firmware` field lists a 1.4.x build (via parseListedBuilds) → "FW 1.4" or "FW 1.3 / 1.4"
- * - "community": `firmware` doesn't list 1.4, but a 1.4.x launcher table in compat.json lists it with status "Works" → "OPENS ON 1.4"
- * - "1.3": `firmware` lists only older builds → "FW 1.3"
- * - null: no firmware stated
- * @param {{ id: string, firmware?: string | null }} entry
- * @param {Record<string, { source?: string, entries?: Record<string, { status?: string }> }> | null | undefined} compatFile
- * @param {Record<string, string>} launcherNamesById
- * @returns {{ firmware_status: '1.4' | 'community' | '1.3' | null, firmware_label: string | null, firmware_note: string | null }}
+ * Compute single firmware compatibility tier and chip label from the maker's `firmware` field:
+ * - "1.4": `firmware` lists a 1.4 build → "FW 1.4" (or "FW 1.3 / 1.4" when 1.3 is also listed)
+ * - "1.3": `firmware` lists 1.3 but not 1.4 → "FW 1.3"
+ * - null: anything else or blank → no chip
+ * @param {string | null | undefined | { firmware?: string | null }} input
+ * @returns {{ firmware_status: '1.4' | '1.3' | null, firmware_label: string | null }}
  */
-export function computeFirmwareStatus(entry, compatFile = {}, launcherNamesById = {}) {
-	const fw = typeof entry.firmware === 'string' ? entry.firmware.trim() : '';
+export function computeFirmwareStatus(input) {
+	const raw = typeof input === 'object' && input !== null ? input.firmware : input;
+	const fw = typeof raw === 'string' ? raw.trim() : '';
 	const builds = parseListedBuilds(fw);
 	const has14 = builds.some((b) => b.startsWith('1.4.')) || /\b1\.4(?:\.[0-9x]+|\+)/i.test(fw);
 	const has13 = builds.some((b) => b.startsWith('1.3.')) || /\b1\.3(?:\.[0-9x]+|\b)/i.test(fw);
@@ -95,45 +93,26 @@ export function computeFirmwareStatus(entry, compatFile = {}, launcherNamesById 
 	if (has14) {
 		return {
 			firmware_status: '1.4',
-			firmware_label: has13 ? 'FW 1.3 / 1.4' : 'FW 1.4',
-			firmware_note: null
+			firmware_label: has13 ? 'FW 1.3 / 1.4' : 'FW 1.4'
 		};
-	}
-
-	for (const launcherId of COMPAT_LAUNCHER_IDS) {
-		const snapshot = compatFile?.[launcherId];
-		if (!snapshot?.source || !/(?:#.*1\.?4|1\.4\.\d+)/i.test(snapshot.source)) continue;
-		const row = snapshot.entries?.[entry.id];
-		if (row?.status === 'Works') {
-			const launcherName = launcherNamesById[launcherId] ?? launcherId;
-			return {
-				firmware_status: 'community',
-				firmware_label: 'OPENS ON 1.4',
-				firmware_note: `Tested by the ${launcherName} maker, not the mod maker`
-			};
-		}
 	}
 
 	if (has13) {
 		return {
 			firmware_status: '1.3',
-			firmware_label: 'FW 1.3',
-			firmware_note: null
+			firmware_label: 'FW 1.3'
 		};
 	}
 
 	return {
 		firmware_status: null,
-		firmware_label: null,
-		firmware_note: null
+		firmware_label: null
 	};
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
 const entries = readEntries();
 const compatFile = readCompat(path.join(root, 'data')) ?? {};
-/** @type {Record<string, string>} */
-const launcherNamesById = {};
 /** @type {Record<string, Record<string, { versions: string, checked_by: string, notes: string, status?: string }>>} */
 const launcherRows = {};
 for (const launcherId of COMPAT_LAUNCHER_IDS) {
@@ -141,7 +120,6 @@ for (const launcherId of COMPAT_LAUNCHER_IDS) {
 	const rows = Object.fromEntries(Object.entries(snapshot?.entries ?? {})
 		.filter(([id]) => id !== launcherId && entries.some((entry) => entry.id === id)));
 	const launcher = entries.find(({ id }) => id === launcherId)?.record;
-	if (launcher?.name) launcherNamesById[launcherId] = launcher.name;
 	for (const id of launcher?.compatible ?? []) {
 		const versions = launcher.compatible_versions?.[id];
 		if (typeof versions === 'string' && !Object.hasOwn(rows, id)) {
@@ -251,7 +229,7 @@ const mods = entries.map(({ id, section, dir, record: raw, media }) => {
 	const logo = media.find((file) => file.startsWith('logo.'));
 	const newestWatch = watchItems.length ? watchReleases[0] ?? null : null;
 	const compatIds = launcherRows[id] ? Object.keys(launcherRows[id]) : [];
-	const fwMeta = computeFirmwareStatus({ id, firmware: raw.firmware }, compatFile, launcherNamesById);
+	const fwMeta = computeFirmwareStatus(raw.firmware);
 	return {
 		id,
 		section,

@@ -77,8 +77,7 @@ export const SECTIONS = Object.keys(SECTION_LABELS);
 
 /** @type {Record<string, string>} */
 export const FIRMWARE_FILTER_LABELS = {
-	'1.4': 'Works on 1.4',
-	community: 'Opens on 1.4',
+	'1.4': '1.4',
 	'1.3': '1.3 only',
 	none: 'Not stated'
 };
@@ -86,17 +85,15 @@ export const FIRMWARE_FILTER_LABELS = {
 /** @type {Record<string, string>} */
 export const FIRMWARE_FILTER_PARAMS = {
 	'1.4': '1-4',
-	community: 'opens-1-4',
 	'1.3': '1-3',
-	none: 'not-stated'
+	none: 'none'
 };
 
-export const FIRMWARE_FILTERS = ['1.4', 'community', '1.3', 'none'];
+export const FIRMWARE_FILTERS = ['1.4', '1.3', 'none'];
 
 /** @type {Record<string, string>} */
 export const FIRMWARE_FILTER_GLOW = {
 	'1.4': '#2EE65A',
-	community: '#38B6E8',
 	'1.3': '#F8B800',
 	none: '#A0A0A0'
 };
@@ -125,9 +122,8 @@ export function firmwareFromParam(param) {
 	if (!param) return '';
 	const clean = String(param).trim().toLowerCase();
 	if (clean === '1-4' || clean === '1.4') return '1.4';
-	if (clean === 'opens-1-4' || clean === 'community' || clean === 'opens') return 'community';
 	if (clean === '1-3' || clean === '1.3') return '1.3';
-	if (clean === 'not-stated' || clean === 'none') return 'none';
+	if (clean === 'none' || clean === 'not-stated') return 'none';
 	return '';
 }
 
