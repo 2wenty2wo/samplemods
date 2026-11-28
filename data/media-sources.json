@@ -120,6 +120,28 @@
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12), Console v0.0.27"
     }
   ],
+  "dfos": [
+    {
+      "file": "screenshots/01-main.webp",
+      "source": "https://getdfos.com/plates/bento-main.ae6a8cf6.png",
+      "note": "Main screen plate from getdfos.com; lossless WebP"
+    },
+    {
+      "file": "screenshots/02-grid.webp",
+      "source": "https://getdfos.com/plates/bento-grid.20ead50c.png",
+      "note": "Grid editor plate from getdfos.com; lossless WebP"
+    },
+    {
+      "file": "screenshots/03-mixer.webp",
+      "source": "https://getdfos.com/plates/bento-mixer.be00cfaa.png",
+      "note": "Mixer plate from getdfos.com; lossless WebP"
+    },
+    {
+      "file": "screenshots/04-tracks.webp",
+      "source": "https://getdfos.com/plates/bento-tracks-choosing.0597cc1c.png",
+      "note": "New-track chooser plate from getdfos.com; lossless WebP"
+    }
+  ],
   "draw-handler": [
     {
       "file": "screenshots/01-stompbox-page.gif",
@@ -169,6 +191,14 @@
       "file": "screenshots/03-sample-picker.webp",
       "source": "https://mpctoolkit.com/wp-content/uploads/2026/11/image-2.png",
       "note": "From the official EMBER-8 product page (mpctoolkit.com)"
+    }
+  ],
+  "epicycle": [
+    {
+      "file": "screenshots/01-boot-splash.webp",
+      "source": "https://raw.githubusercontent.com/tubedigga/EPICYCLE/main/assets/boot.png",
+      "repo": "tubedigga/EPICYCLE",
+      "note": "EPICYCLE boot splash from the maker README assets; lossless WebP"
     }
   ],
   "gridzilla": [
@@ -273,6 +303,30 @@
       "note": "MPC Sample screen from the hdslave Nexus README; lossless animated WebP"
     }
   ],
+  "hdslave-psychic-synth": [
+    {
+      "file": "screenshots/01-contact-sheet.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Psychic-Synth/main/docs/psychic-screen.gif",
+      "repo": "hdslave/hdslave-Psychic-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
+  "hdslave-reverie-synth": [
+    {
+      "file": "screenshots/01-reverie-pages.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Reverie-Synth/main/docs/reverie-pages.gif",
+      "repo": "hdslave/hdslave-Reverie-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
+  "hdslave-slink-synth": [
+    {
+      "file": "screenshots/01-slink-panel.webp",
+      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/main/docs/slink-screen.gif",
+      "repo": "hdslave/hdslave-Slink-Synth",
+      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+    }
+  ],
   "hdslave-synths": [
     {
       "file": "screenshots/01-foundry.webp",
@@ -297,14 +351,6 @@
       "source": "https://raw.githubusercontent.com/hdslave/hdslave-Machine/main/docs/machine-screen.gif",
       "repo": "hdslave/hdslave-Machine",
       "note": "MPC Sample screen from the hdslave Machine README; lossless animated WebP"
-    }
-  ],
-  "hdslave-psychic-synth": [
-    {
-      "file": "screenshots/01-contact-sheet.webp",
-      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Psychic-Synth/main/docs/psychic-screen.gif",
-      "repo": "hdslave/hdslave-Psychic-Synth",
-      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
     }
   ],
   "hdslaveos": [
@@ -357,14 +403,6 @@
       "note": "Virtual MPC Sample emulator capture, hdslaveOS 5853b9a built from source; plug-ins Machine 1bd27b2, Foundry 9ebdaec, TB-MPC-3-P-0 e581e0d"
     }
   ],
-  "hdslave-reverie-synth": [
-    {
-      "file": "screenshots/01-reverie-pages.webp",
-      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Reverie-Synth/main/docs/reverie-pages.gif",
-      "repo": "hdslave/hdslave-Reverie-Synth",
-      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
-    }
-  ],
   "henryskillz-mod-kit": [
     {
       "file": "screenshots/01-henryskillz-splash.webp",
@@ -387,12 +425,57 @@
       "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit"
     }
   ],
-  "hdslave-slink-synth": [
+  "hs-dsb-remote": [
     {
-      "file": "screenshots/01-slink-panel.webp",
-      "source": "https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/main/docs/slink-screen.gif",
-      "repo": "hdslave/hdslave-Slink-Synth",
-      "note": "Upstream MPC Sample screen GIF converted to animated WebP."
+      "file": "screenshots/01-remote-panel.webp",
+      "source": "https://www.henryskillz.com/img/dsb/remote-panel.webp",
+      "note": "HS-DSB Remote panel UI from the maker site; WebP kept under 500 KB"
+    },
+    {
+      "file": "screenshots/02-remote-pads.webp",
+      "source": "https://www.henryskillz.com/img/dsb/remote-pads.webp",
+      "note": "HS-DSB Remote pads UI from the maker site; WebP kept under 500 KB"
+    },
+    {
+      "file": "screenshots/03-remote-map.webp",
+      "source": "https://www.henryskillz.com/img/dsb/dsb-remote-map.webp",
+      "note": "HS-DSB Remote map grid from the maker site; WebP kept under 500 KB"
+    }
+  ],
+  "hs-effects-1-4": [
+    {
+      "file": "screenshots/01-hs-heat.webp",
+      "source": "https://www.henryskillz.com/img/dsb/efx-suite/dsb-fx-heat.png",
+      "note": "HS Heat faceplate from the maker site; lossless WebP"
+    },
+    {
+      "file": "screenshots/02-hs-pump.webp",
+      "source": "https://www.henryskillz.com/img/dsb/efx-suite/dsb-fx-pump.png",
+      "note": "HS Pump faceplate from the maker site; lossless WebP"
+    },
+    {
+      "file": "screenshots/03-hs-para-eq.webp",
+      "source": "https://www.henryskillz.com/img/dsb/efx-suite/dsb-fx-para-eq.png",
+      "note": "HS Para EQ faceplate from the maker site; lossless WebP"
+    },
+    {
+      "file": "screenshots/04-hs-saturator.webp",
+      "source": "https://www.henryskillz.com/img/dsb/efx-suite/dsb-fx-saturator.png",
+      "note": "HS Saturator faceplate from the maker site; lossless WebP"
+    }
+  ],
+  "hs-plug-and-play-card": [
+    {
+      "file": "screenshots/01-hs-splash.webp",
+      "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/main/assets/henryskillz-splash-preview.png",
+      "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit",
+      "note": "HenrySkillz splash on the MPC Sample from the shared mod-kit assets; lossless WebP"
+    },
+    {
+      "file": "screenshots/02-hs-effects-list.webp",
+      "source": "https://raw.githubusercontent.com/Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit/main/assets/screens/hs-effects-list.png",
+      "repo": "Holla-Back-Entertainment/henryskillz-mpc-sample-mod-kit",
+      "note": "HS effects insert list on the MPC Sample; lossless WebP"
     }
   ],
   "hs-tools": [
@@ -545,6 +628,62 @@
       "note": "From the project README (sound-type filter)"
     }
   ],
+  "melodee-chip": [
+    {
+      "file": "screenshots/01-presets.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-chip",
+      "repo": "keremimo/mpc-vst-melodee-chip",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-voice-controls.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-chip",
+      "repo": "keremimo/mpc-vst-melodee-chip",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "melodee-modules": [
+    {
+      "file": "screenshots/01-drone-fifths.webp",
+      "source": "https://github.com/keremimo/melodee-modules",
+      "repo": "keremimo/melodee-modules",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-clap-module-picker.webp",
+      "source": "https://github.com/keremimo/melodee-modules",
+      "repo": "keremimo/melodee-modules",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "melodee-pd": [
+    {
+      "file": "screenshots/01-presets.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-pd",
+      "repo": "keremimo/mpc-vst-melodee-pd",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-wave-controls.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-pd",
+      "repo": "keremimo/mpc-vst-melodee-pd",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "melodee-poly": [
+    {
+      "file": "screenshots/01-presets.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-poly",
+      "repo": "keremimo/mpc-vst-melodee-poly",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-oscillator-controls.webp",
+      "source": "https://github.com/keremimo/mpc-vst-melodee-poly",
+      "repo": "keremimo/mpc-vst-melodee-poly",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "melodee-sample": [
     {
       "file": "screenshots/01-song.webp",
@@ -604,6 +743,26 @@
       "source": "https://github.com/LA-2500/MPC-600-S/releases/download/v1.1/MPC-600-S-Manual.pdf",
       "repo": "LA-2500/MPC-600-S",
       "note": "Original 640x480 UI image extracted without resizing from page 15 of the official operator manual."
+    }
+  ],
+  "mpc-addin-sample-kitload": [
+    {
+      "file": "screenshots/01-kitload-page.webp",
+      "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-kitload/main/docs/screenshots/kitload-page.gif",
+      "repo": "jacob-sabella/mpc-addin-sample-kitload",
+      "note": "Kitload page on the MPC Sample from the README; lossless animated WebP"
+    },
+    {
+      "file": "screenshots/02-kitload-prompt.webp",
+      "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-kitload/main/docs/screenshots/kitload-prompt.png",
+      "repo": "jacob-sabella/mpc-addin-sample-kitload",
+      "note": "Kitload prompt screen from the README; lossless WebP"
+    },
+    {
+      "file": "screenshots/03-kitload-settings.webp",
+      "source": "https://raw.githubusercontent.com/jacob-sabella/mpc-addin-sample-kitload/main/docs/screenshots/kitload-settings.png",
+      "repo": "jacob-sabella/mpc-addin-sample-kitload",
+      "note": "Kitload settings screen from the README; lossless WebP"
     }
   ],
   "mpc-addin-sample-rack": [
@@ -793,6 +952,26 @@
       "note": "Chop Editor screenshot from the project README; converted to WebP quality 92"
     }
   ],
+  "mpc-nam-player": [
+    {
+      "file": "screenshots/01-desktop-dark.webp",
+      "source": "https://raw.githubusercontent.com/iwazowsky/mpc-nam-player/main/docs/screenshots/desktop-dark.png",
+      "repo": "iwazowsky/mpc-nam-player",
+      "note": "NAM Player web UI (desktop dark) from the README; lossless WebP"
+    },
+    {
+      "file": "screenshots/02-phone-card.webp",
+      "source": "https://raw.githubusercontent.com/iwazowsky/mpc-nam-player/main/docs/screenshots/phone-card.png",
+      "repo": "iwazowsky/mpc-nam-player",
+      "note": "NAM Player phone card UI from the README; lossless WebP"
+    },
+    {
+      "file": "screenshots/03-phone-settings.webp",
+      "source": "https://raw.githubusercontent.com/iwazowsky/mpc-nam-player/main/docs/screenshots/phone-settings.png",
+      "repo": "iwazowsky/mpc-nam-player",
+      "note": "NAM Player phone settings UI from the README; lossless WebP"
+    }
+  ],
   "mpc-remote": [
     {
       "file": "screenshots/01-tile.webp",
@@ -825,6 +1004,20 @@
       "file": "logo.svg",
       "source": "https://raw.githubusercontent.com/jeffwebb-to/mpc-sample-doom/HEAD/docs/logo.svg",
       "repo": "jeffwebb-to/mpc-sample-doom"
+    }
+  ],
+  "mpc-sample-emulator": [
+    {
+      "file": "screenshots/01-sampqol-sequencer.webp",
+      "source": "https://raw.githubusercontent.com/Phenix2417/mpc-sample-emulator/main/docs/sampqol-sequencer.png",
+      "repo": "Phenix2417/mpc-sample-emulator",
+      "note": "Emulator running SampQOL sequencer from the README; lossless WebP"
+    },
+    {
+      "file": "screenshots/02-sampleboot.webp",
+      "source": "https://raw.githubusercontent.com/Phenix2417/mpc-sample-emulator/main/docs/sampleboot.png",
+      "repo": "Phenix2417/mpc-sample-emulator",
+      "note": "Emulator SampleBoot screen from the README; lossless WebP"
     }
   ],
   "mpc-sample-engine-ports": [
@@ -999,7 +1192,22 @@
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
-  "mpc-ui-toolkit": [],
+  "mpc-ui-toolkit": [
+    {
+      "file": "screenshots/01-birds-demo.webp",
+      "source": "https://raw.githubusercontent.com/garrettjwilke/mpc-ui-toolkit/main/examples/help/shots/birds.png",
+      "repo": "garrettjwilke/mpc-ui-toolkit",
+      "note": "MPC Sample UI toolkit help demo shot (birds); lossless WebP"
+    }
+  ],
+  "mpc-vst-plugins": [
+    {
+      "file": "screenshots/01-catalog-home.webp",
+      "source": "https://raw.githubusercontent.com/open-mpc/mpc-vst-plugins/main/docs/img/catalog-home.png",
+      "repo": "open-mpc/mpc-vst-plugins",
+      "note": "Open MPC catalog home UI from the toolchain docs; lossless WebP"
+    }
+  ],
   "mpc-xpj-builder": [
     {
       "file": "screenshots/01-gui-main.webp",
@@ -1027,14 +1235,6 @@
       "note": "Screenshot of the site filtered to the MPC Sample (1280×960)"
     }
   ],
-  "mpcraft": [
-    {
-      "file": "screenshots/01-window.webp",
-      "source": "https://jiripisa.github.io/mpcraft/assets/mpcraft-window.png",
-      "repo": "jiripisa/mpcraft",
-      "note": "Official welcome window from the MPCraft site; converted to lossless WebP without resizing"
-    }
-  ],
   "mpckit": [
     {
       "file": "screenshots/01-pads.webp",
@@ -1047,6 +1247,14 @@
       "note": "Sequences tab from the project README",
       "repo": "bajdev/MPCkit",
       "source": "https://raw.githubusercontent.com/bajdev/MPCkit/main/docs/images/sequences.png"
+    }
+  ],
+  "mpcraft": [
+    {
+      "file": "screenshots/01-window.webp",
+      "source": "https://jiripisa.github.io/mpcraft/assets/mpcraft-window.png",
+      "repo": "jiripisa/mpcraft",
+      "note": "Official welcome window from the MPCraft site; converted to lossless WebP without resizing"
     }
   ],
   "mpcsample": [
@@ -1167,6 +1375,76 @@
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
+  "sampleboot": [
+    {
+      "file": "screenshots/01-splash.gif",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/splash.gif",
+      "repo": "pxcm/SampleBoot",
+      "note": "Official single-screen animated splash, preserved unchanged"
+    },
+    {
+      "file": "screenshots/02-akai-firmware.webp",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "AKAI firmware menu (1/6), cropped from sampleboot-hero.png at (8, 8)-(648, 488); native 640x480, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/03-customos-lite.webp",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS Lite menu (2/6), cropped from sampleboot-screens-1.png at (736, 8)-(1056, 248); native 320x240, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/04-customos-v1.webp",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS v1.0 menu (3/6), cropped from sampleboot-hero.png at (692, 8)-(1332, 488); native 640x480, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/05-customos-v1-1.webp",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS v1.1 menu (4/6), cropped from sampleboot-screens-1.png at (372, 8)-(692, 248); native 320x240, no scaling or gutter"
+    },
+    {
+      "file": "screenshots/06-customos-v2.webp",
+      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
+      "repo": "pxcm/SampleBoot",
+      "note": "CustomOS v2.0 menu (5/6), cropped from sampleboot-hero.png at (1376, 8)-(2016, 488); native 640x480, no scaling or gutter"
+    }
+  ],
+  "samplescope": [
+    {
+      "file": "screenshots/01-demo.webp",
+      "source": "https://raw.githubusercontent.com/bmarcinb/SampleScope/main/docs/demo.gif",
+      "repo": "bmarcinb/SampleScope",
+      "note": "SampleScope demo GIF from the README; animated WebP (lossy mixed q50)"
+    },
+    {
+      "file": "screenshots/02-theme-default.webp",
+      "source": "https://raw.githubusercontent.com/bmarcinb/SampleScope/main/docs/themes/default.png",
+      "repo": "bmarcinb/SampleScope",
+      "note": "SampleScope default theme from the README; lossless WebP"
+    },
+    {
+      "file": "screenshots/03-theme-neon.webp",
+      "source": "https://raw.githubusercontent.com/bmarcinb/SampleScope/main/docs/themes/neon.png",
+      "repo": "bmarcinb/SampleScope",
+      "note": "SampleScope neon theme from the README; lossless WebP"
+    }
+  ],
+  "sampleseq3000": [
+    {
+      "file": "screenshots/01-sequencer.webp",
+      "source": "https://www.sampleseq3000.com/",
+      "note": "Captured by Sample Mods from sampleseq3000.com (sequencer grid)"
+    },
+    {
+      "file": "screenshots/02-controls.webp",
+      "source": "https://www.sampleseq3000.com/",
+      "note": "Captured by Sample Mods from sampleseq3000.com (pads, export, feel controls)"
+    }
+  ],
   "sampqol-os": [
     {
       "file": "screenshots/01-splash.webp",
@@ -1214,56 +1492,6 @@
       "repo": "jacob-sabella/mpc-addin-sample-scalemode"
     }
   ],
-  "sampleboot": [
-    {
-      "file": "screenshots/01-splash.gif",
-      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/splash.gif",
-      "repo": "pxcm/SampleBoot",
-      "note": "Official single-screen animated splash, preserved unchanged"
-    },
-    {
-      "file": "screenshots/02-akai-firmware.webp",
-      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
-      "repo": "pxcm/SampleBoot",
-      "note": "AKAI firmware menu (1/6), cropped from sampleboot-hero.png at (8, 8)-(648, 488); native 640x480, no scaling or gutter"
-    },
-    {
-      "file": "screenshots/03-customos-lite.webp",
-      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
-      "repo": "pxcm/SampleBoot",
-      "note": "CustomOS Lite menu (2/6), cropped from sampleboot-screens-1.png at (736, 8)-(1056, 248); native 320x240, no scaling or gutter"
-    },
-    {
-      "file": "screenshots/04-customos-v1.webp",
-      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
-      "repo": "pxcm/SampleBoot",
-      "note": "CustomOS v1.0 menu (3/6), cropped from sampleboot-hero.png at (692, 8)-(1332, 488); native 640x480, no scaling or gutter"
-    },
-    {
-      "file": "screenshots/05-customos-v1-1.webp",
-      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-screens-1.png",
-      "repo": "pxcm/SampleBoot",
-      "note": "CustomOS v1.1 menu (4/6), cropped from sampleboot-screens-1.png at (372, 8)-(692, 248); native 320x240, no scaling or gutter"
-    },
-    {
-      "file": "screenshots/06-customos-v2.webp",
-      "source": "https://raw.githubusercontent.com/pxcm/SampleBoot/main/docs/images/sampleboot-hero.png",
-      "repo": "pxcm/SampleBoot",
-      "note": "CustomOS v2.0 menu (5/6), cropped from sampleboot-hero.png at (1376, 8)-(2016, 488); native 640x480, no scaling or gutter"
-    }
-  ],
-  "sampleseq3000": [
-    {
-      "file": "screenshots/01-sequencer.webp",
-      "source": "https://www.sampleseq3000.com/",
-      "note": "Captured by Sample Mods from sampleseq3000.com (sequencer grid)"
-    },
-    {
-      "file": "screenshots/02-controls.webp",
-      "source": "https://www.sampleseq3000.com/",
-      "note": "Captured by Sample Mods from sampleseq3000.com (pads, export, feel controls)"
-    }
-  ],
   "smplutility": [
     {
       "file": "screenshots/01-panel.webp",
@@ -1291,6 +1519,18 @@
       "source": "https://gazillionindustries.com/landing-20261010/smplutility/media/lockup.png"
     }
   ],
+  "sxl": [
+    {
+      "file": "screenshots/01-main.webp",
+      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); SXL main view (Mixer / Effects / Grid)"
+    },
+    {
+      "file": "screenshots/02-sample-trim.webp",
+      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); SXL sample Trim page"
+    }
+  ],
   "tape-workshop": [
     {
       "file": "screenshots/01-splash.webp",
@@ -1315,6 +1555,14 @@
       "source": "https://github.com/bsauce42/tape-workshop-mpc-sample",
       "repo": "bsauce42/tape-workshop-mpc-sample",
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
+  "trackyard": [
+    {
+      "file": "screenshots/01-editor.webp",
+      "source": "https://raw.githubusercontent.com/drose030/trackyard/main/docs/images/editor.png",
+      "repo": "drose030/trackyard",
+      "note": "Trackyard editor UI from the README; lossless WebP"
     }
   ],
   "vigobeatz-stems-grid64": [
@@ -1363,96 +1611,6 @@
       "file": "screenshots/04-screen-shutdown.webp",
       "source": "https://raw.githubusercontent.com/orrpunk-art/virtual-mpc-sample/HEAD/docs/img/screen-shutdown.png",
       "repo": "orrpunk-art/virtual-mpc-sample"
-    }
-  ],
-  "melodee-modules": [
-    {
-      "file": "screenshots/01-drone-fifths.webp",
-      "source": "https://github.com/keremimo/melodee-modules",
-      "repo": "keremimo/melodee-modules",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    },
-    {
-      "file": "screenshots/02-clap-module-picker.webp",
-      "source": "https://github.com/keremimo/melodee-modules",
-      "repo": "keremimo/melodee-modules",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    }
-  ],
-  "melodee-chip": [
-    {
-      "file": "screenshots/01-presets.webp",
-      "source": "https://github.com/keremimo/mpc-vst-melodee-chip",
-      "repo": "keremimo/mpc-vst-melodee-chip",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    },
-    {
-      "file": "screenshots/02-voice-controls.webp",
-      "source": "https://github.com/keremimo/mpc-vst-melodee-chip",
-      "repo": "keremimo/mpc-vst-melodee-chip",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    }
-  ],
-  "melodee-pd": [
-    {
-      "file": "screenshots/01-presets.webp",
-      "source": "https://github.com/keremimo/mpc-vst-melodee-pd",
-      "repo": "keremimo/mpc-vst-melodee-pd",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    },
-    {
-      "file": "screenshots/02-wave-controls.webp",
-      "source": "https://github.com/keremimo/mpc-vst-melodee-pd",
-      "repo": "keremimo/mpc-vst-melodee-pd",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    }
-  ],
-  "melodee-poly": [
-    {
-      "file": "screenshots/01-presets.webp",
-      "source": "https://github.com/keremimo/mpc-vst-melodee-poly",
-      "repo": "keremimo/mpc-vst-melodee-poly",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    },
-    {
-      "file": "screenshots/02-oscillator-controls.webp",
-      "source": "https://github.com/keremimo/mpc-vst-melodee-poly",
-      "repo": "keremimo/mpc-vst-melodee-poly",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
-    }
-  ],
-  "dfos": [
-    {
-      "file": "screenshots/01-main.webp",
-      "source": "https://getdfos.com/plates/bento-main.ae6a8cf6.png",
-      "note": "Main screen plate from getdfos.com; lossless WebP"
-    },
-    {
-      "file": "screenshots/02-grid.webp",
-      "source": "https://getdfos.com/plates/bento-grid.20ead50c.png",
-      "note": "Grid editor plate from getdfos.com; lossless WebP"
-    },
-    {
-      "file": "screenshots/03-mixer.webp",
-      "source": "https://getdfos.com/plates/bento-mixer.be00cfaa.png",
-      "note": "Mixer plate from getdfos.com; lossless WebP"
-    },
-    {
-      "file": "screenshots/04-tracks.webp",
-      "source": "https://getdfos.com/plates/bento-tracks-choosing.0597cc1c.png",
-      "note": "New-track chooser plate from getdfos.com; lossless WebP"
-    }
-  ],
-  "sxl": [
-    {
-      "file": "screenshots/01-main.webp",
-      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); SXL main view (Mixer / Effects / Grid)"
-    },
-    {
-      "file": "screenshots/02-sample-trim.webp",
-      "source": "https://www.youtube.com/watch?v=qmQVvTvBr2c",
-      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12); SXL sample Trim page"
     }
   ]
 }
