@@ -263,6 +263,7 @@
 	.release-row {
 		background: var(--mpc-body-mid);
 		border: 2px solid #282b34;
+		border-left: 4px solid var(--pad-glow, var(--mpc-btn-orange));
 		border-radius: var(--radius);
 		box-shadow:
 			inset 0 1px 0 rgb(255 255 255 / 0.55),
@@ -581,15 +582,15 @@
 
 	@media (max-width: 560px) {
 		.release-row.is-compact {
-			padding: 0.24rem 0.48rem;
+			padding: 0.35rem 0.55rem;
 		}
 
 		.compact-grid {
 			display: grid;
 			grid-template-columns: auto minmax(0, 1fr) auto;
 			grid-template-rows: auto auto;
-			column-gap: 0.45rem;
-			row-gap: 0.12rem;
+			column-gap: 0.55rem;
+			row-gap: 0.25rem;
 			align-items: center;
 		}
 
@@ -641,20 +642,15 @@
 			display: inline;
 		}
 
-		.no-version .compact-grid {
-			display: flex;
-			grid-template-columns: none;
-			grid-template-rows: none;
-			gap: 0.4rem;
+		.no-version .compact-name {
+			grid-column: 2 / span 2;
+			grid-row: 1;
 		}
 
-		.is-compact.no-version .release-bezel {
-			width: 32px;
-			height: 24px;
-		}
-
-		.no-version .compact-date {
-			margin-left: auto;
+		.no-version .compact-cat {
+			grid-column: 2;
+			grid-row: 2;
+			justify-self: start;
 		}
 	}
 </style>

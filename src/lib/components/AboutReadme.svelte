@@ -127,6 +127,7 @@
 		background: #f4f2ef;
 		color: #1c1e24;
 		border: 2px solid #282b34;
+		border-top: 4px solid var(--pad-glow, var(--mpc-btn-orange));
 		border-radius: var(--radius);
 		box-shadow:
 			inset 0 1px 0 rgb(255 255 255 / 0.8),

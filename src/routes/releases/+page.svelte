@@ -338,8 +338,21 @@
 	}
 
 	.day-heading {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
 		padding-bottom: 0.3rem;
 		border-bottom: 1.5px solid var(--mpc-body-recess);
+	}
+
+	.day-heading::before {
+		content: '';
+		width: 10px;
+		height: 4px;
+		border-radius: 2px;
+		background: var(--mpc-btn-orange);
+		box-shadow: 0 0 6px color-mix(in srgb, var(--mpc-btn-orange) 55%, transparent);
+		flex-shrink: 0;
 	}
 
 	.release-feed-list {
