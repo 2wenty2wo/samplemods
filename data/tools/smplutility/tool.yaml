@@ -10,6 +10,7 @@ tags:
   - stems
   - usb
 install: desktop
+firmware: 1.2.0+ # https://gazillionindustries.com/smplutility/ — "MPC Sample firmware 1.2.0 or later, with SD Card Access on."
 runs_on: [desktop]
 audience: [musician, curious]
 price: free
