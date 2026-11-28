@@ -42,6 +42,58 @@
 		query = next;
 		onQueryInput?.(next);
 	}
+
+	/** @type {HTMLDivElement | null} */
+	let fwRockerEl = $state(null);
+	let fwPillX = $state(0);
+	let fwPillW = $state(0);
+	/** Pill measured and painted; button active fill hands off to the pill. */
+	let fwPillReady = $state(false);
+	/** Transitions enabled only after the first correct position (no load slide). */
+	let fwPillAnimate = $state(false);
+
+	const fwPillLit = $derived(firmwareFilterGlow(firmware));
+
+	function measureFwPill() {
+		const rocker = fwRockerEl;
+		if (!rocker) return;
+		const active = rocker.querySelector('.fw-rocker-btn[aria-pressed="true"]');
+		if (!(active instanceof HTMLElement)) return;
+		fwPillX = active.offsetLeft;
+		fwPillW = active.offsetWidth;
+	}
+
+	$effect(() => {
+		firmware;
+		filteredCount;
+		totalMods;
+		firmwareCounts;
+		const rocker = fwRockerEl;
+		if (!rocker) return;
+
+		const id = requestAnimationFrame(() => {
+			measureFwPill();
+			if (!fwPillReady) {
+				fwPillReady = true;
+				requestAnimationFrame(() => {
+					fwPillAnimate = true;
+				});
+			}
+		});
+		return () => cancelAnimationFrame(id);
+	});
+
+	$effect(() => {
+		const rocker = fwRockerEl;
+		if (!rocker || typeof ResizeObserver === 'undefined') return;
+
+		const ro = new ResizeObserver(() => measureFwPill());
+		ro.observe(rocker);
+		for (const btn of rocker.querySelectorAll('.fw-rocker-btn')) {
+			ro.observe(btn);
+		}
+		return () => ro.disconnect();
+	});
 </script>
 
 <search class="filter-bar" aria-label="Filter and sort entries">
@@ -136,7 +188,19 @@
 
 		<div class="deck-field fw-field">
 			<span class="silk-label">FIRMWARE</span>
-			<div class="fw-rocker" role="group" aria-label="Firmware">
+			<div
+				class="fw-rocker"
+				class:pill-ready={fwPillReady}
+				bind:this={fwRockerEl}
+				role="group"
+				aria-label="Firmware"
+			>
+				<span
+					class="fw-rocker-pill"
+					class:animate={fwPillAnimate}
+					style="--btn-lit: {fwPillLit}; transform: translateX({fwPillX}px); width: {fwPillW}px;"
+					aria-hidden="true"
+				></span>
 				<button
 					type="button"
 					class="fw-rocker-btn"
@@ -367,6 +431,7 @@
 
 /* Recessed Segmented Rocker for Firmware */
 .fw-rocker {
+		position: relative;
 		display: inline-flex;
 		align-items: stretch;
 		min-height: 36px;
@@ -378,7 +443,40 @@
 		gap: 2px;
 	}
 
+.fw-rocker-pill {
+		position: absolute;
+		top: 3px;
+		bottom: 3px;
+		left: 0;
+		z-index: 0;
+		border-radius: 3px;
+		background-color: var(--btn-lit, var(--mpc-btn-orange));
+		box-shadow: 0 0 8px color-mix(in srgb, var(--btn-lit, var(--mpc-btn-orange)) 55%, transparent);
+		pointer-events: none;
+		opacity: 0;
+	}
+
+.fw-rocker.pill-ready .fw-rocker-pill {
+		opacity: 1;
+	}
+
+.fw-rocker-pill.animate {
+		transition:
+			transform 250ms cubic-bezier(0.22, 1.2, 0.36, 1),
+			width 250ms cubic-bezier(0.22, 1.2, 0.36, 1),
+			background-color 220ms ease-out,
+			box-shadow 220ms ease-out;
+	}
+
+@media (prefers-reduced-motion: reduce) {
+		.fw-rocker-pill.animate {
+			transition: none;
+		}
+	}
+
 .fw-rocker-btn {
+		position: relative;
+		z-index: 1;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -420,10 +518,21 @@
 		background: rgb(255 255 255 / 0.08);
 	}
 
-.fw-rocker-btn[aria-pressed='true'] {
+/* Static active fill until the sliding pill is measured (SSR / first paint). */
+.fw-rocker:not(.pill-ready) .fw-rocker-btn[aria-pressed='true'] {
 		background: var(--btn-lit, var(--mpc-btn-orange));
 		color: var(--mpc-pad-text);
 		box-shadow: 0 0 8px color-mix(in srgb, var(--btn-lit, var(--mpc-btn-orange)) 55%, transparent);
+	}
+
+.fw-rocker.pill-ready .fw-rocker-btn[aria-pressed='true'] {
+		background: transparent;
+		color: var(--mpc-pad-text);
+		box-shadow: none;
+	}
+
+.fw-rocker.pill-ready .fw-rocker-btn[aria-pressed='true']:hover {
+		background: transparent;
 	}
 
 .fw-rocker-btn[aria-pressed='true'] .r-count {
