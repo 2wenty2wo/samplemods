@@ -100,6 +100,7 @@ import { hostnameOf } from '$lib/categories.js';
 .release-card {
 		background: var(--mpc-body-mid);
 		border: 2px solid #282b34;
+		border-left: 4px solid var(--pad-glow, var(--mpc-btn-orange));
 		border-radius: var(--radius);
 		box-shadow:
 			inset 0 1px 0 rgb(255 255 255 / 0.55),

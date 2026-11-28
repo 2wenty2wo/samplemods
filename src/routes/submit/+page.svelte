@@ -206,6 +206,7 @@ audience: [musician]
 	.info-card {
 		background: var(--mpc-body-mid);
 		border: 2px solid #282b34;
+		border-top: 4px solid var(--mpc-btn-orange);
 		border-radius: var(--radius);
 		padding: 1.25rem;
 		box-shadow:

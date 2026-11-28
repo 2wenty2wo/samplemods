@@ -219,7 +219,7 @@ import { base } from '$app/paths';
 	}
 
 .mini-bezel {
-		width: 72px;
+		width: 64px;
 		flex-shrink: 0;
 		border-width: 2px;
 	}
@@ -264,14 +264,14 @@ import { base } from '$app/paths';
 	}
 
 .compat-pad-card {
-		padding: 0.42rem 0.6rem;
-		gap: 0.6rem;
+		padding: 0.55rem 0.75rem;
+		gap: 0.75rem;
 	}
 
 .compat-bezel {
-		width: 48px;
-		border-width: 1.5px;
-		border-radius: 4px;
+		width: 64px;
+		border-width: 2px;
+		border-radius: 5px;
 	}
 
 .compat-initials {

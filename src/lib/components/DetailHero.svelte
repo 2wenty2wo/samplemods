@@ -398,5 +398,18 @@ import { base } from '$app/paths';
 			padding: 0.95rem;
 			gap: 1rem;
 		}
+
+.hero-actions {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+			gap: 0.5rem;
+		}
+
+.hero-actions .hw-action-btn.orange {
+			grid-column: 1 / -1;
+			order: -1;
+			padding: 0.58rem 0.85rem;
+			font-size: 0.78rem;
+		}
 	}
 </style>

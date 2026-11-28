@@ -339,12 +339,12 @@
 			gap: 1.65rem;
 		}
 
-.detail-side-col {
+.detail-main-col {
 			grid-column: 1;
 			grid-row: 1;
 		}
 
-.detail-main-col {
+.detail-side-col {
 			grid-column: 1;
 			grid-row: 2;
 		}
