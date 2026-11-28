@@ -4,6 +4,7 @@ description: >-
   are not available yet.
 repo: Daniel-Hillman/dd-mods-releases
 author: Daniel-Hillman
+status: beta
 runs_on:
   - desktop
 install: desktop
