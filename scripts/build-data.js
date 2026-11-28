@@ -114,7 +114,7 @@ export function computeFirmwareStatus(entry, compatFile = {}, launcherNamesById 
 		}
 	}
 
-	if (fw) {
+	if (has13) {
 		return {
 			firmware_status: '1.3',
 			firmware_label: 'FW 1.3',

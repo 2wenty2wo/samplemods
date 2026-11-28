@@ -99,6 +99,10 @@ assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4', firmware_note: null }
 	);
 	assert.deepEqual(
+		computeFirmwareStatus({ id: 'mod-14x', firmware: '1.3.0.12, 1.4.x (v1.1.4+)' }, mockCompat, names),
+		{ firmware_status: '1.4', firmware_label: 'FW 1.3 / 1.4', firmware_note: null }
+	);
+	assert.deepEqual(
 		computeFirmwareStatus({ id: 'mod-14', firmware: '1.4.0.8' }, mockCompat, names),
 		{ firmware_status: '1.4', firmware_label: 'FW 1.4', firmware_note: null }
 	);
@@ -113,6 +117,10 @@ assert.equal(releaseDisplayLabel('GRIDZILLA', null), 'GRIDZILLA');
 	assert.deepEqual(
 		computeFirmwareStatus({ id: 'mod-13', firmware: '1.3.0.12' }, mockCompat, names),
 		{ firmware_status: '1.3', firmware_label: 'FW 1.3', firmware_note: null }
+	);
+	assert.deepEqual(
+		computeFirmwareStatus({ id: 'mod-12', firmware: '1.2.0+' }, mockCompat, names),
+		{ firmware_status: null, firmware_label: null, firmware_note: null }
 	);
 	assert.deepEqual(
 		computeFirmwareStatus({ id: 'mod-none' }, mockCompat, names),
