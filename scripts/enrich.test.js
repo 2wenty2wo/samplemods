@@ -117,17 +117,22 @@ try {
 	assert.equal(afterFail['owner/a'].stars, 7, 'other repos must still update after a 5xx');
 	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME', '5xx retention must preserve other READMEs');
 	const aSnapshot = afterFail['owner/a'];
-	const release502 = run({ FAIL_RELEASES_502: '1' });
+	const report404 = path.join(fixture, 'enrich-404.json');
+	const release502 = run({ FAIL_RELEASES_502: '1', ENRICH_404_PATH: report404 });
 	assert.equal(release502.status, 0, release502.stderr || release502.stdout);
 	assert.match(`${release502.stdout}\n${release502.stderr}`, /::warning::GitHub owner\/a: HTTP 502, keeping previous snapshot/);
 	const after502 = JSON.parse(fs.readFileSync(output, 'utf8'));
 	assert.deepEqual(after502['owner/a'], aSnapshot, '502 on releases must keep previous github.json entry');
 	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME', '502 on releases must keep README cache');
 	assert.equal(after502['owner/z'].stars, 7, 'other repos must still update when one repo 502s');
+	assert.equal(
+		JSON.parse(fs.readFileSync(report404, 'utf8')).some((row) => row.repo === 'owner/a'),
+		false,
+		'5xx retention must not report the repo as a 404'
+	);
 	const limited = run({ RATE_LIMIT: '1' });
 	assert.notEqual(limited.status, 0);
 	assert.match(limited.stderr, /rate limited.*retry.*GITHUB_TOKEN/);
-	const report404 = path.join(fixture, 'enrich-404.json');
 	const missing = run({ GONE_404: '1', ENRICH_404_PATH: report404 });
 	assert.equal(missing.status, 0, missing.stderr || missing.stdout);
 	assert.match(`${missing.stdout}\n${missing.stderr}`, /::warning::GitHub owner\/gone: 404, keeping previous snapshot/);

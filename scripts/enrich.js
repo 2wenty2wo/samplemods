@@ -63,11 +63,13 @@ const previous = fs.existsSync(output) ? JSON.parse(fs.readFileSync(output, 'utf
 const github = {};
 const readmes = new Map();
 const retainedRepos = new Set();
+const missingRepos = new Set();
 function keepPreviousSnapshot(repo, status) {
 	const label = status === 404 ? '404' : `HTTP ${status}`;
 	console.warn(`::warning::GitHub ${repo}: ${label}, keeping previous snapshot`);
 	if (previous[repo]) github[repo] = previous[repo];
 	retainedRepos.add(repo);
+	if (status === 404) missingRepos.add(repo);
 }
 for (const repo of repos) {
 	if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error(`Invalid GitHub repository: ${repo}`);
@@ -149,7 +151,7 @@ writeIfChanged(contributorsOutput, JSON.stringify({
 	contributors: catalogContributors
 }, null, 2) + '\n');
 if (process.env.ENRICH_404_PATH) {
-	const rows = open404Entries(entries, retainedRepos);
+	const rows = open404Entries(entries, missingRepos);
 	fs.mkdirSync(path.dirname(process.env.ENRICH_404_PATH), { recursive: true });
 	fs.writeFileSync(process.env.ENRICH_404_PATH, JSON.stringify(rows, null, 2) + '\n');
 }
