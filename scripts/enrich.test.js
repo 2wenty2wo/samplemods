@@ -24,6 +24,7 @@ globalThis.fetch = async (url, { headers }) => {
     ]);
   }
   if (process.env.FAIL_API && url.includes('/z/readme')) return reply({}, 503);
+  if (process.env.FAIL_RELEASES_502 && url.includes('/a/releases?')) return reply({}, 502);
   if (process.env.RATE_LIMIT) return reply({}, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1800000000' });
   if (process.env.GONE_404 && new URL(url).pathname === '/repos/owner/gone') return reply({}, 404);
   const absent = url.includes('/z/');
@@ -43,7 +44,7 @@ globalThis.fetch = async (url, { headers }) => {
 function run(extra = {}) {
 	return spawnSync(process.execPath, ['--import', `data:text/javascript,${encodeURIComponent(mock)}`,
 		path.join(fixture, 'scripts', 'enrich.js')], {
-		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', RATE_LIMIT: '', NO_README: '', EXPECT_PREFIX: '', GONE_404: '', ...extra }
+		encoding: 'utf8', env: { ...process.env, GITHUB_TOKEN: 'test-token', FAIL_API: '', FAIL_RELEASES_502: '', RATE_LIMIT: '', NO_README: '', EXPECT_PREFIX: '', GONE_404: '', ...extra }
 	});
 }
 
@@ -109,10 +110,20 @@ try {
 	assert.equal(fs.statSync(readme).mtimeMs, 1000000000, 'unchanged README must not be rewritten');
 	assert.equal(fs.statSync(contributorsFile).mtimeMs, 1000000000, 'unchanged contributors must not be rewritten');
 	const failed = run({ FAIL_API: '1' });
-	assert.notEqual(failed.status, 0);
-	assert.match(failed.stderr, /HTTP 503/);
-	assert.equal(fs.readFileSync(output, 'utf8'), original, 'API failures must preserve metadata');
-	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME', 'API failures must preserve READMEs');
+	assert.equal(failed.status, 0, failed.stderr || failed.stdout);
+	assert.match(`${failed.stdout}\n${failed.stderr}`, /::warning::GitHub owner\/z: HTTP 503, keeping previous snapshot/);
+	const afterFail = JSON.parse(fs.readFileSync(output, 'utf8'));
+	assert.deepEqual(afterFail['owner/z'], data['owner/z'], '5xx on a sub-request must keep that repo snapshot');
+	assert.equal(afterFail['owner/a'].stars, 7, 'other repos must still update after a 5xx');
+	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME', '5xx retention must preserve other READMEs');
+	const aSnapshot = afterFail['owner/a'];
+	const release502 = run({ FAIL_RELEASES_502: '1' });
+	assert.equal(release502.status, 0, release502.stderr || release502.stdout);
+	assert.match(`${release502.stdout}\n${release502.stderr}`, /::warning::GitHub owner\/a: HTTP 502, keeping previous snapshot/);
+	const after502 = JSON.parse(fs.readFileSync(output, 'utf8'));
+	assert.deepEqual(after502['owner/a'], aSnapshot, '502 on releases must keep previous github.json entry');
+	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME', '502 on releases must keep README cache');
+	assert.equal(after502['owner/z'].stars, 7, 'other repos must still update when one repo 502s');
 	const limited = run({ RATE_LIMIT: '1' });
 	assert.notEqual(limited.status, 0);
 	assert.match(limited.stderr, /rate limited.*retry.*GITHUB_TOKEN/);
@@ -140,7 +151,7 @@ try {
 	assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(output, 'utf8'))), ['owner/a', 'owner/gone', 'owner/z'], 'shared repo fetched once');
 	assert.equal(fs.readFileSync(readme, 'utf8'), '# A\nREADME');
 	assert.ok(!fs.existsSync(path.join(fixture, 'data/readme/a-boot.md')), 'about.md entries skip README mirroring');
-	console.log('Enrichment checks passed: README/release caches, stats, auth, no-op writes, rate limits, failure preservation, shared-repo prefix fetch and about.md skip.');
+	console.log('Enrichment checks passed: README/release caches, stats, auth, no-op writes, rate limits, 5xx retention, failure preservation, shared-repo prefix fetch and about.md skip.');
 } finally {
 	fs.rmSync(fixture, { recursive: true, force: true });
 }
