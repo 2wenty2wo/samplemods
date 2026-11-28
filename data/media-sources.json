@@ -1208,12 +1208,40 @@
       "note": "MPC Sample UI toolkit help demo shot (birds); lossless WebP"
     }
   ],
+  "mpc-vst-plaits": [
+    {
+      "file": "screenshots/01-plaits-editor.webp",
+      "source": "https://github.com/keremimo/mpc-vst-plaits/releases/tag/v1.1.0",
+      "repo": "keremimo/mpc-vst-plaits",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/02-plaits-envelope.webp",
+      "source": "https://github.com/keremimo/mpc-vst-plaits/releases/tag/v1.1.0",
+      "repo": "keremimo/mpc-vst-plaits",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    },
+    {
+      "file": "screenshots/03-plaits-modulation.webp",
+      "source": "https://github.com/keremimo/mpc-vst-plaits/releases/tag/v1.1.0",
+      "repo": "keremimo/mpc-vst-plaits",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
+    }
+  ],
   "mpc-vst-plugins": [
     {
       "file": "screenshots/01-catalog-home.webp",
       "source": "https://raw.githubusercontent.com/open-mpc/mpc-vst-plugins/main/docs/img/catalog-home.png",
       "repo": "open-mpc/mpc-vst-plugins",
       "note": "Open MPC catalog home UI from the toolchain docs; lossless WebP"
+    }
+  ],
+  "mpc-vst-tuner": [
+    {
+      "file": "screenshots/01-tuner-needle-idle.webp",
+      "source": "https://github.com/jacob-sabella/mpc-vst-tuner/releases/tag/tuner-vst-v1.1.4",
+      "repo": "jacob-sabella/mpc-vst-tuner",
+      "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
   "mpc-xpj-builder": [
