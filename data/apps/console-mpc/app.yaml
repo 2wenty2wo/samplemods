@@ -16,8 +16,8 @@ status: beta
 runs_on: [device]
 audience: [musician]
 downloads:
-  - label: Download 0.0.30 (stable)
-    url: https://github.com/briwil/console-mpc/releases/tag/v0.0.30
+  - label: Latest stable release
+    url: https://github.com/briwil/console-mpc/releases/latest
   - label: Rolling prerelease (SD card)
     url: https://github.com/briwil/console-mpc/releases/tag/card-latest
 
