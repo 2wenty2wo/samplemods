@@ -232,8 +232,8 @@
   "LA-2500/MPC-600-S": {
     "stars": 19,
     "forks": 3,
-    "pushed_at": "2026-11-27T20:59:24Z",
-    "last_commit_at": "2026-11-27T20:59:23Z",
+    "pushed_at": "2026-11-28T03:29:51Z",
+    "last_commit_at": "2026-11-28T03:29:29Z",
     "contributors": 1,
     "open_issues": 18,
     "license": "MIT",
@@ -241,10 +241,19 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v2.0J",
-      "published_at": "2026-11-27T20:27:11Z"
+      "tag": "v2.0K",
+      "published_at": "2026-11-28T03:29:51Z"
     },
     "releases": [
+      {
+        "tag": "v2.0K",
+        "name": "LA Version 2.0K",
+        "prerelease": false,
+        "published_at": "2026-11-28T03:29:51Z",
+        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0K",
+        "body": "## LA Version 2.0K\n\n- **Sync RECEIVE now locks to the clock.** The sequence follows each incoming MIDI clock, a little faster or slower to stay with it, and waits if the clock pauses. The tempo shown matches within a beat of Start (it used to guess after 2 seconds and then drift). A Start while playing goes back to the top. MIDI in is also read as it arrives, no longer up to a second late. Set **Sync In** to USB for a computer, EXT for the MIDI IN jack.\n- **Volume knob at power-on.** The MPC 600 S now asks the panel where its knobs are at start-up, so it starts at the volume the knob is set to: knob down, no sound. The bottom of the knob is silent, and a fast turn all the way down is no longer missed.\n- **Track Mute defaults to NEXT NOTE** (Additional Settings 2): a mute lets the sound end, an unmute waits for the track's next note. Settings saved before 2.0K start at NEXT NOTE once; AT ONCE can still be chosen.\n- Manual updated.\n",
+        "truncated": false
+      },
       {
         "tag": "v2.0J",
         "name": "LA Version 2.0J",
@@ -261,15 +270,6 @@
         "published_at": "2026-11-27T04:38:31Z",
         "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0I",
         "body": "## LA Version 2.0I\n\n- **Phantom pads, buttons and wheel fixed.** At power-on the stock app can switch the panel's MIDI port to timestamp framing (every message wrapped in a 32-byte block with the time). Linux keeps that setting for whoever opens the port next. On those boots the MPC 600 S read the timestamps as messages: pads you didn't touch played, pages opened by themselves (Input Effects), the wheel jumped. Whether it happened depended on how far the stock app got before being stopped, so it came and went between boots. The MPC 600 S now switches framing off on the panel, the MIDI jacks and USB MIDI when it opens them. `mpc-os.log` on the card records `panel port: plain bytes (framing off)` at each start.\n- **Real presses no longer thrown away.** A raw recording of the panel showed that pad hits don't move the wheel or press buttons, and that turning the wheel doesn't play pads. The filters that assumed they did are gone. They were dropping pad hits under velocity 80 for 0.4 s after the wheel moved (ghost notes), single wheel steps just after a pad, B1-B3 and -/+ just after a pad, and a softer pad played together with a harder neighbour. Pad Thresh (default 30) is the pads' one filter for light hits. The guards after K1-K3 and the slider stay.\n- **Track Mute setting** (Additional Settings 2): **AT ONCE** (default, as since 2.0F) or **NEXT NOTE** (as before 2.0F: a mute lets the sound end, an unmute waits for the track's next note).\n- **Clear Pgm asks which program.** SHIFT + B3 on Program Config starts on the program shown, and the wheel picks any other program with sounds. Before, reaching another program meant moving the track onto it, and Undo after clearing could leave the track on another program, so a chopped sequence played another program's pads (chops \"out of order\").\n- **Start screen:** Original MPC design by Roger Linn, Akai Electric Co., Ltd.\n- Manual updated.",
-        "truncated": false
-      },
-      {
-        "tag": "v2.0H",
-        "name": "LA Version 2.0H",
-        "prerelease": false,
-        "published_at": "2026-11-26T03:34:02Z",
-        "html_url": "https://github.com/LA-2500/MPC-600-S/releases/tag/v2.0H",
-        "body": "## LA Version 2.0H\n\n- **Knobs no longer move things by themselves.** A knob (or the slider, or the main volume) resting between two positions sends a constant flicker, and each reading was taken as a turn. Zoomed in on Trim, a resting Zone End knob could nudge Zone End and make the view jump from Start to End; on Trim, K3 could move the cursor to Do. Now a control has to move two steps from rest before it counts. Turning still takes every step, turning back takes two, and after 0.4 s still it is at rest again. A flicker never changes anything. Also: B1-B3, -/+ and the wheel's push just after a knob turn are ignored as the panel shaking (as after a pad press), and a flickering knob no longer makes light pad presses get ignored.\n- **Playhead.** While a pad plays, a solid line moves along the waveform where the sound is, on Trim, Loop and Zone Assign, to set Zone End by eye.\n- **MPC60 pitching.** Every sound now plays at another pitch by zero-order hold, taken from the MPC60: each output is the stored sample at or before the play position, never blended, with the pitch step in 4.12 fixed point as on the MPC60 and MPC3000 chips. Pitched down it has the stepped, metallic edge, pitched up the crunch. Pitch on Sample New Sound (before a sound is stored) stays high quality. The manual has a new chapter, **Pitching**, comparing the MPC60, the MPC3000's 8-point interpolation, modern methods and the stock OS, with measurements.\n- **USB Indiv Out knobs.** K1 picks the track (or pad), K2 sets its Indiv Out Volume, K3 its Output.\n\nEverything from 2.0A to 2.0G is included.",
         "truncated": false
       }
     ],
@@ -523,8 +523,8 @@
   "briwil/console-mpc": {
     "stars": 3,
     "forks": 0,
-    "pushed_at": "2026-11-23T07:37:02Z",
-    "last_commit_at": "2026-11-23T07:37:00Z",
+    "pushed_at": "2026-11-28T03:17:03Z",
+    "last_commit_at": "2026-11-28T03:14:30Z",
     "contributors": 1,
     "open_issues": 0,
     "license": "GPL-3.0",
@@ -537,30 +537,30 @@
     },
     "releases": [
       {
+        "tag": "card-latest",
+        "name": "Console for the MPC Sample: SD card zip (built 2026-11-28 03:16 UTC)",
+        "prerelease": true,
+        "published_at": "2026-11-28T03:17:03Z",
+        "html_url": "https://github.com/briwil/console-mpc/releases/tag/card-latest",
+        "body": "Unzip onto the root of the SD card (the autorun and Console folders), put the card in the MPC Sample, switch on. See Console/README.txt inside.",
+        "truncated": false
+      },
+      {
+        "tag": "bridge-latest",
+        "name": "MPC bridge (built 2026-11-28 03:15 UTC)",
+        "prerelease": true,
+        "published_at": "2026-11-28T03:15:21Z",
+        "html_url": "https://github.com/briwil/console-mpc/releases/tag/bridge-latest",
+        "body": "libjack_mpc.so, bridge_demo, bootmenu and the launcher scripts, built for the MPC Sample (aarch64).",
+        "truncated": false
+      },
+      {
         "tag": "v0.0.30",
         "name": "Console for the MPC Sample v0.0.30",
         "prerelease": false,
         "published_at": "2026-11-23T07:24:14Z",
         "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.30",
         "body": "## 0.0.30\n\n- Fix: 0.0.29 didn't start (Console went back to the MPC OS after the start-up animation): the sound bridge was built in a way the Sample couldn't load.\n\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.0.29",
-        "name": "Console for the MPC Sample v0.0.29",
-        "prerelease": false,
-        "published_at": "2026-11-23T07:01:24Z",
-        "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.29",
-        "body": "## 0.0.29\n\n- Screen recorder: also records every pad and button light. The After Effects script adds PAD n COLOR (looking like the real LED), PAD n LIT and a LIT slider for each button.\n- After Effects script: every control always gets a slider (untouched ones stay at 0), so expressions work with any recording.\n- PAD n PRESSURE follows the whole press: the hit's strength, higher while squeezed, 0 when let go.\n\n",
-        "truncated": false
-      },
-      {
-        "tag": "v0.0.28",
-        "name": "Console for the MPC Sample v0.0.28",
-        "prerelease": false,
-        "published_at": "2026-11-23T04:02:51Z",
-        "html_url": "https://github.com/briwil/console-mpc/releases/tag/v0.0.28",
-        "body": "## 0.0.28\n\n- Screen recorder: hold Shift in SETTINGS to show SCREEN REC. It records the screen, the sound and every control you touch to the card (ConsoleRecordings). tools/screenrec-convert.py on a Mac turns a recording into a PNG sequence, matching audio and an After Effects script with a slider for every control.\n- Shift + STOP on the welcome screen now shows the leave menu (it was hidden behind it).\n- While the leave menu is up, the wheel only moves the menu (it also moved the sequencer's box behind it).\n\n",
         "truncated": false
       }
     ],
@@ -1267,14 +1267,14 @@
     "archived": false
   },
   "hdslave/hdslave-MPCSample-Synths-and-Drum-Machines": {
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-27T17:42:15Z",
-    "last_commit_at": "2026-11-27T17:37:41Z",
+    "pushed_at": "2026-11-28T05:45:02Z",
+    "last_commit_at": "2026-11-28T05:44:58Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
-    "description": "The hdslave synthesizers and drum machines for the Akai MPC Sample (CLAP plug-ins), and hdslaveOS, the Melodee fork they are made for, in one clone (git submodules)",
+    "description": "The hdslave synthesizers, drum machines and effect for the Akai MPC Sample (CLAP plug-ins), and hdslaveOS, the techno OS built on Melodee they are made for, in one clone (git submodules)",
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
@@ -1591,8 +1591,8 @@
   "hdslave/hdslave-Reverie-Synth": {
     "stars": 1,
     "forks": 0,
-    "pushed_at": "2026-11-27T00:35:12Z",
-    "last_commit_at": "2026-11-26T23:23:25Z",
+    "pushed_at": "2026-11-28T05:16:39Z",
+    "last_commit_at": "2026-11-28T05:14:48Z",
     "contributors": 1,
     "open_issues": 0,
     "license": null,
@@ -1600,35 +1600,35 @@
     "default_branch": "main",
     "readme_path": "README.md",
     "latest_release": {
-      "tag": "v0.6.4",
-      "published_at": "2026-11-27T00:35:12Z"
+      "tag": "v0.6.6",
+      "published_at": "2026-11-28T04:42:00Z"
     },
     "releases": [
       {
-        "tag": "v0.6.4",
-        "name": "Reverie 0.6.4",
+        "tag": "v0.6.6",
+        "name": "Reverie 0.6.6",
         "prerelease": false,
-        "published_at": "2026-11-27T00:35:12Z",
-        "html_url": "https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.4",
-        "body": "**hdslave Reverie 0.6.4** for the Akai MPC Sample, a Linux `aarch64` CLAP plug-in for [hdslaveOS](https://github.com/hdslave/hdslaveOS/releases/latest) or [Melodee](https://github.com/keremimo/melodee-sample), built from `9a111db`. The hdslaveOS release pack had 0.6.3.\n\n### Changes\n\n- A chord let go on its strike's sample sounds for one control tick (16 samples) instead of staying silent; with Strum, the bass is no longer dropped.\n- LP 24's second stage starts clean when a voice's filter comes back to LP 24.\n\n### Install\n\nUnzip `Reverie-0.6.4-MPC-Sample.zip` at the root of the MPC Sample's SD card, so `hdslave Reverie.clap` and its licence and documentation files land in `Melodee/Plugins/hdslave/`. Keep the filename so saved projects find the plug-in. Parameter ids, presets and saved states carry over unchanged. The [complete hdslaveOS installer](https://github.com/hdslave/hdslaveOS/releases/latest) carries this build too.\n\n### Other platforms\n\nOnly the MPC Sample build is new in 0.6.4. The SP-16, macOS and Windows builds stay at [Reverie 0.6.3](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.3). The desktop copy has the same two fixes in its source (desktop 0.3.5), not yet released as a build.\n\n### Verification\n\nIts build tests passed, also under AddressSanitizer and UBSan. All 58 sound fingerprints are unchanged. Every fix has a test that fails on the build before it. It loaded and played in hdslaveOS's CLAP host (hdslaveOS 0.8.3-hdslave.3 code), in software. It has not yet been run on MPC Sample hardware, and nobody has listened to it.\n\n### Checksums (SHA-256)\n\n- `Reverie-0.6.4-MPC-Sample.zip`: `e4f17a3a9af8e6cf41c05da0359f366ff9a94b0855f1479cd5481421e7045f06`\n- `hdslave Reverie.clap`: `5d4258965a92633942a5fb176abf4679af2bb3fdb6f38827168297bdabc7d54c`\n\nMelodee and its screen interface are by Kerem Kiliç (Ellic Studio).\n",
+        "published_at": "2026-11-28T04:42:00Z",
+        "html_url": "https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.6",
+        "body": "**Desktop update**\n\n[Reverie Desktop 0.3.7 for macOS and Windows](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/desktop-v0.3.7) includes the same-sample voice-stealing fix in CLAP and VST3.\n\nReverie 0.6.6 reduces work during silence and automation on MPC Sample, SP-16, macOS and Windows. It keeps the released sound, editor artwork, parameter IDs, and preset keys.\n\n### Changes\n\n- **MPC Sample** uses 13.6% fewer instructions per silent block in the 48 kHz Callgrind fixture. A separate case that repeats an unchanged automation value uses 6.7% fewer instructions. Typical playback cost fell by less than 0.5%.\n- **SP-16** uses 10% fewer guest instructions per silent block in the Cortex-A9 QEMU fixture.\n- **macOS and Windows** retain about 1.53 MiB less wavetable data per loaded plug-in module. The oscillator displays use the same interpolated data as the synth. The desktop guide explains which hardware states can be imported.\n- **All builds** reuse envelope coefficients, skip redundant work for repeated parameter values, and avoid publishing unchanged idle voice data.\n\n### Downloads\n\n| Platform | Plug-in version | Package |\n| --- | --- | --- |\n| MPC Sample on Melodee or hdslaveOS | 0.6.6 | [MPC Sample ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.6/Reverie-0.6.6-MPC-Sample.zip) |\n| SP-16 on freesp16 with plug-in tracks | 0.4.4-sp16.18 | [SP-16 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.6/Reverie-0.4.4-sp16.18-SP-16.zip) |\n| macOS 11 or later, Apple Silicon and Intel | 0.3.6 | [Universal CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.6/Reverie-0.3.6-macOS-universal.zip) |\n| Windows x64 | 0.3.6 | [Windows CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.6/Reverie-0.3.6-Windows-x64.zip) |\n\nExtract the MPC Sample or SP-16 ZIP at the root of its card or USB stick. The desktop ZIPs contain both formats, installation instructions, and four optional VST3 presets. The macOS bundles are ad-hoc signed and unnotarized. [SHA-256 checksums](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.6/SHA256SUMS.txt)\n\n### Verification\n\nAll 58 MPC and 52 ARMv7 SP-16 audio fingerprints matched the previous release. Desktop automation audio and oscillator pixels matched in comparison tests. The Mac and Windows VST3 builds passed all 47 validator checks. Windows validation ran through CrossOver. SP-16 validation ran in Cortex-A9 QEMU. Physical device and FL Studio testing remain open.\n\nMelodee and its upstream screen interface are by Kerem Kiliç (Ellic Studio). [MPC Sample and desktop source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/8a2bb6ada769bccacc2b13468d3724d1e6aab661) · [SP-16 source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/ae3a02c190fc89eed2f1e81ecee01942f1f977c5)\n",
         "truncated": false
       },
       {
-        "tag": "v0.6.3",
-        "name": "Reverie 0.6.3",
+        "tag": "v0.6.5",
+        "name": "Reverie 0.6.5",
         "prerelease": false,
-        "published_at": "2026-11-26T22:01:32Z",
-        "html_url": "https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.3",
-        "body": "Reverie 0.6.3 improves pad release, retriggering and editor responsiveness across MPC Sample, SP-16, macOS and Windows. It retains the 46 Original progressions and 18 Mood sets. MPC Sample and SP-16 also keep the Factory bank for saved projects.\n\n### Changes\n\n- **macOS and Windows** — Panel clicks leave typing-keyboard notes with the host, where it can pair presses with releases. The editor redraws changed regions and caches the work needed to scale the panel. In the macOS Retina test, paint time fell from 2.91 ms to 0.49 ms at the default editor size.\n- **VST3** — Automation keeps each point’s sample offset and order. Compact event storage saves about 8.1 MiB per instance with a 4,096-sample maximum block size.\n- **SP-16** — Perform redraws the moving controls while the rest of the page is stable. Moving frames used 48% fewer Cortex-A9 instructions in the emulator test and matched the reference frames pixel for pixel.\n- **Pad and delay behavior** — The MPC Sample and SP-16 builds play the louder attack when two strikes of the same pad arrive together. Released chords and delay tails remain audible across retriggers. The MPC and desktop builds follow host tempo for synced delay within the delay line’s range.\n\n### Downloads\n\n| Platform | Plug-in version | Package |\n| --- | --- | --- |\n| MPC Sample on compatible Melodee or hdslaveOS | 0.6.3 | [MPC Sample ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.3/Reverie-0.6.3-MPC-Sample.zip) |\n| SP-16 on freesp16 with plug-in tracks | 0.4.4-sp16.16 | [SP-16 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.3/Reverie-0.4.4-sp16.16-SP-16.zip) |\n| macOS 11 or later, Apple Silicon and Intel | 0.3.4 | [Universal CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.3/Reverie-0.3.4-macOS-universal.zip) |\n| Windows x64 | 0.3.4 | [Windows CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.3/Reverie-0.3.4-Windows-x64.zip) |\n\nExtract the MPC Sample or SP-16 ZIP at the root of the corresponding card or USB stick. The desktop ZIPs include installation instructions and four optional VST3 presets. The macOS bundles are ad-hoc signed and unnotarized. [SHA-256 checksums](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.3/SHA256SUMS.txt)\n\n### Verification\n\nThe MPC Sample build passed the hdslaveOS host check and all 58 audio fingerprints. The SP-16 build passed 52 fingerprints, the ARMv7 host tests and the glibc compatibility check under emulation. The Mac and Windows CLAP host tests passed, and each VST3 build passed all 47 validator checks. Windows tests ran through CrossOver. The optimization comparisons preserved the tested audio sample for sample, including wet reverb and automated reverb tails. Physical MPC Sample and SP-16 testing remains open.\n\nMelodee and its upstream screen interface are by Kerem Kiliç (Ellic Studio). [MPC Sample and desktop build source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/0c757d302345c9bb61d91cc8ddd606dac19449cf) · [SP-16 build source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/38488116f42714b2fe195f4779906adbef50f28f)\n",
+        "published_at": "2026-11-28T03:15:19Z",
+        "html_url": "https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.5",
+        "body": "Reverie 0.6.5 updates MPC Sample, SP-16, macOS and Windows. Existing projects keep their parameter IDs, preset keys and chord bank selections.\n\n### Changes\n\n- **All builds** clear stale voice state on host reset. The first chord after reset starts with the new parameter value when that edit arrives with the note. The engine skips voice rendering while asleep. In the MPC Callgrind fixture, a silent 128-frame block went from 3,887 to 2,861 instructions.\n- **SP-16** plays the attack of a chord released on the same sample it was struck, including the first note of a strum. LP 24 also clears the second filter stage when you switch back to it.\n- **macOS and Windows** open at 960 × 648 and use direct parameter lookup for MIDI Learn and editor control. The engine reuses Motion and Glide coefficients while their inputs are steady. This release also includes the same-sample chord and LP 24 fixes.\n\n### Downloads\n\n| Platform | Plug-in version | Package |\n| --- | --- | --- |\n| MPC Sample on Melodee or hdslaveOS | 0.6.5 | [MPC Sample ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.5/Reverie-0.6.5-MPC-Sample.zip) |\n| SP-16 on freesp16 with plug-in tracks | 0.4.4-sp16.17 | [SP-16 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.5/Reverie-0.4.4-sp16.17-SP-16.zip) |\n| macOS 11 or later, Apple Silicon and Intel | 0.3.5 | [Universal CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.5/Reverie-0.3.5-macOS-universal.zip) |\n| Windows x64 | 0.3.5 | [Windows CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.5/Reverie-0.3.5-Windows-x64.zip) |\n\nExtract the MPC Sample or SP-16 ZIP at the root of the card or USB stick. The desktop ZIPs contain both formats, installation instructions and four optional VST3 presets. macOS bundles are ad-hoc signed and unnotarized. [SHA-256 checksums](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.5/SHA256SUMS.txt)\n\n### Verification\n\nThe MPC build passed its host tests, ASan and UBSan, and the hdslaveOS host check. The SP-16 build passed the ARMv7 host and glibc compatibility checks under Cortex-A9 emulation. Only the reset case changed across 58 MPC and 52 SP-16 fingerprint comparisons. CLAP host tests and VST3 automation tests passed on macOS and on Windows under CrossOver. Both VST3 packages passed all 47 validator checks. Physical MPC Sample, SP-16 and FL Studio testing remains open.\n\nMelodee and its upstream screen interface are by Kerem Kiliç (Ellic Studio). [MPC Sample and desktop source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/39e70df3613e4d344877e3e8388b26eb1b6c0057) · [SP-16 source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/dfb175a81982b6e70271f1b6d3fbd5d74e6d94c2)\n",
         "truncated": false
       },
       {
-        "tag": "v0.6.1",
-        "name": "Reverie 0.6.1",
+        "tag": "desktop-v0.3.7",
+        "name": "Reverie Desktop 0.3.7",
         "prerelease": false,
-        "published_at": "2026-11-25T02:06:10Z",
-        "html_url": "https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.1",
-        "body": "**Reverie’s original 46 progressions are back on MPC Sample and SP-16.** New tracks start with Velvet Night, followed by Moonlit Two-Five and Sunday Sanctuary. The bank matches desktop Reverie through Moonstone, including all six voicing styles, all twelve keys, and the lifted chords on pads 9–16.\n\n### Playing an existing project\n\n- **MPC Sample** — Open Reverie’s Chords panel on Stage, set **Mood** to **Off** and **Bank** to **Original**. The first **Prog** knob on the panel and the first knob in the standard Edit view follow that bank.\n- **SP-16** — Open **Perform → Chord pads → Progression**. Use encoder 6 for **Prog Bank** and encoder 1 for the progression. If a Mood is active, select **Off** in the Mood controls first.\n- **macOS and Windows** — In **Chord pads**, set **Mood** to **Off** and use **Progression**. Desktop already used the original bank. Both CLAP and VST3 are included in each desktop download.\n\nMPC and SP-16 projects saved with the 208-choice Factory bank reopen on their saved progression. You can switch to Original and back. The **18 Mood sets** still play their own exact voicings across all 16 pads, and Mood Shift still transposes them. Try **Dawn** at zero shift and octave. A01 plays A3–C4–E4, and A09 plays F3–A♭3–C4.\n\n### Downloads\n\n| Platform | Version | Package |\n|---|---|---|\n| MPC Sample with compatible Melodee or hdslaveOS | 0.6.1 | [MPC Sample ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.6.1-MPC-Sample.zip) |\n| SP-16 with freesp16 plug-in tracks | 0.4.4-sp16.13 | [SP-16 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.4.4-sp16.13-SP-16.zip) |\n| macOS 11 or later, Apple Silicon and Intel | 0.3.1 | [Universal CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.3.1-macOS-universal.zip) |\n| Windows x64 | 0.3.1 | [Windows CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.3.1-Windows-x64.zip) |\n\nExtract the MPC or SP-16 ZIP at the root of the corresponding card or USB stick. Each desktop ZIP has installation instructions and the four optional VST3 pad presets. The macOS bundles are ad-hoc signed and unnotarized. [SHA-256 checksums](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/SHA256SUMS.txt)\n\n### Interfaces\n\n| MPC Sample · 0.6.1 | SP-16 · 0.4.4-sp16.13 |\n| --- | --- |\n| ![Reverie 0.6.1 — MPC Sample in hdslaveOS](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.6.1-MPC-Sample.png) | ![Reverie 0.4.4-sp16.13 — SP-16 in freesp16](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.4.4-sp16.13-SP-16.png) |\n\n**Mac/Win · 0.3.1**\n\n![Reverie 0.3.1 — Mac/Win desktop editor](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/v0.6.1/Reverie-0.3.1-macOS.png)\n\n### Verification\n\nAll four editions matched the original 52,992 pad voicings. The MPC and SP-16 binaries produced bit-identical stereo audio to their previous releases for every Mood pad at four transpositions. The MPC build passed the hdslaveOS host checks. The SP-16 build passed its ARMv7 tests under QEMU. Both desktop CLAPs passed host and editor tests, and both VST3s passed all 47 Steinberg validator tests. Windows checks ran under CrossOver. Physical MPC and SP-16 playback still needs confirmation.\n\nMelodee and its upstream screen interface are by Kerem Kiliç (Ellic Studio). [MPC and desktop source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/7e462061493c1dc109a69373a30beb4e48d7866e) · [SP-16 source](https://github.com/hdslave/hdslave-Reverie-Synth/tree/786424f51e59023da060ca4521168c691dc476ff)\n",
+        "published_at": "2026-11-28T05:17:22Z",
+        "html_url": "https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/desktop-v0.3.7",
+        "body": "Reverie Desktop 0.3.7 brings the MPC Sample and SP-16 voice-stealing order to macOS and Windows. When held voices share a start sample and all 24 note voices are in use, the earliest chord gives up voices first. Existing plug-in IDs, parameter IDs, and preset keys carry over.\n\n### Downloads\n\n| Platform | Package |\n| --- | --- |\n| macOS 11 or later, Apple Silicon and Intel | [Universal CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/desktop-v0.3.7/Reverie-0.3.7-macOS-universal.zip) |\n| Windows x64 | [Windows CLAP and VST3 ZIP](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/desktop-v0.3.7/Reverie-0.3.7-Windows-x64.zip) |\n\nBoth ZIPs include installation instructions and four optional VST3 presets. The macOS bundles are ad-hoc signed and unnotarized. [SHA-256 checksums](https://github.com/hdslave/hdslave-Reverie-Synth/releases/download/desktop-v0.3.7/SHA256SUMS.txt)\n\n### Verification\n\nSix Open-voiced Velvet Night pads arriving on the same sample retained the same 24 pitches as MPC and SP-16, including duplicate pitches. CLAP and VST3 rendered identical stereo output in this test on Apple Silicon, Rosetta, and Windows under CrossOver. Both VST3 builds passed all 47 validator checks.\n\nMelodee and its upstream screen interface are by Kerem Kiliç (Ellic Studio). [Desktop source and install guide](https://github.com/hdslave/hdslave-Reverie-Synth/tree/ed61315f78352bf4e831548060c398e90fa52dca/mac-clap) · [MPC Sample and SP-16 downloads](https://github.com/hdslave/hdslave-Reverie-Synth/releases/tag/v0.6.6)\n",
         "truncated": false
       }
     ],
@@ -1683,12 +1683,12 @@
   "hdslave/hdslaveOS": {
     "stars": 2,
     "forks": 0,
-    "pushed_at": "2026-11-27T17:40:34Z",
-    "last_commit_at": "2026-11-27T17:10:06Z",
+    "pushed_at": "2026-11-28T05:57:24Z",
+    "last_commit_at": "2026-11-28T05:44:03Z",
     "contributors": 3,
     "open_issues": 0,
     "license": "AGPL-3.0",
-    "description": "hdslaveOS: hdslave's fork of Melodee (by Kerem Kiliç, Ellic Studio) for the Akai MPC Sample: less wasted work, same sound, the HDSLAVE palette, and a screen page for CLAP plug-ins",
+    "description": "A techno OS for the Akai MPC Sample, built on Melodee by Kerem Kiliç (Ellic Studio): drum machines, acid bass and kick synths with their own screens, a kick-keyed sidechain, and more headroom with bit-identical sound.",
     "default_branch": "hdslave",
     "readme_path": "README.md",
     "latest_release": {
@@ -1742,12 +1742,12 @@
     "archived": false
   },
   "inmusic-software/mpc-plugin-builder-sdk": {
-    "stars": 238,
+    "stars": 240,
     "forks": 54,
     "pushed_at": "2026-11-27T10:40:05Z",
     "last_commit_at": "2026-11-27T10:37:14Z",
     "contributors": 2,
-    "open_issues": 25,
+    "open_issues": 26,
     "license": null,
     "description": "Build instrument and effect plugins for Akai MPC standalone hardware from a plain-language description, with an AI coding agent. You never have to read C++ if you do not want to.",
     "default_branch": "main",
@@ -2356,7 +2356,7 @@
     "archived": false
   },
   "keremimo/mpc-vst-melodee-chip": {
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
     "pushed_at": "2026-11-22T14:58:25Z",
     "last_commit_at": "2026-11-22T14:57:05Z",
@@ -2384,7 +2384,7 @@
     "archived": false
   },
   "keremimo/mpc-vst-melodee-pd": {
-    "stars": 2,
+    "stars": 3,
     "forks": 0,
     "pushed_at": "2026-11-22T14:58:23Z",
     "last_commit_at": "2026-11-22T14:57:05Z",
@@ -2412,7 +2412,7 @@
     "archived": false
   },
   "keremimo/mpc-vst-melodee-poly": {
-    "stars": 1,
+    "stars": 2,
     "forks": 0,
     "pushed_at": "2026-11-22T14:58:21Z",
     "last_commit_at": "2026-11-22T14:57:05Z",
@@ -2591,7 +2591,7 @@
     "archived": false
   },
   "open-mpc/mpc-vst-plugins": {
-    "stars": 224,
+    "stars": 225,
     "forks": 106,
     "pushed_at": "2026-11-27T12:15:01Z",
     "last_commit_at": "2026-11-27T11:08:24Z",
