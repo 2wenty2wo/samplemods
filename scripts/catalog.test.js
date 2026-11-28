@@ -114,7 +114,9 @@ try {
 	assert.throws(() => readEntries(dataDir), /missing mod.yaml/);
 	fs.renameSync(path.join(dataDir, 'mods/host/app.yaml'), path.join(dataDir, 'mods/host/mod.yaml'));
 	fs.mkdirSync(path.join(fixture, 'scripts'));
-	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js', 'compat.js']) fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js', 'check-star-list.js', 'compat.js']) {
+		fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
+	}
 	fs.mkdirSync(path.join(fixture, 'src', 'lib'), { recursive: true });
 	fs.copyFileSync(path.join(root, 'src/lib/release-label.js'), path.join(fixture, 'src/lib/release-label.js'));
 	fs.copyFileSync(path.join(root, 'src/lib/latest-releases-strip.js'), path.join(fixture, 'src/lib/latest-releases-strip.js'));
@@ -131,6 +133,13 @@ try {
 	assert.match(validate().stderr, /website is required when repo is absent/);
 	write('mods/external/mod.yaml', externalRecord);
 	assert.equal(validate().status, 0, 'repo-less entry with a website must validate');
+	write('mods/external/mod.yaml', externalRecord + "watch_version: '(v.+)'\n");
+	assert.match(validate().stderr, /watch_version requires watch/);
+	const watchRecord = externalRecord + 'watch: https://example.com/project/feed\n';
+	write('mods/external/mod.yaml', watchRecord + "watch_version: '(v)(.+)'\n");
+	assert.match(validate().stderr, /exactly one capture group/);
+	write('mods/external/mod.yaml', watchRecord + "watch_version: 'v(.+)'\n");
+	assert.equal(validate().status, 0, 'a watched entry with one version capture group must validate');
 	assert.ok(readEntries(dataDir).some((entry) => entry.id === 'external' && !entry.record.repo));
 	write('mods/external/mod.yaml', externalRecord + 'price: subscription\n');
 	assert.match(validate().stderr, /schema validation failed/);
