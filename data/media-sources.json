@@ -65,6 +65,14 @@
       "note": "Captured by Sample Mods in Virtual MPC Sample (firmware 1.3.0.12)"
     }
   ],
+  "awesome-mpc-sample": [
+    {
+      "file": "screenshots/01-cover.webp",
+      "source": "https://github.com/mattaereal/awesome-mpc-sample",
+      "repo": "mattaereal/awesome-mpc-sample",
+      "note": "Cover composited from the list README on GitHub (dark-mode markdown body only, no GitHub chrome) with the Awesome logo from sindresorhus/awesome media/logo.svg (CC0-1.0); 1280x960 WebP"
+    }
+  ],
   "az0x-open-source": [],
   "beat-train": [
     {
