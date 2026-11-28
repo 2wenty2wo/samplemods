@@ -8,8 +8,8 @@
     <th width="66%">macOS and Windows · CLAP</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/nexus-pages.gif"><img src="docs/nexus-pages.gif" alt="Nexus model, voice, and LFO screens running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Nexus macro oscillator, envelopes and modulation pages during playback"></a></td>
+    <td align="center"><a href="docs/nexus-pages.webp"><img src="docs/nexus-pages.webp" alt="Nexus playing the Virtual Analog model and showing the voice and envelope pages"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-preview.webp" alt="Nexus macro oscillator, envelopes and modulation pages during playback"></a></td>
   </tr>
 </table>
 
@@ -30,6 +30,10 @@ The synthesis is Plaits' own open-source code (Émilie Gillet, MIT licence): all
 
 Hosts list it as **hdslave Nexus** (id `com.hdslave.nexus`, version 0.1.9). Not yet run on the MPC itself.
 
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
+
 ## Install
 
 Copy the folder `hdslave Nexus` (the `.clap`, this README and `licenses/`) to `Melodee/Plugins/` on the card. Pick
@@ -37,9 +41,9 @@ it on a PLUGIN track (SYNTH on Stage). The custom screen uses `melodee.screen/1`
 
 ## Playing it
 
-![Nexus MODEL page with Wavetable selected](docs/nexus-plaits.png)
+[![The output scope responds to notes on the Virtual Analog MODEL page](docs/nexus-model.webp)](docs/nexus-model.webp)
 
-Use Minus and Plus to move through the seven pages. [Watch the screen tour in Melodee](docs/nexus-pages.gif).
+Use Minus and Plus to move through the seven pages. [Watch the screen tour in Melodee](docs/nexus-pages.webp).
 
 | Page | What it holds |
 |---|---|
@@ -254,7 +258,7 @@ measured against rendered onsets). The reported tail is unbounded: at their long
 
 ## Licence
 
-No project licence yet for Nexus's own code. The Plaits and stmlib code is MIT (Emilie Gillet,
+The Plaits and stmlib code is MIT (Emilie Gillet,
 `licenses/LICENSE-MIT-mutable-instruments.txt`; changes listed in `third_party/eurorack/NOTES.md`). The page's
 font is Departure Mono (SIL Open Font License, `licenses/OFL-departure-mono.txt`). The CLAP headers are MIT
 (`third_party/clap/LICENSE`), and `src/melodee_screen.h` is MIT. See `THIRD_PARTY.md`.

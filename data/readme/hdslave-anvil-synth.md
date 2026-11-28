@@ -9,19 +9,23 @@
     <th width="27%">SP-16 · freesp16</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/anvil-screen.gif"><img src="docs/anvil-screen.gif" alt="Anvil custom screen running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Eight-step percussion sequence running in Anvil"></a></td>
-    <td align="center"><a href="#freesp16"><img src="docs/sp16/steps.png" alt="Anvil pitch and velocity steps on the SP-16"></a></td>
+    <td align="center"><a href="docs/anvil-screen.webp"><img src="docs/mpc-loop.webp" alt="Anvil custom screen running in hdslaveOS"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-preview.webp" alt="Eight-step percussion sequence running in Anvil"></a></td>
+    <td align="center"><a href="docs/sp16/steps.webp"><img src="docs/sp16-loop.webp" alt="Anvil pitch and velocity steps on the SP-16"></a></td>
   </tr>
 </table>
 
 > **Desktop CLAP version (macOS & Windows):** A separate desktop CLAP build with all MPC screens on one interactive panel lives in [**`mac-clap/`**](mac-clap/) (`cd mac-clap && ./install-macos.sh`). The SP-16 build is [below](#freesp16).
 
-Built for the Akai MPC Sample running [Melodee](https://github.com/keremimo/melodee-sample) / [hdslaveOS](https://github.com/hdslave/hdslaveOS) (64-bit ARM Linux, Cortex-A55). Hosts list it as **hdslave Anvil** (id `com.hdslave.anvil`, version 0.7.0). It follows the front panel and normalled signal flow of the Moog DFAM and the Behringer Edge — dual VCOs with linear FM, hard sync, white/pink noise, overdriving mixer, and a 4-pole LP/HP ladder filter — without the patch bay, plus one new modulation control: **VCO EG > FM 1-2 Amt**.
+Built for the Akai MPC Sample running [Melodee](https://github.com/keremimo/melodee-sample) / [hdslaveOS](https://github.com/hdslave/hdslaveOS) (64-bit ARM Linux, Cortex-A55). Hosts list it as **hdslave Anvil** (id `com.hdslave.anvil`, version 0.7.1). It follows the front panel and normalled signal flow of the Moog DFAM and the Behringer Edge — dual VCOs with linear FM, hard sync, white/pink noise, overdriving mixer, and a 4-pole LP/HP ladder filter — without the patch bay, plus one new modulation control: **VCO EG > FM 1-2 Amt**.
 
 The custom screen uses `melodee.screen/1` on Melodee 0.7 and hdslaveOS based on it. Open Edit on the plug-in track or select PANEL on Stage.
 
 Its 8-step pitch and velocity sequencer (with variable Length and host swing) locks tightly to the host transport: steps fall on the beat grid while playing, stop on stop, and follow song jumps. Under **hdslaveOS**, Anvil draws its own live step-bar and velocity screen directly on the MPC Sample (see [The screen](#the-screen)).
+
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
 
 ## Signal flow
 
@@ -53,45 +57,29 @@ stayed open or was closed, and none survives a deactivation. The sound is again 
 0.6.4 adds the freesp16 page below. The MPC page is unchanged, and so is the sound on the MPC build
 (every fingerprint hash holds). It has not been run on the MPC.
 
+0.7.1 brings the refreshed SP-16 editor onto 0.7.0's engine, so one version runs on both instruments. On the MPC
+the page and the sound are unchanged (every fingerprint hash holds, and the cost is 0.7.0's to the instruction).
+
 ## freesp16
 
-A 32-bit ARM build for [freesp16](https://freesp16.github.io/) on the SP-16. freesp16 keeps its own screen chrome and its six encoders. Anvil draws the 780×285 body between them and names the six parameters for the lit tab (`org.sixteen.screen/1`). STEPS, VCO, MIX, VCF, VCA/PATCH and SEQ are on screen. VCO and SEQ each have a second bank: tap the tab again.
+A 32-bit ARM build for [freesp16](https://freesp16.github.io/) on the SP-16. freesp16 keeps its own screen chrome and its six encoders. Anvil draws the 780×285 body between them and names the six parameters for the lit tab (`org.sixteen.screen/1`). STEPS, VCO, MIX, VCF, VCA and SEQ are on screen. VCO and SEQ each have a second bank: tap the tab again.
 
-The download is [hdslave Anvil 0.6.4 for freesp16](https://github.com/hdslave/hdslave-Anvil-Synth/releases/tag/v0.6.4-freesp16). Unzip it at the root of the USB stick freesp16 starts from. `Anvil.clap` then sits in `freesp16-data/freesp16/Plugins/`. On a track: TRACK TYPE, PLUGIN, SELECT PLUGIN, **hdslave Anvil**, OPEN UI.
+The download is `hdslave-Anvil-freesp16-0.7.1.zip` in [release 0.7.1](https://github.com/hdslave/hdslave-Anvil-Synth/releases/tag/v0.7.1). Unzip it at the root of the USB stick freesp16 starts from. `Anvil.clap` then sits in `freesp16-data/freesp16/Plugins/`. On a track: TRACK TYPE, PLUGIN, SELECT PLUGIN, **hdslave Anvil**, OPEN UI.
 
-The object is ARMv7-A, softfp, glibc 2.13, and it needs only `libm` and `libc`. The host tests passed on it under qemu-arm (521,408 checks), and the MPC build's fingerprint did not move. On 2026-11-23 it was loaded on a unit and it worked.
+The object is ARMv7-A, softfp, glibc 2.13, and it needs only `libm` and `libc`. The host tests pass on it under qemu-arm (0.7.1: 709,698 checks, `make sp16-test`), and the MPC build's fingerprint did not move. 0.6.4 was loaded on a unit on 2026-11-23 and it worked. 0.7.1, with the refreshed editor and the engine of 0.6.5 to 0.7.0, has not been run on a unit yet.
 
-**STEPS**
+The SP-16 editor marks the selected step in violet and the playing step in lime. On STEPS, **SEQ** marks the selected step’s pitch and velocity on knobs 1–2. **PATCH** marks cutoff, resonance, filter decay and amp decay on knobs 3–6 for the whole patch. Drag a parameter card up or right to increase its value, or down or left to decrease it. Touching a card on VCO or SEQ also selects its encoder bank. The six hardware knobs can continue the edit from the displayed values.
 
-![Anvil STEPS page, eight steps with pitch and velocity](docs/sp16/steps.png)
+Open a bank recording to see its controls during playback.
 
-**VCO, the two oscillators**
-
-![Anvil VCO page, both oscillators](docs/sp16/vco.png)
-
-**VCO, FM and sync**
-
-![Anvil VCO page, envelope, FM and hard sync](docs/sp16/vco-fm.png)
-
-**MIX**
-
-![Anvil mixer page](docs/sp16/mix.png)
-
-**VCF**
-
-![Anvil filter page](docs/sp16/vcf.png)
-
-**VCA and patch**
-
-![Anvil VCA and patch page](docs/sp16/vca.png)
-
-**Sequencer**
-
-![Anvil sequencer page, clock and groove](docs/sp16/seq.png)
-
-**Sequencer, notes**
-
-![Anvil sequencer page, quantize, notes and run](docs/sp16/seq-notes.png)
+| Bank | SP-16 panel |
+| --- | --- |
+| STEPS | [Edit step pitch and velocity](docs/sp16/steps.webp) |
+| VCO | [Oscillators](docs/sp16/vco.webp) · [FM and hard sync](docs/sp16/vco-fm.webp) |
+| MIX | [Signal levels](docs/sp16/mix.webp) |
+| VCF | [Filter controls](docs/sp16/vcf.webp) |
+| VCA | [Amplifier and patch controls](docs/sp16/vca.webp) |
+| SEQ | [Clock and groove](docs/sp16/seq.webp) · [Scale, notes and run](docs/sp16/seq-notes.webp) |
 
 ## Controls
 
@@ -314,6 +302,16 @@ Needs Docker with a Linux arm64 context (Melodee's `colima-melodee` and its `mel
 ./build.sh bench    # build/bench
 tools/bench.sh      # instruction counts (Melodee's melodee-profiler image)
 ```
+
+The SP-16 object and its tests run in freesp16's toolchain image, `sp16-toolchain:gcc11-egl` (GCC 11, glibc 2.13
+sysroot, qemu-arm):
+
+```sh
+docker --context colima-melodee run --rm -v "$PWD:/work" -w /work sp16-toolchain:gcc11-egl make sp16-test
+```
+
+That builds `build/Anvil-sp16.clap`, checks its glibc symbol versions and runs `tests/host.cpp` on it as a Cortex-A9,
+with the pictures of both pages in `build/sp16/`.
 
 The tests load the plug-in through the CLAP API and check: description and ports; every parameter's range, text and
 default; state save and load; the presets as preset discovery lists them and preset-load loads them; step timing to the frame at 44.1, 48 and 96 kHz and two tempos; stop, restart, jumps,

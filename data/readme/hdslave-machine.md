@@ -8,8 +8,8 @@
     <th width="66%">macOS and Windows · CLAP</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/machine-screen.gif"><img src="docs/machine-screen.gif" alt="Machine custom raised-banner interface running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Machine voice controls and oscilloscope during playback"></a></td>
+    <td align="center"><a href="docs/machine-screen.webp"><img src="docs/machine-screen.webp" alt="Machine custom raised-banner interface running in hdslaveOS"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-preview.webp" alt="Machine voice controls and oscilloscope during playback"></a></td>
   </tr>
 </table>
 
@@ -24,6 +24,10 @@ Built for the Akai MPC Sample running [Melodee](https://github.com/keremimo/melo
 - **KICK:** a resonator kick in the style of Korg's volca kick, with all ten of its controls.
 
 Every machine runs through a shared voice section — filter with its own envelope, drive, amp envelope, and a routable LFO targeting pitch, filter, level, or any Data knob. Machine renders its raised-banner screen and live visualizers through `melodee.screen/1` on Melodee 0.7 and hdslaveOS builds based on it. Hosts without the extension can use the standard CLAP parameters.
+
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
 
 ## Machines
 

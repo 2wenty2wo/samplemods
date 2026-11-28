@@ -8,8 +8,8 @@
     <th width="66%">macOS and Windows · CLAP</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/psychic-screen.gif"><img src="docs/psychic-screen.gif" alt="Psychic Contact Sheet animated screen running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Psychic sequencers and voltage displays during playback"></a></td>
+    <td align="center"><a href="docs/psychic-screen.webp"><img src="docs/psychic-screen.webp" alt="Psychic running both sequencers and editing a step voltage in hdslaveOS"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-preview.webp" alt="Psychic sequencers and voltage displays during playback"></a></td>
   </tr>
 </table>
 
@@ -23,6 +23,10 @@ Version 0.3.0. Not yet run on the MPC: it is checked in Melodee's build image an
 (`clap_check`), but nobody has played it on the device yet. The 0.3.0 drum map and banks (below) have not been tried
 on the device either.
 
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
+
 ## Contact Sheet on the MPC Sample
 
 In hdslaveOS, open Psychic in Melodee's Edit or Stage plug-in page. Each frame in the two film strips is a step.
@@ -31,7 +35,7 @@ the step voltage. Select **Save** to print the pattern on the left. Pink underli
 on the punch card mark cells whose gate or voltage differs. **Recall** restores the saved sequencer settings.
 During playback, the ring around the eye spins once every four quarter notes at the project tempo.
 
-![Psychic's Contact Sheet and cell editor in Melodee](docs/contact-sheet.png)
+[![Psychic opening a cell, changing its voltage and returning to the running sequencers](docs/psychic-screen.webp)](docs/contact-sheet.png)
 
 | View | Wheel and push | K1 | K2 | K3 |
 |---|---|---|---|---|

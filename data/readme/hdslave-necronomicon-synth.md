@@ -8,8 +8,8 @@
     <th width="66%">macOS and Windows · CLAP</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/necronomicon-screen.gif"><img src="docs/necronomicon-screen.gif" alt="Necronomicon Liquid Light stained-glass rhythm wheels running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Necronomicon oscillators, dividers and rhythm wheels during playback"></a></td>
+    <td align="center"><a href="docs/necronomicon-screen.webp"><img src="docs/mpc-loop.webp" alt="Necronomicon Liquid Light stained-glass rhythm wheels running in hdslaveOS"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-loop.webp" alt="Necronomicon oscillators, dividers and rhythm wheels during playback"></a></td>
   </tr>
 </table>
 
@@ -18,6 +18,10 @@
 Built for the Akai MPC Sample running [Melodee](https://github.com/keremimo/melodee-sample) / [hdslaveOS](https://github.com/hdslave/hdslaveOS) (64-bit ARM Linux, Cortex-A55). Hosts list it as **hdslave Necronomicon** (id `com.hdslave.necronomicon`). It follows the front panel and normalled signal flow of the Moog Subharmonicon (without the patch bay): two VCOs, each with two phase-locked subharmonic dividers (1/1 to 1/16), a 4-pole ladder filter, two AD envelopes, two 4-step sequencers, and four polyrhythmic rhythm generators with OR/XOR logic.
 
 The rhythm generators divide the host clock — playing on the song's grid, stopping on stop, and staying aligned through song jumps. On Melodee 0.7 and hdslaveOS based on it, Necronomicon draws its animated **Liquid Light** screen with four stained-glass rhythm wheels tracking each divisor's phase and sequencer routing in real time.
+
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
 
 ## Signal flow
 

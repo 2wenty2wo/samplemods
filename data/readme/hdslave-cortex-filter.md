@@ -4,16 +4,18 @@
 
 <table>
   <tr>
-    <th width="34%">MPC Sample</th>
-    <th width="66%">macOS and Windows · CLAP</th>
+    <th width="25%">MPC Sample</th>
+    <th width="48%">macOS and Windows · CLAP</th>
+    <th width="27%">SP-16 · freesp16</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/cortex-filter-screen.gif"><img src="docs/cortex-filter-screen.gif" alt="Cortex Filter 3D morphing cube and waterfall screen running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Cortex Filter morphing cubes and filter response during playback"></a></td>
+    <td align="center"><a href="docs/cortex-filter-screen.webp"><img src="docs/mpc-loop.webp" alt="Cortex Filter 3D morphing cube and waterfall screen running in hdslaveOS"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-loop.webp" alt="Cortex Filter morphing cubes and filter response during playback"></a></td>
+    <td align="center"><a href="docs/cortex-sp16.webp"><img src="docs/cortex-sp16-loop.webp" alt="Cortex Filter on SP-16. Dragging inside the morph cube changes the filter response."></a></td>
   </tr>
 </table>
 
-> **Desktop CLAP version (macOS & Windows):** A separate desktop CLAP build with all MPC screens on one interactive panel lives in [**`mac-clap/`**](mac-clap/) (`cd mac-clap && ./install-macos.sh`). Releases in this repo stay MPC Sample-only for now while the desktop builds are being finalized.
+> **Desktop CLAP version (macOS & Windows):** A separate desktop CLAP build with all MPC screens on one interactive panel lives in [**`mac-clap/`**](mac-clap/) (`cd mac-clap && ./install-macos.sh`).
 
 Built for the Akai MPC Sample running [Melodee](https://github.com/keremimo/melodee-sample) / [hdslaveOS](https://github.com/hdslave/hdslaveOS) (64-bit ARM Linux, Cortex-A55). Hosts list it as **hdslave Cortex Filter** (id `com.hdslave.cortex-filter`). Inspired by classic "filter cube" morphing filters (E-mu's Z-plane filters and Rossum Electro-Music's Morpheus module), eight complex filters sit at the corners of a 3D cube while **Morph (X)**, **Freq (Y)**, and **Transform (Z)** smoothly navigate anywhere inside it. All cubes, filters, and factory sequences are original designs.
 
@@ -84,6 +86,21 @@ build before 0.8.3-hdslave.4), it behaves as 0.3.3. Also fixed in 0.3.4, always 
 - Env Trigger with Trig Level at its −48 dB floor no longer fires in silence (it fired every 16 frames).
 
 The sound is otherwise 0.3.3's to the bit.
+
+**Version 0.3.5** adds the SP-16 build and its editor below, on 0.3.4's engine, so one version runs on both
+instruments. On the MPC the page and the sound are unchanged: every fingerprint hash holds.
+
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
+
+## SP-16 effect editor
+
+Choose **Plugin** in an FX1, FX2, Send or Master slot and select **Cortex Filter**. The effect opens on its Cube page. Drag in the cube to change Morph and Frequency, or use the six parameter cards and the matching encoders. Tap the response plot on Cube to switch between time history and the morph landscape. Page tabs lead to the filter bank, sequence, triggers, modulation and output. Swipe a list to browse, then tap its selected row to edit. The selector turns and presses work on the active page. **SLOT MIX** opens the host wet/dry control and **EDITOR** returns to Cortex.
+
+The Linux desktop test build is `build/CortexFilter.clap` from `./build.sh`. With the freesp16 ARM toolchain, `make sp16` produces `build/sp16/CortexFilter.clap` for the SP-16 Plugins directory. Both use the same CLAP ID and project state. The editor uses Barlow on its touch controls, licensed under the SIL Open Font License in `licenses/OFL-barlow.txt`.
+
+The download is `hdslave-Cortex-Filter-freesp16-0.3.5.zip` in [release 0.3.5](https://github.com/hdslave/hdslave-Cortex-Filter/releases/tag/v0.3.5). Unzip it at the root of the USB stick the app starts from: `CortexFilter.clap` then sits in `freesp16-data/freesp16/Plugins/`. The object is ARMv7-A, softfp, glibc 2.13, and it needs only `libm` and `libc`. The host tests, the editor's included, pass on it under qemu-arm as a Cortex-A9 (`make sp16-test` in freesp16's toolchain image `sp16-toolchain:gcc11-egl`). It has not been run on a unit yet.
 
 ## Signal flow
 

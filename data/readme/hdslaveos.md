@@ -46,6 +46,11 @@ up for making and playing techno.
   **Display refresh** (a 20, 30 or 60 fps cap for built-in display updates),
   **Dim after** and **Pad brightness** save battery on a long set.
   [optimization.md](optimization.md) has the details.
+- **Old projects find their files.** A project whose samples or plug-ins
+  are no longer where it saved them (the card under another name, samples
+  moved into `Melodee/Samples`, a project folder or plug-in moved) finds
+  them and plays, instead of playing silent. What it cannot find at once, it
+  offers to search the card for. [Moved files](docs/guide/projects-and-files.md#moved-files)
 - **Freeze keeps the tails.** A printed track keeps its delay repeats, reverb
   tails and kit pad sends. Deep Freeze unloads the plug-ins too, and after a
   tempo change reloads them while the print plays.
@@ -64,7 +69,10 @@ up for making and playing techno.
   `NIGHT`) and **MONO** (high-contrast black and white), both with square
   corners. Kit pads light as vividly as the screen shows their colours.
 - **Its own boot film**, the **hdslave intro**, in place of the default
-  splash.
+  splash. The purple badge starts forming as the camera slides into place,
+  then holds for a beat. The lower edge tears, tracking briefly settles, and
+  the picture rolls once before the static breaks into a narrow strip and
+  cuts to black. The interface fades in from there.
 
 ## The instruments
 
@@ -304,7 +312,7 @@ The latest complete installer and the standalone collection contain the same
 eleven MPC plug-ins. The included `MPC-PLUGINS.tsv` lists the exact source
 revisions and file hashes. [Complete installer](https://github.com/hdslave/hdslaveOS/releases/latest) · [11-plug-in collection](https://github.com/hdslave/hdslave-MPCSample-Synths-and-Drum-Machines/releases/latest)
 
-The installer includes **hdslave Slink 0.9.0**. Select Slink and open **Stage → Panel** to see its silver panel. [Standalone MPC download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.9.0) · [Slink 0.9.10 for freesp16, macOS and Windows](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.9.10)
+The installer includes **hdslave Slink 0.9.0**. Select Slink and open **Stage → Panel** to see its silver panel. [Standalone MPC download](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.9.0) · [Slink 0.9.11 for freesp16, macOS and Windows](https://github.com/hdslave/hdslave-Slink-Synth/releases/tag/v0.9.11)
 Keep the supplied `hdslave TB-MPC-3-P-0.clap` filename for saved projects.
 
 <a href="https://github.com/hdslave/hdslave-Slink-Synth/blob/v0.9.0/docs/screen.md#silver-panel-on-mpc"><img src="https://raw.githubusercontent.com/hdslave/hdslave-Slink-Synth/v0.9.0/docs/slink-mpc-pattern.png" width="320" alt="Slink silver MPC panel in Stage"></a>
@@ -415,3 +423,7 @@ rights reserved); it replaces Melodee's own boot art.
 
 Neither Melodee nor hdslaveOS is affiliated with or endorsed by inMusic or
 Akai Professional. MPC and MPC Sample are trademarks of inMusic Brands.
+
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE-hdslave-plugins.txt).

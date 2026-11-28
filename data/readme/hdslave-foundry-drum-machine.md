@@ -8,8 +8,8 @@
     <th width="66%">macOS and Windows · CLAP</th>
   </tr>
   <tr>
-    <td align="center"><a href="docs/foundry-screen.gif"><img src="docs/foundry-screen.gif" alt="Foundry X0X Drum Works screen running in hdslaveOS"></a></td>
-    <td align="center"><a href="mac-clap/assets/desktop-preview.gif"><img src="mac-clap/assets/desktop-preview.gif" alt="Foundry drum pads and voice controls during a drum pattern"></a></td>
+    <td align="center"><a href="docs/foundry-screen.webp"><img src="docs/mpc-loop.webp" alt="Foundry X0X Drum Works screen running in hdslaveOS"></a></td>
+    <td align="center"><a href="mac-clap/assets/desktop-preview.webp"><img src="mac-clap/assets/desktop-loop.webp" alt="Foundry drum pads and voice controls during a drum pattern"></a></td>
   </tr>
 </table>
 
@@ -20,6 +20,10 @@ Built for the Akai MPC Sample running [Melodee](https://github.com/keremimo/melo
 Every pad is a dedicated circuit-modelled drum voice (kick, snare, tom, rim, clap, hat, cymbal, cowbell, claves, maracas) switchable between **808**, **909**, and **606** models — with TR-1000-style analog and circuit-bent (8X/9X) controls, classic hardware-mod controls on the 606 kit (see [The 606 and its mods](#the-606-and-its-mods)), a shared per-voice chain (bend, drive, filter + envelope, amp attack/gate, sends), and per-note performance tools (probability, cycles, flam, sub-steps, nudge), plus reverb, delay, bus compression, and a dedicated kick-only **SC Key** sidechain output for hdslaveOS's master compressor.
 
 Foundry has no internal sequencer — the host plays it directly from the MPC's pads as a kit (carrying the pad map Melodee expects), so Melodee's step sequencer, swing, note repeat, and MOTION drive every voice. Under **hdslaveOS**, it draws the animated **X0X Drum Works** screen with live pad feedback and a 2-second hit timeline.
+
+## hdslave plug-in license
+
+You may use these plug-ins to make, perform, record and sell music, including paid client work, without royalties or credit to hdslave. You may share complete, unchanged official releases for free with their notices intact. Selling the software, including it in a paid product or subscription, or distributing a modified version requires prior written permission from hdslave. Third-party components keep their own licenses. [Full plug-in license](LICENSE.txt).
 
 ## The kit
 
