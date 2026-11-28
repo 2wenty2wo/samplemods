@@ -158,3 +158,28 @@ properties:
       - archived
       - removed
       - concept
+  note:
+    type: string
+    minLength: 1
+    maxLength: 200
+    description: Short visible caution on the entry page (for example untested hardware)
+  downloads:
+    type: array
+    minItems: 1
+    description: >-
+      Labelled download buttons; when set, these replace the single auto "Download latest
+      release" button
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - label
+        - url
+      properties:
+        label:
+          type: string
+          minLength: 1
+          maxLength: 80
+        url:
+          type: string
+          pattern: ^https?://

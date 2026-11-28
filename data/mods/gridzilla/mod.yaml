@@ -16,3 +16,9 @@ website: https://zootedandrebooted.github.io/GRIDZILLA/
 runs_on: [device]
 audience: [musician]
 source: closed
+downloads:
+  - label: Download for firmware 1.3
+    url: https://github.com/ZootedandRebooted/GRIDZILLA/releases/latest
+  - label: Download for firmware 1.4.0.8
+    url: https://github.com/ZootedandRebooted/GRIDZILLA-1.4/releases/latest
+

@@ -1,0 +1,16 @@
+name: Tuner VST
+description: >-
+  A chromatic tuner insert that draws its needle on the MPC screen. On the MPC Sample it loads as a
+  Rack insert from the aarch64 build.
+repo: jacob-sabella/mpc-vst-tuner
+author: jacob-sabella
+tags:
+  - vst
+  - tuner
+  - utility
+install: sd-card
+firmware: 1.3.0.12
+runs_on: [device]
+audience: [musician]
+price: free
+source: open

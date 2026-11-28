@@ -157,6 +157,9 @@ import { base } from '$app/paths';
 						The author deleted the source repository. Details are as last captured.
 					</p>
 				{/if}
+				{#if mod.note}
+					<p class="detail-entry-note">{mod.note}</p>
+				{/if}
 
 				<div class="hero-actions">
 					{#if mod.repo && mod.status !== 'removed'}
@@ -179,7 +182,18 @@ import { base } from '$app/paths';
 						</a>
 					{/if}
 
-					{#if (mod.repo || releasesLength) && latestReleaseUrl && mod.status !== 'removed'}
+					{#if mod.status !== 'removed' && mod.downloads?.length}
+						{#each mod.downloads as download (download.url)}
+							<a
+								class="hw-action-btn orange"
+								href={download.url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<span>{download.label}</span>
+							</a>
+						{/each}
+					{:else if (mod.repo || releasesLength) && latestReleaseUrl && mod.status !== 'removed'}
 						<a
 							class="hw-action-btn orange"
 							href={latestReleaseUrl}
@@ -351,7 +365,8 @@ import { base } from '$app/paths';
 		max-width: 68ch;
 	}
 
-.detail-removed-note {
+.detail-removed-note,
+.detail-entry-note {
 		margin: 0;
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
