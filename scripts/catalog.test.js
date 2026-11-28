@@ -114,7 +114,7 @@ try {
 	assert.throws(() => readEntries(dataDir), /missing mod.yaml/);
 	fs.renameSync(path.join(dataDir, 'mods/host/app.yaml'), path.join(dataDir, 'mods/host/mod.yaml'));
 	fs.mkdirSync(path.join(fixture, 'scripts'));
-	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js', 'check-star-list.js', 'compat.js']) {
+	for (const file of ['catalog.js', 'build-data.js', 'validate.js', 'render-markdown.js', 'watch.js', 'check-star-list.js', 'compat.js', 'firmware-watch.js']) {
 		fs.copyFileSync(path.join(root, 'scripts', file), path.join(fixture, 'scripts', file));
 	}
 	fs.mkdirSync(path.join(fixture, 'src', 'lib'), { recursive: true });
@@ -133,6 +133,13 @@ try {
 	assert.match(validate().stderr, /website is required when repo is absent/);
 	write('mods/external/mod.yaml', externalRecord);
 	assert.equal(validate().status, 0, 'repo-less entry with a website must validate');
+	write('mods/external/mod.yaml', externalRecord + 'firmware_ignore: ["1.4.0.8"]\n');
+	assert.equal(validate().status, 0, 'entry can ignore a firmware build without declaring support');
+	write('readme/external.md', 'Works on 1.4.0.7\nWorks on 1.4.0.8\n');
+	const firmwareWatch = spawnSync(process.execPath, [path.join(fixture, 'scripts/firmware-watch.js'), '--dry-run'], { encoding: 'utf8' });
+	assert.equal(firmwareWatch.status, 0, firmwareWatch.stderr);
+	assert.match(firmwareWatch.stdout, /`external` \(mods\).*`1\.4\.0\.7`/);
+	assert.doesNotMatch(firmwareWatch.stdout, /1\.4\.0\.8/);
 	write('mods/external/mod.yaml', externalRecord + "watch_version: '(v.+)'\n");
 	assert.match(validate().stderr, /watch_version requires watch/);
 	const watchRecord = externalRecord + 'watch: https://example.com/project/feed\n';

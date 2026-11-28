@@ -19,6 +19,29 @@ const base = {
 	record: { firmware: '1.3.0.12', repo: 'owner/demo' }
 };
 
+const noFirmware = { ...base, record: { repo: base.record.repo } };
+assert.deepEqual(
+	scanEntry(noFirmware, { readme: 'Requires firmware 1.4.0.8.' }).map((f) => f.build),
+	['1.4.0.8'],
+	'entry without a firmware field gets scanned'
+);
+
+assert.deepEqual(
+	scanEntry(base, {
+		readme: 'Works on 1.4.0.8\nTested on MPC Sample 1.4.0.7\nRequires stock OS 1.5.0.1 and 1.5.0.2'
+	}).map((f) => f.build),
+	['1.4.0.7', '1.4.0.8', '1.5.0.1', '1.5.0.2'],
+	'compatibility context identifies builds without the word firmware'
+);
+
+assert.deepEqual(
+	scanEntry(base, {
+		releases: [{ tag: 'v1.4.0', body: 'MPC Sample plug-in v1.4.0 works on MPC Sample.' }]
+	}),
+	[],
+	'plug-in release tag is not a four-part firmware build'
+);
+
 assert.deepEqual(
 	scanEntry(base, {
 		readme: 'Requires firmware 1.4.0.8 for Developer Mode.\nAlso see 1.5.0.1 elsewhere.',
@@ -39,29 +62,20 @@ assert.deepEqual(
 
 assert.deepEqual(
 	scanEntry(base, {
-		readme: 'App version 1.4.0.8 released today.',
+		readme: 'MPC Sample app version 1.4.0.8 released today.',
 		releases: []
 	}),
 	[],
-	'version on a line without firmware is not flagged'
+	'a product name alone does not make an app version a firmware build'
 );
 
 assert.deepEqual(
 	scanEntry(
-		{ ...base, record: { ...base.record, firmware_ignore: ['1.4.0.8'] } },
-		{ readme: 'Requires firmware 1.4.0.8.', releases: [] }
+		{ ...noFirmware, record: { ...noFirmware.record, firmware_ignore: ['1.4.0.8'] } },
+		{ readme: 'Works on 1.4.0.8.', releases: [] }
 	),
 	[],
-	'build in firmware_ignore is not flagged'
-);
-
-assert.deepEqual(
-	scanEntry(
-		{ id: 'site', section: 'guides', record: { website: 'https://example.com' } },
-		{ readme: 'firmware 1.4.0.8', releases: [] }
-	),
-	[],
-	'entry with no firmware field is skipped'
+	'firmware_ignore works without a firmware field'
 );
 
 const releaseFlag = scanEntry(base, {
@@ -93,7 +107,7 @@ const flags = scanFlags(
 	],
 	{
 		demo: { readme: 'Needs firmware 1.4.0.8\n', releases: [] },
-		skip: { readme: 'firmware 1.9.0.1', releases: [] }
+		skip: { readme: 'Another mod works on firmware 1.9.0.1', releases: [] }
 	}
 );
 assert.deepEqual(flags.map((f) => f.id), ['demo']);
@@ -104,6 +118,8 @@ assert.match(body, /- \[ \] `demo` \(apps\) — `1\.4\.0\.8`/);
 assert.match(body, /> Needs firmware 1\.4\.0\.8/);
 assert.match(body, /Confirm the maker states support/);
 assert.match(body, /firmware_ignore/);
+const incompatibility = scanEntry(base, { readme: 'Does not work on 1.4.0.8.' });
+assert.match(formatIssueBody(incompatibility, '2wenty2wo/samplemods'), /Possible incompatibility/);
 assert.equal(TITLE, 'Firmware mentions to review');
 
 const originalFetch = globalThis.fetch;
