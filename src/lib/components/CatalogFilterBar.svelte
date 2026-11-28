@@ -279,11 +279,16 @@
 
 .results-count {
 		margin: 0;
-		white-space: nowrap;
 	}
 
 .results-count strong {
 		color: var(--mpc-silkscreen);
+	}
+
+@media (min-width: 641px) {
+		.results-count {
+			white-space: nowrap;
+		}
 	}
 
 .reset-link {
@@ -323,10 +328,26 @@
 	}
 
 @media (max-width: 640px) {
+		/* Always stack so a longer summary can't wrap SECTION onto its own row. */
+		.deck-top-head {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.35rem;
+		}
+
 		.results-inline {
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 0.35rem;
+			width: 100%;
+			min-width: 0;
+		}
+
+		/* Reserve two lines so short vs long summaries don't jump the bar. */
+		.results-count {
+			min-block-size: calc(2 * 1lh);
+			max-width: 100%;
+			overflow-wrap: anywhere;
 		}
 	}
 
