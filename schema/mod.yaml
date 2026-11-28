@@ -127,6 +127,10 @@ properties:
     type: string
     pattern: ^https?://
     description: Upstream URL polled for release changes (RSS/Atom/JSON preferred)
+  watch_version:
+    type: string
+    minLength: 1
+    description: Version capture pattern for the newest watched feed item
   watch_pages:
     type: array
     uniqueItems: true

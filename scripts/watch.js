@@ -2,7 +2,10 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readEntries } from './catalog.js';
+import { isDeepStrictEqual } from 'node:util';
+import yaml from 'js-yaml';
+import { readEntries, SECTION_FILES } from './catalog.js';
+import { createCatalogPullRequest, markdownText, repoId } from './check-star-list.js';
 import { releaseDisplayLabel } from '../src/lib/release-label.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,9 +41,10 @@ function isXmlFeed(body, contentType = '') {
  * @param {string} body
  * @param {string} [contentType='']
  * @param {number} [limit=10]
+ * @param {boolean} [publicationOnly=false] Ignore dates that only record a modification.
  * @returns {Array<{ title: string, published_at: string | null, html_url: string | null }> | null}
  */
-export function parseFeedItems(body, contentType = '', limit = 10) {
+export function parseFeedItems(body, contentType = '', limit = 10, publicationOnly = false) {
 	const trimmed = String(body ?? '');
 	if (!isXmlFeed(trimmed, contentType)) return null;
 	const blocks = trimmed.match(/<item\b[\s\S]*?<\/item>/gi)
@@ -48,7 +52,7 @@ export function parseFeedItems(body, contentType = '', limit = 10) {
 		?? [];
 	return blocks.slice(0, limit).map((item) => {
 		const title = textOf(item, 'title') || '';
-		const rawDate = textOf(item, 'pubDate') || textOf(item, 'updated') || textOf(item, 'published') || '';
+		const rawDate = textOf(item, 'pubDate') || (!publicationOnly && textOf(item, 'updated')) || textOf(item, 'published') || '';
 		const parsed = rawDate ? new Date(rawDate) : null;
 		const published_at = parsed && !Number.isNaN(parsed.getTime()) ? parsed.toISOString() : (rawDate || null);
 		const html_url = linkOf(item) || null;
@@ -383,6 +387,99 @@ async function openChangeIssue(token, repository, entry, watchUrl, oldFingerprin
 	console.log(`Opened issue: ${title}`);
 }
 
+export function watchVersionPattern(source) {
+	const pattern = new RegExp(source);
+	// The empty alternative exposes the capture slots without requiring a sample match.
+	if (new RegExp(`(?:${pattern.source})|`).exec('').length !== 2) {
+		throw new Error('watch_version must have exactly one capture group');
+	}
+	return pattern;
+}
+
+function versionUpdate(entry, item) {
+	if (!item?.html_url || !item.published_at) return null;
+	const pattern = watchVersionPattern(entry.record.watch_version);
+	const version = [item.title, item.html_url].map((text) => pattern.exec(text)?.[1]?.replace(/-+/g, ' ').trim()).find(Boolean);
+	if (!version || version === entry.record.version || /[\r\n]/.test(version)) return null;
+	const slug = repoId(version);
+	const date = Date.parse(item.published_at);
+	if (!slug || !Number.isFinite(date)) return null;
+	let url;
+	try { url = new URL(item.html_url, entry.record.watch); }
+	catch { return null; }
+	if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return null;
+	return {
+		version,
+		released: new Date(date).toISOString().slice(0, 10),
+		branch: `auto/watch-${entry.id}-${slug}`,
+		title: `Update ${entry.record.name} to ${version}`,
+		item,
+		url
+	};
+}
+
+function editReleaseFields(text, { version, released, url }) {
+	const fields = { version, released };
+	const line = /^(version|released):([ \t]+)(?:"(?:[^"\\\r\n]|\\[^\r\n])*"|'(?:[^'\r\n]|'')*'|[^\r\n]*?)([ \t]+#[^\r\n]*|[ \t]*)(?=\r?$)/gm;
+	const edited = new Set();
+	let next = text.replace(line, (_whole, key, spacing, suffix) => {
+		edited.add(key);
+		if (key === 'released' && url.hostname === 'sourceforge.net') {
+			const file = url.pathname.match(/\/([^/]+\.zip)(?=\/|$)/i)?.[1];
+			if (file) suffix = suffix.replace(/(# SourceForge file date for )\S+\.zip\b/i, (_comment, prefix) => `${prefix}${file}`);
+		}
+		return `${key}:${spacing}${JSON.stringify(fields[key])}${suffix}`;
+	});
+	const eol = text.includes('\r\n') ? '\r\n' : '\n';
+	for (const [key, value] of Object.entries(fields)) {
+		if (!edited.has(key)) next += `${next.endsWith('\n') ? '' : eol}${key}: ${JSON.stringify(value)}${eol}`;
+	}
+	try {
+		if (isDeepStrictEqual(yaml.load(next), { ...yaml.load(text), ...fields })) return next;
+	} catch {
+		// Use the issue path if the YAML needs a manual edit.
+	}
+	return null;
+}
+
+async function syncVersionPullRequest(token, repository, entry, update, gh) {
+	if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(entry.id) || !Object.hasOwn(SECTION_FILES, entry.section)) return false;
+	const { branch, title, released, item, url } = update;
+	const base = `repos/${repository}`;
+	const file = `${base}/contents/data/${entry.section}/${entry.id}/${SECTION_FILES[entry.section]}`;
+	const head = encodeURIComponent(`${repository.split('/')[0]}:${branch}`);
+	const [existing] = await request(`${base}/pulls?state=open&base=main&head=${head}`, token);
+	const ref = await optionalRequest(`${base}/git/ref/heads/${branch}`, token);
+	const mainSha = ref ? null : (await request(`${base}/git/ref/heads/main`, token)).object.sha;
+	const previous = await optionalRequest(`${file}?ref=${encodeURIComponent(ref ? branch : mainSha)}`, token);
+	if (!previous) return false;
+	const text = Buffer.from(previous.content, 'base64').toString('utf8');
+	const next = editReleaseFields(text, update);
+	if (next === null || (!ref && next === text)) return false;
+	if (!ref) {
+		await request(`${base}/git/refs`, token, 'POST', { ref: `refs/heads/${branch}`, sha: mainSha });
+	}
+	if (next !== text) {
+		await request(file, token, 'PUT', {
+			branch, message: title, sha: previous.sha, content: Buffer.from(next).toString('base64')
+		});
+	}
+	const body = [
+		`Updates the catalog version and release date from [${markdownText(item.title || 'Feed item')}](<${url.href}>), published on ${released}.`,
+		'',
+		'Catalog PR checks run when a maintainer pushes or re-runs them.'
+	].join('\n');
+	if (existing) {
+		if (existing.title !== title || existing.body !== body) {
+			await request(`${base}/pulls/${existing.number}`, token, 'PATCH', { title, body });
+		}
+	} else {
+		createCatalogPullRequest(token, repository, { branch, title, body }, gh);
+	}
+	console.log(`Synced pull request: ${title}`);
+	return true;
+}
+
 export function pageWatchChangedIssueTitle(entry, watchUrl) {
 	return `Page watch: ${entry.record.name} — ${pageWatchDisplay(watchUrl)} changed`;
 }
@@ -500,9 +597,16 @@ export async function runWatch(options = {}) {
 			}
 			if (decision.action === 'changed') {
 				console.log(`${entry.id}: CHANGED`);
+				const update = entry.record.watch_version
+					? versionUpdate(entry, parseFeedItems(body, contentType, 1, true)?.[0])
+					: null;
 				if (canOpenIssues) {
 					// Throws on failure, so the old fingerprint is kept and the next run retries.
-					await openChangeIssue(token, repository, entry, url, decision.oldFingerprint, fp);
+					if (!update || !await syncVersionPullRequest(token, repository, entry, update, options.gh)) {
+						await openChangeIssue(token, repository, entry, url, decision.oldFingerprint, fp);
+					}
+				} else if (update) {
+					console.log(`Would sync pull request: ${update.title}`);
 				} else {
 					console.log(`Would open issue: Release watch: ${entry.record.name} changed upstream`);
 				}
@@ -611,7 +715,7 @@ export async function runWatch(options = {}) {
 	if (!dryRun) {
 		fs.writeFileSync(statePath, serializeState(nextState));
 	} else {
-		console.log('Dry run: state not written, no issues opened.');
+		console.log('Dry run: state not written, no issues or pull requests opened.');
 	}
 
 	return { results, state: nextState, dryRun };

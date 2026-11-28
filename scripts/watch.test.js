@@ -15,7 +15,8 @@ import {
 	pageWatchStateKey,
 	parseFeedItems,
 	runWatch,
-	serializeState
+	serializeState,
+	watchVersionPattern
 } from './watch.js';
 
 const rssA = `<?xml version="1.0"?>
@@ -77,6 +78,10 @@ assert.deepEqual(parseFeedItems(rssNewFirstItem, 'application/rss+xml'), [
 	}
 ]);
 assert.equal(parseFeedItems('[{"modified_gmt":"2026-11-07T20:08:26"}]', 'application/json'), null);
+assert.equal(watchVersionPattern(String.raw`(?:Download )?v(?<version>[\d.]+)\(zip\)`).exec('v1.2.3(zip)')[1], '1.2.3');
+assert.throws(() => watchVersionPattern('['), SyntaxError);
+assert.throws(() => watchVersionPattern('(?:v1)'), /exactly one capture group/);
+assert.throws(() => watchVersionPattern('(v)(1)'), /exactly one capture group/);
 
 const jsonBody = '[{"modified_gmt":"2026-11-07T20:08:26"}]';
 assert.equal(
@@ -144,6 +149,113 @@ try {
 		globalThis.fetch = realFetch;
 	}
 	assert.equal(JSON.parse(fs.readFileSync(statePath, 'utf8')).demo.fingerprint, fpA, 'failed issue must not advance state');
+
+	const versionedEntry = {
+		...entry,
+		record: { ...entry.record, version: '1.0 Beta 1', watch_version: String.raw`MPC-Simple-(.+?)\.zip` }
+	};
+	const entryYaml = [
+		'name: Demo',
+		'# Release info from the upstream feed',
+		'version: "1.0 Beta 1" # Keep "version" note',
+		'released: "2026-11-15" # SourceForge file date for MPC-Simple-1.0-Beta-1.zip.',
+		'description: "Contains # and : characters"',
+		''
+	].join('\n');
+	const releaseYaml = entryYaml.replace('1.0 Beta 1', '1.0 Beta 2')
+		.replace('2026-11-15', '2026-11-16').replace('Beta-1.zip', 'Beta-2.zip');
+	const branch = 'auto/watch-demo-1-0-beta-2';
+	const pulls = [];
+	const commits = [];
+	const issues = [];
+	const newRefs = [];
+	const updatedPulls = [];
+	let branchYaml = null;
+	let existingPull = null;
+	const watchChange = async (target, feed = rssNewFirstItem) => {
+		fs.writeFileSync(statePath, baseline);
+		await runWatch({
+			entries: [target], statePath, fetchImpl: upstream(feed), token: 't', repository: 'o/r',
+			gh(args) {
+				assert.deepEqual(args.slice(0, 2), ['pr', 'create']);
+				const arg = (name) => args[args.indexOf(name) + 1];
+				pulls.push({ branch: arg('--head'), title: arg('--title'), body: fs.readFileSync(arg('--body-file'), 'utf8') });
+				return 'https://github.com/o/r/pull/1\n';
+			}
+		});
+	};
+
+	globalThis.fetch = async (input, { method, body }) => {
+		const url = new URL(input);
+		const endpoint = url.pathname;
+		const data = body && JSON.parse(body);
+		const json = (value, status = 200) => Response.json(value, { status });
+		if (endpoint === '/repos/o/r/pulls') {
+			assert.equal(url.searchParams.get('head'), `o:${branch}`);
+			return json(existingPull ? [existingPull] : []);
+		}
+		if (endpoint === '/repos/o/r/pulls/1' && method === 'PATCH') {
+			updatedPulls.push(data);
+			return json({});
+		}
+		if (endpoint === `/repos/o/r/git/ref/heads/${branch}`) return json({}, branchYaml ? 200 : 404);
+		if (endpoint === '/repos/o/r/git/ref/heads/main') return json({ object: { sha: 'main-tip' } });
+		if (endpoint === '/repos/o/r/git/refs' && method === 'POST') {
+			newRefs.push(data);
+			return json({});
+		}
+		if (endpoint === '/repos/o/r/contents/data/apps/demo/app.yaml') {
+			if (method === 'GET') {
+				const onBranch = url.searchParams.get('ref') === branch;
+				return json({ content: Buffer.from(onBranch ? branchYaml : entryYaml).toString('base64'), sha: onBranch ? 'branch-file' : 'main-file' });
+			}
+			assert.equal(method, 'PUT');
+			assert.equal(data.branch, branch);
+			assert.equal(data.sha, branchYaml ? 'branch-file' : 'main-file');
+			branchYaml = Buffer.from(data.content, 'base64').toString('utf8');
+			commits.push(branchYaml);
+			return json({});
+		}
+		if (endpoint.endsWith('/labels/release-watch')) return json({ description: 'Upstream release or page change detected for a catalog entry' });
+		if (endpoint === '/search/issues') return json({ items: [] });
+		if (endpoint === '/repos/o/r/issues' && method === 'POST') {
+			issues.push(data);
+			return json({});
+		}
+		throw new Error(`Unexpected API call: ${method} ${url}`);
+	};
+	try {
+		await watchChange(versionedEntry);
+		assert.equal(issues.length, 0, 'matching release must use a PR');
+		assert.deepEqual(newRefs, [{ ref: `refs/heads/${branch}`, sha: 'main-tip' }]);
+		assert.deepEqual(commits, [releaseYaml], 'only version, date and file source note should change');
+		assert.equal(pulls.length, 1);
+		assert.equal(pulls[0].branch, branch);
+		assert.equal(pulls[0].title, 'Update Demo to 1.0 Beta 2');
+		assert.match(pulls[0].body, /MPC-Simple-1\.0-Beta-2\.zip\/download/);
+		assert.equal(JSON.parse(fs.readFileSync(statePath, 'utf8')).demo.fingerprint, fpC);
+
+		existingPull = { number: 1, title: pulls[0].title, body: pulls[0].body };
+		branchYaml += '# Maintainer note\n';
+		const linkOnlyVersion = rssNewFirstItem.replace('<![CDATA[/MPC-Simple-1.0-Beta-2.zip]]>', 'Download the latest beta')
+			.replace('Sun, 16 Nov 2026', 'Mon, 17 Nov 2026');
+		await watchChange(versionedEntry, linkOnlyVersion);
+		assert.equal(commits[1], releaseYaml.replace('2026-11-16', '2026-11-17') + '# Maintainer note\n');
+		assert.equal(pulls.length, 1, 'open PR must not be duplicated');
+		assert.equal(newRefs.length, 1);
+		assert.equal(updatedPulls.length, 1);
+		assert.match(updatedPulls[0].body, /Download the latest beta/);
+
+		await watchChange({ ...versionedEntry, record: { ...versionedEntry.record, version: '1.0 Beta 2' } });
+		await watchChange(entry);
+		await watchChange(versionedEntry, rssNewFirstItem.replace(/<pubDate>(.*?)<\/pubDate>/g, '<updated>$1</updated>'));
+		await watchChange({ ...versionedEntry, record: { ...versionedEntry.record, watch_version: 'Release (.+)' } });
+		assert.equal(pulls.length, 1);
+		assert.equal(commits.length, 2);
+		assert.deepEqual(issues.map(({ title }) => title), Array(4).fill('Release watch: Demo changed upstream'));
+	} finally {
+		globalThis.fetch = realFetch;
+	}
 } finally {
 	Object.assign(console, quiet);
 	fs.rmSync(tmp, { recursive: true, force: true });

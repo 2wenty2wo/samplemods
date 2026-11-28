@@ -175,11 +175,21 @@ export async function syncPullRequest(token, repository, draft, listUrl, { gh = 
 		message: `Add draft entry for ${draft.record.repo}`, branch: draft.branch, content: Buffer.from(draft.yaml).toString('base64')
 	});
 	await ensureLabel(token, repository);
-	const bodyFile = path.join(os.tmpdir(), `mpc-star-list-${randomUUID()}.md`);
-	fs.writeFileSync(bodyFile, formatPullRequestBody(draft, listUrl, validation), { flag: 'wx' });
+	return createCatalogPullRequest(token, repository, {
+		branch: draft.branch,
+		title: `Add ${draft.record.name} (${draft.section})`,
+		body: formatPullRequestBody(draft, listUrl, validation),
+		label: LABEL,
+		isDraft: !validation.passed
+	}, gh);
+}
+
+export function createCatalogPullRequest(token, repository, { branch, title, body, label, isDraft }, gh = runGh) {
+	const bodyFile = path.join(os.tmpdir(), `catalog-pr-${randomUUID()}.md`);
+	fs.writeFileSync(bodyFile, body, { flag: 'wx' });
 	try {
-		return gh(['pr', 'create', '--repo', repository, '--base', 'main', '--head', draft.branch, '--title', `Add ${draft.record.name} (${draft.section})`,
-			'--label', LABEL, '--body-file', bodyFile, ...(validation.passed ? [] : ['--draft'])], token).trim();
+		return gh(['pr', 'create', '--repo', repository, '--base', 'main', '--head', branch, '--title', title,
+			...(label ? ['--label', label] : []), '--body-file', bodyFile, ...(isDraft ? ['--draft'] : [])], token).trim();
 	} catch (error) {
 		const detail = `${error.message}\n${error.stderr ?? ''}`;
 		if (/403|not permitted.*(?:create|approve).*pull requests/i.test(detail)) {

@@ -5,6 +5,7 @@ import yaml from 'js-yaml';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { readEntries } from './catalog.js';
 import { readCompat } from './compat.js';
+import { watchVersionPattern } from './watch.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const schema = yaml.load(fs.readFileSync(path.join(root, 'schema', 'mod.yaml'), 'utf8'));
@@ -38,6 +39,15 @@ for (const { id, section, file, dir, record, media } of entries) {
 	if (!record.repo && !record.website) {
 		console.error(`${file}: website is required when repo is absent`);
 		failed = true;
+	}
+	if (record.watch_version) {
+		try {
+			if (!record.watch) throw new Error('watch_version requires watch');
+			watchVersionPattern(record.watch_version);
+		} catch (error) {
+			console.error(`${file}: invalid watch_version (${error.message})`);
+			failed = true;
+		}
 	}
 	if (record.released) {
 		const date = Date.parse(`${record.released}T00:00:00Z`);
