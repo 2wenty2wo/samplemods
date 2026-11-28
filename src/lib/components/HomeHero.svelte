@@ -2,13 +2,12 @@
 /** @type {{
 	 *   totalMods: number,
 	 *   totalAuthors: number,
-	 *   latestUpdateLabel: string | null,
-	 *   query: string
+	 *   latestUpdateLabel: string | null
 	 * }} */
-	let { totalMods, totalAuthors, latestUpdateLabel, query = $bindable('') } = $props();
+	let { totalMods, totalAuthors, latestUpdateLabel } = $props();
 </script>
 
-<section class="hero-band" aria-label="Search and catalog overview">
+<section class="hero-band" aria-label="Catalog overview">
 	<div class="hero-inner">
 		<div class="hero-screen">
 			<div class="hero-top-row">
@@ -34,27 +33,6 @@
 					</div>
 				</dl>
 			</div>
-
-			<search class="hero-search-bar">
-				<label class="search-label" for="mod-search">SEARCH CATALOG</label>
-				<div class="search-input-wrap">
-					<input
-						id="mod-search"
-						type="search"
-						bind:value={query}
-						placeholder="Filter by name, description, tag, or author…"
-						autocomplete="off"
-						autocapitalize="off"
-						spellcheck="false"
-						enterkeyhint="search"
-					/>
-					{#if query}
-						<button type="button" class="search-clear" onclick={() => (query = '')}>
-							Clear
-						</button>
-					{/if}
-				</div>
-			</search>
 		</div>
 	</div>
 </section>
@@ -173,80 +151,6 @@
 		font-size: 0.92rem;
 	}
 
-.hero-search-bar {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.5rem 0.85rem;
-		padding-top: 0.85rem;
-		border-top: 1px solid #282830;
-	}
-
-.search-label {
-		font-family: var(--font-screen);
-		font-size: 0.72rem;
-		font-weight: 500;
-		letter-spacing: 0.02em;
-		color: var(--mpc-screen-grey);
-		white-space: nowrap;
-	}
-
-.search-input-wrap {
-		position: relative;
-		flex: 1 1 260px;
-		display: flex;
-		align-items: center;
-	}
-
-.search-input-wrap input[type='search'] {
-		width: 100%;
-		font-family: var(--font-sans);
-		font-size: 0.95rem;
-		color: var(--mpc-screen-text);
-		background: #000;
-		border: 1px solid #585860;
-		border-radius: 2px;
-		padding: 0.6rem 0.85rem;
-		box-shadow: inset 0 2px 5px rgb(0 0 0 / 0.75);
-		transition: border-color 120ms ease;
-	}
-
-.search-input-wrap input[type='search']::placeholder {
-		color: #848d9f;
-	}
-
-.search-input-wrap input[type='search']:focus-visible {
-		border-color: var(--mpc-screen-cyan);
-		outline: 2px solid var(--mpc-focus-ring);
-		outline-offset: 1px;
-	}
-
-.search-clear {
-		position: absolute;
-		right: 0.45rem;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-block-size: 24px;
-		min-inline-size: 24px;
-		background: #232836;
-		color: var(--mpc-screen-text);
-		border: 1px solid #3a4154;
-		border-radius: 4px;
-		padding: 0.25rem 0.55rem;
-		font-size: 0.72rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-		cursor: pointer;
-	}
-
-.search-clear::after {
-		content: '';
-		position: absolute;
-		inset: -10px -6px;
-	}
-
 @media (max-width: 640px) {
 .hero-inner {
 			width: calc(100% - 1.25rem);
@@ -282,16 +186,6 @@
 		.stat-val.cyan {
 			font-size: 0.82rem;
 			white-space: nowrap;
-		}
-
-.hero-search-bar {
-			padding-top: 0.6rem;
-			gap: 0.35rem;
-		}
-
-.search-input-wrap input[type='search'] {
-			padding: 0.45rem 0.65rem;
-			font-size: 0.88rem;
 		}
 	}
 </style>
