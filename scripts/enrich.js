@@ -17,15 +17,21 @@ const headers = { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version':
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
 async function request(endpoint, optional = false) {
-	const response = await fetch(`https://api.github.com/repos/${endpoint}`, { headers });
-	if (optional && [404, 409].includes(response.status)) return null;
-	if (!response.ok) {
-		const reset = response.headers.get('x-ratelimit-reset');
-		const retry = response.headers.get('retry-after');
-		const limit = response.status === 429 || response.headers.get('x-ratelimit-remaining') === '0' || retry;
-		throw new Error(`GitHub ${endpoint}: HTTP ${response.status}${limit ? `; rate limited, retry ${retry ? `after ${retry} seconds` : reset ? `after ${new Date(Number(reset) * 1000).toISOString()}` : 'later'}. Use GITHUB_TOKEN for authenticated limits.` : ''}`);
+	for (let attempt = 0; ; attempt += 1) {
+		const response = await fetch(`https://api.github.com/repos/${endpoint}`, { headers });
+		if (optional && [404, 409].includes(response.status)) return null;
+		if (response.status >= 500 && response.status <= 599 && attempt === 0) {
+			await new Promise((resolve) => setTimeout(resolve, 2000));
+			continue;
+		}
+		if (!response.ok) {
+			const reset = response.headers.get('x-ratelimit-reset');
+			const retry = response.headers.get('retry-after');
+			const limit = response.status === 429 || response.headers.get('x-ratelimit-remaining') === '0' || retry;
+			throw new Error(`GitHub ${endpoint}: HTTP ${response.status}${limit ? `; rate limited, retry ${retry ? `after ${retry} seconds` : reset ? `after ${new Date(Number(reset) * 1000).toISOString()}` : 'later'}. Use GITHUB_TOKEN for authenticated limits.` : ''}`);
+		}
+		return { data: response.status === 204 ? [] : await response.json(), headers: response.headers };
 	}
-	return { data: response.status === 204 ? [] : await response.json(), headers: response.headers };
 }
 
 function writeIfChanged(file, text) {
@@ -57,53 +63,62 @@ const previous = fs.existsSync(output) ? JSON.parse(fs.readFileSync(output, 'utf
 const github = {};
 const readmes = new Map();
 const retainedRepos = new Set();
+const missingRepos = new Set();
+function keepPreviousSnapshot(repo, status) {
+	const label = status === 404 ? '404' : `HTTP ${status}`;
+	console.warn(`::warning::GitHub ${repo}: ${label}, keeping previous snapshot`);
+	if (previous[repo]) github[repo] = previous[repo];
+	retainedRepos.add(repo);
+	if (status === 404) missingRepos.add(repo);
+}
 for (const repo of repos) {
 	if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error(`Invalid GitHub repository: ${repo}`);
 	const releaseLimit = prefixRepos.has(repo) ? 10 : 3;
-	let metadata;
 	try {
-		({ data: metadata } = await request(repo));
+		const { data: metadata } = await request(repo);
+		const latest = await request(`${repo}/releases/latest`, true);
+		const releases = await request(`${repo}/releases?per_page=${releaseLimit}`, true);
+		const readme = await request(`${repo}/readme`, true);
+		const contributors = await request(`${repo}/contributors?anon=true&per_page=1`, true);
+		const commits = await request(`${repo}/commits?per_page=1`, true);
+		const lastPage = contributors?.headers.get('link')?.match(/[?&]page=(\d+)[^>]*>; rel="last"/);
+		const release = latest?.data;
+		if (readme) {
+			if (readme.data.encoding !== 'base64') throw new Error(`GitHub ${repo}/readme: expected base64 content`);
+			readmes.set(repo, Buffer.from(readme.data.content, 'base64').toString('utf8').replace(/\r\n/g, '\n'));
+		}
+		github[repo] = {
+			stars: metadata.stargazers_count,
+			forks: metadata.forks_count,
+			pushed_at: metadata.pushed_at,
+			last_commit_at: commits?.data[0]?.commit.committer?.date ?? commits?.data[0]?.commit.author?.date ?? null,
+			contributors: contributors ? lastPage ? Number(lastPage[1]) : contributors.data.length : 0,
+			// GitHub's repository counter includes open pull requests.
+			open_issues: metadata.open_issues_count,
+			license: metadata.license?.spdx_id === 'NOASSERTION' ? null : metadata.license?.spdx_id ?? null,
+			description: metadata.description,
+			default_branch: metadata.default_branch,
+			readme_path: readme?.data.path ?? null,
+			latest_release: release ? { tag: release.tag_name, published_at: release.published_at } : null,
+			releases: (releases?.data ?? []).filter((item) => !item.draft).slice(0, releaseLimit).map((item) => {
+				const body = item.body ?? '';
+				const limit = 12000;
+				const end = body.length > limit ? body.lastIndexOf('\n\n', limit) : body.length;
+				return { tag: item.tag_name, name: item.name, prerelease: item.prerelease, published_at: item.published_at, html_url: item.html_url,
+					body: body.slice(0, end > limit / 2 ? end : limit), truncated: body.length > limit };
+			}),
+			archived: metadata.archived
+		};
+		console.log(`Fetched ${repo}.`);
 	} catch (error) {
-		if (!(error instanceof Error) || !error.message.includes('HTTP 404')) throw error;
-		console.warn(`::warning::GitHub ${repo}: 404, keeping previous snapshot`);
-		if (previous[repo]) github[repo] = previous[repo];
-		retainedRepos.add(repo);
-		continue;
+		if (!(error instanceof Error)) throw error;
+		const status = Number(error.message.match(/HTTP (\d+)/)?.[1]);
+		if (status === 404 || (status >= 500 && status <= 599)) {
+			keepPreviousSnapshot(repo, status);
+			continue;
+		}
+		throw error;
 	}
-	const latest = await request(`${repo}/releases/latest`, true);
-	const releases = await request(`${repo}/releases?per_page=${releaseLimit}`, true);
-	const readme = await request(`${repo}/readme`, true);
-	const contributors = await request(`${repo}/contributors?anon=true&per_page=1`, true);
-	const commits = await request(`${repo}/commits?per_page=1`, true);
-	const lastPage = contributors?.headers.get('link')?.match(/[?&]page=(\d+)[^>]*>; rel="last"/);
-	const release = latest?.data;
-	if (readme) {
-		if (readme.data.encoding !== 'base64') throw new Error(`GitHub ${repo}/readme: expected base64 content`);
-		readmes.set(repo, Buffer.from(readme.data.content, 'base64').toString('utf8').replace(/\r\n/g, '\n'));
-	}
-	github[repo] = {
-		stars: metadata.stargazers_count,
-		forks: metadata.forks_count,
-		pushed_at: metadata.pushed_at,
-		last_commit_at: commits?.data[0]?.commit.committer?.date ?? commits?.data[0]?.commit.author?.date ?? null,
-		contributors: contributors ? lastPage ? Number(lastPage[1]) : contributors.data.length : 0,
-		// GitHub's repository counter includes open pull requests.
-		open_issues: metadata.open_issues_count,
-		license: metadata.license?.spdx_id === 'NOASSERTION' ? null : metadata.license?.spdx_id ?? null,
-		description: metadata.description,
-		default_branch: metadata.default_branch,
-		readme_path: readme?.data.path ?? null,
-		latest_release: release ? { tag: release.tag_name, published_at: release.published_at } : null,
-		releases: (releases?.data ?? []).filter((item) => !item.draft).slice(0, releaseLimit).map((item) => {
-			const body = item.body ?? '';
-			const limit = 12000;
-			const end = body.length > limit ? body.lastIndexOf('\n\n', limit) : body.length;
-			return { tag: item.tag_name, name: item.name, prerelease: item.prerelease, published_at: item.published_at, html_url: item.html_url,
-				body: body.slice(0, end > limit / 2 ? end : limit), truncated: body.length > limit };
-		}),
-		archived: metadata.archived
-	};
-	console.log(`Fetched ${repo}.`);
 }
 
 const { data: catalogRepo } = await request(CATALOG_REPO);
@@ -136,7 +151,7 @@ writeIfChanged(contributorsOutput, JSON.stringify({
 	contributors: catalogContributors
 }, null, 2) + '\n');
 if (process.env.ENRICH_404_PATH) {
-	const rows = open404Entries(entries, retainedRepos);
+	const rows = open404Entries(entries, missingRepos);
 	fs.mkdirSync(path.dirname(process.env.ENRICH_404_PATH), { recursive: true });
 	fs.writeFileSync(process.env.ENRICH_404_PATH, JSON.stringify(rows, null, 2) + '\n');
 }
