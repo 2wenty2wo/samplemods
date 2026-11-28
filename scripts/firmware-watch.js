@@ -11,6 +11,8 @@ const CLOSE_COMMENT = 'No firmware mentions to review.';
 const GUIDANCE =
 	'Confirm the maker states support (not a \'does not work\' warning), then add the build to `firmware` as `1.x.x.x (vX+)`, keeping the builds already listed (a new build never replaces 1.3.0.12). False alarm? Add it to `firmware_ignore`.';
 const BUILD_RE = () => /\b(1\.[3-9]\.\d+\.\d+)\b/g;
+const BUILD_CONTEXT = /\b(?:MPC\s+Sample|OS|(?:works?|runs?|starts?|boots?|tested)\s+on)(?:\s+(?:version|build))?[\s:*_`(]*(?:1\.\d+\.\d+\.\d+[\s*_`)]*(?:,\s*(?:and\s+|or\s+)?|\band\b|\bor\b)[\s*_`(]*)*$/i;
+const INCOMPATIBILITY = /\b(?:(?:does not|doesn['’]t|will not|won['’]t|cannot|can['’]t)\s+(?:work|run|start|boot)|not supported|not compatible|incompatible|unsupported)\b/i;
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 /** Builds already declared on the entry's firmware string. */
@@ -28,8 +30,9 @@ function buildsOnFirmwareLines(text) {
 	const hits = [];
 	if (!text) return hits;
 	for (const raw of String(text).split(/\r?\n/)) {
-		if (!/firmware/i.test(raw)) continue;
+		const mentionsFirmware = /firmware/i.test(raw);
 		for (const match of raw.matchAll(BUILD_RE())) {
+			if (!mentionsFirmware && !BUILD_CONTEXT.test(raw.slice(0, match.index))) continue;
 			hits.push({ build: match[1], quote: trimQuote(raw) });
 		}
 	}
@@ -51,7 +54,8 @@ function earliestReleaseForBuild(releases, build) {
 /** Scan one entry's cached README + release bodies for missing firmware builds. */
 export function scanEntry(entry, { readme = '', releases = [] } = {}) {
 	const { id, section, record } = entry;
-	if (!record.firmware) return [];
+	// Unannotated guides can mention builds for the projects they document.
+	if (section === 'guides' && !record.firmware) return [];
 	const listed = new Set(parseListedBuilds(record.firmware));
 	const ignored = new Set(record.firmware_ignore ?? []);
 	const byBuild = new Map();
@@ -119,7 +123,8 @@ export function formatIssueBody(flags, repository) {
 		const earliest = flag.earliestRelease
 			? ` · earliest release: [${flag.earliestRelease.tag}](${flag.earliestRelease.html_url})`
 			: '';
-		lines.push(`- [ ] \`${flag.id}\` (${flag.section}) — \`${flag.build}\` · [entry YAML](${yaml})`);
+		const caveat = INCOMPATIBILITY.test(flag.quote) ? ' · Possible incompatibility' : '';
+		lines.push(`- [ ] \`${flag.id}\` (${flag.section}) — \`${flag.build}\`${caveat} · [entry YAML](${yaml})`);
 		lines.push(`  > ${flag.quote}`);
 		lines.push(`  Source: ${source}${earliest}`);
 		lines.push('');
@@ -177,7 +182,6 @@ function loadSources(entries, dataDir) {
 	const readmeDir = path.join(dataDir, 'readme');
 	const sources = {};
 	for (const { id, record } of entries) {
-		if (!record.firmware) continue;
 		const readmePath = path.join(readmeDir, `${id}.md`);
 		const readme = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, 'utf8') : '';
 		const releases = record.repo ? (github[record.repo]?.releases ?? []) : [];
